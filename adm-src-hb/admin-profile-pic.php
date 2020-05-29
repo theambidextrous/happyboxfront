@@ -75,9 +75,9 @@ $profile_form = json_decode($_SESSION['usr_info']);
                                     $user_id = $_POST['uuid'];
                                     $resp = $user->edit_profile_pic($user_id, 'img');
                                     // print $resp;
-                                    if(json_decode($resp)->status == 0){
+                                    if(json_decode($resp)->status == '0'){
                                         $_SESSION['usr_info'] = $user->get_details($user_id);
-                                        print $util->success_flash('Updated successfully');
+                                        print $util->success_flash(json_decode($resp)->message);
                                     }else{
                                         print $util->error_flash(json_decode($resp)->message);
                                     }
