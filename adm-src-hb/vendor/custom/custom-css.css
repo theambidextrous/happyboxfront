@@ -1,0 +1,457 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 7, 2020, 02:51:24 PM
+    Author     : root
+*/
+body{
+    overflow-x: hidden;
+    font-family: Calibri;
+    font-size: 15px !important;
+}
+.border_right {
+    border-right: solid 1px;
+}
+html {
+  scroll-behavior: smooth;
+}
+.btn:hover {
+    color: #c20a2b !important;
+    text-decoration: none;
+}
+.text-right{
+    text-align: right;
+}
+.section_title h3{
+font-size: 19px;
+    padding-top: 6px;
+    font-weight: bold;color: black;
+
+}
+/*Top Main  Nav*/
+.navbar-brand img{
+    height: 36px;
+}
+.bg-admin{
+    background: #C20A2B !important;
+}
+.bg-admin a{
+    color: white !important;
+}
+.navbar-brand span{
+    font-size: 16px !important;
+}
+.dropdown-toggle::after{
+ display: none !important;   
+}
+
+ .user_icon{
+    height: 20px;
+}
+.dropdown_user_img {
+    height: 31px;
+    display: inline;
+}
+.dropdown-item a{
+    color: #C20A2B !important;    
+}
+.dropdown-menu .card-footer {
+padding-left: 13px;
+    padding-top: 0px;
+    padding-right: 13px;
+    padding-bottom: 0px;    
+}
+.dropdown-menu .card-body {
+padding: 0.35rem 0.15rem;
+    color: white;
+}
+/* End Top Main  Nav*/
+/*Top 2nd  Nav*/
+.top_menu ul{
+padding-left: 0px;
+    margin-bottom: 13px;
+    margin-top: 13px;
+}
+ .top_menu ul li{
+    display: inline;
+    padding-right: 34px;
+}
+.top_menu ul li a{
+letter-spacing: 0px;
+    color: #0185B6;
+    
+    
+}
+.top_menu ul li a:hover{
+  color: #c20a2b;
+text-decoration: none;  
+border-bottom: solid 2px #c20a2b;
+}
+/*End Top 2nd  Nav*/
+/*  box inventory */
+.table_data1 thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    padding: 9px 0px !important;
+}
+.table_data1{
+    font-size: 11px;
+    text-align: center;
+    margin-top: 13px;
+
+}
+.table_data1 thead{
+    background: #b3b1b1;
+}
+.table_data1 td,.table_data1 th {
+    border: 1px solid #9e9d9d !important;
+}
+.table_data1 td, .table_data1 th {
+    padding: 2px 1px;
+    
+}
+.inner_table td, .inner_table th {
+    padding: 0px 0px !important;
+}
+.inner_table_wrap {
+    padding: 0px 1px !important;
+}
+.table td, .table th {
+       border-top: 0px !important;
+}
+.inner_table{
+    text-transform: uppercase;
+    
+}
+ .inner_table .td_a{
+    background: #717171;
+    width: 31%;
+    text-align: center;
+    vertical-align: middle;
+}
+.light{
+    color:#fff;
+}
+.rounded_form_control {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #0985B6;
+    border-radius: 13px;
+    color: #9E9E9E;
+    font-size: 13px;
+    text-align: center;
+}
+ .inner_table .td_b{
+      text-align: center;
+    background: #c20a2b;
+    vertical-align: middle;
+}
+/* end box inventory */
+
+
+.top_blue_bar{
+    background: #b2dae9;
+    padding: 5px;  
+}.generate_rpt{
+    background: #00ACB3 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    opacity: 1;
+    color: white;
+}
+.status_bar{
+    padding-top: 11px;
+}
+.status_btn{background: #0185B6 0% 0% no-repeat padding-box;
+border-radius: 13px;
+opacity: 1;
+}
+/*Report section */
+
+.rpt_drop .nav-pills .nav-link.active,.rpt_drop .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: transparent;
+}
+.rpt_drop .dropdown-item {
+     padding: .05rem 1rem !important;
+    font-size: 12px;
+    font-weight: bold;
+}
+ 
+
+
+
+/*admin footer*/
+#goTop{
+    background: #00acb3;
+    /* height: 70px; */
+    padding: 2px 15px;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    color: white;
+    font-size: 30px;
+    border-radius: 5px;
+}
+.admin_footer{
+    background: #000000 0% 0% no-repeat padding-box;
+    opacity: 1;
+    color: white;
+    padding: 7px;
+}
+.bg-admin .dropdown-menu{
+background: #C20A2B 0% 0% no-repeat padding-box;
+    opacity: 1;
+    left: -75px;
+    min-width: 16rem;
+padding: 11px 2px 0px !important;
+    border: 0px;
+
+}
+.dropdown-menu .card {
+     background-color: transparent;
+     border: 0px !important;
+   
+}
+.drop_down_profile{
+    background: #0185B6;
+      
+    padding: 4px;
+}
+.drop_down_logout{
+    background:#00ACB3;
+        padding: 4px;
+}
+/*reports*/
+.filter_bar{
+    padding-top: 30px;
+    padding-bottom: 66px;
+}
+ .select_reports{
+  background: transparent;
+    border: 0px;
+    width: 30px;
+    display: inline;
+    font-size: 14px
+}
+.filter_title{
+letter-spacing: 0px;
+    color: #00ACB3;
+    margin-bottom: 23px;
+    font-size: 22px;
+}
+.filter_form label{
+    color: #00ACB3;
+}
+
+.filter_form select {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #0985B6;
+    border-radius: 13px;
+    color: #9E9E9E;
+    font-size: 13px;
+}
+
+.btn_view_report{
+    background: #00ACB3 0% 0% no-repeat padding-box;
+border-radius: 13px;
+color: white !important;
+}
+.partner_list_sub_title{
+letter-spacing: 0px;
+    color: #00ACB3;
+    font-size: 17px;
+}
+
+.partner_table{
+font-size: 11px;
+       margin-top: 22px;
+
+    border-radius: 13px;
+    border: solid 1px #a5a5a5;
+   
+  border-collapse: collapse;
+    overflow: hidden;
+
+
+}
+.partner_table thead{
+ background: #0185B6 0% 0% no-repeat padding-box;
+border: 1px solid #707070;
+border-radius: 13px 0px 0px 0px;
+text-align: center;
+    color: white;
+}
+ .partner_table  .td1{
+    background: #e7e7e7;
+}
+.contact_table {
+    width: 100%;
+}
+.partner_table td{
+    padding: 2px 1px !important;
+    
+}.partner_table th {
+    padding: 8px 2px !important;
+}
+.partner_table td, .partner_table th {
+    border: 1px solid #b8b9bb !important;
+}
+.table td, .table th {
+        border-top: 0px !important;
+    vertical-align: middle;
+}
+
+.des_width{
+    width: 32%;
+}
+.contact_name{
+    color: #999999;
+}
+.table_absimg_wrap{
+    position: relative;
+}
+.table_absimg{
+  position: absolute;
+    height: 28px;
+    right: 3px;
+    z-index: 9999;
+    top: 10px;
+}
+/*voucher search */
+.voucher_search{
+padding-top: 179px;
+    padding-bottom: 171px;
+}
+.voucher_title{
+    color: #0185B6;
+    font-weight: bold;
+}
+.p_search{
+    color: #00ACB3;
+}
+.voucher_search_input{
+      border: 2px solid #0985B6 !important;
+    border-radius: 13px !important;
+    padding-left: 57px;
+}
+.btn_search_v{
+    background: #00ACB3 0% 0% no-repeat padding-box;
+border-radius: 13px;
+color: white;
+}
+.voucher_no {
+    width: 10%;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+    background: #0985B6 0% 0% no-repeat padding-box;
+}
+.voucher_no_value{
+    width: 11%;
+   
+}
+.voucher_status{
+   width: 7%;
+  background: #0985B6 0% 0% no-repeat padding-box;
+}
+.voucher_status_value{
+    width: 10%;
+background: #10D271 0% 0% no-repeat padding-box;  
+}
+
+.voucher_partner{
+    width: 9%;
+ background: #0985B6 0% 0% no-repeat padding-box; 
+}
+.voucher_partner2{
+    
+}
+.voucher_result_bar{
+border: solid 1px gray;
+    border-radius: 13px;
+    width: 100%;
+    height: 38px;
+    display: flex;
+    margin-top: 34px;
+    font-size: 12px;
+}
+
+.voucher_result_bar > div {
+    padding-top: 9px !important;
+}
+.search_glass{
+ position: absolute;
+    left: 30px;
+    top: 9px;
+    color: gray;
+}
+/*Mobile View */
+@media (max-width: 767px){
+.filter_form select {
+       margin-top: 14px;
+}
+.btn_search_v {
+     margin-top: 6px;
+}
+.voucher_result_bar {
+   display: block;
+    border: 0px;
+    float: left;
+       width: 80%;
+    margin: 20px auto;
+
+  
+}
+.voucher_no,.voucher_no_value,.voucher_status,.voucher_status_value,.voucher_partner,.voucher_partner_val,.voucher_partner2{
+    width: 100% !important;
+    display: block;
+}
+.voucher_no {
+     border-radius: 0px !important;
+}
+.border_right{
+    border-right: 0px !important;
+}
+.voucher_search {
+padding-top: 77px;
+    padding-bottom: 181px;
+}
+/* statrt html table with border radius */
+.table_radius {
+    overflow: auto;
+    border-radius: 13px;
+    border: 1px solid #cccccc;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-style: hidden;
+
+  width:100%;
+  max-width: 100%;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #CCCCCC;
+}
+
+/*end html table with border radius */
+
+#goTop {
+    background: #00acb3;
+    padding: 2px 15px;
+    position: fixed;
+    right: 9px;
+    bottom: 8px;
+    color: white;
+    font-size: 24px;
+    border-radius: 5px;
+}
+.table td, .table th {
+    border-top: 0px !important;
+    vertical-align: baseline;
+}
+}
