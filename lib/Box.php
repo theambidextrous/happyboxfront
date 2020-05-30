@@ -2,23 +2,32 @@
 /** 
  * @author - j.o
  * @license propriatery
- * @file - Topic.php
- * @usage - Topic objects
+ * @file - Box.php
+ * @usage - Box objects
  */
 
- class Topic
+ class Box
  {
     private $name;
+    private $price;
     private $description;
-    function __construct($name=null,$description=null){
+    private $topics;
+    function __construct($name=null,$price=null,$description=null,$topics=null){
         $this->name = $name;
+        $this->price = $price;
         $this->description = $description;
+        $this->topics = $topics;
     }
     function create($token){
-        $endpoint = 'services/topics/topic';
+        $endpoint = 'services/happyboxes/happybox';
         $util = new Util();
         $this->validate();
-        $body = ['name' => $this->name, 'description' => $this->description];
+        $body = [
+            'name' => $this->name,
+            'price' => $this->price,
+            'description' => $this->description,
+            'topics' => $this->topics
+        ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
@@ -29,11 +38,16 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function update($token, $t_id){
-        $endpoint = 'services/topics/topic/' . $t_id;
+    function update($token, $id){
+        $endpoint = 'services/happyboxes/happybox/' . $id;
         $util = new Util();
         $this->validate();
-        $body = ['name' => $this->name, 'description' => $this->description];
+        $body = [
+            'name' => $this->name,
+            'price' => $this->price,
+            'description' => $this->description,
+            'topics' => $this->topics
+        ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
@@ -45,7 +59,7 @@
         return $res;
     }
     function get($token){
-        $endpoint = 'services/topics/topics';
+        $endpoint = 'services/happyboxes/happyboxes';
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -58,8 +72,8 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function get_one($token, $t_id){
-        $endpoint = 'services/topics/topic/' . $t_id;
+    function get_one($token, $id){
+        $endpoint = 'services/happyboxes/happybox/' . $id;
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -72,8 +86,8 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function get_one_byidf($token, $idf){
-        $endpoint = 'services/topics/topic/byidf/' . $idf;
+    function get_byidf($token, $idf){
+        $endpoint = 'services/happyboxes/happybox/byidf/' . $idf;
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -98,10 +112,16 @@
     }
     function validate(){
         if( empty($this->name) ){
-            throw new Exception('Topic name field is empty');
+            throw new Exception('Box name field is empty');
         }
         if( empty($this->description) ){
-            throw new Exception('Topic description field is empty');
+            throw new Exception('Box description field is empty');
+        }
+        if( empty($this->price) || $this->price < 10 ){
+            throw new Exception('Box price field is empty');
+        }
+        if( empty($this->topics) ){
+            throw new Exception('Box topics field is empty');
         }
         return true;
     }

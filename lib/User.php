@@ -113,6 +113,21 @@
         // $util->Show(curl_getinfo($curl));
         return $res;
     }
+    function get_details_byidf($idf, $endpoint = 'users/info/byidf/'){
+        $this->is_loggedin();
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint . $idf);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function add_details($body, $endpoint = '', $token = 0){
         $this->is_loggedin();
         if($token == 0){

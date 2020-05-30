@@ -50,14 +50,17 @@
                         </div>
                     </div>
                     <div class="mt-3 row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <a class="text-light btn btn-primary" target="_blank" href="<?=$util-> AdminHome()?>"> Admin</a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <a class="text-light btn btn-primary" href="#">Partner</a>
                         </div>
-                        <div class="col-md-4">
-                            <a class="text-light btn btn-primary" href="#">Partner</a>
+                        <div class="col-md-3">
+                            <a class="text-light btn btn-primary" href="#">Customer</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="text-light btn btn-primary" href="#">Website</a>
                         </div>
                     </div>
                         </div>

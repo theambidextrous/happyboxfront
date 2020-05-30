@@ -124,10 +124,6 @@ $profile_form = json_decode($_SESSION['usr_info']);
 
         <?php include 'admin-partials/js.php'; ?>
 
-
-
-
-
     </body>
 
 </html>

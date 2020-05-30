@@ -47,9 +47,7 @@ $box = new Box();
                     </div>
                     <div class="col-6 text-right">
                         <a class="btn generate_rpt" href="#">COMPOSE NEW BOX</a>
-
                     </div>
-
                 </div>
             </div>
         </section>
@@ -57,10 +55,10 @@ $box = new Box();
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-box-inventory.php" class="btn generate_rpt btn-block active" style="color:#c20a2b;">ALL</a>
+                        <a href="admin-box-inventory.php" class="btn generate_rpt btn-block">ALL</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block">ACTIVATED</a>
+                        <a href="admin-box-inventory-activated.php" style="color:#c20a2b;" class="btn generate_rpt btn-block">ACTIVATED</a>
                     </div>
                     <div class="col-md-2">
                         <a href="#" class="btn generate_rpt btn-block">REDEEMED</a>
@@ -111,7 +109,7 @@ $box = new Box();
                                     <td><?=$hbox['name']?></td>
                                     <td>KES <?=$hbox['price']?></td>
                                     <td><?=$hbox['voucher']?></td>
-                                    <td>NOT PURCHASED</td>
+                                    <td>PURCHASED</td>
                                     <td>-</td>
                                     <td>-</td>
                                     <td>-</td>
