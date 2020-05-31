@@ -54,13 +54,10 @@
                             <a class="text-light btn btn-primary" target="_blank" href="<?=$util-> AdminHome()?>"> Admin</a>
                         </div>
                         <div class="col-md-3">
-                            <a class="text-light btn btn-primary" href="#">Partner</a>
+                            <a class="text-light btn btn-primary" target="_blank" href="<?=$util->PartnerHome()?>/">Partner</a>
                         </div>
                         <div class="col-md-3">
-                            <a class="text-light btn btn-primary" href="#">Customer</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a class="text-light btn btn-primary" href="#">Website</a>
+                            <a class="text-light btn btn-primary" target="_blank" href="<?=$util->ClientHome()?>/">Website</a>
                         </div>
                     </div>
                         </div>
