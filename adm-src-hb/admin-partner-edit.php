@@ -67,12 +67,12 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                 print $util->error_flash('Wrong request');
                                 exit;
                             }
-                            if(!isset($_SESSION['frm'])){
+                            // if(!isset($_SESSION['frm'])){
                                 $_SESSION['frm'] = $selected_partner;
-                            }
-                            if(!isset($_SESSION['frm_b'])){
+                            // }
+                            // if(!isset($_SESSION['frm_b'])){
                                 $_SESSION['frm_b'] = $selected_partner_data;
-                            }
+                            // }
                             if( isset($_POST['update'])){
                                 try{
                                     $_SESSION['frm'] = $_POST;

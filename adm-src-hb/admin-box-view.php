@@ -10,6 +10,8 @@ $util = new Util();
 $user = new User();
 $topic = new Topic();
 $experience = new Experience();
+$box = new Box();
+$boxExperience = new BoxExperience();
 $util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
@@ -47,7 +49,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <div class="container">
                 <div class="row">
                     <div class="col-6 section_title">
-                        <h3>CREATE BOX</h3>
+                        <h3>VIEW BOX</h3>
                     </div>
                     <div class="col-6 text-right">
                         <a class="btn generate_rpt" href="admin-box-inventory.php">Back</a>
@@ -60,35 +62,61 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <div class="row ">
                     <div class="col-md-12 ">
                     <br><br>
-                        <h4 class="filter_title text-center">New Box </h4>                  
+                        <h4 class="filter_title text-center">VIEW Box</h4>                  
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-7 ">
                         <?php 
-                            $_SESSION['frm'] = [];
-                            if( isset($_POST['create'])){
+                            if(!isset($_REQUEST['box'])){
+                                print $util->error_flash('wrong request');
+                                exit;
+                            }
+                            $_SESSION['frm'] = json_decode($box->get_byidf($token, $_REQUEST['box']), true)['data'];
+                            $_this_box_exp = json_decode($boxExperience->get_bybox($token, $_REQUEST['box']), true)['data'];
+                            $_is = 0;
+                            foreach($_this_box_exp as $_t_b_e ){
+                                $_SESSION['frm']['experiences'][$_is] = $_t_b_e['experience'];
+                                $_is ++;
+                            }
+                            // $util->Show($_SESSION['frm']);
+                            if( isset($_POST['update'])){
                                 try{
-                                    foreach( explode(',', $_POST['topics']) as $_t ){
+                                    foreach( $_POST['topics'] as $_t ){
                                         if($_t != 'nn'){
                                          $_tp[] = $_t;
                                         }
                                      }
-                                    foreach( explode(',', $_POST['experiences']) as $_e ){
+                                    foreach( $_POST['experiences'] as $_e ){
                                        if($_e != 'nn'){
                                         $_ex[] = $_e;
                                        }
                                     }
                                     $_POST['topics'] = implode(',', $_tp);
+                                    // $util->Show($_ex);
+                                    // exit;
                                     $b = new Box($_POST['name'], $_POST['price'], $_POST['description'], $_POST['topics']);
-                                    $resp = $b->create($token);
+                                    $resp = $b->update($token, $_SESSION['frm']['id']);
                                     if(json_decode($resp)->status == 0){
-                                        $box_internal_id = json_decode($resp)->box;
-                                        foreach( $_ex as $_experience ){
+                                        $box_internal_id = $_REQUEST['box'];
+                                        $current_experiences = $_SESSION['frm']['experiences'];
+                                        $to_create = array_diff($_ex, $current_experiences);
+                                        $to_delete = array_diff($current_experiences, $_ex);
+                                        foreach( $to_create as $_experience ):
                                             $boxexperience = new BoxExperience($_experience, $box_internal_id);
-                                            $boxexperience->create($token);
-                                        }
-                                        print $util->success_flash('Created successfully');
+                                            $rs = $boxexperience->create($token);
+                                            if(json_decode($rs)->status != '0'){
+                                                print $util->error_flash(json_decode($rs)->message); 
+                                            }
+                                        endforeach;
+                                        foreach( $to_delete as $_expe ):
+                                            $boxexperience = new BoxExperience($_expe, $box_internal_id);
+                                            $rs = $boxexperience->delete_all($token);
+                                            if(json_decode($rs)->status != '0'){
+                                                // print $util->error_flash($rs); 
+                                            }
+                                        endforeach;
+                                        print $util->success_flash('Box Updated successfully');
                                     }else{
                                         print $util->error_flash(json_decode($resp)->message);
                                     }
@@ -115,9 +143,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                         <option value="nn">Select box related topic(s)</option>
                                         <?php 
                                             $topics = json_decode($topic->get($token), true)['data'];
-
                                             foreach( $topics as $ptn ){
-                                                 print '<option value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                $save_t = explode(',', $_SESSION['frm']['topics']);
+                                                if(in_array($ptn['internal_id'], $save_t)){
+                                                    print '<option selected value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                }{
+                                                    print '<option value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                }
                                             }
                                         ?>
                                     </select>
@@ -131,8 +163,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                         <option value="nn">Select box experiences</option>
                                         <?php 
                                             $_experiences = json_decode($experience->get($token), true)['data'];
+                                            $_saved_exp = $_SESSION['frm']['experiences'];
                                             foreach( $_experiences as $ptn ){
-                                                 print '<option value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                if(in_array($ptn['internal_id'], $_saved_exp)){
+                                                    print '<option selected value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                }else{
+                                                    print '<option value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                }
                                             }
                                         ?>
                                     </select>
@@ -148,7 +185,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             <hr>
                             <div class=" row">
                                 <div class="col-md-12 text-right text-white">
-                                    <button type="submit" name="create" class="btn btn_view_report">Create</button>
+                                    <button type="submit" name="update" class="btn btn_view_report">Save Changes</button>
                                 </div>
                             </div>
                         </form>

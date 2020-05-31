@@ -59,7 +59,7 @@ $box = new Box();
                         <a href="admin-box-inventory.php" class="btn generate_rpt btn-block">INACTIVE</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory-activated.php" style="color:#c20a2b;" class="btn generate_rpt btn-block">ACTIVATED</a>
+                        <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block">ACTIVATED</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-purchased.php" class="btn generate_rpt btn-block">PURCHASED</a>
@@ -68,7 +68,7 @@ $box = new Box();
                         <a href="admin-box-inventory-cancelled.php" class="btn generate_rpt btn-block">CANCELLED</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory-expired.php" class="btn generate_rpt btn-block">EXPIRED</a>
+                        <a href="admin-box-inventory-expired.php" style="color:#c20a2b;" class="btn generate_rpt btn-block">EXPIRED</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-paid-partner.php" class="btn generate_rpt btn-block">PARTNER PAID</a>
@@ -82,7 +82,7 @@ $box = new Box();
                     <div class="col-md-12 ">
                         <div class="table-responsive">
                         <br>
-                        <small class="text-muted">All boxes that are visible to customers. Ready for purchase</small>
+                        <small class="text-muted">All boxes that have been purchased by customer buyers but expired before being redeemed by customer user</small>
                         <table class="table table_data1 table-bordered">
                             <thead>
                                 <tr>
@@ -90,7 +90,8 @@ $box = new Box();
                                     <th>BOX <br>NAME</th>
                                     <th>BOX PRICE</th>
                                     <th>VOUCHER CODE</th>
-                                    <th>BOX DESCRIPTION</th>
+                                    <th>PURCHASED BY</th>
+                                    <th>DATE EXPIRED</th>
                                     <th>ADMINISTRATOR FUNCTIONS</th>
                                 </tr>
                             </thead>
@@ -98,7 +99,7 @@ $box = new Box();
                                 <?php
                                 $all_happyboxes = json_decode($box->get($token), true)['data'];
                                 foreach($all_happyboxes as $hbox ):
-                                    if($hbox['is_active'] == '2'){
+                                    if(in_array($hbox['is_active'], [4])){
                                 ?>
                                 <tr>
                                     <td><?=$hbox['internal_id']?></td>
@@ -109,17 +110,14 @@ $box = new Box();
                                     <td class="inner_table_wrap">
                                         <table class="text-white inner_table">
                                             <tr>
-                                                <td class="td_a">
-                                                    <a href="admin-box-view.php?box=<?=$hbox['internal_id']?>" class="light">View Detail</a>
+                                                <!-- <td class="td_a">
+                                                    <a href="admin-box-view.php?box=<=$hbox['internal_id']?>" class="light">View Detail</a>
                                                 </td>
                                                 <td class="td_b">
-                                                    <a href="admin-box-gallery.php?box=<?=$hbox['internal_id']?>" class="light">Add Gallery</a>    
+                                                    <a href="admin-box-gallery.php?box=?=$hbox['internal_id']?>" class="light">Add Gallery</a>    
                                                 </td>
                                                 <td class="td_a">
-                                                    <a href="admin-box-deactivate.php?box=<?=$hbox['id']?>" class="light">Deactivate</a>
-                                                </td>
-                                                <!-- <td class="td_b">
-                                                    <a href="admin-box-experience.php?box=<=$hbox['internal_id']?>" class="light">Add Experiences</a>    
+                                                    <a href="admin-box-deactivate.php?box=<=$hbox['id']?>" class="light">Deactivate</a>
                                                 </td> -->
                                             </tr>
                                         </table>  

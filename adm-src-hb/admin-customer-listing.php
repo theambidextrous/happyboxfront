@@ -7,9 +7,9 @@ $user = new User();
 $util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
-$partner_list = $user->get_all_partner($token);
-$partner_list = json_decode($partner_list, true)['data'];
-// $util->Show(json_decode($partner_list, true));
+$customer_list = $user->get_all_customers($token);
+$customer_list = json_decode($customer_list, true)['data'];
+// $util->Show($customer_list);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +47,10 @@ $partner_list = json_decode($partner_list, true)['data'];
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 section_title">
-                        <h3>PARTNER LISTING </h3>
+                        <h3>CUSTOMER LISTING </h3>
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn generate_rpt" href="admin-partner-new.php">CREATE PARTNER</a>
+                        <a class="btn generate_rpt" href="#">CREATE CUSTOMER</a>
                     </div>
                 </div>
             </div>
@@ -59,29 +59,27 @@ $partner_list = json_decode($partner_list, true)['data'];
             <div class="container ">
                 <div class="row ">
                     <div class="col-md-12 ">
-                        <h5 class="partner_list_sub_title"> Manage and modify partner listings and profiles here.</h5>                  
+                        <h5 class="partner_list_sub_title"> Manage and modify customer listings and profiles here.</h5>                  
  </div>
                    <div class="col-md-12 ">  <div class="table-responsive">
                      <table class="table  partner_table table-bordered">
                       <thead>
                         <tr>
                           <th>IMAGE</th>
-                          <th>PARTNER NAME</th>
-                          <th>PARTNER CODE</th>
-                          <th class="des_width">PARTNER DESCRIPTION</th>
-                          <th>PARTNER LOCALISATION</th>
-                          <th>PARTNER INC. NUMBER</th>
-                          <th>BUSINESS CATEGORY</th>
+                          <th>CUSTOMER NAME</th>
+                          <th>CUSTOMER CODE</th>
+                          <th class="des_width">CUSTOMER DESCRIPTION</th>
+                          <th>CUSTOMER LOCALISATION</th>
                           <th>CONTACT DETAILS</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
                         // $partner_list = [];
-                        if(!empty($partner_list)){
-                        foreach ( $partner_list as $ptl ):
-                          $partner_details = $user->get_details($ptl['id']);
-                          $p_d = json_decode($partner_details, true)['data'];
+                        if(!empty($customer_list)){
+                        foreach ( $customer_list as $ptl ):
+                          $customer_details = $user->get_details($ptl['id']);
+                          $p_d = json_decode($customer_details, true)['data'];
                           if(!empty($p_d)){
                             $img  = $util->AppUploads() . 'profiles/default.jpg';
                             if($p_d['picture'] != 'default.jpg'){
@@ -90,16 +88,14 @@ $partner_list = json_decode($partner_list, true)['data'];
                         ?>
                         <tr>
                           <td class="td1"><img src="<?=$img?>" class="dropdown_user_img rounded-circle"/></td>
-                          <td><?=$p_d['business_name']?></td>
+                          <td><?=$p_d['fname']. ' ' .$p_d['mname'] . ' ' .$p_d['sname']?></td>
                           <td><?=$p_d['internal_id']?></td>
                           <td><?=$p_d['short_description']?></td>
                           <td><?=$p_d['location']?></td>
-                          <td><?=$p_d['business_reg_no']?></td>
-                          <td><?=$p_d['business_category']?></td>
                           <td>
                           <table class="contact_table">
                               <div class="table_absimg_wrap">
-                              <a href="admin-partner-edit.php?pt=<?=$ptl['id']?>"><img src="img/icn-edit-teal.svg" class="table_absimg"></a>
+                              <a href="#"><img src="img/icn-edit-teal.svg" class="table_absimg"></a>
                               </div>
                               <tr><td class="contact_name">Name</td><td><?=$p_d['fname'].' '.$p_d['mname']?></td></tr>
                               <tr><td class="contact_name">Surname</td><td><?=$p_d['sname']?></td></tr>
@@ -112,7 +108,7 @@ $partner_list = json_decode($partner_list, true)['data'];
                           }
                         endforeach;
                       }else{
-                        print '<tr><td colspan="8"><center>No partners found</center></td></tr>';
+                        print '<tr><td colspan="8"><center>No customers found</center></td></tr>';
                       }
                         ?>
                       </tbody>

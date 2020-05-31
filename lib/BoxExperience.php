@@ -2,34 +2,25 @@
 /** 
  * @author - j.o
  * @license propriatery
- * @file - Experience.php
- * @usage - Experience objects
+ * @file - BoxExperience.php
+ * @usage - BoxExperience objects
  */
 
- class Experience
+ class BoxExperience
  {
-    private $partner;
-    private $name;
-    private $description;
-    private $price;
-    private $topic;
-    function __construct($partner=null,$name=null,$description=null,$price=null,$topic=null){
-        $this->partner = $partner;
-        $this->name = $name;
-        $this->description = $description;
-        $this->price = $price;
-        $this->topic = $topic;
+    private $experience;
+    private $happybox;
+    function __construct($experience=null,$happybox=null){
+        $this->experience = $experience;
+        $this->happybox = $happybox;
     }
     function create($token){
-        $endpoint = 'services/experiences/experience';
+        $endpoint = 'services/happyboxexperiences/happyboxexperience';
         $util = new Util();
         $this->validate();
         $body = [
-            'partner' => $this->partner,
-            'name' => $this->name,
-            'description' => $this->description,
-            'price' => $this->price,
-            'topic' => $this->topic
+            'experience' => $this->experience,
+            'happybox' => $this->happybox,
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
@@ -42,15 +33,12 @@
         return $res;
     }
     function update($token, $id){
-        $endpoint = 'services/experiences/experience/' . $id;
+        $endpoint = 'services/happyboxexperiences/happyboxexperience/' . $id;
         $util = new Util();
         $this->validate();
         $body = [
-            'partner' => $this->partner,
-            'name' => $this->name,
-            'description' => $this->description,
-            'price' => $this->price,
-            'topic' => $this->topic
+            'experience' => $this->experience,
+            'happybox' => $this->happybox,
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
@@ -63,7 +51,7 @@
         return $res;
     }
     function get($token){
-        $endpoint = 'services/experiences/experiences';
+        $endpoint = 'services/happyboxexperiences/happyboxexperiences';
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -77,7 +65,7 @@
         return $res;
     }
     function get_one($token, $id){
-        $endpoint = 'services/experiences/experience/' . $id;
+        $endpoint = 'services/happyboxexperiences/happyboxexperience/' . $id;
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -90,8 +78,8 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function get_byidf($token, $idf){
-        $endpoint = 'services/experiences/experience/byidf/' . $idf;
+    function get_byexperience($token, $exp){
+        $endpoint = 'services/happyboxexperiences/happyboxexperience/byexperience/' . $exp;
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -104,8 +92,8 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function get_bytopic($token, $topic){
-        $endpoint = 'services/experiences/experience/bytopic/' . $topic;
+    function get_bybox($token, $box){
+        $endpoint = 'services/happyboxexperiences/happyboxexperience/bybox/' . $box;
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -118,15 +106,19 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function get_bypartner($token, $partner){
-        $endpoint = 'services/experiences/experience/bypartner/' . $partner;
+    function delete_all($token){
+        $endpoint = 'services/happyboxexperiences/happyboxexperience/delete';
         $util = new Util();
-        $body = [];
+        $this->validate();
+        $body = [
+            'experience' => $this->experience,
+            'happybox' => $this->happybox,
+        ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);
@@ -143,20 +135,11 @@
         return $headers;
     }
     function validate(){
-        if( empty($this->partner) ){
-            throw new Exception('Experience partner field is empty');
+        if( empty($this->experience) ){
+            throw new Exception('Experience field is empty');
         }
-        if( empty($this->name) ){
-            throw new Exception('Experience name field is empty');
-        }
-        if( empty($this->description) ){
-            throw new Exception('Experience description field is empty');
-        }
-        if( empty($this->price) || $this->price < 10 ){
-            throw new Exception('Experience price field is empty');
-        }
-        if( empty($this->topic) ){
-            throw new Exception('Experience topic field is empty');
+        if( empty($this->happybox) ){
+            throw new Exception('Box field is empty');
         }
         return true;
     }

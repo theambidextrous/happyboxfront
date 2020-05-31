@@ -46,33 +46,32 @@ $box = new Box();
                         <h3>BOX INVENTORY</h3>
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn generate_rpt" href="#">COMPOSE NEW BOX</a>
-
+                        <a class="btn generate_rpt" href="admin-box-new.php">COMPOSE NEW BOX</a>
                     </div>
-
                 </div>
             </div>
         </section>
         <section class=" status_bar ">
+            <br>
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-box-inventory.php" class="btn generate_rpt btn-block active" style="color:#c20a2b;">ALL</a>
+                        <a href="admin-box-inventory.php" class="btn generate_rpt btn-block active" style="color:#c20a2b;">INACTIVE</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block">ACTIVATED</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="btn generate_rpt btn-block">REDEEMED</a>
+                        <a href="admin-box-inventory-purchased.php" class="btn generate_rpt btn-block">PURCHASED</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="btn generate_rpt btn-block">CANCELLED</a>
+                        <a href="admin-box-inventory-cancelled.php" class="btn generate_rpt btn-block">CANCELLED</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="btn generate_rpt btn-block">EXPIRED</a>
+                        <a href="admin-box-inventory-expired.php" class="btn generate_rpt btn-block">EXPIRED</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="btn generate_rpt btn-block">PARTNER PAID</a>
+                        <a href="admin-box-inventory-paid-partner.php" class="btn generate_rpt btn-block">PARTNER PAID</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +81,8 @@ $box = new Box();
                 <div class="row ">
                     <div class="col-md-12 ">
                         <div class="table-responsive">
-
+                        <br>
+                        <small class="text-muted">All boxes that are not visible to customers</small>
                         <table class="table table_data1 table-bordered">
                             <thead>
                                 <tr>
@@ -90,14 +90,7 @@ $box = new Box();
                                     <th>BOX <br>NAME</th>
                                     <th>BOX PRICE</th>
                                     <th>VOUCHER CODE</th>
-                                    <th>VOUCHER STATUS</th>
-                                    <th>DATE PURCHASED</th>
-                                    <th>DATE REDEEMED BY USER</th>
-                                    <th>DATE CANCELLATION REQUESTED</th>
-                                    <th>DATE CANCELLED</th>
-                                    <th>DATE BLOCKED BY PARTNER</th>
-                                    <th>PARTNER PAYMENT DATE</th>
-                                    <!-- <th>PARTNER CODE</th> -->
+                                    <th>BOX DESCRIPTION</th>
                                     <th>ADMINISTRATOR FUNCTIONS</th>
                                 </tr>
                             </thead>
@@ -105,34 +98,32 @@ $box = new Box();
                                 <?php
                                 $all_happyboxes = json_decode($box->get($token), true)['data'];
                                 foreach($all_happyboxes as $hbox ):
+                                    if($hbox['is_active'] == '1'){
                                 ?>
                                 <tr>
                                     <td><?=$hbox['internal_id']?></td>
                                     <td><?=$hbox['name']?></td>
                                     <td>KES <?=$hbox['price']?></td>
                                     <td><?=$hbox['voucher']?></td>
-                                    <td>NOT PURCHASED</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <!-- <td><=$hbox['partner']?></td> -->
+                                    <td><?=$hbox['description']?></td>
                                     <td class="inner_table_wrap">
                                         <table class="text-white inner_table">
                                             <tr>
                                                 <td class="td_a">
-                                                    User Info
+                                                    <a href="admin-box-view.php?box=<?=$hbox['internal_id']?>" class="light">View Detail</a>
                                                 </td>
                                                 <td class="td_b">
-                                                    Cancel & Generate New Voucher Code    
+                                                    <a href="admin-box-gallery.php?box=<?=$hbox['internal_id']?>" class="light">Add Gallery</a>    
+                                                </td>
+                                                <td class="td_a">
+                                                    <a href="admin-box-activate.php?box=<?=$hbox['id']?>" class="light">Activate</a>
                                                 </td>
                                             </tr>
                                         </table>  
                                     </td>
                                 </tr>
                                 <?php 
+                                    }
                                 endforeach;
                                 ?>
                             </tbody>

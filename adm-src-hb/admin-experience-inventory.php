@@ -94,7 +94,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                                     <a href="admin-experience-edit.php?exp=<?=$exp['id']?>" class="light">Edit</a>
                                                 </td>
                                                 <td class="td_b">
-                                                    <a href="#" class="light">Add gallery</a>
+                                                    <a href="admin-experience-gallery.php?exp=<?=$exp['internal_id']?>" class="light">Add gallery</a>
                                                 </td>
                                             </tr>
                                         </table>  

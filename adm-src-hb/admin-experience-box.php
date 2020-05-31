@@ -5,6 +5,7 @@ require_once('../lib/User.php');
 require_once('../lib/Experience.php');
 require_once('../lib/Topic.php');
 require_once('../lib/Box.php');
+require_once('../lib/BoxExperience.php');
 $util = new Util();
 $user = new User();
 $topic = new Topic();
@@ -77,16 +78,14 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             // $util->Show($_SESSION['frm']);
                             if( isset($_POST['tobox'])){
                                 try{
-                                    // $_SESSION['frm'] = $_POST;
-                                    // $exp = new Experience($_POST['partner'], $_POST['name'], $_POST['description'], $_POST['price'], $_POST['topic']);
-                                    // $expe_resp = $exp->update($token, $_REQUEST['exp']);
-                                    // // print $expe_resp;
-                                    // if(json_decode($expe_resp)->status == '0'){
-                                    //     unset($_SESSION['frm']);
-                                    //     print $util->success_flash('Experience updated!');
-                                    // }else{
-                                    //     print $util->error_flash(json_decode($expe_resp)->message);
-                                    // }
+                                    $bx = new BoxExperience($_POST['experience'], $_POST['happybox']);
+                                    $bx_resp = $bx->create($token);
+                                    // print $bx_resp;
+                                    if(json_decode($bx_resp)->status == '0'){
+                                        print $util->success_flash('Experience added to box!');
+                                    }else{
+                                        print $util->error_flash(json_decode($bx_resp)->message);
+                                    }
                                 }catch(Exception $e){
                                     print $util->error_flash($e->getMessage());
                                 }

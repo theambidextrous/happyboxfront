@@ -135,6 +135,15 @@ border-bottom: solid 2px #c20a2b;
 .light{
     color:#fff;
 }
+.select2-container--default .select2-selection--multiple {
+    background: #FFFFFF 0% 0% no-repeat padding-box!important;
+    border: 1px solid #0985B6!important;
+    border-radius: 13px!important;
+    color: #9E9E9E!important;
+    font-size: 13px!important;
+    text-align: center!important;
+    cursor: text!important;
+}
 .rounded_form_control {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #0985B6;
