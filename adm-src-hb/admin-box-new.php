@@ -69,12 +69,12 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             $_SESSION['frm'] = [];
                             if( isset($_POST['create'])){
                                 try{
-                                    foreach( explode(',', $_POST['topics']) as $_t ){
+                                    foreach($_POST['topics'] as $_t ){
                                         if($_t != 'nn'){
                                          $_tp[] = $_t;
                                         }
                                      }
-                                    foreach( explode(',', $_POST['experiences']) as $_e ){
+                                    foreach( $_POST['experiences'] as $_e ){
                                        if($_e != 'nn'){
                                         $_ex[] = $_e;
                                        }
