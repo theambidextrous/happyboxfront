@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once('../lib/Util.php');
+require_once('../lib/User.php');
+$util = new Util();
+?>
 <html lang="en">
 
 <head>
@@ -61,20 +67,13 @@
   <div class="modal fade" id="forgotModal">
     <div class="modal-dialog general_pop_dialogue">
       <div class="modal-content">
-   
-                       <div class="modal-body text-center">
-                    <div class="col-md-12 text-center forgot-dialogue-borderz">
-					<h3 class="partner_blueh">YOUR REQUEST HAS BEEN SENT</h3>
-                                        <p class="forgot_des text-center">
-                     Please check your emails for a link to reset your password                    
-                                        </p>
-                                        <div>
-                                            <img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
-                                        </div>
-                       
-                        </div>
+        <div class="modal-body text-center">
+          <div class="col-md-12 text-center forgot-dialogue-borderz">
+            <h3 class="partner_blueh">YOUR REQUEST HAS BEEN SENT</h3>
+            <p class="forgot_des text-center">Please check your emails for a link to reset your password</p>
+            <div><img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/></div>
+          </div>
       </div>
-        
       </div>
     </div>
   </div>

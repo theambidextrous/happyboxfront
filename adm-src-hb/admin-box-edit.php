@@ -4,15 +4,17 @@ require_once('../lib/Util.php');
 require_once('../lib/User.php');
 require_once('../lib/Topic.php');
 require_once('../lib/Box.php');
-require_once('../lib/Experience.php');
 require_once('../lib/Picture.php');
+require_once('../lib/BoxExperience.php');
 $util = new Util();
 $user = new User();
 $topic = new Topic();
-$util->ShowErrors(1);
+$picture = new picture();
+$box = new Box();
+$boxExperience = new BoxExperience();
+$util->ShowErrors();
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
-// $util->Show($_partners_list);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
         <style>
-            .admin-box-new{
+            .admin-box{
                 color: #c20a2b!important;
                 text-decoration: none!important;
                 border-bottom: solid 2px #c20a2b!important;
@@ -54,7 +56,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <div class="container">
                 <div class="row">
                     <div class="col-6 section_title">
-                        <h3>CREATE BOX</h3>
+                        <h3>EDIT BOX</h3>
                     </div>
                     <div class="col-6 text-right">
                         <a class="btn generate_rpt" href="admin-box-all.php">Back</a>
@@ -67,47 +69,67 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <div class="row ">
                     <div class="col-md-12 ">
                     <br><br>
-                        <h4 class="filter_title text-center">New Box </h4>                  
+                        <h4 class="filter_title text-center">Edit Box</h4>                  
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-7 ">
                         <?php 
-                            $_SESSION['frm'] = [];
-                            if( isset($_POST['create'])){
+                            if(!isset($_REQUEST['box'])){
+                                print $util->error_flash('wrong request');
+                                exit;
+                            }
+                            $_SESSION['frm'] = json_decode(
+                                $box->get_byidf($token, $_REQUEST['box']), true
+                            )['data'];
+                            /** media */
+                            $_media = $picture->get_byitem($token, $_REQUEST['box']);
+                            $_media = json_decode($_media, true)['data'];
+                            foreach($_media as $_md ):
+                                if($_md['type'] == '2'){
+                                    $img_3d = $_md;
+                                }elseif($_md['type'] == '3'){
+                                    $pdf_booklet = $_md;
+                                }
+                            endforeach;
+                            // $util->Show($img_3d);
+                            if( isset($_POST['update'])){
                                 try{
-                                    foreach($_POST['topics'] as $_t ){
+                                    foreach( $_POST['topics'] as $_t ){
                                         if($_t != 'nn'){
                                          $_tp[] = $_t;
                                         }
                                      }
                                     foreach( $_POST['partners'] as $_e ){
                                        if($_e != 'nn'){
-                                        $_partners[] = $_e;
+                                        $_partners_[] = $_e;
                                        }
                                     }
                                     $_POST['topics'] = implode(',', $_tp);
-                                    $_POST['partners'] = implode(',', $_partners);
+                                    $_POST['partners'] = implode(',', $_partners_);
                                     $b = new Box(
                                         $_POST['name'], $_POST['price'], $_POST['description'], $_POST['topics'],$_POST['partners'],'00'
                                     );
-                                    $resp = $b->create($token);
+                                    $resp = $b->update($token, $_SESSION['frm']['id']);
                                     if(json_decode($resp)->status == '0'){
-                                        /** upload media */
-                                        $box_internal_id = json_decode($resp)->box;
-                                        /** 3d */
-                                        $pc_3d = new Picture($box_internal_id, '3dimg', '2');
-                                        $pc_3d_resp = $pc_3d->create($token, $box_internal_id);
-                                        if(json_decode($pc_3d_resp)->status != '0'){
-                                            throw new Exception('3D image could not be uploaded!');
+                                        $_picture = new Picture();
+                                        if(is_uploaded_file($_FILES['3dimg']['tmp_name'])) {
+                                           /** new image is set update gallery */
+                                            $_data = [$_POST['3d_id'], '3dimg'];
+                                            $pc_3d_resp = $_picture->update($token, $_data);
+                                            if(json_decode($pc_3d_resp)->status != '0'){
+                                                throw new Exception('3D image could not be uploaded!');
+                                            }
                                         }
-                                        /** pdf */
-                                        $pc_pdf = new Picture($box_internal_id, 'pdfbooklet', '3');
-                                        $pc_pdf_resp = $pc_pdf->create($token, $box_internal_id);
-                                        if(json_decode($pc_pdf_resp)->status != '0'){
-                                            throw new Exception('PDF could not be uploaded!');
-                                        }
-                                        print $util->success_flash('Created successfully');
+                                        if(is_uploaded_file($_FILES['pdfbooklet']['tmp_name'])) {
+                                            /** new pdf is set update gallery */
+                                             $_data = [$_POST['pdf_id'], 'pdfbooklet'];
+                                             $pc_pdf_resp = $_picture->update($token, $_data);
+                                             if(json_decode($pc_pdf_resp)->status != '0'){
+                                                 throw new Exception('PDF booklet could not be uploaded!');
+                                             }
+                                         }
+                                        print $util->success_flash('Box Updated successfully');
                                     }else{
                                         print $util->error_flash(json_decode($resp)->message);
                                     }
@@ -138,7 +160,11 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                                 $_d = $user->get_details($ptn['id']);
                                                 $partner_name = json_decode($_d)->data->business_name;
                                                 $internal_id = json_decode($_d)->data->internal_id;
-                                                 print '<option value="'.$internal_id.'">'.$partner_name.'</option>';
+                                                if(in_array($internal_id, explode(',',$_SESSION['frm']['partners']))){
+                                                    print '<option selected value="'.$internal_id.'">'.$partner_name.'</option>';
+                                                }else{
+                                                    print '<option value="'.$internal_id.'">'.$partner_name.'</option>';
+                                                }
                                             }
                                         ?>
                                     </select>
@@ -153,7 +179,11 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                         <?php 
                                             $topics = json_decode($topic->get($token), true)['data'];
                                             foreach( $topics as $ptn ){
-                                                 print '<option value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                if(in_array($ptn['internal_id'], explode(',',$_SESSION['frm']['topics']))){
+                                                    print '<option selected value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                }else{
+                                                    print '<option value="'.$ptn['internal_id'].'">'.$ptn['name'].'</option>';
+                                                }
                                             }
                                         ?>
                                     </select>
@@ -169,17 +199,21 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="BoxType" class="col-form-label">3D image</label>
-                                    <input required type="file" name="3dimg" class="form-control rounded_form_control" id="select_box_type"/>
+                                    <img src="<?=$img_3d['path_name']?>" class="" width="50"/><br><br>
+                                    <input type="hidden" name="3d_id" value="<?=$img_3d['id']?>"/>
+                                    <input type="file" name="3dimg" class="form-control rounded_form_control" id="select_box_type"/>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="BoxType" class="col-form-label">PDF Booklet</label>
-                                    <input required type="file" name="pdfbooklet" class="form-control rounded_form_control" id="select_box_type"/>
+                                    <a target="_blank" download href="<?=$pdf_booklet['path_name']?>" class="btn btn-danger"><i class="fa fa-file-pdf"></i></a><br><br>
+                                    <input type="hidden" name="pdf_id" value="<?=$pdf_booklet['id']?>"/>
+                                    <input type="file" name="pdfbooklet" class="form-control rounded_form_control" id="select_box_type"/>
                                 </div>
                             </div>
                             <hr>
                             <div class=" row">
                                 <div class="col-md-12 text-right text-white">
-                                    <button type="submit" name="create" class="btn btn_view_report">Create</button>
+                                    <button type="submit" name="update" class="btn btn_view_report">Save changes</button>
                                 </div>
                             </div>
                         </form>

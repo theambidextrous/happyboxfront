@@ -14,7 +14,7 @@ $util = new Util();
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Create Account </title>
+        <title>Happy Box:: User Create Account Pop Up</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
@@ -88,89 +88,68 @@ $util = new Util();
                         </div>
 
                     </div>
-                    <br>
-                    <p class="text-center gray_text small_p_margin_top">Already have an account?  <a href="user-login.php"><b class="color_black">LOGIN</b></a></p>
 
 
                 </div>
-                <div class="col-md-5  user_login_r">
+                <div class="col-md-5  user_login_r" id="reset_div">
                     <div class=" user_create_r">
-
-                        
-                            <div class="form_register_user">
-                                <div class="form-group">
-                                    <label>
-                                        First Name
-                                    </label>
-                                    <input type="text" name="Fname" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                 <div class="form-group">
-                                    <label>
-                                      Surname
-                                    </label>
-                                     <input type="text" name="Surname" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                  <div class="form-group">
-                                    <label>
-                                     Email Address
-                                    </label>
-                                     <input type="email" name="Email" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                   <div class="form-group">
-                                    <label>
-                                      Mobile
-                                    </label>
-                                     <input type="text" name="Mobile" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                   <div class="form-group">
-                                    <label>
-                                      Surname
-                                    </label>
-                                     <input type="text" name="Surname" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                
-                               
-                                <div class="form-group">
-                                    <label>
-                                        Password
-                                    </label>
-
-                                    <input type="password" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                  <div class="form-group">
-                                    <label>
-                                       Confirm password
-                                    </label>
-
-                                    <input type="Cpassword" class="form-control rounded_form_control" placeholder="Required Field">
-                                </div>
-                                
-                                <p class="text-right">
-                                    
-                                    <button type="submit" class="btn btn_rounded" data-toggle="modal" data-target="#userCreatedModal">CREATE YOUR ACCOUNT</button>   
-                                </p>
-
-
-
+                        <?=$util->msg_box()?>
+                        <form class="form_register_user" name='newaccount'>
+                            <div class="form-group">
+                                <label>
+                                    First Name
+                                </label>
+                                <input type="text" name="fname" class="form-control rounded_form_control" placeholder="Required Field">
                             </div>
+                            <div class="form-group">
+                                <label>
+                                    Middle name
+                                </label>
+                                    <input type="text" name="mname" class="form-control rounded_form_control" placeholder="Required Field">
+                            </div>
+                                <div class="form-group">
+                                <label>
+                                    Surname
+                                </label>
+                                    <input type="text" name="sname" class="form-control rounded_form_control" placeholder="Required Field">
+                            </div>
+                                <div class="form-group">
+                                <label>
+                                    Email Address
+                                </label>
+                                    <input type="email" name="email" class="form-control rounded_form_control" placeholder="Required Field">
+                            </div>
+                                <div class="form-group">
+                                <label>
+                                    Mobile
+                                </label>
+                                    <input type="text" name="phone" class="form-control rounded_form_control" placeholder="Required Field">
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Password
+                                </label>
 
+                                <input type="password" name="password" class="form-control rounded_form_control" placeholder="Required Field">
+                            </div>
+                                <div class="form-group">
+                                <label>
+                                    Confirm password
+                                </label>
 
-                       
-
+                                <input type="Cpassword" name="c_password" class="form-control rounded_form_control" placeholder="Required Field">
+                            </div>
+                            
+                            <p class="text-right">
+                                <button onclick="new_account('newaccount')" type="button" class="btn btn_rounded">CREATE YOUR ACCOUNT</button>   
+                            </p>
+                        </form>
                     </div>
-
                 </div>
-
             </div>
-
-
-
         </section>
         <!--end add to cart cards-->
         <!--our partners -->
-
-
-
 
         <?php include 'shared/partials/partners.php'; ?>
         <?php include 'shared/partials/footer.php'; ?>
@@ -178,33 +157,49 @@ $util = new Util();
         <!-- Bootstrap core JavaScript -->
 
         <?php include 'shared/partials/js.php'; ?>
-  <!-- pop up -->
-  <div class="modal fade" id="userCreatedModal">
-    <div class="modal-dialog general_pop_dialogue">
-      <div class="modal-content">
-   
-                       <div class="modal-body text-center">
-                    <div class="col-md-12 text-center forgot-dialogue-borderz">
-					<h3 class="partner_blueh">YOU HAVE SUCCESSFULLY CREATED YOUR ACCOUNT!</h3>
-                                        <p class="forgot_des text-center txt-orange">
-                   A confirmation email has been sent to you. Please click on the link to activate your account.                  
-                                        </p>
-                                        <div>
-                                            <img src="shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
-                                        </div>
-                       
+        <!-- pop up -->
+        <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#userCreatedModal"></button>
+        <div class="modal fade" id="userCreatedModal">
+            <div class="modal-dialog general_pop_dialogue">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="col-md-12 text-center forgot-dialogue-borderz">
+                            <h3 class="partner_blueh">YOU HAVE SUCCESSFULLY CREATED YOUR ACCOUNT!</h3>
+                            <p class="forgot_des text-center txt-orange">A confirmation email has been sent to you. Please click on the link to activate your account.</p><div><img src="shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/></div>
                         </div>
-      </div>
-        
-      </div>
-    </div>
-  </div>
- 
-<!-- end pop up -->
-
-
-
-
-    </body>
-
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end pop up -->
+<script>
+  $(document).ready(function(){
+    new_account = function(FormId){
+    waitingDialog.show('creating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+    var dataString = $("form[name=" + FormId + "]").serialize();
+    $.ajax({
+        type: 'post',
+        url: '<?=$util->AjaxHome()?>?activity=new-account',
+        data: dataString,
+        success: function(res){
+            console.log(res);
+            var rtn = JSON.parse(res);
+            if(rtn.hasOwnProperty("MSG")){
+                $("#reset_div").load(window.location.href + " #reset_div" );
+                $('#popupid').trigger('click');
+                waitingDialog.hide();
+                return;
+            }
+            else if(rtn.hasOwnProperty("ERR")){
+                $('#err').text(rtn.ERR);
+                $('#err').show(rtn.ERR);
+                waitingDialog.hide();
+                return;
+            }
+        }
+    });
+    }
+  });  
+</script>
+</body>
 </html>

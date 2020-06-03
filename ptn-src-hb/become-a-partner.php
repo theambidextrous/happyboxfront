@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once('../lib/Util.php');
+require_once('../lib/User.php');
+$util = new Util();
+$user = new User();
+$util->ShowErrors();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -145,8 +154,7 @@
                                 <span class="become_badge">6</span>
                             </div>
                             <div class="become_part_card_txt">
-                                <h4>      Our Partner Care Team is available alongside you at each step.</h4>
-                       
+                                <h4>Our Partner Care Team is available alongside you at each step.</h4>
                                 
                             </div>
                              
@@ -218,56 +226,117 @@
                 <div class="row justify-content-center ">
                     <div class="col-md-10">
                           <h3 class="partner_blueh">Sound Good?</h3>
-                  <p class="forgot_des text-center">
-                      Complete the form below to beconme a HAPPYBOX Partner                     
-                                        </p>
-                        
+                  <p class="forgot_des text-center">Complete the form below to beconme a HAPPYBOX Partner                     </p>
+                    <?php
+                    if(!isset($_SESSION['frm'])){
+                        $_SESSION['frm'] = [];
+                    }
+                    if( isset($_POST['becomeptn'])){
+                        try{
+                            $_SESSION['frm'] = $_POST;
+                            if($_POST['business_category'] == 'nn'){
+                                print $util->error_flash('Business category not selected');
+                            }else{
+                                $username = explode('@', $_POST['email'])[0];
+                            $password = $util->createCode(10);
+                            $u = new User($username, $_POST['email'], $password, $password);
+                            /** register */
+                            $u_resp = $u->new_partner('none');
+                            // print $u_resp;
+                            if( json_decode($u_resp)->status == 0 && json_decode($u_resp)->data->id > 0){
+                                $created_user_id = json_decode($u_resp)->data->id;
+                                $token = json_decode($u_resp)->data->token;
+                                /** reset password */
+                                $reset_resp = $u->pwd_reset_link();
+                                // print($reset_resp);
+                                if(json_decode($reset_resp)->status == 0){
+                                    /** complete profile */
+                                    $body = [
+                                        'fname' => $_POST['fname'],
+                                        'mname' => $_POST['mname'],
+                                        'sname' => $_POST['sname'],
+                                        'short_description' => $_POST['short_description'],
+                                        'location' => $_POST['location'],
+                                        'phone' => $_POST['phone'],
+                                        'business_name' => $_POST['business_name'],
+                                        'business_category' => $_POST['business_category'],
+                                        'business_reg_no' => $_POST['business_reg_no']
+                                    ];
+                                    $prof_resp = $u->add_details_partner($body, $token, $created_user_id);
+                                    // print $prof_resp;
+                                    if(json_decode($prof_resp)->status == 0 && json_decode($prof_resp)->userid > 0){
+                                        // unset($_SESSION['frm']);
+                                        print $util->success_flash('Account created! It will be approved by admins. A message containing password reset link has been send your email address');
+                                    }else{
+                                        print $util->error_flash(json_decode($prof_resp)->message);
+                                    }
+                                }else{
+                                    print $util->error_flash(json_decode($reset_resp)->message);
+                                }
+                            }else{
+                                print $util->error_flash(json_decode($u_resp)->message);
+                            }
+                            }
+                        }catch(Exception $e){
+                            print $util->error_flash($e->getMessage());
+                        }
+                    }
+                    ?>
                     </div>
                       <div class="col-md-10">
                           <div class="row justify-content-center become_partner_form">
                               <div class="col-md-5 become_partner_form">
-                                      <form class="">
-						<div class="form-group">
-                                                    <label class="text-left">Company Name</label>
-<input type="text" name="company" class="form-control rounded_form_control" placeholder="Required Field">
-</div>
-<div class="form-group">
-<label>Contact Person's Name</label>
-<input type="text" name="contact" class="form-control rounded_form_control" placeholder="Required Field">
-</div>
-                                          <div class="form-group">
-<label>Email Address</label>
-<input type="email" name="email" class="form-control rounded_form_control" placeholder="Required Field">
-</div>                                       
- </div>
-                                <div class="col-md-5">
-                                                 
-						<div class="form-group">
-<label>Business Category</label>
-  <select class=" form-control rounded_form_control" name="businesscat">
-                                        <option value="">Select an option</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                    </select>
-</div>
-<div class="form-group">
-<label>Surname</label>
-<input type="text" name="surname" class="form-control rounded_form_control" placeholder="Required Field">
-</div>
-                                          <div class="form-group">
-<label>Contact Mobile Number</label>
-<input type="text" name="mobile" class="form-control rounded_form_control" placeholder="Required Field">
-</div> 
-                                                                       <div class="form-group">
-<label>Business Location</label>
-<input type="text" name="location" class="form-control rounded_form_control" placeholder="Required Field">
-</div>
-                                      <button type="submit" class="btn btn_rounded btn-dark-blue">BECOME A PARTNER</button>
-                                  
-                                  
-                              </div>
-                              	</form>
+                                <form class="" method="post">
+                                    <div class="form-group">
+                                        <label class="text-left">Company Name</label>
+                                        <input type="text" name="business_name" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['business_name']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-left">Company Registration No.</label>
+                                        <input type="text" name="business_reg_no" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['business_reg_no']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Person's First Name</label>
+                                        <input type="text" name="fname" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['fname']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Person's Surname</label>
+                                        <input type="text" name="sname" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['sname']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Mobile Number</label>
+                                        <input type="text" name="phone" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['phone']?>">
+                                    </div> 
+                                </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Business Category</label>
+                                            <select class=" form-control rounded_form_control" name="business_category">
+                                            <option value="nn">Select an option</option>
+                                            <option>Well-Being</option>
+                                            <option>Adventure</option>
+                                            <option>Sports</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-left">Business Short Description</label>
+                                            <input type="text" name="short_description" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['short_description']?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Person's Other Name</label>
+                                            <input type="text" name="mname" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['mname']?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email Address</label>
+                                            <input type="email" name="email" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['email']?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Business Location</label>
+                                            <input type="text" name="location" class="form-control rounded_form_control" placeholder="Required Field" value="<?=$_SESSION['frm']['location']?>">
+                                        </div>
+                                        <button type="submit" name="becomeptn" class="btn btn_rounded btn-dark-blue">BECOME A PARTNER</button>
+                                    </div>
+                                </form>
                               
                               
                           </div>

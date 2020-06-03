@@ -29,6 +29,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <title>Happy Box:: Admin Portal</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <style>
+            .admin-box{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -53,7 +60,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <h3>BOX DEACTIVATION</h3>
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn generate_rpt" href="admin-box-inventory-activated.php">Back</a>
+                        <a class="btn generate_rpt" href="admin-box-all.php">Back</a>
                     </div>
                 </div>
             </div>

@@ -12,11 +12,15 @@
     private $price;
     private $description;
     private $topics;
-    function __construct($name=null,$price=null,$description=null,$topics=null){
+    private $partners;
+    private $box_type;
+    function __construct($name=null,$price=null,$description=null,$topics=null,$partners=null,$box_type=null){
         $this->name = $name;
         $this->price = $price;
         $this->description = $description;
         $this->topics = $topics;
+        $this->partners = $partners;
+        $this->box_type = $box_type;
     }
     function create($token){
         $endpoint = 'services/happyboxes/happybox';
@@ -26,7 +30,9 @@
             'name' => $this->name,
             'price' => $this->price,
             'description' => $this->description,
-            'topics' => $this->topics
+            'topics' => $this->topics,
+            'partners' => $this->partners,
+            'box_type' => $this->box_type
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
@@ -46,7 +52,9 @@
             'name' => $this->name,
             'price' => $this->price,
             'description' => $this->description,
-            'topics' => $this->topics
+            'topics' => $this->topics,
+            'partners' => $this->partners,
+            'box_type' => $this->box_type
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);

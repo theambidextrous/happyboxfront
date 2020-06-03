@@ -90,15 +90,20 @@ letter-spacing: 0px;
 text-decoration: none;  
 border-bottom: solid 2px #c20a2b;
 }
+.is_active{
+    color: #c20a2b!important;
+    text-decoration: none!important;
+    border-bottom: solid 0px #c20a2b!important;
+}
 /*End Top 2nd  Nav*/
 /*  box inventory */
 .table_data1 thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
-    padding: 9px 0px !important;
+    padding: 11px 7px !important;
 }
 .table_data1{
-    font-size: 11px;
+    font-size: 14px;
     text-align: center;
     margin-top: 13px;
 

@@ -24,6 +24,13 @@ $partner_list = json_decode($partner_list, true)['data'];
 
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <style>
+            .admin-p-list{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
 
     </head>
 
@@ -65,14 +72,14 @@ $partner_list = json_decode($partner_list, true)['data'];
                      <table class="table  partner_table table-bordered">
                       <thead>
                         <tr>
-                          <th>IMAGE</th>
-                          <th>PARTNER NAME</th>
-                          <th>PARTNER CODE</th>
-                          <th class="des_width">PARTNER DESCRIPTION</th>
-                          <th>PARTNER LOCALISATION</th>
-                          <th>PARTNER INC. NUMBER</th>
-                          <th>BUSINESS CATEGORY</th>
-                          <th>CONTACT DETAILS</th>
+                          <th>Image</th>
+                          <th>Partner Name</th>
+                          <th>Partner Code</th>
+                          <th class="des_width">Partner Description</th>
+                          <th>Partner Localisation</th>
+                          <th>PIN Number</th>
+                          <th>Topic</th>
+                          <th>Contact Details</th>
                         </tr>
                       </thead>
                       <tbody>

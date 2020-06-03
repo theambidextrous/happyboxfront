@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once('../lib/Util.php');
+require_once('../lib/User.php');
+$util = new Util();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,25 +32,21 @@
                
                     <div class="row justify-content-center">
                     <div class="col-md-4 text-center ">
-					<h3 class="partner_blueh">FORGOT YOUR PASSWORD?</h3>
-                                        <p class="forgot_des text-center">
-                      Enter the email address you use to sign in, and we’ll send you a link to reset your password.                      
-                                        </p>
-                        <form class="p_login">
-						<div class="form-group">
-
-  <input type="text" class="form-control rounded_form_control" placeholder="Email address">
-</div>
-
-
-                                    <button type="submit" class="btn btn_rounded">SEND LINK</button>
-                                <p class="text-center gray_text small_p_margin_top">
-								<a href="">Forgot password?</a>
-									<a href="">| Not a registered partner? SIGN UP</a>
-								</p>
-                         
-							</form>
-                        </div>
+          <h3 class="partner_blueh">FORGOT YOUR PASSWORD?</h3>
+          <?php ?>
+          <p class="forgot_des text-center">Enter the email address you use to sign in, and we’ll send you a link to reset your password.</p>
+          <?=$util->msg_box()?>
+          <form class="p_login" method="post" name="forgot">
+            <div class="form-group">
+              <input type="email" name= "email" class="form-control rounded_form_control" placeholder="Email address">
+            </div>
+            <button type="button" onclick="forgot_pwd('forgot')" class="btn btn_rounded">SEND LINK</button>
+            <p class="text-center gray_text small_p_margin_top">
+              <a href="login.php">Back to login</a>
+              <a href="become-a-partner.php">| Not a registered partner? SIGN UP</a>
+            </p>
+          </form>
+          </div>
 
                 </div>
               </div>
@@ -60,7 +62,47 @@
   
  
  
-
+<!-- pop up -->
+<button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#forgotModal"></button>
+<div class="modal fade" id="forgotModal">
+    <div class="modal-dialog general_pop_dialogue">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <div class="col-md-12 text-center forgot-dialogue-borderz">
+            <h3 class="partner_blueh">YOUR REQUEST HAS BEEN SENT</h3>
+            <p class="forgot_des text-center">Please check your emails for a link to reset your password</p>
+            <div><img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/></div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- end popup -->
 </body>
-
+<script>
+  $(document).ready(function(){
+    forgot_pwd = function(FormId){
+      var dataString = $("form[name=" + FormId + "]").serialize();
+      $.ajax({
+          type: 'post',
+          url: '<?=$util->AjaxHome()?>?activity=forgot-rest-link',
+          data: dataString,
+          success: function(res){
+              console.log(res);
+              var rtn = JSON.parse(res);
+              if(rtn.hasOwnProperty("MSG")){
+                  $("#reset_div").load(window.location.href + " #reset_div" );
+                  $('#popupid').trigger('click');
+                  return;
+              }
+              else if(rtn.hasOwnProperty("ERR")){
+                $('#err').text(rtn.ERR);
+                $('#err').show(rtn.ERR);
+                return;
+              }
+          }
+      });
+    }
+  });  
+</script>
 </html>

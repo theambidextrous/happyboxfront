@@ -37,17 +37,23 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function update($token, $m_id){
-        $endpoint = 'services/mediatypes/mediatype/' . $m_id;
+    function update($token, $data){
+        $m_id = $data[0];
+        $endpoint = 'services/pictures/picture/' . $m_id;
         $util = new Util();
-        $this->validate();
-        $body = ['name' => $this->name];
+        $tmpfile = $_FILES[$data[1]]['tmp_name'];
+        $filename = basename($_FILES[$data[1]]['name']);
+        $mime_type = image_type_to_mime_type(exif_imagetype($tmpfile));
+        $cfile = new CURLFile($tmpfile, $mime_type, $filename);
+        $body = [
+            'path_name' => $cfile
+        ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->file_headers($token));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);
         return $res;

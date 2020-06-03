@@ -44,29 +44,21 @@ $util = new Util();
       <div class="row justify-content-center">
           <div class="col-md-5 user_login_l" >
               <h3 class="user_account_title text-center">FORGOT YOUR PASSWORD?</h3>
-            
-                               <p class="text-orange text-center">Enter the email address you use to sign in, and we’ll send you a link to reset your password.</p>
-           
-              
-              <div class="user_forgot">
-						<div class="form-group">
-
-  <input type="text" class="form-control rounded_form_control" placeholder="Email address">
-</div>
-
-                
-                  <p class="text-center">
-                       <button type="submit" class="btn btn_rounded" data-toggle="modal" data-target="#forgotModal">SEND LINK</button>   
-                  </p>
-                                
-                  <p class="text-center gray_text small_p_margin_top">
-                      <a href="user-login.php"><b>Return to login</b></a>
-                      <a href="user-create-account.php"> | Don’t have an account yet? Create your account</a>
-								</p>
-                                                               
-                     
-							</div>
-            
+              <p class="text-orange text-center">Enter the email address you use to sign in, and we’ll send you a link to reset your password.</p>
+              <div class="user_forgot" id="reset_div">
+              <?=$util->msg_box()?>
+              <form method="post" name="forgot">
+                <div class="form-group">
+                <input type="email" name="email" class="form-control rounded_form_control" placeholder="Email address">
+                </div>
+                <p class="text-center">
+                    <button type="button" onclick="forgot_pwd('forgot')" class="btn btn_rounded">SEND LINK</button></p>
+                            
+                <p class="text-center gray_text small_p_margin_top">
+                  <a href="user-login.php"><b>Return to login</b></a>
+                  <a href="user-create-account.php"> | Don’t have an account yet? Create your account</a></p>
+              </form>
+            </div>
           </div>
            <div class="col-md-5 user_login_l ">
               <div class="card user_login_card">
@@ -110,6 +102,7 @@ $util = new Util();
    
   
   <!-- pop up -->
+  <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#forgotModal"></button>
   <div class="modal fade" id="forgotModal">
     <div class="modal-dialog general_pop_dialogue">
       <div class="modal-content">
@@ -117,12 +110,11 @@ $util = new Util();
                        <div class="modal-body text-center">
                     <div class="col-md-12 text-center forgot-dialogue-borderz">
 					<h3 class="partner_blueh">YOUR REQUEST HAS BEEN SENT</h3>
-                                        <p class="forgot_des text-center">
-                     Please check your emails for a link to reset your password                    
-                                        </p>
-                                        <div>
-                                            <img src="shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
-                                        </div>
+                    <p class="forgot_des text-center">Please check your emails for a link to reset your password                    
+                    </p>
+                    <div>
+                        <img src="shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
+                    </div>
                        
                         </div>
       </div>
@@ -136,4 +128,30 @@ $util = new Util();
 
 </body>
 
+<script>
+  $(document).ready(function(){
+    forgot_pwd = function(FormId){
+      var dataString = $("form[name=" + FormId + "]").serialize();
+      $.ajax({
+          type: 'post',
+          url: '<?=$util->AjaxHome()?>?activity=forgot-rest-link',
+          data: dataString,
+          success: function(res){
+              console.log(res);
+              var rtn = JSON.parse(res);
+              if(rtn.hasOwnProperty("MSG")){
+                  $("#reset_div").load(window.location.href + " #reset_div" );
+                  $('#popupid').trigger('click');
+                  return;
+              }
+              else if(rtn.hasOwnProperty("ERR")){
+                $('#err').text(rtn.ERR);
+                $('#err').show(rtn.ERR);
+                return;
+              }
+          }
+      });
+    }
+  });  
+</script>
 </html>

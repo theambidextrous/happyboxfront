@@ -10,7 +10,7 @@
         $user = new User(null, $_POST['email'], $_POST['password']);
         $login = $user->login();
        if(isset(json_decode($login)->status)){
-            if(json_decode($login)->status == 0){
+            if(json_decode($login)->status == '0'){
                 $_SESSION['usr'] = $login;
                 $info = $user->get_details(json_decode($login)->user->id);
                 $_SESSION['usr_info'] = $info;
@@ -18,7 +18,7 @@
                     throw new Exception('Permission denied!');
                     session_destroy();
                 }
-                $util->redirect_to('admin-topic-inventory.php');
+                $util->redirect_to('admin-box-inventory.php');
             }else{
                 $err = $util->error_flash(json_decode($login)->message);
             }

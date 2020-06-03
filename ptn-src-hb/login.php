@@ -1,8 +1,10 @@
 <?php
-session_start();
-require_once('../lib/Util.php');
-require_once('../lib/User.php');
-$util = new Util();
+    session_start();
+    require_once('../lib/Util.php');
+    require_once('../lib/User.php');
+    $util = new Util();
+    // $util->ShowErrors();
+    $err = $msg = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,31 +26,52 @@ $util = new Util();
 			<h2 class="">HAPPYBOX PARTNER PORTAL</h2>
 			</section>
 <section class=" text-center  section_60 partner_login">
-            <div class="container">
-		
-               
-                    <div class="row justify-content-center">
-                    <div class="col-md-4 text-center ">
-					<h3 class="partner_blueh">PARTNER LOGIN</h3>
-                        <form class="p_login">
-						<div class="form-group">
-
-  <input type="text" class="form-control rounded_form_control" placeholder="Email address">
-</div>
-<div class="form-group">
- 
-  <input type="password" class="form-control rounded_form_control" placeholder="Password">
-</div>
-
-            <button type="submit" class="btn btn_rounded">LOGIN</button>
-            <p class="text-center gray_text small_p_margin_top">
-            <a href="">Forgot password?</a>
-            <a href="">| Not a registered partner? SIGN UP</a>
-            </p>
-
+          <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-md-4 text-center ">
+          <h3 class="partner_blueh">PARTNER LOGIN</h3>
+          <?php
+            if(isset($_POST['login'])){
+              try{
+                  $user = new User(null, $_POST['email'], $_POST['password']);
+                  $login = $user->login();
+                 if(isset(json_decode($login)->status)){
+                      if(json_decode($login)->status == '0'){
+                          $_SESSION['usr'] = $login;
+                          $info = $user->get_details(json_decode($login)->user->id);
+                          $_SESSION['usr_info'] = $info;
+                          if(!$util->is_partner()){
+                              throw new Exception('Permission denied!');
+                              session_destroy();
+                          }
+                          $util->redirect_to('partner-make-booking.php');
+                      }else{
+                          $err = $util->error_flash(json_decode($login)->message);
+                      }
+                 }else{
+                  $err = $util->error_flash('No response from server');
+                 }
+              }catch(Exception $e){
+                  $err = $util->error_flash($e->getMessage());
+                  session_destroy();
+              }
+             }
+          ?>
+            <form class="p_login" method="post">
+                <?=$err?>
+              <div class="form-group">
+                <input type="text" class="form-control rounded_form_control" name="email" placeholder="Email address">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control rounded_form_control" placeholder="Password">
+              </div>
+              <button type="submit" name="login" class="btn btn_rounded">LOGIN</button>
+              <p class="text-center gray_text small_p_margin_top">
+                <a href="forgot.php">Forgot password?</a>
+                <a href="become-a-partner.php">| Not a registered partner? SIGN UP</a>
+              </p>
             </form>
-                        </div>
-
+          </div>
                 </div>
               </div>
         </section>

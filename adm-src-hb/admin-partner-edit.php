@@ -19,6 +19,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <title>Happy Box:: Admin Portal</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <style>
+            .admin-p-list{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -79,13 +86,16 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     $_SESSION['frm_b'] = $_POST;
                                     $u = new User();
                                     /** update profile */
+                                    if(empty($_POST['sub_location'])){
+                                        throw new Exception('Sub location is required, please correct');
+                                    }
                                     $created_user_id = $_REQUEST['pt'];
                                     $body = [
                                         'fname' => $_POST['fname'],
                                         'mname' => $_POST['mname'],
                                         'sname' => $_POST['sname'],
                                         'short_description' => $_POST['short_description'],
-                                        'location' => $_POST['location'],
+                                        'location' => $_POST['location'].' | '. $_POST['sub_location'],
                                         'phone' => $_POST['phone'],
                                         'business_name' => $_POST['business_name'],
                                         'business_category' => $_POST['business_category'],
@@ -107,23 +117,40 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         ?>
                         <form class="filter_form" method="post">
                             <div class="form-group row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <label for="BoxType" class="col-form-label">Partner Code(optional)</label>
+                                    <input type="text" readonly placeholder="partner code" name="internal_id" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['internal_id']?>"/>
+                                </div>
+                                <div class="col-md-5">
                                     <label for="BoxType" class="col-form-label">Partner Name</label>
                                     <input type="text" placeholder="partner name" name="business_name" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['business_name']?>"/>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="BoxType" class="col-form-label">Partner Inc. Number</label>
+                                <div class="col-md-3">
+                                    <label for="BoxType" class="col-form-label">Partner PIN Number</label>
                                     <input type="text" placeholder="inc/reg number" name="business_reg_no" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['business_reg_no']?>"/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="BoxType" class="col-form-label">Partner location</label>
-                                    <input type="text" placeholder="location" name="location" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['location']?>"/>
+                                    <label for="BoxType" class="col-form-label">Partner category</label>
+                                    <input type="text" placeholder="business category" name="business_category" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['business_category']?>"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="BoxType" class="col-form-label">Partner Business category</label>
-                                    <input type="text" placeholder="business category" name="business_category" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['business_category']?>"/>
+                                    <label for="BoxType" class="col-form-label">Partner location</label>
+                                    <select name="location" id="location" class="form-control rounded_form_control" id="select_box_type">
+                                        <option value="nn">Select a location</option>
+                                        <?php foreach($util->locations_list() as $_loc ){ 
+                                            if(trim(strtolower(explode('|',$_SESSION['frm_b']['location'])[0])) == trim(strtolower($_loc)) ){
+                                                print '<option selected value="'.$_loc.'">'.$_loc.'</option>';
+                                            }else{
+                                                print '<option value="'.$_loc.'">'.$_loc.'</option>';
+                                            }
+                                        } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-12" id="sub_location" style="display:none;">
+                                    <label for="BoxType" class="col-form-label">Sub location</label>
+                                    <input type="text" placeholder="enter precise location e.g Karen" name="sub_location" class="form-control rounded_form_control" id="select_box_type" value="<?=explode('|',$_SESSION['frm_b']['location'])[1]?>"/>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -172,16 +199,16 @@ $token = json_decode($_SESSION['usr'])->access_token;
 
 
  <?php include 'admin-partials/footer.php'; ?>
-
-
-        <!-- Bootstrap core JavaScript -->
-
-        <?php include 'admin-partials/js.php'; ?>
-
-
-
-
-
-    </body>
-
+    <!-- Bootstrap core JavaScript -->
+     <?php include 'admin-partials/js.php'; ?>
+</body>
+<script>  
+    $(document).ready(function(){
+        $("#sub_location").show();
+        $('#location').on('change', function() {
+        if ( this.value == 'nn'){ $("#sub_location").hide(); }
+        else{ $("#sub_location").show(); }
+        });
+    });
+</script>
 </html>

@@ -20,6 +20,13 @@ $user->is_loggedin();
 
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <style>
+            .admin-v-search{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
 
     </head>
 

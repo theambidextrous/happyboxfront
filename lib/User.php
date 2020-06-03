@@ -128,11 +128,11 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function add_details($body, $endpoint = '', $token = 0){
-        $this->is_loggedin();
-        if($token == 0){
-            $token = json_decode($_SESSION['usr'])->access_token;
-        }
+    function add_details($body, $endpoint, $token){
+        // $this->is_loggedin();
+        // if($token == 0){
+        //     $token = json_decode($_SESSION['usr'])->access_token;
+        // }
         $util = new Util();
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
@@ -209,7 +209,7 @@
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);
-        if( json_decode($res)->status == 0){
+        if( json_decode($res)->status == '0'){
             return true;
         }
         session_destroy();
@@ -227,6 +227,27 @@
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);
         return $res;
+    }
+    function pwd_reset($body){
+        $endpoint = 'users/resetpassword';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers());
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function format_box_partners($csv){
+        $_part = explode(',',$csv);
+        foreach( $_part as $idf ){
+            $data = json_decode($this->get_details_byidf($idf))->data;
+            $_names[] = $data->business_name;
+        }
+        return implode(', ', $_names);
     }
     function headers($token = ''){
         $headers[] = 'Content-Type: application/json';

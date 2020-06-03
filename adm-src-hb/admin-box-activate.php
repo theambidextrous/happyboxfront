@@ -29,6 +29,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <title>Happy Box:: Admin Portal</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <style>
+            .admin-box{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -53,7 +60,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <h3>BOX ACTIVATION</h3>
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn generate_rpt" href="admin-box-inventory.php">Back</a>
+                        <a class="btn generate_rpt" href="admin-box-all.php">Back</a>
 
                     </div>
 
@@ -92,7 +99,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             }
                         ?>
                         <form class="filter_form" method="post" enctype="multipart/form-data">
-                            <p style="font-size:14px;" class="alert alert-warning">Note that activating a box will render it visible to customers online. It is advisable to make sure that the box has all the necessary metadata(images, experiences,topics, price) before activating it.</p>
+                            <p style="font-size:14px;" class="alert alert-warning">Note that activating a box will render it visible to customers online. It is advisable to make sure that the box has all the necessary metadata(images,psrtners,topics, price) before activating it.</p>
                             <hr>
                             <div class=" row">
                                 <div class="col-md-12 text-center text-white">
