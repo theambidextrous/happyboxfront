@@ -90,7 +90,7 @@ $box = new Box();
                         <br>
                         <?php 
                             $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '1'), true)['data'];
-                            $util->show($all_happyboxes_inventory);
+                            // $util->show($all_happyboxes_inventory);
                             try{
                                 if(isset($_POST['generate'])){
                                     if($_POST['boxname'] == 'nn'){

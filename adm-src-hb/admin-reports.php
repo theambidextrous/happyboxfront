@@ -86,7 +86,8 @@ $_reports = json_decode($report->get($token), true)['data'];
                                     $resp = $r->create($token);
                                     // print $resp;
                                     if ( json_decode( $resp )->status == '0' ){
-                                        print $util->success_flash('Report created successfully!');
+                                        $util->timed_redirect('admin-reports.php');
+                                        print $util->success_flash('Report created successfully! Reloading ...');
                                     }else{
                                         print $util->error_flash(json_decode( $resp )->message);
                                     }

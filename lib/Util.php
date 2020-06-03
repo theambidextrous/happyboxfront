@@ -54,6 +54,13 @@
         }
         header("Location: " . $to);
     }
+    function timed_redirect($to){
+        print '<script>
+            window.setTimeout(function() {
+                window.location.href = "'.$to.'";
+            }, 2000);
+        </script>';
+    }
     function ShowErrors($f=0){
         if($this->AppErrors() == 0){
             return;
