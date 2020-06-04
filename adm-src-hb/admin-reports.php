@@ -3,10 +3,14 @@ session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
 require_once('../lib/Report.php');
+require_once('../lib/Inventory.php');
+require_once('../lib/Box.php');
 $util = new Util();
 $user = new User();
+$box = new Box();
 $report = new Report();
-$util->ShowErrors();
+$inventory = new Inventory();
+$util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
 $_reports = json_decode($report->get($token), true)['data'];
@@ -29,6 +33,9 @@ $_reports = json_decode($report->get($token), true)['data'];
                 color: #c20a2b!important;
                 text-decoration: none!important;
                 border-bottom: solid 2px #c20a2b!important;
+            }
+            #report_id_filter{
+                display:none!important;
             }
         </style>
 
@@ -97,32 +104,65 @@ $_reports = json_decode($report->get($token), true)['data'];
                             }
                     
                         ?>
-                        <h4 class="filter_title text-center"> Report Filters</h4>                  
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-8 ">
+                    <div class="col-md-12">
                         <?php
-                            if( isset($_REQUEST['report']) ){ ?>
-                            <form class="filter_form" action="post">
+                        $table_ = null;
+                        if(!isset($_SESSION['dtr'])){
+                            $_SESSION['dtr'] = [];
+                        }
+                        if( isset($_REQUEST['report']) && !empty($_REQUEST['report']) ){ 
+                        $_curr_report = json_decode($report->get_one($token, $_REQUEST['report']))->data;
+                            // print $_curr_report->cols;
+                            if(isset($_POST['vreport'])){
+                                $_SESSION['dtr'] = $_POST;
+                                $body = [
+                                    'cols' => $_curr_report->cols,
+                                    'date_from' => $_POST['date_from'],
+                                    'date_to' => $_POST['date_to']
+                                ];
+                                $results = json_decode($inventory->get_report($token, $body), true)['data'];
+                                // $util->Show($results);
+                                //$results, $cols, $user_ob, $box_ob, $token
+                                $table_ = $util->build_report_table($results, $_curr_report->cols, $user, $box, $token);
+                            }
+                        ?>
+                            <h4 class="filter_title text-center"> <a href="admin-reports.php">Reports</a> > <a href="###"><?=$_curr_report->name?> filters</a></h4>
+                            <form class="filter_form" method="post">
                                 <div class="form-group row">
                                     <label for="DateRange" class="col-md-2 col-form-label">From Date</label>
                                     <div class="col-md-4">
-                                    <input type="date" class="form-control" id="select_box_type" name="dfrom"/>
+                                    <input type="date" class="form-control" id="select_box_type" name="date_from" value="<?=$_SESSION['dtr']['date_from']?>"/>
                                     </div>
                                     <label for="DateRange" class="col-md-2 col-form-label">To Date</label>
                                     <div class="col-md-4">
-                                        <input type="date" class="form-control" id="select_box_type" name="dto"/>
+                                        <input type="date" class="form-control" id="select_box_type" name="date_to" value="<?=$_SESSION['dtr']['date_to']?>"/>
                                     </div>
                                 </div>
                                 <div class=" row">
                                     <div class="col-md-12 text-right text-white">
-                                        <button type="button" class="btn btn_view_report">Run Report</button>
-                                        <button type="button" class="btn btn_view_report">View Report</button>
+                                        <button type="submit" name="rreport" class="btn btn_view_report">Run Report</button>
+                                        <button type="submit" name="rreport" class="btn btn_view_report">View Report</button>
                                     </div>
                                 </div>
                             </form>
-                        <?php   }else{
+                            <hr>
+                            <div class=" row">
+                                <div class="col-md-12 text-center text-muted">
+                                    <h4>Returned results</h4>
+                                </div>
+                                <div class="col-md-12 text-white">
+                                    <?php
+                                        if(!is_null($table_)){
+                                            print $table_;
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+                        <?php   
+                    }else{
                             print $util->error_flash('You MUST select a report from top left OR <a href="#" data-toggle="modal" data-target="#create_report">Create New Report</a>');
                         }
                         ?>
@@ -191,4 +231,17 @@ $_reports = json_decode($report->get($token), true)['data'];
         </div>
         <!-- end popup -->
     </body>
+    <script>
+    $(document).ready(function() {
+        $('#report_id').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5'
+                // 'pdfHtml5'
+            ]
+        } );
+    } );
+    </script>
 </html>

@@ -97,10 +97,180 @@
         }
         return true;
     }
+    function v_search_table($data){
+        $div = '<div class="voucher_result_bar">
+            <div class="voucher_no">
+                VOUCHER NUMBER
+            </div> 
+            <div class="voucher_no_value ">
+                '.$data[0].'
+            </div>
+            <div class="voucher_status">
+                STATUS
+            </div>
+            <div class="voucher_status_value">
+                '.$this->get_v_status_name($data[1]).'
+            </div>
+            <div class="voucher_partner">
+                PARTNER
+            </div>
+            <div class="voucher_partner_val col-md-3 border_right">
+                '.$data[2].'
+            </div>
+            <div class="voucher_partner2 col-md-3">
+            '.$data[3].' 
+            </div>
+        </div>';
+    return $div;
+    }
     function Show($toshow){
         print'<pre>';
         print_r($toshow);
         print'</pre>';
+    }
+    function cust_buyer_keys(){
+        return [
+            'customer_buyer_id_0',
+            'customer_buyer_id_1',
+            'customer_buyer_id_2',
+            'customer_buyer_id_3'
+        ];
+    }
+    function cust_user_keys(){
+        return [
+            'customer_user_id_0',
+            'customer_user_id_1',
+            'customer_user_id_2',
+            'customer_user_id_3'
+        ];
+    }
+    function box_keys(){
+        return [
+            'box_internal_id_0',
+            'box_internal_id_1'
+        ];
+    }
+    function indirect_cols(){
+        return [
+            'customer_buyer_id_0',
+            'customer_buyer_id_1',
+            'customer_buyer_id_2',
+            'customer_buyer_id_3',
+            'customer_user_id_0',
+            'customer_user_id_1',
+            'customer_user_id_2',
+            'customer_user_id_3',
+            'partner_internal_id',
+            'box_internal_id_0',
+            'box_internal_id_1'
+        ];
+    }
+    function report_headers($cols){
+        $h = '<thead><tr>';
+        foreach( $this->report_cols() as $k => $v ){
+            if(in_array($k, $cols)){
+                $h .= '<th>'.$v.'</th>';
+            }
+        }
+        $h .= '</tr></thead>';
+        return $h;
+    }
+    function get_v_status_name($v){
+        if($v == 1){
+            return 'Not purchased';
+        }elseif($v == 2){
+            return 'Purchased';
+        }elseif($v == 3){
+            return 'Redeemed';
+        }elseif($v == 4){
+            return 'Cancelled';
+        }elseif($v == 5){
+            return 'Expired';
+        }else{
+            return 'N/A';
+        }
+    }
+    function report_body($results, $cols, $user_ob, $box_ob, $token){
+        $b = '<tbody>';
+        $n_a = 'N/A';
+        foreach( $results as $result ):
+            $b .= '<tr>';
+            foreach( $this->report_cols() as $k => $v ){
+                if( array_key_exists($k, $result) && in_array($k, $cols)  && !in_array($k, $this->indirect_cols())){
+                    if($k == 'box_voucher_status'){
+                        $b .= '<td>'.$this->get_v_status_name($result[$k]).'</td>';
+                    }else{
+                        $value = !empty($result[$k])?$result[$k]:'N/A';
+                        $b .= '<td>'.$value.'</td>';
+                    }
+                }elseif(in_array($k, $this->indirect_cols()) && in_array($k, $cols) ){
+                    if(in_array($k, $this->cust_buyer_keys())){
+                        $cust_buyer_id = $result['customer_buyer_id'];
+                        $cust_data = json_decode($user_ob->get_details_byidf($cust_buyer_id))->data;
+                        if($k == 'customer_buyer_id_0'){
+                            $n = $cust_data->fname . '' . $cust_data->mname;
+                            $cname = !empty($n)?$n:'N/A';
+                            $b .= '<td>'.$cname.'</td>';
+                        }elseif($k == 'customer_buyer_id_1'){
+                            $cname = !empty($cust_data->sname)?$cust_data->sname:'N/A';
+                            $b .= '<td>'.$cname.'</td>';
+                        }elseif($k == 'customer_buyer_id_2'){
+                            $email = !empty($cust_data->email)?$cust_data->email:'N/A';
+                            $b .= '<td>'.$email.'</td>';
+                        }elseif($k == 'customer_buyer_id_3'){
+                            $phone = !empty($cust_data->phone)?$cust_data->phone:'N/A';
+                            $b .= '<td>'.$phone.'</td>';
+                        }
+                    }elseif(in_array($k, $this->cust_user_keys())){
+                        $cust_user_id = $result['customer_user_id'];
+                        $cust_data = json_decode($user_ob->get_details_byidf($cust_user_id))->data;
+                        if($k == 'customer_user_id_0'){
+                            $n = $cust_data->fname . '' . $cust_data->mname;
+                            $cname = !empty($n)?$n:'N/A';
+                            $b .= '<td>'.$cname.'</td>';
+                        }elseif($k == 'customer_user_id_1'){
+                            $cname = !empty($cust_data->sname)?$cust_data->sname:'N/A';
+                            $b .= '<td>'.$cname.'</td>';
+                        }elseif($k == 'customer_user_id_2'){
+                            $email = !empty($cust_data->email)?$cust_data->email:'N/A';
+                            $b .= '<td>'.$email.'</td>';
+                        }elseif($k == 'customer_user_id_3'){
+                            $phone = !empty($cust_data->phone)?$cust_data->phone:'N/A';
+                            $b .= '<td>'.$phone.'</td>';
+                        }
+                    }elseif(in_array($k, $this->box_keys())){
+                        $box_internal_id = $result['box_internal_id'];
+                        $bbb_ = $box_ob->get_byidf($token, $box_internal_id);
+                        $box_data = json_decode($bbb_)->data;
+                        if($k == 'box_internal_id_0'){
+                            $bname = !empty($box_data->name)?$box_data->name:$n_a;
+                            $b .= '<td>'.$bname.'</td>';
+                        }elseif($k == 'box_internal_id_1'){
+                            $bprice = !empty($box_data->price)?$box_data->price:'N/A';
+                            $b .= '<td> KES '.$bprice.'</td>';
+                        }
+                    }elseif($k == 'partner_internal_id'){
+                        $partner_internal_id = $result['partner_internal_id'];
+                        $partner_data = json_decode($user_ob->get_details_byidf($partner_internal_id))->data;
+                        $bname = !empty($partner_data->business_name)?$partner_data->business_name:'N/A';
+                        $b .= '<td>'.$bname.'</td>';
+                    }
+                }else{
+
+                }
+            }
+            $b .= '</tr>';
+        endforeach;
+        $b .= '</tbody>';
+        return $b;
+    }
+    function build_report_table($results, $cols,$user, $box, $token){
+        $cols = explode(',', $cols);
+        $table = '<div class="table-responsive"><table id="report_id" class="table table_data1 table-bordered">';
+        $table .= $this->report_headers($cols);
+        $table .= $this->report_body($results, $cols,$user, $box, $token);
+        $table .= '</table></div>';
+        return $table;
     }
     function report_cols(){
         $r  = [

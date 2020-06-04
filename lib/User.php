@@ -114,7 +114,7 @@
         return $res;
     }
     function get_details_byidf($idf, $endpoint = 'users/info/byidf/'){
-        $this->is_loggedin();
+        // $this->is_loggedin();
         $token = json_decode($_SESSION['usr'])->access_token;
         $util = new Util();
         $body = [];
