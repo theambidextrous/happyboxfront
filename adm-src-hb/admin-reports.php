@@ -143,8 +143,8 @@ $_reports = json_decode($report->get($token), true)['data'];
                                 </div>
                                 <div class=" row">
                                     <div class="col-md-12 text-right text-white">
-                                        <button type="submit" name="rreport" class="btn btn_view_report">Run Report</button>
-                                        <button type="submit" name="rreport" class="btn btn_view_report">View Report</button>
+                                        <button type="submit" name="vreport" class="btn btn_view_report">Run Report</button>
+                                        <button type="submit" name="vreport" class="btn btn_view_report">View Report</button>
                                     </div>
                                 </div>
                             </form>
