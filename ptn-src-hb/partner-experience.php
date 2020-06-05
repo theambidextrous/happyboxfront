@@ -15,7 +15,13 @@ $util = new Util();
   <title>Happy Box:: Partner Experience List</title>
   <!-- Bootstrap core CSS -->
  <?php include '../shared/partials/css.php'; ?>
-
+ <style>
+   .t-experience{
+      color: #c20a2b!important;
+      text-decoration: none!important;
+      border-bottom: solid 2px #c20a2b!important;
+   }
+ </style>
 </head>
 
 <body>

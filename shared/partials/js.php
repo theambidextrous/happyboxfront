@@ -1,6 +1,7 @@
-  <script src="<?=$util->ClientHome()?>/vendor/jquery/jquery.min.js"></script>
-  <script src="<?=$util->ClientHome()?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=$util->ClientHome()?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=$util->ClientHome()?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?=$util->ClientHome()?>/vendor/owl/owl.carousel.js"></script>
+    <script src="<?=$util->ClientHome()?>/vendor/bootstrap/js/wt.js"></script>
     <script>
       $(document).ready(function(){
 

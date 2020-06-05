@@ -329,6 +329,43 @@
         </script>
         ';
     }
+    function ptn_v_validity($data, $box_data){
+        $formid = "'". "redeem_v" . "'";
+        $_table = '<div class="row text-center">
+        <div class="voucher_result_bar validity_bar">
+          <div class="voucher_no">
+              VOUCHER NUMBER
+          </div> 
+          <div class="voucher_no_value ">
+              '.$data[0].'
+          </div>
+          <div class="voucher_status">
+              STATUS
+          </div>
+          <div class="voucher_status_value">
+          '.$this->get_v_status_name($data[1]).'
+          </div>
+          <div class="box_name_select col-4">
+            <ul class="nav nav-pills">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">'.$box_data[0].' | '.$box_data[1].'  </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">'.$box_data[0].' -> '.$box_data[1].'</a> 
+                </div>
+                </li>
+              </ul>
+          </div>
+          <div class="booking_date col-md-2 border_right nomargin_lr">
+              <span class=""> <img src="../shared/img/icons/icn-calendar-blue.svg" class="booking_date_input"/></span>
+              <input type="hidden" name="voucher" value="'.$data[0].'">
+              <input type="hidden" name="partner" value="'.$box_data[2].'">
+              <input type="date" name="booking_date" class="form-control" placeholder="Enter booking date">
+          </div>
+          <button type="button" onclick="redeem_voucher('.$formid.')" class="voucher_partner2 col-md-2 hap_success">REDEEM VOUCHER</button>
+        <div> 
+      </div>';
+      return $_table;
+    }
  }
  
 ?>

@@ -103,7 +103,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     ];
                                     $prof_resp = $u->edit_details_partner($body, $token, $created_user_id);
                                     // print $prof_resp;
-                                    if(json_decode($prof_resp)->status == 0 && json_decode($prof_resp)->userid > 0){
+                                    if(json_decode($prof_resp)->status == '0' && json_decode($prof_resp)->userid > 0){
                                         unset($_SESSION['frm']);
                                         unset($_SESSION['frm_b']);
                                         print $util->success_flash('Partner information updated! Note that email address is not updated and password is not reset too');

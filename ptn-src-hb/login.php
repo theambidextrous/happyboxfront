@@ -5,6 +5,31 @@
     $util = new Util();
     // $util->ShowErrors();
     $err = $msg = '';
+    if(isset($_POST['login'])){
+      try{
+          $user = new User(null, $_POST['email'], $_POST['password']);
+          $login = $user->login();
+         if(isset(json_decode($login)->status)){
+              if(json_decode($login)->status == '0'){
+                  $_SESSION['usr'] = $login;
+                  $info = $user->get_details(json_decode($login)->user->id);
+                  $_SESSION['usr_info'] = $info;
+                  if(!$util->is_partner()){
+                      throw new Exception('Permission denied!');
+                      session_destroy();
+                  }
+                  $util->redirect_to('partner-make-booking.php');
+              }else{
+                  $err = $util->error_flash(json_decode($login)->message);
+              }
+         }else{
+          $err = $util->error_flash('No response from server');
+         }
+      }catch(Exception $e){
+          $err = $util->error_flash($e->getMessage());
+          session_destroy();
+      }
+     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,33 +55,6 @@
         <div class="row justify-content-center">
         <div class="col-md-4 text-center ">
           <h3 class="partner_blueh">PARTNER LOGIN</h3>
-          <?php
-            if(isset($_POST['login'])){
-              try{
-                  $user = new User(null, $_POST['email'], $_POST['password']);
-                  $login = $user->login();
-                 if(isset(json_decode($login)->status)){
-                      if(json_decode($login)->status == '0'){
-                          $_SESSION['usr'] = $login;
-                          $info = $user->get_details(json_decode($login)->user->id);
-                          $_SESSION['usr_info'] = $info;
-                          if(!$util->is_partner()){
-                              throw new Exception('Permission denied!');
-                              session_destroy();
-                          }
-                          $util->redirect_to('partner-make-booking.php');
-                      }else{
-                          $err = $util->error_flash(json_decode($login)->message);
-                      }
-                 }else{
-                  $err = $util->error_flash('No response from server');
-                 }
-              }catch(Exception $e){
-                  $err = $util->error_flash($e->getMessage());
-                  session_destroy();
-              }
-             }
-          ?>
             <form class="p_login" method="post">
                 <?=$err?>
               <div class="form-group">
