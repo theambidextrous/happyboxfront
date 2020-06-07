@@ -295,21 +295,18 @@ $util = new Util();
   <div class="modal fade" id="becomePart">
     <div class="modal-dialog general_pop_dialogue">
       <div class="modal-content">
-   
-                       <div class="modal-body text-center">
-                    <div class="col-md-12 text-center forgot-dialogue-borderz">
-				<h3 class="partner_blueh">YOUR REQUEST HAS BEEN SENT</h3>
-                                        <p class="forgot_des text-center">
-                                            Thank you for your interest in a partnership with HAPPYBOX!  <br><br>
-                                                 Our Partner Care Team will review your submission and contact you.
-                                        </p>
-                                        <div>
-                                            <img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
-                                        </div>
-                       
-                        </div>
+            <div class="modal-body text-center">
+            <div class="col-md-12 text-center forgot-dialogue-borderz">
+            <h3 class="partner_blueh">YOUR REQUEST HAS BEEN SENT</h3>
+            <p class="forgot_des text-center">
+            Thank you for your interest in a partnership with HAPPYBOX!  <br><br>
+            Our Partner Care Team will review your submission and contact you.
+            </p>
+            <div>
+            <img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
+            </div>
+            </div>
       </div>
-        
       </div>
     </div>
   </div>
@@ -317,7 +314,7 @@ $util = new Util();
     $(document).ready(function(){
         $("#becomePart").modal('show');
     });
-</script>
+    </script>
 <!-- end pop up -->
    
   

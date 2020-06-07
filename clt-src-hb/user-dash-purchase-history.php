@@ -2,7 +2,22 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Inventory.php');
+require_once('../lib/Box.php');
+require_once('../lib/Picture.php');
 $util = new Util();
+$user = new User();
+if(!$util->is_client()){
+    header('Location: user-login.php');
+}
+$picture = new Picture();
+$util->ShowErrors(1);
+$inventory = new Inventory();
+$box = new Box();
+$token = json_decode($_SESSION['usr'])->access_token;
+$my_list_ = $inventory->get_by_cust_user(json_decode($_SESSION['usr_info'])->data->internal_id);
+$my_list_ = json_decode($my_list_, true)['data'];
+// $util->Show($my_list_);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +33,13 @@ $util = new Util();
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
+        <style>
+            .user-vhistory{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -42,15 +64,7 @@ $util = new Util();
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
-                  <ul class="">
-                            <li><a href="">Register Your Voucher</a></li>
-                              <li><a href="">My Voucher List</a></li>
-                               <li><a href="">My Purchase History</a></li>
-                                <li><a href="">My Profile</a></li>
-                             
-                                 
-                        </ul>
-
+                    <?php include 'shared/partials/nav-mid.php'; ?>
                     </div>
 
                 </div> </div>

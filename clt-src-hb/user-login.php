@@ -1,8 +1,44 @@
 <?php
-session_start();
-require_once('../lib/Util.php');
-require_once('../lib/User.php');
-$util = new Util();
+    session_start();
+    require_once('../lib/Util.php');
+    require_once('../lib/User.php');
+    require_once('../lib/Picture.php');
+    $util = new Util();
+    $user = new User();
+    $picture = new Picture();
+    $util->ShowErrors(1);
+    // $util->ShowErrors();
+    $err = $msg = '';
+    if(isset($_POST['login'])){
+      try{
+          $user = new User(null, $_POST['email'], $_POST['password']);
+          $news = '';
+          if( $_POST['news'] == '1'){
+            $news = '00';
+          }
+          $login = $user->login($news);
+        //   print $login;
+         if(isset(json_decode($login)->status)){
+              if(json_decode($login)->status == '0'){
+                  $_SESSION['usr'] = $login;
+                  $info = $user->get_details(json_decode($login)->user->id);
+                  $_SESSION['usr_info'] = $info;
+                  if(!$util->is_client()){
+                      throw new Exception('Permission denied!');
+                      session_destroy();
+                  }
+                  $util->redirect_to('user-dash-activate-voucher.php');
+              }else{
+                  $err = $util->error_flash(json_decode($login)->message);
+              }
+         }else{
+          $err = $util->error_flash('No response from server');
+         }
+      }catch(Exception $e){
+          $err = $util->error_flash($e->getMessage());
+          session_destroy();
+      }
+     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +51,6 @@ $util = new Util();
   <meta name="author" content="">
 
   <title>Happy Box:: User Login Page</title>
-
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
 </head>
@@ -54,39 +89,38 @@ $util = new Util();
       <div class="row justify-content-center">
           <div class="col-md-5 user_login_l  ">
               <h3 class="user_account_title text-center">HAPPYBOX ACCOUNT LOGIN</h3>
-              <form class="user_login">
-						<div class="form-group">
-
-  <input type="text" class="form-control rounded_form_control" placeholder="Email address">
-</div>
-<div class="form-group">
- 
-  <input type="password" class="form-control rounded_form_control" placeholder="Password">
-</div>
+                <form class="user_login" method="post">
+                <?=$err?>
+                <div class="form-group">
+                <input type="email" name="email" class="form-control rounded_form_control" placeholder="Email address">
+                </div>
+                <div class="form-group">
+                <input type="password" name="password" class="form-control rounded_form_control" placeholder="Password">
+                </div>
                 <div class="form-group user_blue_border">  <div class="form-check">
-  <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" value=""> <span class="span_blue"> Stay Connected</span> 
-  </label>
-                        <br>
-                        <small class="text-orange">Sign-up for news on latest deals and new boxes</small>
-</div></div>
-                  <p class="text-center">
-                       <button type="submit" class="btn btn_rounded">LOGIN</button>   
-                  </p>
-                                
-                                <p class="text-center gray_text small_p_margin_top">
-                                    <a href="user-forgot.php">Forgot password?</a>
-									
-								</p>
-                                                                <p class="text-orange text-center">
-                                                                    Don’t have an account yet?
-                                                                </p>
-                         <p class="text-center">
-                             <a href="user-create-account.php" class="btn btn_rounded">CREATE YOUR ACCOUNT
-                             </a>
-                       
-                  </p>
-							</form>
+                <label class="form-check-label">
+                <input type="checkbox" name="news" class="form-check-input" value="1"> <span class="span_blue"> Stay Connected</span> 
+                </label>
+                <br>
+                <small class="text-orange">Sign-up for news on latest deals and new boxes</small>
+                </div></div>
+                <p class="text-center">
+                <button type="submit" name="login" class="btn btn_rounded">LOGIN</button>   
+                </p>
+
+                <p class="text-center gray_text small_p_margin_top">
+                <a href="user-forgot.php">Forgot password?</a>
+
+                </p>
+                <p class="text-orange text-center">
+                Don’t have an account yet?
+                </p>
+                <p class="text-center">
+                <a href="user-create-account.php" class="btn btn_rounded">CREATE YOUR ACCOUNT
+                </a>
+
+                </p>
+                </form>
             
           </div>
            <div class="col-md-5  user_login_r">

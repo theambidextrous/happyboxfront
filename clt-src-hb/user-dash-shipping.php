@@ -2,7 +2,11 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Picture.php');
 $util = new Util();
+$user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +18,7 @@ $util = new Util();
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Create Account Pop Up</title>
+        <title>Happy Box:: Shipping</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
@@ -32,15 +36,7 @@ $util = new Util();
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
-                  <ul class="">
-                            <li><a href="">Register Your Voucher</a></li>
-                              <li><a href="">My Voucher List</a></li>
-                               <li><a href="">My Purchase History</a></li>
-                                <li><a href="">My Profile</a></li>
-                             
-                                 
-                        </ul>
-
+                    <?php include 'shared/partials/nav-mid.php'; ?>
                     </div>
 
                 </div> </div>
@@ -253,13 +249,10 @@ $util = new Util();
                           <tr class="cart_totals_actions shipping_action_strip">
                           <hr>
                               <td colspan="4" align="right">
-                                     <img src="shared/img/btn-continue-shopping.svg">
-                                  <img src="shared/img/btn-shipping-method-blue.svg"> 
+                                <a href="<?=$util->ClientHome()?>/"><img src="shared/img/btn-continue-shopping.svg"></a>
+                                <a href="<?=$util->ClientHome()?>/user-dash-order-summary.php"><img src="shared/img/btn-order-summary-blue.svg"></a> 
                               </td>
                           </tr>
-                         
-                         
-                          
                          
                       </table>
                

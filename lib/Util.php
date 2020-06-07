@@ -43,6 +43,44 @@
     function success_flash($e){
         return '<p class="alert alert-success">'.$e.'</p>';
     }
+    function is_in_cart($item){
+        foreach( $_SESSION['curr_usr_cart'] as $cartt ){
+            if($item == $cartt[0]){
+                return true;
+                exit;
+            }
+        }
+        return false;
+    }
+    function update_cart_item($item, $qty, $stock){
+        $l = $is_found = 0;
+        //$cart_item = [$item, $qty, $ship_type, $stock];
+        foreach( $_SESSION['curr_usr_cart'] as $cart ){
+            if($item == $cart[0]){
+                $is_found++;
+                unset($_SESSION['curr_usr_cart'][$l]);
+                $_SESSION['curr_usr_cart'] = array_values($_SESSION['curr_usr_cart']);
+                $ship_type = 1;
+                $new_qty = $cart[1]+$qty;
+                if($new_qty > $stock){
+                    $ship_type = 2;
+                }
+                if($new_qty > 10){
+                    $new_qty = 10;
+                }
+                $new_cart = [
+                    $item, $new_qty, $ship_type, $stock
+                ];
+                array_push($_SESSION['curr_usr_cart'], $new_cart);
+                return true;
+            }
+            if($item == $cart[0] && $is_found > 1 ){
+                unset($_SESSION['curr_usr_cart'][$l]);
+            }
+            $l++;
+        }
+        return false;
+    }
     function msg_box(){
         print '<p style="display:none;" id="succ" class="alert alert-success"></p>
         <p style="display:none;" id="err" class="alert alert-danger"></p>';
@@ -177,7 +215,7 @@
     }
     function get_v_status_name($v){
         if($v == 1){
-            return 'Not purchased';
+            return 'In stock';
         }elseif($v == 2){
             return 'Purchased';
         }elseif($v == 3){
@@ -186,6 +224,8 @@
             return 'Cancelled';
         }elseif($v == 5){
             return 'Expired';
+        }elseif($v == 6){
+            return 'Activated';
         }else{
             return 'N/A';
         }
@@ -315,6 +355,12 @@
         }
         return false;
     }
+    function is_client(){
+        if(json_decode($_SESSION['usr'])->user->is_client){
+            return true;
+        }
+        return false;
+    }
     function is_admin(){
         if(json_decode($_SESSION['usr'])->user->is_admin){
             return true;
@@ -365,6 +411,31 @@
         <div> 
       </div>';
       return $_table;
+    }
+
+    function ship_type_form($item, $type){
+        $e_box = $p_box = '';
+        if($type == 2){
+            $e_box = 'checked="checked"';
+        }elseif($type == 1){
+            $p_box = 'checked="checked"';
+        }
+        $form = '
+        <form name="frm_'.$item.'" id="frm_'.$item.'">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="ship_type'.$item.'" '.$p_box.'><b>Physical Delivery </b>
+                    <br><small>Delivered via courier to your door</small>
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="ship_type'.$item.'" '.$e_box.'><b>E-Box</b>
+                    <br><small>Delivered via email</small>
+                </label>
+            </div>
+        </form>';
+        return $form;
     }
  }
  

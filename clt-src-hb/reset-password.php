@@ -2,8 +2,11 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Picture.php');
 $util = new Util();
 $user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">

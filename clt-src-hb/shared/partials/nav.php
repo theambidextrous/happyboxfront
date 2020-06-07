@@ -1,3 +1,10 @@
+<?php 
+$login_ = '<a class="nav-link" href="'.$util->ClientHome().'/user-login.php">  <img class="top-bar-nav-icon" src="'.$util->ClientHome().'/shared/img/icons/icn-user-teal.svg"> User Login</a>';
+if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
+  $name_ = json_decode($_SESSION['usr_info'])->data->fname . ' ' .json_decode($_SESSION['usr_info'])->data->sname;
+  $login_ = '<a class="nav-link" href="#">  <img class="top-bar-nav-icon" src="'.$util->ClientHome().'/shared/img/icons/icn-user-teal.svg"> '.$name_.'</a>';
+}
+?>
 <nav class="navbar navbar-expand-lg navbar-light static-top client-partner-nav">
     <div class="container top-bar">
       <a class="navbar-brand" href="<?=$util->ClientHome()?>/">
@@ -10,14 +17,14 @@
           <div class="form_search_nav_wrap"> <span><i class="fas fa-search"></i></span> <input type="text" name="" class="form-control form_search_nav"></div>
         <ul class="navbar-nav ml-auto top-bar-nav">
           <li class="nav-item">
-              <a class="nav-link" href="<?=$util->ClientHome()?>/user-login.php">  <img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> User Login</a>
+              <?=$login_?>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-partner-blue.svg"> Partner Portal</a>
           </li>
             <li class="nav-item ">
-                <div class="nav-item-with-cart">
-                 <a class="nav-link" href="#"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-cart.svg"><span class="count">2</span></a>   
+                <div class="nav-item-with-cart" id="reset_div">
+                 <a class="nav-link" href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-cart.svg"><span class="count"><?=count($_SESSION['curr_usr_cart'])?></span></a>   
                 </div>
           </li>
         </ul>

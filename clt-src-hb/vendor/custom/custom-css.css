@@ -14,7 +14,12 @@ body{
 .h3, h3 {
     font-size: 1.65rem;
 }
-
+.stock_div{
+    padding: 1%!important;
+    background: #0185b6!important;
+    color: #fff!important;
+    border-radius: 10%!important;
+}
 .border_blue_radius {
     border: solid 1px #10ACB3;
        border-radius: 13px;
@@ -864,6 +869,11 @@ background: #E6E6E6;
     padding: 0px;
     border-radius: 13px;
     overflow: hidden;
+    height: 100%;
+}
+.partner_logo_in img{
+    top: 9%;
+    position: relative;
 }
 .gray_td{
     background: #999999;
@@ -951,6 +961,9 @@ background: #E6E6E6;
     font-size: 16px;
     text-shadow: 0px 3px 6px #00000029;
  }
+ .gastronomy_partner_logo{
+    border: solid 1px #FA683D !important;
+}
 .btn_gastronomy {
 background: #FA683D;
     color: white !important;

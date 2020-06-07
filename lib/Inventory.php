@@ -87,9 +87,38 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function get_purchasable($token, $box){
+        $endpoint = 'services/inventories/inventory/stock/' . $box;
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function get_by_partner($partner){
         $token = json_decode($_SESSION['usr'])->access_token;
         $endpoint = 'services/inventories/inventory/ptn/' . $partner;
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function get_by_cust_user($customer){
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $endpoint = 'services/inventories/inventory/cu/' . $customer;
         $util = new Util();
         $body = [];
         $curl = curl_init();
@@ -111,6 +140,20 @@
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function customer_activate($body, $v){
+        $endpoint = 'services/inventories/inventory/activate/cu/' . $v;
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);

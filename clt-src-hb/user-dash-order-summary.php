@@ -2,7 +2,11 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Picture.php');
 $util = new Util();
+$user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,15 +35,7 @@ $util = new Util();
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
-                  <ul class="">
-                            <li><a href="">Register Your Voucher</a></li>
-                              <li><a href="">My Voucher List</a></li>
-                               <li><a href="">My Purchase History</a></li>
-                                <li><a href="">My Profile</a></li>
-                             
-                                 
-                        </ul>
-
+                    <?php include 'shared/partials/nav-mid.php'; ?>
                     </div>
 
                 </div> </div>
@@ -152,9 +148,8 @@ $util = new Util();
                     </tr>
                     <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
                               <td colspan="6 ">
-                                  <img src="shared/img/btn-back-to-shipping-orange.svg">
-                                  <img src="shared/img/btn-checkout-blue.svg">
-                                      
+                                <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-back-to-shipping-orange.svg"></a>
+                                <a href="<?=$util->ClientHome()?>/user-dash-checkout.php"><img src="shared/img/btn-checkout-blue.svg"></a>
                               </td>
                           </tr>
       

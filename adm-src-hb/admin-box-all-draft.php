@@ -66,10 +66,10 @@ $box = new Box();
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-box-all.php" class="btn generate_rpt btn-block">Inactive</a>
+                        <a href="admin-box-all.php" class="btn generate_rpt btn-block">Selling</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-all-active.php" class="btn generate_rpt btn-block is_active">Active</a>
+                        <a href="admin-box-all-draft.php" class="btn generate_rpt btn-block is_active">In Drafts</a>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@ $box = new Box();
                                 <?php
                                 $all_happyboxes = json_decode($box->get($token), true)['data'];
                                 foreach($all_happyboxes as $hbox ):
-                                    if($hbox['is_active'] == '2'){
+                                    if($hbox['is_active'] == '1'){
                                     $_media = $picture->get_byitem($token, $hbox['internal_id']);
                                     $_media = json_decode($_media, true)['data'];
                                     $_3d = $pdf = 'N/A';
@@ -128,7 +128,7 @@ $box = new Box();
                                                     <a href="admin-box-edit.php?box=<?=$hbox['internal_id']?>" class="light">Modify</a>
                                                 </td>
                                                 <td class="td_b">
-                                                   <a href="admin-box-deactivate.php?box=<?=$hbox['id']?>" class="light">Deactivate</a>    
+                                                   <a href="admin-box-activate.php?box=<?=$hbox['id']?>" class="light"> activate </a>    
                                                 </td>
                                             </tr>
                                         </table>  

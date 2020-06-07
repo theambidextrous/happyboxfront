@@ -2,7 +2,11 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Picture.php');
 $util = new Util();
+$user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,15 +35,7 @@ $util = new Util();
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
-                  <ul class="">
-                            <li><a href="">Register Your Voucher</a></li>
-                              <li><a href="">My Voucher List</a></li>
-                               <li><a href="">My Purchase History</a></li>
-                                <li><a href="">My Profile</a></li>
-                             
-                                 
-                        </ul>
-
+                    <?php include 'shared/partials/nav-mid.php'; ?>
                     </div>
 
                 </div> </div>
@@ -101,9 +97,9 @@ $util = new Util();
                                       
                                   </div>
                                         <div class="col-md-8">
-                                                 <div class="payment_back ">
-                        <img src="shared/img/icn-arrow-teal.svg"> BACK TO ORDER SUMMARY
-                    </div> 
+                                                <div class="payment_back ">
+                                                <a href="<?=$util->ClientHome()?>/user-dash-order-summary.php"><img src="shared/img/icn-arrow-teal.svg"> BACK TO ORDER SUMMARY</a>
+                                                </div> 
                                       
                                       
                                   </div>

@@ -33,7 +33,7 @@ $util->ShowErrors(1);
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="text-white">CREATE YOUR HAPPYBOX ACCOUNT</h3>         
+                        <h3 class="text-white">EMAIL VERIFICATION</h3>         
                     </div>
 
                 </div> </div>
@@ -42,90 +42,25 @@ $util->ShowErrors(1);
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-9 text-center">
-                        <h5 class="">
-                            To register your HAPPYBOX voucher you will need an account. Please login or create one. </h5>
+                        <h4 class=""><?php
+                        if(!empty($_REQUEST['success'])){
+                            print ucwords(strtolower($_REQUEST['success'].'!'));
+                        }
+                        ?></h4>
 
                     </div>
 
                 </div> </div>
         </section>
 
-
-
-
         <!--end discover our selection-->
         <section class="container section_padding_top contact_content" id="reset_div">
             <div class="row justify-content-center">
                 <div class="col-md-5 user_login_l  ">
-               
-                    <div class="card user_login_card user_create_l">
-
-                        <div class="card-body text-center">
-                            <h3 class="text-center">HAPPYBOX</h3>
-                            <h4 class="text-center">An experience for everyone</h4>
-                            <div class="step_div">
-                                <p>
-                                   CHOOSE WHAT 
-                                </p>
-                                <img src="shared/img/choose_what.svg" class="w-100"/>
-                            </div>
-                             <div class="step_div">
-                                  <p>
-                                 CHOOSE WHERE
-                                </p>
-                                 <img src="shared/img/choose_where.svg" class="w-100"/>
-                            </div>
-                             <div class="step_div">
-                                 <p>
-                                     CHOOSE WHEN
-                                 </p>
-                                 <img src="shared/img/choose_where.svg" class="w-100"/>
-                            </div>
-                             <div class="step_div">
-                                 <p>
-                                     Choose HAPPYBOX
-                                 </p>
-                                 <img src="shared/img/choose_happy.svg" class="w-100"/>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
 
                 </div>
                 <div class="col-md-5  user_login_r">
                     <div class=" user_create_r">
-                        <?=$util->msg_box()?>
-                        <form class="form_register_user" name='newaccount'>
-                            <div class="form-group">
-                                <label>First Name</label>
-                                <input type="text" name="fname" class="form-control rounded_form_control" placeholder="Required Field">
-                            </div>
-                            <div class="form-group"><label>Surname</label>
-                                <input type="text" name="sname" class="form-control rounded_form_control" placeholder="Required Field">
-                            </div>
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input type="email" name="email" class="form-control rounded_form_control" placeholder="Required Field">
-                            </div>
-                            <div class="form-group">
-                                <label>Mobile</label>
-                                <input type="text" name="phone" class="form-control rounded_form_control" placeholder="Required Field">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" name="password" class="form-control rounded_form_control" placeholder="Required Field">
-                            </div>
-                            <div class="form-group">
-                                <label>Confirm password</label>
-                                <input type="password" name="c_password" class="form-control rounded_form_control" placeholder="Required Field">
-                            </div>
-                            <p class="text-right">
-                                <button onclick="new_account('newaccount')" type="button" class="btn btn_rounded">CREATE YOUR ACCOUNT</button>   
-                            </p>
-                        </form>
                     </div>
                 </div>
             </div>

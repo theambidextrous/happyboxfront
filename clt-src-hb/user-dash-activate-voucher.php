@@ -2,7 +2,19 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Inventory.php');
+require_once('../lib/Box.php');
+require_once('../lib/Picture.php');
 $util = new Util();
+$user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
+if(!$util->is_client()){
+    header('Location: user-login.php');
+}
+$inventory = new Inventory();
+$box = new Box();
+$token = json_decode($_SESSION['usr'])->access_token;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,11 +25,16 @@ $util = new Util();
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-
-        <title>Happy Box:: User Create Account Pop Up</title>
-
+        <title>Happy Box:: User Activate Voucher</title>
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
+        <style>
+            .user-register{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -35,66 +52,39 @@ $util = new Util();
         </section>
         
          <!--end user dash nav-->
-        <!-- Page Content --> 
-
-    
+        <!-- Page Content -->     
         <section class=" user_account_sub_banner">
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
-                  <ul class="">
-                            <li><a href="">Register Your Voucher</a></li>
-                              <li><a href="">My Voucher List</a></li>
-                               <li><a href="">My Purchase History</a></li>
-                                <li><a href="">My Profile</a></li>
-                             
-                                 
-                        </ul>
-
+                    <?php include 'shared/partials/nav-mid.php'; ?>
                     </div>
-
-                </div> </div>
+                </div> 
+            </div>
         </section>
-
-
-
-
         <!--end discover our selection-->
         <section class="container section_60 ">
             <div class="row justify-content-center">
                 <div class="col-md-5  text-center user_activate_l">
                       <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
-                        <p class="txt-orange">
-                            Enter your voucher code and click activate code
-                        </p>
-               
+                        <p class="txt-orange">Enter your voucher code and click activate code</p>
                     <div class="card border_blue_radius text-center user_activate_card">
-
-                        <div class="row">
-                         <div class="col-md-8">
-                            
-                                  
-                                    <input type="text" name="Fname" class="form-control rounded_form_control" placeholder="Required Field">
-                              
-                                
+                        <form name="activate_v">
+                            <?=$util->msg_box()?>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="hidden" name="customer_user_id" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>">
+                                    <input type="text" name="vcode" class="form-control rounded_form_control" placeholder="Required Field">
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" onclick="activate_voucher('activate_v')" class="btn btn_rounded btn-orange">ACTIVATE</button>   
+                                </div>
                             </div>
-                             <div class="col-md-4">
-                                  
-              <button type="submit" class="btn btn_rounded btn-orange" data-toggle="modal" data-target="#userVoucherActivate">ACTIVATE</button>   
-                            
-                                
-                            </div>
-                        </div>
-
+                        </form>
                     </div>
-
-
                 </div>
                 <div class="col-md-5">
                     <div class="user_activate_r">
-                        
-
-                                 
                                  <div class="user_activate_steps">
                                      <img src="shared/img/user_iwant.svg" class="w-100"/>
                                      <div class="border_blue_radius card_v_steps">
@@ -127,67 +117,67 @@ $util = new Util();
                                           </div>
                                      </div>
                                          </div>
-                                     
-                                     
                                  </div>
-                            
-
-
-                       
-
                     </div>
-
                 </div>
-
             </div>
-
-
-
         </section>
         <!--end add to cart cards-->
         <!--our partners -->
-
-
-
-
         <?php include 'shared/partials/partners.php'; ?>
         <?php include 'shared/partials/footer.php'; ?>
-
         <!-- Bootstrap core JavaScript -->
-
         <?php include 'shared/partials/js.php'; ?>
          <!-- pop up -->
-  <div class="modal fade" id="userVoucherActivate">
-    <div class="modal-dialog general_pop_dialogue">
-      <div class="modal-content">
-   
-                       <div class="modal-body text-center">
-                    <div class="col-md-12 text-center forgot-dialogue-borderz">
-					<h3 class="partner_blueh ">YOUR VOUCHER HAS BEEN SUCCESSFULLY ACTIVATED!</h3>
-                                        <p class="forgot_des text-center txt-orange">
-              You will receive an email confirming your voucher activation.                
-                                        </p>
-                                           <p class="forgot_des text-center txt-orange">
-              Remember to redeem your experience before DD/MM/YYYY               
-                                        </p>
-                                        <div>
-                                            <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
-                                        </div>
-                       
+        <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#userVoucherActivate"></button>
+            <div class="modal fade" id="userVoucherActivate">
+                <div class="modal-dialog general_pop_dialogue">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <div class="col-md-12 text-center forgot-dialogue-borderz">
+                                <h3 class="partner_blueh ">YOUR VOUCHER HAS BEEN SUCCESSFULLY ACTIVATED!</h3>
+                                <p class="forgot_des text-center txt-orange">
+                                You will receive an email confirming your voucher activation.                
+                                </p>
+                                <p class="forgot_des text-center txt-orange">
+                                Remember to redeem your experience before DD/MM/YYYY               
+                                </p>
+                            <div>
+                            <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
                         </div>
-      </div>
-        
-      </div>
-    </div>
-  </div>
-
+                    </div>
+                </div>
+            </div>
 <!-- end pop up -->
-        
-
-
-
-
-
     </body>
-
+    <script>  
+    $(document).ready(function(){
+      activate_voucher = function(FormId){
+      waitingDialog.show('activating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      var dataString = $("form[name=" + FormId + "]").serialize();
+      $.ajax({
+          type: 'post',
+          url: '<?=$util->AjaxHome()?>?activity=activate-clt-voucher',
+          data: dataString,
+          success: function(res){
+              console.log(res);
+              var rtn = JSON.parse(res);
+              if(rtn.hasOwnProperty("MSG")){
+                  $("#reset_div").load(window.location.href + " #reset_div" );
+                  $("#vvv").text(rtn.V);
+                  $('#popupid').trigger('click');
+                  waitingDialog.hide();
+                  return;
+              }
+              else if(rtn.hasOwnProperty("ERR")){
+                  $('#err').text(rtn.ERR);
+                  $('#err').show(rtn.ERR);
+                  waitingDialog.hide();
+                  return;
+              }
+          }
+      });
+      }
+  });  
+</script>
 </html>

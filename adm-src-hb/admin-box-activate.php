@@ -60,7 +60,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <h3>BOX ACTIVATION</h3>
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn generate_rpt" href="admin-box-all.php">Back</a>
+                        <a class="btn generate_rpt" href="admin-box-all-draft.php">Back</a>
 
                     </div>
 

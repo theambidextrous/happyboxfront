@@ -82,6 +82,7 @@ $util = new Util();
 <script>
   $(document).ready(function(){
     forgot_pwd = function(FormId){
+      waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
           type: 'post',
@@ -93,11 +94,13 @@ $util = new Util();
               if(rtn.hasOwnProperty("MSG")){
                   $("#reset_div").load(window.location.href + " #reset_div" );
                   $('#popupid').trigger('click');
+                  waitingDialog.hide();
                   return;
               }
               else if(rtn.hasOwnProperty("ERR")){
                 $('#err').text(rtn.ERR);
                 $('#err').show(rtn.ERR);
+                waitingDialog.hide();
                 return;
               }
           }

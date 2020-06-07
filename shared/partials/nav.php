@@ -16,10 +16,10 @@
             <a class="nav-link" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-partner-blue.svg"> Partner Portal</a>
           </li>
             <li class="nav-item ">
-                <div class="nav-item-with-cart">
-                 <a class="nav-link" href="#"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-cart.svg"><span class="count">2</span></a>   
-                </div>
-          </li>
+              <div class="nav-item-with-cart">
+                <a class="nav-link" href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-cart.svg"><span class="count">2</span></a>   
+              </div>
+            </li>
         </ul>
       </div>
         </div>

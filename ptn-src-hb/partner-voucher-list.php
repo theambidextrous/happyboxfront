@@ -195,7 +195,7 @@ $list = json_decode($list, true)['data'];
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
           type: 'post',
-          url: '<?=$util->AjaxHome()?>?activity=redeem-ptn-voucher',
+          url: '<?=$util->AjaxHome()?>?activity=cancel-ptn-voucher',
           data: dataString,
           success: function(res){
               // console.log(res);

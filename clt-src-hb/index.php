@@ -2,7 +2,17 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Box.php');
+require_once('../lib/Picture.php');
+require_once('../lib/Inventory.php');
 $util = new Util();
+$user = new User();
+$box = new Box();
+$picture = new Picture();
+$inventory = new Inventory();
+$util->ShowErrors(1);
+$_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
+// $util->Show($_all_boxes);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,81 +76,78 @@ $util = new Util();
       </div>
       </section>
 <!--end discover our selection-->
- <section class="container section_padding_top">
-      <div class="row">
-          <div class="col-md-6">
+      <section class="container section_padding_top">
+        <!-- start row -->
+        <div class="row">
+          <?php 
+          $_row_count = 1;
+          $_box_count = count($_all_boxes);
+          foreach( $_all_boxes as $_all_box ):
+            $_stock = json_decode($inventory->get_purchasable('', $_all_box['internal_id']))->stock;
+            $_stock_div = 'E-box only';
+            if($_stock > 0){
+              $_stock_div = 'In stock('.$_stock.')';
+            }
+            $_media = $picture->get_byitem('00', $_all_box['internal_id']);
+            $_media = json_decode($_media, true)['data'];
+            $_3d = $pdf = 'N/A';
+            foreach( $_media as $_mm ){
+                if($_mm['type'] == '2'){
+                  $_3d = $_mm['path_name'];
+                }
+                elseif($_mm['type'] == '3'){
+                  $pdf = $_mm['path_name'];
+                }
+            }
+            $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+          ?>
+            <div class="col-md-6">
              <div class="card selection_card">
-                  <div class="card-header">
-                    <img src="<?=$util->ClientHome()?>/shared/img/hb-box-03@2x.png" class="autoimg">
-                  </div>
-                  <div class="card-body selection_card_body text-center">
-                    <h4 class="box_title"><a data-toggle="modal" href="#bookletPop">Box Name One</a></h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  </div>
+                <div class="card-header">
+                  <img src="<?=$_3d?>" class="autoimg">
                 </div>
+                <div class="card-body selection_card_body text-center">
+                  <h4 class="box_title">
+                    <a href="#" onclick="booklet_show('<?=$_pop_str?>')"><?=$_all_box['name']?></a>
+                  </h4>
+                  <p><a class="stock_div"><?=$_stock_div?></a></p>
+                  <p><?=$_all_box['description']?></p>
+                </div>
+              </div>
               <div class="cart_bar text-white">
                   <div class="cart_bar_strip">
-                      <span class="pricing">
-                         KES 20 000.00
-                      </span>
-                           <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" class="width_100 add_to_cart" data-toggle="modal" data-target="#addedToCart">
-                          
-                      </div>
-                
+                    <form name="frm_<?=$_all_box['internal_id']?>">
+                      <input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
+                      <span class="pricing">KES <?=number_format($_all_box['price'], 2)?></span>
+                      <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
+                    </form>
+                  </div>
               </div>
+            </div>
+          <?php 
+          if($_row_count%2 == 0){
+            print '</div><br><hr><br><div class="row">';
+          }
+          $_row_count++;
+          endforeach;
+          ?>
           </div>
-             <div class="col-md-6">
-             <div class="card selection_card">
-                  <div class="card-header">
-                      <img src="<?=$util->ClientHome()?>/shared/img/hb-box-03@2x.png" class="autoimg">
-            
-          </div>
-                    <div class="card-body selection_card_body text-center">
-                        <h4 class="box_title"><a data-toggle="modal" href="#bookletPop">Box Name Two</a></h4>
-                        <p>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.                        
-                        </p>
-            
-          </div>
-                 
-            
-          </div>
-            <div class="cart_bar text-white">
-                  <div class="cart_bar_strip">
-                      <span class="pricing">
-                         KES 20 000.00
-                      </span>
-                     
-                           <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart">
-                          
-                      </div>
-                
-              </div>
-        
-          
-      </div>
-      </div>
+          <!-- end row -->
+        </div>
       </section>
 <!--end add to cart cards-->
 <section class=" iwant_section">
       <div class="container">
     <div class="row">
-      
              <div class="col-md-12">
-                 <img src="<?=$util->ClientHome()?>/shared/img/iwant_layer.svg" class="iwant_img">
-             
-             
-          </div>
-          
+               <img src="<?=$util->ClientHome()?>/shared/img/iwant_layer.svg" class="iwant_img">
+              </div>
       </div>
-      
         <div class="container">
       <div class="row justify-content-between iwant_card_row">
       
              <div class="col-md-3 iwant_card">
                 <div class="step_box step_color1">1</div>
-                  
-                
                  <p class="iwant_card_p"> Select a HappyBox according to your budget</p>
                  <p class="iwant_card_bar iwant_card_bar step_color1"> </p>
             
@@ -282,95 +289,83 @@ $util = new Util();
   
 <?php include 'shared/partials/js.php';?>
    <!-- pop up -->
+  <button id="popup_box" data-toggle="modal" data-target="#bookletPop" style="display:none;"></button>
   <div class="modal fade" id="bookletPop">
     <div class="modal-dialog general_pop_dialogue booklet_dialogue pop_slider">
       <div class="modal-content">
-   
-                       <div class="modal-body">
-                           <div class="row">
-                                       <div class="col-md-8 pop_slider_pad">
-				
-                       <div id="modalSlider" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-    <img class="d-block w-100" src="shared/img/modal_slide_img.jpg" alt="Second slide">
-     <div class="carousel-caption">
-      <p>Box Specific Booklet</p>
-  
-  </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-8 pop_slider_pad">
+              <div id="modalSlider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img id="box_img_" class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
+                    <div class="carousel-caption">
+                      <p><a id="bx_booklet_" target="_blank" href="#">View Box Booklet</a></p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
+                    <div class="carousel-caption">
+                      <p><a id="bx_booklet_t" target="_blank" href="#">View Box Booklet</a></p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+                <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+              </div>
+            </div>
+            <div class="col-md-4 blue_border_left pop_slider_pad">
+              <a href="" data-dismiss="modal"><img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
+              <div class="modal_parent">
+                <div class="modal_child text-center">
+                  <h6 id="box_name_"></h6><br>
+                  <a href="" class="bold_txt pink_bg btn text-white" id="box_price_"></a>
+                  <p id="box_desc_"></p>
+                <div>
+                <form name="frm_popup">
+                  <input type="hidden" value="" id="internal_id" name="internal_id">
+                  <img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end modal body -->
+      </div>
+      <!-- end modal content -->
     </div>
-    <div class="carousel-item">
-        <img class="d-block w-100" src="shared/img/modal_slide_img.jpg" alt="Second slide">
-         <div class="carousel-caption">
+    <!-- end modal dialogue-->
+  </div>
+  <!-- end modal -->
 
-   <p>Box Specific Booklet</p>
-  </div>
-    </div>
-  
-  </div>
-  <a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
-                        </div>
-                            <div class="col-md-4 blue_border_left pop_slider_pad">
-                                <a href="" data-dismiss="modal"> <img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
-                                <div class="modal_parent">
-                                            <div class="modal_child text-center">
-                                                <h6>  Box Name Three</h6>
-                                                <br>
-                                                <a href="" class="bold_txt pink_bg btn text-white">KES 20 000.00</a>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                                                <div>
-                                                     <img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg">
-                                                    
-                                                </div>
-                                            </div>
-                                </div>
-                               
-				
-                       
-                        </div>
-                           </div>
-            
-                           
-      </div>
-        
-      </div>
-    </div>
-  </div>
-  
+</div>
   <!-- end pop up -->
   <!-- added to cart pop up -->
-  <div class="modal fade" id="addedToCart">
+  <button id="popupid" data-toggle="modal" data-target="#addedToCart" style="display:none;"></button>
+    <div class="modal fade" id="addedToCart">
     <div class="modal-dialog general_pop_dialogue added_tocart_dialogue ">
-        	
-              
-      <div class="modal-content">
-   <a href="" data-dismiss="modal"> <img class="modal_close2" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a> 
-                       <div class="modal-body text-center">
-                    <div class="col-md-12 text-center">
-                        <h3>THIS BOX HAS BEEN ADDED TO YOUR CART</h3>   
-                        <div class="action_btns" >
-                            <a href="" > <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-continue-shopping.svg"></a> 
-                            <a href=""> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
-                        </div>
-                       
-                        </div>
-      </div>
-        
-      </div>
+    <div class="modal-content">
+    <a href="" data-dismiss="modal"> <img class="modal_close2" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a> 
+    <div class="modal-body text-center">
+    <div class="col-md-12 text-center">
+    <h3 id="vvv"></h3>   
+    <div class="action_btns" >
+    <a href="" data-dismiss="modal"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-continue-shopping.svg"></a> 
+    <a href="user-dash-checkout.php"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
     </div>
-  </div>
+
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
  
 <!--added to cart  end pop up -->
   <script type="text/javascript">
-
    $(document).bind('keyup', function(e) {
         if(e.which == 39){
             $('.carousel').carousel('next');
@@ -380,12 +375,49 @@ $util = new Util();
         }
     });
 
-</script>
-   
-  
- 
- 
+    $(document).ready(function(){
+      booklet_show = function(data){
+        var d = data.split('~');
+        $('#internal_id').val(d[0]);
+        $('#box_price_').text('KES ' + d[2]);
+        $('#box_name_').text(d[1]);
+        // $('#slide_title_').text(d[1]);
+        $('#box_desc_').text(d[3]);
+        // $('#box_img_').attr('src', d[4]);
+        $('#bx_booklet_').attr('href', d[5]);
+        $('#bx_booklet_t').attr('href', d[5]);
+        $('#popup_box').trigger('click');
+        // console.log(d);
+      }
 
+      add_to_cart = function(FormId){
+        waitingDialog.show('adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        var dataString = $("form[name=" + FormId + "]").serialize();
+        $.ajax({
+            type: 'post',
+            url: '<?=$util->AjaxHome()?>?activity=add-to-cart',
+            data: dataString,
+            success: function(res){
+                console.log(res);
+                var rtn = JSON.parse(res);
+                if(rtn.hasOwnProperty("MSG")){
+                    $("#reset_div").load(window.location.href + " #reset_div" );
+                    $('#vvv').text('THIS BOX HAS BEEN ADDED TO YOUR CART.');
+                    $('#popupid').trigger('click');
+                    waitingDialog.hide();
+                    return;
+                }
+                else if(rtn.hasOwnProperty("ERR")){
+                    $('#vvv').text(rtn.ERR);
+                    $('#popupid').trigger('click');
+                    waitingDialog.hide();
+                    return;
+                }
+            }
+        });
+      }
+    });
+</script>
 </body>
 
 </html>

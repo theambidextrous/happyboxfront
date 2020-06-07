@@ -65,11 +65,6 @@ $topics = json_decode($topics, true)['data'];
                                       <label>Contact Mobile Number</label>
                                       <input type="text" name="phone" class="form-control rounded_form_control" value="<?=$user_info->data->phone?>" placeholder="Required Field">
                                     </div>
-                                    <div class="form-group row">
-                                      <img src="<?=$profile_pic_?>" style="width:30px;" class="dropdown_user_img rounded-circle">
-                                      <label>Upload New Company logo(300X300)</label>
-                                      <input type="file" name="img" class="form-control rounded_form_control"/>
-                                    </div>
                                   </div>
                                   <div class="col-md-5">
                                     <div class="form-group">
@@ -89,10 +84,6 @@ $topics = json_decode($topics, true)['data'];
                                             }
                                         ?>
                                     </select>
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Contact Person's Middle Name</label>
-                                      <input type="text" name="mname" class="form-control rounded_form_control" value="<?=$user_info->data->mname?>" placeholder="Required Field">
                                     </div>
                                     <div class="form-group">
                                       <label>Email Address</label>
@@ -163,7 +154,7 @@ $topics = json_decode($topics, true)['data'];
       var dataString =  new FormData($('#' + FormId )[0]);
       $.ajax({
           type: 'post',
-          url: '<?=$util->AjaxHome()?>?activity=edit-adm-account',
+          url: '<?=$util->AjaxHome()?>?activity=edit-ptn-account',
           data: dataString,
           contentType: false,
           processData: false,

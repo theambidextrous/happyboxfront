@@ -2,7 +2,11 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Picture.php');
 $util = new Util();
+$user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,32 +183,32 @@ $util = new Util();
         <!-- Bootstrap core JavaScript -->
 
         <?php include 'shared/partials/js.php'; ?>
-        <!-- pop up -->
-       
-  <div class="modal fade" id="userCreatedModal">
-    <div class="modal-dialog general_pop_dialogue">
-      <div class="modal-content">
-   
-                       <div class="modal-body text-center">
-                    <div class="col-md-12 text-center forgot-dialogue-borderz">
-					<h3 class="partner_blueh">THANK YOU!</h3>
-                                        <p class="forgot_des text-center txt-orange">
-                   Your details have been updated.                
-                                        </p>
-                                        <div>
-                                            <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
-                                        </div>
-                       
-                        </div>
-      </div>
-        
-      </div>
-    </div>
-  </div>
-   <script>
-    $(document).ready(function(){
-        $("#userCreatedModal").modal('show');
-    });
+<!-- pop up -->
+
+<div class="modal fade" id="userCreatedModal">
+<div class="modal-dialog general_pop_dialogue">
+<div class="modal-content">
+
+<div class="modal-body text-center">
+<div class="col-md-12 text-center forgot-dialogue-borderz">
+<h3 class="partner_blueh">THANK YOU!</h3>
+<p class="forgot_des text-center txt-orange">
+Your details have been updated.                
+</p>
+<div>
+<img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+$("#userCreatedModal").modal('show');
+});
 </script>
 <!-- end pop up -->
 

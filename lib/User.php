@@ -32,6 +32,21 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function get_is_active($id){
+        $endpoint = 'users/findbyid/active/' . $id;
+        $util = new Util();
+        $token = '';
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function get_all($token, $endpoint = 'users/findall'){
         $util = new Util();
         $body = [];
@@ -82,10 +97,11 @@
     function new_customer($token = ''){
         return $this->create();
     }
-    function login($endpoint = 'users/login'){
+    function login($news = ''){
+        $endpoint = 'users/login';
         $util = new Util();
         $this->validate_login();
-        $body = ['email' => $this->email, 'password' => $this->password];
+        $body = ['email' => $this->email, 'password' => $this->password, 'news' => $news];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers());
@@ -112,6 +128,36 @@
         $res = curl_exec($curl);
         // $util->Show(curl_getinfo($curl));
         return $res;
+    }
+    function get_ptn_bytopic($topic){
+        $endpoint = 'users/partners/info/topic/' . $topic;
+        $this->is_loggedin();
+        $token = '';
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        return $res = curl_exec($curl);
+    }
+    function get_ptn_inf_all(){
+        $endpoint = 'users/partners/info/all';
+        $this->is_loggedin();
+        $token = '';
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        return $res = curl_exec($curl);
     }
     function get_details_byidf($idf, $endpoint = 'users/info/byidf/'){
         // $this->is_loggedin();
@@ -214,6 +260,19 @@
         }
         session_destroy();
         $util->redirect_to($util->AdminHome(), 1);
+    }
+    function verify_email_link($token, $endpoint = 'users/email/resend'){
+        $util = new Util();
+        $body = [ 'email' => $this->email ];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
     }
     function pwd_reset_link($endpoint = 'users/forgotpassword'){
         $util = new Util();
