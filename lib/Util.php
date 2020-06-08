@@ -58,8 +58,8 @@
         foreach( $_SESSION['curr_usr_cart'] as $cart ){
             if($item == $cart[0]){
                 $is_found++;
-                unset($_SESSION['curr_usr_cart'][$l]);
-                $_SESSION['curr_usr_cart'] = array_values($_SESSION['curr_usr_cart']);
+                // unset($_SESSION['curr_usr_cart'][$l]);
+                // $_SESSION['curr_usr_cart'] = array_values($_SESSION['curr_usr_cart']);
                 $ship_type = 1;
                 $new_qty = $cart[1]+$qty;
                 if($new_qty > $stock){
@@ -71,7 +71,8 @@
                 $new_cart = [
                     $item, $new_qty, $ship_type, $stock
                 ];
-                array_push($_SESSION['curr_usr_cart'], $new_cart);
+                $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                // array_push($_SESSION['curr_usr_cart'], $new_cart);
                 return true;
             }
             if($item == $cart[0] && $is_found > 1 ){
@@ -81,6 +82,35 @@
         }
         return false;
     }
+
+    function change_cart_item_qty($item, $qty, $stock){
+        $l = $is_found = 0;
+        //$cart_item = [$item, $qty, $ship_type, $stock];
+        foreach( $_SESSION['curr_usr_cart'] as $cart ){
+            if($item == $cart[0]){
+                $is_found++;
+                $ship_type = 1;
+                $new_qty = $qty;
+                if($new_qty > $stock){
+                    $ship_type = 2;
+                }
+                if($new_qty > 10){
+                    $new_qty = 10;
+                }
+                $new_cart = [
+                    $item, $new_qty, $ship_type, $stock
+                ];
+                $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                return true;
+            }
+            if($item == $cart[0] && $is_found > 1 ){
+                unset($_SESSION['curr_usr_cart'][$l]);
+            }
+            $l++;
+        }
+        return false;
+    }
+
     function msg_box(){
         print '<p style="display:none;" id="succ" class="alert alert-success"></p>
         <p style="display:none;" id="err" class="alert alert-danger"></p>';

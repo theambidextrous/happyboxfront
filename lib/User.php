@@ -131,7 +131,7 @@
     }
     function get_ptn_bytopic($topic){
         $endpoint = 'users/partners/info/topic/' . $topic;
-        $this->is_loggedin();
+        // $this->is_loggedin();
         $token = '';
         $util = new Util();
         $body = [];
@@ -146,7 +146,7 @@
     }
     function get_ptn_inf_all(){
         $endpoint = 'users/partners/info/all';
-        $this->is_loggedin();
+        // $this->is_loggedin();
         $token = '';
         $util = new Util();
         $body = [];

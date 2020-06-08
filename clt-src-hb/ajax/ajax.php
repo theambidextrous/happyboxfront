@@ -27,7 +27,14 @@ switch($_REQUEST['activity']){
                 $_SESSION['curr_usr_cart'] = [$cart_item];
             }else{
                 if($util->is_in_cart($item)){
-                    $util->update_cart_item($item, $qty, $stock);
+                    if($_POST['change_qty'] == '1'){
+                        if(intval($_POST['qty']) < 1){
+                            exit(json_encode(['ERR' => 'Invalid qty']));
+                        }
+                        $util->change_cart_item_qty($item, $_POST['qty'], $stock);
+                    }else{
+                        $util->update_cart_item($item, $qty, $stock);
+                    }
                 }else{
                     array_push($_SESSION['curr_usr_cart'], $cart_item);
                 }
