@@ -116,7 +116,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                         if(is_uploaded_file($_FILES['3dimg']['tmp_name'])) {
                                            /** new image is set update gallery */
                                             $_data = [$_POST['3d_id'], '3dimg'];
-                                            $pc_3d_resp = $_picture->update($token, $_data);
+                                            $pc_3d_resp = '';
+                                             if(empty($_POST['3d_id'])){
+                                                $pi = new Picture($_SESSION['frm']['id'], '3dimg',2);
+                                                $pc_3d_resp = $pi->create($token);
+                                             }else{
+                                                $pc_3d_resp = $_picture->update($token, $_data);
+                                             }
                                             if(json_decode($pc_3d_resp)->status != '0'){
                                                 throw new Exception('3D image could not be uploaded!');
                                             }
@@ -124,7 +130,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                         if(is_uploaded_file($_FILES['pdfbooklet']['tmp_name'])) {
                                             /** new pdf is set update gallery */
                                              $_data = [$_POST['pdf_id'], 'pdfbooklet'];
-                                             $pc_pdf_resp = $_picture->update($token, $_data);
+                                             $pc_pdf_resp = '';
+                                             if(empty($_POST['pdf_id'])){
+                                                $pi = new Picture($_SESSION['frm']['id'], 'pdfbooklet',3);
+                                                $pc_pdf_resp = $pi->create($token);
+                                             }else{
+                                                $pc_pdf_resp = $_picture->update($token, $_data);
+                                             }
                                              if(json_decode($pc_pdf_resp)->status != '0'){
                                                  throw new Exception('PDF booklet could not be uploaded!');
                                              }
