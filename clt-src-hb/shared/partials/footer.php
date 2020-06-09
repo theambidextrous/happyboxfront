@@ -33,9 +33,9 @@
      <div class="col-md-12 paymentmethods">
          <span>Payment Methods</span>
 		<ul>
-            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.JPG"></a></li>
-            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.JPG"></a></li>
-            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.JPG"></a></li>
+            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.jpg"></a></li>
+            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.jpg"></a></li>
+            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.jpg"></a></li>
 		</ul>
      </div>
         </div>		

@@ -354,7 +354,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
     <h3 id="vvv"></h3>   
     <div class="action_btns" >
     <a href="" data-dismiss="modal"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-continue-shopping.svg"></a> 
-    <a href="user-dash-checkout.php"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
+    <a href="user-dash-shoppingcart.php"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
     </div>
 
     </div>

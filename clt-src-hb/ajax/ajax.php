@@ -12,6 +12,33 @@ switch($_REQUEST['activity']){
     default:
         exit(json_encode(['ERR' => 'Mission Failed!']));
     break;
+    case 'change-cart-box-type':
+        try{
+            $i = new Inventory();
+            $bx = explode('__', $_POST['internal_id']);
+            $type = $bx[0];
+            $item = $bx[1];
+            $stock = json_decode($i->get_purchasable('', $item))->stock;
+            if($type == 'pbx'){
+                $ship_type = 1;//p-box
+            }elseif($type == 'ebx'){
+                $ship_type = 2;//e-box
+            }
+            $util->change_cart_box_type($item, $ship_type, $stock);
+            exit(json_encode(['MSG' => 'updated successfully!']));
+        }catch( Exception $e ){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+    break;
+    case 'remove-from-cart':
+        try{
+            $item = $_POST['internal_id'];
+            $util->remove_from_cart($item);
+            exit(json_encode(['MSG' => 'removed successfully!']));
+        }catch( Exception $e ){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+    break;
     case 'add-to-cart':
         try{
             $i = new Inventory();
@@ -72,7 +99,6 @@ switch($_REQUEST['activity']){
                 $created_user_id = json_decode($u_resp)->data->id;
                 $token = json_decode($u_resp)->data->token;
                 $reset_resp = $u->verify_email_link($token);
-                print $reset_resp;
                 if(json_decode($reset_resp)->status == '0'){
                     $body = [
                         'fname' => $_POST['fname'],

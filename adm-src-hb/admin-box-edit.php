@@ -165,7 +165,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                 <div class="col-md-12">
                                     <label for="BoxType" class="col-form-label">List of partners</label>
                                     <select class="form-control select2" multiple name="partners[]" id="">
-                                        <option value="nn">Select box partners</option>
+                                        <!-- <option value="nn">Select box partners</option> -->
                                         <?php 
                                             $_partners_list = json_decode($user->get_all_partner($token), true)['data'];
                                             foreach( $_partners_list as $ptn ){

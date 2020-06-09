@@ -3,10 +3,20 @@ session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
 require_once('../lib/Picture.php');
+require_once('../lib/Order.php');
 $util = new Util();
 $user = new User();
 $picture = new Picture();
 $util->ShowErrors(1);
+if(!isset(json_decode($_SESSION['usr'])->access_token)){
+    $_SESSION['next'] = 'user-dash-checkout.php';
+    header("Location: user-login.php");
+}
+if(empty($_SESSION['unpaid_order'])){
+    header("Location: user-dash-shipping.php");
+}
+$token = json_decode($_SESSION['usr'])->access_token;
+$order = new Order($token);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +59,7 @@ $util->ShowErrors(1);
         <section class="container section_padding_top  ">
             <div class="row">
                 <div class="col-md-12">
-                     <h3 class="user_blue_title" >ORDER SUMMARY</h3>
+                     <h3 class="user_blue_title" >ORDER PAYMENT</h3>
                 </div>
                  
             </div>
@@ -67,8 +77,15 @@ $util->ShowErrors(1);
                 <div class="col-md-7 text-center">
                      
                       <div class="card border_card_checkout">
-                          
-                          Choose your preferred payment method to continue
+                          <?php
+                            $order_data = json_decode($order->get_one_byorder_limited($_SESSION['unpaid_order']), true)['data'];
+                            // $util->Show($order_data);
+                          ?>
+                         <b> UNPAID ORDER: <?=$_SESSION['unpaid_order']?></b> <br>
+                         <b> SUB-TOTAL: <?=number_format($order_data['subtotal'], 2)?></b> <br>
+                         <b> SHIPPING: KES<?=number_format($order_data['shipping_cost'], 2)?></b> <br>
+                         <b> TOTAL: KES <?=number_format(($order_data['shipping_cost']+$order_data['subtotal']), 2)?></b> <br>
+                         Choose your preferred payment method to continue
                       </div>                              
               </div>
                

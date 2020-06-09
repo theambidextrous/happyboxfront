@@ -243,7 +243,7 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function is_loggedin($endpoint = 'users/loginstatus'){
+    function is_loggedin($endpoint = 'users/loginstatus', $ty = 0){
         $token = json_decode($_SESSION['usr'])->access_token;
         $util = new Util();
         $body = [];
@@ -259,6 +259,9 @@
             return true;
         }
         session_destroy();
+        if( $ty > 0){
+            $util->redirect_to($util->ClientHome(), 1);
+        }
         $util->redirect_to($util->AdminHome(), 1);
     }
     function verify_email_link($token, $endpoint = 'users/email/resend'){

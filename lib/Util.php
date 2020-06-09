@@ -37,11 +37,65 @@
     function AppUploads(){
         return $this->LoadEnv()->APP_UPLOADS;
     }
+    /** maps */
+    function MapsUrl(){
+        return $this->LoadEnv()->APP_MAPS_URL_LOCATION;
+    }
+    function MapsKey(){
+        return $this->LoadEnv()->APP_MAPS_KEY;
+    }
+    /** end maps */
+    /** sendy */
+    function SendyKey(){
+        return $this->LoadEnv()->APP_SENDY_KEY;
+    }
+    function SendyUser(){
+        return $this->LoadEnv()->APP_SENDY_USER;
+    }
+    function SendyUrl(){
+        return $this->LoadEnv()->APP_SENDY_URL;
+    }
+    /** end sendy */
+    function contact_data(){
+        return explode(',', $this->LoadEnv()->APP_CONTACT_INFO);
+    }
+    function warehouse(){
+        return $this->LoadEnv()->APP_CONTACT_ADDRESS;
+    }
     function error_flash($e){
         return '<p class="alert alert-danger">'.$e.'</p>';
     }
     function success_flash($e){
         return '<p class="alert alert-success">'.$e.'</p>';
+    }
+    function place_autocomplete($id){
+        print '
+        <script src="https://maps.googleapis.com/maps/api/js?key='.$this->MapsKey().'&libraries=places&sensor=false&callback=initialize" async defer></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+        <script>
+        $(document).ready(function () {
+            try{
+                google.maps.event.addDomListener(window, \'load\', initialize);
+            } catch (error) {
+                console.log(error.message);
+            }
+        });
+        function initialize() {
+            var input = document.getElementById(\''.$id.'\');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+        </script>';
+    }
+    function remove_from_cart($item){
+        $l=0;
+        foreach( $_SESSION['curr_usr_cart'] as $cart ){
+            if($item = $cart[0]){
+                unset($_SESSION['curr_usr_cart'][$l]);
+                return;
+            }
+            $l++;
+        }
+        return false;
     }
     function is_in_cart($item){
         foreach( $_SESSION['curr_usr_cart'] as $cartt ){
@@ -52,8 +106,30 @@
         }
         return false;
     }
+    function change_cart_box_type($item, $ship_type, $stock){
+        $l = 0;
+        //$cart_item = [$item, $qty, $ship_type, $stock];
+        $this->unique_cart();
+        foreach( $_SESSION['curr_usr_cart'] as $cart ){
+            if($item == $cart[0]){
+                $current_qty = $cart[1];
+                if($current_qty > $stock && $ship_type == '1'){
+                    $new_cart = [ $item, $current_qty, 2, $stock ];
+                    $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                    exit(json_encode(['ERR' => 'No enough boxes to service your order']));
+                }else{
+                    $new_cart = [ $item, $current_qty, $ship_type, $stock ];
+                    $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                    return true;
+                }
+            }
+            $l++;
+        }
+        return false;
+    }
     function update_cart_item($item, $qty, $stock){
         $l = $is_found = 0;
+        $this->unique_cart();
         //$cart_item = [$item, $qty, $ship_type, $stock];
         foreach( $_SESSION['curr_usr_cart'] as $cart ){
             if($item == $cart[0]){
@@ -88,7 +164,6 @@
         //$cart_item = [$item, $qty, $ship_type, $stock];
         foreach( $_SESSION['curr_usr_cart'] as $cart ){
             if($item == $cart[0]){
-                $is_found++;
                 $ship_type = 1;
                 $new_qty = $qty;
                 if($new_qty > $stock){
@@ -101,16 +176,32 @@
                     $item, $new_qty, $ship_type, $stock
                 ];
                 $_SESSION['curr_usr_cart'][$l] = $new_cart;
-                return true;
+                // return true;
+                $is_found++;
             }
             if($item == $cart[0] && $is_found > 1 ){
                 unset($_SESSION['curr_usr_cart'][$l]);
             }
             $l++;
         }
+        $this->unique_cart();
         return false;
     }
-
+    function unique_cart(){
+        foreach( $_SESSION['curr_usr_cart'] as $cart ){
+            $_items[] = $cart[0];
+        }
+        $items_unq = array_unique($_items);
+        
+        $loop = 0;
+        foreach( $items_unq as $unq ){
+            if(in_array($unq, $_SESSION['curr_usr_cart'][$loop])){
+                $_final_cart[] =  $_SESSION['curr_usr_cart'][$loop];
+            }
+            $loop++;
+        }
+        return $_SESSION['curr_usr_cart'] = $_final_cart;
+    }
     function msg_box(){
         print '<p style="display:none;" id="succ" class="alert alert-success"></p>
         <p style="display:none;" id="err" class="alert alert-danger"></p>';
@@ -450,17 +541,19 @@
         }elseif($type == 1){
             $p_box = 'checked="checked"';
         }
+        $p_box_id = "'pbx__". $item . "'";
+        $e_box_id = "'ebx__". $item . "'";
         $form = '
         <form name="frm_'.$item.'" id="frm_'.$item.'">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="ship_type'.$item.'" '.$p_box.'><b>Physical Delivery </b>
+                    <input type="radio" value="pbox__'.$item.'" onclick="change_ship_type('.$p_box_id.')" class="form-check-input" id="pbx__'.$item.'" name="'.$item.'" '.$p_box.'><b>Physical Delivery </b>
                     <br><small>Delivered via courier to your door</small>
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="ship_type'.$item.'" '.$e_box.'><b>E-Box</b>
+                    <input type="radio" value="ebox__'.$item.'" onclick="change_ship_type('.$e_box_id.')" class="form-check-input" id="ebx__'.$item.'" name="'.$item.'" '.$e_box.'><b>E-Box</b>
                     <br><small>Delivered via email</small>
                 </label>
             </div>

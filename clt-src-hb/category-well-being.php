@@ -248,7 +248,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
     <h3 id="vvv"></h3>   
     <div class="action_btns" >
     <a href="" data-dismiss="modal"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-continue-shopping.svg"></a> 
-    <a href="user-dash-checkout.php"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
+    <a href="user-dash-shoppingcart.php"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
     </div>
 
     </div>

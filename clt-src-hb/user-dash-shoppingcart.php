@@ -59,6 +59,7 @@ $util->ShowErrors(1);
                             // unset($_SESSION['curr_usr_cart']);
                             if(!empty($_SESSION['curr_usr_cart'])){
                                 foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
+                                    if(!isset($_cart_item['order_id'])){
                                     $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
                                     $_b_cost = floor($_cart_item[1]*$_box_data->price);
                                     $_total_cart[] = $_b_cost;
@@ -75,7 +76,8 @@ $util->ShowErrors(1);
                             <td class="cart_des">
                                 <h6><?=$_box_data->name?></h6>
                                 <span><?=$_box_data->description?></span><br>
-                                <b>KES <?=number_format($_box_data->price, 2)?></b>
+                                <b>KES <?=number_format($_box_data->price, 2)?></b><br>
+                                <span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span>
                             </td>
                             <td>
                                 <?=$util->ship_type_form($_cart_item[0], $_cart_item[2])?>
@@ -98,7 +100,7 @@ $util->ShowErrors(1);
                                 <b>KES <?=number_format($_b_cost,2)?></b>
                             </td>
                             <td>
-                                <i class="fas fa-trash-alt del_icon"></i>
+                                <i onclick="remove_from_cart('<?=$_cart_item[0]?>')" class="fas fa-trash-alt del_icon"></i>
                             </td>
                         </tr>
                         <tr >
@@ -107,6 +109,7 @@ $util->ShowErrors(1);
                             </td>
                         </tr>
                         <?php 
+                                    }
                             endforeach;
                         }else{
                             print '
@@ -203,7 +206,7 @@ $util->ShowErrors(1);
             url: '<?=$util->AjaxHome()?>?activity=add-to-cart',
             data: dataString,
             success: function(res){
-                console.log(res);
+                // console.log(res);
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
                     // $("#reset_div_" + box ).load(location.href+"  #reset_div"+ box +">*","");
@@ -252,6 +255,66 @@ $util->ShowErrors(1);
             e.preventDefault();
         }
     });
+
+    remove_from_cart = function(box){
+        waitingDialog.show('removing item... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        var dataString = "internal_id=" + box;
+        $.ajax({
+            type: 'post',
+            url: '<?=$util->AjaxHome()?>?activity=remove-from-cart',
+            data: dataString,
+            success: function(res){
+                // console.log(res);
+                var rtn = JSON.parse(res);
+                if(rtn.hasOwnProperty("MSG")){
+                    $("#yourDiv").load(" #yourDiv > *");
+                    setTimeout(function(){
+                        location.reload();
+                    }, 3000);
+                    return;
+                }
+                else if(rtn.hasOwnProperty("ERR")){
+                    $('#vvv_' + box ).text(rtn.ERR);
+                    $('#vvv_' + box ).show();
+                    waitingDialog.hide();
+                    return;
+                }
+            }
+        });
+    }
+
+    change_ship_type = function(id, uncheck=0){
+        console.log(($('#'+id).val()));
+        waitingDialog.show('changing box type... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        var dataString = "internal_id=" + id;
+        $.ajax({
+            type: 'post',
+            url: '<?=$util->AjaxHome()?>?activity=change-cart-box-type',
+            data: dataString,
+            success: function(res){
+                console.log(res);
+                var rtn = JSON.parse(res);
+                if(rtn.hasOwnProperty("MSG")){
+                    $("#yourDiv").load(" #yourDiv > *");
+                    setTimeout(function(){
+                        location.reload();
+                    }, 3000);
+                    return;
+                }
+                else if(rtn.hasOwnProperty("ERR")){
+                    box = id.split('__')[1];
+                    $('#vvv_' + box ).text(rtn.ERR);
+                    $('#vvv_' + box ).show();
+                    $("#yourDiv").load(" #yourDiv > *");
+                    setTimeout(function(){
+                        location.reload();
+                    }, 1500);
+                    waitingDialog.hide();
+                    return;
+                }
+            }
+        });
+    }
 
    });
 </script>

@@ -64,7 +64,9 @@
                         <li><a class="t-booking" href="partner-make-booking.php">Take A Booking</a></li>
                         <li><a class="t-voucher" href="partner-voucher-list.php">My Voucher List</a></li>
                         <li><a class="t-experience" href="partner-experience.php">My Experience List</a></li>
-                     
+                        <?php if(json_decode($_SESSION['usr'])->user->id){?>
+                            <li><a class="user-profmile" href="exit.php">Logout</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
 
