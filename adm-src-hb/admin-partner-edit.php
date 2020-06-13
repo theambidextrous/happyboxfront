@@ -263,10 +263,10 @@ $prices = json_decode($prices, true)['data'];
                                             <!-- <option value="nn">Select a topic</option> -->
                                             <?php
                                                 foreach( $prices as $_price ){
-                                                    if($_price['internal_id'] == $sk){
-                                                        print '<option selected value="'.$_price['internal_id'].'">'.$_price['name'].'</option>';
+                                                    if($_price['name'] == $sk){
+                                                        print '<option selected value="'.$_price['name'].'">'.$_price['name'].'</option>';
                                                     }else{
-                                                        print '<option value="'.$_price['internal_id'].'">'.$_price['name'].'</option>';
+                                                        print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
                                                     }
                                                 }
                                             ?>
@@ -287,7 +287,7 @@ $prices = json_decode($prices, true)['data'];
                                             <!-- <option value="nn">Select a topic</option> -->
                                             <?php
                                                 foreach( $prices as $_price ){
-                                                     print '<option value="'.$_price['internal_id'].'">'.$_price['name'].'</option>';
+                                                     print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
                                                 }
                                             ?>
                                         </select>
