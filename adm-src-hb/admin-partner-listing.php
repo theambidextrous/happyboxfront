@@ -2,8 +2,10 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Picture.php');
 $util = new Util();
 $user = new User();
+$picture = new Picture();
 $util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
@@ -38,9 +40,6 @@ $partner_list = json_decode($partner_list, true)['data'];
 
         <!-- Navigation -->
         <?php include 'admin-partials/nav.php'; ?>
-
-
-
         <section class="container section_padding_top top_menu">
             <div class="row">
                 <div class="col-md-12 ">
@@ -91,9 +90,16 @@ $partner_list = json_decode($partner_list, true)['data'];
                           $p_d = json_decode($partner_details, true)['data'];
                           if(!empty($p_d)){
                             $img  = $util->AppUploads() . 'profiles/default.jpg';
-                            if($p_d['picture'] != 'default.jpg'){
-                              $img  = $p_d['picture'];
+                            $_media = $picture->get_byitem($token, $p_d['internal_id']);
+                            $_media = json_decode($_media, true)['data'];
+                            foreach( $_media as $_mm ){
+                                if($_mm['type'] == '2'){
+                                   $img = $_mm['path_name'];
+                                }
                             }
+                            // if($p_d['picture'] != 'default.jpg'){
+                            //   $img  = $p_d['picture'];
+                            // }
                         ?>
                         <tr>
                           <td class="td1"><img src="<?=$img?>" class="dropdown_user_img rounded-circle"/></td>

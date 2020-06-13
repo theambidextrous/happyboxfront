@@ -5,16 +5,21 @@ require_once('../lib/User.php');
 require_once('../lib/Topic.php');
 require_once('../lib/Box.php');
 require_once('../lib/Picture.php');
+require_once('../lib/Price.php');
 require_once('../lib/BoxExperience.php');
 $util = new Util();
 $user = new User();
 $topic = new Topic();
+$price = new Price();
 $picture = new picture();
 $box = new Box();
 $boxExperience = new BoxExperience();
 $util->ShowErrors();
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
+$prices = $price->get($token);
+$prices = json_decode($prices, true)['data'];
+$_partners_list = json_decode($user->get_all_partner($token), true)['data'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +87,9 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             $_SESSION['frm'] = json_decode(
                                 $box->get_byidf($token, $_REQUEST['box']), true
                             )['data'];
+                            $_partners_range_service = json_decode($_SESSION['frm']['partners'], true);
+                            // $util->Show($_partners_range_service);
+                            $__ranges = $__partners = $__services = [];
                             /** media */
                             $_media = $picture->get_byitem($token, $_REQUEST['box']);
                             $_media = json_decode($_media, true)['data'];
@@ -95,23 +103,36 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             // $util->Show($img_3d);
                             if( isset($_POST['update'])){
                                 try{
+                                    if(count($_POST['service']) < 1){
+                                        throw new Exception('You must select at least one experience');
+                                    }
+                                    foreach( $_POST['partner'] as $_e ){
+                                        if($_e == 'nn'){
+                                            throw new Exception('Empty partner field detected. You select a partner or remove the entire row');
+                                        }
+                                    }
                                     foreach( $_POST['topics'] as $_t ){
                                         if($_t != 'nn'){
                                          $_tp[] = $_t;
                                         }
                                      }
-                                    foreach( $_POST['partners'] as $_e ){
-                                       if($_e != 'nn'){
-                                        $_partners_[] = $_e;
-                                       }
-                                    }
+                                    /** last post */
+                                    $__ranges = $_POST['range'];
+                                    $__partners = $_POST['partner'];
+                                    $__services = $_POST['service'];
+                                    /** format */
+                                    $_c_count=0;
+                                    foreach( $_POST['partner'] as $_p):
+                                        $partner_services[] = $_p . '~~~' . $_POST['range'][$_c_count] . '~~~' . $_POST['service'][$_c_count];
+                                        $_c_count++;
+                                    endforeach;
                                     $_POST['topics'] = implode(',', $_tp);
-                                    $_POST['partners'] = implode(',', $_partners_);
                                     $b = new Box(
-                                        $_POST['name'], $_POST['price'], $_POST['description'], $_POST['topics'],$_POST['partners'],'00'
+                                        $_POST['name'], $_POST['price'], $_POST['description'], $_POST['topics'],json_encode($partner_services),'00'
                                     );
                                     $resp = $b->update($token, $_SESSION['frm']['id']);
                                     if(json_decode($resp)->status == '0'){
+                                        $_partners_range_service = $partner_services;
                                         $_picture = new Picture();
                                         if(is_uploaded_file($_FILES['3dimg']['tmp_name'])) {
                                            /** new image is set update gallery */
@@ -161,27 +182,98 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     <input type="number" placeholder="Box price" name="price" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm']['price']?>"/>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <label for="BoxType" class="col-form-label">List of partners</label>
-                                    <select class="form-control select2" multiple name="partners[]" id="">
-                                        <!-- <option value="nn">Select box partners</option> -->
-                                        <?php 
-                                            $_partners_list = json_decode($user->get_all_partner($token), true)['data'];
-                                            foreach( $_partners_list as $ptn ){
-                                                $_d = $user->get_details($ptn['id']);
-                                                $partner_name = json_decode($_d)->data->business_name;
-                                                $internal_id = json_decode($_d)->data->internal_id;
-                                                if(in_array($internal_id, explode(',',$_SESSION['frm']['partners']))){
-                                                    print '<option selected value="'.$internal_id.'">'.$partner_name.'</option>';
-                                                }else{
-                                                    print '<option value="'.$internal_id.'">'.$partner_name.'</option>';
+                            <div id="exprs">
+                                <label for="BoxType" class="col-form-label">List of partners</label>
+                                <?php if(!empty($_partners_range_service)){ $_loop=0; foreach( $_partners_range_service as $part_ ): 
+                                    $part__array = explode('~~~', $part_);
+                                    $_part_id = $part__array[0];
+                                    $_part_range = $part__array[1];
+                                    $_part_service = $part__array[2];
+                                    ?>
+                                <div class="form-group row clonables" id="clonables__<?=$_loop?>">
+                                    <div class="col-md-4">
+                                        <label class="label"><small><i>Select partner</i></small></label>
+                                        <select id="partners__<?=$_loop?>" onchange="serviceSearch('partners__<?=$_loop?>')" class="partner form-control rounded_form_control" name="partner[]">
+                                            <option value="nn">Select a partner</option>
+                                            <?php 
+                                                foreach( $_partners_list as $ptn ){
+                                                    $_d = $user->get_details($ptn['id']);
+                                                    $partner_name = json_decode($_d)->data->business_name;
+                                                    $internal_id = json_decode($_d)->data->internal_id;
+                                                    if($partner_name){
+                                                        if( $_part_id == $internal_id){
+                                                            print '<option selected value="'.$internal_id.'">'.$partner_name.'</option>';
+                                                        }else{
+                                                           print '<option value="'.$internal_id.'">'.$partner_name.'</option>';
+                                                       }
+                                                    }
                                                 }
-                                            }
-                                        ?>
-                                    </select>
-                                    <!-- <span><small class="text-muted">Not what you want?</small> <a href="admin-topic-new.php"class=""> create new topic</a></span> -->
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label"><small><i>Select price range</i></small></label>
+                                        <select id="range__<?=$_loop?>" onchange="serviceSearch('range__<?=$_loop?>')" name="range[]" class="form-control rounded_form_control">
+                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <?php
+                                                foreach( $prices as $_price ){
+                                                    if($_price['name'] == $_part_range ){
+                                                        print '<option selected value="'.$_price['name'].'">'.$_price['name'].'</option>';
+                                                    }else{
+                                                        print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>'; 
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label"><small><i>Select experience</i></small></label>
+                                        <select id="service__<?=$_loop?>" onchange="serviceSearch('service__<?=$_loop?>')" name="service[]" class="form-control rounded_form_control">
+                                            <option value="<?=$_part_service?>"><?=$_part_service?></option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="clone btn btn-link btn-admin-link"><i class="fas fa-plus"></i> Add another</button> 
+                                    <button type="button" class="remove btn btn-link btn-admin-link"><i class="fas fa-trash"></i>  Remove this</button>
                                 </div>
+                                <?php $_loop++; endforeach;}else{?>
+                                <div class="form-group row clonables" id="clonables__0">
+                                    <div class="col-md-4">
+                                        <label class="label"><small><i>Select partner</i></small></label>
+                                        <select id="partners__0" onchange="serviceSearch('partners__0')" class="partner form-control rounded_form_control" name="partner[]">
+                                            <option value="nn">Select a partner</option>
+                                            <?php 
+                                                foreach( $_partners_list as $ptn ){
+                                                    $_d = $user->get_details($ptn['id']);
+                                                    $partner_name = json_decode($_d)->data->business_name;
+                                                    $internal_id = json_decode($_d)->data->internal_id;
+                                                    if($partner_name){
+                                                        print '<option value="'.$internal_id.'">'.$partner_name.'</option>';
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label"><small><i>Select price range</i></small></label>
+                                        <select id="range__0" onchange="serviceSearch('range__0')" name="range[]" class="form-control rounded_form_control">
+                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <?php
+                                                foreach( $prices as $_price ){
+                                                     print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label"><small><i>Select experience</i></small></label>
+                                        <select id="service__0" onchange="serviceSearch('service__0')" name="service[]" class="form-control rounded_form_control">
+                                            <!-- <option value="nn">Select a topic</option> -->
+                                        </select>
+                                    </div>
+                                    <button type="button" class="clone btn btn-link btn-admin-link"><i class="fas fa-plus"></i> Add another</button> 
+                                    <button type="button" class="remove btn btn-link btn-admin-link"><i class="fas fa-trash"></i>  Remove this</button>
+                                </div>
+                                <?php } ?>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
@@ -242,12 +334,132 @@ $token = json_decode($_SESSION['usr'])->access_token;
 
         <!-- Bootstrap core JavaScript -->
 
-        <?php include 'admin-partials/js.php'; ?>
+    <?php include 'admin-partials/js.php'; ?>
+    <script>  
+        $(document).ready(function(){
+            var regex = /^(.+?)(\d+)$/i;
+            var cloneIndex = $(".clonables").length;
+            function clone(){
+                $(this).parents(".clonables").clone()
+                    .appendTo("#exprs")
+                    .attr("id", "clonables__" +  cloneIndex)
+                    // .find("*")
+                    .each(function() {
+                        // set select IDs
+                        $(this).find("select:eq(0)").attr("id", "partners__" + cloneIndex);
+                        $(this).find("select:eq(1)").attr("id", "range__" + cloneIndex);
+                        $(this).find("select:eq(2)").attr("id", "service__" + cloneIndex);
+                        //set onchange func to 
+                        $(this).find("select:eq(0)").attr("onchange", "serviceSearch('partners__" + cloneIndex + "')");
+                        $(this).find("select:eq(1)").attr("onchange", "serviceSearch('range__" + cloneIndex + "')");
+                        //onchange="serviceSearch()"
+                    })
+                    .on('click', 'button.clone', clone)
+                    .on('click', 'button.remove', remove);
+                cloneIndex++;
+            }
+            function remove(){
+                children = $(".clonables").length;
+                console.log("it has " + children);
+                if( children > 1 ){
+                    $(this).parents(".clonables").remove();
+                }else{
+
+                }
+            }
+            $("button.clone").on("click", clone);
+            $("button.remove").on("click", remove);
 
 
+            // change
+            serviceSearch = function(selected) {
+                item_arr = selected.split("__");
+                item = item_arr[0];
+                index = item_arr[1];
+                //switch case
+                switch(item){
+                    case 'partners': //user changed partner select, get its value 
+                        p = $("#" + selected).val();
+                        r = $('#range__' + index).val();
+                        if( p == 'nn'){
+                            return;
+                        }
+                        // use p & r to get services
+                        waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+                        dataString = "p=" + p + "&r=" + r;
+                        $.ajax({
+                            type: 'post',
+                            url: '<?=$util->AjaxHome()?>?activity=get-partner-services',
+                            data: dataString,
+                            success: function(res){
+                                // console.log(res);
+                                var rtn = JSON.parse(res);
+                                if(rtn.hasOwnProperty("MSG")){
+                                    console.log(rtn.data);
+                                    s = "service__" + index;
+                                    $('#' + s).empty();
+                                    $.each(rtn.data, function (i, item) {
+                                        $('#' + s).append($('<option>', { 
+                                            value: item,
+                                            text : item 
+                                        }));
+                                    });
+                                    waitingDialog.hide();
+                                    return;
+                                }
+                                else if(rtn.hasOwnProperty("ERR")){
+                                    $('#err').text(rtn.ERR);
+                                    $('#err').show(rtn.ERR);
+                                    waitingDialog.hide();
+                                    return;
+                                }
+                            }
+                        });
+                    break;
+                    case 'range':
+                        r = $("#" + selected).val();
+                        p = $('#partners__' + index).val();
+                        if( p == 'nn'){
+                            return;
+                        }
+                        // use p & r to get services
+                        // use p & r to get services
+                        waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+                        dataString = "p=" + p + "&r=" + r;
+                        $.ajax({
+                            type: 'post',
+                            url: '<?=$util->AjaxHome()?>?activity=get-partner-services',
+                            data: dataString,
+                            success: function(res){
+                                // console.log(res);
+                                var rtn = JSON.parse(res);
+                                if(rtn.hasOwnProperty("MSG")){
+                                    console.log(rtn.data);
+                                    s = "service__" + index;
+                                    $('#' + s).empty();
+                                    $.each(rtn.data, function (i, item) {
+                                        $('#' + s).append($('<option>', { 
+                                            value: item,
+                                            text : item 
+                                        }));
+                                    });
+                                    waitingDialog.hide();
+                                    return;
+                                }
+                                else if(rtn.hasOwnProperty("ERR")){
+                                    $('#err').text(rtn.ERR);
+                                    $('#err').show(rtn.ERR);
+                                    waitingDialog.hide();
+                                    return;
+                                }
+                            }
+                        });
+                    break;
+                }
 
-
-
+            }
+        });
+    </script>
     </body>
 
 </html>

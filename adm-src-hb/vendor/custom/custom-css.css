@@ -41,6 +41,9 @@ font-size: 19px;
 .bg-admin a{
     color: white !important;
 }
+.btn-admin-link {
+    color: #00acb3!important;
+}
 .navbar-brand span{
     font-size: 16px !important;
 }

@@ -1,5 +1,6 @@
 <?php 
   $user_info = json_decode($_SESSION['usr_info']);
+  // print_r($user_info);
   $profile_pic_  = $util->AppUploads() . 'profiles/default.jpg';
   $_name = json_decode($_SESSION['usr'])->user->username;
   if($user_info->data->picture != 'default.jpg'){

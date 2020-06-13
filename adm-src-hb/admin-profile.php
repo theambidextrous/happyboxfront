@@ -8,6 +8,7 @@ $util->ShowErrors();
 $user->is_loggedin();
 // $util->Show($_SESSION['usr_info']);
 $profile_form = json_decode($_SESSION['usr_info']);
+$token = json_decode($_SESSION['usr'])->access_token;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,17 +86,16 @@ $profile_form = json_decode($_SESSION['usr_info']);
                                     $user_id = $_POST['id'];
                                     $data = [
                                         'fname' => $_POST['fname'],
-                                        'mname' => $_POST['mname'],
                                         'sname' => $_POST['sname'],
                                         'location' => $_POST['location'],
                                         'phone' => $_POST['phone']
                                     ];
                                     if($_POST['uid'] > 0){
-                                        $resp = $user->edit_details($data, 'users/admins/profile/' . $user_id);
+                                        $resp = $user->edit_details_admin($data, $token, $user_id);
                                     }else{
-                                        $resp = $user->add_details($data, 'users/admins/profile/' . $user_id);
+                                        $resp = $user->add_details_admin($data, $token, $user_id);
                                     }
-                                    if(json_decode($resp)->status == 0){
+                                    if(json_decode($resp)->status == '0'){
                                         $_SESSION['usr_info'] = $user->get_details($user_id);
                                         print $util->success_flash('Updated successfully');
                                     }else{
@@ -139,9 +139,9 @@ $profile_form = json_decode($_SESSION['usr_info']);
                                 <div class="col-md-3">
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="First name" name="fname" value="<?=$profile_form->data->fname?>"/>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Middle name" name="mname" value="<?=$profile_form->data->mname?>" />
-                                </div>
+                                <!-- <div class="col-md-3">
+                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Middle name" name="mname" value="<=$profile_form->data->mname?>" />
+                                </div> -->
                                 <div class="col-md-3">
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Sir name" name="sname" value="<?=$profile_form->data->sname?>" />
                                 </div>

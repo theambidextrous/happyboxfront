@@ -2,11 +2,21 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Topic.php');
+require_once('../lib/Picture.php');
+require_once('../lib/Price.php');
 $util = new Util();
 $user = new User();
+$topic = new Topic();
+$price = new Price();
+$picture = new Picture();
 $util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
+$topics = $topic->get($token);
+$topics = json_decode($topics, true)['data'];
+$prices = $price->get($token);
+$prices = json_decode($prices, true)['data'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,11 +79,26 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             $selected_partner_data = $user->get_details($_REQUEST['pt']);
                             $selected_partner = json_decode($selected_partner, true)['data'];
                             $selected_partner_data = json_decode($selected_partner_data, true)['data'];
-                            // $util->Show($selected_partner_data);
+                            $services = json_decode($selected_partner_data['services'], true);
+                            // $util->Show($services);
                             if(!isset($_REQUEST['pt']) || $_REQUEST['pt'] == ''){
                                 print $util->error_flash('Wrong request');
                                 exit;
                             }
+                            $p_picture = $p_logo = '';
+                            $_media = $picture->get_byitem($token, $selected_partner_data['internal_id']);
+                            $_media = json_decode($_media, true)['data'];
+                            $_plogo = $_ppicture = '';
+                            foreach( $_media as $_mm ){
+                                if($_mm['type'] == '2'){
+                                   $p_picture = $_mm['path_name'];
+                                   $_ppicture = $_mm['id'];
+                                }elseif($_mm['type'] == '3'){
+                                    $p_logo = $_mm['path_name'];
+                                    $_plogo = $_mm['id'];
+                                }
+                            }
+                            // print $p_picture;
                             // if(!isset($_SESSION['frm'])){
                                 $_SESSION['frm'] = $selected_partner;
                             // }
@@ -86,24 +111,63 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     $_SESSION['frm_b'] = $_POST;
                                     $u = new User();
                                     /** update profile */
+                                    $services = array_combine($_POST['range'], $_POST['experience']);
+                                    if(count($services) < 1){
+                                        throw new Exception('You must add at least one experience for this partner');
+                                    }
                                     if(empty($_POST['sub_location'])){
                                         throw new Exception('Sub location is required, please correct');
                                     }
                                     $created_user_id = $_REQUEST['pt'];
                                     $body = [
                                         'fname' => $_POST['fname'],
-                                        'mname' => $_POST['mname'],
                                         'sname' => $_POST['sname'],
                                         'short_description' => $_POST['short_description'],
                                         'location' => $_POST['location'].' | '. $_POST['sub_location'],
                                         'phone' => $_POST['phone'],
                                         'business_name' => $_POST['business_name'],
                                         'business_category' => $_POST['business_category'],
-                                        'business_reg_no' => $_POST['business_reg_no']
+                                        'business_reg_no' => $_POST['business_reg_no'],
+                                        'services' => json_encode($services)
                                     ];
                                     $prof_resp = $u->edit_details_partner($body, $token, $created_user_id);
                                     // print $prof_resp;
                                     if(json_decode($prof_resp)->status == '0' && json_decode($prof_resp)->userid > 0){
+                                        $_picture = new Picture();
+                                        /** upload media */
+                                        $p_internal_id = json_decode($prof_resp)->internal_id;
+                                        if(is_uploaded_file($_FILES['p_picture']['tmp_name'])) {
+                                            /** pic */
+                                            $_data = [$_POST['p_picture_id'], 'p_picture'];
+                                            if(empty($_POST['p_picture_id'])){
+                                                $p_pic = new Picture($p_internal_id, 'p_picture', '2');
+                                                $p_pic_resp = $p_pic->create($token);
+                                                if(json_decode($p_pic_resp)->status != '0'){
+                                                    throw new Exception('Partner picture could not be uploaded!');
+                                                }
+                                            }else{
+                                                $p_pic_resp = $_picture->update($token, $_data);
+                                                if(json_decode($p_pic_resp)->status != '0'){
+                                                    throw new Exception('Partner picture could not be uploaded!');
+                                                } 
+                                            }
+                                        }
+                                        if(is_uploaded_file($_FILES['p_logo']['tmp_name'])) {
+                                            /** logo */
+                                            $_data = [$_POST['p_logo_id'], 'p_logo'];
+                                            if(empty($_POST['p_logo_id'])){
+                                                $p_logo = new Picture($p_internal_id, 'p_logo', '3');
+                                                $p_logo_resp = $p_logo->create($token);
+                                                if(json_decode($p_logo_resp)->status != '0'){
+                                                    throw new Exception('Partner logo could not be uploaded!');
+                                                }
+                                            }else{
+                                                $p_logo_resp = $_picture->update($token, $_data);
+                                                if(json_decode($p_logo_resp)->status != '0'){
+                                                    throw new Exception('Partner picture could not be uploaded!');
+                                                } 
+                                            }
+                                        }
                                         unset($_SESSION['frm']);
                                         unset($_SESSION['frm_b']);
                                         print $util->success_flash('Partner information updated! Note that email address is not updated and password is not reset too');
@@ -115,7 +179,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                 }
                             }
                         ?>
-                        <form class="filter_form" method="post">
+                        <form class="filter_form" method="post" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <div class="col-md-4">
                                     <label for="BoxType" class="col-form-label">Partner Code(optional)</label>
@@ -132,8 +196,19 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="BoxType" class="col-form-label">Partner category</label>
-                                    <input type="text" placeholder="business category" name="business_category" class="form-control rounded_form_control" id="select_box_type" value="<?=$_SESSION['frm_b']['business_category']?>"/>
+                                    <label for="BoxType" class="col-form-label">Partner Topic</label>
+                                    <select name="business_category" class="form-control rounded_form_control" id="select_box_type">
+                                        <option value="nn">Select a topic</option>
+                                        <?php
+                                            foreach( $topics as $_topic ){
+                                                if($_topic['internal_id'] == $_SESSION['frm_b']['business_category']){
+                                                    print '<option selected value="'.$_topic['internal_id'].'">'.$_topic['name'].'</option>';
+                                                }else{
+                                                    print '<option value="'.$_topic['internal_id'].'">'.$_topic['name'].'</option>';
+                                                }
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="BoxType" class="col-form-label">Partner location</label>
@@ -159,27 +234,87 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     <textarea name="short_description" placeholder="short description" class="form-control rounded_form_control" id="select_box_type"><?=$_SESSION['frm_b']['short_description']?></textarea>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="BoxType" class="col-form-label">Partner Picture</label>
+                                    <img src="<?=$p_picture?>" class="" width="50"/><br><br>
+                                    <input type="hidden" name="p_picture_id" value="<?=$_ppicture?>"/>
+                                    <input type="file" name="p_picture" class="form-control rounded_form_control"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="BoxType" class="col-form-label">Partner Logo</label>
+                                    <img src="<?=$p_logo?>" class="" width="50"/><br><br>
+                                    <input type="hidden" name="p_logo_id" value="<?=$_plogo?>"/>
+                                    <input type="file" name="p_logo" class="form-control rounded_form_control"/>
+                                </div>
+                            </div>
+                            <hr>
+                            <h4 class="filter_title text-center"> experiences offered </h4>  
+                            <div id="exprs">
+                                <?php if(!empty($services)){ foreach( $services as $sk => $sv ): ?>
+                                <div class="form-group row clonables">
+                                    <div class="col-md-6">
+                                        <label for="BoxType" class="col-form-label">Experience</label>
+                                        <input type="text" placeholder="type here e.g. massage" name="experience[]" value="<?=$sv?>" class="form-control rounded_form_control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="BoxType" class="col-form-label">Price range</label>
+                                        <select name="range[]" class="form-control rounded_form_control">
+                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <?php
+                                                foreach( $prices as $_price ){
+                                                    if($_price['internal_id'] == $sk){
+                                                        print '<option selected value="'.$_price['internal_id'].'">'.$_price['name'].'</option>';
+                                                    }else{
+                                                        print '<option value="'.$_price['internal_id'].'">'.$_price['name'].'</option>';
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="clone btn btn-link btn-admin-link"><i class="fas fa-plus"></i> Add another</button> 
+                                    <button type="button" class="remove btn btn-link btn-admin-link"><i class="fas fa-trash"></i>  Remove this</button>
+                                </div>
+                                <?php endforeach;}else{?>
+                                <div class="form-group row clonables">
+                                    <div class="col-md-6">
+                                        <label for="BoxType" class="col-form-label">Experience</label>
+                                        <input type="text" placeholder="type here e.g. massage" name="experience[]" value="<?=$sv?>" class="form-control rounded_form_control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="BoxType" class="col-form-label">Price range</label>
+                                        <select name="range[]" class="form-control rounded_form_control">
+                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <?php
+                                                foreach( $prices as $_price ){
+                                                     print '<option value="'.$_price['internal_id'].'">'.$_price['name'].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="clone btn btn-link btn-admin-link"><i class="fas fa-plus"></i> Add another</button> 
+                                    <button type="button" class="remove btn btn-link btn-admin-link"><i class="fas fa-trash"></i>  Remove this</button>
+                                </div>
+                                <?php } ?>
+                            </div>
                             <hr>
                             <h4 class="filter_title text-center"> contact Details </h4>   
                             <div class="form-group row">
-                                <label for="DateRange" class="col-md-3 col-form-label">Full Name</label>
-                                <div class="col-md-3">
+                                <label for="DateRange" class="col-md-3 col-form-label">Contact Name</label>
+                                <div class="col-md-4">
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="First name" name="fname" value="<?=$_SESSION['frm_b']['fname']?>"/>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Middle name" name="mname" value="<?=$_SESSION['frm_b']['mname']?>" />
-                                </div>
-                                <div class="col-md-3">
+                                <div class="col-md-5">
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Surname" name="sname" value="<?=$_SESSION['frm_b']['sname']?>" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="DateRange" class="col-md-4 col-form-label">Phone & Email</label>
+                                <label for="DateRange" class="col-md-3 col-form-label">Phone & Email</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Phone Number" name="phone" value="<?=$_SESSION['frm_b']['phone']?>"/>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <input type="text" readonly class="form-control rounded_form_control" id="select_box_type" placeholder="Email Address" name="email" value="<?=$_SESSION['frm']['email']?>" />
                                 </div>
                             </div>
@@ -204,6 +339,39 @@ $token = json_decode($_SESSION['usr'])->access_token;
 </body>
 <script>  
     $(document).ready(function(){
+        var regex = /^(.+?)(\d+)$/i;
+        var cloneIndex = $(".clonables").length;
+        function clone(){
+            $(this).parents(".clonables").clone()
+                .appendTo("#exprs")
+                // .attr("id", "clonables" +  cloneIndex)
+                // .find("*")
+                .each(function() {
+                    var id = this.id || "";
+                    var match = id.match(regex) || [];
+                    if (match.length == 3) {
+                        this.id = match[1] + (cloneIndex);
+                    }
+                })
+                .on('click', 'button.clone', clone)
+                .on('click', 'button.remove', remove);
+            cloneIndex++;
+        }
+        function remove(){
+            children = $(".clonables").length;
+            console.log("it has " + children);
+            if( children > 1 ){
+                $(this).parents(".clonables").remove();
+            }else{
+
+            }
+        }
+        $("button.clone").on("click", clone);
+        $("button.remove").on("click", remove);
+
+
+
+
         $("#sub_location").show();
         $('#location').on('change', function() {
         if ( this.value == 'nn'){ $("#sub_location").hide(); }

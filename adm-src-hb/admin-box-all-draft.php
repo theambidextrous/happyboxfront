@@ -66,10 +66,10 @@ $box = new Box();
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-box-all.php" class="btn generate_rpt btn-block">Selling</a>
+                        <a href="admin-box-all.php" class="btn generate_rpt btn-block">Available</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-all-draft.php" class="btn generate_rpt btn-block is_active">In Drafts</a>
+                        <a href="admin-box-all-draft.php" class="btn generate_rpt btn-block is_active">Suspended</a>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ $box = new Box();
                                                     <a href="admin-box-edit.php?box=<?=$hbox['internal_id']?>" class="light">Modify</a>
                                                 </td>
                                                 <td class="td_b">
-                                                   <a href="admin-box-activate.php?box=<?=$hbox['id']?>" class="light"> activate </a>    
+                                                   <a href="admin-box-activate.php?box=<?=$hbox['id']?>" class="light"> Sell </a>    
                                                 </td>
                                             </tr>
                                         </table>  

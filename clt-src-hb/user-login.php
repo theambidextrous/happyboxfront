@@ -27,7 +27,11 @@
                       throw new Exception('Permission denied!');
                       session_destroy();
                   }
-                  $util->redirect_to('user-dash-activate-voucher.php');
+                  if(isset($_SESSION['next'])){
+                    $util->redirect_to($_SESSION['next']);
+                  }else{
+                    $util->redirect_to('user-dash-activate-voucher.php');
+                  }
               }else{
                   $err = $util->error_flash(json_decode($login)->message);
               }

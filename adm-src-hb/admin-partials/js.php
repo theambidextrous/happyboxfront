@@ -6,9 +6,14 @@
   <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/bootstrap/js/jszip.min.js"></script>
   <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/bootstrap/js/pdfmake.min.js"></script>
   <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/bootstrap/js/vfs_fonts.js"></script>
+  <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/bootstrap/js/wt.js"></script>
   <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/bootstrap/js/buttons.html5.min.js"></script>
   <script>
     $(document).ready(function() {
         $('.select2').select2();
+        
+        $('#goTop').on('click', function(e){
+            $("html, body").animate({scrollTop: $("#top").offset().top}, 500);
+        });
     });
   </script>

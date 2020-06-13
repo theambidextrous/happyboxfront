@@ -198,6 +198,10 @@
         $endpoint = 'users/clients/profile/' . $user_id;
         return $this->add_details($body, $endpoint, $token);
     }
+    function add_details_admin($body, $token, $user_id){
+        $endpoint = 'users/admins/profile/' . $user_id;
+        return $this->add_details($body, $endpoint, $token);
+    }
     function edit_details($body, $endpoint = '', $token = 0){
         $this->is_loggedin();
         if($token == 0){
@@ -220,6 +224,10 @@
     }
     function edit_details_client($body, $token, $user_id){
         $endpoint = 'users/clients/profile/' . $user_id;
+        return $this->edit_details($body, $endpoint, $token);
+    }
+    function edit_details_admin($body, $token, $user_id){
+        $endpoint = 'users/admins/profile/' . $user_id;
         return $this->edit_details($body, $endpoint, $token);
     }
     function edit_profile_pic($user, $img){
@@ -303,12 +311,14 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function format_box_partners($csv){
-        $_part = explode(',',$csv);
-        foreach( $_part as $idf ){
+    function format_box_partners($arr){
+        $arr = json_decode($arr, true);
+        foreach( $arr as $_idf ){
+            $idf = explode('~~~', $_idf)[0];
             $data = json_decode($this->get_details_byidf($idf))->data;
             $_names[] = $data->business_name;
         }
+        $_names = array_unique($_names);
         return implode(', ', $_names);
     }
     function headers($token = ''){

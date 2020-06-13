@@ -9,7 +9,7 @@ $util = new Util();
 $user = new User();
 $topic = new Topic();
 $picture = new Picture();
-$util->ShowErrors();
+$util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
 $box = new Box();
@@ -66,10 +66,10 @@ $box = new Box();
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-box-all.php" class="btn generate_rpt btn-block is_active">Selling</a>
+                        <a href="admin-box-all.php" class="btn generate_rpt btn-block is_active">Available</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-all-draft.php" class="btn generate_rpt btn-block">In Draft</a>
+                        <a href="admin-box-all-draft.php" class="btn generate_rpt btn-block">Suspended</a>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ $box = new Box();
                                                     <a href="admin-box-edit.php?box=<?=$hbox['internal_id']?>" class="light">Modify</a>
                                                 </td>
                                                 <td class="td_b">
-                                                   <a href="admin-box-deactivate.php?box=<?=$hbox['id']?>" class="light">Deactivate</a>    
+                                                   <a href="admin-box-deactivate.php?box=<?=$hbox['id']?>" class="light">Suspend</a>    
                                                 </td>
                                             </tr>
                                         </table>  

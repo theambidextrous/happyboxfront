@@ -280,11 +280,11 @@ $box = new Box();
                                                 <td class="td_a">
                                                     <a href="#" class="light">View Detail</a>
                                                 </td>
-                                                <td class="td_b">
+                                                <!-- <td class="td_b">
                                                     <a href="#" class="light">
                                                         Cancell Voucher & Generate New
                                                     </a>    
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         </table>  
                                     </td>

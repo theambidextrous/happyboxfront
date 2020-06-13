@@ -12,6 +12,26 @@ switch($_REQUEST['activity']){
     default:
         exit(json_encode(['ERR' => 'Mission Failed!']));
     break;
+    case 'get-partner-services':
+        try{
+            $u = new User();
+            if(empty($_POST['p']) || empty($_POST['r']) ){
+                throw new Exception('Nothing found!');
+            }
+            $d = $u->get_details_byidf($_POST['p']);
+            $d = json_decode($d, true)['data'];
+            $d = json_decode($d['services'], true);
+            $rtn = [];
+            foreach($d as $k => $v ){
+                if( $k == $_POST['r']){
+                    $rtn[$k] = $v;
+                }
+            }
+            exit(json_encode(['MSG' => 'found', 'data' => $rtn ]));
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+    break;
     case 'change-cart-box-type':
         try{
             $i = new Inventory();
