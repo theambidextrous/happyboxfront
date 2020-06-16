@@ -12,6 +12,8 @@ $picture = new Picture();
 $sendy = new Sendy($util->MapsKey());
 $box = new Box();
 $util->ShowErrors(1);
+// $util->Show($_SESSION);
+unset($_SESSION['next']);
 if(!isset(json_decode($_SESSION['usr'])->access_token)){
   $_SESSION['next'] = 'user-dash-order-summary.php';
   header("Location: user-login.php");

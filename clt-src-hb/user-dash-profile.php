@@ -88,7 +88,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
                                     <label>
                                         First Name
                                     </label>
-                                    <input type="hidden" name="user_id" value="<?=$profile_data_->userid?>">
+                                    <input type="hidden" name="user_id" value="<?=json_decode($_SESSION['usr'])->user->id?>">
                                     <input type="text" name="fname" class="form-control rounded_form_control" value="<?=$profile_data_->fname?>">
                                 </div>
                                  <div class="form-group">
@@ -164,25 +164,20 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 
     </body>
     <!-- pop up -->
-  <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#userCreatedModal"></button>
-  <div class="modal fade" id="userCreatedModal">
-  <div class="modal-dialog general_pop_dialogue">
-  <div class="modal-content">
-
-  <div class="modal-body text-center">
-  <div class="col-md-12 text-center forgot-dialogue-borderz">
-  <h3 class="partner_blueh">THANK YOU!</h3>
-  <p class="forgot_des text-center txt-orange">
-    <span id="vvv"></span>
-  </p>
-  <div>
-  <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
-  </div>
-
-  </div>
-  </div>
-
-  </div>
+    <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#userCreatedModal"></button>
+    <div class="modal fade" id="userCreatedModal">
+        <div class="modal-dialog general_pop_dialogue">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="col-md-12 text-center forgot-dialogue-borderz">
+                        <h3 class="partner_blueh">THANK YOU!</h3>
+                        <p class="forgot_des text-center txt-orange"><span id="vvv"></span></p>
+                    <div>
+                    <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
   </div>
   <script>
@@ -202,7 +197,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
               console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
-                  $("#reset_div").load(window.location.href + " #reset_div" );
+                //   $("#reset_div").load(window.location.href + " #reset_div" );
                   $('#vvv').text('Your shipping details have been updated.');
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
@@ -229,10 +224,10 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
           contentType: false,
           processData: false,
           success: function(res){
-              // console.log(res);
+              console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
-                  $("#reset_div").load(window.location.href + " #reset_div" );
+                //   $("#reset_div").load(window.location.href + " #reset_div" );
                   $('#vvv').text('Your profile details have been updated.');
                   $('#popupid').trigger('click');
                   waitingDialog.hide();

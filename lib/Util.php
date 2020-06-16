@@ -37,6 +37,48 @@
     function AppUploads(){
         return $this->LoadEnv()->APP_UPLOADS;
     }
+    /** mpesa */
+    function AppConsumerKey(){
+        return $this->LoadEnv()->APP_MPESA_C_KEY;
+    }
+    function AppConsumerSecret(){
+        return $this->LoadEnv()->APP_MPESA_C_SECRET;
+    }
+    function AppC2bConsumerKey(){
+        return $this->LoadEnv()->APP_MPESA_C2B_C_KEY;
+    }
+    function AppC2bConsumerSecret(){
+        return $this->LoadEnv()->APP_MPESA_C2B_C_SECRET;
+    }
+    function AppPayBill(){
+        return $this->LoadEnv()->APP_MPESA_PAYBILL;
+    }
+    function AppPassKey(){
+        return $this->LoadEnv()->APP_MPESA_PASSKEY;
+    }
+    function AppMpesaTransType(){
+        return $this->LoadEnv()->APP_MPESA_TRANS_TYPE;
+    }
+    function AppMpesaCallBack(){
+        return $this->LoadEnv()->APP_MPESA_CALL_BACK;
+    }
+
+    function AppMpesaConfirmation(){
+        return $this->LoadEnv()->APP_MPESA_CONFIRMATION;
+    }
+    function AppMpesaValidation(){
+        return $this->LoadEnv()->APP_MPESA_VALIDATION;
+    }
+
+    function AppMpesaEnv(){
+        return $this->LoadEnv()->APP_MPESA_ENV;
+    }
+    function AppC2bPhone(){
+        return $this->LoadEnv()->APP_MPESA_C2B_PHONE; 
+    }
+    function AppC2bPayBill(){
+        return $this->LoadEnv()->APP_MPESA_C2B_PAYBILL; 
+    }
     /** maps */
     function MapsUrl(){
         return $this->LoadEnv()->APP_MAPS_URL_LOCATION;

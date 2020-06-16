@@ -305,7 +305,7 @@ $prices = json_decode($prices, true)['data'];
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="First name" name="fname" value="<?=$_SESSION['frm_b']['fname']?>"/>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Surname" name="sname" value="<?=$_SESSION['frm_b']['sname']?>" />
+                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Surname" name="sname" value="<?=$_SESSION['frm_b']['sname']?>"/>
                                 </div>
                             </div>
 

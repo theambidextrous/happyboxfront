@@ -7,10 +7,58 @@ require_once '../../lib/User.php';
 require_once '../../lib/Inventory.php';
 require_once '../../lib/Shipping.php';
 require_once '../../lib/Box.php';
+require_once '../../lib/MPesa.php';
 
 switch($_REQUEST['activity']){
     default:
         exit(json_encode(['ERR' => 'Mission Failed!']));
+    break;
+    case 'make-payment-mpesa':
+        try{
+            $mpesa_phone = '254' . intval($_POST['mpesaphone']);
+            $order_number = $_POST['ordernumber'];
+            $order_amount = $_POST['orderamount'];
+            if(empty($order_number) || empty($mpesa_phone) || $order_amount < 10 ){
+                throw new Exception('Error occured. Make sure the order amount is not zero and phone starts with 07..');
+            }
+            $express = new MPesaExpress(
+                $util->AppConsumerKey(),
+                $util->AppConsumerSecret(),
+                $util->AppPayBill(),
+                $util->AppPassKey(),
+                [$util->AppMpesaEnv()],
+                $util->AppMpesaTransType(),
+                $order_amount,
+                $mpesa_phone,
+                $util->ClientHome().$util->AppMpesaCallBack(),
+                $order_number,
+                'HappyBox orders',
+                'no remarks'
+            );
+            // $response = $express->TriggerStkPush();
+            /** c2b simulation here */
+            $c2b = new MPesaC2b(
+                $util->AppC2bConsumerKey(),
+                $util->AppC2bConsumerSecret(),
+                $util->AppC2bPayBill(),
+                $util->AppC2bPhone(),
+                $order_amount,
+                $order_number,
+                [$util->AppMpesaEnv(), $util->ClientHome() . $util->AppMpesaConfirmation(), $util->ClientHome() . $util->AppMpesaValidation()]
+            );
+            $response = $c2b->RegisterUrl();
+            // print_r($response);
+            $response_2 = $c2b->Simulate();
+            print_r($response);
+            print_r($response_2);
+            /** end simulation */
+            if( isset(json_decode($response)->errorCode) ){
+                exit(json_encode(['ERR' => json_decode($response)->errorMessage ]));
+            }
+            exit( json_encode(['MSG' => $response ]));
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
     break;
     case 'get-partner-services':
         try{
@@ -189,7 +237,11 @@ switch($_REQUEST['activity']){
     case 'edit-clt-account':
         try{
             $u = new User();
+            $uploads = '';
             $editing_user_id = $_POST['user_id'];
+            if(empty($editing_user_id)){
+                exit(json_encode([ 'ERR' => 'Missing valid user session' ])); 
+            }
             $body = [
                 'fname' => $_POST['fname'],
                 'sname' => $_POST['sname'],
@@ -198,19 +250,19 @@ switch($_REQUEST['activity']){
             if(is_uploaded_file($_FILES['img']['tmp_name'])){
                 $_img_resp = $u->edit_profile_pic($editing_user_id, 'img');
                 if(empty($_img_resp)){
-                    exit(json_encode([ 'ERR' => 'photo upload failed' ]));
+                    exit(json_encode([ 'ERR' => 'no valid photo was found. Upload failed' ]));
                 }
                 if(json_decode($_img_resp)->status != '0'){
-                    exit(json_encode([ 'ERR' => json_decode($_img_resp)->message ]));
+                    $uploads = 'However, profile pic was not uploaded. Please try again later';
+                    // exit(json_encode([ 'ERR' => $_img_resp ]));
                 }
             }
             $prof_resp = $u->edit_details_client($body, 0, $editing_user_id);
-            // print $prof_resp;
+            // print 'xdvcvcv' . $prof_resp;
             if(json_decode($prof_resp)->status == '0' && json_decode($prof_resp)->userid > 0){
                 $info = $u->get_details($editing_user_id);
                 $_SESSION['usr_info'] = $info;
-                // $_img_resp = $u->edit_profile_pic($editing_user_id, 'img');
-                exit(json_encode(['MSG' => 'information updated!']));
+                exit(json_encode(['MSG' => 'information updated! ' . $uploads]));
             }else{
                 exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
             }
