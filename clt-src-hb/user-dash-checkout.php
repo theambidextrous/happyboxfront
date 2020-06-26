@@ -100,6 +100,11 @@ $order = new Order($token);
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="mpesa" role="tabpanel" aria-labelledby="mpesa-tab">
+                                <!-- debug -->
+                                    <div id="c2b"></div>
+                                    <hr>
+                                    <div id="express"></div>
+                                <!-- end debug -->
                                 <br><br>
                                 <form class="form_register_user" id="mpesa_pay_frm" name="mpesa_pay_frm">
                                     <div class="form-group col-md-6">
@@ -109,6 +114,10 @@ $order = new Order($token);
                                     </div>
                                     <p class="text-right col-md-4"><button type="button" onclick="mpesaPay('mpesa_pay_frm')" class="btn btn_rounded">Pay Now</button></p>
                                 </form>
+                                <!-- instructions area -->
+                                <div id="msg"></div>
+                                <div id="inst"></div>
+                                <!-- instructions end -->
                             </div>
                             <div class="tab-pane fade" id="creditcard" role="tabpanel" aria-labelledby="creditcard-tab">
                                 <p>Credit Card</p>
@@ -156,17 +165,18 @@ $order = new Order($token);
                 url: '<?=$util->AjaxHome()?>?activity=make-payment-mpesa',
                 data: dataString,
                 success: function(res){
-                    console.log(res);
+                    // console.log(res);
                     var rtn = JSON.parse(res);
                     if(rtn.hasOwnProperty("MSG")){
-                        // $('#vvv').text('Your profile details have been updated.');
-                        // $('#popupid').trigger('click');
+                        $('#c2b').text(rtn.c2b);
+                        $('#express').text(rtn.exp);
+                        $('#inst').html(rtn.inst);
+                        $('#msg').html(rtn.MSG);
                         waitingDialog.hide();
                         return;
                     }
                     else if(rtn.hasOwnProperty("ERR")){
-                        // $('#err').text(rtn.ERR);
-                        // $('#err').show(rtn.ERR);
+                        $('#msg').html(rtn.ERR);
                         waitingDialog.hide();
                         return;
                     }
