@@ -104,6 +104,8 @@ $order = new Order($token);
                                     <div id="c2b"></div>
                                     <hr>
                                     <div id="express"></div>
+                                    <hr>
+                                    <div id="reg"></div>
                                 <!-- end debug -->
                                 <br><br>
                                 <form class="form_register_user" id="mpesa_pay_frm" name="mpesa_pay_frm">
@@ -170,6 +172,7 @@ $order = new Order($token);
                     if(rtn.hasOwnProperty("MSG")){
                         $('#c2b').text(rtn.c2b);
                         $('#express').text(rtn.exp);
+                        $('#reg').text(rtn.reg);
                         $('#inst').html(rtn.inst);
                         $('#msg').html(rtn.MSG);
                         waitingDialog.hide();

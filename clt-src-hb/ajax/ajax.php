@@ -52,9 +52,9 @@ switch($_REQUEST['activity']){
             $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone. Enter your pin to complete order.<br> You may also follow the instructions below to make payment.</div>';
             $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge service unavailable!<br> Follow the instructions below to make MPesa payment.</div>';
             if( json_decode($express_response)->ResponseCode != '0' ){
-                exit(json_encode(['MSG' => $manual_msg, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
+                exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
             }
-            exit( json_encode(['MSG' => $both_msg, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
+            exit( json_encode(['MSG' => $both_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
         }catch(Exception $e){
             $err_msg = '<div class="alert alert-danger">'.$e->getMessage().'</div>';
             exit(json_encode(['ERR' =>$err_msg ]));
