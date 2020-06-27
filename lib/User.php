@@ -110,7 +110,7 @@
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);
-        // $util->Show(curl_getinfo($curl));
+        $util->Show(curl_getinfo($curl));
         return $res;
     }
     function get_details($userid, $endpoint = 'users/info/'){

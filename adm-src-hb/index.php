@@ -9,6 +9,7 @@
     try{
         $user = new User(null, $_POST['email'], $_POST['password']);
         $login = $user->login();
+        // print($login);
        if(isset(json_decode($login)->status)){
             if(json_decode($login)->status == '0'){
                 $_SESSION['usr'] = $login;

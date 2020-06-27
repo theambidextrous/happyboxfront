@@ -128,6 +128,22 @@
         }
         </script>';
     }
+    function mpesa_process($paybill, $invoice, $amt){
+        return '
+        <div class="article_text">
+            <p><span style="font-size: 14pt;"><strong>You can also pay as follows</strong></span></p>
+            <ol>
+                <li>Select <b>"Pay bill"</b> from your Safaricom MPesa Menu.</li>
+                <li>Enter HappyBox Business Number <b>"'.$paybill.'"</b>.</li>
+                <li>Select "Enter Account Number".</li>
+                <li>Enter Order number <b>"'.$invoice.'"</b>.</li>
+                <li>Enter Amount <b>"'.floor($amt).'"</b> </li>
+                <li>Enter <b>"PIN"</b> then Press "OK"</li>
+                <li>You will then Receive a "Confirmation Message" from MPesa.</li>
+            </ol>
+        </div>
+        ';
+    }
     function remove_from_cart($item){
         $l=0;
         foreach( $_SESSION['curr_usr_cart'] as $cart ){

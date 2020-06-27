@@ -21,6 +21,7 @@ switch($_REQUEST['activity']){
             if(empty($order_number) || empty($mpesa_phone) || $order_amount < 10 ){
                 throw new Exception('Error occured. Make sure the order amount is not zero and phone starts with 07..');
             }
+            $mpesa_instructions = $util->mpesa_process($util->AppPayBill(), $order_number, $order_amount);
             $express = new MPesaExpress(
                 $util->AppConsumerKey(),
                 $util->AppConsumerSecret(),
@@ -35,7 +36,7 @@ switch($_REQUEST['activity']){
                 'HappyBox orders',
                 'no remarks'
             );
-            // $response = $express->TriggerStkPush();
+            $express_response = $express->TriggerStkPush();
             /** c2b simulation here */
             $c2b = new MPesaC2b(
                 $util->AppC2bConsumerKey(),
@@ -46,18 +47,17 @@ switch($_REQUEST['activity']){
                 $order_number,
                 [$util->AppMpesaEnv(), $util->ClientHome() . $util->AppMpesaConfirmation(), $util->ClientHome() . $util->AppMpesaValidation()]
             );
-            $response = $c2b->RegisterUrl();
-            // print_r($response);
-            $response_2 = $c2b->Simulate();
-            print_r($response);
-            print_r($response_2);
-            /** end simulation */
-            if( isset(json_decode($response)->errorCode) ){
-                exit(json_encode(['ERR' => json_decode($response)->errorMessage ]));
+            $reg_url_response = $c2b->RegisterUrl();
+            $c2b_response = $c2b->Simulate();
+            $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone. Enter your pin to complete order.<br> You may also follow the instructions below to make payment.</div>';
+            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge service unavailable!<br> Follow the instructions below to make MPesa payment.</div>';
+            if( json_decode($express_response)->ResponseCode != '0' ){
+                exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
             }
-            exit( json_encode(['MSG' => $response ]));
+            exit( json_encode(['MSG' => $both_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
         }catch(Exception $e){
-            exit(json_encode(['ERR' => $e->getMessage()]));
+            $err_msg = '<div class="alert alert-danger">'.$e->getMessage().'</div>';
+            exit(json_encode(['ERR' =>$err_msg ]));
         }
     break;
     case 'get-partner-services':
