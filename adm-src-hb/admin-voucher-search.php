@@ -84,9 +84,9 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <h4 class="voucher_title">VOUCHER QUICK SEARCH </h4>
                         <p class="p_search">Looking for a specific voucher code? Enter the number to check it’s validity.</p>
                         <form class="voucher_search_form" method="post">
-                            <div class="form-group row">
-                            <div class="col-md-9">
-                                <span class="search_glass"><i class="fas fa-search"></i></span>
+                            <div class="form-group row ">
+                            <div class="col-md-9 col_no_r">
+                                <span class="search_glass"><!--<i class="fas fa-search"></i>--><img src="img/icn-search.svg" class=""></span>
                                 <input type="text" name="voucher_search" class="form-control voucher_search_input" placeholder="Enter voucher code here">
                             </div>
                             <div class="col-md-3">

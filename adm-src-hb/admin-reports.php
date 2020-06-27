@@ -61,10 +61,10 @@ $_reports = json_decode($report->get($token), true)['data'];
             <div class="container">
                 <div class="row rpt_drop">
                     <div class="col-md-6 section_title">
-                        <ul class="nav nav-pills">
+                        <ul class="nav nav-pills rep_nav_pills">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <h3><strong>REPORTS</strong><i class="fas fa-angle-down"></i></h3>
+                                    <h3><strong>REPORTS</strong><img src="img/report_down_arrow.svg" class="report_arrow"></h3>
                                 </a>
                                 <div class="dropdown-menu">
                                     <?php
@@ -76,8 +76,8 @@ $_reports = json_decode($report->get($token), true)['data'];
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-6 text-right">
-                        <a class="btn btn_view_report text-right" href="#" data-toggle="modal" data-target="#create_report">CREATE REPORT</a>
+                    <div class="col-md-6 text-right create_report_r">
+                        <a class="btn btn_view_report create_report_r_btn text-right" href="#" data-toggle="modal" data-target="#create_report">CREATE REPORT</a>
                     </div>
                 </div>
             </div>

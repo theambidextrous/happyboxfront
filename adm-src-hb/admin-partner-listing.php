@@ -67,21 +67,8 @@ $partner_list = json_decode($partner_list, true)['data'];
                     <div class="col-md-12 ">
                         <h5 class="partner_list_sub_title"> Manage and modify partner listings and profiles here.</h5>                  
  </div>
-                   <div class="col-md-12 ">  <div class="table-responsive">
-                     <table class="table  partner_table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Image</th>
-                          <th>Partner Name</th>
-                          <th>Partner Code</th>
-                          <th class="des_width">Partner Description</th>
-                          <th>Partner Localisation</th>
-                          <th>PIN Number</th>
-                          <th>Topic</th>
-                          <th>Contact Details</th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                   <div class="col-md-12 ">  
+                     
                         <?php 
                         // $partner_list = [];
                         if(!empty($partner_list)){
@@ -101,8 +88,32 @@ $partner_list = json_decode($partner_list, true)['data'];
                             //   $img  = $p_d['picture'];
                             // }
                         ?>
+                               <div class="relative_div">
+                             <div class="table_absimg_wrap">
+                              <a href="admin-partner-edit.php?pt=<?=$ptl['id']?>"><img src="img/icn-edit-teal.svg" class="table_absimg"></a>
+                              </div>
+                      </div>
+                       
+                         <div class="table_radius table_radius_admin">
+                       <div class="table-responsive">
+                           <table class="table  partner_table table-bordered">
+                      <thead>
                         <tr>
-                          <td class="td1"><img src="<?=$img?>" class="dropdown_user_img rounded-circle"/></td>
+                            <th class="partner_table_img_td">Image</th>
+                          <th>Partner Name</th>
+                          <th>Partner Code</th>
+                          <th class="des_width">Partner Description</th>
+                          <th>Partner<br> Localisation</th>
+                          <th>PIN Number</th>
+                          <th>Topic</th>
+                          <th>Contact Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                  
+                          
+                          <td class="td1" align="center"><img src="<?=$img?>" class="dropdown_user_img rounded-circle"/></td>
                           <td><?=$p_d['business_name']?></td>
                           <td><?=$p_d['internal_id']?></td>
                           <td><?=$p_d['short_description']?></td>
@@ -110,17 +121,18 @@ $partner_list = json_decode($partner_list, true)['data'];
                           <td><?=$p_d['business_reg_no']?></td>
                           <td><?=$p_d['business_category']?></td>
                           <td>
-                          <table class="contact_table">
-                              <div class="table_absimg_wrap">
-                              <a href="admin-partner-edit.php?pt=<?=$ptl['id']?>"><img src="img/icn-edit-teal.svg" class="table_absimg"></a>
-                              </div>
-                              <tr><td class="contact_name">Name</td><td><?=$p_d['fname'].' '.$p_d['mname']?></td></tr>
-                              <tr><td class="contact_name">Surname</td><td><?=$p_d['sname']?></td></tr>
-                              <tr><td class="contact_name">Email</td><td><?=$ptl['email']?></td></tr>
-                              <tr><td class="contact_name">Mobile</td><td><?=$p_d['phone']?></td></tr>
+                          <table class="contact_table table_borderless">
+                             
+                              <tr><td class="contact_name">Name <b class="contact_val"><?=$p_d['fname'].' '.$p_d['mname']?></b></td></tr>
+                              <tr><td class="contact_name">Surname <b class="contact_val"><?=$p_d['sname']?></b></td></tr>
+                              <tr><td class="contact_name">Email <b class="contact_val"><?=$ptl['email']?></b></td></tr>
+                              <tr><td class="contact_name border_less_td">Mobile <b class="contact_val"><?=$p_d['phone']?></b></td></tr>
                             </table>   
                           </td>
                         </tr>
+                           </tbody>
+                    </table>
+                           </div>        </div>
                         <?php 
                           }
                         endforeach;
@@ -128,9 +140,8 @@ $partner_list = json_decode($partner_list, true)['data'];
                         print '<tr><td colspan="8"><center>No partners found</center></td></tr>';
                       }
                         ?>
-                      </tbody>
-                    </table>
-                   </div>
+                   
+                   
                   </div>
                 </div>
                 </div>
