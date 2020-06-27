@@ -12,6 +12,12 @@ body{
     font-family: Calibri;
     font-size: 15px !important;
 }
+.col_no_r{
+  padding-right: 1px !important;  
+}
+.col_no_l{
+    
+}
 .border_right {
     border-right: solid 1px;
 }
@@ -26,17 +32,19 @@ html {
     text-align: right;
 }
 .section_title h3{
-font-size: 19px;
+    font-size: 18px;
     padding-top: 6px;
-    font-weight: bold;color: black;
-
+    font-weight: bold;
+    color: black;
 }
 /*Top Main  Nav*/
+
 .navbar-brand img{
     height: 36px;
 }
 .bg-admin{
     background: #C20A2B !important;
+        padding: .8rem 1rem !important;
 }
 .bg-admin a{
     color: white !important;
@@ -46,14 +54,18 @@ font-size: 19px;
 }
 .navbar-brand span{
     font-size: 16px !important;
+    font-weight: bold;
+
+
 }
 .dropdown-toggle::after{
  display: none !important;   
 }
 
  .user_icon{
-    height: 20px;
+   height: 23px;
 }
+
 .dropdown_user_img {
     height: 31px;
     display: inline;
@@ -68,7 +80,7 @@ padding-left: 13px;
     padding-bottom: 0px;    
 }
 .dropdown-menu .card-body {
-padding: 0.35rem 0.15rem;
+    padding: 0.35rem 0.15rem 0.4rem;
     color: white;
 }
 /* End Top Main  Nav*/
@@ -79,13 +91,13 @@ padding-left: 0px;
     margin-top: 13px;
 }
  .top_menu ul li{
-    display: inline;
-    padding-right: 34px;
+display: inline;
+    padding-right: 55px;
 }
 .top_menu ul li a{
-letter-spacing: 0px;
-    color: #0185B6;
-    
+etter-spacing: 0px;
+    color: #0185B6 !important;
+    font-weight: bold;
     
 }
 .top_menu ul li a:hover{
@@ -155,7 +167,7 @@ border-bottom: solid 2px #c20a2b;
 .rounded_form_control {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #0985B6;
-    border-radius: 13px;
+    border-radius: 8px;
     color: #9E9E9E;
     font-size: 13px;
     text-align: center;
@@ -172,16 +184,17 @@ border-bottom: solid 2px #c20a2b;
     background: #b2dae9;
     padding: 5px;  
 }.generate_rpt{
-    background: #00ACB3 0% 0% no-repeat padding-box;
-    border-radius: 13px;
+   background: #0185B6 0% 0% no-repeat padding-box;
+    border-radius: 8px;
     opacity: 1;
     color: white;
+        font-weight: bold;
 }
 .status_bar{
     padding-top: 11px;
 }
 .status_btn{background: #0185B6 0% 0% no-repeat padding-box;
-border-radius: 13px;
+border-radius: 8px;
 opacity: 1;
 }
 /*Report section */
@@ -190,26 +203,43 @@ opacity: 1;
     color: #fff;
     background-color: transparent;
 }
+.report_arrow {
+ height: 8px;
+    margin-top: -6px;
+    margin-left: 6px;}
+.create_report_r{    
+    margin-top: 8px;
+}
+.create_report_r_btn{
+    
+}
+
+
 .rpt_drop .dropdown-item {
-     padding: .05rem 1rem !important;
+   padding: .05rem 0.4rem !important;
     font-size: 12px;
     font-weight: bold;
 }
+
+
+
  
 
 
 
 /*admin footer*/
 #goTop{
-    background: #00acb3;
-    /* height: 70px; */
-    padding: 2px 15px;
+      background: #00acb3;
+    padding: 0px 0px;
     position: fixed;
     right: 5px;
     bottom: 5px;
     color: white;
     font-size: 30px;
     border-radius: 5px;
+}
+#goTop img{
+    height: 45px;
 }
 .admin_footer{
     background: #000000 0% 0% no-repeat padding-box;
@@ -218,29 +248,72 @@ opacity: 1;
     padding: 7px;
 }
 .bg-admin .dropdown-menu{
-background: #C20A2B 0% 0% no-repeat padding-box;
+    background: #C20A2B 0% 0% no-repeat padding-box;
     opacity: 1;
-    left: -75px;
-    min-width: 16rem;
-padding: 11px 2px 0px !important;
+    left: -94px;
+       padding: 24px 2px 0px !important;
     border: 0px;
+    width: 257px;
+        border-radius: 8px;
+}
 
+
+ 
+.admin_name_txt{
+    font-weight: bold;
 }
 .dropdown-menu .card {
      background-color: transparent;
      border: 0px !important;
    
 }
+.user_dropdown_txt{
+    font-weight: bold;
+}
+.email_dropdown {
+    font-size: 14px;
+}
+
+
+.drop_partner{
+background: #C20A2B 0% 0% no-repeat padding-box;
+    opacity: 1;
+    left: -75px;
+    min-width: 16rem;
+padding: 11px 1px 0px !important;
+    border: 0px;
+
+}
+.drop_partner .card {
+     background-color: transparent;
+     border: 0px !important;
+   
+}
 .drop_down_profile{
-    background: #0185B6;
-      
-    padding: 4px;
+      background: #0185B6;
+         padding: 7px 6px;
+    border-bottom-left-radius: 8px;
+        font-weight: bold;
+    font-size: 14px;
 }
 .drop_down_logout{
-    background:#00ACB3;
-        padding: 4px;
+background: #00ACB3;
+    padding: 6px 6px;
+        border-bottom-right-radius: 8px;
+            font-weight: bold;
+    font-size: 14px;
 }
 /*reports*/
+.table_radius {
+    overflow: auto;
+    border-radius: 13px;
+    border: 1px solid #cccccc;
+}
+.table_radius_admin {
+     margin-bottom: 19px;
+}
+
+
 .filter_bar{
     padding-top: 30px;
     padding-bottom: 66px;
@@ -265,31 +338,43 @@ letter-spacing: 0px;
 .filter_form select {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #0985B6;
-    border-radius: 13px;
+    border-radius: 8px;
     color: #9E9E9E;
     font-size: 13px;
+}
+.rep_nav_pills .dropdown-menu {
+  padding: .4rem 0 !important;
+    margin: -13px 0px !important;
+    border-radius: 0px 0px 4px 5px;
+    min-width: 9rem !important;
+    border: solid #10ACB3 1px;
 }
 
 .btn_view_report{
     background: #00ACB3 0% 0% no-repeat padding-box;
-border-radius: 13px;
+border-radius: 8px;
 color: white !important;
 }
 .partner_list_sub_title{
 letter-spacing: 0px;
     color: #00ACB3;
+    margin-bottom: 12px;
     font-size: 17px;
 }
 
-.partner_table{
-font-size: 11px;
-       margin-top: 22px;
 
-    border-radius: 13px;
+
+.partner_table{
+    font-size: 11px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+ 
     border: solid 1px #a5a5a5;
-   
+   /*
+      border-radius: 8px;
   border-collapse: collapse;
-    overflow: hidden;
+    overflow: hidden;*/
 
 
 }
@@ -315,13 +400,15 @@ text-align: center;
 .partner_table td, .partner_table th {
     border: 1px solid #b8b9bb !important;
 }
+.partner_table_img_td{width: 9%;}
+
 .table td, .table th {
         border-top: 0px !important;
     vertical-align: middle;
 }
 
 .des_width{
-    width: 32%;
+    width: 26%;
 }
 .contact_name{
     color: #999999;
@@ -329,24 +416,36 @@ text-align: center;
 .table_absimg_wrap{
     position: relative;
 }
-.table_absimg{
-  position: absolute;
-    height: 28px;
-    right: 3px;
-    z-index: 9999;
-    top: 10px;
+.table_borderless td{
+    border-left: 0px !important;border-right:  0px !important;
+    border-bottom: solid 1px;
 }
+.table_absimg{
+ position: absolute;
+    height: 22px;
+    right: -30px;
+    z-index: 9999;
+    top: 62px;
+}
+.border_less_td{
+    border-bottom: 0px !important;
+}
+.contact_table  tr:last-child td{     border-bottom: 0px !important; }
 /*voucher search */
 .voucher_search{
 padding-top: 179px;
     padding-bottom: 171px;
 }
 .voucher_title{
-    color: #0185B6;
+color: #0185B6;
+    font-size: 19px;
     font-weight: bold;
 }
 .p_search{
     color: #00ACB3;
+}
+.voucher_search_form {
+    padding: 1px 51px;
 }
 .voucher_search_input{
       border: 2px solid #0985B6 !important;
@@ -355,7 +454,7 @@ padding-top: 179px;
 }
 .btn_search_v{
     background: #00ACB3 0% 0% no-repeat padding-box;
-border-radius: 13px;
+border-radius: 8px;
 color: white;
 }
 .voucher_no {
@@ -386,7 +485,7 @@ background: #10D271 0% 0% no-repeat padding-box;
 }
 .voucher_result_bar{
 border: solid 1px gray;
-    border-radius: 13px;
+    border-radius: 8px;
     width: 100%;
     height: 38px;
     display: flex;
@@ -398,10 +497,13 @@ border: solid 1px gray;
     padding-top: 9px !important;
 }
 .search_glass{
- position: absolute;
-    left: 30px;
-    top: 9px;
-    color: gray;
+position: absolute;
+    left: 24px;
+    top: 6px;
+    color: gray
+}
+.search_glass img{
+     height: 19px;
 }
 /*Mobile View */
 @media (max-width: 767px){
@@ -437,7 +539,7 @@ padding-top: 77px;
 /* statrt html table with border radius */
 .table_radius {
     overflow: auto;
-    border-radius: 13px;
+    border-radius: 8px;
     border: 1px solid #cccccc;
 }
 
