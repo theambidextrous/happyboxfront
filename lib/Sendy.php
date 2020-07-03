@@ -75,10 +75,9 @@
          /** recipient */
          $post_fields['data']['recepient']['recepient_name'] = $order_data[4][0];
          $post_fields['data']['recepient']['recepient_phone'] = $order_data[4][6];
-         $post_fields['data']['recepient']['recepient_email'] = 'delivery@happybox.ke';
+         $post_fields['data']['recepient']['recepient_email'] = 'deliverjjy@happybox.ke';
          $post_fields['data']['recepient']['recepient_notes'] = 'receipient of items';
         /** delivery details */
-        $sender_info = $util->contact_data();
         $post_fields['data']['delivery_details']['pick_up_date'] = date('Y-m-d h:i:s');
         //collect payment
         $post_fields['data']['delivery_details']['collect_payment']['status'] = false;

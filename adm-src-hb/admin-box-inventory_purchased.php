@@ -68,7 +68,7 @@ $box = new Box();
                         <a href="admin-box-inventory_stock.php" class="btn generate_rpt btn-block">In Stock</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory_purchased.php" class="btn generate_rpt btn-block">Purchased</a>
+                        <a href="admin-box-inventory_purchased.php" class="btn generate_rpt btn-block is_active">Purchased</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block">Activated</a>
@@ -77,7 +77,7 @@ $box = new Box();
                         <a href="admin-box-inventory-redeemed.php" class="btn generate_rpt btn-block">Redeemed</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory-cancelled.php" class="btn generate_rpt btn-block is_active">Cancelled</a>
+                        <a href="admin-box-inventory-cancelled.php" class="btn generate_rpt btn-block">Cancelled</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-expired.php" class="btn generate_rpt btn-block">Expired</a>
@@ -92,7 +92,7 @@ $box = new Box();
                         <div class="table-responsive">
                         <br>
                         <?php 
-                            $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '4'), true)['data'];
+                            $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '2'), true)['data'];
                             // $util->show($all_happyboxes_inventory);
                             try{
                                 if(isset($_POST['generate'])){

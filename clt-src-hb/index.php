@@ -12,45 +12,45 @@ $picture = new Picture();
 $inventory = new Inventory();
 $util->ShowErrors(1);
 $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
-$mpesa = json_decode('{
-	"Body": 
-	{
-		"stkCallback": 
-		{
-			"MerchantRequestID": "21605-295434-4",
-			"CheckoutRequestID": "ws_CO_04112017184930742",
-			"ResultCode": 0,
-			"ResultDesc": "The service request is processed successfully.",
-			"CallbackMetadata": 
-			{
-				"Item": 
-				[
-					{
-						"Name": "Amount",
-						"Value": 1
-					},
-					{
-						"Name": "MpesaReceiptNumber",
-						"Value": "LK451H35OP"
-					},
-					{
-						"Name": "Balance"
-					},
-					{
-						"Name": "TransactionDate",
-						"Value": 20171104184944
-					},
-					{
-						"Name": "PhoneNumber",
-						"Value": 254727894083
-					}
-				]
-			}
-		}
-	}
-}', true);
-$stkCallback = $mpesa['Body']['stkCallback'];
-$util->Show($stkCallback);
+// $mpesa = json_decode('{
+// 	"Body": 
+// 	{
+// 		"stkCallback": 
+// 		{
+// 			"MerchantRequestID": "21605-295434-4",
+// 			"CheckoutRequestID": "ws_CO_04112017184930742",
+// 			"ResultCode": 0,
+// 			"ResultDesc": "The service request is processed successfully.",
+// 			"CallbackMetadata": 
+// 			{
+// 				"Item": 
+// 				[
+// 					{
+// 						"Name": "Amount",
+// 						"Value": 1
+// 					},
+// 					{
+// 						"Name": "MpesaReceiptNumber",
+// 						"Value": "LK451H35OP"
+// 					},
+// 					{
+// 						"Name": "Balance"
+// 					},
+// 					{
+// 						"Name": "TransactionDate",
+// 						"Value": 20171104184944
+// 					},
+// 					{
+// 						"Name": "PhoneNumber",
+// 						"Value": 254727894083
+// 					}
+// 				]
+// 			}
+// 		}
+// 	}
+// }', true);
+// $stkCallback = $mpesa['Body']['stkCallback'];
+// $util->Show($stkCallback);
 ?>
 <!DOCTYPE html>
 <html lang="en">

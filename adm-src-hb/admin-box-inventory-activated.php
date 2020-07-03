@@ -65,7 +65,10 @@ $box = new Box();
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-box-inventory.php" class="btn generate_rpt btn-block">Purchased</a>
+                        <a href="admin-box-inventory_stock.php" class="btn generate_rpt btn-block">In Stock</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="admin-box-inventory_purchased.php" class="btn generate_rpt btn-block">Purchased</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block is_active">Activated</a>
@@ -89,7 +92,7 @@ $box = new Box();
                         <div class="table-responsive">
                         <br>
                         <?php 
-                            $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '1'), true)['data'];
+                            $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '6'), true)['data'];
                             // $util->show($all_happyboxes_inventory);
                             try{
                                 if(isset($_POST['generate'])){
@@ -149,25 +152,30 @@ $box = new Box();
                                     <th>Partner Reimbursment</th>
                                     <th>Partner Identity</th>
                                     <th>Partner Invoice number</th>
-                                    <th>Administrative Functions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 foreach($all_happyboxes_inventory as $hbox ):
-                                    $customer_buyer = !isset(json_encode($user->get_details($hbox['customer_buyer_id']))->data)?json_encode($user->get_details($hbox['customer_buyer_id']))->data:json_decode(json_encode(['object']));
-                                    $customer_user = json_encode( $user->get_details($hbox['customer_user_id']) )->data;
+                                    $_c_buyer = $user->get_details_byidf($hbox['customer_buyer_id']);
+                                    $_c_buyer = json_decode($_c_buyer);
+                                    $_c_user = $user->get_details_byidf($hbox['customer_user_id']);
+                                    $_c_user = json_decode($_c_user);
+                                    $customer_buyer = $_c_buyer->data;
+                                    $customer_user = $_c_user->data;
+                                    // $util->Show($customer_buyer);
                                     $box_data = json_decode($box->get_byidf($token, $hbox['box_internal_id']))->data;
+                                    // print_r($customer_buyer);
                                     /** customer buyer */
                                     $cb_name = $customer_buyer->fname . ' ' . $customer_buyer->mname;
                                     $cb_sname = $customer_buyer->sname;
-                                    $cb_email = $customer_buyer->email;
-                                    $cb_phone = $customer_buyer->email;
+                                    $cb_email = json_decode($user->get_one($customer_buyer->userid, $token))->data->email;
+                                    $cb_phone = $customer_buyer->phone;
                                     /** customer user */
-                                    $cu_name = $customer_user->fname . ' ' . $customer_user->mname;
+                                    $cu_name = $customer_user->fname;
                                     $cu_sname = $customer_user->sname;
-                                    $cu_email = $customer_user->email;
-                                    $cu_phone = $customer_user->email;
+                                    $cu_email = json_decode($user->get_one($customer_user->userid, $token))->data->email;
+                                    $cu_phone = $customer_user->phone;
                                     /** box status */
                                     $box_v_status_name = null;
                                     if($hbox['box_voucher_status'] == '1'){
@@ -273,15 +281,6 @@ $box = new Box();
                                     </td>
                                     <td>
                                         <?=!is_null($hbox['partner_invoice'])?$hbox['partner_invoice']:'null'?>
-                                    </td>
-                                    <td class="inner_table_wrap">
-                                        <table class="text-white inner_table">
-                                            <tr>
-                                                <td class="td_a">
-                                                    <a href="#" class="light">View Detail</a>
-                                                </td>
-                                            </tr>
-                                        </table>  
                                     </td>
                                 </tr>
                                 <?php 

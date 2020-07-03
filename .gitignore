@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 mpesaexpress.log
 allData.log
+mailt_text.html
+.gitignore
