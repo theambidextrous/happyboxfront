@@ -348,7 +348,33 @@ switch($_REQUEST['activity']){
                 // $_img_resp = $u->edit_profile_pic($editing_user_id, 'img');
                 exit(json_encode(['MSG' => 'Partner information updated!']));
             }else{
-                exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
+                exit(json_encode(['ERR' => $prof_resp.json_decode($prof_resp)->message]));
+            }
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+    break;
+    case 'declare-lost-voucher':
+        try{
+            $i = new Inventory();
+            if(empty($_POST['voucher'])){
+                throw new Exception('voucher code is required');
+            }
+            if(empty($_POST['customer_user_id'])){
+                throw new Exception('User Id is required');
+            }
+            $cancellation_date = date('Y-m-d');
+            $body = [
+                'cancellation_date' => $cancellation_date,
+                'customer_user_id' => $_POST['customer_user_id'],
+                'cancelled_by' => $_POST['customer_user_id']
+            ];
+            $resp_ = $i->customer_cancel_voucher($body, $_POST['voucher']);
+            // print $resp_;
+            if( json_decode( $resp_)->status == '0'){
+                exit(json_encode(['MSG' => json_decode( $resp_)->message, 'V' => json_decode( $resp_)->voucher]));
+            }else{
+                exit(json_encode(['ERR' => json_decode( $resp_)->message]));
             }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));
@@ -360,7 +386,7 @@ switch($_REQUEST['activity']){
             if(empty($_POST['vcode'])){
                 throw new Exception('voucher code is required');
             }
-            $activation_date = date('Y-m-d h:i:s');
+            $activation_date = date('Y-m-d');
             $body = [
                 'activation_date' => $activation_date,
                 'customer_user_id' => $_POST['customer_user_id']
@@ -368,7 +394,8 @@ switch($_REQUEST['activity']){
             $resp_ = $i->customer_activate($body, $_POST['vcode']);
             // print $resp_;
             if( json_decode( $resp_)->status == '0'){
-                exit(json_encode(['MSG' => 'Voucher activated!', 'V' => json_decode( $resp_)->voucher]));
+                $v_date = date('d/m/Y', strtotime(json_decode( $resp_)->validity));
+                exit(json_encode(['MSG' => json_decode( $resp_)->message, 'V' => json_decode( $resp_)->voucher, 'Valid' => $v_date]));
             }else{
                 exit(json_encode(['ERR' => json_decode( $resp_)->message]));
             }
@@ -382,11 +409,26 @@ switch($_REQUEST['activity']){
             if(empty($_POST['voucher'])){
                 throw new Exception('voucher code is required');
             }
-            $redeemed_date = date('Y-m-d h:i:s');
+            if( empty($_POST['rservice']) || $_POST['rservice'] == 'nn' ){
+                throw new Exception('Select service to redeem');
+            }
+            if( empty($_POST['booking_date']) ){
+                throw new Exception('Select a valid booking date');
+            }
+            if( $_POST['partner_pay_amount'] < 1 ){
+                throw new Exception('Pay amount is invalid');
+            }
+            $redeemed_date = date('Y-m-d');
+            $booking_date = date('Y-m-d', strtotime($_POST['booking_date']));
+            if( $redeemed_date > $booking_date){
+                throw new Exception('Select a valid booking date. You cannot book in the past');
+            }
             $body = [
                 'redeemed_date' => $redeemed_date,
                 'partner_identity' => $_POST['partner'],
-                'booking_date' => $_POST['booking_date']
+                'booking_date' => $booking_date,
+                'redeemed_service' => $_POST['rservice'],
+                'partner_pay_amount' => $_POST['partner_pay_amount']
             ];
             $resp_ = $i->partner_redeem($body, $_POST['voucher']);
             if( json_decode( $resp_)->status == '0'){

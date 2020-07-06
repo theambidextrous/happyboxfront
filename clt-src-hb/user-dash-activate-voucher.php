@@ -140,7 +140,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                 You will receive an email confirming your voucher activation.                
                                 </p>
                                 <p class="forgot_des text-center txt-orange">
-                                Remember to redeem your experience before DD/MM/YYYY               
+                                Remember to redeem your experience before <b><span id="vvv"></span></b>               
                                 </p>
                             <div>
                             <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
@@ -164,14 +164,15 @@ $token = json_decode($_SESSION['usr'])->access_token;
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
                   $("#reset_div").load(window.location.href + " #reset_div" );
-                  $("#vvv").text(rtn.V);
+                  $("#vvv").text(rtn.Valid);
+                  $('#err').hide();
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
                   return;
               }
               else if(rtn.hasOwnProperty("ERR")){
                   $('#err').text(rtn.ERR);
-                  $('#err').show(rtn.ERR);
+                  $('#err').show();
                   waitingDialog.hide();
                   return;
               }

@@ -11,7 +11,7 @@ $box = new Box();
 $token = json_decode($_SESSION['usr'])->access_token;
 $list = $inventory->get_by_partner(json_decode($_SESSION['usr_info'])->data->internal_id);
 $list = json_decode($list, true)['data'];
-// $util->Show($list);
+$util->Show($list);
 ?>
 <html lang="en">
 <head>
@@ -89,14 +89,14 @@ $('#selec').click(function(){
                       $date_booked = '<td class="empty_cell"></td>';
                     }
                     /** booking */
-                    if(!is_null($_list['cancellation_date'])){
+                    if(!is_null($_list['cancellation_date']) && $_list['box_voucher_status'] == 4){
                       $date_cancelled = '<td>'.date('m/d/Y', strtotime($_list['cancellation_date'])).'</td>';
                     }else{
                       $date_cancelled = '<td class="empty_cell"></td>';
                     }
                     /** partner paid */
-                    if(!is_null($_list['partner_pay_effec_date'])){
-                      $date_ptn_paid = '<td>'.date('m/d/Y', strtotime($_list['partner_pay_effec_date'])).'</td>';
+                    if(!is_null($_list['partner_pay_due_date'])){
+                      $date_ptn_paid = '<td>'.date('m/d/Y', strtotime($_list['partner_pay_due_date'])).'</td>';
                     }else{
                       $date_ptn_paid = '<td class="empty_cell"></td>';
                     }
@@ -138,7 +138,7 @@ $('#selec').click(function(){
                     <?=$date_cancelled?>
                     <?=$date_booked?>
                     <?=$date_ptn_paid?>
-                    <td>Ksh5 000.00</td>
+                    <td>Ksh <?=number_format($_list['partner_pay_amount'],2)?></td>
                     <?=$admin_func?>
                   </tr>
                   <?php

@@ -110,6 +110,48 @@
     function success_flash($e){
         return '<p class="alert alert-success">'.$e.'</p>';
     }
+    function voucher_div($status){
+        if($status == 3){
+            return '<td class="hap_success">REDEEMED</td>';
+        }
+        if($status == 6){
+            return '<td class="hap_success">ACTIVATED</td>';
+        }
+        if($status == 4){
+            return '<td class="hap_danger">CANCELLED</td>';
+        }
+    }
+    function patner_rating($rating_v){
+        $ct = 0;
+        $v = explode('.', $rating_v);
+        $value = number_format($rating_v, 2);
+        $value2 = number_format($rating_v, 0);
+        $rating = '';
+        $decimal = floatval('0.'.$v[1]);
+        $count = 0;
+        while($ct < 5){
+            if($ct < $value2){
+                $rating .= '<i class="fas fa-star"></i>';
+                if($ct+1 == $value2){
+                    if( $decimal > 0.4 ){
+                        $rating .= '<i class="fas fa-star-half"></i>';
+                    }elseif($decimal > 0 && $decimal < 0.5){
+                        $rating .= '<i class="fas fa-star-half"></i>';
+                    }
+                }
+                $count++;
+            }else{
+                if($ct+1 < 5){
+                $rating .= '<i class="fas fa-star"></i>';
+                }
+            }
+            $ct ++;
+        }
+        if($value2 == 0){
+            $rating .= '<i class="fas fa-star"></i>';
+        }
+        return $rating;
+    }
     function place_autocomplete($id){
         print '
         <script src="https://maps.googleapis.com/maps/api/js?key='.$this->MapsKey().'&libraries=places&sensor=false&callback=initialize" async defer></script>
@@ -261,8 +303,8 @@
         return $_SESSION['curr_usr_cart'] = $_final_cart;
     }
     function msg_box(){
-        print '<p style="display:none;" id="succ" class="alert alert-success"></p>
-        <p style="display:none;" id="err" class="alert alert-danger"></p>';
+        print '<div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="succ" class="alert alert-success"></div>
+        <div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="err" class="alert alert-danger"></div>';
     }
     function redirect_to($to, $t = 0){
         if($t>0){
@@ -554,7 +596,21 @@
         </script>
         ';
     }
-    function ptn_v_validity($data, $box_data){
+    function format_box_services($input, $current_ptn=null){
+        foreach( $input as $_data ):
+            $l = explode('~~~', $_data);
+            $rtn[] = $l[2];
+        endforeach;
+        return $rtn;
+    }
+    function ptn_v_validity($data, $box_data, $obj = null){
+        if($box_data[0] == 'Invalid' && !is_null($obj)){
+            return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">'.$obj->message.'</div>';
+        }
+        $options_ = '';
+        foreach($this->format_box_services($box_data[3]) as $_option ):
+            $options_ .= '<option value="'.ucwords(strtolower($_option)).'">'.ucwords(strtolower($_option)).'</option>';
+        endforeach;
         $formid = "'". "redeem_v" . "'";
         $_table = '<div class="row text-center">
         <div class="voucher_result_bar validity_bar">
@@ -571,18 +627,15 @@
           '.$this->get_v_status_name($data[1]).'
           </div>
           <div class="box_name_select col-4">
-            <ul class="nav nav-pills">
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">'.$box_data[0].' | '.$box_data[1].'  </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">'.$box_data[0].' -> '.$box_data[1].'</a> 
-                </div>
-                </li>
-              </ul>
+            <select name="rservice" id="rservice" class="nav-link dropdown-toggle redeem-select" data-toggle="dropdown">
+                <option value="nn">'.$box_data[0].'</option> 
+                '.$options_.'
+            </select>
           </div>
           <div class="booking_date col-md-2 border_right nomargin_lr">
               <span class=""> <img src="../shared/img/icons/icn-calendar-blue.svg" class="booking_date_input"/></span>
               <input type="hidden" name="voucher" value="'.$data[0].'">
+              <input type="hidden" name="partner_pay_amount" value="'.$box_data[4].'">
               <input type="hidden" name="partner" value="'.$box_data[2].'">
               <input type="date" name="booking_date" class="form-control" placeholder="Enter booking date">
           </div>
