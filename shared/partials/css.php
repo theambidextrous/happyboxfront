@@ -2,6 +2,7 @@
 <link href="<?=$util->ClientHome()?>/vendor/fa5/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?=$util->ClientHome()?>/vendor/owl/owl.carousel.min.css">
 <link rel="stylesheet" href="<?=$util->ClientHome()?>/vendor/owl/owl.theme.default.css">
+<link rel="stylesheet" href="<?=$util->ClientHome()?>/vendor/datepicker/jquery-ui.css">
 <link  rel="stylesheet" href="<?=$util->ClientHome()?>/vendor/custom/custom-css.css" >
   <style>
   

@@ -61,7 +61,7 @@ $box = new Box();
             </div>
         </section>
         <section class=" status_bar ">
-            <br>
+        
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
@@ -82,12 +82,13 @@ $box = new Box();
                 </div>
             </div>
         </section>
-        <section class=" data+table_section ">
+         <section class=" datatable_section data_table_section_box_design">
             <div class="container">
                 <div class="row ">
                     <div class="col-md-12 ">
+                         <div class="table_radius table_radius_admin">
                         <div class="table-responsive">
-                        <br>
+                  
                         <?php 
                             $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '5'), true)['data'];
                             // $util->show($all_happyboxes_inventory);
@@ -295,6 +296,7 @@ $box = new Box();
                             </tbody>
                         </table>
                         </div>
+                         </div>
                     </div>
                  </div>
             </div>

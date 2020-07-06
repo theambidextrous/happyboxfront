@@ -26,13 +26,7 @@ $box = new Box();
         <title>Happy Box:: Admin Portal</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
-        <style>
-            .admin-box{
-                color: #c20a2b!important;
-                text-decoration: none!important;
-                border-bottom: solid 2px #c20a2b!important;
-            }
-        </style>
+       
     </head>
 
     <body>
@@ -62,7 +56,7 @@ $box = new Box();
             </div>
         </section>
         <section class=" status_bar ">
-            <br>
+  
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
@@ -74,12 +68,13 @@ $box = new Box();
                 </div>
             </div>
         </section>
-        <section class=" data+table_section ">
+        <section class=" datatable_section data_table_section_box_design">
             <div class="container">
                 <div class="row ">
                     <div class="col-md-12 ">
+                         <div class="table_radius table_radius_admin">
                         <div class="table-responsive">
-                        <br>
+                   
                         <table class="table table_data1 table-bordered">
                             <thead>
                                 <tr>
@@ -140,7 +135,7 @@ $box = new Box();
                                 ?>
                             </tbody>
                         </table>
-                        </div>
+                        </div>         </div>
                     </div>
                  </div>
             </div>

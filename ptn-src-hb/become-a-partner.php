@@ -81,6 +81,16 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                 </div>
               </div>
         </section>
+  
+    <section class="pad_top20">
+                     <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col-md-12">
+                               <img src="../shared/img/become_part_img.svg" class="become_part_floating_img"/>
+                            
+                        </div> </div></div>
+                
+    </section>
   <!--become partner steps-->
   <section class=" text-center become_partner_steps pad_top20">
             <div class="container">
@@ -181,6 +191,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
        </div>
        <div class="col-md-6 nomargin_lr">
                         <div class="become_logos row row_no_margin">
+                            //data dynamic
                         <?php 
                             $_cnt = 1;
                             foreach( $_partners_slide_data as $_partners_slide ):
@@ -231,7 +242,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                 <div class="row justify-content-center ">
                     <div class="col-md-10">
                           <h3 class="partner_blueh">Sound Good?</h3>
-                          <p class="forgot_des text-center">Complete the form below to beconme a HAPPYBOX Partner</p>
+                          <p class="forgot_des text-center sound_p">Complete the form below to become a HAPPYBOX Partner.</p>
                           <?=$util->msg_box()?>
                     </div>
                       <div class="col-md-10">
@@ -293,8 +304,9 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                             <label>Sub location</label>
                                             <input type="text" name="sub_location" class="form-control rounded_form_control" id="select_box_type"/>
                                         </div>
-                                        <button type="button" onclick="create_account('create_ptn_acc')" name="becomeptn" class="btn btn_rounded btn-dark-blue">BECOME A PARTNER</button>
-                                    </div>
+                                        <p class="text-right">
+                                        <button type="button" onclick="create_account('create_ptn_acc')" name="becomeptn" class="btn btn_rounded become_dark_blue_btn btn-dark-blue">BECOME A PARTNER</button>
+                                    </p></div>
                                 </form>
                               
                               

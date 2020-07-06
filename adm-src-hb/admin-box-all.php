@@ -62,8 +62,7 @@ $box = new Box();
             </div>
         </section>
         <section class=" status_bar ">
-            <br>
-            <div class="container justify-content-around">
+                    <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
                         <a href="admin-box-all.php" class="btn generate_rpt btn-block is_active">Available</a>
@@ -74,13 +73,15 @@ $box = new Box();
                 </div>
             </div>
         </section>
-        <section class=" data+table_section ">
+        <section class=" data_table_section data_table_section_box_design">
             <div class="container">
                 <div class="row ">
                     <div class="col-md-12 ">
-                        <div class="table-responsive">
-                        <br>
-                        <table class="table table_data1 table-bordered">
+                       
+                        <div class="table_radius table_radius_admin">
+                        <div class="table-responsive ">
+                    
+                        <table class="table table_data1 table-bordered table-box-designs">
                             <thead>
                                 <tr>
                                     <th>Box Internal Id</th>
@@ -91,7 +92,7 @@ $box = new Box();
                                     <th>List of Topics</th>
                                     <th>3D Image</th>
                                     <th>PDF Booklet</th>
-                                    <th>Administrative functions</th>
+                                    <th class="admin_des">Administrative functions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,7 +122,7 @@ $box = new Box();
                                     <td><?=$_topics?></td>
                                     <td><?=$_3d?></td>
                                     <td><?=$pdf?></td>
-                                    <td class="inner_table_wrap">
+                                    <td class="inner_table_wrap inner_table_wrap_no">
                                         <table class="text-white inner_table">
                                             <tr>
                                                 <td class="td_a">
@@ -141,6 +142,7 @@ $box = new Box();
                             </tbody>
                         </table>
                         </div>
+                    </div>
                     </div>
                  </div>
             </div>

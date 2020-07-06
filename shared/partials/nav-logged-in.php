@@ -22,16 +22,17 @@
     <ul class="nav navbar-nav ml-auto">
            <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-    <?=$_name?> <i class="fas fa-angle-down"></i> <img src="../shared/img/icons/icn-partner-full-white.svg" class="user_icon">
+          
+    <?=$_name?> <img src="../shared/img/menu_drop.svg" class="menu_drop"> <img src="../shared/img/icons/icn-partner-full-white.svg" class="user_icon">
       </a>
       <div class="dropdown-menu drop_partner">
           <div class="card">
                <div class="card-body">
                    <div class="row partner_drop">
-                  <div class="col-2">
+                  <div class="col-2 no_pad_left no_pad_right">
                      <span><img src="../shared/img/icons/partneruser.svg" class="dropdown_user_img"></span>
                   </div>
-                   <div class="col-10 text-white">
+                   <div class="col-10 text-white partner_pro_data no_pad_left">
                        <span><b><?=$_name?></b></span>
                    <span class="email_dropdown"><?=json_decode($_SESSION['usr'])->user->email?></span>
                   </div>
@@ -41,16 +42,22 @@
                   <div class="col-6 drop_down_profile drop_down_footer_col">
                       <a href="partner-edit-profile.php">EDIT PROFILE</a>
                   </div>
-                   <div class="col-6 drop_down_logout drop_down_footer_col">
-                      <a href="exit.php">LOGOUT</a>
+                      <div class="col-6 drop_down_logout drop_down_footer_col">
+                                           <a href="exit.php">LOGOUT</a>
+
                   </div>
+                   
                     </div>
           </div>
       </div>
     </li>
     <li class="nav-item ">
-        <a href="" class="nav-link">
+       <!--  <a href="" class="nav-link">
            <img src="../shared/img/icons/call_nav.svg" class="call_btn" data-toggle="tooltip" title="Hooray!"> 
+        </a>-->
+         <a href="" class="nav-link tooltips">
+         <img src="../shared/img/icons/call_nav.svg" class="call_btn"> <span>Contact Partner Care Team</span>
+        
         </a>
     </li>
     </ul>
@@ -64,9 +71,9 @@
                         <li><a class="t-booking" href="partner-make-booking.php">Take A Booking</a></li>
                         <li><a class="t-voucher" href="partner-voucher-list.php">My Voucher List</a></li>
                         <li><a class="t-experience" href="partner-experience.php">My Experience List</a></li>
-                        <?php if(json_decode($_SESSION['usr'])->user->id){?>
-                            <li><a class="user-profmile" href="exit.php">Logout</a></li>
-                        <?php } ?>
+                        <?php //if(json_decode($_SESSION['usr'])->user->id){?>
+                          <!--  <li><a class="user-profmile" href="exit.php">Logout</a></li>-->
+                        <?php // } ?>
                     </ul>
                 </div>
 

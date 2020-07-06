@@ -8,6 +8,7 @@
   }*/
   $profile_pic_="img/admin_user_icon.svg";
   $dropdown_user_icon="img/drop_user.svg";
+   $dropdown_arrow="img/user_drop.svg";
   if($user_info->data->id > 0){
     $_name = $user_info->data->fname . ' ' . $user_info->data->sname;
   }
@@ -23,7 +24,7 @@
     <ul class="nav navbar-nav ml-auto">
            <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle admin_name_txt" href="#" id="navbardrop" data-toggle="dropdown">
-     Admin User Name <i class="fas fa-angle-down"></i> <img src="<?=$profile_pic_?>" class="user_icon rounded-circle">
+     Admin User Name <img src="<?=$dropdown_arrow?>"  class="user_icon_drop"> <img src="<?=$profile_pic_?>" class="user_icon rounded-circle">
       </a>
       <div class="dropdown-menu">
           <div class="card">

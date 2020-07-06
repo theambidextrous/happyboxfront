@@ -31,6 +31,23 @@ $list = json_decode($list, true)['data'];
       border-bottom: solid 2px #c20a2b!important;
    }
  </style>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    //$( "#datepicker" ).datepicker();
+    $("#datepicker").datepicker();
+$('#selec').click(function(){
+    $('#datepicker').toggle();
+});
+  } );
+  </script>
+
+
+
+
 
 </head>
 
@@ -131,7 +148,81 @@ $list = json_decode($list, true)['data'];
               </table>
             </div>
           </div> 
-          <!-- <p class="text-center pad_top20"><button type="submit" class="btn btn_rounded btn-dark-blue btn-sm"> SAVE MY CHANGES</button></p> -->
+          <br>          <br>
+          <div class="table-responsive">
+            <div class="table_radius">
+              <table class="table  voucher_list_table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="blue_cell_th th_box">BOX NAME</th>
+                    <th>VOUCHER CODE</th>
+                    <th>STATUS</th>
+                    <th class="">CUSTOMER NAME</th>
+                    <th>CUSTOMER SURNAME</th>
+                    <th>DATE REDEEMED</th>
+                    <th>DATE CANCELLED</th>
+                    <th>BOOKING DATE</th>
+                    <th>PARTNER PAYMENT DATE</th>
+                    <th>PARTNER REIMBURSEMENT</th>
+                    <th colspan="2" class="th_actions">VOUCHER ADMINISTRATION</th>
+                  </tr>
+                </thead>
+                <tbody>
+               <tr>
+          <td class="light_blue_cell">
+            SPA EXPERIENCE
+          </td>
+        <td>azerty</td>
+        <td class="hap_danger">CANCELLED</td>
+         
+           <td>Bloggs</td>
+            <td>Joe</td>
+              <td>06/03/2020</td>
+                <td>06/03/2020</td>
+                <td class="empty_cell"></td>
+                   <td class="empty_cell"></td>
+                    <td>Ksh5 000.00</td>
+            <td class="empty_cell">
+               
+                
+            </td>
+             <td class="empty_cell">
+               
+                
+            </td>
+            
+      </tr>
+      <tr>
+          <td class="light_blue_cell">
+            SPA EXPERIENCE
+          </td>
+        <td>qwerty</td>
+        <td class="hap_success">REDEEMED</td>
+         
+           <td>Smith</td>
+            <td>Joe</td>
+              <td>15/02/2020</td>
+                <td class="empty_cell"></td>
+                  <td>15/02/2020</td>
+                   <td>31/03/2020</td>
+                    <td>31/03/2020</td>
+                    <td class="hap_danger" >
+              
+                        <a href="#" class="text-white" data-toggle="tooltip" data-placement="top" title="Hooray!">CANCEL VOUCHER </a>     
+            </td>
+                <td id="datepickerx" class="hap_primary">
+                    
+                    MODIFY DATE  <a href=""><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></a> <input type="text" id="datepicker" > 
+           
+                
+            </td>
+            
+      </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> 
+        <p class="text-center pad_top20"><button type="submit" class="btn btn_rounded btn-dark-blue btn-sm"> SAVE MY CHANGES</button></p>
         </div>
       </div>
     </div>
@@ -140,6 +231,13 @@ $list = json_decode($list, true)['data'];
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
 <?php include '../shared/partials/js.php';?>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepickerx" ).datepicker();
+  } );
+  </script>
 </body>
 <!-- pop up -->
 <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#voucher_c"></button>
@@ -181,6 +279,8 @@ $list = json_decode($list, true)['data'];
   </div>
 <!-- end pop up -->
 </body>
+ 
+   
 <script>  
     $(document).ready(function(){
       cancell_voucher_pop = function(vcode){
