@@ -1,5 +1,5 @@
 <ul>
-    <li><a class="admin-b-inventory" href="admin-box-inventory.php">Box Inventory</a></li>
+    <li><a class="admin-b-inventory" href="admin-box-inventory_stock.php">Box Inventory</a></li>
     <li><a class="admin-report" href="admin-reports.php">Reports</a></li>
     <li><a class="admin-p-list" href="admin-partner-listing.php">Partner Listing & Profiles</a></li>
     <li><a class="admin-v-search" href="admin-voucher-search.php">Voucher Quick Search</a></li>

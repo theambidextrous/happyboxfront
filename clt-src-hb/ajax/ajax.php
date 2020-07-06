@@ -8,13 +8,21 @@ require_once '../../lib/Inventory.php';
 require_once '../../lib/Shipping.php';
 require_once '../../lib/Box.php';
 require_once '../../lib/MPesa.php';
+require_once '../../lib/Order.php';
 
 switch($_REQUEST['activity']){
     default:
         exit(json_encode(['ERR' => 'Mission Failed!']));
     break;
+    case 'mpesa-express-status-check':
+        /** check order payment status.. if paid redirect */
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $order_number = $_POST['ordernumber'];
+        
+    break;
     case 'make-payment-mpesa':
         try{
+            $token = json_decode($_SESSION['usr'])->access_token;
             $mpesa_phone = '254' . intval($_POST['mpesaphone']);
             $order_number = $_POST['ordernumber'];
             $order_amount = $_POST['orderamount'];
@@ -54,7 +62,16 @@ switch($_REQUEST['activity']){
             if( json_decode($express_response)->ResponseCode != '0' ){
                 exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
             }
-            exit( json_encode(['MSG' => $both_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
+            /** update order checkoutrequestid */
+            $order = new Order($token);
+            $checkout_req_id = json_decode($express_response)->CheckoutRequestID;
+            $order_resp = $order->update_checkout_req_id($checkout_req_id, $order_number);
+            if(json_decode($order_resp)->status == '0'){
+                exit( json_encode(['MSG' => $both_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
+            }else{
+                $err_msg = '<div class="alert alert-danger">Could not update your order with payment information. Try again.</div>';
+                exit(json_encode(['ERR' =>$err_msg ]));
+            }
         }catch(Exception $e){
             $err_msg = '<div class="alert alert-danger">'.$e->getMessage().'</div>';
             exit(json_encode(['ERR' =>$err_msg ]));

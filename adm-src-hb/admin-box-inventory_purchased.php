@@ -61,17 +61,17 @@ $box = new Box();
             </div>
         </section>
         <section class=" status_bar ">
-      
+         
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
                         <a href="admin-box-inventory_stock.php" class="btn generate_rpt btn-block">In Stock</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory_purchased.php" class="btn generate_rpt btn-block">Purchased</a>
+                        <a href="admin-box-inventory_purchased.php" class="btn generate_rpt btn-block is_active">Purchased</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block is_active">Activated</a>
+                        <a href="admin-box-inventory-activated.php" class="btn generate_rpt btn-block">Activated</a>
                     </div>
                     <div class="col-md-2">
                         <a href="admin-box-inventory-redeemed.php" class="btn generate_rpt btn-block">Redeemed</a>
@@ -85,15 +85,15 @@ $box = new Box();
                 </div>
             </div>
         </section>
-     <section class=" datatable_section data_table_section_box_design">
+      <section class=" datatable_section data_table_section_box_design">
             <div class="container">
                 <div class="row ">
                     <div class="col-md-12 ">
                          <div class="table_radius table_radius_admin">
                         <div class="table-responsive">
-                 
+                       
                         <?php 
-                            $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '6'), true)['data'];
+                            $all_happyboxes_inventory = json_decode($inventory->get_by_vstatus($token, '2'), true)['data'];
                             // $util->show($all_happyboxes_inventory);
                             try{
                                 if(isset($_POST['generate'])){
@@ -289,8 +289,7 @@ $box = new Box();
                                 ?>
                             </tbody>
                         </table>
-                        </div>
-                         </div>
+                        </div>    </div>
                     </div>
                  </div>
             </div>
