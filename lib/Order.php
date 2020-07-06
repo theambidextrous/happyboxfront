@@ -85,7 +85,7 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                 }
                                 /** create the evouchers */
                                 $purchase_date = date('Y-m-d', time());
-                                $box_validity_object = new DateTime("+2 months");
+                                $box_validity_object = new DateTime("+6 months");
                                 $box_validity_date = $box_validity_object->format("Y-m-d");
                                 $evouchers_this_ = implode(',', $ev);
                                 $body = [
@@ -108,7 +108,7 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                 /** allocate pvouchers to this order */
                                 $_box_qty = $_order_item[1];
                                 $purchase_date = date('Y-m-d', time());
-                                $box_validity_object = new DateTime("+2 months");
+                                $box_validity_object = new DateTime("+6 months");
                                 $box_validity_date = $box_validity_object->format("Y-m-d");
                                 $body = [
                                     'box_internal_id' => $_order_item[0],
@@ -348,7 +348,7 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                 }
                                 /** create the evouchers */
                                 $purchase_date = date('Y-m-d', time());
-                                $box_validity_object = new DateTime("+2 months");
+                                $box_validity_object = new DateTime("+6 months");
                                 $box_validity_date = $box_validity_object->format("Y-m-d");
                                 $evouchers_this_ = implode(',', $ev);
                                 $body = [
@@ -371,7 +371,7 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                 /** allocate pvouchers to this order */
                                 $_box_qty = $_order_item[1];
                                 $purchase_date = date('Y-m-d', time());
-                                $box_validity_object = new DateTime("+2 months");
+                                $box_validity_object = new DateTime("+6 months");
                                 $box_validity_date = $box_validity_object->format("Y-m-d");
                                 $body = [
                                     'box_internal_id' => $_order_item[0],

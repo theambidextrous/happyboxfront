@@ -5,8 +5,10 @@ require_once('../lib/User.php');
 require_once('../lib/Inventory.php');
 require_once('../lib/Box.php');
 require_once('../lib/Picture.php');
+require_once('../lib/Rating.php');
 $util = new Util();
 $user = new User();
+$rating = new Rating();
 if(!$util->is_client()){
     header('Location: user-login.php');
 }
@@ -84,7 +86,10 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     <div class="row justify-content-center forgot-dialogue-wrap">
                     <div class="col-md-12">
                       <h3 class="user_blue_title text-center">MY VOUCHER LIST</h3>
-                      <p class="txt-orange text-center">A list of your activated vouchers</p>
+                      <p class="txt-orange text-center">A list of your activated vouchers
+                        <br>
+                        <div id="err" style="display:none;width:30%;margin: 0px auto;" class="text-center alert alert-danger"></div>
+                      </p>
                       <div class="table-responsive">
                       <div class="table_radius">
                         <table class="table  voucher_list_table table-bordered">
@@ -104,34 +109,56 @@ $my_list_ = json_decode($my_list_, true)['data'];
                             </tr>
                           </thead>
                           <tbody>
+                            <?php
+                              if(count($my_list_)){
+                                foreach( $my_list_ as $my_l):
+                                  if($my_l['box_voucher_new']){
+                                    $my_l['box_voucher'] = $my_l['box_voucher_new'];
+                                  }
+                                  $_box_data = json_decode($box->get_byidf('00', $my_l['box_internal_id']))->data;
+                                  $redeemed_date = $my_l['redeemed_date'];
+                                  $redeem_div = '<td class="empty_cell"></td>';
+                                  if(!empty($redeemed_date)){
+                                    $redeem_div = '<td>'.date('d/m/Y',strtotime($redeemed_date)).'</td>';
+                                  }
+                                  $cancellation_date = $my_l['cancellation_date'];
+                                  $cancellation_div = '<td class="empty_cell"></td>';
+                                  if(!empty($cancellation_date) && !$my_l['box_voucher_new'] ){
+                                    $cancellation_div = '<td>'.date('d/m/Y',strtotime($cancellation_date)).'</td>';
+                                  }
+                                  $booking_date = $my_l['booking_date'];
+                                  $booking_div = '<td class="empty_cell"></td>';
+                                  if(!empty($booking_date)){
+                                    $booking_div = '<td>'.date('d/m/Y',strtotime($booking_date)).'</td>';
+                                  }
+                                  $partner_name = $my_l['partner_internal_id'];
+                                  $rating_value = 0;
+                                  $rating_value = json_decode($rating->get_ptn_value('PT-DD97R3YGJZ'))->data;
+                                  if(!empty($partner_name)){
+                                    $ptn = $user->get_details_byidf($my_l['partner_internal_id']);
+                                    $partner_name = json_decode($ptn)->data->business_name;
+                                    $rating_value = json_decode($rating->get_ptn_value($my_l['partner_internal_id']))->data;
+                                  }
+                            ?>
                             <tr>
-                              <td class="light_blue_cell">SPA EXPERIENCE</td>
-                              <td>123</td>
-                              <td>azerty</td>
-                              <td class="hap_success">REDEEMED</td>
-                              <td>06/03/2020</td>
-                              <td>06/03/2020</td>
-                              <td class="empty_cell"></td>
-                              <td class="">06/03/2020</td>
-                              <td class="">Super Spa</td>
-                              <td class="gray_star"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i> </td>
-                              <td id="declare_td" class="td_orange">DECLARE LOSS OR THEFT OF VOUCHER</td>
+                              <td class="light_blue_cell"><?=strtoupper($_box_data->name)?></td>
+                              <td><?=strtoupper($my_l['id'])?></td>
+                              <td><?=$my_l['box_voucher']?></td>
+                              <?=$util->voucher_div($my_l['box_voucher_status'])?>
+                              <?=$redeem_div?>
+                              <td><?=date('d/m/Y',strtotime($my_l['box_validity_date']))?></td>
+                              <?=$cancellation_div?>
+                              <?=$booking_div?>
+                              <td class=""><?=$partner_name?></td>
+                              <td class="gray_star">
+                                <?=$util->patner_rating($rating_value)?>
+                              </td>
+                              <td class="td_orange" onclick="declare_lost('<?=$my_l['box_voucher']?>')">DECLARE LOSS OR THEFT OF VOUCHER</td>
                             </tr>
-                            <tr>
-                              <td class="light_blue_cell">SPA EXPERIENCE</td>
-                              <td>456</td>
-                              <td>qwerty</td>
-                              <td class="hap_danger">CANCELLED</td> 
-                              <td class="empty_cell"></td>
-                              <td>06/07/2020</td>
-                              <td>06/04/2020</td>
-                              <td class="empty_cell"></td>
-                              <td>Super Spa</td>
-                              <td class="gray_star empty_cell"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i> </td>
-                              <td class="empty_cell"></td>
-                            </tr>
+                            <?php 
+                                endforeach;
+                              }
+                            ?>
                           </tbody>
                         </table>
                 </div>
@@ -153,7 +180,6 @@ $my_list_ = json_decode($my_list_, true)['data'];
       <div class="modal-body text-center">
       <div class="col-md-12 text-center forgot-dialogue-borderz">
       <h3 class="partner_blueh ">Your loss or theft declaration is being processed</h3>
-
       <p class=" text-center txt-orange">
       You will receive an email shortly.             
       </p>
@@ -167,13 +193,35 @@ $my_list_ = json_decode($my_list_, true)['data'];
       </div>
       </div>
       </div>
-   <script>
+
+  <script>  
     $(document).ready(function(){
-        //$("#userdashTheft").modal('show');
-        $('#declare_td').on('click', function() {
-   $("#userdashTheft").modal('show');
-});
-    });
+      declare_lost = function(v){
+      waitingDialog.show('requesting... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      var dataString = "voucher=" + v + "&customer_user_id=<?=json_decode($_SESSION['usr_info'])->data->internal_id?>";
+      $.ajax({
+          type: 'post',
+          url: '<?=$util->AjaxHome()?>?activity=declare-lost-voucher',
+          data: dataString,
+          success: function(res){
+              console.log(res);
+              var rtn = JSON.parse(res);
+              if(rtn.hasOwnProperty("MSG")){
+                  $('#err').hide();
+                  $('#userdashTheft').modal('show');
+                  waitingDialog.hide();
+                  return;
+              }
+              else if(rtn.hasOwnProperty("ERR")){
+                  $('#err').text(rtn.ERR);
+                  $('#err').show();
+                  waitingDialog.hide();
+                  return;
+              }
+          }
+      });
+      }
+  });  
 </script>
 <!-- end pop up -->
       

@@ -11,6 +11,10 @@ body{
     font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
     font-size: 15px;
 }
+.redeem-select{
+    width: 100%!important;
+    border: solid 0px #fff!important;
+}
 .h3, h3 {
     font-size: 1.65rem;
 }

@@ -51,32 +51,51 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <div class="col-md-7 text-center how_it_work_border">
             <?php
               $_redeem_v_table = null;
+              $obj = null;
               if(isset($_POST['VALIDITY']) && !empty($_POST['vcode'])){
-                  $voucher_code = $_POST['vcode'];
-                  $res = $inventory->get_by_voucher($token, $voucher_code);
+                  $voucher_code = strtoupper($_POST['vcode']);
+                  $res = $obj = $inventory->get_by_voucher($token, $voucher_code);
                   // print $util->Show($res);
                   $res = json_decode($res, true)['data'];
                   // print $util->Show($res);
                   if(isset($res['box_internal_id'])){
                       $idf = $res['partner_internal_id'];
                       $box_idf = $res['box_internal_id'];
-                      $box_data = json_decode($box->get_byidf($token, $box_idf))->data;
-                      $data_0 = [
+                      $_b_data = $box->get_byidf($token, $box_idf);
+                      $box_data = json_decode($_b_data)->data;
+                      // $util->Show($box_data);
+                      // exit;
+                      $_bx_services = json_decode(json_decode($_b_data, true)['data']['partners'], true);
+                      $_bx_price = json_decode(json_decode($_b_data, true)['data']['price'], true);
+                      // $util->Show($util->format_box_services($_bx_services));
+                      if(!$box_data){
+                        $data_0 = $data_1 = [
+                          'Invalid',
+                          'Invalid'
+                        ];
+                      }else{
+                        if($res['box_voucher_new']){
+                          $res['box_voucher'] = $res['box_voucher_new'];
+                        }
+                        $data_0 = [
                           $res['box_voucher'],
                           $res['box_voucher_status']
-                      ];
-                      $data_1 = [
-                        $box_data->name,
-                        $box_data->description,
-                        json_decode($_SESSION['usr_info'])->data->internal_id
-                    ];
+                        ];
+                        $data_1 = [
+                          $box_data->name,
+                          $box_data->description,
+                          json_decode($_SESSION['usr_info'])->data->internal_id,
+                          $_bx_services,
+                          floor($_bx_price*0.7)
+                        ];
+                      }
                   }else{
                       $data_0 = $data_1 = [
                           'Invalid',
                           'Invalid'
                       ];
                   }
-                  $_redeem_v_table = $util->ptn_v_validity($data_0, $data_1);
+                  $_redeem_v_table = $util->ptn_v_validity($data_0, $data_1, json_decode($obj));
               }
             ?>
             <div class="row justify-content-center">
@@ -131,7 +150,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 <script>  
     $(document).ready(function(){
       redeem_voucher = function(FormId){
-      waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      waitingDialog.show('redeeming... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
           type: 'post',
@@ -141,10 +160,15 @@ $token = json_decode($_SESSION['usr'])->access_token;
               // console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
-                  $("#reset_div").load(window.location.href + " #reset_div" );
+                  // $("#reset_div").load(window.location.href + " #reset_div" );
                   $("#vvv").text(rtn.V);
+                  $("#err").hide();
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
+                  setTimeout(function() {
+                    window.location.href += '#new';
+                    window.location.reload();
+                  }, 5000);
                   return;
               }
               else if(rtn.hasOwnProperty("ERR")){

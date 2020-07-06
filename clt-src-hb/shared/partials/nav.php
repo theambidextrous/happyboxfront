@@ -58,7 +58,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
                   <a class="nav-link" href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="user-dash-activate-voucher.php">
+                  <a class="nav-link" href="<?=$util->ClientHome()?>/user-dash-activate-voucher.php">
                       <img src="<?=$util->ClientHome()?>/shared/img/icons/btn-register-your-voucher.svg">
                     </a>
                 </li>
