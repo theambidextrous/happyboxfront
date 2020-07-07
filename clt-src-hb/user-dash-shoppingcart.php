@@ -60,7 +60,9 @@ $util->ShowErrors(1);
                             if(!empty($_SESSION['curr_usr_cart'])){
                                 foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
                                     if(!isset($_cart_item['order_id'])){
-                                    $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
+                                    $raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
+                                    $util->Show($raw_data);
+                                    $_box_data = $raw_data->data;
                                     $_b_cost = floor($_cart_item[1]*$_box_data->price);
                                     $_total_cart[] = $_b_cost;
                                     $_total_shipping = 0;
