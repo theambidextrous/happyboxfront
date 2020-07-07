@@ -162,20 +162,20 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                                   $sendy_resp = $sendy->post_fields($_cart_item, $this_order, $box, 'quote');
                                   // $util->Show($sendy_resp);
                                   $errr = '';
-                                  $s_amt = 10;
-                                  // if(json_decode($sendy_resp)->status){
-                                  //   $s_amt = json_decode($sendy_resp)->data->amount;
-                                    $errr = 'Cost of delivering: KES ' . $s_amt;
-                                    $_total_shipping[] = $s_amt;
-                                  // }elseif(isset(json_decode($sendy_resp)->data)){
-                                  //   $errr = $util->error_flash(json_decode($sendy_resp)->data);
-                                  //   array_push($_has_no_ship, 1);
-                                  //   $_total_shipping[] = 0;
-                                  // }else{
-                                  //   $errr = $util->error_flash(json_decode($sendy_resp)->description);
-                                  //   array_push($_has_no_ship, 1);
-                                  //   $_total_shipping[] = 0;
-                                  // }
+                                  // $s_amt = 10;
+                                  if(json_decode($sendy_resp)->status){
+                                    $s_amt = json_decode($sendy_resp)->data->amount;
+                                    // $errr = 'Cost of delivering: KES ' . $s_amt;
+                                    // $_total_shipping[] = $s_amt;
+                                  }elseif(isset(json_decode($sendy_resp)->data)){
+                                    $errr = $util->error_flash(json_decode($sendy_resp)->data);
+                                    array_push($_has_no_ship, 1);
+                                    $_total_shipping[] = 0;
+                                  }else{
+                                    $errr = $util->error_flash(json_decode($sendy_resp)->description);
+                                    array_push($_has_no_ship, 1);
+                                    $_total_shipping[] = 0;
+                                  }
                                 }catch(Exception $e){
                                   $errr = $util->error_flash($e->getMessage());
                                   $_total_shipping[] = 0;
