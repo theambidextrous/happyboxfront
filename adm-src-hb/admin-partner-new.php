@@ -87,7 +87,7 @@ $prices = json_decode($prices, true)['data'];
                                     }
                                     // $util->Show($services);
                                     $_SESSION['frm'] = $_POST;
-                                    $username = explode('@', $_POST['email'])[0];
+                                    $username = strtolower($util->createCode(6));
                                     $password = $util->createCode(10);
                                     $u = new User($username, $_POST['email'], $password, $password);
                                     /** register */

@@ -122,6 +122,10 @@
         }
     }
     function patner_rating($rating_v){
+        if($rating_v <= 0){
+            return '
+            <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>';
+        }
         $ct = 0;
         $v = explode('.', $rating_v);
         $value = number_format($rating_v, 2);
@@ -131,24 +135,24 @@
         $count = 0;
         while($ct < 5){
             if($ct < $value2){
-                $rating .= '<i class="fas fa-star"></i>';
+                $rating .= '<i class="fa fa-star"></i>';
                 if($ct+1 == $value2){
                     if( $decimal > 0.4 ){
-                        $rating .= '<i class="fas fa-star-half"></i>';
+                        $rating .= '<i class="fa fa-star-half-alt"></i>';
                     }elseif($decimal > 0 && $decimal < 0.5){
-                        $rating .= '<i class="fas fa-star-half"></i>';
+                        $rating .= '<i class="fa fa-star-half-alt"></i>';
                     }
                 }
                 $count++;
             }else{
                 if($ct+1 < 5){
-                $rating .= '<i class="fas fa-star"></i>';
+                $rating .= '<i class="far fa-star"></i>';
                 }
             }
             $ct ++;
         }
         if($value2 == 0){
-            $rating .= '<i class="fas fa-star"></i>';
+            $rating .= '<i class="fa fa-star"></i>';
         }
         return $rating;
     }
@@ -302,9 +306,9 @@
         }
         return $_SESSION['curr_usr_cart'] = $_final_cart;
     }
-    function msg_box(){
-        print '<div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="succ" class="alert alert-success"></div>
-        <div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="err" class="alert alert-danger"></div>';
+    function msg_box($ext=''){
+        print '<div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="'.$ext.'succ" class="alert alert-success"></div>
+        <div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="'.$ext.'err" class="alert alert-danger"></div>';
     }
     function redirect_to($to, $t = 0){
         if($t>0){

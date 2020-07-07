@@ -2,7 +2,13 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
+require_once('../lib/Box.php');
 $util = new Util();
+$box = new Box();
+$partnerdata = json_decode($_SESSION['usr_info'], true);
+$experience_list = $partnerdata['data']['services'];
+$experience_list = json_decode($experience_list, true);
+$token = json_decode($_SESSION['usr'])->access_token;
 ?>
 <html lang="en">
 <head>
@@ -30,104 +36,78 @@ $util = new Util();
  
 <section class="partner_voucher_list section_60">
            <div class="container">
-			
-               
-                    <div class="row justify-content-center forgot-dialogue-wrap">
-                     
-                       
-                    <div class="col-md-12">
-					<h3 class="partner_blueh text-center">MY EXPERIENCE LIST</h3>
-                                        <p class="forgot_des text-center">
-                    Your list of experiences offered.           
-                                        </p>
-                                        <div class="table-responsive">  <div class="table_radius"> <table class="table  experience_list_table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="blue_cell_th th_box">EXPERIENCE LIST</th>
-                        <th>BOX NAME</th>
-                        <th>BOX NAME</th>
-                        <th >BOX NAME</th>
-                        <th>BOX NAME</th>
-                        <th>BOX NAME</th>
-                         <th>BOX NAME</th>
-               
-                        
-
-                    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-            Hot-Stone Massage , Body-Scrub & Pedicure     
-            </td>
-
-        <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/> </td>
-          <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-        <td class=""></td>
-           <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-            <td class=""></td>
-             <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>          
-            
-      </tr>
-       <tr>
-            <td>
-            Aromatherapy Massage, Body-Scrub & Manicure    
-            </td>
-
-        <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-          <td></td>
-        <td class=""><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-           <td></td>
-            <td class=""><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-             <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>          
-            
-      </tr>
-       <tr>
-            <td>
-           Moroccan Bath , Swedish Massage & Manicure, Pedicure  
-            </td>
-
-        <td></td>
-          <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-        <td class=""></td>
-           <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-            <td class=""><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-             <td></td>          
-            
-      </tr>
-       <tr>
-            <td>
-           Deep Tissue Massage & Deep Cleansing Facial    
-            </td>
-
-        <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-          <td></td>
-        <td class=""></td>
-           <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-            <td class=""><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
-             <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>          
-            
-      </tr>
-      
-      
-  
-     
-    </tbody>
-  </table> </div> 
-                </div> 
-                                      
-                        </div>
-
+             <div class="row justify-content-center forgot-dialogue-wrap">
+               <div class="col-md-12">
+                 <h3 class="partner_blueh text-center">MY EXPERIENCE LIST</h3>
+                 <p class="forgot_des text-center">Your list of experiences offered.</p>
+                <?php 
+                // $util->Show($experience_list);
+                $boxes = [];
+                if(is_object(json_decode($box->get($token)))){
+                  $boxes = json_decode($box->get($token), true)['data'];
+                }
+                // $util->Show($boxes);
+                ?>
+                <div class="table-responsive">
+                  <div class="table_radius">
+                    <table class="table  experience_list_table table-bordered">
+                      <thead>
+                        <tr>
+                            <th class="blue_cell_th th_box">EXPERIENCE LIST</th>
+                            <?php
+                            if(count($boxes)){
+                              foreach( $boxes as $headers ):
+                                print '<th>'.strtoupper($headers['name']).'</th>';
+                              endforeach;
+                            }
+                            ?>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        if(count($experience_list)){
+                          foreach( $experience_list as $ekey => $evalue):
+                            $idf = $partnerdata['data']['internal_id'];
+                            $partner_item_current = $idf.'~~~'.$ekey.'~~~'.$evalue;
+                        ?>
+                        <tr>
+                          <td>
+                          <?=$evalue?>     
+                          </td>
+                          <?php
+                            if(count($boxes)){
+                              foreach( $boxes as $tds ):
+                                $box_exps = json_decode($tds['partners'], true);
+                                if(in_array($partner_item_current, $box_exps)){
+                            ?>
+                                  <td><img src="../shared/img/icons/icn-tick-teal.svg" class="experience_list_tick"/></td>
+                                  <!-- <td class=""></td> -->
+                            <?php 
+                                }else{
+                                  print '<td class=""></td>';
+                                }
+                                endforeach;
+                              }
+                            ?>
+                        </tr>
+                        <?php 
+                          endforeach;
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div> 
+                  </div> 
                 </div>
               </div>
-        </section>
+              </div>
+            </section>
+        <?php include '../shared/partials/loggedin-footer.php';?>
+          <!-- Page Content -->
 
-<?php include '../shared/partials/loggedin-footer.php';?>
-  <!-- Page Content -->
-
-  <!-- Bootstrap core JavaScript -->
-  
-<?php include '../shared/partials/js.php';?>
+          <!-- Bootstrap core JavaScript -->
+          
+        <?php include '../shared/partials/js.php';?>
    
   
  

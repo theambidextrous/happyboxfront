@@ -25,7 +25,7 @@ switch($_REQUEST['activity']){
             $token = json_decode($_SESSION['usr'])->access_token;
             $mpesa_phone = '254' . intval($_POST['mpesaphone']);
             $order_number = $_POST['ordernumber'];
-            $order_amount = $_POST['orderamount'];
+            $order_amount = 10;//$_POST['orderamount'];
             if(empty($order_number) || empty($mpesa_phone) || $order_amount < 10 ){
                 throw new Exception('Error occured. Make sure the order amount is not zero and phone starts with 07..');
             }
@@ -211,7 +211,48 @@ switch($_REQUEST['activity']){
             if($_POST['business_category'] == 'nn'){
                 throw new Exception('business category field is required');
             }
-            $username = explode('@', $_POST['email'])[0];
+            if($_POST['location'] == 'nn'){
+                throw new Exception('Location field is required');
+            }
+            if(!$_POST['sub_location']){
+                throw new Exception('Sub location field is required');
+            }
+            $body = [
+                'email' => $_POST['email'],
+                'fname' => $_POST['fname'],
+                'sname' => $_POST['sname'],
+                'short_description' => $_POST['short_description'],
+                'location' => $_POST['location'] .' | '.$_POST['sub_location'],
+                'phone' => $_POST['phone'],
+                'business_name' => $_POST['business_name'],
+                'business_category' => $_POST['business_category'],
+                'business_reg_no' => $_POST['business_reg_no']
+            ];
+            $u = new User();
+            $prof_resp = $u->become_partner($body);
+            if(json_decode($prof_resp)->status == '0'){
+                exit(json_encode(['MSG' => 'Request received. We will review the information and contact you']));
+            }else{
+                exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
+            }
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+        exit();
+        /** ================================================================ */
+        /** ================================================================ */
+        try{
+            if($_POST['business_category'] == 'nn'){
+                throw new Exception('business category field is required');
+            }
+            if($_POST['location'] == 'nn'){
+                throw new Exception('Location field is required');
+            }
+            if(!$_POST['sub_location']){
+                throw new Exception('Sub location field is required');
+            }
+            /**================================================== */
+            $username = strtolower($util->createCode(6));
             $password = $util->createCode(10);
             $u = new User($username, $_POST['email'], $password, $password);
             /** register */
@@ -229,7 +270,7 @@ switch($_REQUEST['activity']){
                         'fname' => $_POST['fname'],
                         'sname' => $_POST['sname'],
                         'short_description' => $_POST['short_description'],
-                        'location' => $_POST['location'],
+                        'location' => $_POST['location'] .' | '.$_POST['sub_location'],
                         'phone' => $_POST['phone'],
                         'business_name' => $_POST['business_name'],
                         'business_category' => $_POST['business_category'],
@@ -440,18 +481,65 @@ switch($_REQUEST['activity']){
             exit(json_encode(['ERR' => $e->getMessage()]));
         }
     break;
+    case 'modify-voucher-booking':
+        try{
+            $i = new Inventory();
+            if(empty($_POST['modi_voucher'])){
+                throw new Exception('Invalid voucher!');
+            }
+            if(empty($_POST['new_booking_date'])){
+                throw new Exception('Invalid date!');
+            }
+            if(empty($_POST['partner'])){
+                throw new Exception('Invalid partner code!');
+            }
+            $today = date('Y-m-d');
+            $new_booking_date = date('Y-m-d', strtotime($_POST['new_booking_date']));
+            if( $today > $new_booking_date ){
+                throw new Exception('Invalid date! You cannot book a past date');
+            }
+            $body = [
+                'new_booking_date' => $new_booking_date,
+                'partner_identity' => $_POST['partner']
+            ];
+            $resp_ = $i->partner_modify_booking($body, $_POST['modi_voucher']);
+            if( json_decode( $resp_)->status == '0'){
+                exit(json_encode(['MSG' => 'Voucher booking date has been changed to '.date('d/m/Y', strtotime($_POST['new_booking_date'])), 'V' => json_decode( $resp_)->voucher]));
+            }else{
+                exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+            }
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+    break;
     case 'cancel-ptn-voucher':
         try{
             $i = new Inventory();
+            $_POST['voucher'] = $_POST['vcode'];
             if(empty($_POST['voucher'])){
                 throw new Exception('voucher code is required');
             }
-            $cancellation_date = date('Y-m-d h:i:s');
+            if(empty($_POST['partner'])){
+                throw new Exception('Invalid partner code!');
+            }
+            if(empty($_POST['vreason'])){
+                throw new Exception('Explain why you are cancelling this voucher!');
+            }
+            $cancellation_date = date('Y-m-d');
             $body = [
-                'cancellation_date' => $redeemed_date,
+                'cancellation_date' => $cancellation_date,
                 'partner_identity' => $_POST['partner'],
-                'reason' => $_POST['reason']
+                'reason' => $_POST['vreason']
             ];
+            $resp_ = $i->partner_cancel_voucher($body, $_POST['voucher']);
+            if( json_decode( $resp_)->status == '0'){
+                exit(json_encode([
+                    'MSG' => 'Voucher has been successfully cancelled. The customer has been emailed a new voucher', 
+                    'V' => null
+                ]));
+            }else{
+                exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+            }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));
         }

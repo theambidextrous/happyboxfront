@@ -112,8 +112,12 @@ $my_list_ = json_decode($my_list_, true)['data'];
                             <?php
                               if(count($my_list_)){
                                 foreach( $my_list_ as $my_l):
-                                  if($my_l['box_voucher_new']){
-                                    $my_l['box_voucher'] = $my_l['box_voucher_new'];
+                                  $admin_func_ = '<td class="empty_cell"></td>';
+                                  if($my_l['box_voucher_status'] == 6){
+                                    $_voucher = "'".$my_l['box_voucher']."'";
+                                    $admin_func_ = '
+                                    <td class="td_orange" onclick="declare_lost('.$_voucher.')">DECLARE LOSS OR THEFT OF VOUCHER</td>
+                                    ';
                                   }
                                   $_box_data = json_decode($box->get_byidf('00', $my_l['box_internal_id']))->data;
                                   $redeemed_date = $my_l['redeemed_date'];
@@ -123,21 +127,27 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                   }
                                   $cancellation_date = $my_l['cancellation_date'];
                                   $cancellation_div = '<td class="empty_cell"></td>';
-                                  if(!empty($cancellation_date) && !$my_l['box_voucher_new'] ){
+                                  if($my_l['box_voucher_status'] == 4){
                                     $cancellation_div = '<td>'.date('d/m/Y',strtotime($cancellation_date)).'</td>';
                                   }
                                   $booking_date = $my_l['booking_date'];
                                   $booking_div = '<td class="empty_cell"></td>';
-                                  if(!empty($booking_date)){
+                                  if($my_l['box_voucher_status'] == 3){
                                     $booking_div = '<td>'.date('d/m/Y',strtotime($booking_date)).'</td>';
+                                  }
+                                  $validity_date = '';
+                                  if($my_l['box_voucher_status'] != 4){
+                                    $validity_date = date('d/m/Y',strtotime($my_l['box_validity_date']));
                                   }
                                   $partner_name = $my_l['partner_internal_id'];
                                   $rating_value = 0;
-                                  $rating_value = json_decode($rating->get_ptn_value('PT-DD97R3YGJZ'))->data;
                                   if(!empty($partner_name)){
                                     $ptn = $user->get_details_byidf($my_l['partner_internal_id']);
                                     $partner_name = json_decode($ptn)->data->business_name;
                                     $rating_value = json_decode($rating->get_ptn_value($my_l['partner_internal_id']))->data;
+                                    if(!$rating_value){
+                                      $rating_value = 0;
+                                    }
                                   }
                             ?>
                             <tr>
@@ -146,14 +156,14 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <td><?=$my_l['box_voucher']?></td>
                               <?=$util->voucher_div($my_l['box_voucher_status'])?>
                               <?=$redeem_div?>
-                              <td><?=date('d/m/Y',strtotime($my_l['box_validity_date']))?></td>
+                              <td><?=$validity_date?></td>
                               <?=$cancellation_div?>
                               <?=$booking_div?>
                               <td class=""><?=$partner_name?></td>
                               <td class="gray_star">
                                 <?=$util->patner_rating($rating_value)?>
                               </td>
-                              <td class="td_orange" onclick="declare_lost('<?=$my_l['box_voucher']?>')">DECLARE LOSS OR THEFT OF VOUCHER</td>
+                              <?=$admin_func_?>
                             </tr>
                             <?php 
                                 endforeach;

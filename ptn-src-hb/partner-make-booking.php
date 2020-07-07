@@ -52,8 +52,8 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <?php
               $_redeem_v_table = null;
               $obj = null;
-              if(isset($_POST['VALIDITY']) && !empty($_POST['vcode'])){
-                  $voucher_code = strtoupper($_POST['vcode']);
+              if(isset($_POST['VALIDITY']) && !empty(trim($_POST['vcode']))){
+                  $voucher_code = strtoupper(trim($_POST['vcode']));
                   $res = $obj = $inventory->get_by_voucher($token, $voucher_code);
                   // print $util->Show($res);
                   $res = json_decode($res, true)['data'];
@@ -166,8 +166,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
                   setTimeout(function() {
-                    window.location.href += '#new';
-                    window.location.reload();
+                    window.location.replace("partner-voucher-list.php");
                   }, 5000);
                   return;
               }

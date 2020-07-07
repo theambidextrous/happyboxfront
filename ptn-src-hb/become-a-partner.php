@@ -191,8 +191,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
        </div>
        <div class="col-md-6 nomargin_lr">
                         <div class="become_logos row row_no_margin">
-                            //data dynamic
                         <?php 
+                        //data dynamic
                             $_cnt = 1;
                             foreach( $_partners_slide_data as $_partners_slide ):
                                 $_is_Active = json_decode($user->get_is_active($_partners_slide['userid']))->is_active->is_active;
@@ -215,21 +215,6 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                     }
                                 endforeach;
                                 ?>  
-                            <!-- <div class="col-3 ">
-                                <div class="become_logos_item">
-                                    <div class="">Partner<br>Logo</div>
-                                </div>                           
-                            </div> 
-                            <div class="col-3 ">
-                                <div class="become_logos_item">
-                                    <div class="">Partner<br>Logo</div>
-                                </div>                           
-                            </div> 
-                            <div class="col-3 ">
-                                <div class="become_logos_item">
-                                    <div class="">Partner<br>Logo</div>
-                                </div>
-                            </div>  -->
                         </div>
   
        </div>
@@ -277,7 +262,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                                 <option value="nn">Select category</option>
                                                 <?php
                                                     foreach( $topics as $_topic ){
-                                                        print '<option value="'.$_topic['internal_id'].'">'.$_topic['name'].'</option>';
+                                                        print '<option value="'.$_topic['name'].'">'.$_topic['name'].'</option>';
                                                     }
                                                 ?>
                                             </select>
@@ -362,7 +347,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
         });
    
       create_account = function(FormId){
-      waitingDialog.show('creating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
           type: 'post',

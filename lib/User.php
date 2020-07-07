@@ -219,6 +219,19 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function become_partner($body){
+        $endpoint = 'users/partners/become/request';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers('token'));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function edit_details_partner($body, $token, $user_id){
         $endpoint = 'users/partners/profile/' . $user_id;
         return $this->edit_details($body, $endpoint, $token);

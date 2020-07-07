@@ -187,6 +187,34 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function partner_modify_booking($body, $v){
+        $endpoint = 'services/inventories/inventory/modify/booking/' . $v;
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function partner_cancel_voucher($body, $v){
+        $endpoint = 'services/inventories/inventory/cancel/ptn/voucher/' . $v;
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function headers($token = ''){
         $headers[] = 'Content-Type: application/json';
         $headers[] = 'Authorization: Bearer ' . $token;

@@ -11,7 +11,7 @@ $box = new Box();
 $token = json_decode($_SESSION['usr'])->access_token;
 $list = $inventory->get_by_partner(json_decode($_SESSION['usr_info'])->data->internal_id);
 $list = json_decode($list, true)['data'];
-$util->Show($list);
+// $util->Show(json_decode($_SESSION['usr_info']));
 ?>
 <html lang="en">
 <head>
@@ -31,19 +31,18 @@ $util->Show($list);
       border-bottom: solid 2px #c20a2b!important;
    }
  </style>
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    //$( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker();
     $("#datepicker").datepicker();
-$('#selec').click(function(){
-    $('#datepicker').toggle();
-});
+    $('#selec').click(function(){
+        $(this).toggle();
+    });
   } );
-  </script>
+  </script> -->
 
 
 
@@ -81,21 +80,23 @@ $('#selec').click(function(){
                 <tbody>
                   <?php 
                   foreach ( $list as $_list ):
+                    $ptn_pay = 0;
                     $date_redeemed = date('m/d/Y', strtotime($_list['redeemed_date']));
-                    /** cancellation */
-                    if(!is_null($_list['booking_date'])){
+                    /** booking */
+                    if($_list['box_voucher_status'] != 4){
+                      $ptn_pay = $_list['partner_pay_amount'];
                       $date_booked = '<td>'.date('m/d/Y', strtotime($_list['booking_date'])).'</td>';
                     }else{
                       $date_booked = '<td class="empty_cell"></td>';
                     }
-                    /** booking */
-                    if(!is_null($_list['cancellation_date']) && $_list['box_voucher_status'] == 4){
+                    /** cancellation */
+                    if($_list['box_voucher_status'] == 4){
                       $date_cancelled = '<td>'.date('m/d/Y', strtotime($_list['cancellation_date'])).'</td>';
                     }else{
                       $date_cancelled = '<td class="empty_cell"></td>';
                     }
                     /** partner paid */
-                    if(!is_null($_list['partner_pay_due_date'])){
+                    if($_list['box_voucher_status'] != 4){
                       $date_ptn_paid = '<td>'.date('m/d/Y', strtotime($_list['partner_pay_due_date'])).'</td>';
                     }else{
                       $date_ptn_paid = '<td class="empty_cell"></td>';
@@ -103,21 +104,19 @@ $('#selec').click(function(){
                     /** */
                     $box_idf = $_list['box_internal_id'];
                     $box_voucher_code = $_list['box_voucher'];
-                    if(!is_null($_list['box_voucher_new'])){
-                      $box_voucher_code = $_list['box_voucher_new'];
-                    }
-                    $voucher = "'". $box_voucher_code . "'";
+                    $m_voucher = "'". $box_voucher_code . "'";
                     $box_voucher_status = $_list['box_voucher_status'];
                     $admin_func = '';
                     if($box_voucher_status == 3){
+                      $m_partner = "'".json_decode($_SESSION['usr_info'])->data->internal_id."'";
                       $b_v_status = '<td class="hap_success">REDEEMED</td>';
                       $admin_func = '
                       <td class="hap_danger">
-                      <a href="#" class="text-white" onclick="cancell_voucher_pop('.$voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
+                      <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
                       </td>
-                      <td class="hap_primary">
-                      MODIFY DATE <a href=""><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></a>  
-                      </td>';
+                      <td id="datepilckerx" class="hap_primary">
+                      MODIFY DATE  <a href="##"><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></a> <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,'.$m_voucher.','.$m_partner.')" onfocus="(this.type=\'date\')"></td>
+                      ';
                     }elseif($box_voucher_status == 4){
                       $admin_func = '
                       <td class="empty_cell"></td>
@@ -127,18 +126,19 @@ $('#selec').click(function(){
                       $b_v_status = '<td class="empty_cell"></td>';
                     }
                     $box_data = json_decode($box->get_byidf($token, $box_idf))->data;
+                    $c_user_data = json_decode($user->get_details_byidf($_list['customer_user_id']))->data;
                   ?>
                   <tr>
                     <td class="light_blue_cell"><?=$box_data->name?></td>
                     <td><?=$box_voucher_code?></td>
                     <?=$b_v_status?>
-                    <td>Name 1</td>
-                    <td>Name 2</td>
+                    <td><?=$c_user_data->fname?></td>
+                    <td><?=$c_user_data->sname?></td>
                     <td><?=$date_redeemed?></td>
                     <?=$date_cancelled?>
                     <?=$date_booked?>
                     <?=$date_ptn_paid?>
-                    <td>Ksh <?=number_format($_list['partner_pay_amount'],2)?></td>
+                    <td>Ksh <?=number_format($ptn_pay,2)?></td>
                     <?=$admin_func?>
                   </tr>
                   <?php
@@ -148,8 +148,10 @@ $('#selec').click(function(){
               </table>
             </div>
           </div> 
-          <br>          <br>
-          <div class="table-responsive">
+          <br>
+          <br>
+
+          <!-- <div class="table-responsive">
             <div class="table_radius">
               <table class="table  voucher_list_table table-bordered">
                 <thead>
@@ -220,9 +222,10 @@ $('#selec').click(function(){
       </tr>
                 </tbody>
               </table>
-            </div>
+            </div> -->
+
           </div> 
-        <p class="text-center pad_top20"><button type="submit" class="btn btn_rounded btn-dark-blue btn-sm"> SAVE MY CHANGES</button></p>
+        <!-- <p class="text-center pad_top20"><button type="submit" class="btn btn_rounded btn-dark-blue btn-sm"> SAVE MY CHANGES</button></p> -->
         </div>
       </div>
     </div>
@@ -231,13 +234,13 @@ $('#selec').click(function(){
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
 <?php include '../shared/partials/js.php';?>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#datepickerx" ).datepicker();
+    $( ".datepickerx" ).datepicker();
   } );
-  </script>
+  </script> -->
 </body>
 <!-- pop up -->
 <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#voucher_c"></button>
@@ -250,7 +253,8 @@ $('#selec').click(function(){
         <p class="forgot_des text-center">
           You are about to cancel this voucher. This cannot be undone, perhaps you should reconsider.                
         </p>
-        <form class="voucher_val" method="post">
+        <form name="voucher_val" method="post">
+        <?=$util->msg_box()?>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -267,7 +271,7 @@ $('#selec').click(function(){
             </div>
           </div>
           <button type="button" data-dismiss="modal" class="btn btn_rounded">Not now</button>
-          <button type="button" onclick="cancell_voucher()" class="btn btn_rounded">Cancel Voucher</button>
+          <button type="button" onclick="cancell_voucher('voucher_val')" class="btn btn_rounded">Cancel Voucher</button>
         </form>   
         <div>
         <!-- <img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/> -->
@@ -278,6 +282,37 @@ $('#selec').click(function(){
     </div>
   </div>
 <!-- end pop up -->
+<!-- modify booking modal -->
+<div class="modal fade" id="modif_booking_modal">
+  <div class="modal-dialog general_pop_dialogue">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+      <div class="col-md-12 text-center forgot-dialogue-borderz">
+      <h3 class="partner_blueh">Modify Booking Date</h3>
+      <p class="forgot_des text-center">
+        Do you want to change the booking date to the following ?             
+      </p>
+      <form name="modify_book_frm" method="post">
+      <?=$util->msg_box('m')?>
+        <div class="row">
+          <div class="col-md-4 offset-md-4">
+            <div class="form-group">
+              <label>Change booking to</label>
+              <input type="hidden" name="partner" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>">
+              <input type="hidden" name="modi_voucher" id="modi_voucher" />
+              <input type="text" readonly id="new_booking_date" name="new_booking_date" class="form-control rounded_form_control">
+            </div>
+          </div>
+        </div>
+        <button type="button" data-dismiss="modal" class="btn btn_rounded">Not now</button>
+        <button type="button" onclick="modify_voucher_booking('modify_book_frm')" class="btn btn_rounded">Yes, I want to modify</button>
+      </form>   
+      <div>
+      </div>
+      </div>
+    </div>
+    </div>
+<!-- end mb modal -->
 </body>
  
    
@@ -293,6 +328,7 @@ $('#selec').click(function(){
       cancell_voucher = function(FormId){
       waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
+      console.log(dataString);
       $.ajax({
           type: 'post',
           url: '<?=$util->AjaxHome()?>?activity=cancel-ptn-voucher',
@@ -301,10 +337,13 @@ $('#selec').click(function(){
               // console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
-                  $("#reset_div").load(window.location.href + " #reset_div" );
-                  $("#vvv").text(rtn.V);
-                  $('#popupid').trigger('click');
+                  $('#err').hide();
+                  $("#succ").text(rtn.MSG);
+                  $('#succ').show();
                   waitingDialog.hide();
+                  setTimeout(function() {
+                    window.location.replace("partner-voucher-list.php");
+                  }, 5000);
                   return;
               }
               else if(rtn.hasOwnProperty("ERR")){
@@ -316,6 +355,47 @@ $('#selec').click(function(){
           }
       });
       }
+
+      modify_date = function(date, voucher, partner){
+        if(date !== undefined && voucher !== undefined ){
+          $('#modi_voucher').val(voucher);
+          $('#new_booking_date').val(date);
+          $('#modif_booking_modal').modal('show');
+          // alert(date);
+        }
+        return;
+      }
+      modify_voucher_booking = function(FormId){
+      waitingDialog.show('modifying... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      var dataString = $("form[name=" + FormId + "]").serialize();
+      $.ajax({
+          type: 'post',
+          url: '<?=$util->AjaxHome()?>?activity=modify-voucher-booking',
+          data: dataString,
+          success: function(res){
+              console.log(res);
+              var rtn = JSON.parse(res);
+              if(rtn.hasOwnProperty("MSG")){
+                  $('#merr').hide();
+                  $("#msucc").text(rtn.MSG);
+                  $('#msucc').show();
+                  waitingDialog.hide();
+                  setTimeout(function() {
+                    window.location.replace("partner-voucher-list.php");
+                  }, 3000);
+                  return;
+              }
+              else if(rtn.hasOwnProperty("ERR")){
+                  $('#merr').text(rtn.ERR);
+                  $('#merr').show(rtn.ERR);
+                  waitingDialog.hide();
+                  return;
+              }
+          }
+      });
+      }
+
+
   });  
 </script>
 </html>
