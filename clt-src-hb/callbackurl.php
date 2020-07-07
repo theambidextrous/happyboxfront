@@ -8,6 +8,10 @@ $token = 'faketoken';
 if(isset($_SESSION['usr'])){
     $token = json_decode($_SESSION['usr'])->access_token;
 }
-$o = new Order($token);
-$o->process_mpesa_express(json_decode($allData, true));
+if(!is_null(json_decode($allData, true))){
+    $o = new Order($token);
+    $o->process_mpesa_express(json_decode($allData, true));
+}else{
+    print '<h1>HTTP:200</h1>';
+}
 ?>
