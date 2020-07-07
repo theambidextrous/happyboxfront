@@ -61,7 +61,6 @@ $util->ShowErrors(1);
                                 foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
                                     if(!isset($_cart_item['order_id'])){
                                     $raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
-                                    $util->Show($raw_data);
                                     $_box_data = $raw_data->data;
                                     $_b_cost = floor($_cart_item[1]*$_box_data->price);
                                     $_total_cart[] = $_b_cost;
