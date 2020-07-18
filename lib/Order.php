@@ -31,9 +31,9 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
             $Mpesa_Order = $mpesa['BillRefNumber'];
             $Mpesa_code = $mpesa['TransID'];
             $mpesa_desc = 'Paid by '. $mpesa['FirstName']. ' ' . $mpesa['LastName'] . ' via mpesa number ' . $mpesa['MSISDN'];
-            $this_order = $this->get_one_byorder_limited($Mpesa_Order);
+            $this_order = $this->get_one_by_order_req_id($Mpesa_Order);
             if( json_decode($this_order)->status != '0' || !json_decode($this_order, true)['data'] ){
-                throw new Exception('get_one_byorder_limited()::: Errors or empty response for pay:: '.$Mpesa_code . ' =>' . $Mpesa_Order);
+                throw new Exception('get_one_by_order_req_id()::: Errors or empty response for pay:: '.$Mpesa_code . ' =>' . $Mpesa_Order);
             }
             if( json_decode($this_order)->status == '0'){
                 $order_meta = json_decode($this_order, true)['data'];
@@ -85,8 +85,9 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                             if($_order_item[2] == 2){ /** ebox */
                                 /** generate evouchers and populate inventry */
                                 $_llp = 0;
+                                $ev = [] ;
                                 while( $_llp < $_order_item[1] ){
-                                    $ev[] = 'E-' . $util->createCode(8);
+                                    array_push($ev, 'E-' . $util->createCode(8));
                                     $_llp ++;
                                 }
                                 /** create the evouchers */
@@ -348,8 +349,9 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                             if($_order_item[2] == 2){ /** ebox */
                                 /** generate evouchers and populate inventry */
                                 $_llp = 0;
+                                $ev = [];
                                 while( $_llp < $_order_item[1] ){
-                                    $ev[] = 'E-' . $util->createCode(8);
+                                    array_push($ev, 'E-' . $util->createCode(8));
                                     $_llp ++;
                                 }
                                 /** create the evouchers */
@@ -728,6 +730,20 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
     }
     function get_one_by_checkout_req_id($id){
         $endpoint = 'services/orders/order/req/id/' . $id;
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($this->token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function get_one_by_order_req_id($id){
+        $endpoint = 'services/orders/order/ord/id/' . $id;
         $util = new Util();
         $body = [];
         $curl = curl_init();

@@ -185,22 +185,19 @@ $my_list_ = json_decode($my_list_, true)['data'];
         <?php include 'shared/partials/js.php'; ?>
       <!-- pop up -->
       <div class="modal fade" id="userdashTheft">
-      <div class="modal-dialog general_pop_dialogue">
-      <div class="modal-content">
-      <div class="modal-body text-center">
-      <div class="col-md-12 text-center forgot-dialogue-borderz">
-      <h3 class="partner_blueh ">Your loss or theft declaration is being processed</h3>
-      <p class=" text-center txt-orange">
-      You will receive an email shortly.             
-      </p>
-      <div>
-      <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
+        <div class="modal-dialog general_pop_dialogue">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <div class="col-md-12 text-center forgot-dialogue-borderz">
+                <h3 class="partner_blueh ">Your loss or theft declaration is being processed</h3>
+                <p class=" text-center txt-orange">You will receive an email shortly.</p>
+              <div>
+              <img src="shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal"/>
+            </div>
+          </div>
+        </div>
       </div>
-
-      </div>
-      </div>
-
-      </div>
+      
       </div>
       </div>
 

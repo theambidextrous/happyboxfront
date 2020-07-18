@@ -54,7 +54,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                     <?php
                         $res_table = null;
                         if(isset($_POST['search']) && !empty($_POST['voucher_search'])){
-                            $voucher_code = $_POST['voucher_search'];
+                            $voucher_code = trim($_POST['voucher_search']);
                             $res = $inventory->get_by_voucher($token, $voucher_code);
                             $res = json_decode($res, true)['data'];
                             // $util->Show($res);

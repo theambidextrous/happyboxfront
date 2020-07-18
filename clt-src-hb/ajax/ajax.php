@@ -16,9 +16,29 @@ switch($_REQUEST['activity']){
     break;
     case 'mpesa-express-status-check':
         /** check order payment status.. if paid redirect */
-        $token = json_decode($_SESSION['usr'])->access_token;
-        $order_number = $_POST['ordernumber'];
-        
+        header('Content-Type: text/event-stream');
+        header('Cache-Control: no-cache');
+        $event_data = 'Payment Still Processing...';
+        if($_SESSION['status_chk_order']){
+            $token = json_decode($_SESSION['usr'])->access_token;
+            $order_number = $_SESSION['status_chk_order'];
+            $o = new Order($token);
+            $resp_ =  $o->get_one_byorder($order_number);
+            if(json_decode($resp_)->status == '0'){
+                $_data = json_decode($resp_, true)['data'];
+                if($_data['payment_status'] && $_data['paid']){
+                    $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="alert alert-success"><b>Success!</b> Payment of KES '.$_data['paid_amount'].' has been received. Check your email for your order details</div></div>';
+                }else{
+                    $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="spinner-border spinner-border-lg spinner-grow-lg" role="status"><span class="sr-only">Loading...</span></div></div>';
+                }
+            }else{
+                $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="spinner-border spinner-border-lg spinner-grow-lg" role="status"><span class="sr-only">Loading...</span></div></div>';
+            }
+        }else{
+            $event_data = 'nothing';
+        }
+        echo "data: {$event_data}\n\n";
+        flush();
     break;
     case 'make-payment-mpesa':
         try{
@@ -57,6 +77,7 @@ switch($_REQUEST['activity']){
             );
             $reg_url_response = $c2b->RegisterUrl();
             $c2b_response = $c2b->Simulate();
+            $_SESSION['status_chk_order'] = $order_number;
             $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone. Enter your pin to complete order.<br> You may also follow the instructions below to make payment.</div>';
             $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge service unavailable!<br> Follow the instructions below to make MPesa payment.</div>';
             if( json_decode($express_response)->ResponseCode != '0' ){
@@ -164,7 +185,7 @@ switch($_REQUEST['activity']){
             if(json_decode($resp)->status == '0'){
                 exit(json_encode(['MSG' => 'Password reset link has been sent to your email']));
             }else{
-                exit(json_encode(['ERR' => json_decode($resp)->message]));
+                exit(json_encode(['ERR' => $resp.json_decode($resp)->message]));
             }
             }catch(Exception $e){
                 exit(json_encode(['ERR' => $e->getMessage()]));
@@ -437,6 +458,29 @@ switch($_REQUEST['activity']){
             if( json_decode( $resp_)->status == '0'){
                 $v_date = date('d/m/Y', strtotime(json_decode( $resp_)->validity));
                 exit(json_encode(['MSG' => json_decode( $resp_)->message, 'V' => json_decode( $resp_)->voucher, 'Valid' => $v_date]));
+            }else{
+                exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+            }
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
+        }
+    break;
+    case 'update-ptn-paydate':
+        try{
+            $i = new Inventory();
+            if(empty($_POST['e_id'])){
+                throw new Exception('entry code is required');
+            }
+            if( empty($_POST['ed'])){
+                throw new Exception('Select date');
+            }
+            $partner_pay_effec_date = date('Y-m-d', strtotime($_POST['ed']));
+            $body = [
+                'partner_pay_effec_date' => $partner_pay_effec_date
+            ];
+            $resp_ = $i->partner_pay_effec_date($body, $_POST['e_id']);
+            if( json_decode( $resp_)->status == '0'){
+                exit(json_encode(['MSG' => 'Date updated!']));
             }else{
                 exit(json_encode(['ERR' => json_decode( $resp_)->message]));
             }

@@ -19,7 +19,7 @@
                     throw new Exception('Permission denied!');
                     session_destroy();
                 }
-                $util->redirect_to('admin-box-inventory_purchased.php');
+                $util->redirect_to('admin-box-inventory_stock.php');
             }else{
                 $err = $util->error_flash(json_decode($login)->message);
             }

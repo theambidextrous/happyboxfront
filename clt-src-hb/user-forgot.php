@@ -145,7 +145,6 @@ $util->ShowErrors(1);
               console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
-                  $("#reset_div").load(window.location.href + " #reset_div" );
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
                   return;

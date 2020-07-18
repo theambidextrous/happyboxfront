@@ -87,7 +87,7 @@ $order = new Order($token);
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="pay_strip">
+                    <div class="pay_strip" style="margin-bottom: 10px;margin-top: 10px;">
                         <!-- <a href="" class="btn btn-sm btn-orange text-white">MPESA</a> 
                         <a href="" class="btn btn-sm btn-orange text-white">CREDIT CARD</a> -->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -100,28 +100,37 @@ $order = new Order($token);
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="mpesa" role="tabpanel" aria-labelledby="mpesa-tab">
-                                <!-- debug -->
-                                    <div id="c2b"></div>
-                                    <hr>
-                                    <div id="express"></div>
-                                    <hr>
-                                    <div id="reg"></div>
-                                <!-- end debug -->
-                                <br><br>
-                                <form class="form_register_user" id="mpesa_pay_frm" name="mpesa_pay_frm">
-                                    <div class="form-group col-md-6">
-                                        <input type="hidden" value="<?=$_SESSION['unpaid_order']?>" name="ordernumber">
-                                        <input type="hidden" value="<?=floor($order_data['shipping_cost']+$order_data['subtotal'])?>" name="orderamount">
-                                        <input type="text" name="mpesaphone" class="form-control rounded_form_control" placeholder="enter your mpesa phone e.g 07XX">
+                            <br><br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="data"></div>
+                                        <br>
+                                        <form class="form_register_user" id="mpesa_pay_frm" name="mpesa_pay_frm">
+                                            <div class="form-group col-md-12">
+                                                <input type="hidden" value="<?=$_SESSION['unpaid_order']?>" name="ordernumber">
+                                                <input type="hidden" value="<?=floor($order_data['shipping_cost']+$order_data['subtotal'])?>" name="orderamount">
+                                                <input type="text" name="mpesaphone" class="form-control rounded_form_control" placeholder="enter your mpesa phone e.g 07XX">
+                                            </div>
+                                            <p class="text-right col-md-12"><button type="button" onclick="mpesaPay('mpesa_pay_frm')" class="btn btn_rounded">Pay Now</button></p>
+                                        </form>
                                     </div>
-                                    <p class="text-right col-md-4"><button type="button" onclick="mpesaPay('mpesa_pay_frm')" class="btn btn_rounded">Pay Now</button></p>
-                                </form>
-                                <!-- instructions area -->
-                                <div id="msg"></div>
-                                <div id="inst"></div>
-                                <!-- instructions end -->
+                                    <div class="col-md-6">
+                                        <!-- instructions area -->
+                                        <div id="msg"></div>
+                                        <div id="inst"></div>
+                                        <!-- instructions end -->
+                                        <!-- debug -->
+                                        <div id="c2b"></div>
+                                        <hr>
+                                        <div id="express"></div>
+                                        <hr>
+                                        <div id="reg"></div>
+                                    <!-- end debug -->
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="creditcard" role="tabpanel" aria-labelledby="creditcard-tab">
+                                <br></br>
                                 <p>Credit Card</p>
                             </div>
                         </div> 
@@ -159,6 +168,15 @@ $order = new Order($token);
         <?php include 'shared/partials/js.php'; ?>
     <script>
         $(document).ready(function(){
+            s_event = function(){
+                var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
+                source.onmessage = function(event){
+                    $('#data').html(event.data);
+                }
+            }
+            setTimeout(() => {
+                s_event()
+            }, 240000);
             mpesaPay = function(FormId){
             waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
             var dataString = $("form[name=" + FormId + "]").serialize();
@@ -170,9 +188,9 @@ $order = new Order($token);
                     // console.log(res);
                     var rtn = JSON.parse(res);
                     if(rtn.hasOwnProperty("MSG")){
-                        $('#c2b').text(rtn.c2b);
-                        $('#express').text(rtn.exp);
-                        $('#reg').text(rtn.reg);
+                        // $('#c2b').text(rtn.c2b);
+                        // $('#express').text(rtn.exp);
+                        // $('#reg').text(rtn.reg);
                         $('#inst').html(rtn.inst);
                         $('#msg').html(rtn.MSG);
                         waitingDialog.hide();

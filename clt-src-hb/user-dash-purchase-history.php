@@ -2,7 +2,7 @@
 session_start();
 require_once('../lib/Util.php');
 require_once('../lib/User.php');
-require_once('../lib/Inventory.php');
+require_once('../lib/Order.php');
 require_once('../lib/Box.php');
 require_once('../lib/Picture.php');
 $util = new Util();
@@ -12,12 +12,17 @@ if(!$util->is_client()){
 }
 $picture = new Picture();
 $util->ShowErrors(1);
-$inventory = new Inventory();
 $box = new Box();
 $token = json_decode($_SESSION['usr'])->access_token;
-$my_list_ = $inventory->get_by_cust_user(json_decode($_SESSION['usr_info'])->data->internal_id);
+$order_ = new Order($token);
+$my_list_ = $order_->get_bycustomer(json_decode($_SESSION['usr_info'])->data->internal_id);
 $my_list_ = json_decode($my_list_, true)['data'];
 // $util->Show($my_list_);
+
+if(isset($_POST['makecart'])){
+    $_SESSION['curr_usr_cart'] = json_decode($_POST['draft_cart'], true);
+    header("Location: user-dash-shoppingcart.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,147 +74,134 @@ $my_list_ = json_decode($my_list_, true)['data'];
 
                 </div> </div>
         </section>
-
-
-
-
         <!--end discover our selection-->
-        
-           
-
-
-
     <section class="partner_voucher_list section_60">
-           <div class="container">
-			
-               
-                    <div class="row ">
-                         <div class="col-md-12">
-                        
-                        <h3 class="user_blue_title text-center">MY PURCHASE HISTORY</h3>
-                                        <p class="txt-orange text-center">
-                  A list of your activated vouchers              
-                                        </p>
-                         </div>
-                    </div>
-                     
-                        <div class="row ">
-                    <div class="col-md-9">
-					
-                                        <div class="table-responsive">
-                                            <div class="purchase_hist"><table class="table purchase_hist   table-bordered">
-                                                     <tr class="purch_hist_tr_td">
-                        <td class="b">ORDER NUMBER</td>
-                        <td>0123456</td>
-                        <td colspan="6" class="invisible_table td_noborder"></td>
-                        
-                     
-                      
-
-
-                    </tr>
-          
-                    <tr class="purch_hist_tr_td">
-                        <th class="b">IMAGE</th>
-                        <th>BOX NAME</th>
-                         <th>BOX<br> NUMBER</th>
-                        <th>VOUCHER <br>CODE</th>
-                   
-                        <th>PURCHASE DATE</th>
-                        <th>BOX TYPE</th>
-                         <th>QUANTITY</th>
-                        <th>COST</th>
-                     
-                      
-
-
-                    </tr>
-                                      
-  
-  
-        <tr>
-          <td class="">
-             <img class="d-block mx-auto purch_his_img" src="shared/img/Box_Mockup_01-200x200@2x.png">
-          </td>
-          <td><b>SPA EXPERIENCE</b></td>
-          <td><b>12345</b></td>
-          <td class=""><b>QWERTY</b></td>
-            
-       
-              <td>06/03/2020</td>
-                <td>E-BOX</td>
-                <td class="">2</td>
-                <td class="">KES 20 000.00</td>
-                   
-            
-      </tr>
-      <tr>
-          <td class="">
-             <img class="d-block mx-auto purch_his_img" src="shared/img/Box_Mockup_01-200x200@2x.png">
-          </td>
-          <td><b>SPA EXPERIENCE</b></td>
-          <td><b>12345</b></td>
-          <td class=""><b>QWERTY</b></td>
-            
-       
-              <td>06/03/2020</td>
-                <td>E-BOX</td>
-                <td class="">2</td>
-                <td class="">KES 20 000.00</td>
-                   
-            
-      </tr>
-      <tr class="">
-                        <td colspan="5" class="td_noborder">
-                                              
-                                              
-                                          </td>
-                                          <td colspan="3" align="right" class="">
-                                              
-                                              <table>
-                                                  <tr>
-                                                      <td style="width:50%;">SUB TOTAL (Incl. VAT)</td>
-                                                          <td>KES 70 000.00</td>
-                                                  </tr>
-                                                   <tr>
-                                                      <td>SHIPPING</td>
-                                                          <td>KES 300.00</td>
-                                                  </tr>
-                                                  <tr class="bold_txt">
-                                                      <td>TOTAL PRICE (Incl. VAT)</td>
-                                                          <td>KES 70 300.00</td>
-                                                  </tr>
-                                              </table>
-                                          </td>
-                        
-                     
-                      
-
-
-                    </tr>
-      
-  
-     
-
-  </table>
-                                                </div>
-                </div> 
-                                   
-                        </div>
-                        <div class="col-md-3 purchase_hist_right">
-                           
-                           <img class=" " src="shared/img/btn-add-to-cart-orange.svg">  
-                            <img class="purchase_hist_right_mid_img " src="shared/img/btn-add-to-cart-orange.svg"> 
-                               <img class=" " src="shared/img/btn-download-orange.svg">
-                            
-                             
-                            
-                        </div>
-                        </div>
-
+    <!-- <a href="#" onclick="fdownload()">try download <=$util->tb64('http://127.0.0.1:8000/media/2ko01ggxirz059yqlvgtkreuws1lxrz5.png')?></a> -->
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+                    <h3 class="user_blue_title text-center">MY PURCHASE HISTORY</h3>
+                    <p class="txt-orange text-center">A list of your activated vouchers              </p>
                 </div>
-           
-        </section>
+            </div>
+            <?php
+                if(count($my_list_)){
+                    foreach( $my_list_ as $_list ):
+                    $current_order_id = $_list['order_id'];
+                ?>
+            <form action="" method="post">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="table-responsive" id="invoicetodown<?=$_list['id']?>">
+                        <div class="purchase_hist html-content">
+                            <?=$_err?>
+                            <input type="hidden" name="orderid" value="<?=$current_order_id?>"/>
+                            <table class="table order_summary table-bordered">
+                                <tr class="order_summary_tr_td">
+                                <td class="b">ORDER NUMBER</td>
+                                <td><?=$current_order_id?></td>
+                                <td colspan="4" class="invisible_table"></td>
+                                </tr>
+                                <tr class="order_summary_tr_td">
+                                    <th class="b col_1">IMAGE</th>
+                                    <th>BOX NAME</th>
+                                    <th>BOX NUMBER</th>
+                                    <th>PURCHASE DATE</th>
+                                    <th>BOX TYPE</th>
+                                    <th>QUANTITY</th>               
+                                    <th>COST</th>
+                                </tr>
+                                <?php
+                                $this_order = $current_order_id;
+                                $order_full = json_decode($_list['order_string'], true);
+                                $draft_cart = [];
+                                foreach($order_full as $_cart_item ):
+                                if(!isset($_cart_item['order_id'])){
+                                $draft_cart[] = $_cart_item;
+                                $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
+                                $_b_cost = floor($_cart_item[1]*$_box_data->price);
+                                $_media = $picture->get_byitem('00', $_cart_item[0]);
+                                $_media = json_decode($_media, true)['data'];
+                                $_3d = 'shared/img/Box_Mockup_01-200x200@2x.png';
+                                foreach( $_media as $_mm ){
+                                    if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}
+                                }
+                                if($_cart_item[2] == 2){ /** ebox */
+                                ?>
+                                <tr>
+                                <td class="">
+                                    <img style="height: 39px;" class="order_summary_tr_td_img" src="<?=$util->tb64($_3d)?>">
+                                </td>
+                                <td><b><?=$_box_data->name?></b></td>
+                                <td><b><?=$_box_data->id?></b></td>
+                                <td><b><?=date('d/m/Y', strtotime($_list['updated_at']))?></b></td>
+                                <td>E-box</td>
+                                <td><?=$_cart_item[1]?></td>
+                                <td>KES <?=number_format($_b_cost, 2)?></td>
+                                </tr>
+                                <?php
+                                    }else{
+                                ?>
+                                <tr>
+                                <td class="">
+                                    <img style="height: 39px;" class="order_summary_tr_td_img" src="<?=$util->tb64($_3d)?>">
+                                </td>
+                                <td><b><?=$_box_data->name?></b></td>
+                                <td><b><?=$_box_data->id?></b></td>
+                                <td><b><?=date('d/m/Y', strtotime($_list['updated_at']))?></b></td>
+                                <td>Physical Box</td>
+                                <td><?=$_cart_item[1]?></td>
+                                <td>KES <?=number_format($_b_cost, 2)?></td>
+                                </tr>
+                                <?php 
+                                    }
+                                }
+                                endforeach;                                
+                                ?>
+                                <tr class="">
+                                <td colspan="4" class="">
+                                <input type="hidden" name="draft_cart" value='<?=json_encode($draft_cart)?>'/>
+                                </td>
+                                <?php 
+                                // unset($draft_cart);
+                                ?>
+                                <td colspan="3" align="right" class="">
+                                    <table>
+                                    <tr>
+                                        <td>SUB TOTAL (Incl. VAT)</td>
+                                        <td>KES <?=number_format($_list['subtotal'], 2)?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SHIPPING</td>
+                                        <td>KES <?=number_format($_list['shipping_cost'],2)?></td>
+                                    </tr>
+                                    <tr class="bold_txt">
+                                        <td>TOTAL PRICE (Incl. VAT)</td>
+                                        <td>KES <?=number_format($_list['order_totals'], 2)?></td>
+                                    </tr>
+                                    </table>
+                                </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div> 
+                    <!-- end col-md-9 -->
+                </div>
+                <div class="col-md-3 purchase_hist_right">
+                    <button type="submit" name="makecart">
+                    <img class="" src="shared/img/btn-add-to-cart-orange.svg">
+                    </button>
+                    <img class="" onclick="fdownload('invoicetodown<?=$_list['id']?>')" src="shared/img/btn-download-orange.svg">
+                </div>
+            </div>
+            </form>
+            <!-- end row -->
+            <?php 
+                endforeach;
+            }
+            ?>
+        </div>
+    </section>
         <!--end add to cart cards-->
         <!--our partners -->
 
@@ -222,8 +214,42 @@ $my_list_ = json_decode($my_list_, true)['data'];
         <!-- Bootstrap core JavaScript -->
 
         <?php include 'shared/partials/js.php'; ?>
-      
-        
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.js"></script>
+<script>
+
+function fdownload(id){
+    CreatePDFfromHTML(id);
+}
+function CreatePDFfromHTML(content_id) {
+    var HTML_Width = $("#" + content_id).width();
+    var HTML_Height = $("#" + content_id).height();
+    var top_left_margin = 15;
+    var PDF_Width = HTML_Width + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+    var canvas_image_width = HTML_Width;
+    var canvas_image_height = HTML_Height;
+
+    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+    html2canvas(document.getElementById(content_id), {
+        logging: true,
+        letterRendering: 1,
+        allowTaint : false,
+        profile: true,
+        useCORS: true}).then(function (canvas) {
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+        for (var i = 1; i <= totalPDFPages; i++) { 
+            pdf.addPage(PDF_Width, PDF_Height);
+            pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+        }
+        pdf.save("INV-<?=json_decode($_SESSION['usr_info'])->data->internal_id?>.pdf");
+        // $("#" + content_id).hide();
+    });
+}
+</script>
 
 
 

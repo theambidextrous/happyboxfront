@@ -158,6 +158,7 @@ $box = new Box();
                             <tbody>
                                 <?php
                                 foreach($all_happyboxes_inventory as $hbox ):
+                                    $effec_id = "'".$hbox['id']."'";
                                     $_c_buyer = $user->get_details_byidf($hbox['customer_buyer_id']);
                                     $_c_buyer = json_decode($_c_buyer);
                                     $_c_user = $user->get_details_byidf($hbox['customer_user_id']);
@@ -272,7 +273,7 @@ $box = new Box();
                                         <?=!is_null($hbox['partner_pay_due_date'])?$hbox['partner_pay_due_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['partner_pay_effec_date'])?$hbox['partner_pay_effec_date']:'null'?>
+                                        <?=!is_null($hbox['partner_pay_effec_date'])?$hbox['partner_pay_effec_date']:'<a href="#" class="btn generate_rpt btn-block" onclick="pay_effec_modal('.$effec_id.')">Update</a>'?>
                                     </td>
                                     <td>
                                         <?=!is_null($hbox['partner_pay_amount'])?$hbox['partner_pay_amount']:'null'?>
@@ -340,3 +341,71 @@ $box = new Box();
   <!-- end popup -->
  </body>
 </html>
+<!-- pop up -->
+<div class="modal fade" id="ptn-pay-effect">
+    <div class="modal-dialog general_pop_dialogue">
+        <div class="modal-content">
+        <div class="modal-body text-center">
+            <div class="col-md-12 text-center forgot-dialogue-borderz">
+            <h3 class="partner_blueh ">Update Partner Payment Date</h3>
+            <!-- form -->
+            <form class="filter_form" name="effect_dt_frm" method="post">
+                <?=$util->msg_box()?>
+                <div class="form-group row">
+                    <label for="BoxType" class="col-form-label">Partner Payment Effective Date</label>
+                    <input type="hidden" name="e_id" class="form-control rounded_form_control" id="e_id"/>
+                    <input type="date" name="ed" class="form-control rounded_form_control" id="ed"/>
+                </div>
+                <hr>
+                <div class=" row">
+                    <div class="col-md-12 text-right text-white">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                        <button type="button" onclick="pay_effec('effect_dt_frm')" class="btn btn_view_report">update</button>
+                    </div>
+                </div>
+            </form>
+            <!-- form end -->
+            <div>
+        </div>
+        </div>
+    </div>
+    </div>
+<script>  
+    $(document).ready(function(){
+        pay_effec_modal = function(id){
+            if(id !== undefined){
+                $('#e_id').val(id);
+                $('#ptn-pay-effect').modal('show');
+            }
+        }
+        pay_effec = function(FormId){
+            waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+            var dataString = $("form[name=" + FormId + "]").serialize();
+            $.ajax({
+                type: 'post',
+                url: '<?=$util->AjaxHome()?>?activity=update-ptn-paydate',
+                data: dataString,
+                success: function(res){
+                    console.log(res);
+                    var rtn = JSON.parse(res);
+                    if(rtn.hasOwnProperty("MSG")){
+                        $('#err').hide();
+                        $('#succ').text(rtn.MSG);
+                        $('#succ').show();
+                        waitingDialog.hide();
+                        setTimeout(() => {
+                            location.reload();
+                        }, 3000);
+                        return;
+                    }
+                    else if(rtn.hasOwnProperty("ERR")){
+                        $('#err').text(rtn.ERR);
+                        $('#err').show();
+                        waitingDialog.hide();
+                        return;
+                    }
+                }
+            });
+        }
+  });  
+</script>

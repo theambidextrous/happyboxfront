@@ -306,6 +306,11 @@
         }
         return $_SESSION['curr_usr_cart'] = $_final_cart;
     }
+    function tb64($path){
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        return $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    }
     function msg_box($ext=''){
         print '<div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="'.$ext.'succ" class="alert alert-success"></div>
         <div style="display:none;margin: 0px auto;text-align: center;width: 44%;" id="'.$ext.'err" class="alert alert-danger"></div>';
