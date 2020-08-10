@@ -87,6 +87,35 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function findbarcodes($body){
+        $endpoint = 'services/inventories/inventory/barcode/vouchers';
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function barcode_source($barcodenumber, $type){
+        $endpoint = 'services/inventories/inventory/barcode/'.$barcodenumber.'/type/'.$type;
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function get_purchasable($token, $box){
         $endpoint = 'services/inventories/inventory/stock/' . $box;
         $util = new Util();
