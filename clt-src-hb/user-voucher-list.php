@@ -62,7 +62,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
         <!-- Page Content --> 
 
     
-        <section class=" user_account_sub_banner">
+        <section class=" user_account_sub_banner desktop_view">
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
@@ -81,7 +81,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
 
 
 
-    <section class="partner_voucher_list section_60">
+    <section class="partner_voucher_list section_60 desktop_view">
            <div class="container">
                     <div class="row justify-content-center forgot-dialogue-wrap">
                     <div class="col-md-12">
@@ -90,7 +90,8 @@ $my_list_ = json_decode($my_list_, true)['data'];
                         <br>
                         <div id="err" style="display:none;width:30%;margin: 0px auto;" class="text-center alert alert-danger"></div>
                       </p>
-                      <div class="table-responsive">
+                      <!--start desktop-->
+                      <div class="table-responsive ">
                       <div class="table_radius">
                         <table class="table  voucher_list_table table-bordered">
                           <thead>
@@ -173,10 +174,103 @@ $my_list_ = json_decode($my_list_, true)['data'];
                         </table>
                 </div>
                 </div> 
+                           </section>
+                      <!--end desktop-->
+                      <!--start mobile view-->
+                        <!--mobile header start-->
+         <section class=" user_account mobile_view">
+      <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <h3 class="text-white user_main_title_mob">MY VOUCHER LIST</h3>  
+             
+          </div>
+          
+      </div> </div>
+      </section>
+          <!--mobile header end-->
+                         <div class="voucher_list_mob mobile_view container">
+                     <div class="row  ">
+        <div class="col-md-12 ">
+               
+              <p class="txt-orange text-center mob_pad">A list of your activated vouchers
+                      
+                      
+                      </p>
+             <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless">
+                <thead>
+                  <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
+                    <th >BOX NAME</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1">
+                        <td class="v_td_a">SPA EXPERIENCE</td>  <td class="green_txt_valid"><span class=""><b>VALID</b></span></td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Voucher Code</td>  <td>AZERTY001</td>
+                    </tr>
+                      <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Box Number</td>  <td>456</td>
+                    </tr>
+                    
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Date Redeemed</td>  <td>06/03/2020</td>
+                    </tr>
+                      <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Expiry Date</td>  <td>06/03/2020</td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Date Cancelled</td>  <td>_</td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Booking Date</td>  <td>_</td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Partner</td>  <td>Super Spa</td>
+                    </tr>
+                    <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Partner Rating</td>  <td class="txt_gray"><i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>
+                         <i class="far fa-star"></i> <i class="far fa-star"></i></td>
+                    </tr>
+                     
+                     <tr class="v_td_100">
+                         <td class="" colspan="2">Voucher Admin Requests</td>  
+                    </tr>
+                    
+                    <tr class="declare_tr text-center">
+                        <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>  
+                    </tr>
+                </tbody>
+             </table>
+            <!--table 2-->
+             <table class="table  voucher_list_table_mob2 table-borderless">
+                
+                <tbody>
+                    <tr>
+                        <td class="">SPA EXPERIENCE</td>  <td class="canc_mob_text">CANCELLED</td>
+                    </tr>
+                     <tr>
+                        <td class="">SPORTS & ADVENTURE</td>  <td class="reed_mob_text">REDEEMED</td>
+                    </tr>
+                    <tr>
+                        <td class="">GASTRONOMY</td>  <td class="reed_mob_text">REDEEMED</td>
+                    </tr>
+                    
+                    
+                </tbody>
+             </table>
+       
+  
+        </div>
+           
+                     </div></div>
+                      <!--end mobile view-->
               </div>
                 </div>
               </div>
-        </section>
+   
         <!--end add to cart cards-->
         <!--our partners -->
         <?php include 'shared/partials/partners.php'; ?>

@@ -3,7 +3,8 @@
     // $util->Show($_partners_slide_data);
 ?>
 <section class=" client_logos">
-       
+    <div class="container">
+        
                <div class="row">
       
              <div class="col-md-12">
@@ -11,6 +12,9 @@
           </div>   
           
       </div>
+        
+    </div>
+       
       <div class="container">
        <div class="brands row">
                 <div class="col">

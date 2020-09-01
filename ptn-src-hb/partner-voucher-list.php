@@ -57,8 +57,20 @@ $list = json_decode($list, true)['data'];
     <div class="container">
       <div class="row justify-content-center forgot-dialogue-wrap">
         <div class="col-md-12">
+            <div class="desktop_view">
           <h3 class="partner_blueh text-center">MY VOUCHER LIST</h3>
           <p class="forgot_des text-center">Your list of Redeemed and Cancelled vouchers</p>
+            </div>
+            
+             </div>
+          <section  class="blue_band text-center mobile_view">
+			<h2 class="">HAPPYBOX PARTNER PORTAL</h2>
+			</section>
+   <section  class="mob_maroon_section text-center mobile_view">
+			<h4 class="">MY VOUCHER LIST</h4>
+			</section>
+             <p class="forgot_des mobile_view mob_canc text-center">Your list of Redeemed and Cancelled vouchers</p>
+          <div class="col-md-12 desktop_view">
           <div class="table-responsive">
             <div class="table_radius">
               <table class="table  voucher_list_table table-bordered">
@@ -151,83 +163,82 @@ $list = json_decode($list, true)['data'];
           <br>
           <br>
 
-          <!-- <div class="table-responsive">
-            <div class="table_radius">
-              <table class="table  voucher_list_table table-bordered">
+         
+
+          </div>  </div>
+             <div class="voucher_list_mob mobile_view">
+                     <div class="row  ">
+        <div class="col-md-12 ">
+             <table class="table  voucher_list_table_mob table-borderless">
                 <thead>
-                  <tr>
-                    <th class="blue_cell_th th_box">BOX NAME</th>
-                    <th>VOUCHER CODE</th>
+                  <tr class="blue_cell_th_mob text-white">
+                    <th >BOX NAME</th>
                     <th>STATUS</th>
-                    <th class="">CUSTOMER NAME</th>
-                    <th>CUSTOMER SURNAME</th>
-                    <th>DATE REDEEMED</th>
-                    <th>DATE CANCELLED</th>
-                    <th>BOOKING DATE</th>
-                    <th>PARTNER PAYMENT DATE</th>
-                    <th>PARTNER REIMBURSEMENT</th>
-                    <th colspan="2" class="th_actions">VOUCHER ADMINISTRATION</th>
                   </tr>
                 </thead>
                 <tbody>
-               <tr>
-          <td class="light_blue_cell">
-            SPA EXPERIENCE
-          </td>
-        <td>azerty</td>
-        <td class="hap_danger">CANCELLED</td>
-         
-           <td>Bloggs</td>
-            <td>Joe</td>
-              <td>06/03/2020</td>
-                <td>06/03/2020</td>
-                <td class="empty_cell"></td>
-                   <td class="empty_cell"></td>
-                    <td>Ksh5 000.00</td>
-            <td class="empty_cell">
-               
-                
-            </td>
-             <td class="empty_cell">
-               
-                
-            </td>
-            
-      </tr>
-      <tr>
-          <td class="light_blue_cell">
-            SPA EXPERIENCE
-          </td>
-        <td>qwerty</td>
-        <td class="hap_success">REDEEMED</td>
-         
-           <td>Smith</td>
-            <td>Joe</td>
-              <td>15/02/2020</td>
-                <td class="empty_cell"></td>
-                  <td>15/02/2020</td>
-                   <td>31/03/2020</td>
-                    <td>31/03/2020</td>
-                    <td class="hap_danger" >
-              
-                        <a href="#" class="text-white" data-toggle="tooltip" data-placement="top" title="Hooray!">CANCEL VOUCHER </a>     
-            </td>
-                <td id="datepickerx" class="hap_primary">
+                    <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">SPA EXPERIENCE</td>  <td class="v_td_valid">VALID</td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Voucher Code</td>  <td>AZERTY001</td>
+                    </tr>
+                    <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Customer Name</td>  <td>Joe</td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Customer Surname</td>  <td>Bloggs</td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Date Redeemed</td>  <td>06/03/2020</td>
+                    </tr>
+                      <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Date Cancelled</td>  <td>_</td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Booking Date</td>  <td>_</td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Partner Payment Date</td>  <td>_</td>
+                    </tr>
+                    <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Partner Reimbursement</td>  <td>ksh5000.00</td>
+                    </tr>
+                     <tr class="v_td_100">
+                         <td class="" colspan="2">Voucher Administration</td>  
+                    </tr>
+                    <tr class="voucher_list_table_mob_tr text-center">
+                        <td class="v_td_canc">CANCEL VOUCHER</td>  <td class="v_td_modi"> MODIFY DATE<a ><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img td_edit_img_mob"/></a></td>
                     
-                    MODIFY DATE  <a href=""><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></a> <input type="text" id="datepicker" > 
-           
-                
-            </td>
-            
-      </tr>
+               </tr>
                 </tbody>
-              </table>
-            </div> -->
-
-          </div> 
-        <!-- <p class="text-center pad_top20"><button type="submit" class="btn btn_rounded btn-dark-blue btn-sm"> SAVE MY CHANGES</button></p> -->
+             </table>
+            <!--table 2-->
+            <br>
+             <table class="table  voucher_list_table_mob2 table-borderless">
+                
+                <tbody>
+                    <tr>
+                        <td class="">SPA EXPERIENCE</td>  <td class="canc_mob_text">CANCELLED</td>
+                    </tr>
+                     <tr>
+                        <td class="">SPORTS & ADVENTURE</td>  <td class="reed_mob_text">REDEEMED</td>
+                    </tr>
+                    <tr>
+                        <td class="">GASTRONOMY</td>  <td class="reed_mob_text">REDEEMED</td>
+                    </tr>
+                    <tr  style="background:white !important">
+                          <td  colspan="2" align="center" class=><button type="button" name=""  class="btn btn_rounded btn-dark-blue">SAVE MY CHANGES</button></td>  
+                    </tr>
+                    
+                </tbody>
+             </table>
+       
+  
         </div>
-      </div>
+           
+                     </div></div>
+     
     </div>
   </section>
 <?php include '../shared/partials/loggedin-footer.php';?>
@@ -313,6 +324,33 @@ $list = json_decode($list, true)['data'];
     </div>
     </div>
 <!-- end mb modal -->
+
+<!--cancel modal-->
+<!-- The Modal -->
+<div class="modal" id="canc_vouch2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--end cancel modal-->
 </body>
  
    

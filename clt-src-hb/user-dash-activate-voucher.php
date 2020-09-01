@@ -53,7 +53,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         
          <!--end user dash nav-->
         <!-- Page Content -->     
-        <section class=" user_account_sub_banner">
+        <section class=" user_account_sub_banner desktop_view">
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
@@ -62,10 +62,21 @@ $token = json_decode($_SESSION['usr'])->access_token;
                 </div> 
             </div>
         </section>
+        <!--mobile header start-->
+         <section class=" user_account mobile_view">
+      <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <h3 class="text-white user_main_title_mob">REGISTER YOUR HAPPYBOX VOUCHER</h3>         
+          </div>
+          
+      </div> </div>
+      </section>
+          <!--mobile header end-->
         <!--end discover our selection-->
         <section class="container section_60 ">
             <div class="row justify-content-center">
-                <div class="col-md-5  text-center user_activate_l">
+                <div class="col-md-5  text-center user_activate_l desktop_view">
                       <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
                         <p class="txt-orange">Enter your voucher code and click activate code</p>
                     <div class="card border_blue_radius text-center user_activate_card">
@@ -83,7 +94,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         </form>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 desktop_view">
                     <div class="user_activate_r">
                                  <div class="user_activate_steps">
                                      <img src="shared/img/user_iwant.svg" class="w-100"/>
@@ -120,6 +131,66 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                  </div>
                     </div>
                 </div>
+                <!-- start mobile-->
+               
+                <div class="col-md-5 mobile_view">
+                    <div class="user_activate_r">
+                                 <div class="user_activate_steps">
+                                     <img src="shared/img/user_iwant.svg" class="w-100 desktop_view"/>
+                                       <img src="shared/img/iwant_mob.svg" class="w-100 neg_img mobile_view"/>
+                                     
+                                     <div class="border_blue_radius card_v_steps">
+                                     <div class="user_activate_steps_i">
+                                         
+                                         <div class="row">
+                                              <div class="col-3">  <span class="inline_div inline_div_first">1</span></div>
+                                                <div class="col-9 neg_top"> <b>ACTIVATE</b>  your voucher  </div>
+                                          </div>
+                                     </div>
+                                      <div class="user_activate_steps_i user_activate_steps_i_mid">
+                                      
+                                           <div class="row">
+                                              <div class="col-3">  <span class="inline_div">2</span></div>
+                                                <div class="col-9 neg_top"> <b>SELECT</b> one experience in the booklet   </div>
+                                          </div>
+                                     </div>
+                                      <div class="user_activate_steps_i user_activate_steps_i_mid">
+                                          <div class="row">
+                                              <div class="col-3">  <span class="inline_div ">3</span></div>
+                                                <div class="col-9 neg_top"><b>BOOK</b> your experience with the partner and share your voucher code with them</div>
+                                          </div>
+                                          
+                                     </div>
+                                      <div class="user_activate_steps_i user_activate_steps_i_last">
+                                 
+                                           <div class="row">
+                                              <div class="col-3">  <span class="inline_div_last inline_div ">4</span></div>
+                                                <div class="col-9 neg_top"><b> ENJOY</b> your experience   </div>
+                                          </div>
+                                     </div>
+                                         </div>
+                                 </div>
+                    </div>
+                </div>
+                      <div class="col-md-5  text-center user_activate_l mobile_view">
+                      <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
+                        <p class="txt-orange">Enter your voucher code and click activate code</p>
+                    <div class="card border_blue_radius text-center user_activate_card no_border_mob">
+                        <form name="activate_v">
+                            <?=$util->msg_box()?>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="hidden" name="customer_user_id" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>">
+                                    <input type="text" name="vcode" class="form-control rounded_form_control" placeholder="Required Field">
+                                </div>
+                                <div class="col-md-4">
+                                    <br class="mobile_view">
+                                    <button type="button" onclick="activate_voucher('activate_v')" class="btn btn_rounded btn-orange user_activate_btn_orange">ACTIVATE</button>   
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div
             </div>
         </section>
         <!--end add to cart cards-->

@@ -37,7 +37,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
  <?php include 'shared/partials/nav.php'; ?>
 
   <!-- Page Content -->
-  <div class="container-fluid">
+  <div class="container-fluid desktop_view">
       <div class="slider_overlay"></div>
     <div class="row">
      <div id="demo" class="carousel slide carousel-fade home_slider" data-ride="carousel">
@@ -62,9 +62,42 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
     </div>
   </div>
   </div>
+  <!--start mobile slider-->
+  <div class="container-fluid mobile_view">
+      <div class="slider_overlay"></div>
+    <div class="row">
+     <div id="demo" class="carousel slide carousel-fade home_slider" data-ride="carousel">
+ 
+  <div class="carousel-inner">
+    <div class="carousel-item active slider_1">
+           <div class="mob_cta text-center">   
+   <img src="shared/img/slider_reg.svg" class="">
+  </div>
+        <img src="shared/img/mob_slider1.jpg" class="w-100">    
+           <div class="mob_sli_des text-center"> 
+               
+                  <img src="shared/img/mob_sli_des.svg" class="mob_sli_des_1">
+                  <p>
+                      HAPPYBOX offers you the unique opportunity to find a gift which fits all tastes. 
+                      The recipient has the option of choosing a tailored experience from a multitude of exclusive activities.</p><p> From relaxing spas, energising yoga classes and gastronomic delights to exhilarating sports and adventure experiences, HAPPYBOX has it all!
+                  </p>
+                  <img src="shared/img/mob_sli_discover.svg" class="">
+ 
+  </div>
+     
+
+   
+  </div>
+    
+
+</div>
+    </div>
+  </div>
+  </div>
+  <!--end mob slider-->
   <!--section below slider-->
   
-  <section class="container section_padding_top">
+  <section class="container section_padding_top desktop_view">
       <div class="row">
           <div class="col-md-12 text-center">
               <a href="" class="btn btn-block btn-bordered">
@@ -75,7 +108,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
       </div>
       </section>
 <!--end discover our selection-->
-      <section class="container section_padding_top">
+      <section class="container section_padding_top pull_up_mobile">
         <!-- start row -->
         <div class="row">
           <?php 
@@ -114,18 +147,31 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                 </div>
               </div>
               <div class="cart_bar text-white">
-                  <div class="cart_bar_strip">
+                  <div class="cart_bar_strip desktop_view">
                     <form name="frm_<?=$_all_box['internal_id']?>">
                       <input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
                       <span class="pricing">KES <?=number_format($_all_box['price'], 2)?></span>
                       <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
                     </form>
                   </div>
+                    <div class="cart_bar_strip_mob mobile_view row">
+                      <div class="col-6">
+                              <form name="frm_<?=$_all_box['internal_id']?>">
+                             
+                      <input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
+                <span class="pricing btn btn-mob-cart btn-block">KES <?=number_format($_all_box['price'], 2)?></span>
+                      </div>
+                        <div class="col-6">
+                             <!--    <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart">!-->
+                                    <img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
+                                  </form> 
+                      </div>                  
+ </div>
               </div>
             </div>
           <?php 
           if($_row_count%2 == 0){
-            print '</div><br><hr><br><div class="row">';
+            print '</div><br><hr class="desktop_view"><br><div class="row">';
           }
           $_row_count++;
           endforeach;
@@ -139,7 +185,9 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
       <div class="container">
     <div class="row">
              <div class="col-md-12">
-               <img src="<?=$util->ClientHome()?>/shared/img/iwant_layer.svg" class="iwant_img">
+              
+                  <img src="<?=$util->ClientHome()?>/shared/img/iwant_layer.svg" class="iwant_img desktop_view">
+                 <img src="<?=$util->ClientHome()?>/shared/img/iwantmoxmob.svg" class="iwant_img mobile_view">
               </div>
       </div>
         <div class="container">
@@ -196,13 +244,15 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
         <div class="row">
       
              <div class="col-md-12">
-                 <img src="<?=$util->ClientHome()?>/shared/img/whyhappy.svg" class="why_img">
+              
+                      <img src="<?=$util->ClientHome()?>/shared/img/whyhappy.svg" class="why_img desktop_view">
+                      <img src="<?=$util->ClientHome()?>/shared/img/whyhappymob.svg" class="why_img mobile_view">
              
              
           </div>
           
       </div>
-    <div class="row why_happy_card_row">
+    <div class="row why_happy_card_row desktop_view">
       
              <div class="col-md-3">
                  
@@ -280,6 +330,98 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
           </div>
           
       </div>
+      <div class="brands row mobile_view">
+   
+                     <div class="col">
+                         
+                 <div class="brands_slider_container">
+                     <div class="owl-carousel owl-theme why_slider">
+                         <div class="owl-item w-100">
+                             <div class="brands_item d-flex flex-column justify-content-center">
+                             <div class="card why_happy_card why_happy_card_client">
+                     <div class="card-header">
+                         
+                         
+                     </div>
+                     <div class="card-body why_happy_card_body text-center">
+                         
+                         <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-kenyan-flag.svg"/>
+                         <p>
+                             Proudly 100% Kenyan
+                         </p>
+                         
+                     </div>
+                     
+                 </div>     
+                             </div>
+                         </div>
+                          <div class="owl-item w-100">
+                               <div class="card why_happy_card why_happy_card_client">
+                     <div class="card-header">
+                         
+                         
+                     </div>
+                     <div class="card-body why_happy_card_body text-center">
+                         
+                         <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-large-choice.svg"/>
+                         <p>
+                          A large choice of activities in each box
+                         </p>
+                         
+                     </div>
+                     
+                 </div>
+                             
+                         </div>
+                         <div class="owl-item w-100">
+                             <div class="card why_happy_card why_happy_card_client">
+                     <div class="card-header">
+                         
+                         
+                     </div>
+                     <div class="card-body why_happy_card_body text-center">
+                         
+                         <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-warranty.svg">
+                         <p>
+                             Loss & theft warranty
+                         </p>
+                         
+                     </div>
+                     
+                 </div>
+                             
+                         </div>
+                         <div class="owl-item w-100">
+                             <div class="card why_happy_card why_happy_card_client">
+                     <div class="card-header">                       
+                         
+                     </div>
+                     <div class="card-body why_happy_card_body text-center">
+                         
+                         <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-evaluate.svg"/>
+                         <p>
+                        Experiences are regularly evaluated and updated on our website
+                         </p>
+                         
+                     </div>
+                     
+                 </div>
+                             
+                         </div>
+                                           
+                         
+                         
+                         
+                         
+                         
+                     </div> <!-- Brands Slider Navigation -->
+                     <div class="brands_nav why_prev"><i class="fas fa-chevron-left"></i></div>
+                     <div class="brands_nav why_next"><i class="fas fa-chevron-right"></i></div>
+                 </div>
+             </div>
+       
+  
+ </div>
 </section>
        <?php include 'shared/partials/partners.php';?>
       <?php include 'shared/partials/footer.php';?>
@@ -319,14 +461,26 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
               <div class="modal_parent">
                 <div class="modal_child text-center">
                   <h6 id="box_name_"></h6><br>
+                     <div class="desktop_view">
                   <a href="" class="bold_txt pink_bg btn text-white" id="box_price_"></a>
                   <p id="box_desc_"></p>
+               
                 <div>
                 <form name="frm_popup">
                   <input type="hidden" value="" id="internal_id" name="internal_id">
                   <img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
                 </form>
-              </div>
+              </div> </div>
+                  <!--mobile --> <div class="mobile_view">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                                  
+                      <div class="row">
+                          <div class="col-6"> <a href="" class="bold_txt pink_bg btn text-white">KES 20 000.00</a></div>
+                          <div class="col-6">            <img class="" src="shared/img/icons/btn-add-to-cart-small-red-teal.svg"></div>
+                      </div>
+                   
+                                                </div>
+                  <!--end mobile-->
             </div>
           </div>
           <!-- end row -->
@@ -347,13 +501,16 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
     <div class="modal fade" id="addedToCart">
     <div class="modal-dialog general_pop_dialogue added_tocart_dialogue ">
     <div class="modal-content">
-    <a href="" data-dismiss="modal"> <img class="modal_close2" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a> 
+        <a href="" class="desktop_view" data-dismiss="modal"> <img class="modal_close2" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a> 
     <div class="modal-body text-center">
     <div class="col-md-12 text-center">
     <h3 id="vvv"></h3>   
-    <div class="action_btns" >
+    <div class="action_btns desktop_view" >
     <a href="" data-dismiss="modal"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-continue-shopping.svg"></a> 
     <a href="user-dash-shoppingcart.php"> <img class="" src="<?=$util->ClientHome()?>/shared/img/btn-checkout.svg"></a> 
+    </div>
+    <div class="okay_btn mobile_view text-center">
+        <img data-dismiss="modal" class="" src="<?=$util->ClientHome()?>/shared/img/okay_mob.svg"></a> 
     </div>
 
     </div>
@@ -401,7 +558,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
                     $("#reset_div").load(window.location.href + " #reset_div" );
-                    $('#vvv').text('THIS BOX HAS BEEN ADDED TO YOUR CART.');
+                    $('#vvv').text('This box has been added to your cart');
                     $('#popupid').trigger('click');
                     waitingDialog.hide();
                     return;
@@ -416,6 +573,8 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
         });
       }
     });
+    
+  
 </script>
 </body>
 

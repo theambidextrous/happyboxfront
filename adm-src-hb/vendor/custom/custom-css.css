@@ -518,6 +518,7 @@ position: absolute;
 
 /*Mobile View */
 @media (max-width: 767px){
+   
 .filter_form select {
        margin-top: 14px;
 }

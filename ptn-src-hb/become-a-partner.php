@@ -36,11 +36,12 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
  <section  class="blue_band text-center">
 			<h2 class="">HAPPYBOX PARTNER PORTAL</h2>
 			</section>
-  <section  class="green_strip text-center">
+  <!--desktop-->
+  <section  class="green_strip text-center desktop_view">
 			<h4 class="partner_blue2">Becoming a HAPPYBOX partner means you are always a winner!</h4>
 			</section>
   
-<section class=" text-center ">
+<section class=" text-center desktop_view">
             <div class="container">
 		
                
@@ -81,12 +82,70 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                 </div>
               </div>
         </section>
+  <!--mobile-->
+  <section  class="green_strip text-center mobile_view">
+			<h4 class="partner_blue2 mob_bold">Becoming a HAPPYBOX partner means you are always a winner!</h4>
+			</section>
   
-    <section class="pad_top20">
+<section class=" text-center mobile_view">
+            <div class="container">
+		
+               
+                    <div class="row justify-content-center become_boxes">
+                    <div class="col-12 no_padd">
+                        <div class="become_card become_card1">
+                           <div class="become_card_txt">Free advertising year round on our website and in our boxes</div>
+                          
+                            
+                        </div>		
+                        </div>
+                         <div class="col-12 no_padd">
+                        <div class="become_card become_card2">
+                       <span class="become_card_txt">Zero upfront cost, Zero cash out, Zero investment</span>
+                    
+                            
+                        </div>		
+                        </div>
+                          <div class="col-12 no_padd">
+                        <div class="become_card become_card3">
+                           <span class="become_card_txt">Increase your turnaround by attracting a new typology of clientele</span>
+                           
+                            
+                        </div>		
+                        </div>
+                          <div class="col-12 no_padd">
+                        <div class="become_card become_card4">
+                        <span class="become_card_txt">Easy going partnership with Zero constraint, 100% independence on your bookings, all made under your T&C’s</span>
+                         
+                            
+                        </div>		
+                        </div>
+                         <div class="col-md-12 text-center desktop_view">
+                             <button class="btn btn-block btn-zero">0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></button>	
+                        </div>
+                          <div class="col-md-12 text-center mobile_view btn_zero_mob">
+                             0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/>	
+                        </div>
+
+                </div>
+              </div>
+        </section>
+  
+    <section class="pad_top20 desktop_view">
                      <div class="container-fluid">
                     <div class="row ">
                         <div class="col-md-12">
-                               <img src="../shared/img/become_part_img.svg" class="become_part_floating_img"/>
+                               <img src="../shared/img/become_part_img.svg" class="become_part_floating_img desktop_view"/>
+                            
+                        </div> </div></div>
+                
+    </section>
+    <section class="pad_top20 mobile_view">
+                     <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            
+                               <img src="../shared/img/becomeHappyMob.svg" class="happy_become_mobile"/>
                             
                         </div> </div></div>
                 
@@ -289,7 +348,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                             <label>Sub location</label>
                                             <input type="text" name="sub_location" class="form-control rounded_form_control" id="select_box_type"/>
                                         </div>
-                                        <p class="text-right">
+                                        <p class="text-right text-right-mob-center">
                                         <button type="button" onclick="create_account('create_ptn_acc')" name="becomeptn" class="btn btn_rounded become_dark_blue_btn btn-dark-blue">BECOME A PARTNER</button>
                                     </p></div>
                                 </form>

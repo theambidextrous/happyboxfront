@@ -21,13 +21,16 @@ $util = new Util();
 <body>
   <!-- Navigation -->
  <?php include '../shared/partials/nav-logged-in.php'; ?>
+    <section  class="mob_maroon_section text-center">
+			<h4 class="">VALIDITY RESULT</h4>
+			</section>
  
 <section class="section_60">
             <div class="container">
 			
                
                     <div class="row  ">
-                        <div class="col-md-5">
+                        <div class="col-md-5 desktop_view">
                             <div class=" how_it_work">                                
                                          <img src="../shared/img/howitworks.svg" class=""/>  
                                    
@@ -47,7 +50,7 @@ $util = new Util();
                             </div>
                         
                         </div>
-                          <div class="col-md-7 text-center how_it_work_border">
+                          <div class="col-md-7 text-center how_it_work_border desktop_view">
                               <div class="row justify-content-center">
                                   <div class="col-md-7">
                                     <h3 class="partner_blueh">CHECK VOUCHER VALIDITY</h3>
@@ -74,7 +77,7 @@ $util = new Util();
                        
                 
 
-                </div><div class="row text-center">
+                </div><div class="row text-center desktop_view">
                      <div class="voucher_result_bar validity_bar">
                      <div class="voucher_no">
                          VOUCHER NUMBER
@@ -120,7 +123,93 @@ $util = new Util();
                      </div>
                          </div>
                         
-                    </div><!-- result-->
+                    </div>
+                <div class="  mobile_view">
+                     <div class="voucher_result_bar_mob ">
+                         <div  class="row voucher_result_bar_mob_row">
+                             <div class="col-8" >
+                                VOUCHER NUMBER 
+                             </div>  
+                              <div class="col-4 text-right" >
+                               QWERTY0125
+                             </div>
+                             
+                         </div>
+                            <div class="voucher_result_bar_mob ">
+                         <div  class="row voucher_result_bar_mob_row">
+                             <div class="col-8" >
+                                BOX NAME | DESCRIPTION
+                             </div>  
+                              <div class="col-4 text-right" >
+                         
+  
+  <select class="form-control-sm" id="des_sel">
+      <option value="">SELECT</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+
+                             </div>
+                             
+                         </div>
+                        
+                    </div>
+                          <div class="voucher_result_bar_mob ">
+                         <div  class="row voucher_result_bar_mob_row">
+                             <div class="col-8" >
+                                ENTER A BOOKING DATE
+                             </div>  
+                              <div class="col-4 text-right" >
+                                  
+                                  
+                            <img src="../shared/img/icn-calendar-blue.svg" class="val_date_icon"/>
+                               
+                             </div>
+                             
+                         </div>
+                            
+                        
+                    </div>
+                           <div  class="row ">
+                             <div class="col-12" >
+                                 <button class="btn-block btn_rounded btn_no_border btn-lg">REDEEM THIS VOUCHER</button>
+                                 <br>
+                             </div>  
+                             
+                             
+                         </div>
+                     </div>  </div>
+                
+                 <section class="check_voucher_s mobile_view" >
+      <div class="mob_relative">     <img src="../shared/img/icn-arrow-blue-mob.svg" class="floating_arrow"/></div>
+ 
+      <div class="container">
+      <div class="row  text-center">
+        <div class="col-12">
+            <h3 class="mob_blue check_voucher_s_h">CHECK ANOTHER VOUCHER</h3>
+          
+          <div class="check_voucher_s_p">
+              <p class="mob_light_blue mob_font16">
+                  To make a booking, enter the customer voucher code below to check it’s validity.
+              </p>
+          </div>
+            <form class="voucher_val" method="post">
+                        <div class="form-group">
+           <input type="text" name="vcode" class="form-control rounded_form_control" placeholder="Enter customer voucher code here">
+                        </div>
+                        <button type="submit" name="VALIDITY" class="btn btn_rounded">CHECK VALIDITY</button>
+                      </form>
+      </div>
+        
+              </div>
+                
+              </div>
+    
+            </div><!-- result-->
+          </div>
+        </section>
+                <!-- result-->
                    
                 
                 

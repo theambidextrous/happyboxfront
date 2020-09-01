@@ -32,7 +32,7 @@ $util->ShowErrors(1);
         
         <!-- Page Content --> 
 
-        <section class=" user_account_sub_banner">
+        <section class=" user_account_sub_banner desktop_view">
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
@@ -43,7 +43,8 @@ $util->ShowErrors(1);
         </section>
 
         <!--end discover our selection-->
-        <section class="container section_padding_top" id="yourDiv">
+        <!--desktop start-->
+        <section class="container section_padding_top desktop_view" id="yourDiv">
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="user_blue_title" >YOUR SHOPPING CART</h3>
@@ -145,6 +146,124 @@ $util->ShowErrors(1);
                 </div>
             </div>
         </section>
+        <!--end desktop-->
+         <!--start mobile-->
+         <section class="container section_padding_top mobile_view" id="yourDiv">
+            <div class="row">
+                <div class="col-md-12 no_pad_lr">
+                    <h3 class="user_blue_title cart_yellow_h_mob" >YOUR SHOPPING CART</h3>
+                    <!--progress strip-->
+                </div>  <div class="col-md-12">
+                    <div class="width_100 cart_progress_strip">
+                        <div class="col-3 cart_strip"></div>
+                    </div>
+                    <!--end progress strip-->
+                    <div>
+                    <table class="p-2 cart-table table-borderless">
+                        <?php 
+                            // $util->Show($_SESSION['curr_usr_cart']);
+                            // unset($_SESSION['curr_usr_cart']);
+                            if(!empty($_SESSION['curr_usr_cart'])){
+                                foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
+                                    if(!isset($_cart_item['order_id'])){
+                                    $raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
+                                    $_box_data = $raw_data->data;
+                                    $_b_cost = floor($_cart_item[1]*$_box_data->price);
+                                    $_total_cart[] = $_b_cost;
+                                    $_total_shipping = 0;
+                                    $_media = $picture->get_byitem('00', $_cart_item[0]);
+                                    $_media = json_decode($_media, true)['data'];
+                                    $_3d = 'shared/img/cart_img.png';
+                                    foreach( $_media as $_mm ){
+                                        if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}
+                                    }
+                        ?>
+                        <tr id="reset_div_<?=$_cart_item[0]?>">
+                            <td class="pdt_img" style="width:35%"> <img src="<?=$_3d?>" /></td>
+                            <td class="cart_des">
+                                <h6><?=$_box_data->name?></h6>
+                                <span><?=$_box_data->description?></span><br>
+                                <b>KES <?=number_format($_box_data->price, 2)?></b><br>
+                                <span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span>
+                            </td>
+                        </tr> 
+                        <tr style="background:#00ACB31A;">
+                            <td>
+                             <b>KES <?=number_format($_b_cost,2)?></b>
+                            </td>
+                             <td>
+                                 <div class="center">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-number"  data-type="minus" data-field="quant_<?=$_cart_item[0]?>[2]"><i class="fas fa-minus"></i></button>
+                                        </span>
+                                        <input type="text" name="quant_<?=$_cart_item[0]?>[2]" class="form-control input-number cart_value" value="<?=$_cart_item[1]?>" min="1" max="10">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-number ongeza_btn" data-type="plus" data-field="quant_<?=$_cart_item[0]?>[2]"><i class="fas fa-plus"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr><tr>
+                            <td colspan="2" class="mob_shipping">
+                                <?=$util->ship_type_form($_cart_item[0], $_cart_item[2])?>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                               <!-- <b>KES <?//=number_format($_b_cost,2)?></b>-->
+                              
+                            </td>
+                            <td align="right">
+                          <img  onclick="remove_from_cart('<?=$_cart_item[0]?>')" class="" src="../shared/img/icn-delete-teal.svg">
+                            
+                            </td>
+                        </tr>
+                        </tr>
+                        <tr >
+                            <td colspan="6">
+                                <small><i>* Physical delivery only available in Nairobi at present.</i></small>
+                            </td>
+                        </tr>
+                        <?php 
+                                    }
+                            endforeach;
+                        }else{
+                            print '
+                            <tr>
+                                <td colspan="6">
+                                    <small>*No items in cart.</small>
+                                </td>
+                            </tr>';
+                        }
+                        ?>
+                        
+                        
+                        
+                        <tr align="right " class="cart_totals tr_border_top">
+                            <td colspan="6">
+                                <span>SHIPPING TOTAL KES</span> <?=number_format($_total_shipping,2)?>
+                            </td>
+                        </tr>
+                        <tr align="right" class="cart_totals tr_border_top">
+                            <td colspan="6">
+                                <span> ORDER TOTAL (Incl. VAT)</span>  KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?>
+                            </td>
+                        </tr>
+                        <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
+                            <td colspan="6 ">
+                                <a href="<?=$util->ClientHome()?>"><img src="shared/img/btn-continue-shopping.svg"></a>
+                                <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-shipping-method-blue.svg"></a>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+         
+             <!--end  mobile-->
         <!--end add to cart cards-->
         <!--our partners -->
         <?php include 'shared/partials/partners.php'; ?>

@@ -65,7 +65,7 @@ if(isset($_POST['makecart'])){
         <!-- Page Content --> 
 
     
-        <section class=" user_account_sub_banner">
+        <section class=" user_account_sub_banner desktop_view">
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
@@ -75,13 +75,14 @@ if(isset($_POST['makecart'])){
                 </div> </div>
         </section>
         <!--end discover our selection-->
-    <section class="partner_voucher_list section_60">
+        <!--desktop-->
+    <section class="partner_voucher_list section_60 desktop_view">
     <!-- <a href="#" onclick="fdownload()">try download <=$util->tb64('http://127.0.0.1:8000/media/2ko01ggxirz059yqlvgtkreuws1lxrz5.png')?></a> -->
         <div class="container">
             <div class="row ">
                 <div class="col-md-12">
                     <h3 class="user_blue_title text-center">MY PURCHASE HISTORY</h3>
-                    <p class="txt-orange text-center">A list of your activated vouchers              </p>
+                    <p class="txt-orange text-center">A list of your purchased vouchers             </p>
                 </div>
             </div>
             <?php
@@ -202,6 +203,241 @@ if(isset($_POST['makecart'])){
             ?>
         </div>
     </section>
+        <!--static view desktop-->
+        
+    <section class="partner_voucher_list section_60 desktop_view">
+           <div class="container">
+			
+               
+                    <div class="row ">
+                         <div class="col-md-12">
+                        
+                        <h3 class="user_blue_title text-center">MY PURCHASE HISTORY</h3>
+                                        <p class="txt-orange text-center">
+                A list of your purchased vouchers           
+                                        </p>
+                         </div>
+                    </div>
+                     
+                        <div class="row ">
+                    <div class="col-md-9">
+					
+                                        <div class="table-responsive">
+                                            <div class="purchase_hist"><table class="table purchase_hist   table-bordered">
+                                                     <tr class="purch_hist_tr_td">
+                        <td class="b">ORDER NUMBER</td>
+                        <td>0123456</td>
+                        <td colspan="6" class="invisible_table td_noborder"></td>
+                        
+                     
+                      
+
+
+                    </tr>
+          
+                    <tr class="purch_hist_tr_td">
+                        <th class="b">IMAGE</th>
+                        <th>BOX NAME</th>
+                         <th>BOX<br> NUMBER</th>
+                        <th>VOUCHER <br>CODE</th>
+                   
+                        <th>PURCHASE DATE</th>
+                        <th>BOX TYPE</th>
+                         <th>QUANTITY</th>
+                         <th class="purc_last_td">COST</th>
+                     
+                      
+
+
+                    </tr>
+                                      
+  
+  
+        <tr>
+          <td class="">
+             <img class="d-block mx-auto purch_his_img" src="shared/img/Box_Mockup_01-200x200@2x.png">
+          </td>
+          <td class="purch_blue_td"><b>SPA EXPERIENCE</b></td>
+          <td class="purch_blue_td"><b>12345</b></td>
+          <td class="purch_blue_td"><b>QWERTY</b></td>
+            
+       
+              <td>06/03/2020</td>
+                <td>E-BOX</td>
+                <td class="">2</td>
+                <td class="">KES 20 000.00</td>
+                   
+            
+      </tr>
+      <tr>
+          <td class="">
+             <img class="d-block mx-auto purch_his_img" src="shared/img/Box_Mockup_01-200x200@2x.png">
+          </td>
+          <td class="purch_blue_td"><b>SPA EXPERIENCE</b></td>
+          <td class="purch_blue_td"><b>12345</b></td>
+          <td class="purch_blue_td"><b>QWERTY</b></td>
+            
+       
+              <td>06/03/2020</td>
+                <td>E-BOX</td>
+                <td class="">2</td>
+                <td class="">KES 20 000.00</td>
+                   
+            
+      </tr>
+      <tr class="">
+                        <td colspan="5" class="td_noborder">
+                                              
+                                              
+                                          </td>
+                                          <td colspan="3" align="right" class="td_no_pad">
+                                              
+                                              <table>
+                                                  <tr>
+                                                      <td >SUB TOTAL (Incl. VAT)</td>
+                                                          <td class="purc_last_td">KES 70 000.00</td>
+                                                  </tr>
+                                                   <tr>
+                                                      <td>SHIPPING</td>
+                                                          <td>KES 300.00</td>
+                                                  </tr>
+                                                  <tr class="bold_txt">
+                                                      <td>TOTAL PRICE (Incl. VAT)</td>
+                                                          <td>KES 70 300.00</td>
+                                                  </tr>
+                                              </table>
+                                          </td>
+                        
+                     
+                      
+
+
+                    </tr>
+      
+  
+     
+
+  </table>
+                                                </div>
+                </div> 
+                                   
+                        </div>
+                        <div class="col-md-3 ">
+                            <div class="purchase_hist_right">
+                                <div>  <img class=" " src="shared/img/btn-add-to-cart-orange.svg">  
+                                   <img class="purchase_hist_right_mid_img " src="shared/img/btn-add-to-cart-orange.svg">
+                      
+                                  <img class=" " src="shared/img/btn-download-orange.svg">
+                            
+                             </div>
+                            
+                        </div>
+                        </div>
+
+                </div>
+           
+        </section>
+        <!--end static view-->
+        <!--end desktop-->
+        <!--mobile-->
+           <section class=" user_account mobile_view">
+      <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <h3 class="text-white user_main_title_mob">MY PURCHASE HISTORY</h3>  
+             
+          </div>
+          
+      </div>
+      
+      
+      </div>
+      </section>
+           <section class=" mobile_view">
+     <div class="purch_list_mob  container">
+                     <div class="row  ">
+        <div class="col-md-12 ">
+               
+              <p class="txt-orange text-center mob_pad">A list of your purchased vouchers
+                      
+                      
+                      </p>
+             <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless">
+                <thead>
+                  <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
+                      <th style="width:50%;">ORDER NUMBER</th>
+                    <th>PURCHASE DATE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1">
+                        <td class="v_td_a">012234897</td>  <td class="green_txt_valid"><span class=""><b>01/03/2020</b></span></td>
+                    </tr>
+                    <tr class="purch_hist_img_mob" style="background: #f0f0f0;">
+                         <td class="" colspan="2">
+                            <img class="" src="shared/img/Box_Mockup_01-200x200@2x.png">
+                        </td>  
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Voucher Code</td>  <td>AZERTY001</td>
+                    </tr>
+                    <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Box Name</td>  <td>SPA EXPERIENCE</td>
+                    </tr>
+                      <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Box Number</td>  <td>456</td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">   Box Type</td>  <td>   E-box</td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Expiry Date</td>  <td>06/03/2020</td>
+                    </tr>
+                     <tr class="voucher_list_user_table_mob_tr">
+                        <td class="v_td_a">Quantity</td>  <td>2</td>
+                    </tr>
+                 
+                     
+                      
+                   
+                    <tr class="purch_list_blue_order">
+                        <td class="text-center" colspan="2">Order Options</td>  
+                    </tr>
+                    <tr class="v_td_p_r">
+                        <td class="v_td_p1">ADD TO CART <img class="" src="../shared/img/cartp_mob.svg"></td>  <td class="v_td_p2">DOWNLOAD INVOICE  <img class="" src="../shared/img/downp.svg"></td>
+                    </tr>
+                     
+                    
+                    
+                    <tr class="declare_tr text-center">
+                        <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>  
+                    </tr>
+                </tbody>
+             </table>
+            <!--table 2-->
+             <table class="table  voucher_list_table_mob2 table-borderless">
+                
+                <tbody>
+                    <tr>
+                        <td class="">032598428</td>  <td class="canc_mob_text">15/02/2020</td>
+                    </tr>
+                     <tr>
+                        <td class="">123456789</td>  <td class="reed_mob_text">01/02/2020</td>
+                    </tr>
+                    <tr>
+                        <td class="">326598741</td>  <td class="reed_mob_text">13/01/2020</td>
+                    </tr>
+                    
+                    
+                </tbody>
+             </table>
+       
+  
+        </div>
+           
+                     </div></div>
+      </section>
+        <!--end mobile-->
         <!--end add to cart cards-->
         <!--our partners -->
 

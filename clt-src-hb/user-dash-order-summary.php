@@ -32,7 +32,7 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Happy Box:: User Order Summary</title>
+        <title>Happy Box:: User Order SummarSy</title>
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
     </head>
@@ -40,7 +40,7 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         <!-- Page Content --> 
-        <section class=" user_account_sub_banner">
+        <section class=" user_account_sub_banner desktop_view">
             <div class="container">
               <div class="row user_logged_in_nav">
                 <div class="col-md-12">
@@ -51,15 +51,15 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
         </section>
 
         <!--end discover our selection-->
-        <section class="container section_padding_top ">
+        <section class="container section_padding_top desktop_view">
             <div class="row">
                 <div class="col-md-12 ">
                   <h3 class="user_blue_title" >ORDER SUMMARY</h3>
                   <!--progress strip-->
                   <div class=" cart_progress_strip row">
-                    <div class="col-md-3 cart_strip"></div>
-                    <div class="col-md-3 shipping_strip"></div>
-                    <div class="col-md-3 summary_strip"></div>
+                    <div class="col-3 cart_strip"></div>
+                    <div class="col-3 shipping_strip"></div>
+                    <div class="col-3 summary_strip"></div>
                   </div><br>
                   <!--end progress strip-->
                   <div class="table-responsive">
@@ -253,6 +253,132 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                 </div>
               </div>
             </section>
+         <!--start mobile-->
+        <section class="container section_padding_top mobile_view" id="yourDiv">
+            <div class="row">
+                <div class="col-md-12 no_padd">
+                    <h3 class="user_blue_title cart_yellow_h_mob order_summ_mob" >ORDER SUMMARY</h3>
+                    <!--progress strip-->
+                    
+                    <!--end progress strip-->
+                    <div>
+                    
+                    </div>
+                </div>
+            </div>
+              <div class=" container">
+            <div class=" cart_progress_strip row">
+                    <div class="col-3 cart_strip"></div>
+                    <div class="col-3 shipping_strip"></div>
+                    <div class="col-3 summary_strip"></div>
+                  </div> </div>
+        </section>
+          <section class="container mobile_view ">
+            <div class="row">
+                <div class="col-md-12 ">
+                    
+                     
+                           <!--end progress strip-->
+                      <table class="p-2 cart-table table-borderless shipping_table">
+                          
+                          <tr>
+                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
+                              <td class="cart_des">
+                                  <h6>Box One</h6>
+                                  <h6><span class="text-orange"><b>E-Box |</b></span>  deliver to:</h6>
+                                  <span>
+                                      Jane Bloggs <br>abc@delivermybox.ke
+                                  </span>
+                                  <br>  <br>
+                                  <b>KES20 000.00</b>
+                              </td>
+                          </tr>
+                          <tr>
+                          
+                              
+      </tr>
+ 
+
+  </form>  
+
+
+                                        
+                       
+                      </table>
+                           <!-- box 2-->
+                           <table class="p-2 cart-table table-borderless shipping_table">
+                          
+                          <tr>
+                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
+                              <td class="cart_des">
+                                  <h6>Box Two</h6>
+                                   <h6><span class="text-orange"><b>Physical Delivery |</b></span> <b> deliver to:</b></h6>
+                                <span>
+                                     Joe Bloggs <br>123 Box Street, Nairobi, Kenya, 1234
+                                  </span>
+                                  <br>  <br>
+                                  <b>KES20 000.00</b>
+                              </td>
+                          </tr>
+                          <tr>
+                          
+                              
+      </tr>
+ 
+
+  </form>  
+
+
+                                        
+                       
+                      </table>
+                           <!--3-->
+                            <table class="p-2 cart-table table-borderless shipping_table">
+                          
+                          <tr>
+                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
+                              <td class="cart_des">
+                                  <h6>Box Three</h6>
+                                  <h6><span class="text-orange"><b>E-Box |</b></span>  deliver to:</h6>
+                                  <span>
+                                      Jane Bloggs <br>abc@delivermybox.ke
+                                  </span>
+                                  <br>  <br>
+                                  <b>KES20 000.00</b>
+                              </td>
+                          </tr>
+                          <tr>
+                          
+                              
+      </tr>
+ 
+
+  </form>  
+
+
+                                        
+                       
+                      </table>
+                               <table>
+                            <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
+                          <td colspan="6 ">
+                                 <?php 
+                            if(!isset(json_decode($_SESSION['usr'])->access_token)){
+                            ?>
+                              <a href="<?=$util->ClientHome()?>/user-login.php">Login To Complete Order</a>
+                            <?php }else{ ?>
+                              <button type="submit" class="invisible_btn" name="checkout"><img src="shared/img/checkout_mob.svg"></button> 
+                          
+                            <?php } ?>
+                            <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-back-to-shipping-orange.svg"></a>
+                         
+                          </td>
+                        </tr>
+                        </table>
+                        
+                           
+                </div></div></section>
+         <!-- end mobile -->
             <!--end add to cart cards-->
             <!--our partners -->
         <?php include 'shared/partials/partners.php'; ?>

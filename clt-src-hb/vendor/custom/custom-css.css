@@ -1,4 +1,4 @@
-/*
+~/*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
@@ -8,18 +8,25 @@ and open the template in the editor.
     Author     : jmwaka
 */
 body{
-    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
-    font-size: 14px;
+   font-family: Calibri !important;
+    font-size: 14px !important;
+}
+html {
+  scroll-behavior: smooth;
 }
 img{
     max-width: 100%;
+}
+.nav-link {
+      padding: 0.1rem 0.5rem; 
+    
 }
 .redeem-select{
     width: 100%!important;
     border: solid 0px #fff!important;
 }
 .h3, h3 {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
 }
 .text-black{
     color: black;
@@ -43,12 +50,19 @@ img{
 .pink_bg{
     background: #C20A2B;
 }
+.purchase_hist_right button{
+    background: transparent !important;
+}
 .bold_txt{
     font-weight: bold;
 }
 html {
     scroll-behavior: smooth;
 }
+.drop_down_user_login{
+  background: #00ACB3 !important; 
+}
+
 .txt-orange{
     color: #FA683D !important;
 }
@@ -283,8 +297,8 @@ th, td {
     margin-right: 5px;
 }
 .call_btn{
-  height: 29px;
-    margin-top: 7px;
+    height: 29px;
+    margin-top: 0px;
 }
 
 
@@ -451,7 +465,7 @@ th, td {
     margin-bottom: 16px;
 }
 .selection_card .card-header {
-    border-order-bottom: 0px;
+border-bottom: 0px !important;
     text-align: center;
     background-color: rgb(244, 244, 244) !important;
 }
@@ -461,13 +475,20 @@ th, td {
     display: inline;
     max-width: 100% 
 }
-.selection_card img{
-    height: 146px;
+
+  .selection_card img {
+    height: 187px;
 }
+.modal-body .carousel-caption a{
+  color: black;  
+}
+
 .box_title,.box_title a{
-    color: #C20A2B;
-    font-size: 19px;
+color: #C20A2B;
+    font-size: 18px;
     font-weight: bold;
+    background-color: white;
+    text-transform: capitalize;
 }.cart_bar{           
 
     margin-top: 4px;}
@@ -482,9 +503,9 @@ th, td {
 
 }
 .iwant_section{
-    background: #7bc2e273 0% 0% no-repeat padding-box;
+   background: #7bc2e273 0% 0% no-repeat padding-box;
     margin-top: 80px;
-    padding-bottom: 73px;
+    padding-bottom: 125px;
 }
 .iwant_card_row{
     padding-top: 80px;
@@ -679,7 +700,7 @@ th, td {
 }
 .small_p_margin_top{
 
-    margin-top: 13px;
+       margin-top: 20px;
     font-size: 12px;
 
 } 
@@ -688,7 +709,8 @@ th, td {
     padding: 20px 10px; background:#cce7f0;
 }
 .partner_blue2{
-    color: #2396c0;
+ color: #2396c0;
+    font-size: 18px;
 }
 .color_black{
     color: black;
@@ -773,27 +795,27 @@ th, td {
 }
 /* added to cart pop up */
 .added_tocart_dialogue .modal-body{
-    padding: 70px 23px 77px !important;
+padding: 76px 23px 77px !important;
 }
 .added_tocart_dialogue img{
     height: 35px;
 }
 
 .added_tocart_dialogue h3 {
-    font-size: 20px;
-    margin-bottom: 30px;
+      font-size: 18px;
+    margin-bottom: 23px;
     margin-top: 22px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .cat_well .selection_card img {
-    height: 178px;
+   height: 163px;
 }
 /* end added to cart pop up */
 /*cetagory template well being */
 .well_banner{    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42)),url(../../shared/img/hb-well-being-banner-01.jpg) no-repeat;
-                 height: 390px;
+                   height: 369px;
                  background-size: cover;
 }
 .active_well{
@@ -846,6 +868,15 @@ th, td {
 .cat_well .card-header {
     border-bottom: 0px;
 }
+.catwell_active_nav{
+    border-bottom: solid 2px #F4EF14;
+}
+.catgas_active_nav{
+    border-bottom: solid 2px #FA683D;
+}
+.catspor_active_nav{
+    border-bottom: solid 2px #FF005C;
+}
 .cat_p{
     text-align: left;
     font-size: 13px;
@@ -855,6 +886,7 @@ th, td {
 /*end cetagory template well being */
 
 /*Wellbeing partners */
+
 .btn_partners{
     background: #F4EF14;
     color: white !important;
@@ -951,8 +983,8 @@ th, td {
 /*End wellbeing partners */
 /*Category Gastronomy */
 .gastronomy_banner {
-    background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42)), url(../../shared/img/hb-gastronomy-banner-05.jpg) no-repeat;
-    height: 390px;
+background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42)), url(../../shared/img/hb-gastronomy-banner-05.jpg) no-repeat;
+    height: 369px;
     background-size: cover;
 }
 .gastronomy_banner_title    {
@@ -999,7 +1031,7 @@ th, td {
 /*Category Sports Adventure */
 .sports_banner {
     background: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.6)), url(../../shared/img/hb-sports-banner-01.jpg) no-repeat;
-    height: 390px;
+      height: 369px;
     background-size: cover;
 }
 .sports_banner_title    {
@@ -1105,7 +1137,10 @@ th, td {
 
 }
 .user_login_card_col {
-    margin-bottom: 8px;
+margin-bottom: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+
 }
 .user_login_card_col .col-10{
 
@@ -1153,8 +1188,9 @@ th, td {
 .btn_contact{
     border-radius: 8px;
     background: #FA683D;
-    padding: 5px 19px;
-    color: white;
+    padding: 5px 26px;
+    color: white !important;
+    text-transform: uppercase;
 
 }
 /*end contact */
@@ -1280,13 +1316,13 @@ th, td {
     color: #039aa0 !important;
     font: Bold 15px/32px Calibri;
     margin-right: 34px;
-    border-bottom: solid 2px #00ACB3;
+
     padding-bottom: 3px;
 
 }
 /*user voucher activate */
 .user_activate_steps_i{
-    height: 37px;
+     height: 44px;
     color: #FA683D;
 }
 .user_activate_steps_i_last{
@@ -1339,7 +1375,7 @@ th, td {
     border-bottom-left-radius:6px;
 }
 .card_v_steps{
-    padding: 7px 0px;
+ padding: 10px 0px;
 }
 /*end user voucher activate */
 /* purchase history */
@@ -1496,11 +1532,19 @@ padding: 29px;
 .cart_des{
     width: 34%;
 }
+.ongeza_btn{
+    color: #FA683D !important;
+}
+.toa_btn{
+ color:#00ACB3 !important;  
+}
+
 .del_icon{    
     color: #00acb3;
 }
 .cart_value{
-    border: solid 1px #10ACB3 ;
+  border: solid 1px #10ACB3;
+    border-radius: 11px !important;
 }
 .cart_totals{
     font-weight: bold;
@@ -1624,15 +1668,15 @@ height: 8px;
 
 }
 .blue_band h2{
-font-size: 23px;
-    font-weight: bold;
+    font-size: 22px;
+ 
 }
 
 .btn_rounded{
-background: #0185B6 0% 0% no-repeat padding-box;
+    background: #0185B6 0% 0% no-repeat padding-box;
     border-radius: 8px;
     color: white !important;
-    padding: 7px 13px;
+    padding: 7px 19px;
     font-size: 14px;
 }
 .pad_top_bottom{
@@ -1660,10 +1704,10 @@ color: #CCCCCC !important;
   color: #CCCCCC !important;
 }
 .partner_blueh {
-     letter-spacing: 0px;
+      letter-spacing: 0px;
     color: #0185B6;
     margin-bottom: 23px;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
 }
 /*login */
@@ -1678,8 +1722,9 @@ color: #CCCCCC !important;
 /*forgot password */
 
 .forgot_des{
-    color: #04C1C9;
+color: #04C1C9;
     margin-bottom: 24px;
+    font-size: 15px;
 }
 /*end forgot password  */
 /*start forgot password dialogue */
@@ -1742,11 +1787,11 @@ color: #CCCCCC !important;
     left: 4%;
 }
 .btn-zero{
-    background: #C20A2B;
+     background: #C20A2B;
     padding: 15px;
     border-radius: 10px;
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     outline: 1px solid #9c9c9c;
     outline-offset: -7px;
     margin-top: 14px;
@@ -1864,7 +1909,7 @@ background: #e6f3f8;
     border:solid 2px #C20A2B; 
 }
 .how_it_work_card {
-    padding: 9px 4px 1px;
+     padding: 12px 4px 3px;
     border: solid 2px #dd3a57;
 }
 .step_p{
@@ -2175,10 +2220,12 @@ border: solid 1px #0985B6;
     z-index: 5;
 }
 /*partner footer logged in_*/
-.partner_footer_upper{
-    padding-bottom: 7px;
+
+.partner_footer_upper {
+    padding-bottom: 11px;
     padding-top: 5px;
 }
+
 .partner_footer_upper span a{
     color: #000000;
     font-weight: bold;
@@ -2209,12 +2256,18 @@ border: solid 1px #0985B6;
 }
 @media (min-width: 768px)
 {
+    .desk_align_right{
+        text-align: right !important;
+    }
     .mobile_view{
      display: none !important;   
     }
     .desktop_contact_btn{
         text-align: right !important;
     }
+    .partner_logo_in img{
+    height: 142px !important;
+}
     
 }
 /*Tooltips */
@@ -2261,9 +2314,497 @@ a:hover.tooltips span {
   z-index: 999;
   display: block;
 }
+[type=submit]:not(:disabled){
+    border: none !important;
+}
 /*mobile view */
 @media (max-width: 767px)
 {
+    .cart_totals {
+    font-size: 12px !important;
+    }
+
+    .table_border_bottom{
+            border-bottom: solid 3px white;
+
+    }
+      .table_border_top{
+         border-top: solid 8px white;
+
+    }
+    .small_p_margin_top {
+    margin-top: 25px !important;
+    
+    }
+    .send_us{
+    color: #FA683D;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+    
+    .height_mob{
+
+    height: 45px !important;
+}
+
+    .no_pad_lr{
+        padding-right: 0px !important;
+           padding-left: 0px !important;
+    }
+   .pull_up_mobile {
+    margin-top: -24px !important;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+    .shipping_comment {
+    width: 100%;
+}
+    .pdt_img_mob{
+    width: 15%;
+}
+    .shipping_table .pdt_img {
+    width: auto;
+}
+    .cart_progress_strip {
+    border: solid 1px #10ACB3;
+    border-radius: 5px;
+    height: 14px;
+    margin-top: 16px;
+}
+    .cart_yellow_h_mob{
+  background: #F4EF14;
+    text-align: center;
+    color: white;
+    padding: 19px 10px;
+}
+   
+ 
+.cart_totals_actions img {
+    height: auto;
+    margin-left: 0px;
+    margin-top: 8px;
+}
+
+
+ .mob_shipping  .form-check-label {
+    display: block;
+    margin-bottom: .5rem;
+    width: 46%;
+    float: left;
+    margin-left: 9px;
+}
+    .v_td_p_r img{
+        height: 18px;
+    display: inline;
+    font-size: 12px;
+}
+.v_td_p1{
+    background: #C20A2B;
+    color: white;
+    padding: 9px 4px !important;
+    text-align: center;
+}
+.v_td_p2{
+   background:#FA683D;  
+     
+    color: white;
+    padding: 9px 4px !important;
+    text-align: center;
+}
+
+    .purch_list_blue_order{
+       background: #CFEEF0 !important;
+    font-weight: bold;
+    color: #00ACB3;
+    }
+    .purch_hist_img_mob{
+        text-align: center;
+    }
+     .purch_hist_img_mob img{
+    height: 100px;
+}
+    .mob_pad{
+        padding-top: 30px;
+         padding-bottom:  20px;
+    }
+    .user_account {
+        padding: 23px 15px;
+}
+    .client_logos {
+    margin-top: 38px;
+  }
+    .declare_tr{
+           background: #FA683D;
+    color: white;
+    height: 55px;
+        text-align: center;
+    }
+    .txt_gray{
+        color: gray;
+    }
+    .voucher_list_user_table_mob td {
+    vertical-align: middle;
+}
+ .voucher_list_user_table_mob_tr {
+    background: #00ACB31A;
+    color: #00ACB3;
+}
+    .voucher_list_user_table_mob_tr1 {
+background: #00ACB333 !important;
+    height: 63px;
+}
+    .green_txt_valid{
+        color: #10D271;
+        
+    }
+   
+    .blue_cell_user_th_mob{
+      background: #00ACB3 !important;
+    height: 55px;
+    }
+    .voucher_list_user_table_mob thead th {
+    vertical-align: middle !important;
+    }
+     .blue_cell_user_th_mob th{
+         vertical-align: middle;
+     }
+    .user_activate_l {
+        margin-top: 20px;
+    }
+   
+    .neg_img{
+    margin-left: -22px;
+}
+    .neg_top {
+      margin-top: -5px;
+}
+  .card_v_steps {
+    padding: 11px 0px 7px !important;
+}  .inline_div {
+    background: #00ACB3 0% 0% no-repeat padding-box !important;
+ 
+    padding: 9px 23px !important;
+}
+.user_activate_steps_i_last {
+    height: 21px !important;
+}
+    .user_activate_steps_i {
+    height: 65px;
+   
+    }.no_border_mob{
+        border: 0px !important;
+    }
+    .btn_rounded {
+    background: #0985B6 !important;
+    
+    }
+     .user_activate_btn_orange{
+        background: #FA683D !important;
+    }
+    .user_create_r {
+    padding-top: 17px !important;
+}
+    .mob_gray_txt, .mob_gray_txt a{
+        color: #717171;
+    }
+    .user_login_card {
+       margin-top: 0px !important;
+    
+    }
+    .user_login_card {
+    border: solid 1px #10ACB3;
+    margin-top: 0px;
+    
+    }
+    .user_login_l .rounded_form_control {
+    text-align: center !important;
+}
+    .user_account_title {
+       font-size: 15px !important;
+    
+    }
+     .user_main_title_mob{
+        font-size: 14px !important;
+    }
+    .user_account_sub_banner h5 {
+    font-size: 15px !important;
+    font-weight: normal !important;
+}
+    .user_login .text-orange {
+    font-size: 15px !important;
+}
+    .expe_table_mob td{
+        vertical-align: middle;
+    }
+    .exper_tick{
+          height: 25px;  
+    }
+    
+    .voucher_list_table_mob{
+    font-size: 13px;
+}
+    .voucher_list_table_mob_tr{
+        background: #0185B614;
+        color: #0185B6;
+    }
+        .v_td_100{
+        background: #0185B640 !important;
+        text-align: center;
+        font-weight: bold;
+        color: #0185B6;
+        }
+    
+    .v_td_a{
+        font-weight: bold;
+    }
+    .voucher_list_table_mob_tr td:nth-child(2) ,.voucher_list_user_table_mob_tr td:nth-child(2){ 
+    text-align: right;}
+    .v_td_canc{
+        background: #C20A2B;
+            color: white;
+        
+    }
+    .v_td_modi{
+        background: #0185B6;
+            color: white;
+        
+    }
+    .voucher_list_table_mob2 {
+    font-size: 13px;
+  
+}
+.voucher_list_table_mob2 tr{
+    color: #0185B6;  
+    font-weight: bold;
+    background: #0185B614;
+    margin-bottom: 2px;
+}
+.reed_mob_text{
+    color: #707070;
+}
+.canc_mob_text{
+    color: #C20A2B;
+}
+    .blue_cell_th_mob{
+        background: #0185B6;
+    } 
+    .blue_band h2 {
+    font-size: 20px;
+   
+    }.mob_canc {
+    padding: 12px 20px;
+}
+    .mob_top_20{
+        margin-top: 20px;
+    }
+    .mob_center{
+        text-align: center;
+    }
+    .partner_footer_upper span a {
+       font-size: 12px;
+}
+    .section_60 {
+    padding-top: 25px;
+    padding-bottom: 33px;
+}
+    .btn_no_border{
+        border: 0px;
+    }
+    .val_date_icon{
+    height: 23px;
+}
+    #des_sel {
+padding: .05rem .5rem;
+    font-size: .775rem;
+    line-height: 1.5;
+    background: transparent;
+    border: solid 1px;
+    color: #0185B6;
+    font-weight: bold;
+    border-radius: .2rem;
+}
+  .voucher_result_bar_mob_row {
+ background: #0185B614;
+    color: #0185B6;
+    padding: 12px 6px 10px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 13px;
+}
+     .text-right-mob-center{
+        text-align: center !important;
+    }
+    .become_arrow {
+    position: absolute;
+    left: 47%;
+    height: 34px;
+    bottom: -14px;
+}
+    .btn_zero_mob{
+      
+    background: #C20A2B;
+    color: white;
+    padding: 37px;
+    font-weight: bold;
+}   
+    
+    .card_step_blue_txt {
+    background: #0985B6;
+    display: block;
+    width: 100% !important;
+    float: right;
+    border-radius: 0px !important;
+}
+    .become_part_card {
+      min-height: 106px;
+      
+}
+    .become_boxes {
+    margin-top: 0px !important;
+    }
+    .become_card {
+    
+padding: 36px 20px 47px;
+}
+.no_padd{
+    padding-left: 0px !important;
+     padding-right:  0px !important;
+}
+ .become_card1 {
+    background: #0185B6;
+    
+ }
+ .become_card2{
+     background: #C20A2B;
+ }
+  .become_card3{
+     background: #FA683D;
+ }
+  .become_card4{
+     background: #00ACB3;
+ }
+ .howmob_top{
+    margin-top: -9px;
+}
+   
+   
+    .mob_bold{
+        font-weight: bold;
+    }
+    .how_steps_mob_wrap{
+        padding-left: 22px !important;
+    }
+    .green_strip {
+     padding: 15px 10px;
+  
+}
+    .mob_relative{
+        position: relative;
+    }
+    .floating_arrow{
+    position: absolute;
+    top: -72px;
+    left: 44%;
+}
+  .check_voucher_s {
+    border-bottom: solid 2px #0185B6;
+    border-top: solid 2px #0185B6;
+    padding-top: 50px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    padding-bottom: 50px;
+}
+
+ .check_voucher_s_h {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+    .mob_blue{
+        color: #0185B6;
+    }
+    .mob_light_blue{
+        color: #00ACB3;
+    }
+    .mob_font16 {
+        font-size: 16px;
+}
+    .mob_section_60{
+  padding-top: 35px;
+    padding-bottom: 25px;
+    }
+    .mob_maroon_section{
+     background: #C20A2B;
+    color: white;
+    padding: 7px 5px 6px;
+    width: 100%;
+    }
+    .mob_no_border{
+        border: 0px !important;
+    }
+    .step_span {
+    background: #DD3A57;
+    color: white;
+    border-radius: 5px;
+    padding: 9px 10px !important;
+    margin-right: 8px;
+}
+.step_p {
+    color: #0185B6;
+    margin-bottom: 33px;
+    margin-top: 5px;
+}
+    .mob_maroon_section h4{
+        
+    }
+    .gray_text_mob{
+          margin-top: 23px;
+    display: block;  
+    }
+    
+.btn_rounded {
+    font-size: 16px;
+    padding: 11px 18px !important;
+}
+ 
+
+    .form-control {
+    padding: 21px 10px !important;
+}
+    .partner_blueh {
+    margin-bottom: 30px;
+
+}
+    .mob_cart{
+    position: absolute;
+    right: 0px;
+    }
+    .mob_cart img {
+       height: 29px;
+}
+    .contact_sub_banner {
+    background: #C20A2B33;
+    padding: 20px 15px;
+    }
+   .terms_content {
+    padding-left: 19px;
+    padding-right: 19px;
+}
+    .terms_banner,.contact_banner {
+       padding: 25px;
+}
+    .terms_sub_banner h4 {
+       line-height: 22px;
+}
+    .terms_sub_banner {
+  
+   padding: 13px 11px;
+
+}
+  .congratulate  .p2{
+    font-size: 16px;
+}
     .desktop_contact_btn{
         text-align: center !important;
     }
@@ -2420,13 +2961,17 @@ padding: 1px 13px;
         background: #C20A2B;
     padding: 8px 0px 4px;
 }
-.btn-mob-cart{
-        background: #c20a2b;
-    padding: 2px;
+
+.btn-mob-cart {
+    background: #c20a2b;
+    padding: 3px 3px;
     color: white;
+    font-size: 12px;
     border-radius: 7px;
-    
+    line-height: 20px;
 }
+    
+
 .congratulate .p1 {
     font: Bold 34px/69px Segoe Script;
  }
@@ -2464,7 +3009,11 @@ font-size: 1rem;
 }
 
 .logo span {
-  font-weight: 400;
+    font-weight: 400;
+    position: absolute;
+    font-size: 10px;
+    right: 1px;
+    top: 0px;
 }
 
 .menu-toggle {
@@ -2475,12 +3024,13 @@ font-size: 1rem;
   cursor: pointer;
 }
 .menu-close {
- position: absolute;
+    position: absolute;
     /* padding: 0.8em; */
     top: 1em;
-    right: -5.5em;
+    right: -55px;
     cursor: pointer;
 }
+
 .logo_img  {
 height: 45px;
     margin-top: -16px;
@@ -2542,6 +3092,9 @@ nav ul {
     padding: 0;
     margin: 0;
     display: none;
+     position: absolute;
+    z-index: 22;
+    top: 0px;
 }
 
 nav ul.opening {
@@ -2721,7 +3274,8 @@ nav a:focus {
 }
  
     .pricing {
-        padding-top: 4px !important;
+      padding-top: 3px !important;
+    height: 29px;
 
     }
     .nav-item-with-cart .count {
@@ -2755,9 +3309,10 @@ nav a:focus {
         padding-bottom: 0px;
         padding-top: 1px;
     }
-    .blue_band {
-        padding: 19px;
-    }
+  .blue_band {
+    width: 100%;
+    padding: 19px 14px;
+}
     .upper_footer_col1 {
         text-align: center !important;
     }.upper_footer_col2 img {
@@ -2790,9 +3345,9 @@ nav a:focus {
         font-size: 14px;
     }
     .become_part_card_txt {
-        padding: 0px 41px 11px;
-        font-size: 15px;
-        margin-top: -24px;
+    padding: 0px 26px 11px;
+    font-size: 15px;
+    margin-top: -24px;
     }
     .become_logos_item {
         height: 59px;
@@ -2835,7 +3390,23 @@ nav a:focus {
         background: #3197bd;
 
     }
+   .shipping_table .rounded_form_control {
+       border: solid 1px #FA683D;
+}
+.ship_mob{
+    background: #FA683D !important;
+}
+.ship_mob button{
+    border: 0px !important;
+}
+.order_summ_mob{
+    background: #10D271 !important;
+}
 
 
 }
+.top_menu {
+    border-bottom: solid 1px #e2e0e0;
+}
+
 

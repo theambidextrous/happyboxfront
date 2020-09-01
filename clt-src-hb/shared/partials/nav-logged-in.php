@@ -1,4 +1,4 @@
- <nav id="top" class="navbar navbar-expand-lg top-bar-logged-in text-white">
+<nav id="top" class="navbar navbar-expand-lg top-bar-logged-in text-white">
     <div class="container">
         <a class="navbar-brand" href="#"><img src="../shared/img/inverse-logo.png"> <span> | PARTNER PORTAL</span></a>
  

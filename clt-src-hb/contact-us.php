@@ -41,9 +41,15 @@ $util->ShowErrors(1);
     <section class=" contact_sub_banner">
       <div class="container">
       <div class="row justify-content-center">
-          <div class="col-md-9 text-center">
+          <div class="col-md-9 text-center desktop_view">
               <h4 class="">
                   Do you have a special request? Are you looking at a tailored gift for large numbers? Ready to make a very personalised gift?<br> Tell us about it!
+              </h4>
+
+          </div>
+            <div class="col-md-9 text-center mobile_view">
+              <h4 class="">
+                  Do you have a special request?<br> Are you looking at a tailored gift for large numbers? Ready to make a very personalised gift?<br> <br>Tell us about it!
               </h4>
 
           </div>
@@ -57,7 +63,7 @@ $util->ShowErrors(1);
 <!--end discover our selection-->
  <section class="container section_padding_top contact_content">
       <div class="row justify-content-center">
-          <div class="col-md-6  contact_details">
+   <div class="col-md-6  contact_details">
               <h4 class="contact_title">Contact HAPPYBOX</h4>
               <div class="row">
                   
@@ -65,12 +71,20 @@ $util->ShowErrors(1);
                       <p>
                           <span class="contact_p"> <b>Contact Details</b></span><br> <b>Email:</b> hello@happybox.ke
                       </p>
+                      <div class="col-md-6 contact_p_txt mobile_view">
+                      <p>
+                          <span class="contact_p">  <b>Business Hours </b></span><br>
+                          <b>Monday – Friday:</b> 7am- 4:30pm<br> <b>Saturday:</b> 8am – 2:30pm <br><b>Sunday & National holidays:</b> Closed
+                      </p>
+                      
+                  </div>
                         <p>
                             <span class="contact_p"><b> Postal Address</b></span><br>
                             P.O. Box 123456<br> 001122<br>  Nairobi<br>  Kenya
                       </p>
+                      <h3 class="send_us text-center">SEND US YOUR ENQUIRY</h3>
                   </div>
-                    <div class="col-md-6 contact_p_txt">
+                    <div class="col-md-6 contact_p_txt desktop_view">
                       <p>
                           <span class="contact_p">  <b>Business Hours </b></span><br>
                           <b>Monday – Friday:</b> 7am- 4:30pm<br> <b>Saturday:</b> 8am – 2:30pm <br><b>Sunday & National holidays:</b> Closed
@@ -97,7 +111,7 @@ $util->ShowErrors(1);
   <label for="Details">Details</label>
   <textarea class="form-control contact_control" rows="3" id="Details" placeholder="Please give us the details of your enquiry"></textarea>
 </div>
-<div class="form-group text-right">
+<div class="form-group desktop_contact_btn">
     <button type="submit" class="btn btn_contact" data-toggle="modal" data-target="#contactPop" >Send</button>
 </div>
                 

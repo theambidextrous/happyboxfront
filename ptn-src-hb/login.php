@@ -66,7 +66,9 @@
               <button type="submit" name="login" class="btn btn_rounded">LOGIN</button>
               <p class="text-center gray_text small_p_margin_top">
                 <a href="forgot.php">Forgot password?</a>
-                <a href="become-a-partner.php">| Not a registered partner? SIGN UP</a>
+                  <a class="desktop_view " href="become-a-partner.php">| Not a registered partner? SIGN UP</a>
+                  <br>
+                <a class="mob_top_space mobile_view gray_text_mob" href="become-a-partner.php"> Not a registered partner? SIGN UP</a>
               </p>
             </form>
           </div>

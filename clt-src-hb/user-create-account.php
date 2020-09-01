@@ -33,7 +33,7 @@ $util->ShowErrors(1);
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="text-white">CREATE YOUR HAPPYBOX ACCOUNT</h3>         
+                        <h3 class="text-white user_main_title_mob">CREATE YOUR HAPPYBOX ACCOUNT</h3>         
                     </div>
 
                 </div> </div>
@@ -92,7 +92,17 @@ $util->ShowErrors(1);
                         </div>
 
                     </div>
-
+                
+                     <p class="text-center mobile_view mob_gray_txt">
+                         <br>
+                         Already have an account?   <a href="user-login.php" class=" bold_txt"><b> LOGIN</b>
+                </a>
+                     </p>
+                      <p class="text-center gray_text small_p_margin_top desktop_view ">
+                         <br>
+                         Already have an account?   <a href="user-login.php" class=" bold_txt text-black"><b> LOGIN</b>
+                </a>
+                     </p>
 
                 </div>
                 <div class="col-md-5  user_login_r">
@@ -122,7 +132,7 @@ $util->ShowErrors(1);
                                 <label>Confirm password</label>
                                 <input type="password" name="c_password" class="form-control rounded_form_control" placeholder="Required Field">
                             </div>
-                            <p class="text-right">
+                            <p class="text-right text-right-mob-center">
                                 <button onclick="new_account('newaccount')" type="button" class="btn btn_rounded">CREATE YOUR ACCOUNT</button>   
                             </p>
                         </form>

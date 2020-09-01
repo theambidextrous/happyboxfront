@@ -12,7 +12,7 @@
   }
   // echo $profile_pic_;
 ?>
- <nav id="top" class="navbar navbar-expand-lg top-bar-logged-in text-white">
+ <nav id="top" class="navbar navbar-expand-lg top-bar-logged-in text-white desktop_view">
     <div class="container">
         <a class="navbar-brand" href="#"><img src="../shared/img/inverse-logo.png"> <span> | PARTNER PORTAL</span></a>
  
@@ -65,7 +65,52 @@
   </div>
   </div>
 </nav>
-<section class="container section_padding_top top_menu">
+<!-- mobile view -->
+      <nav class="site-nav mobile_view">
+            <h1 class="logo">  <a href="<?=$util->ClientHome()?>/index.php">
+            <img  class="logo_img" src="<?=$util->ClientHome()?>/shared/img/logo.svg">
+        </a>
+                 <a class="mob_cart" >
+            <img src="<?=$util->ClientHome()?>/shared/img/icn-cart.svg"> <span class="count"><?=count($_SESSION['curr_usr_cart'])?></span>
+        </a>
+            
+            </h1>
+          
+
+            <div class="menu-toggle">
+              <div class="hamburger"></div>
+            </div>
+
+    <ul class="open desktop opened_menu">
+        <li>  <a class="userlogin-nav-a" href="<?=$util->PartnerHome()?>/partner-make-booking.php">  a How it Works</a></li>
+
+       <li >
+                <a class="" href="<?=$util->PartnerHome()?>/partner-make-booking.php#mob-val">Take A Booking: Check Validity</a>
+            </li>
+             <li >
+                <a class="" href="<?=$util->PartnerHome()?>/partner-voucher-list.php">My Voucher List</a>
+            </li>
+            <li>
+                <a class="" href="<?=$util->PartnerHome()?>/partner-experience.php">My Experience List</a>
+            </li>
+            <li>
+                <a class="" href="<?=$util->PartnerHome()?>/partner-edit-profile.php">Edit Profile</a>
+            </li>
+             <li>
+                <a class="" href="">Contact Partner Care Team</a>
+            </li>
+            <li>
+                <a class="" href="exit.php">Logout</a>
+            </li>
+            
+             <div class="menu-close">
+   <img src="<?=$util->ClientHome()?>/shared/img/icn-close-window-blue.svg">
+    </div>
+    </ul>
+        </nav>
+      <!-- end mobile view -->
+<section class=" section_padding_top top_menu desktop_view">
+    <div class="container">
             <div class="row">
                 <div class="col-md-12">
                   <ul>
@@ -78,5 +123,5 @@
                     </ul>
                 </div>
 
-            </div>
+            </div></div>
         </section>

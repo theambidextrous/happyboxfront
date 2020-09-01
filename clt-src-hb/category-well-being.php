@@ -39,19 +39,57 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
  <?php include 'shared/partials/nav.php'; ?>
   <!-- Page Content --> 
     <!--start well being banner-->
-    <section class="well_banner">
-        <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-md-5 text-md-right">
-                <div class="well_banner_title"><h3>Need to disconnect and recharge?</h3></div>
-                <p class="well_banner_p text-white text-center">Discover our exclusive selection of dream spas, relaxing beauty treatments and yoga classes, guaranteed to leave you feeling calm, restored and revitalised.</p>
-                <div class="well_scroll text-center">
-                  <img class="" src="shared/img/icn-arrow-yellow.svg">
-                </div>
-            </div>
-        </div>
-      </div>
-    </section>
+  <section class="well_banner desktop_view">
+      <div class="container">
+      <div class="row justify-content-end">
+          <div class="col-md-5 text-md-right">
+           
+             
+              <div class="well_banner_title desktop_view">
+                  <h3>      Need to disconnect and recharge?</h3>
+            
+              </div>
+              <p class="well_banner_p text-white text-center">
+                  Discover our exclusive selection of dream spas, relaxing beauty treatments and yoga classes, guaranteed to leave you feeling calm, restored and revitalised.
+              </p>
+              <div class="well_scroll text-center">
+      <img class="" src="shared/img/icn-arrow-yellow.svg">
+         </div>
+              
+             
+          </div>
+          
+      </div></div>
+      </section>
+    <section class="mobile_view">
+      <div class="container">
+      <div class="row justify-content-center">
+        
+            <div class="">
+                <img class="w-100" src="shared/img/wellbeingbg_mob.png">
+            
+              </div>
+
+             <div class="col-11">
+              <div class="well_banner_title_mob">
+                   <img class="w-" src="shared/img/need_to_disconnect.svg">
+            
+              </div></div>
+             <div class="col-10">
+              <p class="well_banner_p text-black text-center">
+                  Discover our exclusive selection of dream spas, relaxing beauty treatments and yoga classes, guaranteed to leave you feeling calm, restored and revitalised.
+              </p>
+             </div>
+               <div class="col-12">
+              <div class="well_scroll text-center">
+      <img class="" src="shared/img/icn-arrow-yellow.svg">
+         </div>
+              
+             
+          </div>
+          
+      </div></div>
+      </section>
     <!--end well being banner-->
       <!--end discover our selection-->
         <section class="container section_padding_top cat_well">
@@ -78,7 +116,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
             }
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
           ?>
-            <div class="col-md-4">
+            <div class="col-md-4 no_pad_lr">
               <div class="card selection_card sports_card">
                <div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
                  <img src="shared/img/icons/magnifyglass.svg"/>
@@ -92,7 +130,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                   <p><?=$_all_box['description']?></p>
                 </div>
               </div>
-              <div class="cart_bar text-white">
+              <div class="cart_bar text-white desktop_view">
                 <div class="cart_bar_strip">
                   <form name="frm_<?=$_all_box['internal_id']?>">
                     <input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
@@ -100,6 +138,25 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                     <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
                   </form>
                 </div>
+              </div>
+                  <div class="cart_bar_strip_mob mobile_view ">
+                
+                         <div class="cart_bar_strip row">
+                             
+                                   
+                      <div class="col-6">
+                           <form name="frm_<?=$_all_box['internal_id']?>">
+                           <input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
+                          <span class="pricing btn btn-mob-cart btn-block">
+                         KES <?=number_format($_all_box['price'], 2)?>
+                      </span> 
+                      </div>
+                        <div class="col-6">
+                                 <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart">
+                                 </form>  
+                      </div>
+                               
+                         </div>
               </div>
             </div>
             <?php 
@@ -113,7 +170,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
         </section>
 <!--end add to cart cards-->
 <!--our partners -->
-      <section class="wellbeing_partners">
+      <section class="wellbeing_partners desktop_view">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -143,6 +200,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
               <div class="table-responsive">
                 <div class="table_radius">
                   <table class="cat_well_table table table-bordered">
+                 
                     <tr>
                       <td class="td_cat_a">
                         <table>
@@ -178,6 +236,82 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
           ?>
         </div>
       </section>
+<section class="wellbeing_partners mobile_view">
+       <div class="container">
+           <div class="row">
+           <div class="col-md-12">
+               <a class="btn_partners btn-block" >OUR WELL-BEING PARTNERS</a>
+               
+           </div>  </div>
+             <?php 
+            $list_ = [];
+            foreach( $_all_ptns as $_all_ptn ):
+              $_is_Active = json_decode($user->get_is_active($_all_ptn['userid']))->is_active->is_active;
+              if($_is_Active){
+                array_push($list_, 1);
+                $_ptn_picture = json_decode($picture->get_byitem_one('00', $_all_ptn['internal_id']))->data;
+                $_ptn_logo_path = $util->AppUploads().'profiles/'.$_all_ptn['picture'];
+                if($_ptn_picture->path_name){
+                  $_ptn_logo_path = $_ptn_picture->path_name;
+                }
+          ?>
+            <div class="row row_partner">
+           <div class="col-5">
+               <div class="partner_logo">
+                   <div class="partner_logo_in">  
+                   <img src="<?=$_ptn_logo_path?>"/>
+                   </div>
+               </div>
+               
+           </div> 
+             <div class="col-7">
+                 <div class="table-responsive">
+                      <div class="table_radius">
+                     <table class="cat_well_table table table-bordered">
+                         <tr class="">
+                              <td class="td_cat_a">
+                                 <table>
+                                     <tr ><td class="inner_td_gray height_mob "><h6><center><?=$_all_ptn['business_name']?></h6></td></tr>
+                                        <tr><td class="inner_light_blue height_mob"><h6 >  <?=$_all_ptn['location']?></h6></td></tr>
+                                 </table>
+                                 
+                               
+                                 
+                             </td>
+                               
+                         </tr>
+                     
+                 </table>
+                    </div>  
+                     
+                 </div>
+               
+             </div> <div class="col-12">
+                 <div class="card_partner_mobcard">
+                     <h4>Spa & Beauty Treatments</h4>
+                     <p>
+                    <?=$_all_ptn['short_description']?>
+                     </p>
+                     
+                 </div>
+                 
+             </div>
+                
+            </div>
+           <?php 
+              }
+            endforeach;
+            if(array_sum($list_) < 1){
+              print '<h4><center>No partners found</center></h4>';
+            }
+          ?>
+  
+           
+          
+                     
+                      </div>
+    
+</section>
        <?php include 'shared/partials/partners.php';?>
       <?php include 'shared/partials/footer.php';?>
   <!-- Bootstrap core JavaScript -->

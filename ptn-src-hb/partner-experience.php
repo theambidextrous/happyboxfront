@@ -36,7 +36,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
  
 <section class="partner_voucher_list section_60">
            <div class="container">
-             <div class="row justify-content-center forgot-dialogue-wrap">
+             <div class="row justify-content-center forgot-dialogue-wrap desktop_view">
                <div class="col-md-12">
                  <h3 class="partner_blueh text-center">MY EXPERIENCE LIST</h3>
                  <p class="forgot_des text-center">Your list of experiences offered.</p>
@@ -100,6 +100,68 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   </div> 
                 </div>
               </div>
+               <!--mobile-->
+               <div class="row mobile_view">
+                    <section  class="blue_band text-center">
+			<h2 class="">HAPPYBOX PARTNER PORTAL</h2>
+			</section>
+   <section  class="mob_maroon_section text-center">
+			<h4 class="">MY EXPERIENCE LIST</h4>
+			</section>
+               <div class="col-md-12">
+                   <br>
+                 <p class="forgot_des text-center">Your list of experiences offered</p>
+                
+                </div>
+              </div>
+               <div class="voucher_list_mob mobile_view">
+                     <div class="row  ">
+        <div class="col-md-12 ">
+             <table class="table  voucher_list_table_mob expe_table_mob table-borderless">
+                <thead>
+                  <tr class="blue_cell_th_mob text-white">
+                      <th colspan="2" >EXPERIENCE LIST</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a" colspan="2">Hot-Stone Massage , Body-Scrub & Pedicure</td>  
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">Hot-Stone Massage , Body-Scrub & Pedicure</td>  <td>AZERTY001</td>
+                    </tr>
+                    <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
+                    </tr>
+                       <tr class="voucher_list_table_mob_tr">
+                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
+                    </tr>
+                       <tr class="voucher_list_table_mob_tr table_border_top">
+                           <td class="v_td_a" colspan="2">Aromatherapy Massage, Body-Scrub & Manicure</td>  
+                    </tr>
+                       
+                      <tr class="voucher_list_table_mob_tr table_border_top">
+                           <td class="v_td_a" colspan="2">Moroccan Bath , Swedish Massage & Manicure, Pedicure</td>  
+                    </tr>
+                     <tr class="voucher_list_table_mob_tr table_border_top">
+                           <td class="v_td_a" colspan="2">Deep Tissue Massage & Deep Cleansing Facial</td>  
+                    </tr>
+                      
+                </tbody>
+             </table>
+  
+       
+  
+        </div>
+           
+                     </div></div>
               </div>
             </section>
         <?php include '../shared/partials/loggedin-footer.php';?>

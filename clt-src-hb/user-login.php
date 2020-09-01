@@ -68,7 +68,7 @@
       <div class="container">
       <div class="row">
           <div class="col-md-12 text-center">
-              <h3 class="text-white">REGISTER YOUR HAPPYBOX VOUCHER</h3>         
+              <h3 class="text-white user_main_title_mob">REGISTER YOUR HAPPYBOX VOUCHER</h3>         
           </div>
           
       </div> </div>

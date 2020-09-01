@@ -70,7 +70,7 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
         <!-- Page Content --> 
 
     
-        <section class=" user_account_sub_banner">
+        <section class=" user_account_sub_banner desktop_view">
             <div class="container">
                 <div class="row user_logged_in_nav">
                     <div class="col-md-12">
@@ -84,14 +84,15 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 
 
         <!--end discover our selection-->
-        <section class="container section_padding_top ">
+          <!--start desktop-->
+        <section class="container section_padding_top desktop_view">
             <div class="row">
                 <div class="col-md-12 ">
                       <h3 class="user_blue_title" >SHIPPING METHOD</h3>
                          <!--progress strip-->
                       <div class=" cart_progress_strip row">
-                          <div class="col-md-3 cart_strip"></div>
-                          <div class="col-md-3 shipping_strip"></div>
+                          <div class="col-3 cart_strip"></div>
+                          <div class="col-3 shipping_strip"></div>
                           
                       </div>
                       <!--end progress strip-->
@@ -214,6 +215,150 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
                     </div>
                   </div>
                 </section>
+        <!--end desktop-->
+        <!--start mobile-->
+        <section class="container section_padding_top mobile_view" id="yourDiv">
+            <div class="row">
+                <div class="col-md-12 no_padd">
+                    <h3 class="user_blue_title cart_yellow_h_mob ship_mob" >SHIPPING METHOD</h3>
+                </div><div class="col-md-12 ">
+                    <!--progress strip-->
+                    <div class="container">
+                   <div class=" cart_progress_strip row">
+                          <div class="col-3 cart_strip"></div>
+                          <div class="col-3 shipping_strip"></div>
+                          
+                      </div></div>
+                    <!--end progress strip-->
+                   
+                </div>
+            </div>
+        </section>  <section class="container mobile_view ">
+            <div class="row">
+                <div class="col-md-12 ">
+                    
+                     
+                           <!--end progress strip-->
+                      <table class="p-2 cart-table table-borderless shipping_table">
+                          
+                          <tr>
+                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
+                              <td class="cart_des">
+                                  <h6>Box One</h6>
+                                  <span>
+                                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
+                                  </span>
+                                  <br>  <br>
+                                  <b>KES20 000.00</b>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td colspan="2">
+                                      <h6><span class="text-orange"><b>E-Box |</b></span>  Delivered via email</h6>
+                                     <form action="ship_form">
+    <div class="form-group">
+      <label for="usr">Email Address</label>
+      <input type="email" class="form-control rounded_form_control" id="email" placeholder="Required Field">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Recipient Name</label>
+        <input type="text" class="form-control rounded_form_control" id="RecipientName" placeholder="Required Field">
+    </div>
+                                          <div class="form-group shipping_comment">
+        <label for="comment">Personalised message to recipient <span class="form-italic">(max characters 230)</span></label>
+  <textarea class="form-control rounded_form_control" rows="5" id="comment" placeholder="Optional"></textarea>
+</div>
+  
+  
+                                      
+                                  </td>
+                              
+      </tr>
+ 
+
+  </form>  
+
+
+                                        
+                       
+                      </table>
+                           <!-- box 2-->
+                           <table class="p-2 cart-table table-borderless shipping_table">
+                          
+                          <tr>
+                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
+                              <td class="cart_des">
+                                  <h6>Box Two</h6>
+                                  <span>
+                                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
+                                  </span>
+                                  <br>  <br>
+                                  <b>KES20 000.00</b>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td colspan="2">
+                                  <h6><span class="text-orange"><b>Physical Delivery |</b></span> <b> Couriered to your specified address</b></h6>
+                                  <p>Please supply the physical delivery address details below:</p>
+                                     <form action="ship_form">
+
+    <div class="form-group">
+      <label for="pwd">Recipient Name</label>
+        <input type="text" class="form-control rounded_form_control" id="RecipientName" placeholder="Required Field">
+    </div>
+                                          <div class="form-group">
+      <label for="pwd">Address</label>
+        <input type="text" class="form-control rounded_form_control" id="Address" placeholder="Required Field">
+    </div>
+                                          <div class="form-group">
+      <label for="pwd">City</label>
+        <input type="text" class="form-control rounded_form_control" id="City" placeholder="Required Field">
+    </div>
+                                          <div class="form-group">
+      <label for="pwd">Province</label>
+        <input type="text" class="form-control rounded_form_control" id="Province" placeholder="Required Field">
+    </div>
+                                               <div class="form-group">  
+      <label for="pwd">Postal Code</label>
+        <input type="text" class="form-control rounded_form_control" id="PostalCode" placeholder="Required Field">
+    </div>
+                                          <div class="form-group">
+      <label for="pwd">Delivery Contact Name</label>
+        <input type="text" class="form-control rounded_form_control" id="DeliveryContactName" placeholder="Required Field">
+    </div>
+                                          <div class="form-group">
+      <label for="pwd">Delivery Contact Number</label>
+        <input type="text" class="form-control rounded_form_control" id="DeliveryContactNumber" placeholder="Required Field">
+    </div>
+  
+  
+                                      
+                                  </td>
+                              
+      </tr>
+ 
+
+  </form>  
+
+
+                                        
+                       
+                      </table>
+                        
+                           <table>
+                           <tr class="cart_totals_actions shipping_action_strip">
+                          <hr>
+                          <td colspan="4" align="right">
+                            <a href="<?=$util->ClientHome()?>/"><img src="shared/img/btn-continue-shopping.svg"></a>
+                           
+                            <button style="margin-top: 10px;" type="submit" class="invisible_btn" name="load"><img src="shared/img/btn-order-summary-blue.svg"></button> 
+                            <!-- <a href="<=$util->ClientHome()?>/user-dash-order-summary.php"><img src="shared/img/btn-order-summary-blue.svg"></a>  -->
+                          </td>
+                        </tr>
+                        </table>
+                </div></div></section>
+        
+             <!--end mobile-->
                 <!--end add to cart cards-->
                 <!--our partners -->
         <?php include 'shared/partials/partners.php'; ?>

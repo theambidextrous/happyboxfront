@@ -3,14 +3,16 @@
     // $util->Show($_partners_slide_data);
 ?>
 <section class=" client_logos">
-       
-               <div class="row">
+    <div class="container">
+         <div class="row">
       
              <div class="col-md-12">
-                 <img src="shared/img/partners.png" class="partners_img">
+                 <img src="shared/img/partners.svg" class="partners_img">
           </div>   
           
       </div>
+    </div>
+              
       <div class="container">
        <div class="brands row">
                 <div class="col">
