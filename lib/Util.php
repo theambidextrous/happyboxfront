@@ -680,6 +680,49 @@
         </form>';
         return $form;
     }
+    function letterHead($content){
+        return $html = '
+        <html>
+        <head>
+            <style>
+                @page { margin: 0px; }
+                /** Define now the real margins of every page in the PDF **/
+                body {
+                    margin-top: 3cm;
+                    margin-left: 100px;
+                    margin-right: 100px;
+                    margin-bottom: 2cm;
+                }
+                .header {
+                    position: fixed;
+                    top: 0cm;
+                    left: 0cm;
+                    right: 0cm;
+                    height: 3cm;
+                }
+                .footer {
+                    position: fixed; 
+                    bottom: 0cm; 
+                    left: 0cm; 
+                    right: 0cm;
+                    height: 2cm;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <img src="'.$this->tb64($this->AdminHome().'/img/header.png').'" width="100%" height="100%"/>
+            </div>
+            <div class="footer">
+                <img src="'.$this->tb64($this->AdminHome().'/img/footer.png').'" width="100%" height="100%"/>
+            </div>
+            <main>
+                '.$content.'
+            </main>
+        </body>
+    </html>
+        ';
+    }
  }
  
 ?>
