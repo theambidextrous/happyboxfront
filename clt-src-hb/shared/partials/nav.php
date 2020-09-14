@@ -143,7 +143,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
             <h1 class="logo">  <a href="<?=$util->ClientHome()?>/index.php">
             <img  class="logo_img" src="<?=$util->ClientHome()?>/shared/img/logo.svg">
         </a>
-                 <a class="mob_cart" >
+                 <a class="mob_cart"  href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php" >
             <img src="<?=$util->ClientHome()?>/shared/img/icn-cart.svg"> <span class="count"><?=count($_SESSION['curr_usr_cart'])?></span>
         </a>
             

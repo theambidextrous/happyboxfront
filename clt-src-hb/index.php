@@ -75,14 +75,12 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
   </div>
         <img src="shared/img/mob_slider1.jpg" class="w-100">    
            <div class="mob_sli_des text-center"> 
-               
-                  <img src="shared/img/mob_sli_des.svg" class="mob_sli_des_1">
-                  <p>
-                      HAPPYBOX offers you the unique opportunity to find a gift which fits all tastes. 
-                      The recipient has the option of choosing a tailored experience from a multitude of exclusive activities.</p><p> From relaxing spas, energising yoga classes and gastronomic delights to exhilarating sports and adventure experiences, HAPPYBOX has it all!
-                  </p>
-                  <img src="shared/img/mob_sli_discover.svg" class="">
- 
+              <img src="shared/img/mob_sli_des.svg" class="mob_sli_des_1">
+              <p>
+                  HAPPYBOX offers you the unique opportunity to find a gift which fits all tastes. 
+                  The recipient has the option of choosing a tailored experience from a multitude of exclusive activities.</p><p> From relaxing spas, energising yoga classes and gastronomic delights to exhilarating sports and adventure experiences, HAPPYBOX has it all!
+              </p>
+              <img src="shared/img/mob_sli_discover.svg" class="">
   </div>
      
 
@@ -132,6 +130,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                 }
             }
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+            $_pop_str = str_replace("'", "", $_pop_str);
           ?>
             <div class="col-md-6">
              <div class="card selection_card">
@@ -154,19 +153,17 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                       <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
                     </form>
                   </div>
-                    <div class="cart_bar_strip_mob mobile_view row">
-                      <div class="col-6">
-                              <form name="frm_<?=$_all_box['internal_id']?>">
-                             
+                  <div class="cart_bar_strip_mob mobile_view row">
+                    <div class="col-6">
+                      <form name="frm_<?=$_all_box['internal_id']?>">
                       <input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
-                <span class="pricing btn btn-mob-cart btn-block">KES <?=number_format($_all_box['price'], 2)?></span>
-                      </div>
-                        <div class="col-6">
-                             <!--    <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart">!-->
-                                    <img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
-                                  </form> 
-                      </div>                  
- </div>
+                      <span class="pricing btn btn-mob-cart btn-block">KES <?=number_format($_all_box['price'], 2)?></span>
+                    </div>
+                    <div class="col-6">
+                      <img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
+                    </form> 
+                    </div>                  
+                  </div>
               </div>
             </div>
           <?php 
@@ -440,15 +437,15 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
               <div id="modalSlider" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img id="box_img_" class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
+                    <img id="box_img_" class="box_img_ d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
                     <div class="carousel-caption">
-                      <p><a id="bx_booklet_" target="_blank" href="#">View Box Booklet</a></p>
+                      <p><a id="bx_booklet_" class="bx_booklet_" target="_blank" href="#">View Box Booklet</a></p>
                     </div>
                   </div>
                   <div class="carousel-item">
                     <img class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
                     <div class="carousel-caption">
-                      <p><a id="bx_booklet_t" target="_blank" href="#">View Box Booklet</a></p>
+                      <p><a id="bx_booklet_t" class="bx_booklet_t" target="_blank" href="#">View Box Booklet</a></p>
                     </div>
                   </div>
                 </div>
@@ -460,26 +457,31 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
               <a href="" data-dismiss="modal"><img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
               <div class="modal_parent">
                 <div class="modal_child text-center">
-                  <h6 id="box_name_"></h6><br>
+                  <h6 id="box_name_" class="box_name_"></h6><br>
                      <div class="desktop_view">
-                  <a href="" class="bold_txt pink_bg btn text-white" id="box_price_"></a>
-                  <p id="box_desc_"></p>
+                  <a href="" class="bold_txt pink_bg btn text-white box_price_" id="box_price_"></a>
+                  <p id="box_desc_" class="box_desc_"></p>
                
                 <div>
                 <form name="frm_popup">
-                  <input type="hidden" value="" id="internal_id" name="internal_id">
+                  <input type="hidden" value="" id="internal_id" class="internal_id" name="internal_id">
                   <img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
                 </form>
               </div> </div>
-                  <!--mobile --> <div class="mobile_view">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                                                  
+                  <!--mobile -->
+                  <div class="mobile_view">
+                      <p class="box_desc_">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliqurrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrram erat volutpat.
+                      </p>
                       <div class="row">
-                          <div class="col-6"> <a href="" class="bold_txt pink_bg btn text-white">KES 20 000.00</a></div>
-                          <div class="col-6">            <img class="" src="shared/img/icons/btn-add-to-cart-small-red-teal.svg"></div>
+                        <div class="col-6"> 
+                          <a href="" class="bold_txt pink_bg btn text-white box_price_">KES 20 000.00</a>
+                        </div>
+                        <div class="col-6">
+                          <img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
+                        </div>
                       </div>
-                   
-                                                </div>
+                   </div>
                   <!--end mobile-->
             </div>
           </div>
@@ -534,14 +536,14 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
     $(document).ready(function(){
       booklet_show = function(data){
         var d = data.split('~');
-        $('#internal_id').val(d[0]);
-        $('#box_price_').text('KES ' + d[2]);
-        $('#box_name_').text(d[1]);
+        $('.internal_id').val(d[0]);
+        $('.box_price_').text('KES ' + d[2]);
+        $('.box_name_').text(d[1]);
         // $('#slide_title_').text(d[1]);
-        $('#box_desc_').text(d[3]);
+        $('.box_desc_').text(d[3]);
         // $('#box_img_').attr('src', d[4]);
-        $('#bx_booklet_').attr('href', d[5]);
-        $('#bx_booklet_t').attr('href', d[5]);
+        $('.bx_booklet_').attr('href', d[5]);
+        $('.bx_booklet_t').attr('href', d[5]);
         $('#popup_box').trigger('click');
         // console.log(d);
       }
@@ -557,7 +559,10 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                 console.log(res);
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
-                    $("#reset_div").load(window.location.href + " #reset_div" );
+                    // $("#reset_div").load(window.location.href + " #reset_div" );
+                    setTimeout(function(){
+                        location.reload();
+                    }, 2000);
                     $('#vvv').text('This box has been added to your cart');
                     $('#popupid').trigger('click');
                     waitingDialog.hide();

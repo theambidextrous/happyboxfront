@@ -132,6 +132,23 @@ $order = new Order($token);
                             <div class="tab-pane fade" id="creditcard" role="tabpanel" aria-labelledby="creditcard-tab">
                                 <br></br>
                                 <p>Credit Card</p>
+                                <!-- jamboPay -->
+                                <form method="post" action="https://www.jambopay.com/JPExpress.aspx" target="_blank">
+                                    <input type="hidden" name="jp_item_type" value="cart"/>
+                                    <input type="hidden" name="jp_item_name" value="test shop"/>
+                                    <input type="hidden" name="order_id" value="455879"/>
+                                    <input type="hidden" name="jp_business" value="business@yourdomain.com"/>
+                                    <input type="hidden" name="jp_amount_1" value="51"/>
+                                    <input type="hidden" name="jp_amount_2" value="0"/>
+                                    <input type="hidden" name="jp_amount_5" value="0"/>
+                                    <input type="hidden" name="jp_payee" value="email@yourcustomer.com"/>
+                                    <input type="hidden" name="jp_shipping" value="company name"/>
+                                    <input type="hidden" name="jp_rurl" value="https://happybox.ke/staging/clt-src-hb/"/>
+                                    <input type="hidden" name="jp_furl" value="https://happybox.ke/staging/clt-src-hb/"/>
+                                    <input type="hidden" name="jp_curl" value="https://happybox.ke/staging/clt-src-hb/"/>
+                                    <input type="image" src="https://www.jambopay.com/jambohelp/jambo/rsc/checkout.png"/>
+                                </form>
+                                <!-- end jamboPay -->
                             </div>
                         </div> 
                     </div>
