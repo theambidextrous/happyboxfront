@@ -21,7 +21,7 @@ if(!isset(json_decode($_SESSION['usr'])->access_token)){
 if(empty($_SESSION['curr_usr_cart'][1000]['order_id']) && empty($_SESSION['unpaid_order'])){
   header("Location: user-dash-shipping.php");
 }
-if(count($_SESSION['curr_usr_cart'][2000]))){
+if( count( $_SESSION['curr_usr_cart'][2000] ) ){
   header("Location: user-dash-shipping.php");
 }
 $token = json_decode($_SESSION['usr'])->access_token;

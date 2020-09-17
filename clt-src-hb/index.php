@@ -132,14 +132,14 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
             $_pop_str = str_replace("'", "", $_pop_str);
           ?>
-            <div class="col-md-6">
+            <div class="col-md-6" onclick="booklet_show('<?=$_pop_str?>')">
              <div class="card selection_card">
                 <div class="card-header">
                   <img src="<?=$_3d?>" class="autoimg">
                 </div>
                 <div class="card-body selection_card_body text-center">
                   <h4 class="box_title">
-                    <a href="#" onclick="booklet_show('<?=$_pop_str?>')"><?=$_all_box['name']?></a>
+                    <a href="#"><?=$_all_box['name']?></a>
                   </h4>
                   <p><a class="stock_div"><?=$_stock_div?></a></p>
                   <p><?=$_all_box['description']?></p>
