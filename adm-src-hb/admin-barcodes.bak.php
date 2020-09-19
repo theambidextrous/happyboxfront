@@ -16,63 +16,11 @@ $box = new Box();
 use Dompdf\Dompdf;
 // instantiate and use the dompdf class
 if(isset($_POST['downloadit'])){
-    $phpWord = new \PhpOffice\PhpWord\PhpWord();
-    $section = $phpWord->addSection();
-    $header = ['size' => 20, 'bold' => true];
-    $thead = ['size' => 12, 'bold' => false, 'valign' => 'center', 'bgColor' => '0185b6'];
-    $trow = ['bgColor' => '0185b6'];
-    $tableStyle = [
-        'borderColor' => '006699',
-        'borderSize'  => 6,
-        'cellMargin'  => 50
-    ];
-    $imgStyle = [
-        'width' => 193,
-        'height' => 49,
-        'marginTop' => -1,
-        'marginLeft' => -1,
-        'wrappingStyle' => 'behind'
-    ];
-    $section->addText('HappyBox Inventory Barcodes', $header);
-    $table = $section->addTable($tableStyle);
-    /** head */
-    $table->addRow($trow);
-    $table->addCell(7500)->addText("Barcode", $thead);
-    $table->addCell(4500)->addText("Voucher Code", $thead);
-    $table->addCell(4500)->addText("Box Name", $thead);
-    /** end thead */
-    if( count($_SESSION['barcode_rows'][0]) )
-    {
-        // print_r($_SESSION['barcode_rows'][0]);
-        foreach ($_SESSION['barcode_rows'][0] as $thedata) {
-            $imgData = str_replace('data:image/png;base64,', '', $thedata['src']);
-            $table->addRow();
-            $table->addCell(7500)->addImage(base64_decode($imgData), $imgStyle);
-            $table->addCell(4500)->addText($thedata['box_voucher']);
-            $table->addCell(4500)->addText($thedata['boxname']);
-        }
-    }
-    else
-    {
-        $table->addRow();
-        $table->addCell(7500)->addText("no data found");
-        $table->addCell(4500)->addText("no data found");
-        $table->addCell(4500)->addText("no data found");
-    }
-    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord);
-    $the_file =  str_replace(' ', '_', $_SESSION['barcode_rows'][1]. '_'.time().'.docx');
-    $objWriter->save($the_file, 'Word2007', true);
-    header('Content-Description: File Transfer');
-	header('Content-Type: application/octet-stream');
-	header('Content-Disposition: attachment; filename='.$the_file);
-	header('Content-Transfer-Encoding: binary');
-	header('Expires: 0');
-	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-	header('Pragma: public');
-	header('Content-Length: ' . filesize($the_file));
-	flush();
-	readfile($the_file);
-	unlink($the_file);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($util->letterHead($_SESSION['barcode_rows'][0]));
+    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->render();
+    $dompdf->stream(str_replace(' ', '-', $_SESSION['barcode_rows'][1]) . '.pdf');
 }
 // print $util->letterHead($_SESSION['barcode_rows'][0]);
 // exit;
@@ -148,7 +96,6 @@ if(isset($_POST['downloadit'])){
                                     </thead>
                                     <tbody></tbody></table>';
                                 if (isset($_POST['generate'])) {
-                                    $wordContent = [];
                                     $barcode_rows = '
                                         <form method="post">
                                             <button class="btn btn_view_report" type="submit" name="downloadit" value="Download Codes"> Download PDF</button>
@@ -181,15 +128,12 @@ if(isset($_POST['downloadit'])){
                                             foreach ($vouchers as $_voucher) {
                                                 $source = $inventory->barcode_source($_voucher['box_barcode'], $barcode_type);
                                                 $src = json_decode($source, true)['source'];
-                                                $_voucher['src'] = $src;
-                                                $_voucher['boxname'] = $box_name;
                                                 //
                                                 $barcode_rows .= '<tr>';
                                                 $barcode_rows .= '<td style="padding:10px;text-align:center;"><img src="'.$src.'" alt="'.$box_name.' bar code"/></td>';
                                                 $barcode_rows .= '<td style="padding:10px;text-align:center;">'.$_voucher['box_voucher'].'</td>';
                                                 $barcode_rows .= '<td style="padding:10px;text-align:center;">'.$box_name.'</td>';
                                                 $barcode_rows .= '</tr>';
-                                                array_push($wordContent, $_voucher);
                                             }
                                         }else{
                                             $title = 'No vouchers found that meet your search criteria';
@@ -198,7 +142,7 @@ if(isset($_POST['downloadit'])){
                                     }
                                     // $title = null;
                                     $barcode_rows .= '</tbody></table>';
-                                    $_SESSION['barcode_rows'][0] = $wordContent;
+                                    $_SESSION['barcode_rows'][0] = $barcode_rows;
                                     $_SESSION['barcode_rows'][1] = $box_name;
                                 }
                             ?>
