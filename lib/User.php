@@ -97,6 +97,19 @@
     function new_customer($token = ''){
         return $this->create();
     }
+    function contact_us($body){
+        $endpoint = 'users/contact/us';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers());
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function login($news = ''){
         $endpoint = 'users/login';
         $util = new Util();

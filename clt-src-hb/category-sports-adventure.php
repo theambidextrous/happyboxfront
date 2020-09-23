@@ -156,8 +156,9 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                       </span> 
                       </div>
                         <div class="col-6">
-                                 <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart">
-                                 </form>  
+                          <img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
+                          <!-- <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart"> -->
+                        </form>  
                       </div>
                                
                          </div>
@@ -281,18 +282,11 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                                      <tr><td class="inner_td_gray"><h6><?=$_all_ptn['business_name']?></h6></td></tr>
                                         <tr><td class="inner_light_blue"><h6 >  <?=$_all_ptn['location']?></h6></td></tr>
                                  </table>
-                                 
-                               
-                                 
                              </td>
-                               
                          </tr>
-                     
                  </table>
                     </div>  
-                     
                  </div>
-               
              </div> <div class="col-12">
                  <div class="card_partner_mobcard">
                      <h4>Spa & Beauty Treatments</h4>

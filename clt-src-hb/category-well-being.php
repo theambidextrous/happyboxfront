@@ -43,11 +43,9 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
       <div class="container">
       <div class="row justify-content-end">
           <div class="col-md-5 text-md-right">
-           
              
               <div class="well_banner_title desktop_view">
-                  <h3>      Need to disconnect and recharge?</h3>
-            
+                  <h3>Need to disconnect and recharge?</h3>
               </div>
               <p class="well_banner_p text-white text-center">
                   Discover our exclusive selection of dream spas, relaxing beauty treatments and yoga classes, guaranteed to leave you feeling calm, restored and revitalised.
@@ -152,11 +150,11 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                       </span> 
                       </div>
                         <div class="col-6">
-                                 <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart">
-                                 </form>  
+                          <img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">  
+                          <!-- <img src="shared/img/addcartmob.svg" data-toggle="modal" data-target="#addedToCart" class="width_100 add_to_cart"> -->
+                      </form>  
                       </div>
-                               
-                         </div>
+                    </div>
               </div>
             </div>
             <?php 
