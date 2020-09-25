@@ -66,7 +66,7 @@ $util->ShowErrors(1);
    <div class="col-md-6  contact_details">
               <h4 class="contact_title">Contact HAPPYBOX</h4>
               <div class="row">
-                <form method="post" name="contactus">
+                  
                   <div class="col-md-6 contact_p_txt">
                       <p>
                           <span class="contact_p"> <b>Contact Details</b></span><br> <b>Email:</b> hello@happybox.ke
@@ -82,7 +82,7 @@ $util->ShowErrors(1);
                             <span class="contact_p"><b> Postal Address</b></span><br>
                             P.O. Box 123456<br> 001122<br>  Nairobi<br>  Kenya
                       </p>
-                      <h3 class="send_us text-center">SEND US YOUR ENQUIRY</h3>
+                      <h3 class="send_us text-center mobile_view">SEND US YOUR ENQUIRY</h3>
                   </div>
                     <div class="col-md-6 contact_p_txt desktop_view">
                       <p>

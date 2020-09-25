@@ -44,8 +44,9 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 <section class=" text-center desktop_view">
             <div class="container">
 		
-               
+               <div class="become_boxes_wrap">
                     <div class="row justify-content-center become_boxes">
+                        
                     <div class="col-md-6">
                         <div class="become_card become_card1">
                            <div class="become_card_txt">Free advertising year round on our website and in our boxes</div>
@@ -79,7 +80,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                              <button class="btn btn-block btn-zero">0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></button>	
                         </div>
 
-                </div>
+                </div>  </div>
+                
               </div>
         </section>
   <!--mobile-->

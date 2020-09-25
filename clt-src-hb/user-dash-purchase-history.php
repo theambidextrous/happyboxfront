@@ -42,7 +42,7 @@ if(isset($_POST['makecart'])){
             .user-vhistory{
                 color: #c20a2b!important;
                 text-decoration: none!important;
-                border-bottom: solid 2px #c20a2b!important;
+               border-bottom: solid 2px #04C1C9 !important;
             }
         </style>
     </head>

@@ -130,7 +130,7 @@ $util->ShowErrors(1);
                                 <span>SHIPPING TOTAL KES</span> <?=number_format($_total_shipping,2)?>
                             </td>
                         </tr>
-                        <tr align="right" class="cart_totals tr_border_top">
+                        <tr align="right" class="cart_totals tr_border_top cart_totals_large">
                             <td colspan="6">
                                 <span> ORDER TOTAL (Incl. VAT)</span>  KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?>
                             </td>
