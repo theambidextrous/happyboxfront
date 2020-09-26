@@ -39,7 +39,6 @@ if(isset($_POST['downloadit'])){
     $table->addRow($trow);
     $table->addCell(7500)->addText("Barcode", $thead);
     $table->addCell(4500)->addText("Voucher Code", $thead);
-    $table->addCell(4500)->addText("Box Name", $thead);
     /** end thead */
     if( count($_SESSION['barcode_rows'][0]) )
     {
@@ -49,14 +48,12 @@ if(isset($_POST['downloadit'])){
             $table->addRow();
             $table->addCell(7500)->addImage(base64_decode($imgData), $imgStyle);
             $table->addCell(4500)->addText($thedata['box_voucher']);
-            $table->addCell(4500)->addText($thedata['boxname']);
         }
     }
     else
     {
         $table->addRow();
         $table->addCell(7500)->addText("no data found");
-        $table->addCell(4500)->addText("no data found");
         $table->addCell(4500)->addText("no data found");
     }
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord);
