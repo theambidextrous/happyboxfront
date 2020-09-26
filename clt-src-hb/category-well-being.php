@@ -99,7 +99,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
             $_stock = json_decode($inventory->get_purchasable('', $_all_box['internal_id']))->stock;
             $_stock_div = 'E-box only';
             if($_stock > 0){
-              $_stock_div = 'In stock('.$_stock.')';
+              //$_stock_div = 'In stock('.$_stock.')';
+                            $_stock_div = 'In stock';
             }
             $_media = $picture->get_byitem('00', $_all_box['internal_id']);
             $_media = json_decode($_media, true)['data'];

@@ -15,6 +15,10 @@ elseif ($CURR_PAGE=='category-sports-adventure.php') {
     $ACTIVE_NAV3='catspor_active_nav';
 
 }
+elseif ($CURR_PAGE=='contact-us.php') {
+    $ACTIVE_NAV4='contact_active_nav';
+
+}
 else{
     
 }
@@ -66,8 +70,18 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
           <div class="form_search_nav_wrap"> <span><i class="fas fa-search"></i></span> <input type="text" name="" class="form-control form_search_nav"></div>
         <ul class="navbar-nav ml-auto top-bar-nav">
          <li class="nav-item">
-              <?=$login_?>
+              <?php //$login_?>
           </li>
+           <li class="nav-item dropdown client_drop">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+      <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> <?=$name_?>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">EDIT PROFILE</a>
+        <a class="dropdown-item" href="#">LOGOUT</a>
+        
+      </div>
+    </li>
             <!-- Dropdown -->
    <!-- <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -108,13 +122,13 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
                 <!-- Links -->
                 <ul class="navbar-nav ">
                   <li class="nav-item">
-                    <a class="nav-link <?=$ACTIVE_NAV1;?>" href="<?=$util->ClientHome()?>/category-well-being.php">Well-Being</a>
+                    <a class="nav-link well_nav <?=$ACTIVE_NAV1;?>" href="<?=$util->ClientHome()?>/category-well-being.php">Well-Being</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link <?=$ACTIVE_NAV2;?>" href="<?=$util->ClientHome()?>/category-gastronomy.php">Gastronomy</a>
+                    <a class="nav-link gast_nav <?=$ACTIVE_NAV2;?>" href="<?=$util->ClientHome()?>/category-gastronomy.php">Gastronomy</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link <?=$ACTIVE_NAV3;?>" href="<?=$util->ClientHome()?>/category-sports-adventure.php">Sports & Adventure</a>
+                    <a class="nav-link spor_nav <?=$ACTIVE_NAV3;?>" href="<?=$util->ClientHome()?>/category-sports-adventure.php">Sports & Adventure</a>
                   </li>
                 </ul>
               </nav>
@@ -125,7 +139,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
               <!-- Links -->
               <ul class="navbar-nav  ml-auto right_menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a>
+                  <a class="nav-link contact_nav <?=$ACTIVE_NAV4;?>" href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?=$util->ClientHome()?>/user-dash-activate-voucher.php">
@@ -143,7 +157,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
             <h1 class="logo">  <a href="<?=$util->ClientHome()?>/index.php">
             <img  class="logo_img" src="<?=$util->ClientHome()?>/shared/img/logo.svg">
         </a>
-                 <a class="mob_cart"  href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php" >
+                 <a class="mob_cart" >
             <img src="<?=$util->ClientHome()?>/shared/img/icn-cart.svg"> <span class="count"><?=count($_SESSION['curr_usr_cart'])?></span>
         </a>
             

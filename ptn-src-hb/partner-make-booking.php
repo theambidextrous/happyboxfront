@@ -23,11 +23,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
  <?php include '../shared/partials/css.php'; ?>
  <style>
    .t-booking{
-      color: #c20a2b!important;
+      
       text-decoration: none!important;
       border-bottom: solid 2px #c20a2b!important;
    }
  </style>
+
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <!-- Navigation -->
@@ -278,4 +280,6 @@ $token = json_decode($_SESSION['usr'])->access_token;
       }
   });  
 </script>
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 </html>

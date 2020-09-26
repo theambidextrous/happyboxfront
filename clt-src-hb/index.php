@@ -115,8 +115,9 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
           foreach( $_all_boxes as $_all_box ):
             $_stock = json_decode($inventory->get_purchasable('', $_all_box['internal_id']))->stock;
             $_stock_div = 'E-box only';
-            if($_stock > 0){
-              $_stock_div = 'In stock('.$_stock.')';
+           if($_stock > 0){
+             // $_stock_div = 'In stock('.$_stock.')';
+              $_stock_div = 'In stock';
             }
             $_media = $picture->get_byitem('00', $_all_box['internal_id']);
             $_media = json_decode($_media, true)['data'];
@@ -133,7 +134,10 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
             $_pop_str = str_replace("'", "", $_pop_str);
           ?>
             <div class="col-md-6" onclick="booklet_show('<?=$_pop_str?>')">
-             <div class="card selection_card">
+             <div class="card selection_card sports_card">
+                 <div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
+                 <img src="shared/img/icons/magnifyglass.svg"/>
+                </div>
                 <div class="card-header">
                   <img src="<?=$_3d?>" class="autoimg">
                 </div>
@@ -192,13 +196,17 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
       
              <div class="col-md-3 iwant_card">
                 <div class="step_box step_color1">1</div>
-                 <p class="iwant_card_p"> Select a HappyBox according to your budget</p>
+                 <div class="iwant_card_div">
+                 <p class="iwant_card_p"> Select a <br class="desktop_view">HappyBox according<br class="desktop_view"> to your budget</p>
+                 </div>
                  <p class="iwant_card_bar iwant_card_bar step_color1"> </p>
             
              
           </div>  <div class="col-md-3 iwant_card no_radius">
                    <div class="step_box step_color2">2</div>
-                 <p class="iwant_card_p"> Log in or create an account</p>
+                    <div class="iwant_card_div">
+                 <p class="iwant_card_p"> Log in or <br class="desktop_view">create an account</p>
+                </div>
                  <p class="iwant_card_bar iwant_card_bar step_color2"> </p>
             
              
@@ -206,17 +214,22 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
            
           <div class="col-md-3 iwant_card no_radius">
                    <div class="step_box step_color3">3</div>
-              <p class="iwant_card_p"> Choose your delivery date and mode <br>
+                    <div class="iwant_card_div">
+              <p class="iwant_card_p"> Choose your delivery date<br class="desktop_view"> and mode <br>
                   <span class="thin_font">(doorstep or e-box)</span>
               
               </p>
+              </div>
                  <p class="iwant_card_bar iwant_card_bar step_color3"> </p>
             
              
           </div>
           <div class="col-md-3 iwant_card iwant_card_last">
                    <div class="step_box step_color4">4</div>
-                 <p class="iwant_card_p"> Make payment using A credit card or Mpesa</p>
+                   <div class="iwant_card_div">
+                    <p class="iwant_card_p"> Make payment using<br class="desktop_view"> A credit card or Mpesa</p>
+                   </div>
+                
                  <p class="iwant_card_bar iwant_card_bar step_color4"> </p>
             
              
@@ -261,9 +274,11 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                      <div class="card-body why_happy_card_body text-center">
                          
                          <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-kenyan-flag.svg"/>
+                            <div class="why_happy_card_body_div">
                          <p>
                              Proudly 100% Kenyan
                          </p>
+                            </div>
                          
                      </div>
                      
@@ -280,9 +295,11 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                      <div class="card-body why_happy_card_body text-center">
                          
                          <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-large-choice.svg"/>
+                            <div class="why_happy_card_body_div">
                          <p>
                           A large choice of activities in each box
                          </p>
+                            </div>
                          
                      </div>
                      
@@ -299,9 +316,11 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                      <div class="card-body why_happy_card_body text-center">
                          
                          <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-warranty.svg">
+                            <div class="why_happy_card_body_div">
                          <p>
                              Loss & theft warranty
                          </p>
+                            </div>
                          
                      </div>
                      
@@ -316,9 +335,11 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                      <div class="card-body why_happy_card_body text-center">
                          
                          <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-evaluate.svg"/>
+                            <div class="why_happy_card_body_div">
                          <p>
                         Experiences are regularly evaluated and updated on our website
                          </p>
+                            </div>
                          
                      </div>
                      

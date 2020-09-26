@@ -26,9 +26,9 @@
      <div class="col-md-12 paymentmethods">
          <span>Payment Methods</span>
 		<ul>
-            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.jpg"></a></li>
-            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.jpg"></a></li>
-            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/icons/square.jpg"></a></li>		
+           <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/mastercard_logo_15_a.png"></a></li>
+            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/visa_logo_150_a.png"></a></li>
+            <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/mpesa_logo_150_a.png"></a></li>		
 		</ul>
      </div>
         </div>		

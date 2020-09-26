@@ -1,4 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light static-top client-partner-nav desktop_view">
+<?php
+$ACTIVE_NAV='';
+$CURR_PAGE=basename($_SERVER["SCRIPT_FILENAME"], '.php');
+ $CURR_PAGE=$CURR_PAGE.'.php';
+if($CURR_PAGE=='category-well-being.php'){
+    $ACTIVE_NAV1='catwell_active_nav';
+}
+elseif ($CURR_PAGE=='category-gastronomy.php') {
+    
+    $ACTIVE_NAV2='catgas_active_nav';
+
+}
+elseif ($CURR_PAGE=='category-sports-adventure.php') {
+    $ACTIVE_NAV3='catspor_active_nav';
+
+}
+elseif ($CURR_PAGE=='contact-us.php') {
+    $ACTIVE_NAV4='contact_active_nav';
+
+}
+else{
+    
+}
+
+?><nav class="navbar navbar-expand-lg navbar-light static-top client-partner-nav desktop_view">
     <div class="container top-bar">
       <a class="navbar-brand" href="<?=$util->ClientHome()?>/">
         <img src="<?=$util->ClientHome()?>/shared/img/logo.svg">
@@ -30,15 +54,15 @@
           <div class="col-6 main-menu-left">
              <nav class="navbar navbar-expand-sm">
                 <!-- Links -->
-                <ul class="navbar-nav ">
+             <ul class="navbar-nav ">
                   <li class="nav-item">
-                    <a class="nav-link" href="<?=$util->ClientHome()?>/category-well-being.php">Well-Being</a>
+                    <a class="nav-link well_nav <?=$ACTIVE_NAV1;?>" href="<?=$util->ClientHome()?>/category-well-being.php">Well-Being</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<?=$util->ClientHome()?>/category-gastronomy.php">Gastronomy</a>
+                    <a class="nav-link gast_nav <?=$ACTIVE_NAV2;?>" href="<?=$util->ClientHome()?>/category-gastronomy.php">Gastronomy</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<?=$util->ClientHome()?>/category-sports-adventure.php">Sports & Adventure</a>
+                    <a class="nav-link spor_nav <?=$ACTIVE_NAV3;?>" href="<?=$util->ClientHome()?>/category-sports-adventure.php">Sports & Adventure</a>
                   </li>
                 </ul>
               </nav>

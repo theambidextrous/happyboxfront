@@ -98,7 +98,7 @@ $util->ShowErrors(1);
                          Already have an account?   <a href="user-login.php" class=" bold_txt"><b> LOGIN</b>
                 </a>
                      </p>
-                      <p class="text-center gray_text small_p_margin_top desktop_view ">
+                      <p class="text-center gray_text small_p_margin_top desktop_view user_create_p">
                          <br>
                          Already have an account?   <a href="user-login.php" class=" bold_txt text-black"><b> LOGIN</b>
                 </a>
