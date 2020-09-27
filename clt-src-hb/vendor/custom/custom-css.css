@@ -164,6 +164,17 @@ padding-top: 40px;
     border-radius: 8px;
     border: 1px solid #cccccc;
 }
+.voucher_list_table_th{
+    background: #00ACB333;
+}
+.voucher_list_table th {
+    vertical-align: middle !important;
+}
+.table_radius_voucher_ls {
+   
+    border-radius: 0px;
+    border-top-left-radius: 12px !important;
+}
 
 table {
     border-spacing: 0;
@@ -1458,13 +1469,25 @@ background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42)), url(../../
 .user_activate_card{
     border: solid 1px #10ACB3;
     border-radius: 8px;
-    padding: 17px 20px;
+    padding: 7px 8px;
+
 }
 .inline_div {
     background: #00ACB3 0% 0% no-repeat padding-box;
     color: white;
     padding: 7px 13px;
 
+}
+.user_activate_l{
+    margin-top: 12px;
+}
+.user_activate_l .form-control {
+    padding: 11px 10px !important;
+    height: 31px !important;
+}
+.btn_rounded {
+    padding: 5px 19px !important;
+    
 }
 .inline_div_first {
         border-top-left-radius: 6px;
@@ -1473,7 +1496,9 @@ background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42)), url(../../
     border-bottom-left-radius:6px;
 }
 .card_v_steps{
-    padding: 8px 0px;
+padding: 8px 0px;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 /*end user voucher activate */
 /* purchase history */
@@ -1580,7 +1605,7 @@ border: solid 1px #10ACB3;
 
 }
 .cart-table{
-    font-size: 15px !important;
+     font-size: 14px !important;
 }
 .btn-number .fa-plus{
     color: #FA683D !important;
@@ -1655,6 +1680,7 @@ border: solid 1px #10ACB3;
 .cart_value{
   border: solid 1px #10ACB3;
     border-radius: 11px !important;
+        text-align: center;
 }
 .cart_totals{
     font-weight: bold;
@@ -1679,18 +1705,18 @@ border: solid 1px #10ACB3;
     color: #00ACB3;
     margin-bottom: 25px;
 }
-
+.cart_page
 
 /*end shopping cart */
 /*shipping */
 .shipping_table{
-    font-size: 12px;
+    font-size: 14px !important;
 }
 .shipping_table .pdt_img {
     width: 11%;
 }
 .shipping_table h6{
-    font-size: 12px; 
+    font-size: 14px;
 }
 .shipping_table .rounded_form_control{
     text-align: left !important;
@@ -2380,6 +2406,9 @@ padding-left: 0px;
 }
 @media (min-width: 768px)
 {
+    .book_row {
+    margin-top: -8px;
+}
     .mob_maroon_section{
         display: none;
     } 
@@ -2433,6 +2462,51 @@ a.tooltips span:after {
   border-left: 8px solid transparent;
 }
 a:hover.tooltips span {
+  visibility: visible;
+  opacity: 1;
+   top: 41px;
+  left: 50%;
+   margin-left: -65px;
+  z-index: 999;
+  display: block;
+}
+
+/* tooltip 2 */
+a.tooltips2 {
+  position: relative;
+  display: inline;
+ 
+}
+a.tooltips2 span {
+opacity: 1;
+    top: 41px;
+    left: 50%;
+    margin-left: -65px;
+    position: absolute;
+    width: 140px;
+    color: #FFFFFF;
+    background: #00ACB3;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    visibility: visible;
+    border-radius: 6px;
+    box-shadow: 0px 0px 0px #800;
+    display: none;
+}
+a.tooltips2 span:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -8px;
+  width: 0; height: 0;
+
+  border-bottom: 8px solid #00ACB3;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+a:hover.tooltips2 span {
   visibility: visible;
   opacity: 1;
    top: 41px;
@@ -3544,10 +3618,11 @@ nav a:focus {
 display:none !important;
 }
 .client_drop .dropdown-menu {
-       background: #00ACB3 !important;
+  background: #00ACB3 !important;
     color: white !important;
     min-width: 73px !important;
     width: 99px !important;
+    border-radius: 11px;
 }
 .client_drop .dropdown-item {
        color: white !important;
@@ -3561,6 +3636,22 @@ display:none !important;
      padding: .15rem .5rem !important;
     
 }
+.client_drop_1{
+    border-bottom: solid 1px;
+}
 .client_drop .dropdown-toggle::after {
     display: none !important;
+}
+
+.file_input {
+height: 41px !important;
+    padding: .175rem .75rem !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #10ACB3;
+    border-radius: 8px;
+    color: #9E9E9E;
+    
+}
+.user_btn{
+   background:  #00ACB3 !important;
 }

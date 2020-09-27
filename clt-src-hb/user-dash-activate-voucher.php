@@ -116,7 +116,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                       <div class="user_activate_steps_i user_activate_steps_i_mid">
                                           <div class="row">
                                               <div class="col-1">  <span class="inline_div ">3</span></div>
-                                                <div class="col-11"><b>BOOK</b> your experience with the partner and share your voucher code with them</div>
+                                                <div class="col-11 book_row"><b>BOOK</b> your experience with the partner and share your voucher code with them</div>
                                           </div>
                                           
                                      </div>

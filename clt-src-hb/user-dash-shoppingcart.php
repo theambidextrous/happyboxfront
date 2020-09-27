@@ -26,7 +26,7 @@ $util->ShowErrors(1);
         <?php include 'shared/partials/css.php'; ?>
     </head>
 
-    <body>
+    <body class="cart_page">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         
@@ -77,7 +77,7 @@ $util->ShowErrors(1);
                             <td class="pdt_img"> <img src="<?=$_3d?>" /></td>
                             <td class="cart_des">
                                 <h6><?=$_box_data->name?></h6>
-                                <span><?=$_box_data->description?></span><br>
+                                <span><?=$_box_data->description?></span><br><br>
                                 <b>KES <?=number_format($_box_data->price, 2)?></b><br>
                                 <span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span>
                             </td>

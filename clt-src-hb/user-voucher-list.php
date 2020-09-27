@@ -92,21 +92,31 @@ $my_list_ = json_decode($my_list_, true)['data'];
                       </p>
                       <!--start desktop-->
                       <div class="table-responsive ">
-                      <div class="table_radius">
+                      <div class="table_radius table_radius_voucher_ls">
                         <table class="table  voucher_list_table table-bordered">
                           <thead>
                             <tr>
-                              <th class="blue_cell_th th_box">BOX NAME</th>
-                              <th>BOX NUMBER</th>
-                              <th>VOUCHER CODE</th>
-                              <th>STATUS</th>
-                              <th>DATE REDEEMED</th>
-                              <th>BOX VALIDITY DATE</th>
-                              <th>CANCELLATION DATE</th>
-                              <th>BOOKING DATE</th>
-                              <th>PARTNER</th>
-                              <th class="txt-blue">PARTNER RATING</th>
-                              <th colspan="2" class="th_actions">ADMIN REQUESTS</th>
+                                <th class="blue_cell_th th_box">BOX<br> NAME</th>
+                              <th class="voucher_list_table_th">BOX<br> NUMBER</th>
+                              <th class="voucher_list_table_th">VOUCHER<br> CODE</th>
+                              <th class="voucher_list_table_th">STATUS</th>
+                              <th class="voucher_list_table_th">DATE <br>REDEEMED</th>
+                              <th class="voucher_list_table_th">BOX VALIDITY<br> DATE</th>
+                              <th class="voucher_list_table_th">CANCELLATION<br> DATE</th>
+                              <th class="voucher_list_table_th">BOOKING<br> DATE</th>
+                              <th class="voucher_list_table_th">PARTNER</th>
+                              <th class="txt-blue"><!--<a href="" class="tooltips">
+        <span>PARTNER RATING</span>
+        
+        </a>-->
+                           <!-- <a href="#" class="text-black tooltips2">
+         PARTNER RATING <span>Please rate this partner based on your experience</span>
+        
+        </a>-->
+                           PARTNER RATING 
+                              
+                              </th>
+                              <th colspan="2" class="th_actions voucher_list_table_th">ADMIN REQUESTS</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -152,7 +162,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                   }
                             ?>
                             <tr>
-                              <td class="light_blue_cell"><?=strtoupper($_box_data->name)?></td>
+                              <td class="light_blue_cell bold_txt"><?=strtoupper($_box_data->name)?></td>
                               <td><?=strtoupper($my_l['id'])?></td>
                               <td><?=$my_l['box_voucher']?></td>
                               <?=$util->voucher_div($my_l['box_voucher_status'])?>

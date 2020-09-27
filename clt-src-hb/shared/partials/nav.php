@@ -72,16 +72,24 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
          <li class="nav-item">
               <?php //$login_?>
           </li>
+          
+          <?php if(!empty($name_)){ ?>
            <li class="nav-item dropdown client_drop">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
       <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> <?=$name_?>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">EDIT PROFILE</a>
-        <a class="dropdown-item" href="#">LOGOUT</a>
+        <a class="dropdown-item client_drop_1" href="<?=$util->ClientHome()?>/user-dash-profile.php">EDIT PROFILE</a>
+        <a class="dropdown-item" href="exit.php">LOGOUT</a>
         
       </div>
     </li>
+          <?php } else{ ?>
+     <li class="nav-item">
+       <a class="nav-link" href="<?=$util->ClientHome()?>/user-login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> User Login</a>
+          </li>
+    
+          <?php } ?>
             <!-- Dropdown -->
    <!-- <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

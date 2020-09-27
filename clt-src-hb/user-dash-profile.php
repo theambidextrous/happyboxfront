@@ -37,7 +37,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
             .user-profile{
                 color: #c20a2b!important;
                 text-decoration: none!important;
-                border-bottom: solid 2px #c20a2b!important;
+                  border-bottom: solid 2px #04C1C9 !important;
             }
         </style>
     </head>
@@ -80,7 +80,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
                          </div>
                     </div>
             <div class="row justify-content-center user_profile_edit">
-                <div class="col-md-5  ">
+                <div class="col-md-4  ">
                     <div class=" ">
                         <h5 class="blue_text">PROFILE DETAILS</h5>
                             <form class="form_register_user" id="edit_account_frm" name="edit_account_frm">
@@ -105,13 +105,13 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
                                 </div>
                                 <div class="form-group">
                                   <label>Profile Photo</label>
-                                  <input type="file" name="img" class="form-control rounded_form_control">
+                                  <input type="file" name="img" class="form-control file_input">
                                 </div>
-                                <p class="text-right"><button type="button" onclick="edit_account('edit_account_frm')" class="btn btn_rounded">UPDATE MY DETAILS</button></p>
+                                <p class="text-right"><button type="button" onclick="edit_account('edit_account_frm')" class="btn btn_rounded user_btn">UPDATE MY DETAILS</button></p>
                             </form>
                     </div>
                 </div>
-                <div class="col-md-5 user_profile_right">
+                <div class="col-md-4 user_profile_right">
                     <div class=" ">
                          <h5 class="text-orange">PHYSICAL DELIVERY DETAILS</h5>
 

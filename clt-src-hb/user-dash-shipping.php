@@ -156,7 +156,7 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
                           <td class="pdt_img"> <img src="<?=$_3d?>" /></td>
                           <td class="cart_des">
                             <h6><?=$_box_data->name?></h6>
-                            <span><?=$_box_data->description?></span><br>
+                            <span><?=$_box_data->description?></span><br><br>
                             <b>KES <?=number_format($_box_data->price, 2)?></b>
                           </td>
                           <td>
