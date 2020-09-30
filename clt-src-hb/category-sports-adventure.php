@@ -35,7 +35,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
  <?php include 'shared/partials/css.php'; ?>
 </head>
 
-<body>
+<body class="client_body">
   <!-- Navigation -->
  <?php include 'shared/partials/nav.php'; ?>
   <!-- Page Content --> 

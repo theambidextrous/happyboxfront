@@ -26,7 +26,7 @@ $util->ShowErrors(1);
         <?php include 'shared/partials/css.php'; ?>
     </head>
 
-    <body class="cart_page">
+    <body class="cart_page client_body">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         

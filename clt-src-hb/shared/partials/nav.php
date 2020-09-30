@@ -86,7 +86,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
     </li>
           <?php } else{ ?>
      <li class="nav-item">
-       <a class="nav-link" href="<?=$util->ClientHome()?>/user-login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> User Login</a>
+       <a class="nav-link cli_user_login" href="<?=$util->ClientHome()?>/user-login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> <span class="cli_user_login">User Login</span></a>
           </li>
     
           <?php } ?>

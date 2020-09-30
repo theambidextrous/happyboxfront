@@ -56,7 +56,7 @@
        <!--  <a href="" class="nav-link">
            <img src="../shared/img/icons/call_nav.svg" class="call_btn" data-toggle="tooltip" title="Hooray!"> 
         </a>-->
-         <a href="" class="nav-link tooltips">
+         <a href="#" class="nav-link tooltips">
          <img src="../shared/img/icons/call_nav.svg" class="call_btn"> <span>Contact Partner Care Team</span>
         
         </a>

@@ -36,8 +36,8 @@ $topics = json_decode($topics, true)['data'];
 <section class="partner_edit_pro section_60" id="reset_div">
          <div class="container ">
                 <div class="row justify-content-center">
-                    <div class="col-md-10 desktop_view">
-                      <h3 class="partner_blueh text-center">EDIT YOUR PARTNER PROFILE?</h3>
+                    <div class="col-md-10 desktop_view edit_pro_h">
+                      <h3 class="partner_blueh text-center">EDIT YOUR PARTNER PROFILE</h3>
                     </div>
                       <div  class="col-12 mob_maroon_section text-center">
 			<h4 class="">EDIT PROFILE</h4>

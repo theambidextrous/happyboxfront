@@ -44,7 +44,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
         </style>
     </head>
 
-    <body>
+   <body class="client_body">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         <!--user dash nav-->

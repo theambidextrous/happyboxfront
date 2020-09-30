@@ -51,7 +51,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                 <div class="table-responsive">
                   <div class="table_radius">
                     <table class="table  experience_list_table table-bordered">
-                      <thead>
+                        <thead class="expe_li_th">
                         <tr>
                             <th class="blue_cell_th th_box">EXPERIENCE LIST</th>
                             <?php

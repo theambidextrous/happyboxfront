@@ -24,7 +24,7 @@ $util->ShowErrors(1);
  <?php include 'shared/partials/css.php'; ?>
 </head>
 
-<body>
+<body class="client_body">
   <!-- Navigation -->
  <?php include 'shared/partials/nav.php'; ?>
   <!-- Page Content --> 

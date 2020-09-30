@@ -42,7 +42,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
         </style>
     </head>
 
-    <body>
+ <body class="client_body">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         <!-- Page Content --> 

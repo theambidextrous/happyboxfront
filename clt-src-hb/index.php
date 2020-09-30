@@ -31,7 +31,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 
 </head>
 
-<body>
+<body class="client_body">
 
   <!-- Navigation -->
  <?php include 'shared/partials/nav.php'; ?>

@@ -20,7 +20,7 @@ $util = new Util();
  <?php include 'shared/partials/css.php'; ?>
 </head>
 
-<body>
+<body class="client_body">
   <!-- Navigation -->
  <?php include 'shared/partials/nav.php'; ?>
   <!-- Page Content --> 
