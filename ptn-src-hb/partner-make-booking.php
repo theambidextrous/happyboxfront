@@ -29,7 +29,9 @@ $token = json_decode($_SESSION['usr'])->access_token;
    }
  </style>
 
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
 </head>
 <body>
   <!-- Navigation -->
@@ -52,7 +54,10 @@ $token = json_decode($_SESSION['usr'])->access_token;
               </div>
           </div>
       </div>
-        <div class="col-md-7 text-center how_it_work_border">
+        <div class="col-md-7 text-center ">
+            <div class="how_it_work_border">
+                
+           
             <?php
               $_redeem_v_table = null;
               $obj = null;
@@ -115,6 +120,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                     </div>
                   </div>
                 </div>
+             </div>
               </div>
                 <!-- <form method="post" id="redeem_v" name="redeem_v"> -->
                 <form id="redeem_v" action="" name="redeem_v" method="post">
@@ -221,7 +227,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
           </div>
         </section>
     <!--end mobile-->
-<?php include '../shared/partials/loggedin-footer.php';?>
+<?php  include '../shared/partials/loggedin-footer.php';?>
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
 <!-- pop up -->
@@ -280,6 +286,12 @@ $token = json_decode($_SESSION['usr'])->access_token;
       }
   });  
 </script>
+  
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#booking_date" ).datepicker();
+  } );
+  </script>
 
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 </html>

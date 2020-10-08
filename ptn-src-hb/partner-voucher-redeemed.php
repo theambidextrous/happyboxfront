@@ -78,7 +78,7 @@ $util = new Util();
               </div>
         </section>
 
-<?php include '../shared/partials/loggedin-footer.php';?>
+<?php  include '../shared/partials/loggedin-footer.php';?>
   <!-- Page Content -->
 
   <!-- Bootstrap core JavaScript -->

@@ -117,7 +117,7 @@ $topics = json_decode($topics, true)['data'];
                 </div>
               </div>
         </section>
-<?php include '../shared/partials/loggedin-footer.php';?>
+<?php  include '../shared/partials/loggedin-footer.php';?>
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
 <?php include '../shared/partials/js.php';?>

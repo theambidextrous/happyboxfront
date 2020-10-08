@@ -67,7 +67,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
             <span class="navbar-toggler-icon"></span>
         </button>
          <div class="collapse navbar-collapse" id="navbarResponsive">
-          <div class="form_search_nav_wrap"> <span><i class="fas fa-search"></i></span> <input type="text" name="" class="form-control form_search_nav"></div>
+          <div class="form_search_nav_wrap"> <span><!--<i class="fas fa-search"></i>--> <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span> <input type="text" name="" class="form-control form_search_nav"></div>
         <ul class="navbar-nav ml-auto top-bar-nav">
          <li class="nav-item">
               <?php //$login_?>

@@ -14,7 +14,7 @@
 ?>
  <nav id="top" class="navbar navbar-expand-lg top-bar-logged-in text-white desktop_view">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="../shared/img/inverse-logo.png"> <span> | PARTNER PORTAL</span></a>
+        <a class="navbar-brand" href="#"><img src="../shared/img/happybox-logo-white.svg"> <span> | PARTNER PORTAL</span></a>
  
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fas fa-tasks"></i></span>
@@ -56,8 +56,9 @@
        <!--  <a href="" class="nav-link">
            <img src="../shared/img/icons/call_nav.svg" class="call_btn" data-toggle="tooltip" title="Hooray!"> 
         </a>-->
-         <a href="#" class="nav-link tooltips">
-         <img src="../shared/img/icons/call_nav.svg" class="call_btn"> <span>Contact Partner Care Team</span>
+         <a href="tel:25477676767" class="nav-link tooltips">
+             <img src="../shared/img/icons/call_nav.svg" class="call_btn"> <span>Contact Partner Care Team<br>
+             Tel:254776767676</span>
         
         </a>
     </li>
