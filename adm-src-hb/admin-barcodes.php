@@ -140,7 +140,6 @@ if(isset($_POST['downloadit'])){
                                         <tr>
                                             <th>Barcode</th>
                                             <th>Voucher</th>
-                                            <th>Box Name</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody></table>';
@@ -148,14 +147,13 @@ if(isset($_POST['downloadit'])){
                                     $wordContent = [];
                                     $barcode_rows = '
                                         <form method="post">
-                                            <button class="btn btn_view_report" type="submit" name="downloadit" value="Download Codes"> Download PDF</button>
+                                            <button class="btn btn_view_report" type="submit" name="downloadit" value="Download Codes"> Download Docx</button>
                                         </form>
                                         <table class="table table_data1 table-bordered" id="report_id">
                                             <thead>
                                                 <tr>
                                                     <th style="padding:10px;width:40%;">Barcode</th>
                                                     <th style="padding:10px;width:20%;">Voucher</th>
-                                                    <th style="padding:10px;width:30%;">Box Name</th>
                                                 </tr>
                                             </thead>
                                             <tbody>';
@@ -184,7 +182,6 @@ if(isset($_POST['downloadit'])){
                                                 $barcode_rows .= '<tr>';
                                                 $barcode_rows .= '<td style="padding:10px;text-align:center;"><img src="'.$src.'" alt="'.$box_name.' bar code"/></td>';
                                                 $barcode_rows .= '<td style="padding:10px;text-align:center;">'.$_voucher['box_voucher'].'</td>';
-                                                $barcode_rows .= '<td style="padding:10px;text-align:center;">'.$box_name.'</td>';
                                                 $barcode_rows .= '</tr>';
                                                 array_push($wordContent, $_voucher);
                                             }
