@@ -649,7 +649,7 @@
               <input type="hidden" name="voucher" value="'.$data[0].'">
               <input type="hidden" name="partner_pay_amount" value="'.$box_data[4].'">
               <input type="hidden" name="partner" value="'.$box_data[2].'">
-              <input type="date" name="booking_date" class="form-control" placeholder="Enter booking date">
+              <input type="text" id="booking_date" name="booking_date" class="form-control" placeholder="Enter booking date">
           </div>
           <button type="button" onclick="redeem_voucher('.$formid.')" class="voucher_partner2 col-md-2 hap_success">REDEEM VOUCHER</button>
         <div> 

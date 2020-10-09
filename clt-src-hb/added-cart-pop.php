@@ -24,7 +24,7 @@ $util = new Util();
 
 </head>
 
-<body>
+<body class="client_body">
 
   <!-- Navigation -->
  <?php include 'shared/partials/nav.php'; ?>

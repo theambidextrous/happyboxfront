@@ -37,7 +37,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         </style>
     </head>
 
-    <body>
+ <body class="client_body">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         <!--user dash nav-->
@@ -85,7 +85,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="hidden" name="customer_user_id" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>">
-                                    <input type="text" name="vcode" class="form-control rounded_form_control" placeholder="Required Field">
+                                    <input type="text" name="vcode" class="form-control rounded_form_control text-left" placeholder="Enter your voucher code here">
                                 </div>
                                 <div class="col-md-4">
                                     <button type="button" onclick="activate_voucher('activate_v')" class="btn btn_rounded btn-orange">ACTIVATE</button>   
@@ -116,7 +116,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                       <div class="user_activate_steps_i user_activate_steps_i_mid">
                                           <div class="row">
                                               <div class="col-1">  <span class="inline_div ">3</span></div>
-                                                <div class="col-11"><b>BOOK</b> your experience with the partner and share your voucher code with them</div>
+                                                <div class="col-11 book_row"><b>BOOK</b> your experience with the partner and share your voucher code with them</div>
                                           </div>
                                           
                                      </div>

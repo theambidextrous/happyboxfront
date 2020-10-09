@@ -126,7 +126,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
           </div>
         </section>
   
-<?php include '../shared/partials/loggedin-footer.php';?>
+<?php  include '../shared/partials/loggedin-footer.php';?>
 
 <!-- end pop up -->
 <?php include '../shared/partials/js.php';?>

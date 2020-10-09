@@ -77,7 +77,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                         </div>		
                         </div>
                          <div class="col-md-12 text-center">
-                             <button class="btn btn-block btn-zero">0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></button>	
+                             <a href="#sound_good" class="btn btn-block btn-zero">0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></a>	
                         </div>
 
                 </div>  </div>
@@ -123,7 +123,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                         </div>		
                         </div>
                          <div class="col-md-12 text-center desktop_view">
-                             <button class="btn btn-block btn-zero">0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></button>	
+                           <a href="#sound_good" class="btn btn-block btn-zero">0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></a>	
                         </div>
                           <div class="col-md-12 text-center mobile_view btn_zero_mob">
                              0% RISK AND 100% WIN  <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/>	
@@ -202,9 +202,10 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                 <span class="become_badge">4</span>
                             </div>
                             <div class="become_part_card_txt">
-                                <h4>      Execute the service</h4>
-                    Get paid once the service has been executed.        
+                                <h4>     Your customers book </h4>
+                     
                                 
+                    Save the voucher numbers through your partner portal.
                             </div>
                              
                             
@@ -220,7 +221,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                             </div>
                             <div class="become_part_card_txt">
                                 <h4>    Execute the service</h4>
-                      Get paid once the service has been executed.         
+                      Get paid once the service has been executed. 
+                      
                                 
                             </div>                           
                         </div>
@@ -283,7 +285,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
               </div>
         </section>
     <section class=" text-center" id="reset_div">
-            <div class="container sound_good_wrap">
+        <div id="sound_good" class="container sound_good_wrap">
 			<div class="col-md-12 sound_good">
                 <div class="row justify-content-center ">
                     <div class="col-md-10">

@@ -31,7 +31,7 @@ $list = json_decode($list, true)['data'];
       border-bottom: solid 2px #c20a2b!important;
    }
  </style>
-   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -122,13 +122,22 @@ $list = json_decode($list, true)['data'];
                     if($box_voucher_status == 3){
                       $m_partner = "'".json_decode($_SESSION['usr_info'])->data->internal_id."'";
                       $b_v_status = '<td class="hap_success">REDEEMED</td>';
-                      $admin_func = '
-                      <td class="hap_danger">
+                     /* $admin_func = ' <td class="hap_danger">
                       <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
                       </td>
                       <td id="datepilckerx" class="hap_primary">
-                      MODIFY DATE  <a href="##"><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></a> <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,'.$m_voucher.','.$m_partner.')" onfocus="(this.type=\'date\')"></td>
+                       <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#myModal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
+                      <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,'.$m_voucher.','.$m_partner.')" onfocus="(this.type=\'date\')"></td>
+                      ';*/
+                       $admin_func = ' <td class="hap_danger">
+                      <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
+                      </td>
+                      <td id="datepilckerx" class="hap_primary">
+                       <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#myModal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
+                      </td>
                       ';
+  
+
                     }elseif($box_voucher_status == 4){
                       $admin_func = '
                       <td class="empty_cell"></td>
@@ -158,6 +167,10 @@ $list = json_decode($list, true)['data'];
                   ?>
                 </tbody>
               </table>
+                <!-- Button to Open the Modal -->
+
+
+
             </div>
           </div> 
           <br>
@@ -241,19 +254,52 @@ $list = json_decode($list, true)['data'];
      
     </div>
   </section>
-<?php include '../shared/partials/loggedin-footer.php';?>
+<?php  include '../shared/partials/loggedin-footer.php';?>
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
 <?php include '../shared/partials/js.php';?>
-  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( ".datepickerx" ).datepicker();
+    $( "#pickDate" ).datepicker();
   } );
-  </script> -->
+  </script> 
 </body>
 <!-- pop up -->
+<!-- The Modal -->
+<div class="modal modify_date" id="myModal">
+  <div class="modal-dialog  modal-sm  ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title partner_blueh text-center">Modify Date</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="row">
+             <div class="col-md-12">
+                 <div class="form-group" >
+                     <input type="text" id="pickDate" class="form-control rounded_form_control" placeholder="Pick date">    
+                 </div>
+                 <button class="btn btn_rounded btn-dark-blue">Save</button>
+              
+              
+          </div> 
+              
+          </div>
+  
+  
+      </div>
+
+     
+
+    </div>
+  </div>
+</div>
 <button type="button" id="popupid" style="display:none;" class="btn btn_rounded" data-toggle="modal" data-target="#voucher_c"></button>
   <div class="modal fade" id="voucher_c">
     <div class="modal-dialog general_pop_dialogue">
@@ -351,6 +397,8 @@ $list = json_decode($list, true)['data'];
   </div>
 </div>
 <!--end cancel modal-->
+
+
 </body>
  
    
@@ -436,4 +484,5 @@ $list = json_decode($list, true)['data'];
 
   });  
 </script>
+
 </html>

@@ -47,7 +47,7 @@ if(isset($_POST['makecart'])){
         </style>
     </head>
 
-    <body>
+<body class="client_body">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         <!--user dash nav-->
@@ -91,26 +91,26 @@ if(isset($_POST['makecart'])){
                     $current_order_id = $_list['order_id'];
                 ?>
             <form action="" method="post">
-            <div class="row">
+            <div class="row purch_row">
                 <div class="col-md-9">
                     <div class="table-responsive" id="invoicetodown<?=$_list['id']?>">
                         <div class="purchase_hist html-content">
                             <?=$_err?>
                             <input type="hidden" name="orderid" value="<?=$current_order_id?>"/>
-                            <table class="table order_summary table-bordered">
-                                <tr class="order_summary_tr_td">
+                          <table class="table purchase_hist   table-bordered">
+                                <tr class="purch_hist_tr_td">
                                 <td class="b">ORDER NUMBER</td>
                                 <td><?=$current_order_id?></td>
                                 <td colspan="4" class="invisible_table"></td>
                                 </tr>
-                                <tr class="order_summary_tr_td">
+                                <tr class="purch_hist_tr_td">
                                     <th class="b col_1">IMAGE</th>
                                     <th>BOX NAME</th>
                                     <th>BOX NUMBER</th>
                                     <th>PURCHASE DATE</th>
                                     <th>BOX TYPE</th>
                                     <th>QUANTITY</th>               
-                                    <th>COST</th>
+                                    <th class="purc_last_td">COST</th>
                                 </tr>
                                 <?php
                                 $this_order = $current_order_id;
@@ -131,11 +131,11 @@ if(isset($_POST['makecart'])){
                                 ?>
                                 <tr>
                                 <td class="">
-                                    <img style="height: 39px;" class="order_summary_tr_td_img" src="<?=$util->tb64($_3d)?>">
+                                    <img style="height: 39px;" class="d-block mx-auto purch_his_img" src="<?=$util->tb64($_3d)?>">
                                 </td>
-                                <td><b><?=$_box_data->name?></b></td>
-                                <td><b><?=$_box_data->id?></b></td>
-                                <td><b><?=date('d/m/Y', strtotime($_list['updated_at']))?></b></td>
+                                <td  class="purch_blue_td"><b><?=$_box_data->name?></b></td>
+                                <td  class="purch_blue_td"><b><?=$_box_data->id?></b></td>
+                                <td  class="purch_blue_td"><b><?=date('d/m/Y', strtotime($_list['updated_at']))?></b></td>
                                 <td>E-box</td>
                                 <td><?=$_cart_item[1]?></td>
                                 <td>KES <?=number_format($_b_cost, 2)?></td>
@@ -145,11 +145,11 @@ if(isset($_POST['makecart'])){
                                 ?>
                                 <tr>
                                 <td class="">
-                                    <img style="height: 39px;" class="order_summary_tr_td_img" src="<?=$util->tb64($_3d)?>">
+                                    <img style="height: 39px;" class="d-block mx-auto purch_his_img" src="<?=$util->tb64($_3d)?>">
                                 </td>
-                                <td><b><?=$_box_data->name?></b></td>
-                                <td><b><?=$_box_data->id?></b></td>
-                                <td><b><?=date('d/m/Y', strtotime($_list['updated_at']))?></b></td>
+                                <td  class="purch_blue_td"><b><?=$_box_data->name?></b></td>
+                                <td  class="purch_blue_td"><b><?=$_box_data->id?></b></td>
+                                <td  class="purch_blue_td"><b><?=date('d/m/Y', strtotime($_list['updated_at']))?></b></td>
                                 <td>Physical Box</td>
                                 <td><?=$_cart_item[1]?></td>
                                 <td>KES <?=number_format($_b_cost, 2)?></td>
@@ -160,17 +160,17 @@ if(isset($_POST['makecart'])){
                                 endforeach;                                
                                 ?>
                                 <tr class="">
-                                <td colspan="4" class="">
+                                <td colspan="4" class="td_noborder">
                                 <input type="hidden" name="draft_cart" value='<?=json_encode($draft_cart)?>'/>
                                 </td>
                                 <?php 
                                 // unset($draft_cart);
                                 ?>
-                                <td colspan="3" align="right" class="">
+                            <td colspan="3" align="right" class="td_no_pad">
                                     <table>
                                     <tr>
                                         <td>SUB TOTAL (Incl. VAT)</td>
-                                        <td>KES <?=number_format($_list['subtotal'], 2)?></td>
+                                          <td class="purc_last_td">KES <?=number_format($_list['subtotal'], 2)?></td>
                                     </tr>
                                     <tr>
                                         <td>SHIPPING</td>
@@ -189,11 +189,13 @@ if(isset($_POST['makecart'])){
                     <!-- end col-md-9 -->
                 </div>
                 <div class="col-md-3 purchase_hist_right">
+                   
                     <button type="submit" name="makecart">
                     <img class="" src="shared/img/btn-add-to-cart-orange.svg">
                     </button>
                     <img class="" onclick="fdownload('invoicetodown<?=$_list['id']?>')" src="shared/img/btn-download-orange.svg">
-                </div>
+                 
+                      </div>
             </div>
             </form>
             <!-- end row -->
@@ -205,7 +207,7 @@ if(isset($_POST['makecart'])){
     </section>
         <!--static view desktop-->
         
-    <section class="partner_voucher_list section_60 desktop_view">
+  <!--<section class="partner_voucher_list section_60 desktop_view">
            <div class="container">
 			
                
@@ -327,7 +329,7 @@ if(isset($_POST['makecart'])){
                                 <div>  <img class=" " src="shared/img/btn-add-to-cart-orange.svg">  
                                    <img class="purchase_hist_right_mid_img " src="shared/img/btn-add-to-cart-orange.svg">
                       
-                                  <img class=" " src="shared/img/btn-download-orange.svg">
+                                  <img class=" purch_down_or" src="shared/img/btn-download-orange.svg">
                             
                              </div>
                             
@@ -336,7 +338,7 @@ if(isset($_POST['makecart'])){
 
                 </div>
            
-        </section>
+        </section>-->
         <!--end static view-->
         <!--end desktop-->
         <!--mobile-->

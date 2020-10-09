@@ -18,7 +18,7 @@ $util->ShowErrors(1);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: Terms & Conditions</title>
+  <title>Happy Box:: Privacy Policy</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
@@ -33,7 +33,7 @@ $util->ShowErrors(1);
       <div class="container">
       <div class="row">
           <div class="col-md-12 text-center">
-              <h3 class="text-white">TERMS & CONDITIONS</h3>         
+              <h3 class="text-white">PRIVACY POLICY</h3>         
           </div>
           
       </div> </div>

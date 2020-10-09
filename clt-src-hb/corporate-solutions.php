@@ -18,7 +18,7 @@ $util->ShowErrors(1);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: Contact Us</title>
+  <title>Happy Box:: Corporate Solutions</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
@@ -33,7 +33,7 @@ $util->ShowErrors(1);
       <div class="container">
       <div class="row">
           <div class="col-md-12 text-center">
-              <h3 class="text-white">GET IN TOUCH</h3>         
+              <h3 class="text-white">CORPORATE SOLUTIONS</h3>         
           </div>
           
       </div> </div>

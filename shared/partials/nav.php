@@ -31,10 +31,10 @@ else{
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-          <div class="form_search_nav_wrap"> <span><i class="fas fa-search"></i></span> <input type="text" name="" class="form-control form_search_nav"></div>
+          <div class="form_search_nav_wrap"> <span><!--<i class="fas fa-search"></i>--> <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span> <input type="text" name="" class="form-control form_search_nav"></div>
         <ul class="navbar-nav ml-auto top-bar-nav">
           <li class="nav-item">
-              <a class="nav-link" href="<?=$util->ClientHome()?>/user-login.php">  <img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> User Login</a>
+              <a class="nav-link " href="<?=$util->ClientHome()?>/user-login.php">  <img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> <span class="cli_user_login">User Login</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-partner-blue.svg"> Partner Portal</a>

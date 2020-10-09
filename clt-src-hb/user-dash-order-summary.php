@@ -39,7 +39,7 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
     </head>
-    <body>
+  <body class="client_body">
         <!-- Navigation -->
         <?php include 'shared/partials/nav.php'; ?>
         <!-- Page Content --> 
