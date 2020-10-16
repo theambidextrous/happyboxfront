@@ -63,7 +63,7 @@ $util->ShowErrors(1);
 <!--end discover our selection-->
  <section class="container section_padding_top contact_content">
       <div class="row justify-content-center">
-   <div class="col-md-6  contact_details">
+   <div class="col-md-5  contact_details">
               <h4 class="contact_title">Contact HAPPYBOX</h4>
               <div class="row">
                   

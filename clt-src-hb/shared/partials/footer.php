@@ -13,7 +13,15 @@
             
           
             
-        </div>   
+        </div>  
+      <div class="col-md-12 paymentmethods mobile_view">
+         <span>Payment Methods</span>
+		<ul>
+            <li><a ><img class="" src="<?=$util->ClientHome()?>/shared/img/mastercard_logo_15_a.png"></a></li>
+            <li><a><img class="" src="<?=$util->ClientHome()?>/shared/img/visa_logo_150_a.png"></a></li>
+            <li><a><img class="" src="<?=$util->ClientHome()?>/shared/img/mpesa_logo_150_a.png"></a></li>
+		</ul>
+     </div>
     <div class="col-md-6 text-center upper_footer_col2">
         
             <li><a href=""><img class="" src="<?=$util->ClientHome()?>/shared/img/inverse-logo.png"></a></li>
@@ -31,7 +39,7 @@
             
           
              </div>	
-     <div class="col-md-12 paymentmethods">
+     <div class="col-md-12 paymentmethods desktop_view">
          <span>Payment Methods</span>
 		<ul>
             <li><a ><img class="" src="<?=$util->ClientHome()?>/shared/img/mastercard_logo_15_a.png"></a></li>

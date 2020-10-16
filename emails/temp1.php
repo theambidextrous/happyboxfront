@@ -19,7 +19,7 @@ outline:none;
 <table border="0" cellpadding="0" cellspacing="0" style="max-width:800px;width:100%;margin:0 auto;padding:0;">
 <tr>
 <td colspan="12">
-<a href="https://www.sarovahotels.com/" target="_blank">
+<a href="@" target="_blank">
     <img src="img/temp1_bg.svg" alt=""></a></td>
 </tr>
 

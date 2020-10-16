@@ -102,7 +102,7 @@ else{
     <ul class="open desktop opened_menu">
         <li>  <a class="userlogin-nav-a" href="<?=$util->ClientHome()?>/user-login.php">  <img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> User Login</a></li>
         <li> <a class="partner-nav-a" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-partner-blue.svg"> Partner Portal</a></li>
-    <li>   <a class="registervoucher-nav-a" href="<?=$util->ClientHome()?>/user-dash-activate-voucher.php">  Register your voucher </a>     </li>
+   <li>   <a class="registervoucher-nav-a" href="<?=$util->ClientHome()?>/user-dash-activate-voucher.php"><i style="font-size: 23px;margin-right: 4px;" class="fas fa-gift"></i>  Register your voucher </a>     </li>
        <li >
                 <a class="" href="<?=$util->ClientHome()?>/category-well-being.php">Well-Being</a>
             </li>
@@ -113,17 +113,12 @@ else{
                 <a class="" href="<?=$util->ClientHome()?>/category-sports-adventure.php">Sports & Adventure</a>
             </li>
             <li>
-                <a class="" href="#">Become A Partner</a>
+                  <a class="" href="<?=$util->PartnerHome()?>/become-a-partner.php">Become A Partner</a>
             </li>
             <li>
                 <a  href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a>
             </li>
-            <li>
-                <a href="#">Logout</a>
-            </li>
-             <li>
-                <a href="#"></a>
-            </li>
+        
             <li class="site-nav-seacrh">
                 <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span> <input type="text" name="" class=" form_search_nav_mob" placeholder="Search">
             </li>
@@ -133,3 +128,4 @@ else{
     </ul>
         </nav>
       <!-- end mobile view -->
+    

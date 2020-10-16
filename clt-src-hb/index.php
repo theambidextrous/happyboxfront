@@ -227,7 +227,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
           <div class="col-md-3 iwant_card no_radius">
                    <div class="step_box step_color3">3</div>
                     <div class="iwant_card_div">
-              <p class="iwant_card_p"> Choose your delivery date<br class="desktop_view"> and mode <br>
+              <p class="iwant_card_p"> Choose your delivery <br class="desktop_view">date and mode <br>
                   <span class="thin_font">(doorstep or e-box)</span>
               
               </p>

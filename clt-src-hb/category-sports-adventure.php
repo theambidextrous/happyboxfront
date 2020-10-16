@@ -48,7 +48,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
              
                <div class="sports_banner_title">
                        <h3>  
-               For the thrill seekers
+               For the <br>thrill seekers
                        </h3>
               </div>
               <p class="text-white sports_banner_p text-center">

@@ -237,6 +237,7 @@ th, td {
     padding-left: 32px;
     border: 0px;
     height: 34px;  
+        text-indent: 18px;
 
 }
 .form_search_nav_wrap  span {
@@ -268,7 +269,8 @@ th, td {
     text-align: center!important;
 }
 .sports_card .selection_card_body  {
-    height: 168px !important;
+   height: 175px !important;
+    font-size: 15px;
 }
 
 
@@ -373,7 +375,10 @@ background: #00ACB3;
     height: 29px;
     margin-top: 0px;
 }
-
+.box_desc_{
+    padding: 3px 6px;
+    font-size: 15px;
+}
 
 
 /*end logged in navbar */
@@ -705,8 +710,8 @@ text-align: center;
     padding: 1.25rem 1.25rem 0.0rem !important;
 }
 .why_happy_card_body img{
-    height: 50px;
-    margin-bottom: 18px;
+    height: 61px;
+    margin-bottom: 18px
 }
 .why_happy_card_body_div{
 
@@ -974,41 +979,41 @@ height: 34px;
 }
 
 .cat_well .pricing {
-    position: absolute;
-    text-align: 16px;
+position: absolute;
     padding-top: 5px;
     padding-left: 12px;
+    font-size: 14px;
 }
 .cat_well .card-header {
     border-bottom: 0px;
 }
 
 .catwell_active_nav {
-    border-bottom: solid 4px #F4EF14;
+    border-bottom: solid 3px #F4EF14;
 }
 
 .well_nav:hover {
-    border-bottom: solid 4px #F4EF14 !important;
+    border-bottom: solid 3px #F4EF14 !important;
 }
 .catgas_active_nav{
-    border-bottom: solid 4px #FA683D;
+    border-bottom: solid 3px #FA683D;
 }
 .gast_nav:hover{
-    border-bottom: solid 4px #FA683D !important;
+    border-bottom: solid 3px #FA683D !important;
 }
 .catspor_active_nav{
-    border-bottom: solid 4px #FF005C;
+    border-bottom: solid 3px #FF005C;
 }
 .spor_nav:hover{
-    border-bottom: solid 4px #FF005C !important;
+    border-bottom: solid 3px #FF005C !important;
 }
 .contact_active_nav{
 
-    border-bottom: solid 4px #C20A2B !important;
+    border-bottom: solid 3px #C20A2B !important;
 }
 .contact_nav:hover{
 
-    border-bottom: solid 4px #C20A2B !important;
+    border-bottom: solid 3px #C20A2B !important;
 }
 
 .cat_well_table h4 {
@@ -1073,6 +1078,9 @@ height: 34px;
     color: #00acb3;
     font-weight: normal !important;
 }
+.inner_light_blue h6 {
+    font-weight: normal !important;
+}
 .blue_td{
     background: #10ACB333;
 }
@@ -1093,7 +1101,8 @@ height: 34px;
     height: 100%;
 }
 .td_cat_a{
-    width: 25%;
+width: 25%;
+    text-transform: uppercase;
 }
 .td_cat_a td h6{
     font-weight: bold;
@@ -1298,11 +1307,10 @@ height: 34px;
 }
 
 .contact_sub_banner h4{
-    color: #FA683D;
+color: #FA683D;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 40px;
-
 
 }
 .contact_title{
@@ -1327,9 +1335,9 @@ height: 34px;
     color: #CCCCCC !important;
 }
 .btn_contact{
-    border-radius: 8px;
+     border-radius: 8px;
     background: #FA683D;
-    padding: 5px 26px;
+    padding: 4px 27px;
     color: white !important;
     text-transform: uppercase;
 
@@ -2592,7 +2600,19 @@ a:hover.tooltips2 span {
 /*mobile view */
 @media (max-width: 767px)
 {
-
+    .card_partner_mobcard p
+      {
+    font-size: 14px;
+}  
+    
+    .lower_footer {
+       padding-top: 14px;
+    padding-bottom: 14px;
+}
+.pricing {
+    position: relative !important;
+    
+}
     .cart_totals {
         font-size: 12px !important;
     }
@@ -2610,9 +2630,10 @@ a:hover.tooltips2 span {
 
     }
     .send_us{
-        color: #FA683D;
-        font-size: 22px;
-        margin-bottom: 30px;
+   color: #FA683D;
+    font-size: 21px;
+    margin-bottom: 30px;
+    font-weight: bold;
     }
 
     .height_mob{
@@ -2923,14 +2944,16 @@ a:hover.tooltips2 span {
     }   
 
     .card_step_blue_txt {
-        background: #0985B6;
-        display: block;
-        width: 100% !important;
-        float: right;
-        border-radius: 0px !important;
+background: #0985B6;
+    display: block;
+    width: 100% !important;
+    float: right;
+    height: 73px !important;
+    border-radius: 0px !important;
+    line-height: 31px !important;
     }
     .become_part_card {
-        min-height: 106px;
+        min-height: 132px;
 
     }
 
@@ -3039,8 +3062,8 @@ a:hover.tooltips2 span {
     }
 
     .btn_rounded {
-        font-size: 16px;
-        padding: 11px 18px !important;
+    font-size: 16px;
+    padding: 8px 27px !important;
     }
 
 
@@ -3141,8 +3164,8 @@ a:hover.tooltips2 span {
         outline-offset: -7px;
     }
     .cart_bar_strip_mob{
-        margin-right: 0px;
-        margin-left: 0px;
+       margin-right: 10px;
+    margin-left: 10px
     }
 
     .cat_boxes_section .col-md-4{
@@ -3241,7 +3264,8 @@ a:hover.tooltips2 span {
         background: #c20a2b;
         padding: 3px 3px;
         color: white;
-        font-size: 12px;
+  font-size: 14px;
+
         border-radius: 7px;
         line-height: 20px;
     }
@@ -3313,9 +3337,9 @@ a:hover.tooltips2 span {
         margin-left: 71px;
     }
     .mob_cart{
-        position: absolute;
-        right: 18px;
-        top: 9px;
+          position: absolute;
+    right: 18px;
+    top: 18px;
     }
 
     .hamburger,
@@ -3414,7 +3438,13 @@ a:hover.tooltips2 span {
         text-transform: capitalize !important;
         font-size: 19px;
     }
-
+    .partner-nav-a{
+       color: #0185B6 !important;
+    }
+    .userlogin-nav-a{
+        
+           color: #00ACB3 !important;
+    }
     .site-nav li img {
         height: 27px;
         margin-right: 5px;
@@ -3621,9 +3651,9 @@ a:hover.tooltips2 span {
         font-size: 14px;
     }
     .become_part_card_txt {
-        padding: 0px 26px 11px;
-        font-size: 15px;
-        margin-top: -24px;
+       padding: 0px 26px 11px;
+    font-size: 15px;
+    margin-top: 6px;
     }
     .become_logos_item {
         height: 59px;
@@ -3737,6 +3767,8 @@ a:hover.tooltips2 span {
 }
 #box_price_ {
      cursor: text;
+    font-weight: normal;
+    font-size: 15px;
 }
 .ui-widget-header {
   border: 1px solid #dddddd;

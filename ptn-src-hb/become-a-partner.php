@@ -64,14 +64,14 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                         </div>
                           <div class="col-md-6">
                         <div class="become_card become_card3">
-                           <span class="become_card_txt">Increase your turnaround by attracting a new typology of clientele</span>
+                            <span class="become_card_txt">Increase your turnaround by attracting a new typology <br class="desktop_view">of clientele</span>
                             <img src="../shared/img/become-card3.svg" class=""/>
                             
                         </div>		
                         </div>
                           <div class="col-md-6">
                         <div class="become_card become_card4">
-                        <span class="become_card_txt">Easy going partnership with Zero constraint, 100% independence on your bookings, all made under your T&C’s</span>
+                        <span class="become_card_txt">Easy going partnership with Zero constraint,<br class="desktop_view"> 100% independence on your bookings, all made under your T&C’s</span>
                             <img src="../shared/img/become-card4.svg" class=""/>
                             
                         </div>		
@@ -234,7 +234,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                 <span class="become_badge">6</span>
                             </div>
                             <div class="become_part_card_txt">
-                                <h4>Our Partner Care Team is available alongside you at each step.</h4>
+                                <h4>Our Partner Care Team is available <br class="desktop_view">alongside you at each step.</h4>
                                 
                             </div>
                              
