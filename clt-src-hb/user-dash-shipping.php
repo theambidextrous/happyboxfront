@@ -6,10 +6,12 @@ require_once('../lib/Picture.php');
 require_once('../lib/Box.php');
 $util = new Util();
 $user = new User();
+// session_destroy();
 $picture = new Picture();
 $box = new Box();
 $util->ShowErrors(1);
 $has_physical_box = [];
+$util->Show($_SESSION['curr_usr_cart']);
 /** update shipping data */
 if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
   $_ll = 0;
@@ -41,7 +43,7 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
       $_POST['physc_delivery_name'],
       $_POST['physc_delivery_phone']
     ];
-    $_SESSION['curr_usr_cart'][2000] = $data;
+    $_SESSION['curr_usr_cart'][2000]['physical_address'] = $data;
   }
   if(isset($_SESSION['curr_usr_cart'])){
     $_SESSION['curr_usr_cart'][1000]['order_id'] = $util->createCode(10);
@@ -109,7 +111,11 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
                             // $util->Show($_SESSION['curr_usr_cart']);
                             /**  */
                             foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
-                              if(!isset($_cart_item['order_id'])){
+                              if(isset($_cart_item['order_id'])){
+
+                              }elseif(isset($_cart_item['physical_address'])){
+
+                              }else{
                               $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
                               $_b_cost = floor($_cart_item[1]*$_box_data->price);
                               $_total_cart[] = $_b_cost;
@@ -172,7 +178,8 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
                             endforeach;
                             /** show input for all physical boxes */
                             if(count($has_physical_box)){
-                                $cart_physical_del = $_SESSION['curr_usr_cart'][2000];
+                                // $cart_physical_del = $_SESSION['curr_usr_cart'][2000];
+                                $cart_physical_del = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                                ?>
                               <tr>
                                 <td colspan="4">
@@ -327,7 +334,8 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
                             endforeach;
                             /** show input for all physical boxes */
                             if(count($has_physical_box)){
-                                $cart_physical_del = $_SESSION['curr_usr_cart'][2000];
+                                $cart_physical_del = $_SESSION['curr_usr_cart'][2000]['physical_address'];
+                                // $util->Show($_SESSION['curr_usr_cart'][2000]);
                                ?>
                               <tr>
                                 <td colspan="4">
