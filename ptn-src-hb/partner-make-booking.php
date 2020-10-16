@@ -66,8 +66,16 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   $res = $obj = $inventory->get_by_voucher($token, $voucher_code);
                   // print $util->Show($res);
                   $res = json_decode($res, true)['data'];
+                  if( $res['box_voucher_status'] == 1 )
+                  {
+                    $data_0 = $data_1 = [
+                      'Invalid',
+                      'Invalid',
+                      1
+                    ];
+                  }
                   // print $util->Show($res);
-                  if(isset($res['box_internal_id'])){
+                  elseif(isset($res['box_internal_id'])){
                       $idf = $res['partner_internal_id'];
                       $box_idf = $res['box_internal_id'];
                       $_b_data = $box->get_byidf($token, $box_idf);

@@ -614,6 +614,9 @@
     }
     function ptn_v_validity($data, $box_data, $obj = null){
         if($box_data[0] == 'Invalid' && !is_null($obj)){
+            if($box_data[2] == 1){
+                return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. Do not redeem it.</div>';
+            }
             return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">'.$obj->message.'</div>';
         }
         $options_ = '';

@@ -392,7 +392,7 @@ $_partners_list = json_decode($user->get_all_partner($token), true)['data'];
                             url: '<?=$util->AjaxHome()?>?activity=get-partner-services',
                             data: dataString,
                             success: function(res){
-                                // console.log(res);
+                                console.log("repos" + res);
                                 var rtn = JSON.parse(res);
                                 if(rtn.hasOwnProperty("MSG")){
                                     console.log(rtn.data);

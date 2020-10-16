@@ -17,6 +17,22 @@ $topics = $topic->get($token);
 $topics = json_decode($topics, true)['data'];
 $prices = $price->get($token);
 $prices = json_decode($prices, true)['data'];
+function format_service($keys, $values){
+    $lp = 0;
+    $rtn = [];
+    foreach ($keys as $k ) {
+        array_push($rtn, $k . '~' . $values[$lp]);
+        $lp++;
+    }
+    return $rtn;
+}
+function reloadcurrent(){
+    print '<script>
+    setTimeout(function() {
+        window.location.replace("'.basename($_SERVER['REQUEST_URI']).'");
+    }, 3000);
+    </script>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +91,9 @@ $prices = json_decode($prices, true)['data'];
                 <div class="row justify-content-center">
                     <div class="col-md-7 ">
                         <?php 
+                            // if( count($_GET['has-msg']) ){
+                            //     $util->success_flash('Partner information updated! Note that email address is not updated and password is not reset too');
+                            // }
                             $selected_partner = $user->get_one($_REQUEST['pt'], $token);
                             $selected_partner_data = $user->get_details($_REQUEST['pt']);
                             $selected_partner = json_decode($selected_partner, true)['data'];
@@ -88,6 +107,7 @@ $prices = json_decode($prices, true)['data'];
                             $p_picture = $p_logo = '';
                             $_media = $picture->get_byitem($token, $selected_partner_data['internal_id']);
                             $_media = json_decode($_media, true)['data'];
+                            // print_r($_media);
                             $_plogo = $_ppicture = '';
                             foreach( $_media as $_mm ){
                                 if($_mm['type'] == '2'){
@@ -111,7 +131,8 @@ $prices = json_decode($prices, true)['data'];
                                     $_SESSION['frm_b'] = $_POST;
                                     $u = new User();
                                     /** update profile */
-                                    $services = array_combine($_POST['range'], $_POST['experience']);
+                                    $services = format_service($_POST['range'], $_POST['experience']);
+                                    // $util->Show($services);
                                     if(count($services) < 1){
                                         throw new Exception('You must add at least one experience for this partner');
                                     }
@@ -170,7 +191,10 @@ $prices = json_decode($prices, true)['data'];
                                         }
                                         unset($_SESSION['frm']);
                                         unset($_SESSION['frm_b']);
+                                        // $_SESSION['kmsg'] = '';
+                                        // $util->redirect_to(basename($_SERVER['REQUEST_URI']).'&has-msg=1', 2);
                                         print $util->success_flash('Partner information updated! Note that email address is not updated and password is not reset too');
+                                        reloadcurrent();
                                     }else{
                                         print $util->error_flash(json_decode($prof_resp)->message);
                                     }
@@ -251,11 +275,17 @@ $prices = json_decode($prices, true)['data'];
                             <hr>
                             <h4 class="filter_title text-center"> experiences offered </h4>  
                             <div id="exprs">
-                                <?php if(!empty($services)){ foreach( $services as $sk => $sv ): ?>
+                                <?php 
+                                if(count($services)){ 
+                                    foreach( $services as $sk => $sv ): 
+                                        $_meta = explode('~', $sv);
+                                        $_pricename = $_meta[0];
+                                        $_servicename = $_meta[1];
+                                ?>
                                 <div class="form-group row clonables">
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Experience</label>
-                                        <input type="text" placeholder="type here e.g. massage" name="experience[]" value="<?=$sv?>" class="form-control rounded_form_control"/>
+                                        <input type="text" placeholder="type here e.g. massage" name="experience[]" value="<?=$_servicename?>" class="form-control rounded_form_control"/>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Price range</label>
@@ -263,7 +293,7 @@ $prices = json_decode($prices, true)['data'];
                                             <!-- <option value="nn">Select a topic</option> -->
                                             <?php
                                                 foreach( $prices as $_price ){
-                                                    if($_price['name'] == $sk){
+                                                    if($_price['name'] == $_pricename){
                                                         print '<option selected value="'.$_price['name'].'">'.$_price['name'].'</option>';
                                                     }else{
                                                         print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
@@ -315,7 +345,7 @@ $prices = json_decode($prices, true)['data'];
                                     <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Phone Number" name="phone" value="<?=$_SESSION['frm_b']['phone']?>"/>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" readonly class="form-control rounded_form_control" id="select_box_type" placeholder="Email Address" name="email" value="<?=$_SESSION['frm']['email']?>" />
+                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Email Address" name="email" value="<?=$_SESSION['frm']['email']?>" />
                                 </div>
                             </div>
                             
@@ -347,6 +377,7 @@ $prices = json_decode($prices, true)['data'];
                 // .attr("id", "clonables" +  cloneIndex)
                 // .find("*")
                 .each(function() {
+                    $(this).find("input[type=text]").val("");
                     var id = this.id || "";
                     var match = id.match(regex) || [];
                     if (match.length == 3) {

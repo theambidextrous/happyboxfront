@@ -107,11 +107,20 @@ switch($_REQUEST['activity']){
             $d = $u->get_details_byidf($_POST['p']);
             $d = json_decode($d, true)['data'];
             $d = json_decode($d['services'], true);
+            if( !is_array($d) )
+            {
+                throw new Exception('Nothing found!');
+            }
             $rtn = [];
+            $_loop = 0;
             foreach($d as $k => $v ){
-                if( $k == $_POST['r']){
-                    $rtn[$k] = $v;
+                $_meta = explode('~', $v);
+                $_range = $_meta[0];
+                $_service = $_meta[1];
+                if( $_range == $_POST['r']){
+                    $rtn[$_loop] = $_service;
                 }
+                $_loop++;
             }
             exit(json_encode(['MSG' => 'found', 'data' => $rtn ]));
         }catch(Exception $e){
