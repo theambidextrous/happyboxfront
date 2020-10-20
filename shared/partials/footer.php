@@ -26,7 +26,7 @@
 					<li><a href="<?=$util->ClientHome()?>/contact-us.php">Contact Us</a></li>
 					<li><a href="<?=$util->ClientHome()?>/corporate-solutions.php">Corporate Solutions</a></li>
 					<li><a href="<?=$util->PartnerHome()?>/become-a-partner.php">Become A Partner</a></li>
-					<li><a href="<?=$util->ClientHome()?>/terms.php">Terms & Conditions</a></li>
+					<li><a href="<?=$util->ClientHome()?>/terms.php">Terms &amp; Conditions</a></li>
 					<li><a href="<?=$util->ClientHome()?>/privacy-policy.php">Privacy Policy</a></li>
 				</ul>
 			</div>
