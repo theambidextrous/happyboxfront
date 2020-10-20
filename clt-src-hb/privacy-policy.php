@@ -127,8 +127,8 @@ $util->ShowErrors(1);
 				<h5>10. Disclosure of Data</h5>
 				<p>Any disclosure of your information shall be in accordance with applicable law and regulations. We may disclose personal information that we collect, or you provide:</p>
 				<ol style="list-style-type: none;">
-					<li>a) a.	Business Transaction<br> If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.</li>
-					<li>b) b.	Other cases. We may disclose your information also:<br>	Your preferences for particular products, based on information provided by you or from your use of HappyBox's products.
+					<li>a) Business Transaction<br> If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.</li>
+					<li>b) Other cases. We may disclose your information also:<br>	Your preferences for particular products, based on information provided by you or from your use of HappyBox's products.
 						<ul>
 							<li>To our subsidiaries and affiliates;</li>
 							<li>To contractors, service providers, software developers, survey agencies and other third parties we use to support our business;</li>

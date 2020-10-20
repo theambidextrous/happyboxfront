@@ -173,23 +173,21 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
     </div></div>
 <!-- mobile view -->
       <nav class="site-nav mobile_view">
-            <h1 class="logo">  <a href="<?=$util->ClientHome()?>/index.php">
-            <img  class="logo_img" src="<?=$util->ClientHome()?>/shared/img/logo.svg">
-        </a>
+            <h1 class="logo">  
+						 <a href="<?=$util->ClientHome()?>/index.php"><img  class="logo_img" src="<?=$util->ClientHome()?>/shared/img/logo.svg"></a>
                  
-								 <?php
-								 $CartCount = !empty($_SESSION['curr_usr_cart'])?count($_SESSION['curr_usr_cart']):0;
-								 if( $CartCount > 0 ){
-									 ?>
-									 <a class="mob_cart" ><img src="<?=$util->ClientHome()?>/shared/img/icn-cart-red.svg"> <span class="count text-danger"><?=count($_SESSION['curr_usr_cart'])?></span></a>
-									 <?php
-								 }else{
-									 ?>
-									 <a class="mob_cart" ><img src="<?=$util->ClientHome()?>/shared/img/icn-cart.svg"> <span class="count"><?=count($_SESSION['curr_usr_cart'])?></span></a>
-									 <?php
-								 }
-								 ?>							 								 								 
-            
+						 <?php
+						 $CartCount = !empty($_SESSION['curr_usr_cart'])?count($_SESSION['curr_usr_cart']):0;
+						 if( $CartCount > 0 ){
+							 ?>
+							 <a class="mob_cart" ><img src="<?=$util->ClientHome()?>/shared/img/icn-cart-red.svg"> <span class="count text-danger"><?=count($_SESSION['curr_usr_cart'])?></span></a>
+							 <?php
+						 }else{
+							 ?>
+							 <a class="mob_cart" ><img src="<?=$util->ClientHome()?>/shared/img/icn-cart.svg"> <span class="count"><?=count($_SESSION['curr_usr_cart'])?></span></a>
+							 <?php
+						 }
+						 ?>
             </h1>
           
 
