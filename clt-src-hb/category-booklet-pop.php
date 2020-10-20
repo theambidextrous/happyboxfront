@@ -14,7 +14,7 @@ $util = new Util();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: Category Booklet Pop Up</title>
+  <title>HappyBox :: Category Booklet Pop Up</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>

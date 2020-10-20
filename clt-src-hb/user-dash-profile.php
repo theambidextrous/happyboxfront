@@ -29,7 +29,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Dashboard My Profile</title>
+        <title>HappyBox :: User Dashboard My Profile</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>

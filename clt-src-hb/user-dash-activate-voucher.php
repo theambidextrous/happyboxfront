@@ -25,7 +25,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Happy Box:: User Activate Voucher</title>
+        <title>HappyBox :: User Activate Voucher</title>
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
         <style>

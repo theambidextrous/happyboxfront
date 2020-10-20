@@ -31,7 +31,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Dashboard Voucher List</title>
+        <title>HappyBox :: User Dashboard Voucher List</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>

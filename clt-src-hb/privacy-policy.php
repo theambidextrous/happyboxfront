@@ -10,206 +10,194 @@ $util->ShowErrors(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>HappyBox :: Data Privacy Statement</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Happy Box:: Privacy Policy</title>
-
-  <!-- Bootstrap core CSS -->
- <?php include 'shared/partials/css.php'; ?>
+<!-- Bootstrap core CSS -->
+<?php include 'shared/partials/css.php'; ?>
 </head>
 
 <body class="client_body">
-  <!-- Navigation -->
- <?php include 'shared/partials/nav.php'; ?>
-  <!-- Page Content --> 
+<!-- Navigation -->
+<?php include 'shared/partials/nav.php'; ?>
+<!-- Page Content -->
 
-  <section class=" terms_banner">
-      <div class="container">
-      <div class="row">
-          <div class="col-md-12 text-center">
-              <h3 class="text-white">PRIVACY POLICY</h3>         
-          </div>
-          
-      </div> </div>
-      </section>
-    <section class=" terms_sub_banner">
-      <div class="container">
-      <div class="row">
-          <div class="col-md-12 text-center">
-              <h4 class="">
-                  HappyBox Terms and Conditions of Purchase
-                  <br>
-                  <i>      As of 1st January 2020</i>
-            
-              </h4>
-
-          </div>
-          
-      </div> </div>
-      </section>
-  
-  
-    
+<section class=" terms_banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h3 class="text-white">PRIVACY POLICY</h3>
+			</div>
+		</div>
+	</div>
+</section>
+<section class=" terms_sub_banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h4 class=""> HappyBox Data Privacy Statement <br>
+				<i> As of 1st October  2020</i> </h4>
+			</div>
+		</div>
+	</div>
+</section>
 
 <!--end discover our selection-->
- <section class="container section_padding_top terms_content">
-      <div class="row">
-          <div class="col-md-12">
-              <p>HappyBox issues gift vouchers to its customers via its website. Each voucher is an opportunity to suggest an appropriate set of experiences for the recipient of the voucher. Whilst every effort is made to ensure the descriptions and pictures contained within the website and on the gift vouchers are a true reflection of the events in respect of which the voucher may be redeemed, these do not form part of a contract. If on contacting the Partner to redeem your voucher you feel that the activity taking place no longer accurately represents the activity shown on the HappyBox website or the gift vouchers, please contact the Customer Service and share this concern with our teams. Once a specific date has been booked, you will automatically become bound by the terms and conditions that individual Partner may have. Please note that experiences are subject to change without notice. This does not affect your statutory rights.</p>
-             
-              <div class="terms_li">
-                  <h5>1. Prices</h5>
-                  <p>
-                 The prices of specific experiences against which gift vouchers can be redeemed which are displayed on our website are correct to the best of our knowledge and maintained on a daily basis. In the event of a voucher being issued at or redeemed against an accidental incorrect price, we will endeavour to inform the purchaser of the error within seven days of the voucher purchase / voucher redemption being made, we will allow the recipient to either obtain a full refund against the voucher or choose to pay the additional difference in price. Promotional discount codes can only be redeemed against certain HappyBox experiences.     
-                  </p>
-              </div> 
-               <div class="terms_li">
-                  <h5>2. Availability</h5>
-                  <p>
-                HappyBox sells vouchers which are valid for 6 months from the date of issue (unless otherwise stated) and each recipient is free to book their preferred date for their chosen experience. The experiences in respect of which vouchers may be redeemed are subject to availability and in some cases, subject to weather conditions on the day. In order to avoid disappointment, we recommend that you book the experience in respect of which the voucher will be redeemed well in advance and DO NOT organise travel or accommodation until the booking has been confirmed by the Partner. </p>
-              </div>
-               <div class="terms_li">
-                  <h5>3. Booking</h5>
-                  <p>
-                Please do not arrive at a venue expecting to redeem your gift voucher without first making a booking with the Partner. HappyBox will not be held liable for any costs incurred if you do not follow the procedure set out in these Terms and Conditions and in your voucher pack.</p>
-              </div>
-               <div class="terms_li">
-                  <h5>4. Event Duration</h5>
-                  <p>
-                      Details of event duration given on the website or the gift voucher are to be used as a guide only. Most events will be ‘open’ days, meaning that other members of the public will be taking part too. This could mean taking your turn with other members of the public. The information on our website and voucher is meant as an indication of what to expect at the session in respect of which your voucher is redeemed. As HappyBox vouchers can be redeemed in return for multi-location experiences, session lengths, agendas, vehicles used, numbers of participants and other factors specific to that experience may vary from location to location. Delays, curtailments and breakdowns are not within our control and therefore we cannot be held liable.
-             </p>
-              </div>
-               <div class="terms_li">
-                  <h5>5. Safety</h5>
-                  <p>
-               The undertaking of these activities may involve some personal risk. With some events you may be required to sign a disclaimer on the day, please read these documents carefully. Some personal insurance policies may not cover some of the experiences in respect of which our vouchers may be redeemed. Please check with the Partner and your insurer well in advance of your day. Note that Partners usually require participants to comply with specified safety procedures. Please listen and take note if they ask you to do something - it is usually for your own safety.</p>
-              </div>
-               <div class="terms_li">
-                  <h5>6. Validity</h5>
-                  <p>
-Each gift voucher is valid for a maximum of six months from the date of purchase unless otherwise stated. A voucher will be deemed to be invalid if it is out of date (the validity date is clearly stated on the HappyBox website once the user has registered his Box). Vouchers can only be extended if they are still inside their expiry date, if they have not been previously used, and if the experience is still available from the supplier. If the customer or recipient is unable to utilise the voucher before the expiry date then the voucher can be extended for standard admin fee of Kes2 000 by contacting the HappyBox Customer Service. If the activity in respect of which the voucher is to be redeemed has increased in price, the customer will also need to pay the difference in price. Vouchers purchased on Special Offer may not be extendable (in these instances this will have been clearly stated at the time of purchase). All experiences should be booked and taken before the expiry date available on the HappyBox website.  </p>
-              </div>
-               <div class="terms_li">
-                  <h5> 7. Choosing the right experience</h5>
-                  <p>
-Many of the vouchers offered may be redeemed for experiences which have some type of restriction applied to them; these restrictions are not decided by us but by the individual Partner. These restrictions could include age, health, physical and size restrictions. Please read all the information provided for each experience, to ensure that your initial suggested voucher is the right one for the recipient. If you are unsure of the suitability of a particular event, please contact the HappyBox Customer Service Team with your query and we will advise you accordingly.  </p>
-              </div>
-               <div class="terms_li">
-                  <h5>8. Complaints</h5>
-                  <p>
-  The easiest way to resolve any problems that you may experience is to speak to the Partner on the day. They will ensure that any issues are rectified. If you are still not satisfied, please send in details of your complaint (including your voucher reference number and the name of the person you spoke to on the day) to: Customer Services, <b>customerservices@happybox.ke</b> , alternatively, you can contact our customer service by phone: +254 xxx. Please remember that the Partner will have the opportunity to respond as well. Similarly, we would like to hear any positive feedback. Email us on <b>customerservices@happybox.ke</b>
-                  </p>
-              </div>
-               <div class="terms_li">
-                  <h5>Mediation and conciliation</h5>
-                  <p>
-You agree that where the complaint is not addressed satisfactorily by the Partner, you agree to mediation and conciliation prior to pursuing to other dispute resolution mechanisms under this agreement. </p>
-              </div>
-               <div class="terms_li">
-                  <h5>Arbitration</h5>
-                  <p>
-  Should parties not resolve their dispute amicably as provided in this clause 8, within 14 days such a dispute, difference or question touching upon the construction of this Agreement shall be referred to the decision of a single arbitrator to be agreed between the parties within fourteen (14) days. In the event that parties are unable to agree on an arbitrator one shall be appointed at the request of either of the parties by the chairman for the time being of the institute of Chartered Arbitrators - Kenya Branch in accordance with and subject to the provisions of the Arbitration Act (Cap 49 Laws of Kenya) or any statutory modification or re-enactment thereof for the time being in force 
- <ol style="list-style-type: none;"> <li>a) To the extent permissible by Law, the determination of the Arbitrator shall be final, conclusive and binding upon the Parties hereto  </li>
-   <li>b) Pending final settlement or determination of a dispute, the Parties shall continue to perform their subsisting obligations hereunder.</li> 
-    <li>c) Nothing in this Agreement shall prevent or delay a Party seeking urgent injunctive or interlocutory relief in a court having jurisdiction</li>
-    </ol> </p>
-              </div>
-			  <div class="terms_li">
-                  <h5>9. Cancellations</h5>
-                  <p>
-Once you book a specific date with a Partner you are bound by their terms and conditions regarding cancellations. Once a date is confirmed with a Partner it is not possible to change this date unless the Partner agrees to the change. In the event of a Partner accepting a cancellation, not a simple change in date, HappyBox will, where applicable, provide you with a newly generated voucher code in the limit of 2 exchanges. Where a date cannot be altered by a Partner it will not be possible to issue a refund. In the unlikely event that one of our Partners needs to cancel the experience after you have booked a date, they will contact you. We strongly recommend however, that you contact the Partner on the day before you depart for your experience. In the event of cancellation, HappyBox will not be held liable for the cost of lost insurance premiums, travel expenses, pre-booked accommodation costs or any other costs incurred.				  
-  </p>
-              </div>
-			    <div class="terms_li">
-                  <h5>10. Partners & liability</h5>
-                  <p>
-				  When redeeming your voucher and booking an experience with a Partner you will be entering into a separate agreement with the Partner and will be bound by their own terms and conditions, including any restrictions applied by that Partner. Although HappyBox has sought to select highly experienced Partners of үnce in a lifetimeҠexperiences, HappyBox cannot be responsible for the safety standards or the quality or delivery of the experience, or any loss or damage suffered by you whilst participating in the experience for which the Partner shall be solely responsible. By purchasing a HappyBox voucher and, booking an experience with a supplier, you acknowledge that the experience in respect of which the voucher will be redeemed is dependent on certain factors beyond the control of HappyBox and you agree that neither HappyBox nor any Partner shall be liable for the cancellation, postponement or alteration of any experience for reasons beyond its reasonable control, including weather-related reasons, mechanical failure, location changes or otherwise. We do not undertake any technical examination of equipment, facilities or services in order to minimise personal risk. If mechanical machinery breaks down, you should ask the Partner for reasonable substitutions without notice. The total liability of HappyBox for any claim whatsoever in connection with the HappyBox voucher or any experience in respect of which a voucher is redeemed shall be limited to the price paid for the experience voucher. We have tried to ensure that the descriptions and images used on all marketing material are accurate. However, images are intended to give a general idea of the experience described and do not form part of any contract between the purchaser and / or the recipient of the voucher and HappyBox.
-</p>
-              </div>
-			      <div class="terms_li">
-                  <h5>11. Spectators</h5>
-                  <p>
-				  Most Partners will allow you to bring spectators to watch you participate in your selected experience. When redeeming your voucher and booking your date please inform the Partner that you wish to bring other people. Some Partners may request a nominal payment for spectators. Spectators are required to comply with the PartnersҠterms, conditions and expectations of conduct. Any spectators deemed under the influence of drugs or alcohol will not be permitted on site.
-</p>
-              </div>
-			    <div class="terms_li">
-                  <h5>12. Top-ups and credits</h5>
-                  <p>
-HappyBox vouchers are flexible and can be used for the whole range of experiences available. In order to achieve this, HappyBox puts every effort in compiling the widest range of experiences, should you not find the suitable experience in the held voucher, vouchers can be exchanged at a standard admin fee of Kes2,000 by contacting the HappyBox Customer Service Team. If you need to extend the validity of your voucher at the point of voucher exchange, this can be done for a standard admin fee of Kes2,000 by contacting the HappyBox Customer Service Team. If the substituted experience in respect of which the voucher is being exchanged costs more than the original voucher you must pay a top up amount. If the replacement voucher/experience is lower in price we will issue an additional credit voucher for the difference.</p>
-              </div>
-			  <div class="terms_li">
-                  <h5>13. Refunds</h5>
-                  <p>
-We are happy to make refunds on unused and unactivated vouchers bought directly from HappyBox within 30 days of purchase. Once you or your recipient has redeemed your voucher and booked an experience with a Partner you are bound by their Terms and Conditions. Please make yourself aware of these at the time of booking. All refunds will be made to the person who purchased the voucher and they will be refunded directly via the original method of payment. Should this not be possible for any reason, the refund shall be issued by cheque. All refunds are processed at month-end and take between 5 and 10 working days to show in the purchaserӳ account. All refunds will incur an administrative fee of xxx KES. To request a refund please call our friendly HappyBox Customer Service Team on +254xxx.
-</p>
-              </div>
-			    <div class="terms_li">
-                  <h5>14. Vouchers</h5>
-                  <p>
-The gift voucher is invalid if it has been tampered with or defaced. HappyBox accepts no responsibility for lost or stolen gift vouchers. Please keep the vouchers in a safe place and protect them as you would money.
-</p>
-              </div>
-			     <div class="terms_li">
-                  <h5>15. Discount codes</h5>
-                  <p>
-Discount codes are issued subject to availability and can be withdrawn without notice at any time. Only one discount may be used per order and these cannot be used against exchanges, extensions, delivery, gift packs or any other facility provided by HappyBox. Discounts can only be applied to internet orders on https://www.happybox.ke. Discount codes cannot be used when exchanging experience vouchers or when redeeming credit vouchers and money vouchers. HappyBox reserves the right to stop discount codes being used against specific products.
-</p>
-              </div>
-			   <div class="terms_li">
-                  <h5>16. Competition / Charity Prizes, Print and Go Tickets</h5>
-                  <p>
-These items cannot be exchanged, extended or refunded.</p>
-              </div>
-			  <div class="terms_li">
-                  <h5>17. Data Protection</h5>
-                  <p>
-Your privacy is our highest priority - Your details will only be used to process orders, gather feedback & data regarding our products & services and to send you promotional material (if opted into this service). Sub-contractors may also be used to fulfil tasks on our behalf, included but not limited to points referred to in this section, to which you consent.</p>
-              </div>
-			    <div class="terms_li">
-                  <h5>18. Cookie Policy</h5>
-                  <p>
-<b>We use cookies</b><br>
- Cookies are small text files that store data in the browser on your computer to help us improve the website and your use of it. We use cookies for different things on site to make sure you see our best offers, have the best experience possible and to help us analyse what happens on our site. We have different types of cookies including analytical cookies and third-party cookies. These cookies are all from trusted partners of HappyBox and last for different lengths of time depending on what type of cookie they are. <br><b>How to disable cookies </b><br>You can disable cookies in all web browsers from the tools/options section on your browser. Details of the browser you are using and how to do this can be found in the help section of most browsers. By continuing to use the HappyBox website or by not disabling your cookies we will assume consent to use cookies in the above way.
-</p>
-              </div>
-			   <div class="terms_li">
-                  <h5>19.Social Network Guidelines</h5>
-                  <p>
-				  User Conduct: You agree not to upload, post, email or otherwise transmit: (a) any User Content or other data that is false, inaccurate, unlawful, harmful, threatening, abusive, defamatory, vulgar, obscene, invasive of another's privacy, hateful, or that otherwise degrades or intimidates an individual or group of individuals on the basis of religion, gender, sexual orientation, race, ethnicity, age or disability; (b) any unsolicited or unauthorised advertising, promotional materials, "junk mail," "spam," or any other form of solicitation; or (c) any material that contains software viruses or any other computer code, files or programs designed to interrupt, damage, destroy or limit the functionality of any computer software or hardware or telecommunications equipment. <br>Content posted by you: You acknowledge that you are responsible for all the information, data, text, software, photographs, graphics, video, messages and other materials ("User Content"), whether publicly posted or privately transmitted, which you upload, post, email or otherwise transmit via the website and/or social network services. With respect to all User Content you elect to post, you grant us the royalty-free, perpetual, irrevocable, non-exclusive and fully sub-licensable right and license to use, reproduce, modify, adapt, publish, translate, create derivate works from, distribute, perform and display such User Content (in whole or part) worldwide and/or to incorporate it in other works in any form, media, or technology now known or later developed. We shall have the right (but not the obligation) in our sole discretion to refuse, move or remove any User Content that violates these terms and conditions or is otherwise objectionable.
-				  </p>
-         </div>
-          </div>
-           
-           
-                
-              </div>
-        
-          
- 
-      </section>
-<!--end add to cart cards-->
+<section class="container section_padding_top terms_content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="terms_li">
+				<h5>1. Introduction</h5>
+				<p>HappyBox ("us", "we", or "our") operates <a href="https://happybox.ke">https://happybox.ke</a> (hereinafter referred to as "Service").
+					Our Privacy Policy governs your visit to <a href="https://happybox.ke">https://happybox.ke</a>, and explains how we collect, safeguard and disclose information that results from your use of our Service.
+					We use your data to provide and improve Service. By using Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions. Where there is a conflict, this statement will prevail. This privacy notice supplements the other notices and is not intended to override them. </p>
+			</div>
+			<div class="terms_li">
+				<h5>2. Definitions</h5>
+				<p><strong>SERVICE</strong> means the <a href="https://happybox.ke">https://happybox.ke</a> website operated by HappyBox.</p>
+				<p><strong>PERSONAL DATA</strong> means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).</p>
+				<p><strong>USAGE DATA</strong> is data collected automatically either generated by the use of Service or from Service infrastructure itself (for example, the duration of a page visit).</p>
+				<p><strong>COOKIES</strong> are small files stored on your device (computer or mobile device).</p>
+				<p><strong>DATA CONTROLLER</strong> means a natural or legal person who (either alone or jointly or in common with other persons) determines the purposes for which and the manner in which any personal data are, or are to be, processed. For the purpose of this Privacy Policy, we are a Data Controller of your data.</p>
+				<p><strong>DATA PROCESSORS (OR SERVICE PROVIDERS)</strong> means any natural or legal person who processes the data on behalf of the Data Controller. We may use the services of various Service Providers in order to process your data more effectively.</p>
+				<p><strong>DATA SUBJECT</strong> is any living individual who is the subject of Personal Data.</p>
+				<p><strong>THE USER</strong> is the individual using our Service. The User corresponds to the Data Subject, who is the subject of Personal Data.</p>
+				
+			</div>
+			<div class="terms_li">
+				<h5>3. Information Collection and Use</h5>
+				<p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+			</div>
+			<div class="terms_li">
+				<h5>4. Types of Data Collected</h5>
+				<p>The information we collect and store about you includes but is not limited to the following: </p>
+				<ol style="list-style-type: none;">
+					<li>a) Personal Data<br> While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (You can update your information at any time on <a href="https://happybox.ke">https://happybox.ke</a>.). Personally identifiable information may include, but is not limited to first name and last name, e-mail address, phone number, physical address, etc.</li>
+					<li>b) b.	Preferences<br>	Your preferences for particular products, based on information provided by you or from your use of HappyBox's products.</li>					
+				</ol>
+			</div>
+			<div class="terms_li">
+				<h5>5. Cookies and Usage Data</h5>
+				<p><strong>Usage Data</strong></p>
+				<p>We may also collect information that your browser sends whenever you visit our Service or when you access Service by or through any device (<strong>"Usage Data"</strong>).</p>
+				<p>This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+				<p>When you access Service with a device, this Usage Data may include information such as the type of device you use, your device unique ID, the IP address of your device, your device operating system, the type of Internet browser you use, unique device identifiers and other diagnostic data.</p>
+				<p><strong>Tracking Cookies Data</strong></p>
+				<p>We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information. We also use Security Cookies for security purposes.</p>
+				<p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyze our Service.</p>
+				<p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+			</div>
+			<div class="terms_li">
+				<h5>6. Use of Data</h5>
+				<p>HappyBox uses the collected data for various purposes:</p>
+				<ul>
+					<li>To provide and maintain our Service;</li>
+					<li>To notify you about changes to our Service;</li>
+					<li>To provide customer support;</li>
+					<li>To gather analysis or valuable information so that we can improve our Service;</li>
+					<li>To monitor the usage of our Service;</li>
+					<li>To detect, prevent and address technical issues;</li>
+					<li>To provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information;</li>
+					<li>For any other purpose with your consent.</li>
+				</ul>
+			</div>
+			<div class="terms_li">
+				<h5>7. Direct Marketing</h5>
+				<p>We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you.</p>
+				<p>You may be required to opt in before receiving marketing messages from us.</p>
+				<p>You can ask us to stop sending you marketing messages at any time by logging into our website, <a href="https://happybox.ke">https://happybox.ke</a> and checking or unchecking relevant boxes to modify your preferences.</p>
+			</div>
+			<div class="terms_li">
+				<h5>8. Retention of Data</h5>
+				<p>We will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+				<p>Anonymised information that can no longer be associated with you may be held indefinitely.</p>
+				<p>We will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer time periods.</p>
+			</div>						
+			<div class="terms_li">
+				<h5>9. Transfer of Data</h5>
+				<p>Your information, including Personal Data, may be transferred to – and maintained on – computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
+				<p>If you are located outside Kenya and choose to provide information to us, please note that we transfer the data, including Personal Data, to Kenya and process it there.</p>
+				<p>HappyBox will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
+			</div>
+			<div class="terms_li">
+				<h5>10. Disclosure of Data</h5>
+				<p>Any disclosure of your information shall be in accordance with applicable law and regulations. We may disclose personal information that we collect, or you provide:</p>
+				<ol style="list-style-type: none;">
+					<li>a) a.	Business Transaction<br> If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.</li>
+					<li>b) b.	Other cases. We may disclose your information also:<br>	Your preferences for particular products, based on information provided by you or from your use of HappyBox's products.
+						<ul>
+							<li>To our subsidiaries and affiliates;</li>
+							<li>To contractors, service providers, software developers, survey agencies and other third parties we use to support our business;</li>
+							<li>To comply with a legal obligation;</li>
+							<li>To protect against legal liability;</li>
+							<li>To prevent or investigate possible wrongdoing in connection with the Service;</li>
+							<li>If we believe disclosure is necessary or appropriate to protect and defend the rights, property, or safety of the Company, users of the Services, or others;</li>
+							<li>With your consent in any other cases.</li>
+						</ul>
+					</li>					
+				</ol>
+			</div>
+			<div class="terms_li">
+				<h5>11. Spectators</h5>
+				<p>HappyBox has put in place technical and operational measures to protect your information from unauthorised access, accidental loss or destruction.</p>
+				<p>The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+			</div>
+			<div class="terms_li">
+				<h5>12. Service Providers</h5>
+				<p>We may employ third party companies and individuals to facilitate our Service (<strong>"Service Providers"</strong>), provide Service on our behalf, perform Service-related services or assist us in analysing how our Service is used.</p>
+				<p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+			</div>
+			<div class="terms_li">
+				<h5>13. Analytics</h5>
+				<p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
+				<p><strong>Google Analytics</strong></p>
+				<p>Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network.</p>
+				<p>You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents Google Analytics JavaScript (ga.js, analytics.js, and dc.js) from sharing information with Google Analytics about visits activity.</p>
+				<p>For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page: <a href="https://policies.google.com/privacy?hl=en" target="_blank">https://policies.google.com/privacy?hl=en</a></p>
+			</div>
+			<div class="terms_li">
+				<h5>14. CI/CD tools</h5>
+				<p>We may use third-party Service Providers to automate the development process of our Service.</p>
+			</div>
+			<div class="terms_li">
+				<h5>15. Payments</h5>
+				<p>We may provide paid products within Service. In that case, we use third-party services for payment processing (e.g. payment processors).</p>
+				<p>We will not store or collect your payment card or MPESA details. That information is provided directly to our third-party payment processors whose use of your personal information is governed by their Privacy Policy.</p>
+			</div>
+			<div class="terms_li">
+				<h5>16. Links to Other Sites</h5>
+				<p>Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
+				<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+			</div>
+			<div class="terms_li">
+				<h5>17. Children's Privacy</h5>
+				<p>Our Services are not intended for use by children under the age of 18 (<strong>"Child"</strong> or <strong>"Children"</strong>).</p>
+				<p>We do not knowingly collect personally identifiable information from Children under 18. If you become aware that a Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from Children without verification of parental consent, we take steps to remove that information from our servers.</p>
+			</div>
+			<div class="terms_li">
+				<h5>18. Changes to This Privacy Policy</h5>
+				<p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+				<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+			</div>
+			<div class="terms_li">
+				<h5>19. Contact Us</h5>
+				<p>If you have any questions about this Privacy Policy, please contact us by phone on <a href="tel:+254112454540">+254 112 454 540</a> or by email at <a href="mailto:customerservices@happybox.ke">customerservices@happybox.ke</a>.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!--end add to cart cards--> 
 <!--our partners -->
 
+<?php include 'shared/partials/partners.php';?>
+<?php include 'shared/partials/footer.php';?>
 
+<!-- Bootstrap core JavaScript -->
 
-
-       <?php include 'shared/partials/partners.php';?>
-      <?php include 'shared/partials/footer.php';?>
-  
-  <!-- Bootstrap core JavaScript -->
-  
 <?php include 'shared/partials/js.php';?>
-   
-  
- 
- 
-
 </body>
-
 </html>

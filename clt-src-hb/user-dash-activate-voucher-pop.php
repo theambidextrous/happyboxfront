@@ -18,7 +18,7 @@ $util->ShowErrors(1);
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Create Account Pop Up</title>
+        <title>HappyBox :: User Create Account Pop Up</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>

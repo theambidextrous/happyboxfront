@@ -54,7 +54,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: User Login Page</title>
+  <title>HappyBox :: User Login Page</title>
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
 </head>
@@ -117,7 +117,7 @@
 
                 </p>
                 <p class="text-orange text-center">
-                Don’t have an account yet?
+                Don't have an account yet?
                 </p>
                 <p class="text-center">
                 <a href="user-create-account.php" class="btn btn_rounded">CREATE YOUR ACCOUNT
