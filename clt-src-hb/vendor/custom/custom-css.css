@@ -752,6 +752,12 @@ th, td {
 .color_black {
 	color: black;
 }
+.contact_content a {
+	color:#000;	
+}
+.contact_content a:hover {
+	color:#0056b3;
+}
 /*booklet pop up */
 .booklet_dialogue {
 	max-width: 70% !important;
