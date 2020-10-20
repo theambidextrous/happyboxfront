@@ -14,7 +14,7 @@ $util = new Util();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: Home</title>
+  <title>HappyBox :: Home</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
@@ -72,7 +72,7 @@ $util = new Util();
                        <h2 class="text-left"><img src="shared/img/slider2_top.svg" class="slider_2_2_img"></h2>
           <div class="slider_header_2">
               <p>
- A HAPPYBOX is the gift of choice! It’s a means of giving the unique gift of opportunity, allowing the recipient to decide on what type of experience they would most enjoy!                 
+ A HAPPYBOX is the gift of choice! It's a means of giving the unique gift of opportunity, allowing the recipient to decide on what type of experience they would most enjoy!                 
               </p> 
               <p>
    This perfect gift consists of:               

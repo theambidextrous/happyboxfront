@@ -18,7 +18,7 @@ $util->ShowErrors(1);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: User Forgot Password Pop Up</title>
+  <title>HappyBox :: User Forgot Password Pop Up</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
@@ -49,7 +49,7 @@ $util->ShowErrors(1);
           <div class="col-md-5 user_login_l" >
               <h3 class="user_account_title text-center">FORGOT YOUR PASSWORD?</h3>
             
-                               <p class="text-orange text-center">Enter the email address you use to sign in, and we’ll send you a link to reset your password.</p>
+                               <p class="text-orange text-center">Enter the email address you use to sign in, and we'll send you a link to reset your password.</p>
            
               
               <form class="user_forgot">

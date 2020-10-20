@@ -63,7 +63,7 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: Shipping</title>
+        <title>HappyBox :: Shipping</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>

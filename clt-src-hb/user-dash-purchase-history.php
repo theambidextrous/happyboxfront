@@ -34,7 +34,7 @@ if(isset($_POST['makecart'])){
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Dashboard Purchase History</title>
+        <title>HappyBox :: User Dashboard Purchase History</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>

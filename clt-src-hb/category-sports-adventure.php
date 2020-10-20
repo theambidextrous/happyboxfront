@@ -29,7 +29,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: Category Sports Adventure</title>
+  <title>HappyBox :: Category Sports Adventure</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>

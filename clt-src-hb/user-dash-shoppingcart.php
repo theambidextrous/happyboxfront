@@ -20,7 +20,7 @@ $util->ShowErrors(1);
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Happy Box:: User Shopping Cart</title>
+        <title>HappyBox :: User Shopping Cart</title>
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>

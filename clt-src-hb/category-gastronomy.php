@@ -28,7 +28,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Happy Box:: Category Gastronomy</title>
+  <title>HappyBox :: Category Gastronomy</title>
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
@@ -47,13 +47,13 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
              
               <div class="gastronomy_banner_title">
                        <h3>  
-                           It’s time to have<br> a gourmet break . . .
+                           It's time to have<br> a gourmet break . . .
                        </h3>
               </div>
               <p class="text-white gastronomy_banner_p text-center">
                   . . . and share a convivial moment with your dear friends and relatives around a good meal or a wine tasting.<br><br>
                   Browse our selection of culinary delights that will undoubtedly appeal to all palates with diverse flavours from far and wide. <br><br>
-                  We’ve got something for every taste!
+                  We've got something for every taste!
            </p>
               <div class="well_scroll text-center">
                   <img class="" src="shared/img/icons/icn-arrow-orange.svg">
@@ -80,7 +80,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
               </div></div>
              <div class="col-10">
               <p class="well_banner_p text-black text-center">
-                  . . . and share a convivial moment with your dear friends and relatives around a good meal or a wine tasting.<br><br> Browse our selection of culinary delights that will undoubtedly appeal to all palates with diverse flavours from far and wide.<br><br> We’ve got something for every taste!
+                  . . . and share a convivial moment with your dear friends and relatives around a good meal or a wine tasting.<br><br> Browse our selection of culinary delights that will undoubtedly appeal to all palates with diverse flavours from far and wide.<br><br> We've got something for every taste!
               </p>
              </div>
                <div class="col-12">

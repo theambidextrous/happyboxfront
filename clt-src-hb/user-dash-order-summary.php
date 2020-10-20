@@ -35,7 +35,7 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Happy Box:: User Order SummarSy</title>
+        <title>HappyBox :: User Order SummarSy</title>
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
     </head>
