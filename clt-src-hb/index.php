@@ -163,18 +163,16 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				</div>
 			</div>
 		</div>
-	</div>
-	<?php 
-	if($_row_count%2 == 0){
-	 // print '</div><br><hr class="desktop_view"><br><div class="row">';
-		print '</div><br><br><div class="row">';
-	}
-	$_row_count++;
-	$col_count++;
-	endforeach;
-	?>
-	
-	<!-- end row -->
+		<?php 
+		if($_row_count%2 == 0){
+		 // print '</div><br><hr class="desktop_view"><br><div class="row">';
+			print '</div><br><br><div class="row">';
+		}
+		$_row_count++;
+		$col_count++;
+		endforeach;
+		?>	
+		<!-- end row -->
 	</div>
 </section>
 <!--end add to cart cards-->
