@@ -56,9 +56,9 @@
        <!--  <a href="" class="nav-link">
            <img src="../shared/img/icons/call_nav.svg" class="call_btn" data-toggle="tooltip" title="Hooray!"> 
         </a>-->
-         <a href="tel:25477676767" class="nav-link tooltips">
+         <a href="tel:+254112454540" class="nav-link tooltips">
              <img src="../shared/img/icons/call_nav.svg" class="call_btn"> <span>Contact Partner Care Team<br>
-             Tel:254776767676</span>
+             Tel:+254 112 454 540</span>
         
         </a>
     </li>
