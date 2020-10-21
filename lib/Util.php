@@ -9,8 +9,8 @@
  class Util
  {
     function LoadEnv(){
-        //$env = parse_ini_file('C:\xampp\htdocs\happyboxfront\.env');
-        $env = parse_ini_file('/var/www/happybox.ke/public_html/staging/.env');
+        $env = parse_ini_file('C:\xampp\htdocs\happyboxfront\.env');
+        //$env = parse_ini_file('/var/www/happybox.ke/public_html/staging/.env');
         return json_decode(json_encode($env));
     }
     function AppHome(){

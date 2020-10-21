@@ -55,16 +55,19 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
 
         <!--end discover our selection-->
         <section class="container section_padding_top desktop_view">
-            <div class="row">
-                <div class="col-md-12 ">
+           
                   <h3 class="user_blue_title" >ORDER SUMMARY</h3>
                   <!--progress strip-->
+                     <div class="row">
+                <div class="col-md-12 ">
                   <div class=" cart_progress_strip row">
                     <div class="col-3 cart_strip"></div>
                     <div class="col-3 shipping_strip"></div>
                     <div class="col-3 summary_strip"></div>
-                  </div><br>
+                      </div>    </div></div><br>
                   <!--end progress strip-->
+                   <div class="row">
+                <div class="col-md-12 col_rl_no ">
                   <div class="table-responsive">
                     <div class="">
                     <?php
@@ -111,19 +114,20 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                     <form action="" method="post">
                       <?=$_err?>
                       <input type="hidden" name="orderid" value="<?=$current_order_id?>"/>
+                      <div class="table_radius_order_sum">
                       <table class="table order_summary table-bordered">
                         <tr class="order_summary_tr_td">
                           <td class="b">ORDER NUMBER</td>
                           <td><?=$current_order_id?></td>
                           <td colspan="4" class="invisible_table"></td>
                         </tr>
-                        <tr class="order_summary_tr_td">
+                        <tr class="order_summary_tr_td order_summary_tr_td2">
                           <th class="b col_1">IMAGE</th>
                           <th>BOX NAME</th>
                           <th>BOX TYPE</th>
                           <th>RECIPIENT NAME</th>
-                          <th>DELIVERY ADDRESS</th>               
-                          <th>COST</th>
+                          <th class="delivery_th">DELIVERY ADDRESS</th>               
+                          <th class="w_118">COST</th>
                         </tr>
                         <?php
                           $this_order = $current_order_id;
@@ -210,10 +214,11 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                           }
                         
                         ?>
-                        <tr class="">
-                          <td colspan="4" class=""></td>
-                          <td colspan="2" align="right" class="">
-                            <table>
+                        
+                      </table>
+                          <div class="table_radius_order_sum2">
+                          
+                          <table class="cart_order_summ table-bordered">
                               <tr>
                                 <td>SUB TOTAL (Incl. VAT)</td>
                                 <td>KES <?=number_format(array_sum($_total_cart), 2)?></td>
@@ -227,8 +232,8 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                                 <td>KES <?=number_format((array_sum($_total_cart)+array_sum($_total_shipping)), 2)?></td>
                               </tr>
                             </table>
-                          </td>
-                        </tr>
+                          </div>
+                      
                         <!-- hiddens -->
                         <input type="hidden" name="customer_buyer" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>"/>
                         <input type="hidden" name="has_p_box" value="<?=array_sum($_has_p_box)?>"/>
@@ -236,7 +241,8 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                         <input type="hidden" name="subtotal" value="<?=array_sum($_total_cart)?>"/>
                         <input type="hidden" name="shipping" value="<?=array_sum($_total_shipping)?>"/>
                         <input type="hidden" name="total" value="<?=(array_sum($_total_cart)+array_sum($_total_shipping))?>"/>
-                        <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
+                        <table class="order_summ_actions">
+                        <tr align="right" class="cart_totals  cart_totals_actions ">
                           <td colspan="6 ">
                             <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-back-to-shipping-orange.svg"></a>
                             <?php 
@@ -249,7 +255,8 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                             <?php } ?>
                           </td>
                         </tr>
-                      </table>
+                        </table>
+                      </div>
                       </form>
                     </div>
                   </div>

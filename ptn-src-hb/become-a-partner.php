@@ -321,7 +321,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Business Category</label>
-                                            <select name="business_category" class="form-control rounded_form_control">
+                                            <select id="bus_cat" name="business_category" class="form-control rounded_form_control">
                                                 <option value="nn">Select category</option>
                                                 <?php
                                                     foreach( $topics as $_topic ){
@@ -329,6 +329,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                                     }
                                                 ?>
                                             </select>
+                                            
                                         </div>
                                         <div class="form-group">
                                             <label class="text-left">Business Short Description</label>
@@ -439,7 +440,15 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
           }
       });
       }
-  });  
+      
+      //selected
+    /*  $('#bus_cat').find('option[selected="selected"]').each(function(){
+    $(this).prop('selected', true);
+})*/
+      
+  }); 
+  
+  
 </script>
 </html>
 

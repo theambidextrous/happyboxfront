@@ -127,7 +127,8 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			$_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
 			$_pop_str = str_replace("'", "", $_pop_str);
 		?>
-		<div class="col-md-6 <?=$col_count_col;?>" onclick="booklet_show('<?=$_pop_str?>')">
+		<!--<div class="col-md-6 <?=$col_count_col;?>" onclick="booklet_show('<?=$_pop_str?>')">-->
+                    <div class="col-md-6 <?=$col_count_col;?>">
 			<div class="card selection_card sports_card">
 				<div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
 					<img src="shared/img/icons/magnifyglass.svg"/>

@@ -3458,3 +3458,49 @@ nav a:hover, nav a:focus {
 .modify_date .modal-content {
 	border: solid 1px #0985B6;
 }
+/*order table*/
+.table_radius_order_sum {
+    overflow: auto;
+    border-top-left-radius:8px !important; 
+   
+    line-height: 1.2;
+}
+.cart_order_summ{   
+    width: 30%;
+    float: right;
+    font-size: 12px;
+} 
+
+.delivery_th{
+    width: 29% !important;
+}
+.table_radius_order_sum2 {
+    overflow: auto;
+    border-bottom-left-radius: 8px !important;
+     border-bottom-right-radius: 8px !important;
+    line-height: 1.2;
+}
+.w_118{
+    
+    width: 118px;
+}
+.order_summ_actions{
+    margin-top: 10px;
+}
+.order_summ_actions th{
+        padding-left: 0px !important;
+}
+.invisible_btn{
+     
+    background: transparent;
+    border: 0px !important;
+}
+.col_rl_no{
+    padding-right: 0px !important;
+      padding-left: 0px !important;
+}
+.order_summary_tr_td2 {
+    background: #00ACB333 !important;
+    color: black !important;
+}
+
