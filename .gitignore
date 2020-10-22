@@ -1,8 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
-/lib/Order.php
-/lib/Util.php
+Order.php
+Util.php
 /storage/*.key
 .env
 Handler.php

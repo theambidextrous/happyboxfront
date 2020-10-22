@@ -32,6 +32,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 
   <!-- Bootstrap core CSS -->
  <?php include 'shared/partials/css.php'; ?>
+ 
 </head>
 
 <body class="client_body">
@@ -96,7 +97,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
     <!--end well being banner-->
       <!--end discover our selection-->
       <section class="container section_padding_top cat_well">
-          <div class="row">
+          <div class="row col-container">
           <?php 
           $_row_count = 1;
           $_box_count = count($_all_boxes);
@@ -120,6 +121,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
             }
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
           ?>
+            
             <div class="col-md-4 no_pad_lr">
               <div class="card selection_card sports_card">
                <div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
@@ -163,7 +165,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                                
                          </div>
               </div>
-            </div>
+            </div> 
             <?php 
             if($_row_count%3 == 0){
               print '</div><br><hr><br><div class="row">';

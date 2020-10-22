@@ -5,9 +5,9 @@
 			<div class="col-md-3 upper_footer_col1">
 				<span>Follow HappyBox</span>
 				<ul>
-					<li><a href="https://www.facebook.com/HappyBoxke-104873668046223"><img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/fb.svg"></a></li>
-					<li><a href="https://www.instagram.com/happybox.ke/"><img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-ig.svg"></a></li>
-					<li><a href="https://www.linkedin.com/company/happybox-ke/"><img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-li.svg"></a></li>
+					<li><a href="https://www.facebook.com/HappyBoxke-104873668046223" target="_blank"><img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/fb.svg"></a></li>
+					<li><a href="https://www.instagram.com/happybox.ke/" target="_blank"><img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-ig.svg"></a></li>
+					<li><a href="https://www.linkedin.com/company/happybox-ke/" target="_blank"><img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-li.svg"></a></li>
 				</ul>
 			</div>
 			<div class="col-md-12 paymentmethods mobile_view">

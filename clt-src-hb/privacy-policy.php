@@ -77,7 +77,7 @@ $util->ShowErrors(1);
 				<p>The information we collect and store about you includes but is not limited to the following: </p>
 				<ol style="list-style-type: none;">
 					<li>a) Personal Data<br> While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (You can update your information at any time on <a href="https://happybox.ke">https://happybox.ke</a>.). Personally identifiable information may include, but is not limited to first name and last name, e-mail address, phone number, physical address, etc.</li>
-					<li>b) b.	Preferences<br>	Your preferences for particular products, based on information provided by you or from your use of HappyBox's products.</li>					
+					<li>b) Preferences<br>	Your preferences for particular products, based on information provided by you or from your use of HappyBox's products.</li>					
 				</ol>
 			</div>
 			<div class="terms_li">

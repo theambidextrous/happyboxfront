@@ -321,8 +321,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Business Category</label>
-                                            <select id="bus_cat" name="business_category" class="form-control rounded_form_control">
-                                                <option value="nn">Select category</option>
+                                            <select id="bus_cat" name="business_category" class="form-control rounded_form_control select_ctrl">
+                                                <option value="nn" selected="selected">Select category</option>
                                                 <?php
                                                     foreach( $topics as $_topic ){
                                                         print '<option value="'.$_topic['name'].'">'.$_topic['name'].'</option>';
@@ -341,7 +341,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                         </div>
                                         <div class="form-group">
                                             <label>Business Location</label>
-                                            <select name="location" id="location" class="form-control rounded_form_control" id="select_box_type">
+                                            <select name="location" id="location" class="form-control rounded_form_control select_ctrl" id="select_box_type">
                                                 <option value="nn">Select location</option>
                                                 <?php 
                                                 foreach($util->locations_list() as $_loc ){
