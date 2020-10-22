@@ -12,7 +12,7 @@ $picture = new Picture();
 $sendy = new Sendy($util->MapsKey());
 $box = new Box();
 $util->ShowErrors(1);
-// $util->Show($_SESSION);
+// $util->Show($_SESSION['usr_info']);
 unset($_SESSION['next']);
 if(!isset(json_decode($_SESSION['usr'])->access_token)){
   $_SESSION['next'] = 'user-dash-order-summary.php';
@@ -21,11 +21,12 @@ if(!isset(json_decode($_SESSION['usr'])->access_token)){
 if(empty($_SESSION['curr_usr_cart'][1000]['order_id']) && empty($_SESSION['unpaid_order'])){
   header("Location: user-dash-shipping.php");
 }
-if( count( $_SESSION['curr_usr_cart'][2000] ) ){
-  header("Location: user-dash-shipping.php");
-}
+// if( count( $_SESSION['curr_usr_cart'][2000] ) ){
+//   header("Location: user-dash-shipping.php");
+// }
 $token = json_decode($_SESSION['usr'])->access_token;
 $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
+$order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +95,8 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                                 'order_totals' => $_POST['total'],
                                 'token' => $token
                               ];
+                              // $util->Show($body);
+                              // exit;
                               $create_rep = $o->create($body);
                               if(json_decode($create_rep)->status == '0'){
                                 $_SESSION['unpaid_order'] = $_POST['orderid'];
@@ -138,7 +141,11 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                             // $util->Show($_SESSION['curr_usr_cart']);
                             /**  */
                             foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
-                              if(!isset($_cart_item['order_id'])){
+                              if(isset($_cart_item['order_id'])){
+
+                              }elseif(isset($_cart_item['physical_address'])){
+
+                              }else{
                               $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
                               $_b_cost = floor($_cart_item[1]*$_box_data->price);
                               $_total_cart[] = $_b_cost;
@@ -165,30 +172,16 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                         <?php
                               }else{
                                 array_push($_has_p_box, 1);
-                                try{
-                                  $sendy_resp = $sendy->post_fields($_cart_item, $this_order, $box, 'quote');
-                                  // $util->Show($sendy_resp);
-                                  $errr = '';
-                                  // $s_amt = 10;
-                                  if(json_decode($sendy_resp)->status){
-                                    $s_amt = json_decode($sendy_resp)->data->amount;
-                                    // $errr = 'Cost of delivering: KES ' . $s_amt;
-                                    // $_total_shipping[] = $s_amt;
-                                  }elseif(isset(json_decode($sendy_resp)->data)){
-                                    $errr = $util->error_flash(json_decode($sendy_resp)->data);
-                                    array_push($_has_no_ship, 1);
-                                    $_total_shipping[] = 0;
-                                  }else{
-                                    $errr = $util->error_flash(json_decode($sendy_resp)->description);
-                                    array_push($_has_no_ship, 1);
-                                    $_total_shipping[] = 0;
-                                  }
-                                }catch(Exception $e){
-                                  $errr = $util->error_flash($e->getMessage());
-                                  $_total_shipping[] = 0;
+                                $errr = '';
+                                // $s_amt = 10;
+                                if(count($order_physical_address)){
+                                  $_total_shipping[] = $s_amt = $util->AppShipping();
+                                }else{
+                                  $errr = "No delivery address for this physical box";
                                   array_push($_has_no_ship, 1);
+                                  $_total_shipping[] = 0;
                                 }
-                                $_address_string = ucwords(strtolower($_cart_item[4][1])).', '. strtoupper($_cart_item[4][2]).', '. $_cart_item[4][4];
+                                $_address_string = $order_physical_address[1];
                         ?>
                         <tr>
                           <td class="">
@@ -196,8 +189,8 @@ $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
                           </td>
                           <td><b><?=$_box_data->name?></b></td>
                           <td>Physical box</td>
-                          <td><?=$_cart_item[4][0]?></td>
-                          <td><?=$_address_string?><br><i>*<?=$errr?></i></td>
+                          <td><?=$order_physical_address[0]?></td>
+                          <td><?=$_address_string?><br><i><?=$errr?></i></td>
                           <td>KES <?=number_format($_b_cost, 2)?></td>
                         </tr>
                         <?php 

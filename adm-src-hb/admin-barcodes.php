@@ -26,9 +26,14 @@ if(isset($_POST['downloadit'])){
         'borderSize'  => 6,
         'cellMargin'  => 50
     ];
+    $textFontStyle = [
+        'bold' => true,
+        'name'  => "Calibri",
+        'size'  => 11
+    ];
     $imgStyle = [
-        'width' => 193,
-        'height' => 49,
+        'width' => 130,
+        'height' => 25,
         'marginTop' => -1,
         'marginLeft' => -1,
         'wrappingStyle' => 'behind'
@@ -47,7 +52,7 @@ if(isset($_POST['downloadit'])){
             $imgData = str_replace('data:image/png;base64,', '', $thedata['src']);
             $table->addRow();
             $table->addCell(7500)->addImage(base64_decode($imgData), $imgStyle);
-            $table->addCell(4500)->addText($thedata['box_voucher']);
+            $table->addCell(4500)->addText($thedata['box_voucher'], $textFontStyle);
         }
     }
     else
@@ -218,6 +223,7 @@ if(isset($_POST['downloadit'])){
                 <form class="filter_form" method="post">
                     <div class="form-group row">
                         <label for="BoxType" class="col-form-label">Box Name</label><br>
+                        <input type="hidden" name="codetype" value="C93"/>
                         <select class="form-control" name="boxname" id="">
                             <option value="nn">Select box name</option>
                             <?php 
@@ -228,7 +234,7 @@ if(isset($_POST['downloadit'])){
                             ?>
                         </select>
                     </div>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="BoxType" class="col-form-label">Barcode Type</label><br>
                         <select class="form-control" name="codetype" id="">
                             <option value="nn">Select Barcode Type</option>
@@ -237,16 +243,8 @@ if(isset($_POST['downloadit'])){
                             <option value="C39E">C39E</option>
                             <option value="C39E+">C39E+</option>
                             <option value="C93">C93</option>
-                            <!-- <option value="S25">S25</option>
-                            <option value="S25+">S25+</option>
-                            <option value="I25">I25</option>
-                            <option value="MSI+">MSI+</option>
-                            <option value="POSTNET">POSTNET</option>
-                            <option value="QRCODE">QRCODE</option>
-                            <option value="PDF417">PDF417</option>
-                            <option value="DATAMATRIX">DATAMATRIX</option> -->
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group row">
                         <div class="form-check-inline">
                             <label class="form-check-label" style="color:#000">

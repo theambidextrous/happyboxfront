@@ -11,7 +11,7 @@ $picture = new Picture();
 $box = new Box();
 $util->ShowErrors(1);
 $has_physical_box = [];
-$util->Show($_SESSION['curr_usr_cart']);
+// $util->Show($_SESSION['curr_usr_cart']);
 /** update shipping data */
 if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
   $_ll = 0;

@@ -24,7 +24,7 @@ function format_service($keys, $values){
         array_push($rtn, $k . '~' . $values[$lp]);
         $lp++;
     }
-    return $rtn;
+    return array_unique($rtn);
 }
 function reloadcurrent(){
     print '<script>
@@ -146,6 +146,7 @@ function reloadcurrent(){
                                         'short_description' => $_POST['short_description'],
                                         'location' => $_POST['location'].' | '. $_POST['sub_location'],
                                         'phone' => $_POST['phone'],
+                                        'email' => $_POST['email'],
                                         'business_name' => $_POST['business_name'],
                                         'business_category' => $_POST['business_category'],
                                         'business_reg_no' => $_POST['business_reg_no'],
@@ -290,7 +291,7 @@ function reloadcurrent(){
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Price range</label>
                                         <select name="range[]" class="form-control rounded_form_control">
-                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <option value="nn">Select a Price</option>
                                             <?php
                                                 foreach( $prices as $_price ){
                                                     if($_price['name'] == $_pricename){
@@ -314,7 +315,7 @@ function reloadcurrent(){
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Price range</label>
                                         <select name="range[]" class="form-control rounded_form_control">
-                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <option value="nn">Select a Price</option>
                                             <?php
                                                 foreach( $prices as $_price ){
                                                      print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
@@ -378,6 +379,7 @@ function reloadcurrent(){
                 // .find("*")
                 .each(function() {
                     $(this).find("input[type=text]").val("");
+                    $(this).find('select').val("nn").attr("selected", "selected");
                     var id = this.id || "";
                     var match = id.match(regex) || [];
                     if (match.length == 3) {

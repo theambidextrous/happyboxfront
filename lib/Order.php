@@ -334,8 +334,13 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                     $e_vouchers = $p_vouchers = [];
                     $box = new Box();
                     $picture = new Picture();
+                    $order_physical_address = $order_items[2000]['physical_address'];
                     foreach( $order_items  as $_order_item ):
-                        if(!isset($_order_item['order_id'])){
+                        if(isset($_order_item['order_id'])){
+
+                        }elseif(isset($_order_item['physical_address'])){
+
+                        }else{
                             $_box_data_resp = $box->get_byidf('00', $_order_item[0]);
                             if(json_decode($_box_data_resp)->status != '0'){
                                 throw new Exception($_box_data_resp);
@@ -391,7 +396,7 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                     'customer_buyer_invoice' => $order_id,
                                     'box_qty' => $_box_qty,
                                     'box_voucher_status' => '2',
-                                    'box_delivery_address' => $_order_item[4][1]
+                                    'box_delivery_address' => $order_physical_address[1]
                                 ];
                                 $_c_resp = $this->assign_c_buyer_pbox($token, $body);
                                 if(json_decode($_c_resp)->status != '0'){
@@ -420,7 +425,11 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                     </tr>';
                     $_total_cart = [];
                     foreach( $order_items  as $_order_item_m ):
-                        if(!isset($_order_item_m['order_id'])){
+                        if(isset($_order_item_m['order_id'])){
+
+                        }elseif(isset($_order_item_m['physical_address'])){
+
+                        }else{
                             /** for each order item send email to buyer - admin -receiver */
                             $_box_data_resp = $box->get_byidf('00', $_order_item_m[0]);
                             if(json_decode($_box_data_resp)->status != '0'){
@@ -482,8 +491,8 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                 </tr>
                                 ';
                             }else{ /** pbox */
-                                $_address_string = ucwords(strtolower($_order_item_m[4][1])).', '. strtoupper($_order_item_m[4][2]).', '. $_order_item_m[4][3];
-
+                                $_address_string = $order_physical_address[1];
+                                /** write to cron  */
                                 $full_order_email_body .= '
                                 <tr>
                                     <td class="">
@@ -491,7 +500,7 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
                                     </td>
                                     <td>'.$_box_data->name.'</td>
                                     <td>Physical Box</td>
-                                    <td>'.$_order_item_m[4][0].'</td>
+                                    <td>'.$_address_string.'</td>
                                     <td>Pending</td>
                                     <td>KES '.number_format($_b_cost, 2).'</td>
                                 </tr>
@@ -551,6 +560,32 @@ require_once 'C:\xampp\htdocs\happyboxfront\lib\Picture.php';
     }
     function email_full_order_to_admin_and_buyer($token, $body){
         $endpoint = 'services/orders/order/mail/fullorder';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function new_cron($token, $body){
+        $endpoint = 'services/orders/new/cron';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function run_cron($token, $body){
+        $endpoint = 'services/orders/run/cron';
         $util = new Util();
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);

@@ -80,9 +80,6 @@ $order = new Order($token);
                         ?>
                         <b> UNPAID ORDER: <?=$_SESSION['unpaid_order']?></b> 
                         <b> AMOUNT: KES <?=number_format(($order_data['shipping_cost']+$order_data['subtotal']), 2)?></b> 
-                        <!-- <b> SUB-TOTAL: <=number_format($order_data['subtotal'], 2)?></b> 
-                        <b> SHIPPING: KES<=number_format($order_data['shipping_cost'], 2)?></b>
-                        <b> TOTAL: KES <=number_format(($order_data['shipping_cost']+$order_data['subtotal']), 2)?></b>  -->
                         <br>Choose your preferred payment method to continue
                     </div>
                 </div>
@@ -117,14 +114,7 @@ $order = new Order($token);
                                     <div class="col-md-6">
                                         <!-- instructions area -->
                                         <div id="msg"></div>
-                                        <div id="inst"></div>
-                                        <!-- instructions end -->
-                                        <!-- debug -->
-                                        <div id="c2b"></div>
-                                        <hr>
                                         <div id="express"></div>
-                                        <hr>
-                                        <div id="reg"></div>
                                     <!-- end debug -->
                                     </div>
                                 </div>
@@ -206,9 +196,9 @@ $order = new Order($token);
                     var rtn = JSON.parse(res);
                     if(rtn.hasOwnProperty("MSG")){
                         // $('#c2b').text(rtn.c2b);
-                        // $('#express').text(rtn.exp);
+                        $('#express').text(rtn.exp);
                         // $('#reg').text(rtn.reg);
-                        $('#inst').html(rtn.inst);
+                        // $('#inst').html(rtn.inst);
                         $('#msg').html(rtn.MSG);
                         waitingDialog.hide();
                         return;
