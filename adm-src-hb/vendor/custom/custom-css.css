@@ -13,17 +13,17 @@ body{
     font-size: 15px !important;
 }
 .col_no_r{
-  padding-right: 1px !important;  
+    padding-right: 1px !important;  
 }
 .col_no_l{
-    
+
 }
 
 .border_right {
     border-right: solid 1px;
 }
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 .btn:hover {
     color: #c20a2b !important;
@@ -45,7 +45,7 @@ html {
 }
 .bg-admin{
     background: #C20A2B !important;
-        padding: .8rem 1rem !important;
+    padding: .8rem 1rem !important;
 }
 .bg-admin a{
     color: white !important;
@@ -60,9 +60,9 @@ html {
 
 }
 .dropdown-toggle::after{
- display: none !important;   
+    display: none !important;   
 }
- .user_icon{
+.user_icon{
     height: 30px;
 }
 .user_icon_drop {
@@ -70,14 +70,15 @@ html {
 }
 
 .dropdown_user_img {
-    height: 31px;
-    display: inline;
+    height: 33px;
+    display: block;
+    margin-top: 6px;
 }
 .dropdown-item a{
     color: #C20A2B !important;    
 }
 .dropdown-menu .card-footer {
-padding-left: 13px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-right: 13px;
     padding-bottom: 0px;    
@@ -89,24 +90,24 @@ padding-left: 13px;
 /* End Top Main  Nav*/
 /*Top 2nd  Nav*/
 .top_menu ul{
-padding-left: 0px;
+    padding-left: 0px;
     margin-bottom: 13px;
     margin-top: 13px;
 }
- .top_menu ul li{
-display: inline;
+.top_menu ul li{
+    display: inline;
     padding-right: 55px;
 }
 .top_menu ul li a{
-etter-spacing: 0px;
+    etter-spacing: 0px;
     color: #0185B6 !important;
     font-weight: bold;
-    
+
 }
 .top_menu ul li a:hover{
-  color: #c20a2b;
-text-decoration: none;  
-border-bottom: solid 2px #c20a2b;
+    color: #c20a2b;
+    text-decoration: none;  
+    border-bottom: solid 2px #c20a2b;
 }
 .is_active{
     color: #c20a2b!important;
@@ -134,7 +135,7 @@ border-bottom: solid 2px #c20a2b;
 }
 .table_data1 td, .table_data1 th {
     padding: 2px 1px;
-    
+
 }
 .inner_table td, .inner_table th {
     padding: 0px 0px !important;
@@ -143,13 +144,13 @@ border-bottom: solid 2px #c20a2b;
     padding: 0px 1px;
 }
 .table td, .table th {
-       border-top: 0px !important;
+    border-top: 0px !important;
 }
 .inner_table{
     text-transform: uppercase;
-    
+
 }
- .inner_table .td_a{
+.inner_table .td_a{
     background: #717171;
     width: 31%;
     text-align: center;
@@ -175,8 +176,8 @@ border-bottom: solid 2px #c20a2b;
     font-size: 13px;
     text-align: center;
 }
- .inner_table .td_b{
-      text-align: center;
+.inner_table .td_b{
+    text-align: center;
     background: #c20a2b;
     vertical-align: middle;
 }
@@ -187,18 +188,18 @@ border-bottom: solid 2px #c20a2b;
     background: #b2dae9;
     padding: 5px;  
 }.generate_rpt{
-   background: #0185B6 0% 0% no-repeat padding-box;
+    background: #0185B6 0% 0% no-repeat padding-box;
     border-radius: 8px;
     opacity: 1;
     color: white;
-        font-weight: bold;
+    font-weight: bold;
 }
 .status_bar{
     padding-top: 11px;
 }
 .status_btn{background: #0185B6 0% 0% no-repeat padding-box;
-border-radius: 8px;
-opacity: 1;
+            border-radius: 8px;
+            opacity: 1;
 }
 /*Report section */
 
@@ -207,32 +208,21 @@ opacity: 1;
     background-color: transparent;
 }
 .report_arrow {
-height: 7px;
+    height: 7px;
     margin-top: -3px;
     margin-left: 6px;}
 .create_report_r{    
     margin-top: 8px;
 }
-.create_report_r_btn{
-    
-}
-
 
 .rpt_drop .dropdown-item {
-   padding: .05rem 0.4rem !important;
+    padding: .05rem 0.4rem !important;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: normal;
 }
-
-
-
- 
-
-
-
 /*admin footer*/
 #goTop{
-      background: #00acb3;
+    background: #00acb3;
     padding: 0px 0px;
     position: fixed;
     right: 5px;
@@ -254,24 +244,27 @@ height: 7px;
     background: #C20A2B 0% 0% no-repeat padding-box;
     opacity: 1;
     left: -94px;
-       padding: 24px 2px 0px !important;
+    padding: 24px 2px 0px !important;
     border: 0px;
     width: 257px;
-        border-radius: 8px;
+    border-radius: 8px;
+}
+.admin_drop_details span{
+    display: block !important;
 }
 
 
- 
 .admin_name_txt{
     font-weight: bold;
 }
 .dropdown-menu .card {
-     background-color: transparent;
-     border: 0px !important;
-   
+    background-color: transparent;
+    border: 0px !important;
+
 }
 .user_dropdown_txt{
     font-weight: bold;
+    font-size: 14px;
 }
 .email_dropdown {
     font-size: 14px;
@@ -279,31 +272,31 @@ height: 7px;
 
 
 .drop_partner{
-background: #C20A2B 0% 0% no-repeat padding-box;
+    background: #C20A2B 0% 0% no-repeat padding-box;
     opacity: 1;
     left: -75px;
     min-width: 16rem;
-padding: 11px 1px 0px !important;
+    padding: 11px 1px 0px !important;
     border: 0px;
 
 }
 .drop_partner .card {
-     background-color: transparent;
-     border: 0px !important;
-   
+    background-color: transparent;
+    border: 0px !important;
+
 }
 .drop_down_profile{
-      background: #0185B6;
-         padding: 7px 6px;
+    background: #0185B6;
+    padding: 7px 6px;
     border-bottom-left-radius: 8px;
-        font-weight: bold;
+    font-weight: bold;
     font-size: 14px;
 }
 .drop_down_logout{
-background: #00ACB3;
+    background: #00ACB3;
     padding: 6px 6px;
-        border-bottom-right-radius: 8px;
-            font-weight: bold;
+    border-bottom-right-radius: 8px;
+    font-weight: bold;
     font-size: 14px;
 }
 /*reports*/
@@ -313,30 +306,30 @@ background: #00ACB3;
     border: 1px solid #cccccc;
 }
 .table_radius_admin {
-     margin-bottom: 19px;
+    margin-bottom: 19px;
 }
- .table_radius_admin table{
-  
+.table_radius_admin table{
+
     margin-top: 0px;
     margin-bottom: 0px;
-    
+
     font-size: 13px;
 
 }
 
 .filter_bar{
-    padding-top: 30px;
+      padding-top: 20px;
     padding-bottom: 66px;
 }
- .select_reports{
-  background: transparent;
+.select_reports{
+    background: transparent;
     border: 0px;
     width: 30px;
     display: inline;
     font-size: 14px
 }
 .filter_title{
-letter-spacing: 0px;
+    letter-spacing: 0px;
     color: #00ACB3;
     margin-bottom: 23px;
     font-size: 22px;
@@ -353,7 +346,7 @@ letter-spacing: 0px;
     font-size: 13px;
 }
 .rep_nav_pills .dropdown-menu {
-  padding: .4rem 0 !important;
+    padding: .4rem 0 !important;
     margin: -13px 0px !important;
     border-radius: 0px 0px 4px 5px;
     min-width: 9rem !important;
@@ -362,11 +355,11 @@ letter-spacing: 0px;
 
 .btn_view_report{
     background: #00ACB3 0% 0% no-repeat padding-box;
-border-radius: 8px;
-color: white !important;
+    border-radius: 8px;
+    color: white !important;
 }
 .partner_list_sub_title{
-letter-spacing: 0px;
+    letter-spacing: 0px;
     color: #00ACB3;
     margin-bottom: 12px;
     font-size: 17px;
@@ -379,23 +372,27 @@ letter-spacing: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
 
- 
+
     border: solid 1px #a5a5a5;
-   /*
-      border-radius: 8px;
-  border-collapse: collapse;
-    overflow: hidden;*/
+    /*
+       border-radius: 8px;
+   border-collapse: collapse;
+     overflow: hidden;*/
 
 
+}
+.admin_part_listing_img{
+    height: 61px;
+    max-width: 100%;
 }
 .partner_table thead{
- background: #0185B6 0% 0% no-repeat padding-box;
-border: 1px solid #707070;
-border-radius: 13px 0px 0px 0px;
-text-align: center;
+    background: #0185B6 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 13px 0px 0px 0px;
+    text-align: center;
     color: white;
 }
- .partner_table  .td1{
+.partner_table  .td1{
     background: #e7e7e7;
 }
 .contact_table {
@@ -403,9 +400,10 @@ text-align: center;
 }
 .partner_table td{
     padding: 2px 1px !important;
-    
+
 }.partner_table th {
     padding: 8px 2px !important;
+    text-transform: uppercase;
 }
 .partner_table td, .partner_table th {
     border: 1px solid #b8b9bb !important;
@@ -413,7 +411,7 @@ text-align: center;
 .partner_table_img_td{width: 9%;}
 
 .table td, .table th {
-        border-top: 0px !important;
+    border-top: 0px !important;
     vertical-align: middle;
 }
 
@@ -431,7 +429,7 @@ text-align: center;
     border-bottom: solid 1px;
 }
 .table_absimg{
- position: absolute;
+    position: absolute;
     height: 22px;
     right: -30px;
     z-index: 9999;
@@ -443,11 +441,11 @@ text-align: center;
 .contact_table  tr:last-child td{     border-bottom: 0px !important; }
 /*voucher search */
 .voucher_search{
-padding-top: 179px;
+    padding-top: 179px;
     padding-bottom: 171px;
 }
 .voucher_title{
-color: #0185B6;
+    color: #0185B6;
     font-size: 19px;
     font-weight: bold;
 }
@@ -458,43 +456,43 @@ color: #0185B6;
     padding: 1px 51px;
 }
 .voucher_search_input{
-      border: 2px solid #0985B6 !important;
+    border: 2px solid #0985B6 !important;
     border-radius: 13px !important;
     padding-left: 57px;
 }
 .btn_search_v{
     background: #00ACB3 0% 0% no-repeat padding-box;
-border-radius: 8px;
-color: white;
+    border-radius: 8px;
+    color: white;
 }
 .voucher_no {
     width: 10%;
-    border-bottom-left-radius: 13px;
-    border-top-left-radius: 13px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
     background: #0985B6 0% 0% no-repeat padding-box;
 }
 .voucher_no_value{
     width: 11%;
-   
+
 }
 .voucher_status{
-   width: 7%;
-  background: #0985B6 0% 0% no-repeat padding-box;
+    width: 7%;
+    background: #0985B6 0% 0% no-repeat padding-box;
 }
 .voucher_status_value{
     width: 10%;
-background: #10D271 0% 0% no-repeat padding-box;  
+    background: #10D271 0% 0% no-repeat padding-box;  
 }
 
 .voucher_partner{
     width: 9%;
- background: #0985B6 0% 0% no-repeat padding-box; 
+    background: #0985B6 0% 0% no-repeat padding-box; 
 }
 .voucher_partner2{
-    
+
 }
 .voucher_result_bar{
-border: solid 1px gray;
+    border: solid 1px gray;
     border-radius: 8px;
     width: 100%;
     height: 38px;
@@ -507,84 +505,84 @@ border: solid 1px gray;
     padding-top: 9px !important;
 }
 .search_glass{
-position: absolute;
+    position: absolute;
     left: 24px;
     top: 6px;
     color: gray
 }
 .search_glass img{
-     height: 19px;
+    height: 19px;
 }
 
 /*Mobile View */
 @media (max-width: 767px){
-   
-.filter_form select {
-       margin-top: 14px;
-}
-.btn_search_v {
-     margin-top: 6px;
-}
-.voucher_result_bar {
-   display: block;
-    border: 0px;
-    float: left;
-       width: 80%;
-    margin: 20px auto;
 
-  
-}
-.voucher_no,.voucher_no_value,.voucher_status,.voucher_status_value,.voucher_partner,.voucher_partner_val,.voucher_partner2{
-    width: 100% !important;
-    display: block;
-}
-.voucher_no {
-     border-radius: 0px !important;
-}
-.border_right{
-    border-right: 0px !important;
-}
-.voucher_search {
-padding-top: 77px;
-    padding-bottom: 181px;
-}
-/* statrt html table with border radius */
-.table_radius {
-    overflow: auto;
-    border-radius: 8px;
-    border: 1px solid #cccccc;
-}
+    .filter_form select {
+        margin-top: 14px;
+    }
+    .btn_search_v {
+        margin-top: 6px;
+    }
+    .voucher_result_bar {
+        display: block;
+        border: 0px;
+        float: left;
+        width: 80%;
+        margin: 20px auto;
 
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  border-style: hidden;
 
-  width:100%;
-  max-width: 100%;
-}
+    }
+    .voucher_no,.voucher_no_value,.voucher_status,.voucher_status_value,.voucher_partner,.voucher_partner_val,.voucher_partner2{
+        width: 100% !important;
+        display: block;
+    }
+    .voucher_no {
+        border-radius: 0px !important;
+    }
+    .border_right{
+        border-right: 0px !important;
+    }
+    .voucher_search {
+        padding-top: 77px;
+        padding-bottom: 181px;
+    }
+    /* statrt html table with border radius */
+    .table_radius {
+        overflow: auto;
+        border-radius: 8px;
+        border: 1px solid #cccccc;
+    }
 
-th, td {
-  padding: 10px;
-  border: 1px solid #CCCCCC;
-}
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        border-style: hidden;
 
-/*end html table with border radius */
+        width:100%;
+        max-width: 100%;
+    }
 
-#goTop {
-    background: #00acb3;
-    padding: 2px 15px;
-    position: fixed;
-    right: 9px;
-    bottom: 8px;
-    color: white;
-    font-size: 24px;
-    border-radius: 5px;
-}
-.table td, .table th {
-    border-top: 0px !important;
-    vertical-align: baseline;
-}
+    th, td {
+        padding: 10px;
+        border: 1px solid #CCCCCC;
+    }
+
+    /*end html table with border radius */
+
+    #goTop {
+        background: #00acb3;
+        padding: 2px 15px;
+        position: fixed;
+        right: 9px;
+        bottom: 8px;
+        color: white;
+        font-size: 24px;
+        border-radius: 5px;
+    }
+    .table td, .table th {
+        border-top: 0px !important;
+        vertical-align: baseline;
+    }
 }
 .inner_table_wrap_no{
     padding: 0px 0px !important;
@@ -594,11 +592,11 @@ th, td {
     width: 100%;
 
 }
- .admin_des {   
+.admin_des {   
     width: 17%;
 }
 .data_table_section_box_design{
-   padding-top: 10px;
+    padding-top: 10px;
 }
 .data_table_section_box_design table{
     font-size: 13px !important;

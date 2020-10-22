@@ -150,8 +150,9 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 </span> <img src="<?=$util->ClientHome()?>/shared/img/cart_client_strip.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
 					</form>
 				</div>
-				<div class="cart_bar_strip_mob mobile_view row">
+				<div class="cart_bar_strip_mob mobile_view ">
 					<form name="frm_<?=$_all_box['internal_id']?>">
+                                            <div class="row">
 						<div class="col-6">
 							<input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
 							<span class="pricing btn btn-mob-cart btn-block">KES <?=number_format($_all_box['price'], 2)?>
@@ -160,6 +161,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 						<div class="col-6">
 							<img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
 						</div>
+                                            </div>
 					</form>
 				</div>
 			</div>
@@ -190,8 +192,8 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			<div class="col-md-3 iwant_card">
 				<div class="step_box step_color1">1</div>
 				<div class="iwant_card_div">
-					<p class="iwant_card_p"> Select a <br class="desktop_view">
-						HappyBox according<br class="desktop_view">
+					<p class="iwant_card_p"> Select a <br class="">
+						HappyBox according<br class="">
 						to your budget</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color1"> </p>
@@ -199,7 +201,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			<div class="col-md-3 iwant_card no_radius">
 				<div class="step_box step_color2">2</div>
 				<div class="iwant_card_div">
-					<p class="iwant_card_p"> Log in or <br class="desktop_view">
+					<p class="iwant_card_p"> Log in or <br class="">
 						create an account</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color2"> </p>
@@ -207,7 +209,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			<div class="col-md-3 iwant_card no_radius">
 				<div class="step_box step_color3">3</div>
 				<div class="iwant_card_div">
-					<p class="iwant_card_p"> Choose your delivery <br class="desktop_view">
+					<p class="iwant_card_p"> Choose your delivery <br class="">
 						date and mode <br>
 						<span class="thin_font">(doorstep or e-box)</span> </p>
 				</div>
@@ -216,7 +218,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			<div class="col-md-3 iwant_card iwant_card_last">
 				<div class="step_box step_color4">4</div>
 				<div class="iwant_card_div">
-					<p class="iwant_card_p"> Make payment using<br class="desktop_view">
+					<p class="iwant_card_p"> Make payment using<br class="">
 						A credit card or Mpesa</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color4"> </p>
@@ -228,7 +230,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			<!--congratulate yourself-->
 			<div class="col-md-12 congratulate text-center section_margin_top">
 				<p class="p1">Congratulate yourself …</p>
-				<p class="p2"><b>On selecting a tailored gift experience packed with a multitude of unique options and exclusive deals to choose from!</b></p>
+                                <p class="p2"><b>On selecting a tailored gift<br class="mobile_view"> experience packed with a<br class="mobile_view"> multitude of unique<br class="mobile_view"> options and exclusive deals<br class="mobile_view"> to choose from!</b></p>
 			</div>
 		</div>
 	</div>

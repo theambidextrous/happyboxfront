@@ -2383,8 +2383,155 @@ a:hover.tooltips2 span {
 .cat_well .sports_card .selection_card_body {
     height: 253px !important;
 }
+
+.top_menu {
+	border-bottom: solid 1px #e2e0e0;
+	padding-bottom: 4px;
+}
+.well_scroll {
+	display: none !important;
+}
+.client_drop .dropdown-menu {
+	background: #00ACB3 !important;
+	color: white !important;
+	min-width: 73px !important;
+	width: 99px !important;
+	border-radius: 11px;
+}
+.client_drop .dropdown-item {
+	color: white !important;
+	font-size: 15px;
+}
+.edit_pro_h {
+	margin-bottom: 26px;
+}
+.client_drop .dropdown-item:hover {
+	background: transparent !important;
+}
+.client_drop .dropdown-item {
+ padding: .15rem .5rem !important;
+}
+.client_drop_1 {
+	border-bottom: solid 1px;
+}
+.client_drop .dropdown-toggle::after {
+	display: none !important;
+}
+.file_input {
+	height: 41px !important;
+ padding: .175rem .75rem !important;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #10ACB3;
+	border-radius: 8px;
+	color: #9E9E9E;
+}
+.user_btn {
+	background: #00ACB3 !important;
+}
+.email_dropdown {
+	font-size: 12px !important;
+	padding-top: 4px !important;
+	display: block !important;
+}
+#box_price_ {
+	cursor: text;
+	font-weight: normal;
+	font-size: 15px;
+}
+.ui-widget-header {
+	border: 1px solid #dddddd;
+	background: #0185b6 !important;
+	color: #333333;
+	font-weight: bold;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+	border: 1px solid #0185b6 !important;
+	background: #0185b6 !important;
+	color: #ffffff !important;
+}
+.ui-datepicker th {
+	color: #00acb3 !important;
+}
+.ui-datepicker .ui-datepicker-title {
+	color: white !important;
+}
+.modify_img_btn {
+	background: transparent !important;
+	border: 0px;
+	color: white;
+}
+.modify_date .modal-content {
+	border: solid 1px #0985B6;
+}
+/*order table*/
+.table_radius_order_sum {
+    overflow: auto;
+    border-top-left-radius:8px !important; 
+   
+    line-height: 1.2;
+}
+.cart_order_summ{   
+    width: 30%;
+    float: right;
+    font-size: 12px;
+} 
+
+.delivery_th{
+    width: 29% !important;
+}
+.table_radius_order_sum2 {
+    overflow: auto;
+    border-bottom-left-radius: 8px !important;
+     border-bottom-right-radius: 8px !important;
+    line-height: 1.2;
+}
+.w_118{
+    
+    width: 118px;
+}
+.order_summ_actions{
+    margin-top: 10px;
+}
+.order_summ_actions td{
+padding-right: 0px !important;
+}
+.invisible_btn{
+     
+    background: transparent;
+    border: 0px !important;
+}
+.col_rl_no{
+    padding-right: 0px !important;
+      padding-left: 0px !important;
+}
+.order_summary_tr_td2 {
+    background: #00ACB333 !important;
+    color: black !important;
+}
+.select_ctrl{
+     padding: 1px 10px !important;   
+}
+.alert-danger {
+    color: white;
+    background-color: #c20a2b;
+    border-color: #dd3b56;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.sports_card .selection_card_body {
+    height: 202px !important;
+    font-size: 15px;
+}
 /*mobile view */
 @media (max-width: 767px) {
+    .slick-list {
+    padding:0 20% 0 0 !important;
+}
+    .sports_card .selection_card_body {
+ height: auto !important;
+    padding-bottom: 1px;
+   }
 .card_partner_mobcard p {
 	font-size: 14px;
 }
@@ -2900,8 +3047,8 @@ a:hover.tooltips2 span {
 	outline-offset: -7px;
 }
 .cart_bar_strip_mob {
-	margin-right: 10px;
-	margin-left: 10px
+    margin-right: 15px;
+    margin-left: 18px;
 }
 .cat_boxes_section .col-md-4 {
 	padding-right: 0px;
@@ -2979,6 +3126,7 @@ a:hover.tooltips2 span {
 }
 .iwant_section {
 	margin-top: 63px;
+        padding-bottom: 64px;
 }
 .iwant_img {
 	margin-left: -24px;
@@ -3001,7 +3149,7 @@ a:hover.tooltips2 span {
 	line-height: 20px;
 }
 .congratulate .p1 {
-	font: Bold 34px/69px Segoe Script;
+    font: Bold 32px/59px Segoe Script;
 }
 .selection_card img {
 	height: 173px;
@@ -3385,143 +3533,4 @@ nav a:hover, nav a:focus {
 .order_summ_mob {
 	background: #10D271 !important;
 }
-}
-.top_menu {
-	border-bottom: solid 1px #e2e0e0;
-	padding-bottom: 4px;
-}
-.well_scroll {
-	display: none !important;
-}
-.client_drop .dropdown-menu {
-	background: #00ACB3 !important;
-	color: white !important;
-	min-width: 73px !important;
-	width: 99px !important;
-	border-radius: 11px;
-}
-.client_drop .dropdown-item {
-	color: white !important;
-	font-size: 15px;
-}
-.edit_pro_h {
-	margin-bottom: 26px;
-}
-.client_drop .dropdown-item:hover {
-	background: transparent !important;
-}
-.client_drop .dropdown-item {
- padding: .15rem .5rem !important;
-}
-.client_drop_1 {
-	border-bottom: solid 1px;
-}
-.client_drop .dropdown-toggle::after {
-	display: none !important;
-}
-.file_input {
-	height: 41px !important;
- padding: .175rem .75rem !important;
-	background: #FFFFFF 0% 0% no-repeat padding-box;
-	border: 1px solid #10ACB3;
-	border-radius: 8px;
-	color: #9E9E9E;
-}
-.user_btn {
-	background: #00ACB3 !important;
-}
-.email_dropdown {
-	font-size: 12px !important;
-	padding-top: 4px !important;
-	display: block !important;
-}
-#box_price_ {
-	cursor: text;
-	font-weight: normal;
-	font-size: 15px;
-}
-.ui-widget-header {
-	border: 1px solid #dddddd;
-	background: #0185b6 !important;
-	color: #333333;
-	font-weight: bold;
-}
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-	border: 1px solid #0185b6 !important;
-	background: #0185b6 !important;
-	color: #ffffff !important;
-}
-.ui-datepicker th {
-	color: #00acb3 !important;
-}
-.ui-datepicker .ui-datepicker-title {
-	color: white !important;
-}
-.modify_img_btn {
-	background: transparent !important;
-	border: 0px;
-	color: white;
-}
-.modify_date .modal-content {
-	border: solid 1px #0985B6;
-}
-/*order table*/
-.table_radius_order_sum {
-    overflow: auto;
-    border-top-left-radius:8px !important; 
-   
-    line-height: 1.2;
-}
-.cart_order_summ{   
-    width: 30%;
-    float: right;
-    font-size: 12px;
-} 
-
-.delivery_th{
-    width: 29% !important;
-}
-.table_radius_order_sum2 {
-    overflow: auto;
-    border-bottom-left-radius: 8px !important;
-     border-bottom-right-radius: 8px !important;
-    line-height: 1.2;
-}
-.w_118{
-    
-    width: 118px;
-}
-.order_summ_actions{
-    margin-top: 10px;
-}
-.order_summ_actions td{
-padding-right: 0px !important;
-}
-.invisible_btn{
-     
-    background: transparent;
-    border: 0px !important;
-}
-.col_rl_no{
-    padding-right: 0px !important;
-      padding-left: 0px !important;
-}
-.order_summary_tr_td2 {
-    background: #00ACB333 !important;
-    color: black !important;
-}
-.select_ctrl{
-     padding: 1px 10px !important;   
-}
-.alert-danger {
-    color: white;
-    background-color: #c20a2b;
-    border-color: #dd3b56;
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-.sports_card .selection_card_body {
-    height: 202px !important;
-    font-size: 15px;
 }
