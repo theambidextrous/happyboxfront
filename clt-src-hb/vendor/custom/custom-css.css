@@ -14,6 +14,11 @@ body {
 html {
 	scroll-behavior: smooth;
 }
+.gray_star .far{
+     
+    font-size: 13px;
+}
+
 img {
 	max-width: 100%;
 }
@@ -26,6 +31,7 @@ img {
 	height: 100%;
 	text-transform: uppercase;
 	text-align: center;
+        text-align-last: center;
 }
 .h3, h3 {
 	font-size: 1.45rem;
@@ -249,7 +255,7 @@ th, td {
 .drop_partner {
 	background: #C20A2B 0% 0% no-repeat padding-box;
 	opacity: 1;
-	left: -75px;
+    left: -30px;
 	min-width: 16rem;
 	padding: 11px 1px 0px !important;
 	border: 0px;
@@ -464,6 +470,9 @@ th, td {
 	font-weight: bold;
 	outline: 1px solid #d6d1d1;
 	outline-offset: -8px;
+}
+.terms_banner h3 {
+    font-size: 1.25rem;
 }
 .stock_div {
 	font-weight: bold;
@@ -1416,9 +1425,10 @@ th, td {
 	border-bottom-left-radius: 6px;
 }
 .card_v_steps {
-	padding: 8px 0px;
-	margin-left: 4px;
-	margin-right: 4px;
+    padding: 7px 0px;
+    margin-left: 4px;
+    margin-right: 4px;
+
 }
 /*end user voucher activate */
 /* purchase history */
@@ -2377,11 +2387,69 @@ a:hover.tooltips2 span {
 	z-index: 999;
 	display: block;
 }
+/*tooltips 3*/
+a.tooltips3 {
+	position: relative;
+	display: inline;
+}
+a.tooltips3 span {
+  visibility: visible;
+    opacity: 1;
+    top: 41px;
+    left: 50%;
+    margin-left: -65px;
+    z-index: 999;
+    display: block;
+}
+a.tooltips3 span {
+    opacity: 1;
+    top: 41px;
+    left: 46%;
+    margin-left: -71px;
+    position: absolute;
+    width: 168px;
+    font-size: 13px;
+    color: #FFFFFF;
+    background: #00ACB3;
+    height: auto;
+    /* line-height: 30px; */
+    text-align: center;
+    visibility: visible;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px #800;
+    display: none;
+    display: none;
+    padding: 6px 7px;
+    border-radius: 5px;
+}
+a.tooltips3 span:after {
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -8px;
+	width: 0;
+	height: 0;
+	border-bottom: 8px solid #00ACB3;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+a:hover.tooltips3 span {
+visibility: visible;
+    opacity: 1;
+    top: 41px;
+    left: 50%;
+    margin-left: -65px;
+    z-index: 999;
+    display: block;
+}
+
+/*end tooltips 3 */
 [type=submit]:not(:disabled) {
 	border: none !important;
 }
 .cat_well .sports_card .selection_card_body {
-    height: 253px !important;
+     height: 253px !important;
 }
 
 .top_menu {
@@ -2525,6 +2593,9 @@ padding-right: 0px !important;
 }
 /*mobile view */
 @media (max-width: 767px) {
+    .cat_well .sports_card .selection_card_body {
+    height: auto !important;
+}
     .slick-list {
     padding:0 20% 0 0 !important;
 }
@@ -3055,9 +3126,10 @@ padding-right: 0px !important;
 	padding-left: 0px;
 }
 .well_banner_p {
-	font-size: 15px;
-	line-height: 1.6;
-	font-weight: bold;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: bold;
+    margin-bottom: 0px;
 }
 .well_scroll img {
 	height: 29px;
@@ -3095,12 +3167,14 @@ padding-right: 0px !important;
 	max-width: 100%;
 }
 #bookletPop .modal-body {
-	padding: 61px 23px;
-	border-bottom: solid 8px #0985B6;
-	border-radius: 0px;
-	border-left: 0px !important;
-	border-right: 0px !important;
+    padding: 61px 23px;
+    border-bottom: solid 8px #0985B6;
+    border-radius: 0px;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-top: #00000029;
 }
+
 #bookletPop .modal-content {
 	border-radius: 0px;
 	border: 0px;
@@ -3408,6 +3482,7 @@ nav a:hover, nav a:focus {
 	padding-bottom: 18px;
 	font-size: 20px;
 	line-height: 1.2;
+            border-bottom: solid #0185B6 20px;
 }
 .pricing {
 	padding-top: 3px !important;

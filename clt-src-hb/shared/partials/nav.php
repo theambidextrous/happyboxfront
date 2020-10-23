@@ -144,7 +144,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 	$CartCount = !empty($_SESSION['curr_usr_cart'])?count($_SESSION['curr_usr_cart']):0;
 	if( $CartCount > 0 ){
 		?>
-		<a class="mob_cart" ><img src="<?=$util->ClientHome()?>/shared/img/icn-cart-red.svg"> <span class="count text-danger"><?=count($_SESSION['curr_usr_cart'])?>
+        <a class="mob_cart" href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php" ><img src="<?=$util->ClientHome()?>/shared/img/icons/icn-cart-red.svg"> <span class="count text-danger"><?=count($_SESSION['curr_usr_cart'])?>
 		</span></a>
 		<?php
 	}else{
