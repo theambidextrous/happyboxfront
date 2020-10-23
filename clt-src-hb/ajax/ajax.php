@@ -66,20 +66,20 @@ switch($_REQUEST['activity']){
             );
             $express_response = $express->TriggerStkPush();
             /** c2b simulation here */
-            $c2b = new MPesaC2b(
-                $util->AppC2bConsumerKey(),
-                $util->AppC2bConsumerSecret(),
-                $util->AppC2bPayBill(),
-                $util->AppC2bPhone(),
-                $order_amount,
-                $order_number,
-                [$util->AppMpesaEnv(), $util->ClientHome() . $util->AppMpesaConfirmation(), $util->ClientHome() . $util->AppMpesaValidation()]
-            );
-            $reg_url_response = $c2b->RegisterUrl();
-            $c2b_response = $c2b->Simulate();
+            // $c2b = new MPesaC2b(
+            //     $util->AppC2bConsumerKey(),
+            //     $util->AppC2bConsumerSecret(),
+            //     $util->AppC2bPayBill(),
+            //     $util->AppC2bPhone(),
+            //     $order_amount,
+            //     $order_number,
+            //     [$util->AppMpesaEnv(), $util->ClientHome() . $util->AppMpesaConfirmation(), $util->ClientHome() . $util->AppMpesaValidation()]
+            // );
+            // $reg_url_response = $c2b->RegisterUrl();
+            // $c2b_response = $c2b->Simulate();
             $_SESSION['status_chk_order'] = $order_number;
-            $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone. Enter your pin to complete order.<br> You may also follow the instructions below to make payment.</div>';
-            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge service unavailable!<br> Follow the instructions below to make MPesa payment.</div>';
+            $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone. Enter your pin to complete order.</div>';
+            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge Notification could not be sent<br> Make sure your phone is switched on and try again.</div>';
             if( json_decode($express_response)->ResponseCode != '0' ){
                 exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
             }

@@ -17,6 +17,15 @@ $topics = json_decode($topics, true)['data'];
 $prices = $price->get($token);
 $prices = json_decode($prices, true)['data'];
 // $util->Show($prices);
+function format_service($keys, $values){
+    $lp = 0;
+    $rtn = [];
+    foreach ($keys as $k ) {
+        array_push($rtn, $k . '~' . $values[$lp]);
+        $lp++;
+    }
+    return array_unique($rtn);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,11 +90,12 @@ $prices = json_decode($prices, true)['data'];
                             
                             if( isset($_POST['create'])){
                                 try{
-                                    $services = array_combine($_POST['range'], $_POST['experience']);
+                                    $services = format_service($_POST['range'], $_POST['experience']);
                                     if(count($services) < 1){
                                         throw new Exception('You must add at least one experience for this partner');
                                     }
                                     // $util->Show($services);
+                                    // exit;
                                     $_SESSION['frm'] = $_POST;
                                     $username = strtolower($util->createCode(6));
                                     $password = $util->createCode(10);
@@ -210,11 +220,17 @@ $prices = json_decode($prices, true)['data'];
                             <hr>
                             <h4 class="filter_title text-center"> experiences offered </h4>  
                             <div id="exprs">
-                                <?php if(!empty($services)){ foreach( $services as $sk => $sv ): ?>
+                            <?php 
+                                if(count($services)){ 
+                                    foreach( $services as $sk => $sv ): 
+                                        $_meta = explode('~', $sv);
+                                        $_pricename = $_meta[0];
+                                        $_servicename = $_meta[1];
+                                ?>
                                 <div class="form-group row clonables">
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Experience</label>
-                                        <input type="text" placeholder="type here e.g. massage" name="experience[]" value="<?=$sv?>" class="form-control rounded_form_control"/>
+                                        <input type="text" placeholder="type here e.g. massage" name="experience[]" value="<?=$_servicename?>" class="form-control rounded_form_control"/>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Price range</label>
@@ -222,7 +238,7 @@ $prices = json_decode($prices, true)['data'];
                                             <!-- <option value="nn">Select a topic</option> -->
                                             <?php
                                                 foreach( $prices as $_price ){
-                                                    if($_price['name'] == $sk){
+                                                    if($_price['name'] == $_pricename){
                                                         print '<option selected value="'.$_price['name'].'">'.$_price['name'].'</option>';
                                                     }else{
                                                         print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
@@ -243,7 +259,7 @@ $prices = json_decode($prices, true)['data'];
                                     <div class="col-md-6">
                                         <label for="BoxType" class="col-form-label">Price range</label>
                                         <select name="range[]" class="form-control rounded_form_control">
-                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <option value="nn">Select a Price</option>
                                             <?php
                                                 foreach( $prices as $_price ){
                                                      print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
@@ -304,6 +320,7 @@ $prices = json_decode($prices, true)['data'];
                     // .attr("id", "clonables" +  cloneIndex)
                     // .find("*")
                     .each(function() {
+                        $(this).find("input[type=text]").val("");
                         var id = this.id || "";
                         var match = id.match(regex) || [];
                         if (match.length == 3) {

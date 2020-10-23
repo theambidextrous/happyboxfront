@@ -13,6 +13,9 @@
         //$env = parse_ini_file('/var/www/happybox.ke/public_html/staging/.env');
         return json_decode(json_encode($env));
     }
+    function AppShipping(){
+        return $this->LoadEnv()->APP_SHIPPING;
+    }
     function AppHome(){
         return $this->LoadEnv()->APP_HOME;
     }
