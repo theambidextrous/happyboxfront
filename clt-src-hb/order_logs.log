@@ -1,2 +1,6 @@
 
 get_one_by_checkout_req_id()::: Errors or empty response for pay::  =>{"status":-211,"message":"resource not found"}
+
+{"status":-211,"message":"Invalid or empty field","errors":{"box_qty":["The box qty must be a string."]}}
+
+get_one_by_checkout_req_id()::: Errors or empty response for pay:: ws_CO_231020201653100902 =>{"status":0,"message":"fetched successfully","data":null}
