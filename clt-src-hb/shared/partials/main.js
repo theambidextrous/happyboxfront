@@ -86,6 +86,7 @@ autoplayTimeout:3000,
 nav:false,
 dots:false,
 autoWidth:false,
+   centerMode: true,
 margin:42,
 responsiveClass:true,
     responsive:{

@@ -113,7 +113,7 @@ $partner_list = json_decode($partner_list, true)['data'];
                         <tr>
                   
                           
-                          <td class="td1" align="center"><img src="<?=$img?>" class="dropdown_user_img rounded-circle"/></td>
+                          <td class="td1" align="center"><img src="<?=$img?>" class="admin_part_listing_img "/></td>
                           <td><?=$p_d['business_name']?></td>
                           <td><?=$p_d['internal_id']?></td>
                           <td><?=$p_d['short_description']?></td>

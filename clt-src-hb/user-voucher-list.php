@@ -104,7 +104,9 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <th class="voucher_list_table_th">BOX VALIDITY<br> DATE</th>
                               <th class="voucher_list_table_th">CANCELLATION<br> DATE</th>
                               <th class="voucher_list_table_th">BOOKING<br> DATE</th>
-                              <th class="voucher_list_table_th">PARTNER</th>
+                              <th class="voucher_list_table_th">PARTNER
+                              
+                              </th>
                               <th class="txt-blue"><!--<a href="" class="tooltips">
         <span>PARTNER RATING</span>
         
@@ -113,7 +115,11 @@ $my_list_ = json_decode($my_list_, true)['data'];
          PARTNER RATING <span>Please rate this partner based on your experience</span>
         
         </a>-->
-                           PARTNER RATING 
+                            
+                                   <a href="#" class="nav-link tooltips3 txt-blue">
+            PARTNER RATING <span>Please rate this partner <br>based on your experience </span>
+        
+        </a>
                               
                               </th>
                               <th colspan="2" class="th_actions voucher_list_table_th">ADMIN REQUESTS</th>

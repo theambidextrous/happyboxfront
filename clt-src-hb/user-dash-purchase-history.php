@@ -131,7 +131,7 @@ if(isset($_POST['makecart'])){
                                 ?>
                                 <tr>
                                 <td class="">
-                                    <img style="height: 39px;" class="d-block mx-auto purch_his_img" src="<?=$util->tb64($_3d)?>">
+                                    <img  class="d-block mx-auto purch_his_img" src="<?=$util->tb64($_3d)?>">
                                 </td>
                                 <td  class="purch_blue_td"><b><?=$_box_data->name?></b></td>
                                 <td  class="purch_blue_td"><b><?=$_box_data->id?></b></td>
@@ -144,8 +144,8 @@ if(isset($_POST['makecart'])){
                                     }else{
                                 ?>
                                 <tr>
-                                <td class="">
-                                    <img style="height: 39px;" class="d-block mx-auto purch_his_img" src="<?=$util->tb64($_3d)?>">
+                                <td class="purch_img">
+                                    <img style="" class="d-block mx-auto purch_his_img" src="<?=$util->tb64($_3d)?>">
                                 </td>
                                 <td  class="purch_blue_td"><b><?=$_box_data->name?></b></td>
                                 <td  class="purch_blue_td"><b><?=$_box_data->id?></b></td>

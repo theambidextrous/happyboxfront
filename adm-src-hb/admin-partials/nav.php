@@ -1,8 +1,11 @@
 <?php 
+
+ $user_root = json_decode($_SESSION['usr']);
   $user_info = json_decode($_SESSION['usr_info']);
   // print_r($user_info);
   //$profile_pic_  = $util->AppUploads() . 'profiles/default.jpg';
   $_name = json_decode($_SESSION['usr'])->user->username;
+  $_email = json_decode($_SESSION['usr'])->user->email;
  /* if($user_info->data->picture != 'default.jpg'){
     $profile_pic_  = $user_info->data->picture;
   }*/
@@ -12,7 +15,7 @@
   if($user_info->data->id > 0){
     $_name = $user_info->data->fname . ' ' . $user_info->data->sname;
   }
-  // echo $profile_pic_;
+
 ?>
 <nav id="top" class="navbar navbar-expand-lg navbar-light bg-admin text-white">
     <div class="container">
@@ -24,7 +27,7 @@
     <ul class="nav navbar-nav ml-auto">
            <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle admin_name_txt" href="#" id="navbardrop" data-toggle="dropdown">
-     Admin User Name <img src="<?=$dropdown_arrow?>"  class="user_icon_drop"> <img src="<?=$profile_pic_?>" class="user_icon rounded-circle">
+     <?=$_name;?> <img src="<?=$dropdown_arrow?>"  class="user_icon_drop"> <img src="<?=$profile_pic_?>" class="user_icon rounded-circle">
       </a>
       <div class="dropdown-menu">
           <div class="card">
@@ -33,10 +36,11 @@
                   <div class="col-2">
                      <span><img src="<?=$dropdown_user_icon?>" class="dropdown_user_img rounded-circle"></span>
                   </div>
-                   <div class="col-10">
-                   <span class="user_dropdown_txt">Admin User Name</span>
+                   <div class="col-10 admin_drop_details">
+                   <span class="user_dropdown_txt"><?=$_name;?></span>
+                 
                    <span class="email_dropdown">
-                   (name.surname@happybox.ke)
+                   <?=$_email;?>
                    </span>
                   </div>
                       </div>
