@@ -1617,9 +1617,6 @@ th, td {
 .tr_border_top {
 	border-top: solid 1px #d0cfcf;
 }
-.cart_totals span {
-	margin-right: 60px;
-}
 .cart_totals_actions img {
 	height: 32px;
 	margin-left: 15px;
