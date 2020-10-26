@@ -37,7 +37,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	<div class="row">
 		<div id="demo" class="carousel slide carousel-fade home_slider" data-ride="carousel">
 			<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0"></li>
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
 				<li data-target="#demo" data-slide-to="1"></li>
 				<li data-target="#demo" data-slide-to="2"></li>
 			</ul>
@@ -62,7 +62,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	<div class="row">
 		<div id="demo" class="carousel slide carousel-fade home_slider" data-ride="carousel">
 			<div class="carousel-inner">
-				<div class="carousel-item active slider_1">
+				<div class="carousel-item slider_1">
 					<div class="mob_cta text-center">
 						<img src="shared/img/slider_reg.svg" class="">
 					</div>
