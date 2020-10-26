@@ -109,14 +109,12 @@ $util->ShowErrors(1);
 					}
           ?>
 					<tr align="right" class="cart_totals tr_border_top">
-						<td colspan="4"></td>
-						<td colspan="2"><span>SHIPPING TOTAL</span> KES
-							<?=number_format($_total_shipping,2)?></td>
+						<td colspan="4"><span class="cart_totals_lbl">SHIPPING TOTAL</span></td>
+						<td colspan="2">KES <?=number_format($_total_shipping,2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_large">
-						<td colspan="4"></td>
-						<td colspan="2"><span> ORDER TOTAL (Incl. VAT)</span> KES
-							<?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
+						<td colspan="4"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
+						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
 						<td colspan="6"><a href="<?=$util->ClientHome()?>"><img src="shared/img/btn-continue-shopping.svg"></a> <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-shipping-method-blue.svg"></a></td>
@@ -199,12 +197,12 @@ $util->ShowErrors(1);
 					}
 					?>
 					<tr align="right " class="cart_totals tr_border_top">
-						<td colspan="6"><span>SHIPPING TOTAL KES</span>
-							<?=number_format($_total_shipping,2)?></td>
+						<td colspan="4"><span class="cart_totals_lbl">SHIPPING TOTAL</span></td>
+						<td colspan="2">KES <?=number_format($_total_shipping,2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top">
-						<td colspan="6"><span> ORDER TOTAL (Incl. VAT)</span> KES
-							<?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
+						<td colspan="4"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
+						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
 						<td colspan="6 "><a href="<?=$util->ClientHome()?>"><img src="shared/img/btn-continue-shopping.svg"></a> <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-shipping-method-blue.svg"></a></td>
