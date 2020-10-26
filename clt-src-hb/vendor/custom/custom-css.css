@@ -1340,10 +1340,17 @@ th, td {
 	position: absolute;
 	background: transparent;
 	width: 88%;
+	font-size: 18px;
 	text-align: center;
 	top: 37%;
 	color: whitesmoke;
 	left: 4%;
+}
+.step_div p span.unique-font {
+	font-family: Segoe Script;
+}
+.step_div p span.special-font {
+	font-family: Agency FB;
 }
 .user_create_r {
 	padding-top: 31px;

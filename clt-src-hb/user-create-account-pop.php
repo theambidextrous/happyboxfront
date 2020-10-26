@@ -53,19 +53,19 @@ $util->ShowErrors(1);
 				<div class="card-body text-center">
 					<h3 class="text-center">HAPPYBOX</h3> <h4 class="text-center">An experience for everyone</h4>
 					<div class="step_div">
-						<p> CHOOSE WHAT </p>
+						<p> CHOOSE <strong>WHAT</strong> </p>
 						<img src="shared/img/choose_what.svg" class="w-100"/>
 					</div>
 					<div class="step_div">
-						<p> CHOOSE WHERE </p>
+						<p> CHOOSE <strong>WHERE</strong> </p>
 						<img src="shared/img/choose_where.svg" class="w-100"/>
 					</div>
 					<div class="step_div">
-						<p> CHOOSE WHEN </p>
-						<img src="shared/img/choose_where.svg" class="w-100"/>
+						<p> CHOOSE <strong>WHEN</strong> </p>
+						<img src="shared/img/choose_when.svg" class="w-100"/>
 					</div>
 					<div class="step_div">
-						<p> Choose HAPPYBOX </p>
+						<p> <span class="unique-font">Choose</span> <span class="special-font"><strong>HAPPYBOX</strong></span> </p>
 						<img src="shared/img/choose_happy.svg" class="w-100"/>
 					</div>
 				</div>
