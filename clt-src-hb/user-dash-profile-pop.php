@@ -22,6 +22,13 @@ $util->ShowErrors(1);
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
+				<style>
+				.user-profile {
+					color: #c20a2b!important;
+					text-decoration: none!important;
+					border-bottom: solid 2px #04C1C9 !important;
+				}
+				</style>
     </head>
 
 <body class="client_body">
