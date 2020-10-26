@@ -10,13 +10,13 @@
  {
     function LoadEnv(){
         //$env = parse_ini_file('C:\xampp\htdocs\happyboxfront\.env');
-        $env = parse_ini_file('/var/www/happybox.ke/public_html/staging/.env');
+        $env = parse_ini_file(dirname(__DIR__).'/.env');
         return json_decode(json_encode($env));
     }
     function AppShipping(){
         return $this->LoadEnv()->APP_SHIPPING;
     }
-    function AppHome(){
+		function AppHome(){
         return $this->LoadEnv()->APP_HOME;
     }
     function AdminHome(){

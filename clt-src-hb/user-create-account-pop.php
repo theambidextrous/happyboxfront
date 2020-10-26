@@ -97,7 +97,7 @@ $util->ShowErrors(1);
 					</div>
 					<div class="form-group">
 						<label>Password</label>
-						<input id="password" type="password" name="password" class="form-control rounded_form_control" placeholder="Required Field">
+						<input id="input_password" type="password" name="password" class="form-control rounded_form_control" placeholder="Required Field">
 						<div id="toggle_pwd_guide" class="password_requirements collapse">
 							<span>&#10003; From 8 to 16 characters</span><br>
 							<span>&#10003; At least 1 upper case letter</span><br>
@@ -147,7 +147,7 @@ $util->ShowErrors(1);
 <script>
   $(document).ready(function(){
 		
-		$("#password").focus(function(){
+		$("#input_password").focus(function(){
 			$("#toggle_pwd_guide").collapse('show');
 		});
 		

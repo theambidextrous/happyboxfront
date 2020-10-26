@@ -5,11 +5,11 @@
  * @file - Order.php
  * @usage - Order objects
  */
-require_once '/var/www/happybox.ke/public_html/staging/lib/Util.php';
-require_once '/var/www/happybox.ke/public_html/staging/lib/Order.php';
+require_once dirname(__DIR__).'/lib/Util.php';
+require_once dirname(__DIR__).'/lib/Order.php';
 $util = new Util();
-require_once '/var/www/happybox.ke/public_html/staging/lib/Box.php';
-require_once '/var/www/happybox.ke/public_html/staging/lib/Picture.php';
+require_once dirname(__DIR__).'/lib/Box.php';
+require_once dirname(__DIR__).'/lib/Picture.php';
 
 //require_once 'C:\xampp\htdocs\happyboxfront\lib\Util.php';
 //require_once 'C:\xampp\htdocs\happyboxfront\lib\Order.php';
