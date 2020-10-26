@@ -166,9 +166,9 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 							$cart_physical_del = $_SESSION['curr_usr_cart'][2000]['physical_address'];
 						 ?>
 					<tr>
-						<td colspan="4"><hr>
-							<h6><span class="text-orange"><b>Delivery Address for All Physical Boxes</b></span> </h6>
-							<hr></td>
+						<td colspan="4">
+							<h6><span class="text-orange"><b>Delivery Address for All Physical Boxes</b></span> </h6><hr>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2"><div class="form-group">
@@ -305,9 +305,9 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 							// $util->Show($_SESSION['curr_usr_cart'][2000]);
 						 ?>
 					<tr>
-						<td colspan="4"><hr>
-							<h6><span class="text-orange"><b>Delivery Address for All Physical Boxes</b></span> </h6>
-							<hr></td>
+						<td colspan="4">
+							<h6><span class="text-orange"><b>Delivery Address for All Physical Boxes</b></span> </h6><hr>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2"><div class="form-group">
@@ -351,7 +351,6 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 						}					
 					?>
 					<tr class="cart_totals_actions shipping_action_strip">
-						<hr>
 						<td colspan="4" align="right"><a href="<?=$util->ClientHome()?>/"><img src="shared/img/btn-continue-shopping.svg"></a>
 							<button type="submit" class="invisible_btn" name="load"><img src="shared/img/btn-order-summary-blue.svg"></button>
 							

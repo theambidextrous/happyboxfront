@@ -1540,8 +1540,9 @@ th, td {
 .cart-table {
 	font-size: 14px !important;
 }
-.table-item-row {
-	margin-bottom:10px;
+.table-item-row-divider {
+	margin-top: .5rem !important;
+	margin-bottom: .5rem !important;
 }
 .btn-number .fa-plus {
 	color: #FA683D !important;
@@ -2663,11 +2664,6 @@ padding-right: 0px !important;
 }
 .shipping_table .pdt_img {
 	width: auto;
-}
-.table-item-row-divider {
-	margin-top: .5rem !important;
-	margin-bottom: .5rem !important;
-	border-top: 1px solid transparent !important;
 }
 .cart_progress_strip {
 	border: solid 1px #10ACB3;
