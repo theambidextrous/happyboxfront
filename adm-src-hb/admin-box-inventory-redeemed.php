@@ -379,7 +379,7 @@ $box = new Box();
             }
         }
         pay_effec = function(FormId){
-            waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+            waitingDialog.show('Sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
             var dataString = $("form[name=" + FormId + "]").serialize();
             $.ajax({
                 type: 'post',

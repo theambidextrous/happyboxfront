@@ -420,7 +420,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
       }
 
       add_to_cart = function(FormId){
-        waitingDialog.show('adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = $("form[name=" + FormId + "]").serialize();
         $.ajax({
             type: 'post',

@@ -78,7 +78,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <div class="row justify-content-center">
                 <div class="col-md-5  text-center user_activate_l desktop_view">
                       <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
-                        <p class="txt-orange">Enter your voucher code and click activate code</p>
+                        <p class="txt-orange">Enter your voucher code and click activate</p>
                     <div class="card border_blue_radius text-center user_activate_card">
                         <form name="activate_v">
                             <?=$util->msg_box()?>
@@ -191,7 +191,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         </form>
                     </div>
                 </div
-            </div>
+            ></div>
         </section>
         <!--end add to cart cards-->
         <!--our partners -->

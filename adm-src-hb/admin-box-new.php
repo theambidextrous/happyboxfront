@@ -341,7 +341,7 @@ $prices = json_decode($prices, true)['data'];
                             return;
                         }
                         // use p & r to get services
-                        waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+                        waitingDialog.show('Updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
                         dataString = "p=" + p + "&r=" + r;
                         $.ajax({
                             type: 'post',
@@ -380,7 +380,7 @@ $prices = json_decode($prices, true)['data'];
                         }
                         // use p & r to get services
                         // use p & r to get services
-                        waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+                        waitingDialog.show('Updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
                         dataString = "p=" + p + "&r=" + r;
                         $.ajax({
                             type: 'post',

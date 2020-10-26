@@ -37,7 +37,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	<div class="row">
 		<div id="demo" class="carousel slide carousel-fade home_slider" data-ride="carousel">
 			<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="0"></li>
 				<li data-target="#demo" data-slide-to="1"></li>
 				<li data-target="#demo" data-slide-to="2"></li>
 			</ul>
@@ -128,7 +128,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			$_pop_str = str_replace("'", "", $_pop_str);
 		?>
 		<!--<div class="col-md-6 <?=$col_count_col;?>" onclick="booklet_show('<?=$_pop_str?>')">-->
-                    <div class="col-md-6 <?=$col_count_col;?>">
+    <div class="col-md-6 <?=$col_count_col;?>">
 			<div class="card selection_card sports_card">
 				<div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
 					<img src="shared/img/icons/magnifyglass.svg"/>
@@ -152,7 +152,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				</div>
 				<div class="cart_bar_strip_mob mobile_view ">
 					<form name="frm_<?=$_all_box['internal_id']?>">
-                                            <div class="row">
+					<div class="row">
 						<div class="col-6">
 							<input type="hidden" value="<?=$_all_box['internal_id']?>" name="internal_id">
 							<span class="pricing btn btn-mob-cart btn-block">KES <?=number_format($_all_box['price'], 2)?>
@@ -161,7 +161,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 						<div class="col-6">
 							<img src="<?=$util->ClientHome()?>/shared/img/addcartmob.svg" class="width_100 add_to_cart" onclick="add_to_cart('frm_<?=$_all_box['internal_id']?>')">
 						</div>
-                                            </div>
+					</div>
 					</form>
 				</div>
 			</div>
@@ -219,7 +219,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				<div class="step_box step_color4">4</div>
 				<div class="iwant_card_div">
 					<p class="iwant_card_p"> Make payment using<br class="">
-						A credit card or Mpesa</p>
+						a credit card or Mpesa</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color4"> </p>
 			</div>
@@ -474,7 +474,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
       }
 
       add_to_cart = function(FormId){
-        waitingDialog.show('adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = $("form[name=" + FormId + "]").serialize();
         $.ajax({
             type: 'post',

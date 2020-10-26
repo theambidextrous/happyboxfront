@@ -22,6 +22,9 @@ html {
 img {
 	max-width: 100%;
 }
+.img-btn {
+	cursor:pointer;
+}
 .nav-link {
 	padding: 0.1rem 0.5rem;
 }
@@ -1242,6 +1245,11 @@ th, td {
 .text_upper {
 	text-transform: uppercase;
 }
+.user-profile {
+	color: #c20a2b!important;
+	text-decoration: none!important;
+	border-bottom: solid 2px #04C1C9 !important;
+}
 .user_account {
 	background: #00ACB3 0% 0% no-repeat padding-box;
 	padding: 18px;
@@ -1526,9 +1534,14 @@ th, td {
 	border: solid 1px #10ACB3;
 	border-radius: 5px;
 	height: 15px;
+	margin-left: 0;
+	margin-right: 0;
 }
 .cart-table {
 	font-size: 14px !important;
+}
+.table-item-row {
+	margin-bottom:10px;
 }
 .btn-number .fa-plus {
 	color: #FA683D !important;
@@ -1582,6 +1595,7 @@ th, td {
 }
 .cart_des {
 	width: 34%;
+	text-align:justify;
 }
 .ongeza_btn {
 	color: #FA683D !important;
@@ -2652,6 +2666,12 @@ padding-right: 0px !important;
 }
 .shipping_table .pdt_img {
 	width: auto;
+}
+.table-item-row-divider {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+	border: 0;
+	border-top: 1px solid transparent;
 }
 .cart_progress_strip {
 	border: solid 1px #10ACB3;
