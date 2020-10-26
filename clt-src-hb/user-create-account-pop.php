@@ -97,8 +97,8 @@ $util->ShowErrors(1);
 					</div>
 					<div class="form-group">
 						<label>Password</label>
-						<input type="password" name="password" class="form-control rounded_form_control" placeholder="Required Field">
-						<div class="password_requirements">
+						<input id="password" type="password" name="password" class="form-control rounded_form_control" placeholder="Required Field">
+						<div id="toggle_pwd_guide" class="password_requirements collapse">
 							<span>&#10003; From 8 to 16 characters</span><br>
 							<span>&#10003; At least 1 upper case letter</span><br>
 							<span>&#10003; At least 1 number</span><br>
@@ -146,6 +146,11 @@ $util->ShowErrors(1);
 <!-- end pop up --> 
 <script>
   $(document).ready(function(){
+		
+		$("#password").focus(function(){
+			$("#toggle_pwd_guide").collapse('show');
+		});
+		
     new_account = function(FormId){
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
