@@ -25,6 +25,9 @@ img {
 .img-btn {
 	cursor:pointer;
 }
+input[type="button"]:focus {
+	outline: none !important;
+}
 .nav-link {
 	padding: 0.1rem 0.5rem;
 }
