@@ -5,6 +5,7 @@ require_once('../lib/User.php');
 require_once('../lib/Order.php');
 require_once('../lib/Box.php');
 require_once('../lib/Picture.php');
+require_once('../lib/Inventory.php');
 $util = new Util();
 $user = new User();
 if(!$util->is_client()){
@@ -20,7 +21,27 @@ $my_list_ = json_decode($my_list_, true)['data'];
 // $util->Show($my_list_);
 
 if(isset($_POST['makecart'])){
-    $_SESSION['curr_usr_cart'] = json_decode($_POST['draft_cart'], true);
+	try{
+		$i = new Inventory();
+		$stock = json_decode($i->get_purchasable('', $_POST['internal_id']))->stock;
+		$ship_type = 2;//e-box
+		if($stock > 0){
+			$ship_type = 1;//p-box
+		}
+		$item = $_POST['internal_id'];
+		$qty = 1;
+		$cart_item = [$item, $qty, $ship_type, $stock];
+		if(!isset($_SESSION['curr_usr_cart'])){
+			$_SESSION['curr_usr_cart'] = [$cart_item];
+		}else{
+			if($util->is_in_cart($item)){
+				$util->update_cart_item($item, $qty, $stock);
+			}else{
+				array_push($_SESSION['curr_usr_cart'], $cart_item);
+			}
+		}
+	}catch( Exception $e ){
+	}
     header("Location: user-dash-shoppingcart.php");
 }
 ?>
@@ -111,9 +132,15 @@ if(isset($_POST['makecart'])){
 								$this_order = $current_order_id;
 								$order_full = json_decode($_list['order_string'], true);
 								$draft_cart = [];
+								$bx_internal_id = "";
 								foreach($order_full as $_cart_item ):
-								if(!isset($_cart_item['order_id'])){
+								if(isset($_cart_item['order_id'])){
+
+								}elseif(isset($_cart_item['physical_address'])){
+	
+								}else{
 								$draft_cart[] = $_cart_item;
+								$bx_internal_id = $_cart_item[0];
 								$_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
 								$_b_cost = floor($_cart_item[1]*$_box_data->price);
 								$_media = $picture->get_byitem('00', $_cart_item[0]);
@@ -151,7 +178,8 @@ if(isset($_POST['makecart'])){
 								endforeach;                                
 								?>
 								<tr class="">
-									<td colspan="4" class="td_noborder"><input type="hidden" name="draft_cart" value='<?=json_encode($draft_cart)?>'/></td>
+									<td colspan="4" class="td_noborder">
+									<input type="hidden" name="internal_id" value='<?=$bx_internal_id?>'/></td>
 									<?php 
 									// unset($draft_cart);
 									?>

@@ -24,8 +24,9 @@
                             foreach( $_partners_slide_data as $_partners_slide ):
                                 $_is_Active = json_decode($user->get_is_active($_partners_slide['userid']))->is_active->is_active;
                                 if($_is_Active){
-                                    $_ptn_pic = json_decode($picture->get_byitem_one('00', $_partners_slide['internal_id']))->data;
-                                    $_ptn_lg_path = $util->AppUploads().'profiles/'.$_partners_slide['logo'];
+                                    $_ptn_pic = json_decode($picture->get_byitem_one_type('00', $_partners_slide['internal_id'], 3))->data;
+                                    // $util->Show($_ptn_pic);
+                                    $_ptn_lg_path = $util->AppUploads().'profiles/'.$_partners_slide['picture'];
                                     if($_ptn_pic->path_name){
                                         $_ptn_lg_path = $_ptn_pic->path_name;
                                     }

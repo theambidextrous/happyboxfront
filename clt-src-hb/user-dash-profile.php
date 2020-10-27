@@ -95,10 +95,6 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 						<label>Mobile</label>
 						<input type="text" name="phone" class="form-control rounded_form_control" value="<?=$profile_data_->phone?>">
 					</div>
-					<div class="form-group">
-						<label>Profile Photo</label>
-						<input type="file" name="img" class="form-control file_input">
-					</div>
 					<p class="text-right">
 						<button type="button" onclick="edit_account('edit_account_frm')" class="btn btn_rounded user_btn">UPDATE MY DETAILS</button>
 					</p>
@@ -167,7 +163,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 
   // ============ SHIPPING =======================
   edit_shipping = function(FormId){
-      waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      waitingDialog.show('Updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
       // var dataString =  new FormData($('#' + FormId )[0]);
       // console.log(dataString);
@@ -196,7 +192,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
       }
   // =============== ACCUNT DATA ================
   edit_account = function(FormId){
-      waitingDialog.show('updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      waitingDialog.show('Updating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       // var dataString = $("form[name=" + FormId + "]").serialize();
       var dataString =  new FormData($('#' + FormId )[0]);
       $.ajax({

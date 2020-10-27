@@ -65,7 +65,15 @@
     function AppMpesaCallBack(){
         return $this->LoadEnv()->APP_MPESA_CALL_BACK;
     }
-
+    function AppWellBeing(){
+        return $this->LoadEnv()->APP_WB;
+    }
+    function AppGastronomy(){
+        return $this->LoadEnv()->APP_GS;
+    }
+    function AppSports(){
+        return $this->LoadEnv()->APP_SA;
+    }
     function AppMpesaConfirmation(){
         return $this->LoadEnv()->APP_MPESA_CONFIRMATION;
     }
@@ -355,7 +363,17 @@
         return $randomString;
     }
     function locations_list(){
-        return  ['Nairobi','Mombasa','Nakuru','Naivasha','Kisumu','Lamu','Malindi','Kitale'];
+        return  ['Nairobi','Mombasa','Nakuru','Naivasha','Kisumu','Lamu', 'Watamu','Malindi','Kitale'];
+    }
+    function cartCount(){
+        $cnt = [];
+        foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
+            if(isset($_cart_item['order_id'])){}elseif(isset($_cart_item['physical_address'])){}
+            else{
+                $cnt[] = 1;
+            }
+        endforeach;
+        return array_sum($cnt);
     }
     function ValidatePasswordStrength($password){
         $uppercase = preg_match('@[A-Z]@', $password);

@@ -110,14 +110,17 @@ function format_service($keys, $values){
                                         if(json_decode($reset_resp)->status == '0'){
                                         // if($services){
                                             if(empty($_POST['sub_location'])){
-                                                throw new Exception('Sub location is required, please correct');
+                                                $_POST['sub_location'] = "";
+                                                // throw new Exception('Sub location is required, please correct');
+                                            }else{
+                                                $_POST['sub_location'] = " | " . $_POST['sub_location'];
                                             }
                                             /** complete profile */
                                             $body = [
                                                 'fname' => $_POST['fname'],
                                                 'sname' => $_POST['sname'],
                                                 'short_description' => $_POST['short_description'],
-                                                'location' => $_POST['location'].' | '. $_POST['sub_location'],
+                                                'location' => $_POST['location'] . $_POST['sub_location'],
                                                 'phone' => $_POST['phone'],
                                                 'business_name' => $_POST['business_name'],
                                                 'business_category' => $_POST['business_category'],

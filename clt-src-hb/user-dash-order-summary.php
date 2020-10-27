@@ -156,7 +156,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                                   if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}
                               }
                               if($_cart_item[2] == 2){ /** ebox */
-                                $_total_shipping[] = 0;
+                                $_total_shipping = 0;
 
                         ?>
                         <tr>
@@ -175,11 +175,11 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                                 $errr = '';
                                 // $s_amt = 10;
                                 if(count($order_physical_address)){
-                                  $_total_shipping[] = $s_amt = $util->AppShipping();
+                                  $_total_shipping = $s_amt = $util->AppShipping();
                                 }else{
                                   $errr = "No delivery address for this physical box";
                                   array_push($_has_no_ship, 1);
-                                  $_total_shipping[] = 0;
+                                  $_total_shipping = 0;
                                 }
                                 $_address_string = $order_physical_address[1];
                         ?>
@@ -218,11 +218,11 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                               </tr>
                               <tr>
                                 <td>SHIPPING</td>
-                                <td>KES <?=number_format(array_sum($_total_shipping),2)?></td>
+                                <td>KES <?=number_format($_total_shipping,2)?></td>
                               </tr>
                               <tr class="bold_txt">
                                 <td>TOTAL PRICE (Incl. VAT)</td>
-                                <td>KES <?=number_format((array_sum($_total_cart)+array_sum($_total_shipping)), 2)?></td>
+                                <td>KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
                               </tr>
                             </table>
                           </div>
@@ -232,8 +232,8 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                         <input type="hidden" name="has_p_box" value="<?=array_sum($_has_p_box)?>"/>
                         <input type="hidden" name="has_no_ship" value="<?=array_sum($_has_no_ship)?>"/>
                         <input type="hidden" name="subtotal" value="<?=array_sum($_total_cart)?>"/>
-                        <input type="hidden" name="shipping" value="<?=array_sum($_total_shipping)?>"/>
-                        <input type="hidden" name="total" value="<?=(array_sum($_total_cart)+array_sum($_total_shipping))?>"/>
+                        <input type="hidden" name="shipping" value="<?=$_total_shipping?>"/>
+                        <input type="hidden" name="total" value="<?=(array_sum($_total_cart)+$_total_shipping)?>"/>
                         <table class="order_summ_actions">
                         <tr align="right" class="cart_totals  cart_totals_actions ">
                           <td colspan="6 ">

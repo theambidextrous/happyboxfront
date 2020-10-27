@@ -80,7 +80,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                       <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
                         <p class="txt-orange">Enter your voucher code and click activate</p>
                     <div class="card border_blue_radius text-center user_activate_card">
-                        <form name="activate_v">
+                        <form name="activate_vcher" class="activate_v_class">
                             <?=$util->msg_box()?>
                             <div class="row">
                                 <div class="col-md-8">
@@ -88,7 +88,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     <input type="text" name="vcode" class="form-control rounded_form_control text-left" placeholder="Enter your voucher code here">
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="button" onclick="activate_voucher('activate_v')" class="btn btn_rounded btn-orange">ACTIVATE</button>   
+                                    <button type="button" onclick="activate_voucher('activate_vcher')" class="btn btn_rounded btn-orange">ACTIVATE</button>   
                                 </div>
                             </div>
                         </form>
@@ -176,7 +176,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                       <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
                         <p class="txt-orange">Enter your voucher code and click activate code</p>
                     <div class="card border_blue_radius text-center user_activate_card no_border_mob">
-                        <form name="activate_v">
+                        <form name="activate_v" class="activate_v_class">
                             <?=$util->msg_box()?>
                             <div class="row">
                                 <div class="col-md-8">
@@ -224,7 +224,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
     <script>  
     $(document).ready(function(){
       activate_voucher = function(FormId){
-      waitingDialog.show('activating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      waitingDialog.show('Activating... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
           type: 'post',

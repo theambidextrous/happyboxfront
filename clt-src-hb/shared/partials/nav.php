@@ -96,7 +96,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 				<li class="nav-item ">
 				<div class="nav-item-with-cart" id="reset_div">
 				<?php
-				$CartCount = !empty($_SESSION['curr_usr_cart'])?count($_SESSION['curr_usr_cart']):0;
+				$CartCount = $util->cartCount();
 				if( $CartCount > 0 ){
 					?>
 					<a class="nav-link" href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-cart-red.svg"><span class="count text-danger"><?=$CartCount?>

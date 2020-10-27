@@ -52,13 +52,20 @@ $util->ShowErrors(1);
 			</div>
 			<!--end progress strip-->
 			<div>
+					<?php
+					// $util->Show($_SESSION['curr_usr_cart']);
+					?>
 				<table class="p-2 cart-table table-borderless">
 					<?php 
 					// $util->Show($_SESSION['curr_usr_cart']);
 					// unset($_SESSION['curr_usr_cart']);
 					if(!empty($_SESSION['curr_usr_cart'])){
 							foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
-									if(!isset($_cart_item['order_id'])){
+									if(isset($_cart_item['order_id'])){
+
+									}elseif(isset($_cart_item['physical_address'])){
+
+									}else{
 									$raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
 									$_box_data = $raw_data->data;
 									$_b_cost = floor($_cart_item[1]*$_box_data->price);
@@ -139,24 +146,30 @@ $util->ShowErrors(1);
 			</div>
 			<!--end progress strip-->
 			<div>
+					<?php
+					// $util->Show($_SESSION['curr_usr_cart']);
+					?>
 				<table class="p-2 cart-table table-borderless">
 					<?php 
-					// $util->Show($_SESSION['curr_usr_cart']);
 					// unset($_SESSION['curr_usr_cart']);
 					if(!empty($_SESSION['curr_usr_cart'])){
 							foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
-									if(!isset($_cart_item['order_id'])){
-									$raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
-									$_box_data = $raw_data->data;
-									$_b_cost = floor($_cart_item[1]*$_box_data->price);
-									$_total_cart[] = $_b_cost;
-									$_total_shipping = 0;
-									$_media = $picture->get_byitem('00', $_cart_item[0]);
-									$_media = json_decode($_media, true)['data'];
-									$_3d = 'shared/img/cart_img.png';
-									foreach( $_media as $_mm ){
-											if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}
-									}
+								if(isset($_cart_item['order_id'])){
+
+								}elseif(isset($_cart_item['physical_address'])){
+
+								}else{
+								$raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
+								$_box_data = $raw_data->data;
+								$_b_cost = floor($_cart_item[1]*$_box_data->price);
+								$_total_cart[] = $_b_cost;
+								$_total_shipping = 0;
+								$_media = $picture->get_byitem('00', $_cart_item[0]);
+								$_media = json_decode($_media, true)['data'];
+								$_3d = 'shared/img/cart_img.png';
+								foreach( $_media as $_mm ){
+										if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}
+								}
 					?>
 					<tr id="reset_div_<?=$_cart_item[0]?>">
 						<td class="pdt_img" style="width:35%"><img src="<?=$_3d?>" /></td>

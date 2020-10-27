@@ -137,14 +137,17 @@ function reloadcurrent(){
                                         throw new Exception('You must add at least one experience for this partner');
                                     }
                                     if(empty($_POST['sub_location'])){
-                                        throw new Exception('Sub location is required, please correct');
+                                        $_POST['sub_location'] = "";
+                                        // throw new Exception('Sub location is required, please correct');
+                                    }else{
+                                        $_POST['sub_location'] = " | " . $_POST['sub_location'];
                                     }
                                     $created_user_id = $_REQUEST['pt'];
                                     $body = [
                                         'fname' => $_POST['fname'],
                                         'sname' => $_POST['sname'],
                                         'short_description' => $_POST['short_description'],
-                                        'location' => $_POST['location'].' | '. $_POST['sub_location'],
+                                        'location' => $_POST['location'] . $_POST['sub_location'],
                                         'phone' => $_POST['phone'],
                                         'email' => $_POST['email'],
                                         'business_name' => $_POST['business_name'],

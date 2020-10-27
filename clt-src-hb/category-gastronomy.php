@@ -12,7 +12,7 @@ $box = new Box();
 $picture = new Picture();
 $inventory = new Inventory();
 $_t = new Topic();
-$topic_selected_ = json_decode($_t->get_by_name(trim('Gastronomy')))->data->internal_id;
+$topic_selected_ = $topic_selected_ = $util->AppGastronomy();
 $util->ShowErrors(1);
 $_all_boxes = json_decode($box->get_all_active_bytopic($topic_selected_), true)['data'];
 $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data'];
