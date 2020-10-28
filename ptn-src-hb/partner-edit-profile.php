@@ -76,7 +76,7 @@ $topics = json_decode($topics, true)['data'];
                                     </div>
                                     <div class="form-group">
                                       <label>Business Category</label>
-                                      <select name="business_category" class="form-control rounded_form_control">
+                                      <select name="business_category" class="form-control rounded_form_control select_ctrl">
                                         <?php
                                             foreach( $topics as $_topic ){
                                                if($_topic['internal_id'] == $user_info->data->business_category){
@@ -94,7 +94,7 @@ $topics = json_decode($topics, true)['data'];
                                     </div>  
                                     <div class="form-group">
                                       <label>Business Location</label>
-                                      <select name="location" id="location" class="form-control rounded_form_control" id="select_box_type">
+                                      <select name="location" id="location" class="form-control rounded_form_control select_ctrl" id="select_box_type">
                                         <?php foreach($util->locations_list() as $_loc ){
                                             if(explode('|', $user_info->data->location)[0] == $_loc){
                                               print '<option selected value="'.$_loc.'">'.$_loc.'</option>';

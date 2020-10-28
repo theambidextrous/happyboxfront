@@ -81,7 +81,7 @@ $util->ShowErrors(1);
 					<tr id="reset_div_<?=$_cart_item[0]?>">
 						<td class="pdt_img"><img src="<?=$_3d?>" /></td>
 						<td class="cart_des"><h6><?=$_box_data->name?></h6> <span><?=$_box_data->description?></span><br>
-							<br><b>KES<?=number_format($_box_data->price, 2)?></b><br>
+							<br><b>KES <?=number_format($_box_data->price, 2)?></b><br>
 							<span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span></td>
 						<td><?=$util->ship_type_form($_cart_item[0], $_cart_item[2])?></td>
 						<td><!------ Include the above in your HEAD tag ---------->
@@ -115,12 +115,13 @@ $util->ShowErrors(1);
 							</tr>';
 					}
           ?>
-					<tr align="right" class="cart_totals tr_border_top">
-						<td colspan="4"><span class="cart_totals_lbl">SHIPPING TOTAL</span></td>
-						<td colspan="2">KES <?=number_format($_total_shipping,2)?></td>
+					<tr align="rightx" class="cart_totals tr_border_top">
+						<td colspan="4" align="right"><span class="cart_totals_lbl">SHIPPING TOTAL</span></td>
+						<td colspan="4" >KES <?=number_format($_total_shipping,2)?></td>
+                                                
 					</tr>
-					<tr align="right" class="cart_totals tr_border_top cart_totals_large">
-						<td colspan="4"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
+					<tr align="rightx" class="cart_totals tr_border_top cart_totals_large">
+						<td colspan="4" align="right"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
 						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">

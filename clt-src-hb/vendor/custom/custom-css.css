@@ -292,6 +292,9 @@ th, td {
 	color: #0185B6 !important;
 	font-size: 13px !important;
 }
+.partner_wrap .top-bar-nav .nav-link {
+       font-weight: bold;
+}
 .cli_user_login {
 	color: #00ACB3 !important;
 }
@@ -737,9 +740,9 @@ th, td {
 	right: 40px
 }
 .partners_img {
-	height: 56px;
-	margin-top: -30px;
-	margin-left: -2px;
+    height: 56px;
+    margin-top: -30px;
+    margin-left: -17px;
 }
 .blue_text {
 	color: #0185B6;
@@ -1484,13 +1487,13 @@ th, td {
 	margin-top: 64px;
 }
 .purchase_hist_right div {
-	vertical-align: middle;
-	border-style: none;
-	display: table-cell;
+    vertical-align: bottom;
+    border-style: none;
+    display: table-cell;
 }
 .purchase_hist_right img {
-	height: 39px;
-	margin-bottom: 30px;
+    height: 39px;
+    margin-bottom: 34px;
 }
 .td_no_pad {
 	padding: 0px !important;
@@ -2137,6 +2140,7 @@ th, td {
 	padding: 8px 4px !important;
 	border-bottom: none !important;
 }
+
 .empty_cell {
 	background: #CCCCCC 0% 0% no-repeat padding-box;
 }
@@ -2296,6 +2300,9 @@ th, td {
 	padding: 17px 10px !important;
 }
 @media (min-width: 768px) {
+    .hap_desk{
+    width: 221px !important;
+}
 .book_row {
 	margin-top: -8px;
 }
@@ -2608,6 +2615,25 @@ padding-right: 0px !important;
     height: 202px !important;
     font-size: 15px;
 }
+.modal-content .carousel-control-next-icon,.modal-content  .carousel-control-prev-icon {
+    display: none !important;
+    }
+    .del_icon:hover{
+        cursor: pointer;
+    }
+    .purchase_hist_right{
+        display: table;
+    }
+    .down_inv{
+        display: table-cell;
+    }
+    .alert-danger {
+      width: 100% !important;
+}
+    
+    /*equal height */
+    
+/*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
     .cat_well .sports_card .selection_card_body {

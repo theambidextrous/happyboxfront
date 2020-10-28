@@ -97,7 +97,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
     <!--end well being banner-->
       <!--end discover our selection-->
       <section class="container section_padding_top cat_well">
-          <div class="row col-container">
+          <div class="row col-container ">
           <?php 
           $_row_count = 1;
           $_box_count = count($_all_boxes);

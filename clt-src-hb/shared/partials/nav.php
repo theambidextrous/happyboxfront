@@ -62,10 +62,10 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 		<a class="navbar-brand" href="<?=$util->ClientHome()?>/"> <img src="<?=$util->ClientHome()?>/shared/img/logo.svg"> </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<div class="form_search_nav_wrap">
-				<span><!--<i class="fas fa-search"></i>--> <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
+			<!--<div class="form_search_nav_wrap">
+				<span><img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
 				<input type="text" name="" class="form-control form_search_nav">
-			</div>
+			</div>-->
 			<ul class="navbar-nav ml-auto top-bar-nav">
 				<li class="nav-item">
 				<?php //$login_?>
@@ -75,7 +75,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 				<?=$name_?>
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item client_drop_1" href="<?=$util->ClientHome()?>/user-dash-profile.php">EDIT PROFILE</a> <a class="dropdown-item" href="exit.php">LOGOUT</a>
+					<a class="dropdown-item client_drop_1" href="<?=$util->ClientHome()?>/user-dash-profile.php">PROFILE</a> <a class="dropdown-item" href="exit.php">LOGOUT</a>
 				</div>
 				</li>
 				<?php } else{ ?>
@@ -170,9 +170,9 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 		<li> <a  href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a> </li>
 		<li> <a href="#">Logout</a> </li>
 		<li> <a href="#"></a> </li>
-		<li class="site-nav-seacrh"> <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
+		<!--<li class="site-nav-seacrh"> <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
 		<input type="text" name="" class=" form_search_nav_mob" placeholder="Search">
-		</li>
+		</li>-->
 		<div class="menu-close">
 			<img src="<?=$util->ClientHome()?>/shared/img/icn-close-window-blue.svg">
 		</div>

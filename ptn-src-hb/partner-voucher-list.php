@@ -122,20 +122,20 @@ $list = json_decode($list, true)['data'];
                     if($box_voucher_status == 3){
                       $m_partner = "'".json_decode($_SESSION['usr_info'])->data->internal_id."'";
                       $b_v_status = '<td class="hap_success">REDEEMED</td>';
-                     /* $admin_func = ' <td class="hap_danger">
-                      <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
+                    $admin_func = ' <td class="hap_danger hap_desk">
+                      <a href="#" class="text-white " onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
                       </td>
                       <td id="datepilckerx" class="hap_primary">
-                       <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#myModal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
-                      <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,'.$m_voucher.','.$m_partner.')" onfocus="(this.type=\'date\')"></td>
-                      ';*/
-                       $admin_func = ' <td class="hap_danger">
-                      <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
-                      </td>
-                      <td id="datepilckerx" class="hap_primary">
-                       <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#myModal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
-                      </td>
+                       <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#modif_booking_modal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
+                      <input type="text" id="pickDate" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,'.$m_voucher.','.$m_partner.')" onfocus="(this.type=\'date\')"></td>
                       ';
+                      /* $admin_func = ' <td class="hap_danger">
+                      <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
+                      </td>
+                      <td id="datepilckerx" class="hap_primary">
+                       <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#myModal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
+                      </td>
+                      ';*/
   
 
                     }elseif($box_voucher_status == 4){
@@ -258,11 +258,17 @@ $list = json_decode($list, true)['data'];
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
 <?php include '../shared/partials/js.php';?>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#pickDate" ).datepicker();
+    $( "#pickDate" ).datepicker( {
+  dateFormat: "yy-mm-dd"
+});
+   
+    $( "#new_booking_date" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
   } );
   </script> 
 </body>

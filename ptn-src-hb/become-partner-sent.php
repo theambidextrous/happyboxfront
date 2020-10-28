@@ -17,7 +17,7 @@ $util = new Util();
  <?php include '../shared/partials/css.php'; ?>
 
 </head>
-<body>
+<body class="partner_wrap">
   <!-- Navigation -->
  <?php include '../shared/partials/nav.php'; ?>
   <section  class="blue_band text-center">

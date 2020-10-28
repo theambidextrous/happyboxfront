@@ -18,7 +18,7 @@ $util = new Util();
 
 </head>
 
-<body>
+<body class="partner_wrap">
   <!-- Navigation -->
  <?php include '../shared/partials/nav-logged-in.php'; ?>
  

@@ -203,10 +203,16 @@ if(isset($_POST['makecart'])){
 					</div>
 					<!-- end col-md-9 -->
 				</div>
-				<div class="col-md-3 purchase_hist_right">
-					<button type="submit" name="makecart"> <img class="img-btn btn-add-to-cart" src="shared/img/btn-add-to-cart-orange.svg"> </button>
+				<div class="col-md-3 ">
+                                    <div class="purchase_hist_right">
+                                    <div class="down_inv">
+                                        
+					<!--<button type="submit" name="makecart"> <img class="img-btn btn-add-to-cart" src="shared/img/btn-add-to-cart-orange.svg"> </button>-->
 					<img class="img-btn btn-invoice-download" onclick="fdownload('invoicetodown<?=$_list['id']?>')" src="shared/img/btn-download-orange.svg">
-				</div>
+                                        
+                                    </div>
+                                   
+				</div></div>
 			</div>
 		</form>
 		<!-- end row -->

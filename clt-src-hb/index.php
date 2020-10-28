@@ -450,14 +450,14 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 
 <!--added to cart  end pop up --> 
 <script type="text/javascript">
-   $(document).bind('keyup', function(e) {
+            /*$(document).bind('keyup', function(e) {
         if(e.which == 39){
             $('.carousel').carousel('next');
         }
         else if(e.which == 37){
             $('.carousel').carousel('prev');
         }
-    });
+    });*/
 
     $(document).ready(function(){
       booklet_show = function(data){
