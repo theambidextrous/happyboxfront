@@ -165,9 +165,9 @@ $util->ShowErrors(1);
                 $("#reset_div").load(" #reset_div > *");
                 // $("#reset_div").load(location.href + " #reset_div" );
                 $('#popupid').trigger('click');
-                setTimeout(function(){
+                        /* setTimeout(function(){
                     location.reload();
-                }, 3000);
+                }, 3000);*/
                 waitingDialog.hide();
                 return;
             }

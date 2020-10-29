@@ -486,9 +486,9 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
                     // $("#reset_div").load(window.location.href + " #reset_div" );
-                    setTimeout(function(){
+                   /* setTimeout(function(){
                         location.reload();
-                    }, 2000);
+                    }, 2000);*/
                     $('#vvv').text('This box has been added to your cart');
                     $('#popupid').trigger('click');
                     waitingDialog.hide();
