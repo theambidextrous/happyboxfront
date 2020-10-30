@@ -120,15 +120,14 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 }
             }
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
-          ?>
-            
+          ?>            
             <div class="col-md-4 no_pad_lr">
               <div class="card selection_card sports_card">
                <div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
                  <img src="shared/img/icons/magnifyglass.svg"/>
                 </div>
                 <div class="card-header">
-                  <img src="shared/img/hb-box-03@2x.png" class="autoimg">
+                  <img src="<?=$_3d?>" class="autoimg">
                 </div>
                 <div class="card-body selection_card_body text-center">
                   <h4 class="box_title"><?=$_all_box['name']?></h4>
