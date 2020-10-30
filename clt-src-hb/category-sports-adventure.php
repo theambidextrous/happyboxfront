@@ -325,58 +325,67 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
   <!-- pop up -->
   <button id="popup_box" data-toggle="modal" data-target="#bookletPop" style="display:none;"></button>
   <div class="modal fade" id="bookletPop">
-    <div class="modal-dialog general_pop_dialogue booklet_dialogue pop_slider">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-8 pop_slider_pad">
-              <div id="modalSlider" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img id="box_img_" class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
-                    <div class="carousel-caption">
-                      <p><a id="bx_booklet_" target="_blank" href="#">View Box Booklet</a></p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
-                    <div class="carousel-caption">
-                      <p><a id="bx_booklet_t" target="_blank" href="#">View Box Booklet</a></p>
-                    </div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-                <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-              </div>
-            </div>
-            <div class="col-md-4 blue_border_left pop_slider_pad">
-              <a href="" data-dismiss="modal"><img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
-              <div class="modal_parent">
-                <div class="modal_child text-center">
-                  <h6 id="box_name_"></h6><br>
-                  <a href="" class="bold_txt pink_bg btn text-white" id="box_price_"></a>
-                  <p id="box_desc_"></p>
-                <div>
-                <form name="frm_popup">
-                  <input type="hidden" value="" id="internal_id" name="internal_id">
-                  <img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
-                </form>
-              </div>
-            </div>
-          </div>
-          <!-- end row -->
-        </div>
-        <!-- end modal body -->
-      </div>
-      <!-- end modal content -->
-    </div>
-    <!-- end modal dialogue-->
-  </div>
-  <!-- end modal -->
-
+	<div class="modal-dialog general_pop_dialogue booklet_dialogue pop_slider">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-8 pop_slider_pad">
+						<div id="modalSlider" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img id="box_img_" class="box_img_ d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
+									<div class="carousel-caption">
+										<p><a id="bx_booklet_" class="bx_booklet_" target="_blank" href="javascript(0);">View Box Booklet</a></p>
+									</div>
+								</div>
+								
+							</div>
+							<a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+						</div>
+					</div>
+					<div class="col-md-4 blue_border_left pop_slider_pad">
+						<a href="" data-dismiss="modal"><img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
+						<div class="modal_parent">
+							<div class="modal_child text-center">
+								<h6 id="box_name_" class="box_name_"></h6><br>
+								<div class="desktop_view">
+									<a href="" class="bold_txt pink_bg btn text-white box_price_" id="box_price_"></a>
+									<p id="box_desc_" class="box_desc_"></p>
+									<div>
+										<form name="frm_popup">
+											<input type="hidden" value="" id="internal_id" class="internal_id" name="internal_id">
+											<img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
+										</form>
+									</div>
+								</div>
+								<!--mobile -->
+								<div class="mobile_view">
+									<p class="box_desc_"> Discover over fifty unforgettable activities: Spa, Massage, Facial treatment, Yoga, Dinner, Hiking, Workout… From the gourmet to the most adventurous, including the wisest, everyone’s happiness is in this box! </p>
+									<div class="row">
+										<div class="col-6">
+											<a href="" class="bold_txt pink_bg btn text-white box_price_">KES 20 000.00</a>
+										</div>
+										<div class="col-6">
+											<img class="" src="<?=$util->ClientHome()?>/shared/img/icons/btn-add-to-cart-small-red-teal.svg" onclick="add_to_cart('frm_popup')"/>
+										</div>
+									</div>
+								</div>
+								<!--end mobile-->
+							</div>
+						</div>
+						<!-- end row -->
+					</div>
+					<!-- end modal body -->
+				</div>
+				<!-- end modal content -->
+			</div>
+			<!-- end modal dialogue-->
+		</div>
+		<!-- end modal -->
+		
+	</div>
 </div>
-</div>
-  <!-- end pop up -->
+<!-- end pop up -->
   <!-- added to cart pop up -->
   <button id="popupid" data-toggle="modal" data-target="#addedToCart" style="display:none;"></button>
     <div class="modal fade" id="addedToCart">
