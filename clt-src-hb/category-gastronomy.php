@@ -337,15 +337,10 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                       <p><a id="bx_booklet_" target="_blank" href="#">View Box Booklet</a></p>
                     </div>
                   </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
-                    <div class="carousel-caption">
-                      <p><a id="bx_booklet_t" target="_blank" href="#">View Box Booklet</a></p>
-                    </div>
-                  </div>
+                 
                 </div>
-                <a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-                <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+              <!--  <a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+                <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>-->
               </div>
             </div>
             <div class="col-md-4 blue_border_left pop_slider_pad">
@@ -418,7 +413,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
         $('#box_name_').text(d[1]);
         // $('#slide_title_').text(d[1]);
         $('#box_desc_').text(d[3]);
-        // $('#box_img_').attr('src', d[4]);
+       //$('#box_img_').attr('src', d[4]);
         $('#bx_booklet_').attr('href', d[5]);
         $('#bx_booklet_t').attr('href', d[5]);
         $('#popup_box').trigger('click');

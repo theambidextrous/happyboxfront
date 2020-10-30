@@ -1548,6 +1548,14 @@ th, td {
 .cart-table {
 	font-size: 14px !important;
 }
+.cart_border_bottom{
+    border-bottom: solid 1px #d0cfcf;
+}
+.cart_totals_large{
+
+    height: 48px;
+}
+
 .table-item-row-divider {
 	margin-top: .5rem !important;
 	margin-bottom: .5rem !important;

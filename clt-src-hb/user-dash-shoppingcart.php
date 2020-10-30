@@ -100,9 +100,10 @@ $util->ShowErrors(1);
 						<td><b>KES <?=number_format($_b_cost,2)?></b></td>
 						<td><i onclick="remove_from_cart('<?=$_cart_item[0]?>')" class="fas fa-trash-alt del_icon"></i></td>
 					</tr>
-					<tr >
+                                        <tr class="cart_border_bottom">
 						<td colspan="6"><small><i>* Physical delivery only available in Nairobi at present.</i></small></td>
 					</tr>
+                                        
 					<?php 
 											}
 							endforeach;
