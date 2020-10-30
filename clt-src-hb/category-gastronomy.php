@@ -118,8 +118,10 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 elseif($_mm['type'] == '3'){
                   $pdf = $_mm['path_name'];
                 }
-            }
+            }            
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+            $_pop_str = str_replace("'", "", $_pop_str);
+			      $_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
           ?>            
             <div class="col-md-4 no_pad_lr">
               <div class="card selection_card sports_card">
@@ -407,14 +409,14 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
     $(document).ready(function(){
       booklet_show = function(data){
         var d = data.split('~');
-        $('#internal_id').val(d[0]);
-        $('#box_price_').text('KES ' + d[2]);
-        $('#box_name_').text(d[1]);
+        $('.internal_id').val(d[0]);
+        $('.box_price_').text('KES ' + d[2]);
+        $('.box_name_').text(d[1]);
         // $('#slide_title_').text(d[1]);
-        $('#box_desc_').text(d[3]);
-       //$('#box_img_').attr('src', d[4]);
-        $('#bx_booklet_').attr('href', d[5]);
-        $('#bx_booklet_t').attr('href', d[5]);
+        $('.box_desc_').text(d[3]);
+        // $('#box_img_').attr('src', d[4]);
+        $('.bx_booklet_').attr('href', d[5]);
+        $('.bx_booklet_t').attr('href', d[5]);
         $('#popup_box').trigger('click');
         // console.log(d);
       }
