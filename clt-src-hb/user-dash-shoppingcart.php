@@ -179,11 +179,11 @@ $util->ShowErrors(1);
 					<tr style="background:#00ACB31A;">
 						<td><b>KES <?=number_format($_b_cost,2)?></b></td>
 						<td><div class="center">
-								<div class="input-group">
-									<span class="input-group-btn"><button type="button" class="btn btn-number"  data-type="minus" data-field="quant_<?=$_cart_item[0]?>[2]"><i class="fas fa-minus"></i></button></span>
-									<input type="text" name="quant_<?=$_cart_item[0]?>[2]" class="form-control input-number cart_value" value="<?=$_cart_item[1]?>" min="1" max="10">
-									<span class="input-group-btn"><button type="button" class="btn btn-number ongeza_btn" data-type="plus" data-field="quant_<?=$_cart_item[0]?>[2]"><i class="fas fa-plus"></i></button></span>
-								</div>
+                            <div class="input-group">
+                                    <span class="input-group-btn"><button type="button" class="btn btn-number"  data-type="minus" data-field="quant_<?=$_cart_item[0]?>[2]"><i class="fas fa-minus"></i></button></span>
+                                    <input type="text" name="quant_<?=$_cart_item[0]?>[2]" class="form-control input-number cart_value" value="<?=$_cart_item[1]?>" min="1" max="10">
+                                    <span class="input-group-btn"><button type="button" class="btn btn-number ongeza_btn" data-type="plus" data-field="quant_<?=$_cart_item[0]?>[2]"><i class="fas fa-plus"></i></button></span>
+                            </div>
 							</div></td>
 					</tr>
 					<tr>
@@ -275,7 +275,7 @@ $util->ShowErrors(1);
     });
 
     $('.input-number').change(function() {
-        waitingDialog.show('updating cart... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Updating cart... please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         minValue =  parseInt($(this).attr('min'));
         maxValue =  parseInt($(this).attr('max'));
         valueCurrent = parseInt($(this).val());
@@ -340,7 +340,7 @@ $util->ShowErrors(1);
     });
 
     remove_from_cart = function(box){
-        waitingDialog.show('removing item... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Removing item... please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = "internal_id=" + box;
         $.ajax({
             type: 'post',
@@ -368,7 +368,7 @@ $util->ShowErrors(1);
 
     change_ship_type = function(id, uncheck=0){
         console.log(($('#'+id).val()));
-        waitingDialog.show('changing box type... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Changing box type... please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = "internal_id=" + id;
         $.ajax({
             type: 'post',
@@ -394,7 +394,7 @@ $util->ShowErrors(1);
                     }, 1500);
                     waitingDialog.hide();
                     return;
-                }
+                } 
             }
         });
     }

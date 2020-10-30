@@ -181,6 +181,7 @@ $list = json_decode($list, true)['data'];
           </div>  </div>
              <div class="voucher_list_mob mobile_view">
                      <div class="row  ">
+                          
         <div class="col-md-12 ">
              <table class="table  voucher_list_table_mob table-borderless">
                 <thead>

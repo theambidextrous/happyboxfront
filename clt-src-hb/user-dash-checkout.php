@@ -185,7 +185,7 @@ $order = new Order($token);
                 s_event()
             }, 240000);
             mpesaPay = function(FormId){
-            waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+            waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
             var dataString = $("form[name=" + FormId + "]").serialize();
             $.ajax({
                 type: 'post',

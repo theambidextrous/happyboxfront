@@ -475,7 +475,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
       }
 
       add_to_cart = function(FormId){
-        waitingDialog.show('Adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Adding... please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = $("form[name=" + FormId + "]").serialize();
         $.ajax({
             type: 'post',
