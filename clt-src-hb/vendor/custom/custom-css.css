@@ -1303,8 +1303,11 @@ th, td {
 /*end user account */
 /*user login */
 .list_icon {
-	height: 25px;
-	display: inline;
+     height: 23px;
+    display: block;
+}
+.user_login_card_col2 .list_icon {
+       margin-top: 10px !important;
 }
 .user_login_card {
 	border: solid 1px #10ACB3;

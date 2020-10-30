@@ -123,7 +123,7 @@ if(isset($_POST['login'])){
 							Consult the validity status of your box
 						</div>
 					</div>
-					<div class="row user_login_card_col">
+					<div class="row user_login_card_col user_login_card_col2">
 						<div class="col-2">
 							<img src="shared/img/icons/check_orange.svg" class="list_icon">
 						</div>
