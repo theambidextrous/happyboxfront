@@ -274,7 +274,7 @@ $util->ShowErrors(1);
     });
 
     $('.input-number').change(function() {
-        waitingDialog.show('updating cart... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Updating cart... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         minValue =  parseInt($(this).attr('min'));
         maxValue =  parseInt($(this).attr('max'));
         valueCurrent = parseInt($(this).val());
@@ -292,10 +292,10 @@ $util->ShowErrors(1);
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
                     // $("#reset_div_" + box ).load(location.href+"  #reset_div"+ box +">*","");
-                    $("#yourDiv").load(" #yourDiv > *");
+                    // $("#yourDiv").load(" #yourDiv > *");
                     setTimeout(function(){
                         location.reload();
-                    }, 3000);
+                    }, 100);
                     // $(".sttv").load(location.href + " .sttv" );
                     return;
                 }
@@ -339,7 +339,7 @@ $util->ShowErrors(1);
     });
 
     remove_from_cart = function(box){
-        waitingDialog.show('removing item... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Removing item... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = "internal_id=" + box;
         $.ajax({
             type: 'post',
@@ -349,10 +349,10 @@ $util->ShowErrors(1);
                 // console.log(res);
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
-                    $("#yourDiv").load(" #yourDiv > *");
+                    // $("#yourDiv").load(" #yourDiv > *");
                     setTimeout(function(){
                         location.reload();
-                    }, 3000);
+                    }, 100);
                     return;
                 }
                 else if(rtn.hasOwnProperty("ERR")){
@@ -367,7 +367,7 @@ $util->ShowErrors(1);
 
     change_ship_type = function(id, uncheck=0){
         console.log(($('#'+id).val()));
-        waitingDialog.show('changing box type... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Changing box type... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = "internal_id=" + id;
         $.ajax({
             type: 'post',
@@ -377,20 +377,19 @@ $util->ShowErrors(1);
                 console.log(res);
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
-                    $("#yourDiv").load(" #yourDiv > *");
+                    // $("#yourDiv").load(" #yourDiv > *");
                     setTimeout(function(){
                         location.reload();
-                    }, 3000);
+                    }, 100);
                     return;
                 }
                 else if(rtn.hasOwnProperty("ERR")){
                     box = id.split('__')[1];
                     $('#vvv_' + box ).text(rtn.ERR);
                     $('#vvv_' + box ).show();
-                    $("#yourDiv").load(" #yourDiv > *");
                     setTimeout(function(){
                         location.reload();
-                    }, 1500);
+                    }, 5000);
                     waitingDialog.hide();
                     return;
                 }

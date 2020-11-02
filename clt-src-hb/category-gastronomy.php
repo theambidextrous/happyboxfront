@@ -120,6 +120,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 }
             }
             $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+            $_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
           ?>
             
             <div class="col-md-4 no_pad_lr">
@@ -438,6 +439,9 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 if(rtn.hasOwnProperty("MSG")){
                     $("#reset_div").load(window.location.href + " #reset_div" );
                     $('#vvv').text('THIS BOX HAS BEEN ADDED TO YOUR CART.');
+                    setTimeout(function(){
+                        location.reload();
+                    }, 10000);
                     $('#popupid').trigger('click');
                     waitingDialog.hide();
                     return;

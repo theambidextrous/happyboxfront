@@ -16,7 +16,7 @@
     function AppShipping(){
         return $this->LoadEnv()->APP_SHIPPING;
     }
-		function AppHome(){
+	function AppHome(){
         return $this->LoadEnv()->APP_HOME;
     }
     function AdminHome(){
@@ -65,6 +65,17 @@
     function AppMpesaCallBack(){
         return $this->LoadEnv()->APP_MPESA_CALL_BACK;
     }
+    /** jp */
+    function JpReturn(){
+        return $this->LoadEnv()->JP_RETURN_URL;
+    }
+    function JpCancel(){
+        return $this->LoadEnv()->JP_CANCEL_URL;
+    }
+    function JpFail(){
+        return $this->LoadEnv()->JP_FAIL_URL;
+    }
+    /** end jp */
     function AppWellBeing(){
         return $this->LoadEnv()->APP_WB;
     }
@@ -120,6 +131,27 @@
     }
     function success_flash($e){
         return '<p class="alert alert-success">'.$e.'</p>';
+    }
+    function isValidPassword($password)
+    {
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+
+        if( 
+            !$uppercase || 
+            !$lowercase || 
+            !$number || 
+            !$specialChars || 
+            strlen($password) < 8) 
+        {
+            return false;
+        }
+        return true;
+    }
+    function globalDate($date){
+        return date('d/m/Y', strtotime($date));
     }
     function voucher_div($status){
         if($status == 3){
@@ -279,10 +311,12 @@
         //$cart_item = [$item, $qty, $ship_type, $stock];
         foreach( $_SESSION['curr_usr_cart'] as $cart ){
             if($item == $cart[0]){
-                $ship_type = 1;
+                // $ship_type = 1;
+                $ship_type = $cart[2];
                 $new_qty = $qty;
                 if($new_qty > $stock){
-                    $ship_type = 2;
+                    // $ship_type = 2;
+                    $ship_type = $cart[2];
                 }
                 if($new_qty > 10){
                     $new_qty = 10;

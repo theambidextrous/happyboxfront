@@ -285,6 +285,281 @@ require_once dirname(__DIR__).'/lib/Picture.php';
             print  $e->getMessage();
         }
     }
+    function process_jp($jpdata){
+        global $util;
+        // $util->Show($jpdata);
+        try{
+            date_default_timezone_set('Africa/Nairobi');
+            if (isset($jpdata['JP_PASSWORD'])) {
+                $JP_TRANID = $jpdata['JP_TRANID'];
+                $JP_MERCHANT_ORDERID = $jpdata['JP_MERCHANT_ORDERID'];
+                $JP_ITEM_NAME = $jpdata['JP_ITEM_NAME'];
+                $JP_AMOUNT = $jpdata['JP_AMOUNT'];
+                $JP_CURRENCY = $jpdata['JP_CURRENCY'];
+                $JP_TIMESTAMP = $jpdata['JP_TIMESTAMP'];
+                $JP_PASSWORD = $jpdata['JP_PASSWORD'];
+                $JP_CHANNEL = $jpdata['JP_CHANNEL'];
+                $sharedkey = '6127482F-35BC-42FF-A466-276C577E7DF3';
+                $str = $JP_MERCHANT_ORDERID . $JP_AMOUNT . $JP_CURRENCY . $sharedkey . $JP_TIMESTAMP;
+                if (md5(utf8_encode($str)) == $JP_PASSWORD) {
+                    
+                    $this_order =  $this->get_one_by_order_req_id($JP_MERCHANT_ORDERID);
+                    if( json_decode($this_order)->status != '0' || !json_decode($this_order, true)['data'] ){
+                        throw new Exception('JP get_one_by_order_req_id()::: Errors or empty response for pay:: '.$JP_MERCHANT_ORDERID . ' =>' . $this_order);
+                    }
+                    if( json_decode($this_order)->status == '0'){
+                        $order_meta = json_decode($this_order, true)['data'];
+                        $order_id = $order_meta['order_id'];
+                        $token = $order_meta['token'];
+                        $stk_meta_data = $stkCallback['CallbackMetadata']['Item'];
+                            // $util->Show($jpdata);
+                            $req_body = [
+                                'order' => $order_id,
+                                'amount' => $JP_AMOUNT,
+                                'ref' => $JP_TRANID,
+                                'status' => 'Success',
+                                'date_time' => $JP_TIMESTAMP,
+                                'description' => $JP_CHANNEL . ' ' . $JP_CURRENCY,
+                                'method' => $JP_CHANNEL,
+                                'phone' => '0700000000',
+                                'pay_string' => json_encode($jpdata)
+                            ];
+                            $_pay_resp = $this->add_a_payment($token, $req_body);
+                            if( json_decode($_pay_resp)->status != '0' ){
+                                throw new Exception($_pay_resp);
+                            }
+                            $order_full_data = $this->get_ord_one($token, $order_id);
+                            if( json_decode($order_full_data)->status != '0' ){
+                                throw new Exception('JP get_ord_one() Order full data error:::: ' .$order_full_data);
+                            }
+                            if( count(json_decode($order_full_data, true)['data']) < 1 ){
+                                throw new Exception('JP Order not found: ' .$order_full_data);
+                            }
+                            $order_full_data = json_decode($order_full_data, true)['data'];
+                            $cust_buyer = $order_full_data['customer_buyer'];
+                            $order_items = json_decode($order_full_data['order_string'], true);
+                            $e_vouchers = $p_vouchers = [];
+                            $box = new Box();
+                            $picture = new Picture();
+                            $order_physical_address = $order_items[2000]['physical_address'];
+                            foreach( $order_items  as $_order_item ):
+                                if(isset($_order_item['order_id'])){
+
+                                }elseif(isset($_order_item['physical_address'])){
+
+                                }else{
+                                    $_box_data_resp = $box->get_byidf('00', $_order_item[0]);
+                                    if(json_decode($_box_data_resp)->status != '0'){
+                                        throw new Exception($_box_data_resp);
+                                    }
+                                    $_box_data = json_decode($_box_data_resp)->data;
+                                    $_media = $picture->get_byitem('00', $_order_item[0]);
+                                    if(json_decode($_media)->status != '0'){
+                                        throw new Exception($_media);
+                                    }
+                                    $_media = json_decode($_media, true)['data'];
+                                    if($_order_item[2] == 2){ /** ebox */
+                                        /** generate evouchers and populate inventry */
+                                        $_llp = 0;
+                                        $ev = [];
+                                        while( $_llp < $_order_item[1] ){
+                                            array_push($ev, 'E-' . $util->createCode(8));
+                                            $_llp ++;
+                                        }
+                                        /** create the evouchers */
+                                        $purchase_date = date('Y-m-d', time());
+                                        $box_validity_object = new DateTime("+6 months");
+                                        $box_validity_date = $box_validity_object->format("Y-m-d");
+                                        $evouchers_this_ = implode(',', $ev);
+                                        $body = [
+                                            'box_internal_id' => $_order_item[0],
+                                            'order_number' => $order_id,
+                                            'customer_buyer_id' => $cust_buyer,
+                                            'customer_payment_method' => $JP_CHANNEL,
+                                            'box_purchase_date' => $purchase_date,
+                                            'box_validity_date' => $box_validity_date,
+                                            'customer_buyer_invoice' => $order_id,
+                                            'box_vouchers' => $evouchers_this_,
+                                            'box_voucher_status' => '2',
+                                            'box_delivery_address' => $_order_item[4][0]
+                                        ];
+                                        $_c_resp = $this->create_c_buyer_ebox($token, $body);
+                                        if(json_decode($_c_resp)->status != '0'){
+                                            throw new Exception($_c_resp);
+                                        }
+                                    }else{ /** pbox */
+                                        /** allocate pvouchers to this order */
+                                        $_box_qty = $_order_item[1];
+                                        $purchase_date = date('Y-m-d', time());
+                                        $box_validity_object = new DateTime("+6 months");
+                                        $box_validity_date = $box_validity_object->format("Y-m-d");
+                                        $body = [
+                                            'box_internal_id' => $_order_item[0],
+                                            'order_number' => $order_id,
+                                            'customer_buyer_id' => $cust_buyer,
+                                            'customer_payment_method' => $JP_CHANNEL,
+                                            'box_purchase_date' => $purchase_date,
+                                            'box_validity_date' => $box_validity_date,
+                                            'customer_buyer_invoice' => $order_id,
+                                            'box_qty' => $_box_qty,
+                                            'box_voucher_status' => '2',
+                                            'box_delivery_address' => $order_physical_address[1]
+                                        ];
+                                        $_c_resp = $this->assign_c_buyer_pbox($token, $body);
+                                        if(json_decode($_c_resp)->status != '0'){
+                                            throw new Exception($_c_resp);
+                                        }
+                                    }
+                                }
+                            endforeach;
+                            /** ============== EMAILS =============  */
+                            $full_order_email_body = '
+                            <table style="width:100%!important;font-size: 12px;text-transform:lowercase;">
+                            <tr class="order_summary_tr_td">
+                            <td class="b">ORDER NUMBER</td>
+                            <td>'.$order_items[1000]['order_id'].'</td>
+                            <td colspan="4" class="invisible_table"></td>
+                            </tr>
+                            <tr class="order_summary_tr_td">
+                            <th class="b col_1">IMAGE</th>
+                            <th>BOX NAME</th>
+                            <th>BOX TYPE</th>
+                            <th>RECIPIENT NAME</th>
+                            <th>DELIVERY STATUS</th>               
+                            <th>COST</th>
+                            </tr>';
+                            $_total_cart = [];
+                            foreach( $order_items  as $_order_item_m ):
+                                if(isset($_order_item_m['order_id'])){
+
+                                }elseif(isset($_order_item_m['physical_address'])){
+
+                                }else{
+                                    /** for each order item send email to buyer - admin -receiver */
+                                    $_box_data_resp = $box->get_byidf('00', $_order_item_m[0]);
+                                    if(json_decode($_box_data_resp)->status != '0'){
+                                        throw new Exception($_box_data_resp);
+                                    }
+                                    $_box_data = json_decode($_box_data_resp)->data;
+
+                                    $_b_cost = floor($_order_item_m[1]*$_box_data->price);
+                                    $_total_cart[] = $_b_cost;
+                                    $_media = $picture->get_byitem('00', $_order_item_m[0]);
+                                    if(json_decode($_media)->status != '0'){
+                                        throw new Exception($_media);
+                                    }
+                                    $_media = json_decode($_media, true)['data'];
+                                    $_3d = $util->ClientHome(). '/shared/img/cart_img.png';
+                                    $_pdf = '';
+                                    foreach( $_media as $_mm ){
+                                    if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}else{$_pdf = $_mm['path_name'];}
+                                    }
+                                    if($_order_item_m[2] == 2){ /** ebox */
+                                        $payload = [
+                                            'order_id' => $order_id,
+                                            'customer_buyer_id' => $cust_buyer,
+                                            'box_internal_id' => $_order_item_m[0],
+                                            'receiver' => $_order_item_m[4][0],
+                                            'type' => '11'
+                                        ];
+                                        $evouchers_ = $this->find_order_vouchers($token, $payload);
+                                        if( json_decode($evouchers_)->status != '0' || count(json_decode($evouchers_, true)['vouchers']) < 1 ){
+                                            throw new Exception($evouchers_);
+                                        }
+                                        $email_data = [
+                                            'image' => $_3d,
+                                            'order_id' => $order_id,
+                                            'ebook' => $_pdf,
+                                            'box' => $_box_data->name,
+                                            'type' => 'E-box',
+                                            'qty' => $_order_item_m[1],
+                                            'price' => $_box_data->price,
+                                            'cost' => floor($_order_item_m[1]*$_box_data->price),
+                                            'receiver_email' => $_order_item_m[4][0],
+                                            'vouchers' => json_decode($evouchers_, true)['vouchers']
+                                        ];
+                                        // $util->Show($email_data['vouchers']);
+                                        $deliver_ebox_resp = $this->deliver_ebox_by_mail($token, $email_data);
+                                        if( json_decode($deliver_ebox_resp)->status != '0' ){
+                                            throw new Exception($deliver_ebox_resp);
+                                        }
+                                        $full_order_email_body .= '
+                                        <tr>
+                                            <td class="">
+                                            <img style="width:70px!important;" src="'.$_3d.'">
+                                            </td>
+                                            <td>'.$_box_data->name.'</td>
+                                            <td>E-box</td>
+                                            <td>'.$_order_item_m[4][1].'</td>
+                                            <td>Emailed</td>
+                                            <td>KES '.number_format($_b_cost, 2).'</td>
+                                        </tr>
+                                        ';
+                                    }else{ /** pbox */
+                                        $_address_string = $order_physical_address[1];
+                                        /** write to cron  */
+                                        $full_order_email_body .= '
+                                        <tr>
+                                            <td class="">
+                                            <img style="width:70px!important;" src="'.$_3d.'">
+                                            </td>
+                                            <td>'.$_box_data->name.'</td>
+                                            <td>Physical Box</td>
+                                            <td>'.$_address_string.'</td>
+                                            <td>Pending</td>
+                                            <td>KES '.number_format($_b_cost, 2).'</td>
+                                        </tr>
+                                        ';
+                                    }
+                                }
+                            endforeach;
+                            $full_order_email_body .= '
+                            <tr class="">
+                            <td colspan="1" class=""></td>
+                            <td colspan="5" align="right" class="">
+                            <table style="font-size:14px;">
+                                <tr>
+                                <td>SUB TOTAL (Incl. VAT)</td>
+                                <td>KES '.number_format(array_sum($_total_cart), 2).'</td>
+                                </tr>
+                                <tr>
+                                <td>SHIPPING</td>
+                                <td>KES '.number_format(floor($order_full_data['shipping_cost']),2).'</td>
+                                </tr>
+                                <tr class="bold_txt">
+                                <td>TOTAL PRICE (Incl. VAT)</td>
+                                <td>KES '.number_format((array_sum($_total_cart)+floor($order_full_data['shipping_cost'])), 2).'</td>
+                                </tr>
+                                <tr class="bold_txt">
+                                <td>TOTAL PAID</td>
+                                <td>KES '.number_format($JP_AMOUNT, 2).'</td>
+                                </tr>
+                            </table>
+                            </td>
+                        </tr>
+                        </table>';
+                        $mail_payload = [
+                            'mail_body' => $full_order_email_body,
+                            'buyer' => $cust_buyer,
+                            'order_id' => $order_id
+                        ];
+                        $full_mail_resp = $this->email_full_order_to_admin_and_buyer($token, $mail_payload);
+                        if( json_decode($full_mail_resp)->status != '0' ){
+                            throw new Exception($full_mail_resp);
+                        }
+                        /** ========== END EMAILS ================ */
+                    }
+                }else{
+                    //INVALID TRANSACTION
+                }
+            }
+        }catch( Exception $e){
+            /** write to file */
+            // print($e->getMessage());
+            file_put_contents("order_logs.log", PHP_EOL . $e->getMessage() . PHP_EOL, FILE_APPEND | LOCK_EX);
+            print  $e->getMessage();
+        }
+    }
     function process_mpesa_express($mpesa){
         global $util;
         // $util->Show($mpesa);
@@ -405,8 +680,6 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                             }
                         }
                     endforeach;
-
-
                     /** ============== EMAILS =============  */
                     $full_order_email_body = '
                     <table style="width:100%!important;font-size: 12px;text-transform:lowercase;">

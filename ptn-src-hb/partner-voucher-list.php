@@ -93,23 +93,23 @@ $list = json_decode($list, true)['data'];
                   <?php 
                   foreach ( $list as $_list ):
                     $ptn_pay = 0;
-                    $date_redeemed = date('m/d/Y', strtotime($_list['redeemed_date']));
+                    $date_redeemed = date('d/m/Y', strtotime($_list['redeemed_date']));
                     /** booking */
                     if($_list['box_voucher_status'] != 4){
                       $ptn_pay = $_list['partner_pay_amount'];
-                      $date_booked = '<td>'.date('m/d/Y', strtotime($_list['booking_date'])).'</td>';
+                      $date_booked = '<td>'.date('d/m/Y', strtotime($_list['booking_date'])).'</td>';
                     }else{
                       $date_booked = '<td class="empty_cell"></td>';
                     }
                     /** cancellation */
                     if($_list['box_voucher_status'] == 4){
-                      $date_cancelled = '<td>'.date('m/d/Y', strtotime($_list['cancellation_date'])).'</td>';
+                      $date_cancelled = '<td>'.date('d/m/Y', strtotime($_list['cancellation_date'])).'</td>';
                     }else{
                       $date_cancelled = '<td class="empty_cell"></td>';
                     }
                     /** partner paid */
                     if($_list['box_voucher_status'] != 4){
-                      $date_ptn_paid = '<td>'.date('m/d/Y', strtotime($_list['partner_pay_due_date'])).'</td>';
+                      $date_ptn_paid = '<td>'.date('d/m/Y', strtotime($_list['partner_pay_due_date'])).'</td>';
                     }else{
                       $date_ptn_paid = '<td class="empty_cell"></td>';
                     }

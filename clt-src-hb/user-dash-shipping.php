@@ -4,14 +4,25 @@ require_once('../lib/Util.php');
 require_once('../lib/User.php');
 require_once('../lib/Picture.php');
 require_once('../lib/Box.php');
+require_once('../lib/Shipping.php');
 $util = new Util();
 $user = new User();
+$s = new Shipping();
 // session_destroy();
 $picture = new Picture();
 $box = new Box();
-$util->ShowErrors(1);
+$util->ShowErrors(0);
+unset($_SESSION['next']);
+if(!isset(json_decode($_SESSION['usr'])->access_token)){
+  $_SESSION['next'] = 'user-dash-shipping.php';
+  header("Location: user-login.php");
+}
+$token = json_decode($_SESSION['usr'])->access_token;
+$profile_data_object = json_decode($_SESSION['usr_info']);
+$shipping_ = json_decode($s->get_one($token, $profile_data_object->data->internal_id))->data;
+$_ship_name_ = $profile_data_object->data->fname . ' ' .$profile_data_object->data->sname;
 $has_physical_box = [];
-// $util->Show($_SESSION['curr_usr_cart']);
+// $util->Show($shipping_);
 /** update shipping data */
 if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
   $_ll = 0;
@@ -173,24 +184,24 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 					<tr>
 						<td colspan="2"><div class="form-group">
 								<label for="pwd">Recipient Name</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_name" id="name" value="<?=$cart_physical_del[0]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_name" id="name" value="<?=!empty($cart_physical_del[0])?$cart_physical_del[0]:$_ship_name_?>">
 							</div>
 							<div class="form-group">
 								<label for="pwd">Address</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_address" id="physc_address" value="<?=$cart_physical_del[1]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_address" id="physc_address" value="<?=!empty($cart_physical_del[1])?$cart_physical_del[1]:$shipping_->address?>">
 								<?=$util->place_autocomplete('physc_address')?>
 							</div>
 							<div class="form-group">
 								<label for="pwd">City</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_city" id="city" value="<?=$cart_physical_del[2]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_city" id="city" value="<?=!empty($cart_physical_del[2])?$cart_physical_del[2]:$shipping_->city?>">
 							</div></td>
 						<td><div class="form-group">
 								<label for="pwd">Province</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_province" id="province" value="<?=$cart_physical_del[3]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_province" id="province" value="<?=!empty($cart_physical_del[3])?$cart_physical_del[3]:$shipping_->province?>">
 							</div>
 							<div class="form-group">
 								<label for="pwd">Postal Code</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_postal_code" id="postal_code" value="<?=$cart_physical_del[4]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_postal_code" id="postal_code" value="<?=!empty($cart_physical_del[4])?$cart_physical_del[4]:$shipping_->postal_code?>">
 							</div>
 							<div class="form-group">
 								<label for="pwd">Delivery Contact Name</label>

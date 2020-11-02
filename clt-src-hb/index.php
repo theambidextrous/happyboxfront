@@ -488,7 +488,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                     // $("#reset_div").load(window.location.href + " #reset_div" );
                     setTimeout(function(){
                         location.reload();
-                    }, 2000);
+                    }, 10000);
                     $('#vvv').text('This box has been added to your cart');
                     $('#popupid').trigger('click');
                     waitingDialog.hide();
