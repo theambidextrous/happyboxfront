@@ -2,7 +2,7 @@
 session_start();
 require_once '../../lib/Util.php';
 $util = new Util();
-$util->ShowErrors(1);
+$util->ShowErrors(0);
 require_once '../../lib/User.php';
 require_once '../../lib/Inventory.php';
 require_once '../../lib/Shipping.php';
@@ -232,6 +232,12 @@ switch($_REQUEST['activity']){
     case 'new-account':
         try{
             $username = explode('@', $_POST['email'])[0];
+            if( $_POST['password'] != $_POST['c_password'] ){
+                exit(json_encode(['ERR' => 'Passwords do not match!']));
+            }
+            if( !$util->isValidPassword($_POST['password']) ){
+                exit(json_encode(['ERR' => 'Weak password!']));
+            }
             $password = $_POST['password'];
             $c_password = $_POST['c_password'];
             $u = new User($username, $_POST['email'], $password, $c_password);
@@ -417,14 +423,19 @@ switch($_REQUEST['activity']){
             $u = new User();
             $editing_user_id = $_POST['user_id'];
             if(empty($_POST['sub_location'])){
-                throw new Exception('Sub location is required, please correct');
+                // throw new Exception('Sub location is required, please correct');
+                $_POST['sub_location'] = "";
+            }else
+            {
+                $_POST['sub_location'] = ' | ' . $_POST['sub_location']; 
             }
             $body = [
                 'fname' => $_POST['fname'],
                 'sname' => $_POST['sname'],
                 'short_description' => $_POST['short_description'],
-                'location' => $_POST['location'].' | '. $_POST['sub_location'],
+                'location' => $_POST['location'] . $_POST['sub_location'],
                 'phone' => $_POST['phone'],
+                'email' => $_POST['email'],
                 'business_name' => $_POST['business_name'],
                 'business_category' => $_POST['business_category'],
                 'business_reg_no' => $_POST['business_reg_no']

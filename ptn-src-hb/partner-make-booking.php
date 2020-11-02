@@ -298,7 +298,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#booking_date" ).datepicker();
+    $( "#booking_date" ).datepicker({ dateFormat: 'dd-mm-yy'});
   } );
   </script>
 

@@ -66,7 +66,10 @@ $token = json_decode($_SESSION['usr'])->access_token;
                       <tbody>
                         <?php
                         if(count($experience_list)){
-                          foreach( $experience_list as $ekey => $evalue):
+                          foreach( $experience_list as $ex_list ):
+                            $ex_list_arr = explode('~', $ex_list);
+                            $ekey = $ex_list_arr[0];
+                            $evalue = $ex_list_arr[1];
                             $idf = $partnerdata['data']['internal_id'];
                             $partner_item_current = $idf.'~~~'.$ekey.'~~~'.$evalue;
                         ?>

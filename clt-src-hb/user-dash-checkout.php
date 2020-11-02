@@ -72,18 +72,33 @@ $order = new Order($token);
             </div><br>
             <!--end progress strip-->
             <div class="row justify-content-center section_padding_top">
-                <div class="col-md-7 text-center">
+                <div class="col-md-12 text-center">
                     <div class="card border_card_checkout">
                         <?php
                         $order_data = json_decode($order->get_one_byorder_limited($_SESSION['unpaid_order']), true)['data'];
+                        $bill_amount = number_format(($order_data['shipping_cost']+$order_data['subtotal']),0);
+                        $query_string = [
+                            'business' => 'demo@webtribe.co.ke',
+                            'order_id' => $_SESSION['unpaid_order'],
+                            'type' => 'cart',
+                            'amount1' => $bill_amount,
+                            'amount2' => 0,
+                            'amount5' => 0,
+                            'payee' => json_decode($_SESSION['usr'])->user->email,
+                            'shipping' => 'Sendy',
+                            'item' => 'Happy Box Voucher(s)',	
+                            'rurl' => $util->ClientHome().$util->JpReturn(),
+                            'curl' => $util->ClientHome().$util->JpCancel(),
+                            'furl' => $util->ClientHome().$util->JpFail()
+                        ];
                         // $util->Show($order_data);
                         ?>
                         <b> UNPAID ORDER: <?=$_SESSION['unpaid_order']?></b> 
-                        <b> AMOUNT: KES <?=number_format(($order_data['shipping_cost']+$order_data['subtotal']), 2)?></b> 
+                        <b> AMOUNT: KES <?=$bill_amount?></b> 
                         <br>Choose your preferred payment method to continue
                     </div>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-12">
                     <div class="pay_strip" style="margin-bottom: 10px;margin-top: 10px;">
                         <!-- <a href="" class="btn btn-sm btn-orange text-white">MPESA</a> 
                         <a href="" class="btn btn-sm btn-orange text-white">CREDIT CARD</a> -->
@@ -120,24 +135,10 @@ $order = new Order($token);
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="creditcard" role="tabpanel" aria-labelledby="creditcard-tab">
-                                <br></br>
-                                <p>Credit Card</p>
                                 <!-- jamboPay -->
-                                <form method="post" action="https://www.jambopay.com/JPExpress.aspx" target="_blank">
-                                    <input type="hidden" name="jp_item_type" value="cart"/>
-                                    <input type="hidden" name="jp_item_name" value="test shop"/>
-                                    <input type="hidden" name="order_id" value="455879"/>
-                                    <input type="hidden" name="jp_business" value="business@yourdomain.com"/>
-                                    <input type="hidden" name="jp_amount_1" value="51"/>
-                                    <input type="hidden" name="jp_amount_2" value="0"/>
-                                    <input type="hidden" name="jp_amount_5" value="0"/>
-                                    <input type="hidden" name="jp_payee" value="email@yourcustomer.com"/>
-                                    <input type="hidden" name="jp_shipping" value="company name"/>
-                                    <input type="hidden" name="jp_rurl" value="https://happybox.ke/staging/clt-src-hb/"/>
-                                    <input type="hidden" name="jp_furl" value="https://happybox.ke/staging/clt-src-hb/"/>
-                                    <input type="hidden" name="jp_curl" value="https://happybox.ke/staging/clt-src-hb/"/>
-                                    <input type="image" src="https://www.jambopay.com/jambohelp/jambo/rsc/checkout.png"/>
-                                </form>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe id="jambopay_iframe" class="embed-responsive-item" frameBorder="0" src="https://www.jambopay.com/PreviewCart.aspx?<?=http_build_query($query_string)?>&target=_parent" scrolling="no"></iframe>
+                                </div>
                                 <!-- end jamboPay -->
                             </div>
                         </div> 
@@ -192,7 +193,7 @@ $order = new Order($token);
                 url: '<?=$util->AjaxHome()?>?activity=make-payment-mpesa',
                 data: dataString,
                 success: function(res){
-                    // console.log(res);
+                    console.log(res);
                     var rtn = JSON.parse(res);
                     if(rtn.hasOwnProperty("MSG")){
                         // $('#c2b').text(rtn.c2b);

@@ -13,11 +13,6 @@ $sendy = new Sendy($util->MapsKey());
 $box = new Box();
 $util->ShowErrors(1);
 // $util->Show($_SESSION['usr_info']);
-unset($_SESSION['next']);
-if(!isset(json_decode($_SESSION['usr'])->access_token)){
-  $_SESSION['next'] = 'user-dash-order-summary.php';
-  header("Location: user-login.php");
-}
 if(empty($_SESSION['curr_usr_cart'][1000]['order_id']) && empty($_SESSION['unpaid_order'])){
   header("Location: user-dash-shipping.php");
 }
@@ -140,6 +135,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                           if(!empty($_SESSION['curr_usr_cart'])){
                             // $util->Show($_SESSION['curr_usr_cart']);
                             /**  */
+                            $_total_shipping = 0;
                             foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
                               if(isset($_cart_item['order_id'])){
 
@@ -174,9 +170,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                                 array_push($_has_p_box, 1);
                                 $errr = '';
                                 // $s_amt = 10;
-                                if(count($order_physical_address)){
-                                  $_total_shipping = $s_amt = $util->AppShipping();
-                                }else{
+                                if(!count($order_physical_address)){
                                   $errr = "No delivery address for this physical box";
                                   array_push($_has_no_ship, 1);
                                   $_total_shipping = 0;
@@ -210,7 +204,11 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                         
                       </table>
                           <div class="table_radius_order_sum2">
-                          
+                          <?php
+                            if (count($_has_p_box)) {
+                              $_total_shipping = $util->AppShipping();
+                            }
+                          ?>
                           <table class="cart_order_summ table-bordered">
                               <tr>
                                 <td>SUB TOTAL (Incl. VAT)</td>

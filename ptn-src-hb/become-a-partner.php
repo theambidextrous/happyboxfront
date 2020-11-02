@@ -257,7 +257,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                         <?php 
                         //data dynamic
                             $_cnt = 1;
-                            foreach( $_partners_slide_data as $_partners_slide ):
+                            foreach( array_reverse($_partners_slide_data) as $_partners_slide ):
                                 $_is_Active = json_decode($user->get_is_active($_partners_slide['userid']))->is_active->is_active;
                                 if($_is_Active && $_cnt < 5){
                                     //$_ptn_pic = json_decode($picture->get_byitem_one('00', $_partners_slide['internal_id']))->data;

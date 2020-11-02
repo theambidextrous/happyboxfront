@@ -69,7 +69,7 @@
             <div style="width:100%; text-align: center; color: #707070;">Can’t view this email? View Online</div>
 
             <div style="width:100%;">
-                <a href="@" target="_blank">
+                 <a href="https://happybox.ke/" target="_blank">
                     <img src="http://localhost/happyboxfront/emails/img/news1.png" alt="" style="padding-bottom: 15px;"></a>
             </div>
 
@@ -236,7 +236,7 @@
                 </div> 
 
             </div>
-            <div style="    width: 100%;    text-align: center;    letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
+            <div style="  margin-bottom: 30px;   width: 100%;    text-align: center;    letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
                 You are receiving this email because you are a valued customer of HappyBox & opted in to receive email communications when you created your account. To unsubscribe from HappyBox.ke email communications, click here. HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya Need some help? Have a question? Please send us an email at customercare@happybox.ke
 
             </div>

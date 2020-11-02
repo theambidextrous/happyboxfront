@@ -158,7 +158,6 @@ $box = new Box();
                             <tbody>
                                 <?php
                                 foreach($all_happyboxes_inventory as $hbox ):
-                                    $effec_id = "'".$hbox['id']."'";
                                     $_c_buyer = $user->get_details_byidf($hbox['customer_buyer_id']);
                                     $_c_buyer = json_decode($_c_buyer);
                                     $_c_user = $user->get_details_byidf($hbox['customer_user_id']);
@@ -217,10 +216,10 @@ $box = new Box();
                                         <?=!is_null($hbox['box_delivery_address'])?$hbox['box_delivery_address']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['box_purchase_date'])?$hbox['box_purchase_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['box_purchase_date']))?$hbox['box_purchase_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['box_validity_date'])?$hbox['box_validity_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['box_validity_date']))?$hbox['box_validity_date']:'null'?>
                                     </td>
                                     <td>
                                         <?=!is_null($hbox['customer_buyer_invoice'])?$hbox['customer_buyer_invoice']:'null'?>
@@ -241,7 +240,7 @@ $box = new Box();
                                         <?=!is_null($box_v_status_name)?$box_v_status_name:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['voucher_activation_date'])?$hbox['voucher_activation_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['voucher_activation_date']))?$hbox['voucher_activation_date']:'null'?>
                                     </td>
                                     <!-- customer user -->
                                     <td>
@@ -258,22 +257,22 @@ $box = new Box();
                                     </td>
                                     <!-- end -->
                                     <td>
-                                        <?=!is_null($hbox['redeemed_date'])?$hbox['redeemed_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['redeemed_date']))?$hbox['redeemed_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['cancellation_date'])?$hbox['cancellation_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['cancellation_date']))?$hbox['cancellation_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['booking_date'])?$hbox['booking_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['booking_date']))?$hbox['booking_date']:'null'?>
                                     </td>
                                     <td>
                                         KES <?=!is_null($box_data->price)?$box_data->price:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['partner_pay_due_date'])?$hbox['partner_pay_due_date']:'null'?>
+                                        <?=!is_null($util->globalDate($hbox['partner_pay_due_date']))?$hbox['partner_pay_due_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['partner_pay_effec_date'])?$hbox['partner_pay_effec_date']:'<a href="#" class="btn generate_rpt btn-block" onclick="pay_effec_modal('.$effec_id.')">Update</a>'?>
+                                        <?=!is_null($util->globalDate($hbox['partner_pay_effec_date']))?$hbox['partner_pay_effec_date']:'null'?>
                                     </td>
                                     <td>
                                         <?=!is_null($hbox['partner_pay_amount'])?$hbox['partner_pay_amount']:'null'?>
