@@ -15,7 +15,7 @@
         
     </div>
        
-      <div class="container">
+    <div class="container">
        <div class="brands row">
                 <div class="col">
                  <div class="brands_slider_container">
@@ -38,31 +38,6 @@
                                 }
                             endforeach;
                          ?>
-                          <!-- <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div>
-                          <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div>
-                          <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div>
-                          <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div> <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div> <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div> <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div> <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div>
-                          <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div> <div class="owl-item">
-                             <div class="brands_item d-flex flex-column justify-content-center"><img src="shared/img/client.jpg" alt=""></div>
-                         </div> -->
                      </div> <!-- Brands Slider Navigation -->
 
                      <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>

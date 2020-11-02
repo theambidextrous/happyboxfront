@@ -30,7 +30,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
    }
  </style>
 </head>
-<body>
+<body class="partner_wrap">
   <!-- Navigation -->
  <?php include '../shared/partials/nav-logged-in.php'; ?>
    <section  class="blue_band text-center">

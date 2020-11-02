@@ -20,7 +20,7 @@ $util = new Util();
 
 </head>
 
-<body>
+<body class="partner_wrap">
   <!-- Navigation -->
  <?php include '../shared/partials/nav.php'; ?>
   <section  class="blue_band text-center">

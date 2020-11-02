@@ -28,10 +28,10 @@ else{
 		<a class="navbar-brand" href="<?=$util->ClientHome()?>/"> <img src="<?=$util->ClientHome()?>/shared/img/logo.svg"> </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<div class="form_search_nav_wrap">
-				<span><!--<i class="fas fa-search"></i>--> <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
+			<!--<div class="form_search_nav_wrap">
+				<span><img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
 				<input type="text" name="" class="form-control form_search_nav">
-			</div>
+			</div>-->
 			<ul class="navbar-nav ml-auto top-bar-nav">
 				<li class="nav-item"> <a class="nav-link " href="<?=$util->ClientHome()?>/user-login.php"> <img class="top-bar-nav-icon" src="<?=$util->ClientHome()?>/shared/img/icons/icn-user-teal.svg"> <span class="cli_user_login">User Login</span></a> </li>
 				<li class="nav-item"> <a class="nav-link" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?=$util->ClientHome()?>/shared/img/icons/icn-partner-blue.svg"> Partner Portal</a> </li>
@@ -111,9 +111,9 @@ else{
 		<li> <a class="" href="<?=$util->ClientHome()?>/category-sports-adventure.php">Sports & Adventure</a> </li>
 		<li> <a class="" href="<?=$util->PartnerHome()?>/become-a-partner.php">Become A Partner</a> </li>
 		<li> <a  href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a> </li>
-		<li class="site-nav-seacrh"> <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
+		<!--<li class="site-nav-seacrh"> <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
 		<input type="text" name="" class=" form_search_nav_mob" placeholder="Search">
-		</li>
+		</li>-->
 		<div class="menu-close">
 			<img src="<?=$util->ClientHome()?>/shared/img/icn-close-window-blue.svg">
 		</div>

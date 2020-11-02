@@ -128,7 +128,6 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			$_pop_str = str_replace("'", "", $_pop_str);
 			$_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
 		?>
-		<!--<div class="col-md-6 <?=$col_count_col;?>" onclick="booklet_show('<?=$_pop_str?>')">-->
     <div class="col-md-6 <?=$col_count_col;?>">
 			<div class="card selection_card sports_card">
 				<div class="sport_card_hover" onclick="booklet_show('<?=$_pop_str?>')">
@@ -220,7 +219,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				<div class="step_box step_color4">4</div>
 				<div class="iwant_card_div">
 					<p class="iwant_card_p"> Make payment using<br class="">
-						a credit card or Mpesa</p>
+						A credit card or Mpesa</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color4"> </p>
 			</div>
@@ -374,12 +373,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 										<p><a id="bx_booklet_" class="bx_booklet_" target="_blank" href="javascript(0);">View Box Booklet</a></p>
 									</div>
 								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
-									<div class="carousel-caption">
-										<p><a id="bx_booklet_t" class="bx_booklet_t" target="_blank" href="javascript(0);">View Box Booklet</a></p>
-									</div>
-								</div>
+								
 							</div>
 							<a class="carousel-control-prev" href="#modalSlider" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#modalSlider" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
 						</div>
@@ -450,14 +444,14 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 
 <!--added to cart  end pop up --> 
 <script type="text/javascript">
-   $(document).bind('keyup', function(e) {
+            /*$(document).bind('keyup', function(e) {
         if(e.which == 39){
             $('.carousel').carousel('next');
         }
         else if(e.which == 37){
             $('.carousel').carousel('prev');
         }
-    });
+    });*/
 
     $(document).ready(function(){
       booklet_show = function(data){
@@ -475,7 +469,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
       }
 
       add_to_cart = function(FormId){
-        waitingDialog.show('Adding... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+        waitingDialog.show('Adding... please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
         var dataString = $("form[name=" + FormId + "]").serialize();
         $.ajax({
             type: 'post',
@@ -486,9 +480,9 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
                 var rtn = JSON.parse(res);
                 if(rtn.hasOwnProperty("MSG")){
                     // $("#reset_div").load(window.location.href + " #reset_div" );
-                    setTimeout(function(){
+                   	setTimeout(function(){
                         location.reload();
-                    }, 10000);
+                    }, 20000);
                     $('#vvv').text('This box has been added to your cart');
                     $('#popupid').trigger('click');
                     waitingDialog.hide();

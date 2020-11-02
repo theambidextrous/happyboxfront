@@ -33,7 +33,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
   <link rel="stylesheet" href="/resources/demos/style.css">
 
 </head>
-<body>
+<body class="partner_wrap">
   <!-- Navigation -->
  <?php include '../shared/partials/nav-logged-in.php'; ?>
   
@@ -116,9 +116,9 @@ $token = json_decode($_SESSION['usr'])->access_token;
               }
             ?>
             <div class="row justify-content-center">
-                <div class="col-md-7">
+                <div class="col-md-8">
                   <h3 class="partner_blueh">CHECK VOUCHER VALIDITY</h3>
-                      <p class="forgot_des text-center">To make a booking, enter the customer voucher code below to check it’s validity.                </p>
+                  <p class="forgot_des text-center">To make a booking, enter the customer voucher code below <br class="desktop_view">to check it’s validity.                </p>
                       <form class="voucher_val" method="post">
                         <div class="form-group">
                           <input type="text" name="vcode" class="form-control rounded_form_control" placeholder="Enter customer voucher code here">

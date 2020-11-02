@@ -145,13 +145,13 @@ $order = new Order($token);
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-around section_padding_top">
+         <!--   <div class="row justify-content-around section_padding_top">
                 <div class="col-md-12">
                     <div class="payment_back ">
                         <a href="<?=$util->ClientHome()?>/user-dash-order-summary.php"><img src="shared/img/icn-arrow-teal.svg"> BACK TO ORDER SUMMARY</a>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </section>
         <!--end add to cart cards-->
          <!-- pop up mpesa-->
@@ -186,7 +186,7 @@ $order = new Order($token);
                 s_event()
             }, 240000);
             mpesaPay = function(FormId){
-            waitingDialog.show('Sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+            waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
             var dataString = $("form[name=" + FormId + "]").serialize();
             $.ajax({
                 type: 'post',
