@@ -1,10 +1,11 @@
-<!--replace http://localhost/happyboxfront/emails/ to the correct rirectory structure -->
+<!--replace http://localhost/happyboxfront/emails/ to the correct directory structure -->
 <html>
     <head>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>The Happy Box:: Newsletter Design 1</title>
         <style>
+            /*universal */
             img{
                 margin:0;
                 padding:0;
@@ -13,6 +14,54 @@
                 border:none;
                 outline:none;
             }
+            @media (max-width: 767px){
+                .mob_100{
+                width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+                }
+                .partner_img,.partner_des{
+                   
+                }
+                .partner_des {
+    width: 87%;
+   
+    margin-top: 11px;
+    padding-left: 9px;
+   }
+   .mob_auto_img{
+     margin: auto !important;
+   }
+   .mob_95 {
+      width: 95% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    
+                
+            }
+            .mob_hide{
+                display: none;
+            }
+            .desk_hide{
+           display: block;
+            }
+            .our_part_img{
+                
+    margin-bottom: 8px;
+
+            }
+            }
+            @media (min-width: 768px){
+                 .mob_hide{
+                display: block;
+            }
+             .desk_hide{
+           display: none;
+            }
+                
+            }
+              /*end universal */
+              
         </style>
     </head>
     <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0; font-family: Calibri;font-size: 14px;">
@@ -24,7 +73,7 @@
                     <img src="http://localhost/happyboxfront/emails/img/news1.png" alt="" style="padding-bottom: 15px;"></a>
             </div>
 
-            <div style="width:80%; margin: 10px auto;">
+            <div style="width:80%; margin: 10px auto;" class="mob_100">
                 <h3 style="font: normal normal bold 20px/24px Calibri;letter-spacing: 0px;color: #0985B6;opacity: 1;">Dear [Recipient Name]</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur elementum id leo eu pulvinar. Duis condimentum mi at enim viverra, vitae accumsan ipsum laoreet. </p><p>Quisque a posuere massa. Praesent consectetur efficitur lectus. Sed laoreet pretium leo, non euismod mi. Cras aliquet, diam ac dictum hendrerit, ex neque commodo. 
@@ -38,8 +87,8 @@
                 <img src="http://localhost/happyboxfront/emails/img/discover_partner.svg" alt="" style="width: 85%; margin-left: -35px;">
             </div>
 
-            <div  style="width:80%; margin: 10px auto;">
-                <div style=" width: 28%;    float: left;   ">
+            <div  style="width:80%; margin: 10px auto;" class="mob_100">
+                <div style=" width: 28%;float: left;" class="partner_img mob_100">
 
                     <div style="    border: 2px solid #C20A2B;  border-radius: 13px;  opacity: 1;
                          height: 157px; display: table;width: 87%;"><div style="display: table-cell;
@@ -53,9 +102,9 @@
 
                 </div>
 
-                <div style="width: 72%;float: left;margin-bottom: 18px;">
+                <div style="width: 72%;float: left;margin-bottom: 18px;" class="partner_des ">
                     <h3 style="margin-top: 0px;margin-bottom: 0px;color:#C20A2B;">SPA CLEOPATRA</h3>
-                    <p>The Spa Cleopatra captures the serenity of the region with its nature-inspired massage, skincare and beauty treatments. Our Highly trained therapists are committed to ensuring each guest is treated as an individual. Each treatment is designed to . . .</p>
+                    <p class="mob_100">The Spa Cleopatra captures the serenity of the region with its nature-inspired massage, skincare and beauty treatments. Our Highly trained therapists are committed to ensuring each guest is treated as an individual. Each treatment is designed to . . .</p>
                     <table style="width:100%;">              
                         <tr>
                             <td style="width:50%;"><span style="text-align: left;font: normal normal normal 16px/19px Calibri;letter-spacing: 0px;color: #00ACB3;">NAIROBI | KAREN</span></td>
@@ -92,17 +141,28 @@
             </div>
             <div style="width:100%;">   
                 <div style="width: 50%;float: left;margin-top: 1px;">
-                    <img src="http://localhost/happyboxfront/emails/img/news_ourpart.svg" style="float:right" alt=""> 
+                    <img src="http://localhost/happyboxfront/emails/img/news_ourpart.svg" style="float:right"  class="our_part_img" alt=""> 
+                     <div class="desk_hide" >
+                    
+                    <h4 class="" style=" text-align: center; font: normal normal bold 20px/24px Calibri; letter-spacing: 0px;
+                        color: #FA683D;  margin-top: 8px; margin-bottom: 5px;">Urban Gym</h4>
+                    <h4 style="text-align: center;font: normal normal bold 18px/22px Calibri;letter-spacing: 0px;color: #0185B6;">Nairobi | Muthaiga</h4>
+                </div>
                 </div>
                 <div style="width: 50%;float: left;">
                     <img src="http://localhost/happyboxfront/emails/img/the_box.svg" style="" alt="">
+                    <div class="desk_hide" style="margin-top: 1px;">
+                    <h4 style="    text-align: center; font: normal normal bold 20px/24px Calibri;letter-spacing: 0px; color: #FA683D;
+                        margin-top: 8px;  margin-bottom: 5px;">Happy Box 1</h4>
+                    <h4 style="text-align: center;font: normal normal bold 18px/22px Calibri;letter-spacing: 0px;color: #0185B6;">Sports & Adventure</h4>
+                </div>
                 </div>
 
 
             </div>
-            <div style="width:100%">
-                <div style="width:50%;float: left">
-                    <h4 style=" text-align: center; font: normal normal bold 20px/24px Calibri; letter-spacing: 0px;
+            <div style="width:100%" class="mob_hide">
+                <div style="width:50%;float: left" >
+                    <h4 class="" style=" text-align: center; font: normal normal bold 20px/24px Calibri; letter-spacing: 0px;
                         color: #FA683D;  margin-top: 8px; margin-bottom: 5px;">Urban Gym</h4>
                     <h4 style="text-align: center;font: normal normal bold 18px/22px Calibri;letter-spacing: 0px;color: #0185B6;">Nairobi | Muthaiga</h4>
                 </div><div style="width:50%;float: right;">
@@ -123,7 +183,7 @@
 
             </div>
             <div style="width:100%">
-                <div style="width:50%;float: left">
+                <div style="width:50%;float: left" class="mob_100">
                     <span style="text-align: left;font: normal normal bold 24px/29px Calibri;letter-spacing: 0px;color: #0185B6;" >Yoga</span>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur elementum id leo eu pulvinar. Duis condimentum mi at enim viverra, vitae accumsan ipsum laoreet.</p><p> Quisque a posuere massa. Praesent consectetur efficitur lectus. Sed laoreet pretium leo, non euismod mi. Cras aliquet, diam ac dictum hendrerit, ex neque commodo. Curabitur elementum id leo eu pulvinar. Duis condimentum mi at enim viverra.
@@ -135,9 +195,9 @@
                     </p>
 
 
-                </div><div style="width:50%;float: right;">
+                </div><div style="width:50%;float: right;" class="mob_100">
 
-                    <img src="http://localhost/happyboxfront/emails/img/yoga_right.png" style=" " alt="">
+                    <img src="http://localhost/happyboxfront/emails/img/yoga_right.png" class="mob_auto_img" >
                 </div>   </div>
             <div style="width:100%">
                 <div style="">
@@ -151,16 +211,16 @@
                 </div> 
 
             </div>
-            <div style="width: 70%; background: #C20A2B 0% 0% no-repeat padding-box;border-bottom-right-radius: 13px;border-bottom-left-radius: 13px;
-                 /* float: left; */
+            <div style="width: 70%; background: #C20A2B 0% 0% no-repeat padding-box;border-bottom-right-radius: 13px;
+                 border-bottom-left-radius: 13px;        
                  padding: 9px 6px;
                  height: 39px;
-                 margin: auto;">
+                 margin: auto;" class="mob_95">
                 <div style="width:50%;float: left">
                     <img src="http://localhost/happyboxfront/emails/img/hb-alt-logo-white.svg" style=" display: inline; " alt="">
                     <img src="http://localhost/happyboxfront/emails/img/Chooseyourgift.svg" style=" display: inline; " alt="">
 
-                </div><div style="width: 50%; float: right;text-align: right;">
+                </div><div style="width: 50%; float: left;text-align: right;">
                     <a href="https://www.facebook.com/HappyBoxke-104873668046223" target="_blank"><img src="http://localhost/happyboxfront/emails/img/icn-fb-white.svg" style=" display: inline; height: 26px;margin-left: 19px; " alt=""></a>
                     <a href="https://www.instagram.com/happybox.ke/" target="_blank"><img src="http://localhost/happyboxfront/emails/img/icn-ig-white.svg" style="display: inline; height: 26px;margin-left: 19px; " alt=""></a>
                     <a href="https://www.linkedin.com/company/happybox-ke/" target="_blank"><img src="http://localhost/happyboxfront/emails/img/icn-li-white.svg" style="display: inline; height: 26px;margin-left: 19px;" alt=""></a>
