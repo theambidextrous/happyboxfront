@@ -32,6 +32,35 @@ $order = new Order($token);
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
+				<script>
+				$(document).ready(function(){
+					$("#jambopay_iframe").on('load',function(){
+						$('#iframe_loader').addClass('hide');
+					});
+				});
+				</script>
+				<style>
+				.loader {
+					border: 16px solid #f3f3f3;
+					border-radius: 50%;
+					border-top: 16px solid #3498db;
+					width: 120px;
+					height: 120px;
+					-webkit-animation: spin 2s linear infinite; /* Safari */
+					animation: spin 2s linear infinite;
+				}
+				
+				/* Safari */
+				@-webkit-keyframes spin {
+					0% { -webkit-transform: rotate(0deg); }
+					100% { -webkit-transform: rotate(360deg); }
+				}
+				
+				@keyframes spin {
+					0% { transform: rotate(0deg); }
+					100% { transform: rotate(360deg); }
+				}
+				</style>
     </head>
 
   <body class="client_body">
@@ -115,7 +144,8 @@ $order = new Order($token);
                             <br><br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div id="data"></div>
+                                        <div id="mpesa_loader" class="loader" style="display:none;"></div>
+																				<div id="data"></div>
                                         <br>
                                         <form class="form_register_user" id="mpesa_pay_frm" name="mpesa_pay_frm">
                                             <div class="form-group col-md-12">
@@ -125,17 +155,22 @@ $order = new Order($token);
                                             </div>
                                             <p class="text-right col-md-12"><button type="button" onclick="mpesaPay('mpesa_pay_frm')" class="btn btn_rounded">Pay Now</button></p>
                                         </form>
+																				
+																				<div id="back_btn" class="payment_back" style="display:none;">
+																					<a href="<?=$util->ClientHome()?>" class="btn btn_rounded"><img src="shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
+																				</div>
                                     </div>
                                     <div class="col-md-6">
                                         <!-- instructions area -->
                                         <div id="msg"></div>
-                                        <div id="express"></div>
+                                        <div id="express"></div>																				
                                     <!-- end debug -->
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="creditcard" role="tabpanel" aria-labelledby="creditcard-tab">
                                 <!-- jamboPay -->
+																<div id="iframe_loader" class="loader"></div>
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe id="jambopay_iframe" class="embed-responsive-item" frameBorder="0" src="https://www.jambopay.com/PreviewCart.aspx?<?=http_build_query($query_string)?>&target=_parent" scrolling="no"></iframe>
                                 </div>
@@ -174,17 +209,18 @@ $order = new Order($token);
         <?php include 'shared/partials/footer.php'; ?>
         <!-- Bootstrap core JavaScript -->
         <?php include 'shared/partials/js.php'; ?>
-    <script>
+    		<script>
         $(document).ready(function(){
             s_event = function(){
                 var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
                 source.onmessage = function(event){
-                    $('#data').html(event.data);
+                    $('#data').html(event.data);										
+										$('#back_btn').show();
                 }
             }
             setTimeout(() => {
                 s_event()
-            }, 240000);
+            }, 90000);
             mpesaPay = function(FormId){
             waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
             var dataString = $("form[name=" + FormId + "]").serialize();
@@ -197,9 +233,11 @@ $order = new Order($token);
                     var rtn = JSON.parse(res);
                     if(rtn.hasOwnProperty("MSG")){
                         // $('#c2b').text(rtn.c2b);
-                        $('#express').text(rtn.exp);
+                        // $('#express').text(rtn.exp);
                         // $('#reg').text(rtn.reg);
                         // $('#inst').html(rtn.inst);
+												$('#mpesa_pay_frm').hide();
+												$('#mpesa_loader').show();
                         $('#msg').html(rtn.MSG);
                         waitingDialog.hide();
                         return;

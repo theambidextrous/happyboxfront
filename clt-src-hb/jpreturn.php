@@ -1,6 +1,13 @@
 <?php 
 session_start();
-require_once '../lib/Order.php';
+require_once('../lib/Util.php');
+require_once('../lib/User.php');
+require_once('../lib/Picture.php');
+require_once('../lib/Order.php');
+$util = new Util();
+$user = new User();
+$picture = new Picture();
+$util->ShowErrors(1);
 
 $allData = file_get_contents('php://input');
 file_put_contents("jpLogs.log", $allData, FILE_APPEND | LOCK_EX);
@@ -37,12 +44,7 @@ if( !is_null($_POST) ){
 			
 			<?php
 			//************************ CHECK IF VALUES HAVE BEEN SET *****************
-			if (isset($_POST['JP_PASSWORD'])) {
-				//Print response from JamboPay - DEV PURPOSE ONLY
-				echo '<pre>';
-				print_r($_POST);
-				echo '</pre>';	
-				
+			if (isset($_POST['JP_PASSWORD'])) {					
 				$JP_TRANID = $_POST['JP_TRANID'];
 				$JP_MERCHANT_ORDERID = $_POST['JP_MERCHANT_ORDERID'];
 				$JP_ITEM_NAME = $_POST['JP_ITEM_NAME'];
