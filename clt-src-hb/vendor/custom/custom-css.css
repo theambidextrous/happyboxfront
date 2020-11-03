@@ -1020,7 +1020,7 @@ th, td {
 	border-collapse: collapse;
 	text-align: center;
 	margin-bottom: 0px;
-	height: 185px;
+	height: 190px;
 	;
 }
 .td_cat_a table {
@@ -2330,7 +2330,8 @@ th, td {
 	text-align: right !important;
 }
 .partner_logo_in img {
-	height: 142px !important;
+	height: 180px !important;
+	border-radius: 5px;
 }
 }
 /*Tooltips */
