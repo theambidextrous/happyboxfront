@@ -216,11 +216,12 @@ $order = new Order($token);
                 source.onmessage = function(event){
                     $('#data').html(event.data);										
 										$('#back_btn').show();
+										$('#mpesa_loader').hide();
                 }
             }
             setTimeout(() => {
                 s_event()
-            }, 90000);
+            }, 60000);
             mpesaPay = function(FormId){
             waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
             var dataString = $("form[name=" + FormId + "]").serialize();
