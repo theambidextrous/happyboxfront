@@ -66,7 +66,7 @@ if( !is_null($_POST) ){
 					//VALID
 					//if valid, mark order as paid
 					
-					echo '<div class="alert alert-success"><strong>Thank you!</strong> Your payment was completed successfully.</div>';		
+					echo '<div class="alert alert-success"><strong>Thank you!</strong> Your payment of KES '.$JP_AMOUNT.' was reveived. Check your email for order details.</div>';		
 				}else{
 					//INVALID TRANSACTION
 					
