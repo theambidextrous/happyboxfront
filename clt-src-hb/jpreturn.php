@@ -74,7 +74,7 @@ if( !is_null($_POST) ){
 			?>
 			
 			<div class="payment_back">
-				<a href="<?=$util->ClientHome()?>"><img src="shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
+				<a href="<?=$util->ClientHome()?>" class="btn btn_rounded" target="_parent"><img src="shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
 			</div>
 		</div>
 	</div>
