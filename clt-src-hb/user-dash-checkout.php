@@ -32,13 +32,6 @@ $order = new Order($token);
 
         <!-- Bootstrap core CSS -->
         <?php include 'shared/partials/css.php'; ?>
-				<script>
-				$(document).ready(function(){
-					$("#jambopay_iframe").on('load',function(){
-						$('#iframe_loader').addClass('hide');
-					});
-				});
-				</script>
 				<style>
 				.loader {
 					border: 16px solid #f3f3f3;
@@ -211,11 +204,16 @@ $order = new Order($token);
         <?php include 'shared/partials/js.php'; ?>
     		<script>
         $(document).ready(function(){
-            s_event = function(){
+            $("#jambopay_iframe").on('load',function(){
+							$('#iframe_loader').hide();
+						});
+						
+						s_event = function(){
                 var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
                 source.onmessage = function(event){
                     $('#data').html(event.data);										
 										$('#back_btn').show();
+										$('#msg').hide();
 										$('#mpesa_loader').hide();
                 }
             }
