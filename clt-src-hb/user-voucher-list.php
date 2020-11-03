@@ -115,12 +115,8 @@ $my_list_ = json_decode($my_list_, true)['data'];
          PARTNER RATING <span>Please rate this partner based on your experience</span>
         
         </a>-->
-                            
-                                   <a href="#" class="nav-link tooltips3 txt-blue">
-            PARTNER RATING <span>Please rate this partner <br>based on your experience </span>
-        
-        </a>
-                              
+                            <a href="#" class="nav-link tooltips3 txt-blue">
+                            PARTNER RATING <span>Please rate this partner <br>based on your experience </span></a>
                               </th>
                               <th colspan="2" class="th_actions voucher_list_table_th">ADMIN REQUESTS</th>
                             </tr>
@@ -192,6 +188,9 @@ $my_list_ = json_decode($my_list_, true)['data'];
                 </div> 
                            </section>
                       <!--end desktop-->
+                     
+                     
+                     
                       <!--start mobile view-->
                         <!--mobile header start-->
          <section class=" user_account mobile_view">
@@ -209,10 +208,48 @@ $my_list_ = json_decode($my_list_, true)['data'];
                      <div class="row  ">
         <div class="col-md-12 ">
                
-              <p class="txt-orange text-center mob_pad">A list of your activated vouchers
-                      
-                      
-                      </p>
+              <p class="txt-orange text-center mob_pad">A list of your activated vouchers</p>
+              <?php
+                if(count($my_list_)){
+                  foreach( $my_list_ as $my_l):
+                    $admin_func_ = '<td class="empty_cell"></td>';
+                    if($my_l['box_voucher_status'] == 6){
+                      $_voucher = "'".$my_l['box_voucher']."'";
+                      $admin_func_ = '
+                      <td colspan="2" class="v_td_canc" onclick="declare_lost('.$_voucher.')">DECLARE LOSS OR THEFT OF VOUCHER</td>
+                      ';
+                    }
+                    $_box_data = json_decode($box->get_byidf('00', $my_l['box_internal_id']))->data;
+                    $redeemed_date = $my_l['redeemed_date'];
+                    $redeem_div = '<td class="empty_cell"></td>';
+                    if(!empty($redeemed_date)){
+                      $redeem_div = '<td>'.date('d/m/Y',strtotime($redeemed_date)).'</td>';
+                    }
+                    $cancellation_date = $my_l['cancellation_date'];
+                    $cancellation_div = '<td class="empty_cell"></td>';
+                    if($my_l['box_voucher_status'] == 4){
+                      $cancellation_div = '<td>'.date('d/m/Y',strtotime($cancellation_date)).'</td>';
+                    }
+                    $booking_date = $my_l['booking_date'];
+                    $booking_div = '<td class="empty_cell"></td>';
+                    if($my_l['box_voucher_status'] == 3){
+                      $booking_div = '<td>'.date('d/m/Y',strtotime($booking_date)).'</td>';
+                    }
+                    $validity_date = '';
+                    if($my_l['box_voucher_status'] != 4){
+                      $validity_date = date('d/m/Y',strtotime($my_l['box_validity_date']));
+                    }
+                    $partner_name = $my_l['partner_internal_id'];
+                    $rating_value = 0;
+                    if(!empty($partner_name)){
+                      $ptn = $user->get_details_byidf($my_l['partner_internal_id']);
+                      $partner_name = json_decode($ptn)->data->business_name;
+                      $rating_value = json_decode($rating->get_ptn_value($my_l['partner_internal_id']))->data;
+                      if(!$rating_value){
+                        $rating_value = 0;
+                      }
+                    }
+              ?>
              <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless">
                 <thead>
                   <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
@@ -222,33 +259,33 @@ $my_list_ = json_decode($my_list_, true)['data'];
                 </thead>
                 <tbody>
                     <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1">
-                        <td class="v_td_a">SPA EXPERIENCE</td>  <td class="green_txt_valid"><span class=""><b>VALID</b></span></td>
+                        <td class="v_td_a"><?=strtoupper($_box_data->name)?></td>  <td class="green_txt_valid"><span class=""><b>VALID</b></span></td>
                     </tr>
                      <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Voucher Code</td>  <td>AZERTY001</td>
+                        <td class="v_td_a">Voucher Code</td>  <td><?=$my_l['box_voucher']?></td>
                     </tr>
                       <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Box Number</td>  <td>456</td>
+                        <td class="v_td_a">Box Number</td>  <td><?=$_box_data->id?></td>
                     </tr>
                     
                      <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Date Redeemed</td>  <td>06/03/2020</td>
+                        <td class="v_td_a">Date Redeemed</td>  <?=$redeem_div?>
                     </tr>
                       <tr class="voucher_list_user_table_mob_tr">
                         <td class="v_td_a">Expiry Date</td>  <td>06/03/2020</td>
                     </tr>
                      <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Date Cancelled</td>  <td>_</td>
+                        <td class="v_td_a">Date Cancelled</td>  <?=$cancellation_div?>
                     </tr>
                      <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Booking Date</td>  <td>_</td>
+                        <td class="v_td_a">Booking Date</td>  <?=$booking_div?>
                     </tr>
                      <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Partner</td>  <td>Super Spa</td>
+                        <td class="v_td_a">Partner</td>  <td><?=$partner_name?></td>
                     </tr>
                     <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Partner Rating</td>  <td class="txt_gray"><i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>
-                         <i class="far fa-star"></i> <i class="far fa-star"></i></td>
+                        <td class="v_td_a">Partner Rating</td> 
+                        <td class="txt_gray"><?=$util->patner_rating($rating_value)?></td>
                     </tr>
                      
                      <tr class="v_td_100">
@@ -256,7 +293,8 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     </tr>
                     
                     <tr class="declare_tr text-center">
-                        <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>  
+                      <?=$admin_func_?>
+                      <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>  
                     </tr>
                 </tbody>
              </table>
@@ -273,12 +311,12 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     <tr>
                         <td class="">GASTRONOMY</td>  <td class="reed_mob_text">REDEEMED</td>
                     </tr>
-                    
-                    
                 </tbody>
              </table>
-       
-  
+             <?php 
+                  endforeach;
+                }
+              ?>
         </div>
            
                      </div></div>

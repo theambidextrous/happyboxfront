@@ -181,8 +181,66 @@ $list = json_decode($list, true)['data'];
           </div>  </div>
              <div class="voucher_list_mob mobile_view">
                      <div class="row  ">
-                          
         <div class="col-md-12 ">
+        <?php 
+            foreach ( $list as $_list ):
+              $ptn_pay = 0;
+              $date_redeemed = date('d/m/Y', strtotime($_list['redeemed_date']));
+              /** booking */
+              if($_list['box_voucher_status'] != 4){
+                $ptn_pay = $_list['partner_pay_amount'];
+                $date_booked = '<td>'.date('d/m/Y', strtotime($_list['booking_date'])).'</td>';
+              }else{
+                $date_booked = '<td class="empty_cell"></td>';
+              }
+              /** cancellation */
+              if($_list['box_voucher_status'] == 4){
+                $date_cancelled = '<td>'.date('d/m/Y', strtotime($_list['cancellation_date'])).'</td>';
+              }else{
+                $date_cancelled = '<td class="empty_cell"></td>';
+              }
+              /** partner paid */
+              if($_list['box_voucher_status'] != 4){
+                $date_ptn_paid = '<td>'.date('d/m/Y', strtotime($_list['partner_pay_due_date'])).'</td>';
+              }else{
+                $date_ptn_paid = '<td class="empty_cell"></td>';
+              }
+              /** */
+              $box_idf = $_list['box_internal_id'];
+              $box_voucher_code = $_list['box_voucher'];
+              $m_voucher = "'". $box_voucher_code . "'";
+              $box_voucher_status = $_list['box_voucher_status'];
+              $admin_func = '';
+              if($box_voucher_status == 3){
+                $m_partner = "'".json_decode($_SESSION['usr_info'])->data->internal_id."'";
+                $b_v_status = '<td class="hap_success">REDEEMED</td>';
+              $admin_func = ' <td class="v_td_canc">
+                <a href="#" class="text-white " onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
+                </td>
+                <td id="datepilckerx" class="v_td_modi">
+                  <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#modif_booking_modal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
+                <input type="text" id="pickDate" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,'.$m_voucher.','.$m_partner.')" onfocus="(this.type=\'date\')"></td>
+                ';
+                /* $admin_func = ' <td class="hap_danger">
+                <a href="#" class="text-white" onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
+                </td>
+                <td id="datepilckerx" class="hap_primary">
+                  <button type="button" class="modify_img_btn" data-toggle="modal" data-target="#myModal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
+                </td>
+                ';*/
+
+
+              }elseif($box_voucher_status == 4){
+                $admin_func = '
+                <td class="empty_cell"></td>
+                <td class="empty_cell"></td>';
+                $b_v_status = '<td class="v_td_valid">CANCELLED</td>';
+              }else{
+                $b_v_status = '<td class="empty_cell"></td>';
+              }
+              $box_data = json_decode($box->get_byidf($token, $box_idf))->data;
+              $c_user_data = json_decode($user->get_details_byidf($_list['customer_user_id']))->data;
+            ?>
              <table class="table  voucher_list_table_mob table-borderless">
                 <thead>
                   <tr class="blue_cell_th_mob text-white">
@@ -192,41 +250,47 @@ $list = json_decode($list, true)['data'];
                 </thead>
                 <tbody>
                     <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">SPA EXPERIENCE</td>  <td class="v_td_valid">VALID</td>
+                        <td class="v_td_a"><?=$box_data->name?></td>  <?=$b_v_status?>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Voucher Code</td>  <td>AZERTY001</td>
+                        <td class="v_td_a">Voucher Code</td>  <td><?=$box_voucher_code?></td>
                     </tr>
                     <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Customer Name</td>  <td>Joe</td>
+                        <td class="v_td_a">Customer Name</td>  <td><?=$c_user_data->fname?></td>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Customer Surname</td>  <td>Bloggs</td>
+                        <td class="v_td_a">Customer Surname</td>  <td><?=$c_user_data->sname?></td>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Date Redeemed</td>  <td>06/03/2020</td>
+                        <td class="v_td_a">Date Redeemed</td>  <td><?=$date_redeemed?></td>
                     </tr>
                       <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Date Cancelled</td>  <td>_</td>
+                        <td class="v_td_a">Date Cancelled</td>  <td><?=$date_cancelled?></td>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Booking Date</td>  <td>_</td>
+                        <td class="v_td_a">Booking Date</td>  <td><?=$date_booked?></td>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Partner Payment Date</td>  <td>_</td>
+                        <td class="v_td_a">Partner Payment Date</td>  <td><?=$date_ptn_paid?></td>
                     </tr>
                     <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Partner Reimbursement</td>  <td>ksh5000.00</td>
+                        <td class="v_td_a">Partner Reimbursement</td>  <td>Ksh <?=number_format($ptn_pay,2)?></td>
                     </tr>
                      <tr class="v_td_100">
                          <td class="" colspan="2">Voucher Administration</td>  
                     </tr>
                     <tr class="voucher_list_table_mob_tr text-center">
-                        <td class="v_td_canc">CANCEL VOUCHER</td>  <td class="v_td_modi"> MODIFY DATE<a ><img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img td_edit_img_mob"/></a></td>
-                    
-               </tr>
+                        <?=$admin_func?>
+                        <!-- <td class="v_td_canc">CANCEL VOUCHER</td>
+                        <td class="v_td_modi"> MODIFY DATE<a >
+                          <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img td_edit_img_mob"/></a>
+                        </td> -->
+                      </tr>
                 </tbody>
              </table>
+             <?php
+                endforeach;
+              ?>
             <!--table 2-->
             <br>
              <table class="table  voucher_list_table_mob2 table-borderless">

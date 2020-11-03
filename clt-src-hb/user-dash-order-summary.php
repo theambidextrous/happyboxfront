@@ -22,6 +22,48 @@ if(empty($_SESSION['curr_usr_cart'][1000]['order_id']) && empty($_SESSION['unpai
 $token = json_decode($_SESSION['usr'])->access_token;
 $current_order_id = $_SESSION['curr_usr_cart'][1000]['order_id'];
 $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
+
+  $_err = '';
+  if(isset($_POST['checkout']) && isset($_SESSION['curr_usr_cart'])){
+    try{
+      $o = new Order($token);
+      if($_POST['has_no_ship'] > 0 ){
+        //errors found
+        throw new Exception('Order error(s), some of your items has no valid shipping data');
+      }
+      $ex_order = $o->exists($_POST['orderid']);
+      if( json_decode($ex_order)->count > 0 ){
+        //go to checkout
+        $util->timed_redirect('user-dash-checkout.php');
+      }else{
+        //create order and go to checkout
+        $body = [
+          'order_id' => $_POST['orderid'],
+          'customer_buyer' => $_POST['customer_buyer'],
+          'order_string' => json_encode($_SESSION['curr_usr_cart']),
+          'subtotal' => $_POST['subtotal'],
+          'shipping_cost' => $_POST['shipping'],
+          'order_totals' => $_POST['total'],
+          'token' => $token
+        ];
+        // $util->Show($body);
+        // exit;
+        $create_rep = $o->create($body);
+        if(json_decode($create_rep)->status == '0'){
+          $_SESSION['unpaid_order'] = $_POST['orderid'];
+          unset($_SESSION['curr_usr_cart']);
+          $_err = $util->success_flash('order created successfully.. proceeding payment ');
+          $util->timed_redirect('user-dash-checkout.php');
+        }else{
+          throw new Exception(json_decode($create_rep)->message);
+        }
+      }
+    }catch(Exception $e){
+      $_err = $util->error_flash($e->getMessage());
+    }
+  }elseif(isset($_SESSION['unpaid_order']) && !isset($_SESSION['curr_usr_cart']) ){
+    $util->timed_redirect('user-dash-checkout.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,49 +108,6 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                 <div class="col-md-12 col_rl_no ">
                   <div class="table-responsive">
                     <div class="">
-                    <?php
-                        $_err = '';
-                        if(isset($_POST['checkout']) && isset($_SESSION['curr_usr_cart'])){
-                          try{
-                            $o = new Order($token);
-                            if($_POST['has_no_ship'] > 0 ){
-                              //errors found
-                              throw new Exception('Order error(s), some of your items has no valid shipping data');
-                            }
-                            $ex_order = $o->exists($_POST['orderid']);
-                            if( json_decode($ex_order)->count > 0 ){
-                              //go to checkout
-                              $util->timed_redirect('user-dash-checkout.php');
-                            }else{
-                              //create order and go to checkout
-                              $body = [
-                                'order_id' => $_POST['orderid'],
-                                'customer_buyer' => $_POST['customer_buyer'],
-                                'order_string' => json_encode($_SESSION['curr_usr_cart']),
-                                'subtotal' => $_POST['subtotal'],
-                                'shipping_cost' => $_POST['shipping'],
-                                'order_totals' => $_POST['total'],
-                                'token' => $token
-                              ];
-                              // $util->Show($body);
-                              // exit;
-                              $create_rep = $o->create($body);
-                              if(json_decode($create_rep)->status == '0'){
-                                $_SESSION['unpaid_order'] = $_POST['orderid'];
-                                unset($_SESSION['curr_usr_cart']);
-                                $_err = $util->success_flash('order created successfully.. proceeding payment ');
-                                $util->timed_redirect('user-dash-checkout.php');
-                              }else{
-                                throw new Exception(json_decode($create_rep)->message);
-                              }
-                            }
-                          }catch(Exception $e){
-                            $_err = $util->error_flash($e->getMessage());
-                          }
-                        }elseif(isset($_SESSION['unpaid_order']) && !isset($_SESSION['curr_usr_cart']) ){
-                          $util->timed_redirect('user-dash-checkout.php');
-                        }
-                    ?>
                     <form action="" method="post">
                       <?=$_err?>
                       <input type="hidden" name="orderid" value="<?=$current_order_id?>"/>
@@ -131,7 +130,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                           $this_order = $current_order_id;
                           // $util->Show($_SESSION['curr_usr_cart']);
                           // $util->Show($sendy->get_lat_long('Riruta Satellite Primary School, Nairobi City, Kenya'));
-                          $_has_p_box = $_has_no_ship = [];
+                          $_has_p_box = $_has_no_ship = $_total_cart = [];
                           if(!empty($_SESSION['curr_usr_cart'])){
                             // $util->Show($_SESSION['curr_usr_cart']);
                             /**  */
@@ -179,7 +178,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                         ?>
                         <tr>
                           <td class="">
-                            <img class="order_summary_tr_td_img" src="shared/img/Box_Mockup_01-200x200@2x.png">
+                            <img class="order_summary_tr_td_img" src="<?=$_3d?>">
                           </td>
                           <td><b><?=$_box_data->name?></b></td>
                           <td>Physical box</td>
@@ -277,107 +276,111 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
           <section class="container mobile_view ">
             <div class="row">
                 <div class="col-md-12 ">
-                    
-                     
-                           <!--end progress strip-->
+                <form method="post">
+                  <!--end progress strip-->
+                  <?php
+                $this_order = $current_order_id;
+                // $util->Show($_SESSION['curr_usr_cart']);
+                // $util->Show($sendy->get_lat_long('Riruta Satellite Primary School, Nairobi City, Kenya'));
+                $_has_p_box = $_has_no_ship = $_total_cart = [];
+                if(!empty($_SESSION['curr_usr_cart'])){
+                  // $util->Show($_SESSION['curr_usr_cart']);
+                  /**  */
+                  $_total_shipping = 0;
+                  foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
+                    if(isset($_cart_item['order_id'])){
+
+                    }elseif(isset($_cart_item['physical_address'])){
+
+                    }else{
+                    $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
+                    $_b_cost = floor($_cart_item[1]*$_box_data->price);
+                    $_total_cart[] = $_b_cost;
+                    $_media = $picture->get_byitem('00', $_cart_item[0]);
+                    $_media = json_decode($_media, true)['data'];
+                    $_3d = 'shared/img/Box_Mockup_01-200x200@2x.png';
+                    foreach( $_media as $_mm ){
+                      if($_mm['type'] == '2'){$_3d = $_mm['path_name'];}
+                    }
+                    $box_type = '';
+                    $addressing_name = $addressing_address = '';
+                    if($_cart_item[2] == 2){ /** ebox */
+                      $box_type = 'E-box';
+                      $_total_shipping = 0;
+                      $addressing_name = $_cart_item[4][1];
+                      $addressing_address = $_cart_item[4][0];
+                    }
+                    else{
+                      array_push($_has_p_box, 1);
+                      $errr = '';
+                      // $s_amt = 10;
+                      if(!count($order_physical_address)){
+                        $errr = "No delivery address for this physical box";
+                        array_push($_has_no_ship, 1);
+                        $_total_shipping = 0;
+                      }
+                      $_address_string = $order_physical_address[1];
+                      $addressing_name = $order_physical_address[0];
+                      $addressing_address = $order_physical_address[1];
+                      $box_type = 'Physical Box';
+                    }
+                      ?>
                       <table class="p-2 cart-table table-borderless shipping_table">
-                          
                           <tr>
-                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
+                              <td class="pdt_img_mob"> <img src="<?=$_3d?>" /></td>
                               <td class="cart_des">
-                                  <h6>Box One</h6>
-                                  <h6><span class="text-orange"><b>E-Box |</b></span>  deliver to:</h6>
+                                  <h6><?=$_box_data->name?></h6>
+                                  <h6><span class="text-orange"><b><?=$box_type?> |</b></span>  deliver to:</h6>
                                   <span>
-                                      Jane Bloggs <br>abc@delivermybox.ke
+                                     <?=$addressing_name?> <br><?=$addressing_address?>
                                   </span>
                                   <br>  <br>
-                                  <b>KES20 000.00</b>
+                                  <b>KES <?=number_format($_b_cost, 2)?></b>
                               </td>
                           </tr>
-                          <tr>
-                          
-                              
-      </tr>
- 
-
-  </form>  
-
-
-                                        
-                       
                       </table>
-                           <!-- box 2-->
-                           <table class="p-2 cart-table table-borderless shipping_table">
+                        <?php 
+                              }
+                              endforeach;
+                            }else{
+                              print '
+                              <tr>
+                                  <td colspan="6">
+                                      <small>*No items in cart.</small>
+                                  </td>
+                              </tr>';
+                            }
+
+                            if (count($_has_p_box)) {
+                              $_total_shipping = $util->AppShipping();
+                            }
                           
-                          <tr>
-                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
-                              <td class="cart_des">
-                                  <h6>Box Two</h6>
-                                   <h6><span class="text-orange"><b>Physical Delivery |</b></span> <b> deliver to:</b></h6>
-                                <span>
-                                     Joe Bloggs <br>123 Box Street, Nairobi, Kenya, 1234
-                                  </span>
-                                  <br>  <br>
-                                  <b>KES20 000.00</b>
-                              </td>
+                          ?>
+                          <!-- hiddens -->
+                          <input type="hidden" name="orderid" value="<?=$current_order_id?>"/>
+                        <input type="hidden" name="customer_buyer" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>"/>
+                        <input type="hidden" name="has_p_box" value="<?=array_sum($_has_p_box)?>"/>
+                        <input type="hidden" name="has_no_ship" value="<?=array_sum($_has_no_ship)?>"/>
+                        <input type="hidden" name="subtotal" value="<?=array_sum($_total_cart)?>"/>
+                        <input type="hidden" name="shipping" value="<?=$_total_shipping?>"/>
+                        <input type="hidden" name="total" value="<?=(array_sum($_total_cart)+$_total_shipping)?>"/>
+                        <table>
+                          <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
+                            <td colspan="6 ">
+                                  <?php 
+                              if(!isset(json_decode($_SESSION['usr'])->access_token)){
+                              ?>
+                                <a href="<?=$util->ClientHome()?>/user-login.php">Login To Complete Order</a>
+                              <?php }else{ ?>
+                                <button type="submit" class="invisible_btn" name="checkout"><img src="shared/img/checkout_mob.svg"></button> 
+                            
+                              <?php } ?>
+                              <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-back-to-shipping-orange.svg"></a>
+                          
+                            </td>
                           </tr>
-                          <tr>
-                          
-                              
-      </tr>
- 
-
-  </form>  
-
-
-                                        
-                       
-                      </table>
-                           <!--3-->
-                            <table class="p-2 cart-table table-borderless shipping_table">
-                          
-                          <tr>
-                              <td class="pdt_img_mob"> <img src="../shared/img/Box_Mockup_01-200x200new.png" /></td>
-                              <td class="cart_des">
-                                  <h6>Box Three</h6>
-                                  <h6><span class="text-orange"><b>E-Box |</b></span>  deliver to:</h6>
-                                  <span>
-                                      Jane Bloggs <br>abc@delivermybox.ke
-                                  </span>
-                                  <br>  <br>
-                                  <b>KES20 000.00</b>
-                              </td>
-                          </tr>
-                          <tr>
-                          
-                              
-      </tr>
- 
-
-  </form>  
-
-
-                                        
-                       
-                      </table>
-                               <table>
-                            <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
-                          <td colspan="6 ">
-                                 <?php 
-                            if(!isset(json_decode($_SESSION['usr'])->access_token)){
-                            ?>
-                              <a href="<?=$util->ClientHome()?>/user-login.php">Login To Complete Order</a>
-                            <?php }else{ ?>
-                              <button type="submit" class="invisible_btn" name="checkout"><img src="shared/img/checkout_mob.svg"></button> 
-                          
-                            <?php } ?>
-                            <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-back-to-shipping-orange.svg"></a>
-                         
-                          </td>
-                        </tr>
                         </table>
-                        
-                           
+                        </form>
                 </div></div></section>
          <!-- end mobile -->
             <!--end add to cart cards-->

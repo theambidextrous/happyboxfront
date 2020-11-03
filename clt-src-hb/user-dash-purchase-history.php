@@ -112,7 +112,7 @@ if (isset($_POST['makecart'])) {
                                 <div class="col-md-9">
                                     <div class="table-responsive" id="invoicetodown<?= $_list['id'] ?>">
                                         <div class="purchase_hist html-content">
-        <?= $_err ?>
+                                            <?= $_err ?>
                                             <input type="hidden" name="orderid" value="<?= $current_order_id ?>"/>
                                             <table class="table purchase_hist   table-bordered">
                                                 <tr class="purch_hist_tr_td">
@@ -163,9 +163,9 @@ if (isset($_POST['makecart'])) {
                                                                 <td><?= $_cart_item[1] ?></td>
                                                                 <td>KES <?= number_format($_b_cost, 2) ?></td>
                                                             </tr>
-                    <?php
-                } else {
-                    ?>
+                                                            <?php
+                                                        } else {
+                                                            ?>
                                                             <tr>
                                                                 <td class="purch_img"><img style="" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
@@ -183,9 +183,9 @@ if (isset($_POST['makecart'])) {
                                                 <tr class="">
                                                     <td colspan="4" class="td_noborder">
                                                         <input type="hidden" name="internal_id" value='<?= $bx_internal_id ?>'/></td>
-        <?php
-        // unset($draft_cart);
-        ?>
+                                                            <?php
+                                                            // unset($draft_cart);
+                                                            ?>
                                                     <td colspan="3" align="right" class="td_no_pad"><table>
                                                             <tr>
                                                                 <td>SUB TOTAL (Incl. VAT)</td>
@@ -238,17 +238,19 @@ if (isset($_POST['makecart'])) {
                 </div>
             </div>
         </section>
-           <?php
-                if (count($my_list_)) {
-                    foreach ($my_list_ as $_list):
-                        $current_order_id = $_list['order_id'];
-                        ?>
+
+
         <section class=" mobile_view">
             <div class="purch_list_mob  container">
                 <div class="row  ">
                     <div class="col-md-12 ">
                         <p class="txt-orange text-center mob_pad">A list of your purchased vouchers </p>
-                        <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless">
+                        <?php
+                        if (count($my_list_)) {
+                            foreach ($my_list_ as $_list):
+                                $current_order_id = $_list['order_id'];
+                        ?>
+                        <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless" id="minvoicetodown<?= $_list['id'] ?>">
                             <thead>
                                 <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
                                     <th style="width:50%;">ORDER NUMBER</th>
@@ -258,41 +260,75 @@ if (isset($_POST['makecart'])) {
                             <tbody>
                                 <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1">
                                     <td class="v_td_a"><?= $current_order_id ?></td>
-                                    <td class="green_txt_valid"><span class=""><b>01/03/2020</b></span></td>
+                                    <td class="green_txt_valid"><span class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></span></td>
                                 </tr>
+                                <?php
+                                $this_order = $current_order_id;
+                                $order_full = json_decode($_list['order_string'], true);
+                                $draft_cart = [];
+                                $bx_internal_id = "";
+                                foreach ($order_full as $_cart_item):
+                                    if (isset($_cart_item['order_id'])) {
+                                        
+                                    } elseif (isset($_cart_item['physical_address'])) {
+                                        
+                                    } else {
+                                        $draft_cart[] = $_cart_item;
+                                        $bx_internal_id = $_cart_item[0];
+                                        $_box_data = json_decode($box->get_byidf('00', $_cart_item[0]))->data;
+                                        $_b_cost = floor($_cart_item[1] * $_box_data->price);
+                                        $_media = $picture->get_byitem('00', $_cart_item[0]);
+                                        $_media = json_decode($_media, true)['data'];
+                                        $_3d = 'shared/img/Box_Mockup_01-200x200@2x.png';
+                                        foreach ($_media as $_mm) {
+                                            if ($_mm['type'] == '2') {
+                                                $_3d = $_mm['path_name'];
+                                            }
+                                        }
+                                        $box_type = '';
+                                        if ($_cart_item[2] == 2) { //ebox
+                                            $box_type = 'Ebox';
+                                        }else { // pbox
+                                            $box_type = 'Physical Box';
+                                        }
+                                ?>
                                 <tr class="purch_hist_img_mob" style="background: #f0f0f0;">
-                                    <td class="" colspan="2"><img class="" src="shared/img/Box_Mockup_01-200x200@2x.png"></td>
+                                    <td class="" colspan="2"><img class="" src="<?= $util->tb64($_3d) ?>"></td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Voucher Code</td>
-                                    <td>AZERTY001</td>
+                                    <td>N/A</td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Box Name</td>
-                                    <td>SPA EXPERIENCE</td>
+                                    <td><?=$_box_data->name?></td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Box Number</td>
-                                    <td>456</td>
+                                    <td><?=$_box_data->id?></td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a"> Box Type</td>
-                                    <td> E-box</td>
+                                    <td><?=$box_type?></td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Expiry Date</td>
-                                    <td>06/03/2020</td>
+                                    <td>N/A</td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Quantity</td>
-                                    <td>2</td>
+                                    <td><?=$_cart_item[1]?></td>
                                 </tr>
+                                <?php
+                                    }
+                                    endforeach;
+                                ?>
                                 <tr class="purch_list_blue_order">
                                     <td class="text-center" colspan="2">Order Options</td>
                                 </tr>
                                 <tr class="v_td_p_r">
                                     <td class="v_td_p1">ADD TO CART <img class="" src="../shared/img/cartp_mob.svg"></td>
-                                    <td class="v_td_p2">DOWNLOAD INVOICE <img class="" src="../shared/img/downp.svg"></td>
+                                    <td class="v_td_p2">DOWNLOAD INVOICE <img onclick="fdownload('minvoicetodown<?= $_list['id'] ?>')" class="" src="../shared/img/downp.svg"></td>
                                 </tr>
                                 <tr class="declare_tr text-center">
                                     <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>
@@ -316,15 +352,15 @@ if (isset($_POST['makecart'])) {
                                 </tr>
                             </tbody>
                         </table>
+                         <!-- end row -->
+                         <?php
+                            endforeach;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </section>
-               <!-- end row -->
-                        <?php
-                    endforeach;
-                }
-                ?>
         <!--end mobile--> 
         <!--end add to cart cards--> 
         <!--our partners -->
