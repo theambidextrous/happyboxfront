@@ -23,18 +23,18 @@ SENDY DISCUSSION
 
 
 slack::
-URL: happyboxgroup.slack.com
-Email: idd.otuya@outlook.com
+URL:happyboxgroup.slack.com
+Email:idd.otuya@outlook.com
 
 gmail
-pass: @Vatar2020
+pass:@Vatar2020
 ec2
 
 ubuntu@ec2-3-249-167-180.eu-west-1.compute.amazonaws.com
 
 AWS 
-UN: damien.lienard@africaexportservices.com
-PW: Mot2passeaws
+UN:damien.lienard@africaexportservices.com
+PW:Mot2passeaws
 
 Desktop Site:
 https://xd.adobe.com/view/7e3dc8eb-816e-4826-7ba3-d89b27fc924c-080c/
@@ -48,18 +48,18 @@ Order.php includes
 front .env
 api .env
 
-password: HappyBox@SugarLab13
+password:HappyBox@SugarLab13
 
 happybox mysql
-user: root, happy_box
-password: 5appyBox2020
-db: happy_box_db
+user:root, happy_box
+password:5appyBox2020
+db:happy_box_db
 
-laravel logs:  var/www/api.happybox.ke/public_html/storage/logs/laravel.log
+laravel logs:var/www/api.happybox.ke/public_html/storage/logs/laravel.log
 
 sendy
 userid 722463498
-pass: password$
+pass:password$
 
 email --- client1@happybox.ke
 token --- f02439c17faa93e085a7b3000c74f363b01400dd7e968a7ea8a642b04f8ecd37
