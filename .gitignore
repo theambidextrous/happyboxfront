@@ -11,6 +11,8 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 mpesaexpress.log
+order_logs.log
+jpLogs.log
 allData.log
 mailt_text.html
 .gitignore
