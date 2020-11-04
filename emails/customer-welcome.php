@@ -64,13 +64,13 @@
               
         </style>
     </head>
-    <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0; font-family: Calibri;font-size: 14px;">
+    <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0; font-family: Calibri;font-size: 16px;">
         <div border="0" cellpadding="0" cellspacing="0" style="max-width:800px;width:100%;margin:0 auto;padding:0; overflow-x: hidden;">
-            <div style="width:100%; text-align: center; color: #707070;">Can’t view this email? View Online</div>
+        
 
             <div style="width:100%;">
                 <a href="https://happybox.ke/" target="_blank">
-                    <img src="http://localhost/happyboxfront/emails/img/on_boarding_header.svg" alt="" style="padding-bottom: 15px; width: 100%; "></a>
+                    <img src="http://localhost/happyboxfront/emails/img/customer_head.svg" alt="" style="padding-bottom: 15px; width: 100%; "></a>
             </div>
 
             <div style="width:80%; margin: 10px auto;" class="mob_100">
@@ -155,6 +155,14 @@
 
             </div>
             
+            <div style="width:100%">
+                <div style="">
+                    <a href="https://happybox.ke/staging/clt-src-hb/" target="_blank">
+                        <img src="http://localhost/happyboxfront/emails/img/news_see_you_soon.svg" style=" margin: 0px auto;padding-top: 29px;width: 80%;" alt=""></a>
+                </div> 
+
+            </div>
+            
             
             
             <div style="width:100%">
@@ -163,11 +171,13 @@
                 </div> 
 
             </div>
-            <div style="width: 70%; background: #C20A2B 0% 0% no-repeat padding-box;border-bottom-right-radius: 13px;
-                 border-bottom-left-radius: 13px;        
-                 padding: 9px 6px;
-                 height: 39px;
-                 margin: auto;" class="mob_95">
+            <div style="    width: 80%;
+    background: #C20A2B 0% 0% no-repeat padding-box;
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+    padding: 12px 8px 9px;
+    height: 39px;
+    margin: -1px auto;" class="mob_95">
                 <div style="width:50%;float: left">
                     <img src="http://localhost/happyboxfront/emails/img/hb-alt-logo-white.svg" style=" display: inline; " alt="">
                     <img src="http://localhost/happyboxfront/emails/img/Chooseyourgift.svg" style=" display: inline; " alt="">
@@ -189,7 +199,10 @@
 
             </div>
             <div style="    width: 100%;    text-align: center; margin-bottom: 30px;  letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
-                You are receiving this email because you are a valued customer of HappyBox & opted in to receive email communications when you created your account. To unsubscribe from HappyBox.ke email communications, click here. HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya Need some help? Have a question? Please send us an email at customercare@happybox.ke
+                You are receiving this email because you are a valued customer of HappyBox.<br>
+                To unsubscribe from HappyBox.ke email communications, <a href="#" target="_blank" style="text-decoration: none;color: #999999;"><strong>click here.</strong></a>  <br>
+                HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya<br>
+                Need some help? Have a question? Please send us an email at <a href="mailto:customercare@happybox.ke"  style="text-decoration: none;color: #999999;font-weight: bold;">customercare@happybox.ke</a>
 
             </div>
 

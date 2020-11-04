@@ -64,39 +64,13 @@
 
         </style>
     </head>
-    <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0; font-family: Calibri;font-size: 14px;">
+    <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0; font-family: Calibri;font-size: 16px;">
         <div border="0" cellpadding="0" cellspacing="0" style="max-width:800px;width:100%;margin:0 auto;padding:0; overflow-x: hidden;">
-            <div style="width:100%; text-align: center; color: #707070;">Can’t view this email? View Online</div>
-           <!-- <div style="width:100%;float:left;">
-               <div style="width:25%;float:left;background: #F4EF14;">
-                
-                
-            </div>
-                <div style="width:50%;float:left;">
-                
-                
-            </div>
-                <div style="width:25%;float:left;">
-                
-                
-            </div>
-                
-            </div>-->
+               
 
-            <div style="background: #C20A2B;    padding-bottom: 15px;    width: 100%;    height: 105px;    margin-bottom: 50px;">
-                <table style="width: 100%; height: 100%; ">
-                    <tr>
-                        <td style="vertical-align:middle;">
-                            
-       <img src="http://localhost/happyboxfront/emails/img/HB-Logo-White.svg" alt="" style="margin:auto;"> 
-       <img src="http://localhost/happyboxfront/emails/img/icn-giftbox-white" alt="" style=""> 
-       
-                        </td>
-                    </tr>
-                </table>
-                    <img src="http://localhost/happyboxfront/emails/img/icn-giftbox-white.svg" alt="" style=" width: auto !important; background: #00ACB3;padding: 8px;border-radius: 50%; margin: -10px auto;"> 
-           
-     
+            <div style="width:100%;">
+                <a href="https://happybox.ke/" target="_blank">
+                    <img src="http://localhost/happyboxfront/emails/img/customer_head.svg" alt="" style="padding-bottom: 0px; width: 100%; "></a>
             </div>
 
             <div style="width:80%; margin: 10px auto;" class="mob_100">
@@ -109,29 +83,41 @@
             </div>
             <div style="width:80%; margin: 10px auto; text-align: center;" >
               <p style="text-align:center;">
-                 You have now activated your Voucher Loss and Theft warranty. A reminder email will be sent to you before your voucher expiry date.</p>
+                 You have now activated your Voucher Loss and Theft warranty. A reminder email will <br>be sent to you before your voucher expiry date.</p>
                 <p style="text-align:center;color:#00ACB3; font-weight: bold;">
                     Book your experience now!
                 </p>
 
             </div>
              <div style="width:80%; margin: 10px auto; text-align: center;" >
-                 <table style="width:100%;color: #FA683D;margin-bottom: 43px;" >
+                 <table style="width:80%;color: #FA683D;margin: 10px auto 40px;" >
                      <tr>
+                         <td style="vertical-align:middle;width: 9%;">
+                             <img src="http://localhost/happyboxfront/emails/img/box_1.svg" alt="" style="">     
+                         </td>
                          <td style="vertical-align:middle;">
-                             <img src="http://localhost/happyboxfront/emails/img/box_1.svg" alt="" style="display: inline; height: 30px;">  <strong>SELECT</strong> one experience in the booklet or e-booklet    
+                              <strong>SELECT</strong> one experience in the booklet or e-booklet    
                          </td>
                      </tr>   <tr >
-                          <td style="vertical-align:middle;">
-                              <img src="http://localhost/happyboxfront/emails/img/box2.svg" alt="" style="display: inline; height: 30px;">  <strong>BOOK</strong> your experience with the chosen partner    
+                          <td style="vertical-align:middle;width: 9%;">
+                              <img src="http://localhost/happyboxfront/emails/img/box2.svg" alt="" style="">    
+                         </td>
+                         <td style="vertical-align:middle;">
+                              <strong>BOOK</strong> your experience with the chosen partner    
                          </td>
                      </tr>   <tr>
+                           <td style="vertical-align:middle;width: 9%;">
+                              <img src="http://localhost/happyboxfront/emails/img/box3.svg" alt="" style=" ;"> 
+                         </td>
                           <td style="vertical-align:middle;">
-                              <img src="http://localhost/happyboxfront/emails/img/box3.svg" alt="" style="display: inline; height: 30px;">  <strong>SHARE</strong> your voucher code with them 
+                         <strong>SHARE</strong> your voucher code with them 
                          </td>
                      </tr><tr>
+                           <td style="vertical-align:middle;width: 9%;">
+                              <img src="http://localhost/happyboxfront/emails/img/box4.svg" alt="" style=""> 
+                         </td>
                           <td style="vertical-align:middle;">
-                              <img src="http://localhost/happyboxfront/emails/img/box4.svg" alt="" style="display: inline; height: 30px;">  <strong>ENJOY</strong> your experience   
+                            <strong>ENJOY</strong> your experience   
                          </td>
                      </tr>
                  </table>
@@ -147,9 +133,15 @@
            
         
             
-            <div style="width:80%; margin: 10px auto 1px; text-align: center;">
+           <!-- <div style="width:80%; margin: 10px auto 1px; text-align: center;">
 
                <h4><span style="color: #00ACB3">Your</span> <span style="font: normal normal bold 20px/26px Agency FB;letter-spacing: 0px;color: #C20A2B;opacity: 1;">HAPPYBOX</span>  <span style="color: #00ACB3">Customer Care Team</span></h4>
+            </div>-->
+            <div style="width:80%; margin: 10px auto;">
+                <div style="">
+                    <img src="http://localhost/happyboxfront/emails/img/welcome_happy.svg" style="margin: 17px auto;" alt="">
+                </div> 
+
             </div>
 
 <div style="width:100%">
@@ -165,11 +157,13 @@
                 </div> 
 
             </div>
-            <div style="width: 70%; background: #C20A2B 0% 0% no-repeat padding-box;border-bottom-right-radius: 13px;
-                 border-bottom-left-radius: 13px;        
-                 padding: 9px 6px;
-                 height: 39px;
-                 margin: auto;" class="mob_95">
+            <div style="    width: 80%;
+    background: #C20A2B 0% 0% no-repeat padding-box;
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+    padding: 12px 8px 9px;
+    height: 39px;
+    margin: -1px auto;" class="mob_95">
                 <div style="width:50%;float: left">
                     <img src="http://localhost/happyboxfront/emails/img/hb-alt-logo-white.svg" style=" display: inline; " alt="">
                     <img src="http://localhost/happyboxfront/emails/img/Chooseyourgift.svg" style=" display: inline; " alt="">
@@ -190,8 +184,11 @@
                 </div> 
 
             </div>
-            <div style="    width: 100%;    text-align: center; margin-bottom: 30px;  letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
-                You are receiving this email because you are a valued customer of HappyBox & opted in to receive email communications when you created your account. To unsubscribe from HappyBox.ke email communications, click here. HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya Need some help? Have a question? Please send us an email at customercare@happybox.ke
+          <div style=" width: 100%;    text-align: center; margin-bottom: 30px;  letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
+                You are receiving this email because you are a valued customer of HappyBox.<br>
+                To unsubscribe from HappyBox.ke email communications, <a href="#" target="_blank" style="text-decoration: none;color: #999999;"><strong>click here.</strong></a>  <br>
+                HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya<br>
+                Need some help? Have a question? Please send us an email at <a href="mailto:customercare@happybox.ke"  style="text-decoration: none;color: #999999;font-weight: bold;">customercare@happybox.ke</a>
 
             </div>
 

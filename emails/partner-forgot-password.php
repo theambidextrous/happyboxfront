@@ -3,7 +3,7 @@
     <head>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>The Happy Box:: Stolen Voucher</title>
+        <title>The Happy Box:: Forgot Password</title>
         <style>
             /*universal */
             img{
@@ -16,112 +16,113 @@
             }
             @media (max-width: 767px){
                 .mob_100{
-                width: 100% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+                    width: 100% !important;
+                    padding-left: 10px !important;
+                    padding-right: 10px !important;
                 }
                 .partner_img,.partner_des{
-                   
+
                 }
                 .partner_des {
-    width: 87%;
-   
-    margin-top: 11px;
-    padding-left: 9px;
-   }
-   .mob_auto_img{
-     margin: auto !important;
-   }
-   .mob_95 {
-      width: 95% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    
-                
-            }
-            .mob_hide{
-                display: none;
-            }
-            .desk_hide{
-           display: block;
-            }
-            .our_part_img{
-                
-    margin-bottom: 8px;
+                    width: 87%;
 
-            }
+                    margin-top: 11px;
+                    padding-left: 9px;
+                }
+                .mob_auto_img{
+                    margin: auto !important;
+                }
+                .mob_95 {
+                    width: 95% !important;
+                    padding-left: 10px !important;
+                    padding-right: 10px !important;
+
+
+                }
+                .mob_hide{
+                    display: none;
+                }
+                .desk_hide{
+                    display: block;
+                }
+                .our_part_img{
+
+                    margin-bottom: 8px;
+
+                }
             }
             @media (min-width: 768px){
-                 .mob_hide{
-                display: block;
+                .mob_hide{
+                    display: block;
+                }
+                .desk_hide{
+                    display: none;
+                }
+
             }
-             .desk_hide{
-           display: none;
-            }
-                
-            }
-              /*end universal */
-              
+            /*end universal */
+
         </style>
     </head>
     <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0; font-family: Calibri;font-size: 16px;">
+        
         <div border="0" cellpadding="0" cellspacing="0" style="max-width:800px;width:100%;margin:0 auto;padding:0; overflow-x: hidden;">
-          
+         
 
-           <div style="width:100%;">
+            <div style="width:100%;">
                 <a href="https://happybox.ke/" target="_blank">
-                    <img src="http://localhost/happyboxfront/emails/img/customer_head.svg" alt="" style="padding-bottom: 0px; width: 100%; "></a>
+                    <img src="http://localhost/happyboxfront/emails/img/on_boarding_header.svg" alt="" style="padding-bottom: 15px; width: 100%; "></a>
             </div>
 
             <div style="width:80%; margin: 10px auto;" class="mob_100">
-                <h3 style="text-align: center;font: normal normal bold 20px/24px Calibri;letter-spacing: 0px;color: #00ACB3">Dear [Customer Name]</h3>
-           
-            </div>
-            <div style="width:80%; margin: 24px auto;" >
+                <h3 style="font: normal normal bold 20px/24px Calibri;letter-spacing: 0px;color: #0985B6;opacity: 1;text-align: center;">Dear [Partner Name]</h3>
 
-                <img src="http://localhost/happyboxfront/emails/img/declare.svg" alt="" style="width: 100%;">
             </div>
-               <div style="width:80%; margin: 10px auto; text-align: center;" >
-                   <p>
-          You recently declared the loss or theft of your HappyBox voucher.
-                   </p>
-                   <p>Upon receipt of your claim, HappyBox immediately blocked the use of the said voucher<br> and it is now totally void. 
-                   </p><p>We have confirmed the voucher was not redeemed prior to your loss or theft<br>  declaration and we are pleased to provide you with a replacement voucher.
-                       </p><p>This voucher is to be used in place of the one you have misplaced, it takes the form <br> of an e-voucher, and is attached to this message.        
-                   
-                   </p>
-                  
-                     
+            <div style="width:80%;     margin: 18px auto;;" >
+
+                <img src="http://localhost/happyboxfront/emails/img/forgot_password.svg" alt="" style="width: 100%;">
             </div>
+            <div style="width:80%; margin: 10px auto; text-align: center;" >
+                <p>
+                    A password reset was requested for the HappyBox Partner account associated with<br> this email address.</p>
+                <p> If you did not request this then please ignore this email, otherwise click below to set<br> a new password.    
+                </p>
+
+            </div>
+             <div style="width:80%;     margin: 18px auto;" >
+                 <a href="#" target="_blank">
+
+                <img src="http://localhost/happyboxfront/emails/img/btn-password-reset.svg" alt="" style=" margin:auto;">
+                </a>
+            </div>
+
+          
             
-             <div style="width:100%">
-                <div style="">
-                    <a href="https://happybox.ke/staging/clt-src-hb/user-dash-activate-voucher.php" target="_blank">
-                    <img src="http://localhost/happyboxfront/emails/img/btn-register-your-voucher.svg" style="    margin: 25px auto; height: 44px;" alt="">
-               </a> </div> 
-
-            </div>
-                     
+                  
         
            
-           
-             
-            <div style="width:80%; margin: 14px auto;">
+        
+            
+            <div style="width:80%; margin: 10px auto 1px;">
+
+                <img src="http://localhost/happyboxfront/emails/img/onboarding_your.svg" alt="" style="margin: 33px auto 4px;">
+            </div>
+
+<div style="width:100%">
                 <div style="">
-                    <img src="http://localhost/happyboxfront/emails/img/welcome_happy.svg" style="margin: 17px auto;" alt="">
+                    <a href="https://happybox.ke/staging/clt-src-hb/" target="_blank">
+                        <img src="http://localhost/happyboxfront/emails/img/news_see_you_soon.svg" style=" margin: 0px auto;padding-top: 29px;width: 80%;" alt=""></a>
                 </div> 
 
             </div>
-            
-            
-            
+           
             <div style="width:100%">
                 <div style="">
-                    <img src="http://localhost/happyboxfront/emails/img/Group5286@2x.png" style=" margin: 0px auto;" alt="">
+                    <img src="http://localhost/happyboxfront/emails/img/news_below_see_you.png" style=" margin: 0px auto;width: 100%;" alt="">
                 </div> 
 
             </div>
-           <div style="    width: 80%;
+            <div style="    width: 80%;
     background: #C20A2B 0% 0% no-repeat padding-box;
     border-bottom-right-radius: 13px;
     border-bottom-left-radius: 13px;
@@ -148,11 +149,11 @@
                 </div> 
 
             </div>
-          <div style="    width: 100%;    text-align: center; margin-bottom: 30px;  letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
-                You are receiving this email because you are a valued customer of HappyBox.<br>
-                To unsubscribe from HappyBox.ke email communications, <a href="#" target="_blank" style="text-decoration: none;color: #999999;"><strong>click here.</strong></a>  <br>
-                HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya<br>
-                Need some help? Have a question? Please send us an email at <a href="mailto:customercare@happybox.ke"  style="text-decoration: none;color: #999999;font-weight: bold;">customercare@happybox.ke</a>
+        <div style="    width: 100%;    text-align: center; margin-bottom: 30px;  letter-spacing: 0px;    color: #999999;    float: left;    line-height: 20px;">
+          You are receiving this email because you are a HappyBox partner. <br>
+          To unsubscribe from HappyBox.ke partner email communications,  <a href="#" target="_blank" style="text-decoration: none;color: #999999;"><strong>click here.</strong></a> <br>
+          HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya<br>
+          Need some help? Have a question? Please send us an email at <a href="mailto:partnercare@happybox.ke"  style="text-decoration: none;color: #999999;font-weight: bold;">partnercare@happybox.ke</a>
 
             </div>
 
