@@ -810,17 +810,22 @@ th, td {
 	height: 23px !important;
 	z-index: 9999999 !important;
 }
-.booklet_dialogue .carousel-caption {
-	position: absolute;
-	right: 15%;
-	top: 43%;
-	left: 15%;
-	z-index: 10;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	color: #000;
+.booklet_dialogue .carousel-inner {
+	background-color: whitesmoke;
+}
+.booklet_dialogue .box_img_.w-100 {
+	width: 460px !important;
+	margin: 0 auto;
+}
+.booklet_dialogue .booklet-button p {
 	text-align: center;
-	font-weight: bold;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-size: 16pt;
+}
+.booklet_dialogue .booklet-button a {
+	color: #0185b6;
+  text-decoration: underline;
 }
 .modal_parent {
 	height: 100%;

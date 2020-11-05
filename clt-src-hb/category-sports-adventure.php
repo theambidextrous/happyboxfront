@@ -334,8 +334,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 							<div class="carousel-inner">
 								<div class="carousel-item active">
 									<img id="box_img_" class="box_img_ d-block w-100" src="shared/img/_modal_slide_img.jpg" alt="Second slide">
-									<div class="carousel-caption">
-										<p><a id="bx_booklet_" class="bx_booklet_" target="_blank" href="javascript(0);">View Box Booklet</a></p>
+									<div class="booklet-button">
+										<p><a id="bx_booklet_" class="bx_booklet_" target="_blank" href="javascript(0);">Consult the booklet online</a></p>
 									</div>
 								</div>
 								
