@@ -56,9 +56,9 @@ img {
 /*end universal */
 </style>
 </head>
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0;font-family:Calibri;font-size:16px;background:#E6E6E6;">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0 auto;padding:0;font-family:Calibri;font-size:16px;background:#FFF;">
 <div border="0" cellpadding="0" cellspacing="0" style=" max-width:800px;width:100%;margin:0 auto;padding:0;overflow-x:hidden;background:#fff;margin-top:36px;">
-	<div style="width:70%;margin:auto;" class="mob_100">
+	<div style="width:60%;margin:auto;" class="mob_100">
 		<table style="width:100%;border:none;" cellspacing="0" cellpadding="0">
 			<tr>
 				<td style="background:#F4EF14;width:25%;height:5px;"></td>
@@ -78,17 +78,17 @@ position:absolute;
 left:44%;
 top:-31px;">
 	</div>
-	<div style="width:70%;margin:auto;background:#FFFFFF 0% 0% no-repeat padding-box; border:1px solid #C20A2B;border-radius:0px 0px 13px 13px;">
+	<div style="width:60%;margin:auto;background:#FFFFFF 0% 0% no-repeat padding-box; border:1px solid #C20A2B;border-radius:0px 0px 13px 13px;">
 		<p style="text-align:center;font:normal normal bold 20px/19px Calibri;letter-spacing:0px;color:#000000;">xyzqwerty00123456</p>
 	</div>
 	<div style="width:100%; margin:17px auto 10px;" >
 		<img src="img/voucher2_dotted.svg" alt="" style="width:100%;">
 	</div>
-	<div style="width:70%;margin:auto;" class="mob_100">
+	<div style="width:60%;margin:auto;" class="mob_100">
 		<img src="img/3_steps.svg" alt="" style="margin:auto;width:100%;">
 	</div>
-	<div style="width:70%;margin:10px auto;">
-		<table style="margin-top:20px;margin-bottom:40px;">
+	<div style="width:60%;margin:10px auto;">
+		<table style="margin-top:20px;margin-bottom:20px;">
 			<tbody>
 				<tr>
 					<td style="width:12%;vertical-align:middle;"><img src="img/step1.svg" alt="" style=""></td>
@@ -112,14 +112,13 @@ top:-31px;">
 				</tr>
 			</tbody>
 		</table>
-		<br>
 	</div>
-	<div style="width:70%;margin:10px auto;text-align:center;">
+	<div style="width:60%;margin:10px auto;text-align:center;">
 		<p> Your e-voucher is valid for 6 months from the date of purchase </p>
 		<p> Early activation of your e-voucher on <strong><a href="https://happybox.ke/" target="_blank" style="text-decoration:none;color:black;">happybox.ke</a> </strong> allows you to benefit from our loss and theft warranty, you will also be able to check the validity status of your e-voucher </p>
 		<p> See all the terms and conditions on <strong><a href="https://happybox.ke/" target="_blank" style="text-decoration:none;color:black;">happybox.ke</a> </strong> </p>
 	</div>
-	<div style="width:70%;margin:auto;padding-top:10px;" class="mob_100">
+	<div style="width:60%;margin:auto;padding-top:10px;" class="mob_100">
 		<table style="width:100%;border:none;" cellspacing="0" cellpadding="0">
 			<tr>
 				<td style="background:#F4EF14;width:25%;height:5px;"></td>
