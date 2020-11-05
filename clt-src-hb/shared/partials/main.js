@@ -1,5 +1,4 @@
-
-      $(document).ready(function(){
+$(document).ready(function(){
 
 if($('.brands_slider').length)
 {
@@ -162,4 +161,8 @@ $('.menu-close').click(function() {
 });
 
 }
-        );
+);
+
+function currencyNumberFormat(num) {
+    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
