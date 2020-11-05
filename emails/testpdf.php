@@ -16,7 +16,7 @@ $mpdf = new \Mpdf\Mpdf([
 $mpdf->SetDisplayMode('fullpage');
 
 //Get HTML page contents
-$html = file_get_contents('evoucher2.php');
+$html = file_get_contents('evoucher2.html');
 
 // Write some HTML code:
 $mpdf->WriteHTML($html);
