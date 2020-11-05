@@ -78,7 +78,7 @@ img {
 	</div>
 	<div style="width:100%">
 		<div style="">
-			<a href="https://happybox.ke/staging/clt-src-hb/" target="_blank"> <img src="img/news_see_you_soon.svg" style=" margin:0px auto;padding-top:29px;width:80%;" alt=""></a>
+			<a href="https://happybox.ke/" target="_blank"> <img src="img/news_see_you_soon.svg" style=" margin:0px auto;padding-top:29px;width:80%;" alt=""></a>
 		</div>
 	</div>
 	<div style="width:100%">
@@ -100,14 +100,9 @@ margin:-1px auto;" class="mob_95">
 			<a href="https://www.facebook.com/HappyBoxke-104873668046223" target="_blank"><img src="img/icn-fb-white.svg" style=" display:inline;height:26px;margin-left:19px;" alt=""></a> <a href="https://www.instagram.com/happybox.ke/" target="_blank"><img src="img/icn-ig-white.svg" style="display:inline;height:26px;margin-left:19px;" alt=""></a> <a href="https://www.linkedin.com/company/happybox-ke/" target="_blank"><img src="img/icn-li-white.svg" style="display:inline;height:26px;margin-left:19px;" alt=""></a>
 		</div>
 	</div>
-	<div style="width:100%;float:left;">
-		<div style=" text-align:center;margin-bottom:10px;margin-top:10px;">
-			<a href="https://happybox.ke/staging/clt-src-hb/user-login.php" style="text-align:center;text-decoration:underline;font:normal normal normal 14px/20px Calibri;letter-spacing:0px;color:#999999;" target="_blank">Login to your Partner Portal|</a><a href="" style="text-align:center;text-decoration:underline;font:normal normal normal 14px/20px Calibri;letter-spacing:0px;color:#999999;" target="_blank">Unsubscribe</a>
-		</div>
-	</div>
-	<div style=" width:100%;text-align:center;margin-bottom:30px; letter-spacing:0px;color:#999999;float:left;line-height:20px;">
-		You are receiving this email because you are a HappyBox partner. <br>
-		To unsubscribe from HappyBox.ke partner email communications, <a href="#" target="_blank" style="text-decoration:none;color:#999999;"><strong>click here.</strong></a> <br>
+		<div style=" width:100%;text-align:center;margin-top: 30px;margin-bottom:30px; letter-spacing:0px;color:#999999;float:left;line-height:20px;">
+		You are receiving this email because you have requested to become a HappyBox partner <br>
+		To unsubscribe from happybox.ke partner email communications, <a href="#" target="_blank" style="text-decoration:none;color:#999999;"><strong>click here.</strong></a> <br>
 		HappyBox | P.O Box 30275| 00100 GPO | Nairobi | Kenya<br>
 		Need some help? Have a question? Please send us an email at <a href="mailto:partnercare@happybox.ke"  style="text-decoration:none;color:#999999;font-weight:bold;">partnercare@happybox.ke</a>
 	</div>
