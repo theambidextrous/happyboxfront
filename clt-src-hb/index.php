@@ -461,7 +461,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
         $('.box_name_').text(d[1]);
         // $('#slide_title_').text(d[1]);
         $('.box_desc_').text(d[3]);
-        //$('.box_img_').attr('src', d[4]);
+        $('.box_img_').attr('src', d[4]);
         $('.bx_booklet_').attr('href', d[5]);
         $('.bx_booklet_t').attr('href', d[5]);
         $('#popup_box').trigger('click');
