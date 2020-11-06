@@ -174,8 +174,8 @@ $util->ShowErrors(1);
 								}
 					?>
 					<tr id="reset_div_<?=$_cart_item[0]?>">
-						<td class="pdt_img" style="width:35%"><img src="<?=$_3d?>" /></td>
-						<td class="cart_des"><h6><?=$_box_data->name?></h6> <span><?=$_box_data->description?></span><br><b>KES <?=number_format($_box_data->price, 2)?></b><br><span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span></td>
+						<td class="pdt_img" style=""><img src="<?=$_3d?>" /></td>
+						<td class="cart_desx"><h6><?=$_box_data->name?></h6> <span><?=$_box_data->description?></span><br><b>KES <?=number_format($_box_data->price, 2)?></b><br><span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span></td>
 					</tr>
 					<tr style="background:#00ACB31A;">
 						<td><b>KES <?=number_format($_b_cost,2)?></b></td>
