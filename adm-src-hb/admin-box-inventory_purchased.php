@@ -158,6 +158,30 @@ $box = new Box();
                             <tbody>
                                 <?php
                                 foreach($all_happyboxes_inventory as $hbox ):
+                                    if( $hbox['box_purchase_date']) {
+                                        $hbox['box_purchase_date'] = $util->globalDate($hbox['box_purchase_date']);
+                                    }
+                                    if( $hbox['box_validity_date']) {
+                                        $hbox['box_validity_date'] = $util->globalDate($hbox['box_validity_date']);
+                                    }
+                                    if( $hbox['voucher_activation_date']) {
+                                        $hbox['voucher_activation_date'] = $util->globalDate($hbox['voucher_activation_date']);
+                                    }
+                                    if( $hbox['redeemed_date']) {
+                                        $hbox['redeemed_date'] = $util->globalDate($hbox['redeemed_date']);
+                                    }
+                                    if( $hbox['cancellation_date']) {
+                                        $hbox['cancellation_date'] = $util->globalDate($hbox['cancellation_date']);
+                                    }
+                                    if( $hbox['booking_date']) {
+                                        $hbox['booking_date'] = $util->globalDate($hbox['booking_date']);
+                                    }
+                                    if( $hbox['partner_pay_due_date']) {
+                                        $hbox['partner_pay_due_date'] = $util->globalDate($hbox['partner_pay_due_date']);
+                                    }
+                                    if( $hbox['partner_pay_effec_date']) {
+                                        $hbox['partner_pay_effec_date'] = $util->globalDate($hbox['partner_pay_effec_date']);
+                                    }
                                     $_c_buyer = $user->get_details_byidf($hbox['customer_buyer_id']);
                                     $_c_buyer = json_decode($_c_buyer);
                                     $_c_user = $user->get_details_byidf($hbox['customer_user_id']);
@@ -216,10 +240,10 @@ $box = new Box();
                                         <?=!is_null($hbox['box_delivery_address'])?$hbox['box_delivery_address']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($util->globalDate($hbox['box_purchase_date']))?$hbox['box_purchase_date']:'null'?>
+                                        <?=!is_null($hbox['box_purchase_date'])?$hbox['box_purchase_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($util->globalDate($hbox['box_validity_date']))?$hbox['box_validity_date']:'null'?>
+                                        <?=!is_null($hbox['box_validity_date'])?$hbox['box_validity_date']:'null'?>
                                     </td>
                                     <td>
                                         <?=!is_null($hbox['customer_buyer_invoice'])?$hbox['customer_buyer_invoice']:'null'?>
@@ -240,7 +264,7 @@ $box = new Box();
                                         <?=!is_null($box_v_status_name)?$box_v_status_name:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($util->globalDate($hbox['voucher_activation_date']))?$hbox['voucher_activation_date']:'null'?>
+                                        <?=!is_null($hbox['voucher_activation_date'])?$hbox['voucher_activation_date']:'null'?>
                                     </td>
                                     <!-- customer user -->
                                     <td>
@@ -257,13 +281,13 @@ $box = new Box();
                                     </td>
                                     <!-- end -->
                                     <td>
-                                        <?=!is_null($util->globalDate($hbox['redeemed_date']))?$hbox['redeemed_date']:'null'?>
+                                        <?=!is_null($hbox['redeemed_date'])?$hbox['redeemed_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($util->globalDate($hbox['cancellation_date']))?$hbox['cancellation_date']:'null'?>
+                                        <?=!is_null($hbox['cancellation_date'])?$hbox['cancellation_date']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($util->globalDate($hbox['booking_date']))?$hbox['booking_date']:'null'?>
+                                        <?=!is_null($hbox['booking_date'])?$hbox['booking_date']:'null'?>
                                     </td>
                                     <td>
                                         KES <?=!is_null($box_data->price)?$box_data->price:'null'?>

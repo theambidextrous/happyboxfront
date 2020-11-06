@@ -34,7 +34,7 @@
           'length' => 5*$qty
         ];
     }
-    function post_fields($order_data, $_order_id, $box_obj, $request_type_){
+    function post_fields($order_data, $_order_id, $box_name){
         $util = new Util();
         $post_fields = [];
         /** sendy postfields */
@@ -51,21 +51,19 @@
         $post_fields['data']['from']['from_long'] = $lat_long['lng'];;
         $post_fields['data']['from']['from_description'] = $util->warehouse().':- warehouse/pickup location';
         /** to */
-        $_box_data = json_decode($box_obj->get_byidf('00', $order_data[0]))->data;
-        $deliver_to = ucwords(strtolower($order_data[4][1]));
+        $deliver_to = ucwords(strtolower($order_data['deliver_to']));
         $lat_long = $this->get_lat_long($deliver_to);
         $post_fields['data']['to']['to_name'] = $deliver_to;
         $post_fields['data']['to']['to_lat'] = $lat_long['lat'];
-        $post_fields['data']['to']['to_long'] = $lat_long['lng'];;
-        $post_fields['data']['to']['to_description'] = $deliver_to.':- client location, Recipient Name = ' . $order_data[4][0];
+        $post_fields['data']['to']['to_long'] = $lat_long['lng'];
+        $post_fields['data']['to']['to_description'] = $deliver_to;
         /** delivery data */
-        $p_d = $this->item_size($order_data[1]);
-        $box_name = $_box_data->name;
+        $p_d = $this->item_size($order_data['qty']);
         $post_fields['data']['delivery_details']['package_size']['weight'] = $p_d['weight'];
         $post_fields['data']['delivery_details']['package_size']['height'] = $p_d['height'];
         $post_fields['data']['delivery_details']['package_size']['width'] = $p_d['width'];
         $post_fields['data']['delivery_details']['package_size']['length'] = $p_d['length'];
-        $post_fields['data']['delivery_details']['package_size']['item_name'] = $box_name;
+        $post_fields['data']['delivery_details']['package_size']['item_name'] = $box_name . ', Quantity: ' . $order_data['qty'];
         /** sender */
         $sender_info = $util->contact_data();
         $post_fields['data']['sender']['sender_name'] = $sender_info[0];
@@ -73,12 +71,12 @@
         $post_fields['data']['sender']['sender_email'] = $sender_info[2];
         $post_fields['data']['sender']['sender_notes'] = 'call us for any queries';
          /** recipient */
-         $post_fields['data']['recepient']['recepient_name'] = $order_data[4][0];
-         $post_fields['data']['recepient']['recepient_phone'] = $order_data[4][6];
-         $post_fields['data']['recepient']['recepient_email'] = 'deliverjjy@happybox.ke';
+         $post_fields['data']['recepient']['recepient_name'] = $order_data['name'];
+         $post_fields['data']['recepient']['recepient_phone'] = $order_data['phone'];
+         $post_fields['data']['recepient']['recepient_email'] = 'delivery@happybox.ke';
          $post_fields['data']['recepient']['recepient_notes'] = 'receipient of items';
         /** delivery details */
-        $post_fields['data']['delivery_details']['pick_up_date'] = date('Y-m-d h:i:s');
+        $post_fields['data']['delivery_details']['pick_up_date'] = $order_data['pick_up_date'];
         //collect payment
         $post_fields['data']['delivery_details']['collect_payment']['status'] = false;
         $post_fields['data']['delivery_details']['collect_payment']['pay_method'] = 0;
@@ -86,7 +84,7 @@
         //end payment
         $post_fields['data']['delivery_details']['note'] = 'n/a';
         $post_fields['data']['delivery_details']['note_status'] = false;
-        $post_fields['data']['delivery_details']['request_type'] = $request_type_; //quote,delivery
+        $post_fields['data']['delivery_details']['request_type'] = 'delivery'; //quote,delivery
         $post_fields['data']['delivery_details']['order_type'] = 'ondemand_delivery';
         $post_fields['data']['delivery_details']['ecommerce_order'] = false;
         $post_fields['data']['delivery_details']['express'] = false;

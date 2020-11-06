@@ -3,6 +3,7 @@ session_start();
 require_once '../lib/Order.php';
 
 $allData = file_get_contents('php://input');
+// $allData = '{"Body":{"stkCallback":{"MerchantRequestID":"9272-16323772-1","CheckoutRequestID":"ws_CO_221020202254031363","ResultCode":0,"ResultDesc":"The service request is processed successfully.","CallbackMetadata":{"Item":[{"Name":"Amount","Value":10.00},{"Name":"MpesaReceiptNumber","Value":"OJM1QWJ2BL"},{"Name":"Balance"},{"Name":"TransactionDate","Value":20201022224357},{"Name":"PhoneNumber","Value":254722463498}]}}}}';
 file_put_contents("mpesaexpress.log", $allData, FILE_APPEND | LOCK_EX);
 $token = 'faketoken';
 if(isset($_SESSION['usr'])){

@@ -97,9 +97,10 @@ function format_service($keys, $values){
                                     // $util->Show($services);
                                     // exit;
                                     $_SESSION['frm'] = $_POST;
-                                    $username = strtolower($util->createCode(6));
-                                    $password = $util->createCode(10);
-                                    $u = new User($username, $_POST['email'], $password, $password);
+                                    $username = strtolower($util->createCode(10));
+                                    $password = $username;
+                                    $partner_name = $_POST['fname'] . ' ' . $_POST['sname'];
+                                    $u = new User($username, $_POST['email'], $password, $password, $partner_name);
                                     /** register */
                                     $u_resp = $u->new_partner($token);
                                     if( json_decode($u_resp)->status == '0' && json_decode($u_resp)->data->id > 0){
