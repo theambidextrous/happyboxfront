@@ -150,7 +150,7 @@ $list = json_decode($list, true)['data'];
                     $c_user_data = json_decode($user->get_details_byidf($_list['customer_user_id']))->data;
                   ?>
                   <tr>
-                    <td class="light_blue_cell"><?=$box_data->name?></td>
+                    <td class="light_blue_cell ss"><?=$box_data->name?></td>
                     <td><?=$box_voucher_code?></td>
                     <?=$b_v_status?>
                     <td><?=$c_user_data->fname?></td>
@@ -191,19 +191,20 @@ $list = json_decode($list, true)['data'];
                 $ptn_pay = $_list['partner_pay_amount'];
                 $date_booked = '<td>'.date('d/m/Y', strtotime($_list['booking_date'])).'</td>';
               }else{
-                $date_booked = '<td class="empty_cell"></td>';
+                $date_booked = '<td class="empty_cell empty_mob"></td>';
               }
               /** cancellation */
               if($_list['box_voucher_status'] == 4){
-                $date_cancelled = '<td>'.date('d/m/Y', strtotime($_list['cancellation_date'])).'</td>';
+                $date_cancelled = '<td class="canc_td">'.date('d/m/Y', strtotime($_list['cancellation_date'])).'</td>';
               }else{
-                $date_cancelled = '<td class="empty_cell"></td>';
+                //$date_cancelled = '<td class="empty_cell"></td>';
+                $date_cancelled = '';
               }
               /** partner paid */
               if($_list['box_voucher_status'] != 4){
                 $date_ptn_paid = '<td>'.date('d/m/Y', strtotime($_list['partner_pay_due_date'])).'</td>';
               }else{
-                $date_ptn_paid = '<td class="empty_cell"></td>';
+                $date_ptn_paid = '<td class="empty_cell empty_mob"></td>';
               }
               /** */
               $box_idf = $_list['box_internal_id'];
@@ -231,12 +232,17 @@ $list = json_decode($list, true)['data'];
 
 
               }elseif($box_voucher_status == 4){
-                $admin_func = '
-                <td class="empty_cell"></td>
-                <td class="empty_cell"></td>';
+               /* $admin_func = '
+                <td class="empty_cell a1"></td>
+                <td class="empty_cell a2"></td>';
                 $b_v_status = '<td class="v_td_valid">CANCELLED</td>';
               }else{
-                $b_v_status = '<td class="empty_cell"></td>';
+                $b_v_status = '<td class="empty_cell a1"></td>';
+              }*/
+               $admin_func = ' <td class="empty_cell a2"></td>';
+                $b_v_status = '<td class="v_td_valid">CANCELLED</td>';
+              }else{
+                $b_v_status = '<td class="empty_cell a1"></td>';
               }
               $box_data = json_decode($box->get_byidf($token, $box_idf))->data;
               $c_user_data = json_decode($user->get_details_byidf($_list['customer_user_id']))->data;
@@ -268,10 +274,10 @@ $list = json_decode($list, true)['data'];
                         <td class="v_td_a">Date Cancelled</td>  <td><?=$date_cancelled?></td>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Booking Date</td>  <td><?=$date_booked?></td>
+                        <td class="v_td_a">Booking Date</td>  <?=$date_booked?>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Partner Payment Date</td>  <td><?=$date_ptn_paid?></td>
+                        <td class="v_td_a">Partner Payment Date</td>  <?=$date_ptn_paid?>
                     </tr>
                     <tr class="voucher_list_table_mob_tr">
                         <td class="v_td_a">Partner Reimbursement</td>  <td>Ksh <?=number_format($ptn_pay,2)?></td>
@@ -288,6 +294,7 @@ $list = json_decode($list, true)['data'];
                       </tr>
                 </tbody>
              </table>
+            <br>
              <?php
                 endforeach;
               ?>

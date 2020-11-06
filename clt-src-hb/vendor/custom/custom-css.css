@@ -2653,6 +2653,10 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .voucher_list_table_mob td {
+  empty-cells: hide !important;
+}
+
     .cat_well .sports_card .selection_card_body {
     height: auto !important;
 }
@@ -3668,8 +3672,13 @@ nav a:hover, nav a:focus {
 .order_summ_mob {
 	background: #10D271 !important;
 }
+.pdt_img img {
+    height: auto !important;
 }
+}
+/*end mobile */
 
 .password_ok_img:hover{
     cursor: pointer !important;
 }
+
