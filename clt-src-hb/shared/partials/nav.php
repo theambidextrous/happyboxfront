@@ -160,8 +160,8 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 		</div>
 	</div>
 	<ul class="open desktop opened_menu">
-		<li> <a class="userlogin-nav-a" href="<?= $link; ?>user-login.php"> <img class="top-bar-nav-icon" src="<?= $link; ?>shared/img/icons/icn-user-teal.svg"> User Login</a></li>
-		<li> <a class="partner-nav-a" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?= $link; ?>shared/img/icons/icn-partner-blue.svg"> Partner Portal</a></li>
+		<li> <a class="userlogin-nav-a" href="<?= $link; ?>user-login.php"> <img class="top-bar-nav-icon" src="<?= $link; ?>shared/img/mob_nav_user.svg"> User Login</a></li>
+		<li> <a class="partner-nav-a" href="<?=$util->PartnerHome()?>/login.php"> <img src="<?= $link; ?>shared/img/icn-partner-profile-solid.svg"> Partner Portal</a></li>
 		<li> <a class="registervoucher-nav-a" href="<?=$util->ClientHome()?>/user-dash-activate-voucher.php"><i style="font-size: 23px;margin-right: 4px;" class="fas fa-gift"></i> Register your voucher </a> </li>
 		<li > <a class="" href="<?=$util->ClientHome()?>/category-well-being.php">Well-Being</a> </li>
 		<li> <a class="" href="<?=$util->ClientHome()?>/category-gastronomy.php">Gastronomy</a> </li>
