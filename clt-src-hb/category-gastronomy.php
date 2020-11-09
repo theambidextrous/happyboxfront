@@ -106,7 +106,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
            $_stock_div = 'E-box only';
             if($_stock > 0){
               //$_stock_div = 'In stock('.$_stock.')';
-                            $_stock_div = 'In stock';
+              $_stock_div = 'In stock';
             }
             $_media = $picture->get_byitem('00', $_all_box['internal_id']);
             $_media = json_decode($_media, true)['data'];
@@ -119,7 +119,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                   $pdf = $_mm['path_name'];
                 }
             }            
-            $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+            $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.strip_tags($_all_box['description']).'~'.$_3d.'~'.$pdf;
             $_pop_str = str_replace("'", "", $_pop_str);
 			      $_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
           ?>            
@@ -133,8 +133,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 </div>
                 <div class="card-body selection_card_body text-center">
                   <h4 class="box_title"><?=$_all_box['name']?></h4>
-                  <p><a class="stock_div"><?=$_stock_div?></a></p>
-                  <p><?=$_all_box['description']?></p>
+                  <div><a class="stock_div"><?=$_stock_div?></a></div>
+                  <div><?=$_all_box['description']?></div>
                 </div>
               </div>
               <div class="cart_bar text-white desktop_view">
