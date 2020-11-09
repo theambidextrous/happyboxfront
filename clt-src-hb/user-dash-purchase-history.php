@@ -157,7 +157,7 @@ if (isset($_POST['makecart'])) {
                                                             <tr>
                                                                 <td class=""><img  class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
-                                                                <td class="purch_blue_td"><b><?= $_box_data->id ?></b></td>
+                                                                <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
                                                                 <td class="purch_blue_td"><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
                                                                 <td>E-box</td>
                                                                 <td><?= $_cart_item[1] ?></td>
@@ -169,7 +169,7 @@ if (isset($_POST['makecart'])) {
                                                             <tr>
                                                                 <td class="purch_img"><img style="" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
-                                                                <td class="purch_blue_td"><b><?= $_box_data->id ?></b></td>
+                                                                <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
                                                                 <td class="purch_blue_td"><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
                                                                 <td>Physical Box</td>
                                                                 <td><?= $_cart_item[1] ?></td>
@@ -305,7 +305,7 @@ if (isset($_POST['makecart'])) {
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Box Number</td>
-                                    <td><?=$_box_data->id?></td>
+                                    <td><?=$_box_data->internal_id?></td>
                                 </tr>
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a"> Box Type</td>
