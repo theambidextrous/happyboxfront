@@ -125,7 +125,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 						$pdf = $_mm['path_name'];
 					}
 			}
-			$_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+			$_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.strip_tags($_all_box['description']).'~'.$_3d.'~'.$pdf;
 			$_pop_str = str_replace("'", "", $_pop_str);
 			$_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
 		?>
@@ -139,8 +139,8 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				</div>
 				<div class="card-body selection_card_body text-center">
 					<h4 class="box_title"> <a href="javascript(0);"><?=$_all_box['name']?></a> </h4>
-					<p><a class="stock_div"><?=$_stock_div?></a></p>
-					<p><?=$_all_box['description']?></p>
+					<div><p class="stock_div"><?=$_stock_div?></p></div>
+					<div><?=$_all_box['description']?></div>
 				</div>
 			</div>
 			<div class="cart_bar text-white">

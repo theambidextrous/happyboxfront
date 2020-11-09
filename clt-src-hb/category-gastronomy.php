@@ -106,7 +106,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
            $_stock_div = 'E-box only';
             if($_stock > 0){
               //$_stock_div = 'In stock('.$_stock.')';
-                            $_stock_div = 'In stock';
+              $_stock_div = 'In stock';
             }
             $_media = $picture->get_byitem('00', $_all_box['internal_id']);
             $_media = json_decode($_media, true)['data'];
@@ -119,7 +119,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                   $pdf = $_mm['path_name'];
                 }
             }            
-            $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+            $_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.strip_tags($_all_box['description']).'~'.$_3d.'~'.$pdf;
             $_pop_str = str_replace("'", "", $_pop_str);
 			      $_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
           ?>            
@@ -133,8 +133,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 </div>
                 <div class="card-body selection_card_body text-center">
                   <h4 class="box_title"><?=$_all_box['name']?></h4>
-                  <p><a class="stock_div"><?=$_stock_div?></a></p>
-                  <p><?=$_all_box['description']?></p>
+                  <div><p class="stock_div"><?=$_stock_div?></p></div>
+                  <div><?=$_all_box['description']?></div>
                 </div>
               </div>
               <div class="cart_bar text-white desktop_view">
@@ -217,9 +217,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                           </tbody>
                         </table>
                       </td>
-                      <td>
-                        <h4>Partner / Experience Description</h4>
-                        <p class="cat_p"><?=$_all_ptn['short_description']?></p>
+                      <td>                        
+                        <div class="cat_p"><?=$_all_ptn['short_description']?></div>
                         <p class="text-right rating_bar">
                           <img src="shared/img/icons/icn-star-orange.svg" class="">      
                           <img src="shared/img/icons/icn-star-orange.svg" class="">  
@@ -280,11 +279,9 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                               <td class="td_cat_a">
                                  <table>
                                      <tr><td class="inner_td_gray"><h6><?=$_all_ptn['business_name']?></h6></td></tr>
-                                        <tr><td class="inner_light_blue"><h6 >  <?=$_all_ptn['location']?></h6></td></tr>
+                                     <tr><td class="inner_light_blue"><h6 ><?=$_all_ptn['location']?></h6></td></tr>
                                  </table>
-                                 
-                               
-                                 
+ 
                              </td>
                                
                          </tr>
@@ -296,10 +293,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                
              </div> <div class="col-12">
                  <div class="card_partner_mobcard">
-                     <h4>Spa & Beauty Treatments</h4>
-                     <p>
-                   <?=$_all_ptn['location']?> </p>
-                     
+                    <div><?=$_all_ptn['short_description']?></div>                     
                  </div>
                  
              </div>
@@ -311,11 +305,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
               print '<h4><center>No partners found</center></h4>';
             }
           ?>
-        
-       
-          
-                     
-                      </div>
+      </div>
     
 </section>
        <?php include 'shared/partials/partners.php';?>
