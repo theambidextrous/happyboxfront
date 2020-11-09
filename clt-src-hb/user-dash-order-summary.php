@@ -34,7 +34,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
       $ex_order = $o->exists($_POST['orderid']);
       if( json_decode($ex_order)->count > 0 ){
         //go to checkout
-        $util->timed_redirect('user-dash-checkout.php');
+        $util->redirect_to('user-dash-checkout.php', 3);
       }else{
         //create order and go to checkout
         $body = [
@@ -52,8 +52,8 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
         if(json_decode($create_rep)->status == '0'){
           $_SESSION['unpaid_order'] = $_POST['orderid'];
           unset($_SESSION['curr_usr_cart']);
-          $_err = $util->success_flash('order created successfully.. proceeding payment ');
-          $util->timed_redirect('user-dash-checkout.php');
+          // $_err = $util->success_flash('order created successfully.. proceeding payment ');
+          $util->redirect_to('user-dash-checkout.php', 3);
         }else{
           throw new Exception(json_decode($create_rep)->message);
         }
@@ -62,7 +62,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
       $_err = $util->error_flash($e->getMessage());
     }
   }elseif(isset($_SESSION['unpaid_order']) && !isset($_SESSION['curr_usr_cart']) ){
-    $util->timed_redirect('user-dash-checkout.php');
+    $util->redirect_to('user-dash-checkout.php', 3);
   }
 ?>
 <!DOCTYPE html>

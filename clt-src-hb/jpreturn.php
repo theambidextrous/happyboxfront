@@ -7,10 +7,10 @@ require_once('../lib/Order.php');
 $util = new Util();
 $user = new User();
 $picture = new Picture();
-$util->ShowErrors(1);
+// $util->ShowErrors(1);
 
 $allData = file_get_contents('php://input');
-// $allData = 'JP_TRANID=31825170&JP_MERCHANT_ORDERID=WTNZQVE3UQ&JP_ITEM_NAME=Happybox&JP_AMOUNT=25300.00&JP_CURRENCY=KES&JP_TIMESTAMP=20201103153135&JP_PASSWORD=719c2ac5d1f8a073914f25e6f2b6e754&JP_CHANNEL=VISA';
+// $allData = 'JP_TRANID=31825170&JP_MERCHANT_ORDERID=KUOU8DG8OM&JP_ITEM_NAME=Happybox&JP_AMOUNT=24300.00&JP_CURRENCY=KES&JP_TIMESTAMP=20201103153135&JP_PASSWORD=719c2ac5d1f8a073914f25e6f2b6e754&JP_CHANNEL=VISA';
 file_put_contents("jpLogs.log", $allData, FILE_APPEND | LOCK_EX);
 parse_str($allData, $_POST);
 ?>

@@ -314,8 +314,8 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                 $JP_CHANNEL = $jpdata['JP_CHANNEL'];
                 $sharedkey = '6127482F-35BC-42FF-A466-276C577E7DF3';
                 $str = $JP_MERCHANT_ORDERID . $JP_AMOUNT . $JP_CURRENCY . $sharedkey . $JP_TIMESTAMP;
-                // if (md5(utf8_encode($str)) == $JP_PASSWORD) {
-                if (md5(utf8_encode($str))) {
+                if (md5(utf8_encode($str)) == $JP_PASSWORD) {
+                // if (md5(utf8_encode($str))) {
                     echo '<div class="alert alert-success"><strong>Thank you!</strong> Your payment of KES '.$JP_AMOUNT.' was reveived. Check your email for order details.</div>';	
                     $this_order =  $this->get_one_by_order_req_id($JP_MERCHANT_ORDERID);
                     if( json_decode($this_order)->status != '0' || !json_decode($this_order, true)['data'] ){
@@ -338,6 +338,7 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                 'pay_string' => json_encode($jpdata)
                             ];
                             $_pay_resp = $this->add_a_payment($token, $req_body);
+                            // print($_pay_resp);
                             if( json_decode($_pay_resp)->status != '0' ){
                                 throw new Exception($_pay_resp);
                             }
