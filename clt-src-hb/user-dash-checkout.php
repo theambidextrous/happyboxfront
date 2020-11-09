@@ -214,13 +214,13 @@ $(document).ready(function(){
 		});
 		
 		s_event = function(){
-				var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
-				source.onmessage = function(event){
-						$('#data').html(event.data);										
-						$('#back_btn').show();
-						$('#msg').hide();
-						$('#mpesa_loader').hide();
-				}
+			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
+			source.onmessage = function(event){
+			$('#data').html(event.data);										
+			$('#back_btn').show();
+			$('#msg').hide();
+			$('#mpesa_loader').hide();
+			}
 		}
 		setTimeout(() => {
 				s_event()
@@ -229,29 +229,29 @@ $(document).ready(function(){
 		waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
 		var dataString = $("form[name=" + FormId + "]").serialize();
 		$.ajax({
-				type: 'post',
-				url: '<?=$util->AjaxHome()?>?activity=make-payment-mpesa',
-				data: dataString,
-				success: function(res){
-						console.log(res);
-						var rtn = JSON.parse(res);
-						if(rtn.hasOwnProperty("MSG")){
-								// $('#c2b').text(rtn.c2b);
-								// $('#express').text(rtn.exp);
-								// $('#reg').text(rtn.reg);
-								// $('#inst').html(rtn.inst);
-								$('#mpesa_pay_frm').hide();
-								$('#mpesa_loader').show();
-								$('#msg').html(rtn.MSG);
-								waitingDialog.hide();
-								return;
-						}
-						else if(rtn.hasOwnProperty("ERR")){
-								$('#msg').html(rtn.ERR);
-								waitingDialog.hide();
-								return;
-						}
+			type: 'post',
+			url: '<?=$util->AjaxHome()?>?activity=make-payment-mpesa',
+			data: dataString,
+			success: function(res){
+				console.log(res);
+				var rtn = JSON.parse(res);
+				if(rtn.hasOwnProperty("MSG")){
+					// $('#c2b').text(rtn.c2b);
+					// $('#express').text(rtn.exp);
+					// $('#reg').text(rtn.reg);
+					// $('#inst').html(rtn.inst);
+					$('#mpesa_pay_frm').hide();
+					$('#mpesa_loader').show();
+					$('#msg').html(rtn.MSG);
+					waitingDialog.hide();
+					return;
 				}
+				else if(rtn.hasOwnProperty("ERR")){
+					$('#msg').html(rtn.ERR);
+					waitingDialog.hide();
+					return;
+				}
+			}
 		});
 		}
 

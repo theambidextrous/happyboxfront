@@ -116,11 +116,11 @@ $util->ShowErrors(1);
 							</tr>';
 					}
           ?>
-					<tr align="rightx" class="cart_totals tr_border_top">
+					<!-- <tr align="rightx" class="cart_totals tr_border_top">
 						<td colspan="4" align="right"><span class="cart_totals_lbl">SHIPPING TOTAL</span></td>
-						<td colspan="4" >KES <?=number_format($_total_shipping,2)?></td>
+						<td colspan="4" >KES ?=number_format($_total_shipping,2)?></td>
                                                 
-					</tr>
+					</tr> -->
 					<tr align="rightx" class="cart_totals tr_border_top cart_totals_large">
 						<td colspan="4" align="right"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
 						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
@@ -211,10 +211,10 @@ $util->ShowErrors(1);
 							</tr>';
 					}
 					?>
-					<tr align="right " class="cart_totals tr_border_top">
+					<!-- <tr align="right " class="cart_totals tr_border_top">
 						<td colspan="4"><span class="cart_totals_lbl">SHIPPING TOTAL</span></td>
-						<td colspan="2">KES <?=number_format($_total_shipping,2)?></td>
-					</tr>
+						<td colspan="2">KES <=number_format($_total_shipping,2)?></td>
+					</tr> -->
 					<tr align="right" class="cart_totals tr_border_top">
 						<td colspan="4"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
 						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>

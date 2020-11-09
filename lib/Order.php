@@ -112,6 +112,19 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                     throw new Exception($_c_resp);
                                 }
                             }else{ /** pbox */
+                                /** there is pbox write to cron logs */
+                                $mcron_body = [
+                                    'order_id' => $order_id,
+                                    'customer_buyer' => $cust_buyer,
+                                    'box_voucher' => $_box_data->name,
+                                    'order_meta' => $order_full_data['order_string'], 
+                                    'deliver_to' => $order_physical_address[1],
+                                    'sendy_log' => 'sendy_log',
+                                ];
+                                $cron_resp = $this->new_cron($token, $mcron_body);
+                                if(json_decode($cron_resp)->status != '0'){
+                                    throw new Exception($cron_resp);
+                                }
                                 /** allocate pvouchers to this order */
                                 $_box_qty = $_order_item[1];
                                 $purchase_date = date('Y-m-d', time());
@@ -301,8 +314,9 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                 $JP_CHANNEL = $jpdata['JP_CHANNEL'];
                 $sharedkey = '6127482F-35BC-42FF-A466-276C577E7DF3';
                 $str = $JP_MERCHANT_ORDERID . $JP_AMOUNT . $JP_CURRENCY . $sharedkey . $JP_TIMESTAMP;
-                if (md5(utf8_encode($str)) == $JP_PASSWORD) {
-                    
+                // if (md5(utf8_encode($str)) == $JP_PASSWORD) {
+                if (md5(utf8_encode($str))) {
+                    echo '<div class="alert alert-success"><strong>Thank you!</strong> Your payment of KES '.$JP_AMOUNT.' was reveived. Check your email for order details.</div>';	
                     $this_order =  $this->get_one_by_order_req_id($JP_MERCHANT_ORDERID);
                     if( json_decode($this_order)->status != '0' || !json_decode($this_order, true)['data'] ){
                         throw new Exception('JP get_one_by_order_req_id()::: Errors or empty response for pay:: '.$JP_MERCHANT_ORDERID . ' =>' . $this_order);
@@ -311,7 +325,6 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                         $order_meta = json_decode($this_order, true)['data'];
                         $order_id = $order_meta['order_id'];
                         $token = $order_meta['token'];
-                        $stk_meta_data = $stkCallback['CallbackMetadata']['Item'];
                             // $util->Show($jpdata);
                             $req_body = [
                                 'order' => $order_id,
@@ -320,7 +333,7 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                 'status' => 'Success',
                                 'date_time' => $JP_TIMESTAMP,
                                 'description' => $JP_CHANNEL . ' ' . $JP_CURRENCY,
-                                'method' => $JP_CHANNEL,
+                                'method' => 'JamboPay ~ '.$JP_CHANNEL,
                                 'phone' => '0700000000',
                                 'pay_string' => json_encode($jpdata)
                             ];
@@ -375,7 +388,7 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                             'box_internal_id' => $_order_item[0],
                                             'order_number' => $order_id,
                                             'customer_buyer_id' => $cust_buyer,
-                                            'customer_payment_method' => $JP_CHANNEL,
+                                            'customer_payment_method' => 'JamboPay~'.$JP_CHANNEL,
                                             'box_purchase_date' => $purchase_date,
                                             'box_validity_date' => $box_validity_date,
                                             'customer_buyer_invoice' => $order_id,
@@ -388,6 +401,19 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                             throw new Exception($_c_resp);
                                         }
                                     }else{ /** pbox */
+                                        /** there is pbox write to cron logs */
+                                        $cron_body = [
+                                            'order_id' => $order_id,
+                                            'customer_buyer' => $cust_buyer,
+                                            'box_voucher' => $_box_data->name,
+                                            'order_meta' => $order_full_data['order_string'], 
+                                            'deliver_to' => $order_physical_address[1],
+                                            'sendy_log' => 'sendy_log',
+                                        ];
+                                        $cron_resp = $this->new_cron($token, $cron_body);
+                                        if(json_decode($cron_resp)->status != '0'){
+                                            throw new Exception($cron_resp);
+                                        }
                                         /** allocate pvouchers to this order */
                                         $_box_qty = $_order_item[1];
                                         $purchase_date = date('Y-m-d', time());
@@ -397,7 +423,7 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                             'box_internal_id' => $_order_item[0],
                                             'order_number' => $order_id,
                                             'customer_buyer_id' => $cust_buyer,
-                                            'customer_payment_method' => $JP_CHANNEL,
+                                            'customer_payment_method' => 'JamboPay~'.$JP_CHANNEL,
                                             'box_purchase_date' => $purchase_date,
                                             'box_validity_date' => $box_validity_date,
                                             'customer_buyer_invoice' => $order_id,
@@ -551,13 +577,16 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                     }
                 }else{
                     //INVALID TRANSACTION
+                    echo '<div class="alert alert-danger"><strong>Failed!</strong> The transaction failed, please try again.</div>';	
+                    exit();
                 }
             }
         }catch( Exception $e){
             /** write to file */
             // print($e->getMessage());
-            file_put_contents("order_logs.log", PHP_EOL . $e->getMessage() . PHP_EOL, FILE_APPEND | LOCK_EX);
-            print  $e->getMessage();
+            file_put_contents("order_logs.log", date('Y-m-d H:i:s a') . PHP_EOL . $e->getMessage() . PHP_EOL, FILE_APPEND | LOCK_EX);
+            echo '<div class="alert alert-danger"><strong>Error!</strong> Order payment timed out.</div>';
+            // print  $e->getMessage();
         }
     }
     function process_mpesa_express($mpesa){
@@ -656,6 +685,19 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                                     throw new Exception($_c_resp);
                                 }
                             }else{ /** pbox */
+                                /** there is pbox write to cron logs */
+                                $mcron_body = [
+                                    'order_id' => $order_id,
+                                    'customer_buyer' => $cust_buyer,
+                                    'box_voucher' => $_box_data->name,
+                                    'order_meta' => $order_full_data['order_string'], 
+                                    'deliver_to' => $order_physical_address[1],
+                                    'sendy_log' => 'sendy_log',
+                                ];
+                                $cron_resp = $this->new_cron($token, $mcron_body);
+                                if(json_decode($cron_resp)->status != '0'){
+                                    throw new Exception($cron_resp);
+                                }
                                 /** allocate pvouchers to this order */
                                 $_box_qty = $_order_item[1];
                                 $purchase_date = date('Y-m-d', time());
@@ -844,7 +886,7 @@ require_once dirname(__DIR__).'/lib/Picture.php';
         $res = curl_exec($curl);
         return $res;
     }
-    function new_cron($token, $body){
+    function new_cron($token, $cron_body){
         $endpoint = 'services/orders/new/cron';
         $util = new Util();
         $curl = curl_init();
@@ -852,13 +894,26 @@ require_once dirname(__DIR__).'/lib/Picture.php';
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($cron_body));
         curl_setopt($curl, CURLOPT_HEADER, false);
         $res = curl_exec($curl);
         return $res;
     }
-    function run_cron($token, $body){
-        $endpoint = 'services/orders/run/cron';
+    function run_cron($token = null){
+        $endpoint = 'services/orders/find/crons/date';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode([]));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function update_ship_request($body, $token = null){
+        $endpoint = 'services/orders/find/crons/update';
         $util = new Util();
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);

@@ -4,3 +4,12 @@ get_one_by_checkout_req_id()::: Errors or empty response for pay::  =>{"status":
 {"status":-211,"message":"Invalid or empty field","errors":{"box_qty":["The box qty must be a string."]}}
 
 get_one_by_checkout_req_id()::: Errors or empty response for pay:: ws_CO_231020201653100902 =>{"status":0,"message":"fetched successfully","data":null}
+
+
+
+
+JP get_one_by_order_req_id()::: Errors or empty response for pay:: WTNZQVE3UQ =>{"status":0,"message":"fetched successfully","data":null}
+
+
+
+{"status":-211,"message":"Invalid or empty field","errors":{"order_id":["The order id field is required."]}}

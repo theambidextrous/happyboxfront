@@ -12,11 +12,13 @@
     private $email;
     private $password;
     private $c_password;
-    function __construct($username=null,$email=null,$password=null,$c_password=null){
+    private $name;
+    function __construct($username=null,$email=null,$password=null,$c_password=null, $name=null){
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
         $this->c_password = $c_password;
+        $this->name = $name;
     }
     function get_one($id, $token){
         $endpoint = 'users/findbyid/' . $id;
@@ -75,7 +77,7 @@
     function create($endpoint = 'users/clients/register', $token = ''){
         $util = new Util();
         $this->validate();
-        $body = ['username' => $this->username, 'email' => $this->email, 'password' => $this->password, 'c_password' => $this->c_password];
+        $body = ['username' => $this->username, 'email' => $this->email, 'password' => $this->password, 'c_password' => $this->c_password, 'name' => $this->name ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));

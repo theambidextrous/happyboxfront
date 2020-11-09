@@ -10,20 +10,9 @@ $picture = new Picture();
 $util->ShowErrors(1);
 
 $allData = file_get_contents('php://input');
+// $allData = 'JP_TRANID=31825170&JP_MERCHANT_ORDERID=WTNZQVE3UQ&JP_ITEM_NAME=Happybox&JP_AMOUNT=25300.00&JP_CURRENCY=KES&JP_TIMESTAMP=20201103153135&JP_PASSWORD=719c2ac5d1f8a073914f25e6f2b6e754&JP_CHANNEL=VISA';
 file_put_contents("jpLogs.log", $allData, FILE_APPEND | LOCK_EX);
-/* 
-$token = 'faketoken';
-if(isset($_SESSION['usr'])){
-    $token = json_decode($_SESSION['usr'])->access_token;
-}
-if( !is_null($_POST) ){
-    $o = new Order($token);
-    $o->process_jb($_POST);
-    echo '<div class="alert alert-success">Thank you! Your payment was completed successfully.</div>';
-}else{
-    print '<h1>HTTP:200</h1>';
-}
- */
+parse_str($allData, $_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,38 +32,16 @@ if( !is_null($_POST) ){
 		<div class="col-md-12">
 			
 			<?php
-			//************************ CHECK IF VALUES HAVE BEEN SET *****************
-			if (isset($_POST['JP_PASSWORD'])) {					
-				$JP_TRANID = $_POST['JP_TRANID'];
-				$JP_MERCHANT_ORDERID = $_POST['JP_MERCHANT_ORDERID'];
-				$JP_ITEM_NAME = $_POST['JP_ITEM_NAME'];
-				$JP_AMOUNT = $_POST['JP_AMOUNT'];
-				$JP_CURRENCY = $_POST['JP_CURRENCY'];
-				$JP_TIMESTAMP = $_POST['JP_TIMESTAMP'];
-				$JP_PASSWORD = $_POST['JP_PASSWORD'];
-				$JP_CHANNEL = $_POST['JP_CHANNEL'];
-				
-				//$sharedkey, IS ONLY SHARED BETWEEN THE MERCHANT AND JAMBOPAY. THE KEY SHOULD BE SECRET ********************
-				
-				//Make sure you get the key from JamboPay Support team
-				$sharedkey = '6127482F-35BC-42FF-A466-276C577E7DF3';
-				
-				$str = $JP_MERCHANT_ORDERID . $JP_AMOUNT . $JP_CURRENCY . $sharedkey . $JP_TIMESTAMP;
-				
-				//**************** VERIFY *************************
-				if (md5(utf8_encode($str)) == $JP_PASSWORD) {
-					//VALID
-					//if valid, mark order as paid
-					
-					echo '<div class="alert alert-success"><strong>Thank you!</strong> Your payment of KES '.$JP_AMOUNT.' was reveived. Check your email for order details.</div>';		
-				}else{
-					//INVALID TRANSACTION
-					
-					echo '<div class="alert alert-danger"><strong>Failed!</strong> The transaction failed, please try again.</div>';			
-				}
-			}			
+			$token = 'faketoken';
+			if(isset($_SESSION['usr'])){
+				$token = json_decode($_SESSION['usr'])->access_token;
+			}
+			if( !is_null($_POST) ){
+				$o = new Order($token);
+				$o->process_jp($_POST);
+			}
+			// exit(json_encode(['action' => 'the end']));
 			?>
-			
 			<div class="payment_back">
 				<a href="<?=$util->ClientHome()?>" class="btn btn_rounded" target="_parent"><img src="shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
 			</div>

@@ -422,12 +422,12 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
               // console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
-                  $("#reset_div").load(" #reset_div > *");
+                //   $("#reset_div").load(" #reset_div > *");
                     // $("#reset_div").load(location.href + " #reset_div" );
                     $('#popupid').trigger('click');
                     setTimeout(function(){
                         location.reload();
-                    }, 3000);
+                    }, 30000);
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
                   return;

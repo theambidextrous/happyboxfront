@@ -240,8 +240,10 @@ switch($_REQUEST['activity']){
             }
             $password = $_POST['password'];
             $c_password = $_POST['c_password'];
-            $u = new User($username, $_POST['email'], $password, $c_password);
+            $full_name_ = $_POST['fname'] . ' ' . $_POST['sname'];
+            $u = new User($username, $_POST['email'], $password, $c_password, $full_name_);
             $u_resp = $u->new_customer();
+            // exit(json_encode(['ERR' => $u_resp]));
             if( json_decode($u_resp)->status == '0' && json_decode($u_resp)->data->id > 0){
                 $created_user_id = json_decode($u_resp)->data->id;
                 $token = json_decode($u_resp)->data->token;
@@ -253,6 +255,7 @@ switch($_REQUEST['activity']){
                         'phone' => $_POST['phone']
                     ];
                     $prof_resp = $u->add_details_client($body, $token, $created_user_id);
+                    // exit(json_encode(['ERR' => $prof_resp]));
                     if(json_decode($prof_resp)->status == '0' && json_decode($prof_resp)->userid > 0){
                         exit(json_encode(['MSG' => 'Account created! A link to verify your email address has been sent!']));
                     }else{

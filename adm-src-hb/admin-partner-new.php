@@ -97,68 +97,69 @@ function format_service($keys, $values){
                                     // $util->Show($services);
                                     // exit;
                                     $_SESSION['frm'] = $_POST;
-                                    $username = strtolower($util->createCode(6));
-                                    $password = $util->createCode(10);
-                                    $u = new User($username, $_POST['email'], $password, $password);
+                                    $username = strtolower($util->createCode(10));
+                                    $password = $username;
+                                    $partner_name = $_POST['fname'] . ' ' . $_POST['sname'];
+                                    $u = new User($username, $_POST['email'], $password, $password, $partner_name);
                                     /** register */
                                     $u_resp = $u->new_partner($token);
                                     if( json_decode($u_resp)->status == '0' && json_decode($u_resp)->data->id > 0){
                                         $created_user_id = json_decode($u_resp)->data->id;
                                         /** reset password */
-                                        $reset_resp = $u->pwd_reset_link();
+                                        // $reset_resp = $u->pwd_reset_link();
                                         // print $reset_resp;
-                                        if(json_decode($reset_resp)->status == '0'){
-                                        // if($services){
-                                            if(empty($_POST['sub_location'])){
-                                                $_POST['sub_location'] = "";
-                                                // throw new Exception('Sub location is required, please correct');
-                                            }else{
-                                                $_POST['sub_location'] = " | " . $_POST['sub_location'];
-                                            }
-                                            /** complete profile */
-                                            $body = [
-                                                'fname' => $_POST['fname'],
-                                                'sname' => $_POST['sname'],
-                                                'short_description' => $_POST['short_description'],
-                                                'location' => $_POST['location'] . $_POST['sub_location'],
-                                                'phone' => $_POST['phone'],
-                                                'business_name' => $_POST['business_name'],
-                                                'business_category' => $_POST['business_category'],
-                                                'business_reg_no' => $_POST['business_reg_no'],
-                                                'services' => json_encode($services)
-                                            ];
-                                            if(!empty($_POST['internal_id'])){
-                                                $body['internal_id'] = $_POST['internal_id'];
-                                            }
-                                            $prof_resp = $u->add_details_partner($body, $token, $created_user_id);
-                                            // print $prof_resp;
-                                            if(json_decode($prof_resp)->status == '0' && json_decode($prof_resp)->userid > 0){
-                                                /** upload media */
-                                                $p_internal_id = json_decode($prof_resp)->internal_id;
-                                                if(is_uploaded_file($_FILES['p_picture']['tmp_name'])) {
-                                                    /** pic */
-                                                    $p_pic = new Picture($p_internal_id, 'p_picture', '2');
-                                                    $p_pic_resp = $p_pic->create($token);
-                                                    if(json_decode($p_pic_resp)->status != '0'){
-                                                        throw new Exception('Partner picture could not be uploaded!');
-                                                    }
-                                                }
-                                                if(is_uploaded_file($_FILES['p_logo']['tmp_name'])) {
-                                                /** logo */
-                                                    $p_logo = new Picture($p_internal_id, 'p_logo', '3');
-                                                    $p_logo_resp = $p_logo->create($token);
-                                                    if(json_decode($p_logo_resp)->status != '0'){
-                                                        throw new Exception('Partner logo could not be uploaded!');
-                                                    }
-                                                }
-                                                unset($_SESSION['frm']);
-                                                print $util->success_flash('Partner created! An email containing password reset link has been send');
-                                            }else{
-                                                print $util->error_flash(json_decode($prof_resp)->message);
-                                            }
+                                        if(empty($_POST['sub_location'])){
+                                            $_POST['sub_location'] = "";
+                                            // throw new Exception('Sub location is required, please correct');
                                         }else{
-                                            print $util->error_flash(json_decode($reset_resp)->message);
+                                            $_POST['sub_location'] = " | " . $_POST['sub_location'];
                                         }
+                                        /** complete profile */
+                                        $body = [
+                                            'fname' => $_POST['fname'],
+                                            'sname' => $_POST['sname'],
+                                            'short_description' => $_POST['short_description'],
+                                            'location' => $_POST['location'] . $_POST['sub_location'],
+                                            'phone' => $_POST['phone'],
+                                            'business_name' => $_POST['business_name'],
+                                            'business_category' => $_POST['business_category'],
+                                            'business_reg_no' => $_POST['business_reg_no'],
+                                            'services' => json_encode($services)
+                                        ];
+                                        if(!empty($_POST['internal_id'])){
+                                            $body['internal_id'] = $_POST['internal_id'];
+                                        }
+                                        $prof_resp = $u->add_details_partner($body, $token, $created_user_id);
+                                        // print $prof_resp;
+                                        if(json_decode($prof_resp)->status == '0' && json_decode($prof_resp)->userid > 0){
+                                            /** upload media */
+                                            $p_internal_id = json_decode($prof_resp)->internal_id;
+                                            if(is_uploaded_file($_FILES['p_picture']['tmp_name'])) {
+                                                /** pic */
+                                                $p_pic = new Picture($p_internal_id, 'p_picture', '2');
+                                                $p_pic_resp = $p_pic->create($token);
+                                                if(json_decode($p_pic_resp)->status != '0'){
+                                                    throw new Exception('Partner picture could not be uploaded!');
+                                                }
+                                            }
+                                            if(is_uploaded_file($_FILES['p_logo']['tmp_name'])) {
+                                            /** logo */
+                                                $p_logo = new Picture($p_internal_id, 'p_logo', '3');
+                                                $p_logo_resp = $p_logo->create($token);
+                                                if(json_decode($p_logo_resp)->status != '0'){
+                                                    throw new Exception('Partner logo could not be uploaded!');
+                                                }
+                                            }
+                                            unset($_SESSION['frm']);
+                                            print $util->success_flash('Partner created! An email containing password reset link has been send');
+                                        }else{
+                                            print $util->error_flash(json_decode($prof_resp)->message);
+                                        }
+                                        // if(json_decode($reset_resp)->status == '0'){
+                                            
+                                        // }else{
+                                        //     print $util->error_flash(json_decode($reset_resp)->message);
+                                        // }
                                     }else{
                                         print $util->error_flash(json_decode($u_resp)->message);
                                     }
