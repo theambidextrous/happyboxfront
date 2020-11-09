@@ -325,6 +325,7 @@ function format_service($keys, $values){
                     // .find("*")
                     .each(function() {
                         $(this).find("input[type=text]").val("");
+                        $(this).find('select').val("nn").attr("selected", "selected");
                         var id = this.id || "";
                         var match = id.match(regex) || [];
                         if (match.length == 3) {

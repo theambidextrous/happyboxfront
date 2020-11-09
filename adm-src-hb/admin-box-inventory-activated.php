@@ -158,6 +158,30 @@ $box = new Box();
                             <tbody>
                                 <?php
                                 foreach($all_happyboxes_inventory as $hbox ):
+                                    if( $hbox['box_purchase_date']) {
+                                        $hbox['box_purchase_date'] = $util->globalDate($hbox['box_purchase_date']);
+                                    }
+                                    if( $hbox['box_validity_date']) {
+                                        $hbox['box_validity_date'] = $util->globalDate($hbox['box_validity_date']);
+                                    }
+                                    if( $hbox['voucher_activation_date']) {
+                                        $hbox['voucher_activation_date'] = $util->globalDate($hbox['voucher_activation_date']);
+                                    }
+                                    if( $hbox['redeemed_date']) {
+                                        $hbox['redeemed_date'] = $util->globalDate($hbox['redeemed_date']);
+                                    }
+                                    if( $hbox['cancellation_date']) {
+                                        $hbox['cancellation_date'] = $util->globalDate($hbox['cancellation_date']);
+                                    }
+                                    if( $hbox['booking_date']) {
+                                        $hbox['booking_date'] = $util->globalDate($hbox['booking_date']);
+                                    }
+                                    if( $hbox['partner_pay_due_date']) {
+                                        $hbox['partner_pay_due_date'] = $util->globalDate($hbox['partner_pay_due_date']);
+                                    }
+                                    if( $hbox['partner_pay_effec_date']) {
+                                        $hbox['partner_pay_effec_date'] = $util->globalDate($hbox['partner_pay_effec_date']);
+                                    }
                                     $_c_buyer = $user->get_details_byidf($hbox['customer_buyer_id']);
                                     $_c_buyer = json_decode($_c_buyer);
                                     $_c_user = $user->get_details_byidf($hbox['customer_user_id']);

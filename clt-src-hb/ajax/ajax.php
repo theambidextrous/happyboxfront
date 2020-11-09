@@ -35,7 +35,7 @@ switch($_REQUEST['activity']){
                 $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="spinner-border spinner-border-lg spinner-grow-lg" role="status"><span class="sr-only">Loading...</span></div></div>';
             }
         }else{
-            $event_data = 'nothing';
+            $event_data = ' ';
         }
         echo "data: {$event_data}\n\n";
         flush();

@@ -404,10 +404,6 @@ function reloadcurrent(){
         }
         $("button.clone").on("click", clone);
         $("button.remove").on("click", remove);
-
-
-
-
         $("#sub_location").show();
         $('#location').on('change', function() {
         if ( this.value == 'nn'){ $("#sub_location").hide(); }

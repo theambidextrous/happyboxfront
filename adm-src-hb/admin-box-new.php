@@ -219,10 +219,10 @@ $prices = json_decode($prices, true)['data'];
                                     <div class="col-md-4">
                                         <label class="label"><small><i>Select price range</i></small></label>
                                         <select id="range__0" onchange="serviceSearch('range__0')" name="range[]" class="form-control rounded_form_control">
-                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <option value="nn">Select Price Range</option>
                                             <?php
                                                 foreach( $prices as $_price ){
-                                                     print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
+                                                    print '<option value="'.$_price['name'].'">'.$_price['name'].'</option>';
                                                 }
                                             ?>
                                         </select>
@@ -230,7 +230,7 @@ $prices = json_decode($prices, true)['data'];
                                     <div class="col-md-4">
                                         <label class="label"><small><i>Select experience</i></small></label>
                                         <select id="service__0" onchange="serviceSearch('service__0')" name="service[]" class="form-control rounded_form_control">
-                                            <!-- <option value="nn">Select a topic</option> -->
+                                            <option value="nn">Select Experience</option>
                                         </select>
                                     </div>
                                     <button type="button" class="clone btn btn-link btn-admin-link"><i class="fas fa-plus"></i> Add another</button> 
@@ -308,6 +308,7 @@ $prices = json_decode($prices, true)['data'];
                         //set onchange func to 
                         $(this).find("select:eq(0)").attr("onchange", "serviceSearch('partners__" + cloneIndex + "')");
                         $(this).find("select:eq(1)").attr("onchange", "serviceSearch('range__" + cloneIndex + "')");
+                        $(this).find('select').val("nn").attr("selected", "selected");
                         //onchange="serviceSearch()"
                     })
                     .on('click', 'button.clone', clone)
