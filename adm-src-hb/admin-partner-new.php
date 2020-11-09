@@ -208,7 +208,7 @@ function format_service($keys, $values){
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label for="BoxType" class="col-form-label">Partner business description</label>
-                                    <textarea name="short_description" placeholder="short description" class="form-control rounded_form_control" ><?=$_SESSION['frm']['short_description']?></textarea>
+                                    <textarea name="short_description" placeholder="short description" class="form-control tinymce rounded_form_control" ><?=$_SESSION['frm']['short_description']?></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -325,6 +325,7 @@ function format_service($keys, $values){
                     // .find("*")
                     .each(function() {
                         $(this).find("input[type=text]").val("");
+                        $(this).find('select').val("nn").attr("selected", "selected");
                         var id = this.id || "";
                         var match = id.match(regex) || [];
                         if (match.length == 3) {
