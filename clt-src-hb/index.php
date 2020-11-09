@@ -35,7 +35,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 <div class="container-fluid desktop_view">
 	<div class="slider_overlay"></div>
 	<div class="row">
-		<div id="desktop_carousel" class="carousel slide carousel-fade home_slider" data-ride="carousel">
+		<div id="desktop_carousel" class="carousel slide carousel-fadex home_slider" data-ride="carousel">
 			<ul class="carousel-indicators">
 				<li data-target="#desktop_carousel" data-slide-to="0" class="active"></li>
 				<li data-target="#desktop_carousel" data-slide-to="1"></li>
