@@ -133,7 +133,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                 </div>
                 <div class="card-body selection_card_body text-center">
                   <h4 class="box_title"><?=$_all_box['name']?></h4>
-                  <div><a class="stock_div"><?=$_stock_div?></a></div>
+                  <div><p class="stock_div"><?=$_stock_div?></p></div>
                   <div><?=$_all_box['description']?></div>
                 </div>
               </div>

@@ -139,7 +139,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				</div>
 				<div class="card-body selection_card_body text-center">
 					<h4 class="box_title"> <a href="javascript(0);"><?=$_all_box['name']?></a> </h4>
-					<div><a class="stock_div"><?=$_stock_div?></a></div>
+					<div><p class="stock_div"><?=$_stock_div?></p></div>
 					<div><?=$_all_box['description']?></div>
 				</div>
 			</div>
