@@ -71,9 +71,9 @@ $util->ShowErrors(1);
 													];
 													$resp = $user->pwd_reset($body);
 													if( json_decode($resp)->status == '0' ){
-															print $util->success_flash('Account password reset.');
+													print $util->success_flash('Account password reset.');
 													}else{
-															print $util->error_flash(json_decode($resp)->message);
+												print $util->error_flash(json_decode($resp)->message);
 													}
 											}
 									}catch(Exception $e ){
@@ -85,7 +85,7 @@ $util->ShowErrors(1);
 					<form method="post">
 						<div class="form_register_user">
 							<p><strong>Good passwords should:-</strong></p>
-							<i><span>1. Be at least 8 characters in length.</span> <span>2. Include at least one upper case letter.</span><span>3. Include one number.</span><span> 4. Include one special character.</span></i> <br>
+							<i><span>1. Be at least 8 characters in length.</span> <span>2. Include at least one upper case letter.</span><br><span>3. Include one number.</span><span> 4. Include one special character.</span></i> <br>
 							<br>
 							<br>
 							<div class="form-group">

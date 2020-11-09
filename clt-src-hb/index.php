@@ -57,6 +57,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	</div>
 </div>
 <!--start mobile slider-->
+
 <div class="container-fluid mobile_view">
 	<div class="slider_overlay"></div>
 	<div class="row">
@@ -219,7 +220,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				<div class="step_box step_color4">4</div>
 				<div class="iwant_card_div">
 					<p class="iwant_card_p"> Make payment using<br class="">
-						A credit card or Mpesa</p>
+						a credit card or Mpesa</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color4"> </p>
 			</div>
@@ -382,7 +383,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 						<a href="" data-dismiss="modal"><img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
 						<div class="modal_parent">
 							<div class="modal_child text-center">
-								<h6 id="box_name_" class="box_name_"></h6><br>
+								<h6 id="box_name_" class="box_name_"></h6>
 								<div class="desktop_view">
 									<a href="" class="bold_txt pink_bg btn text-white box_price_" id="box_price_"></a>
 									<p id="box_desc_" class="box_desc_"></p>
