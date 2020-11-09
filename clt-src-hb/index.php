@@ -35,7 +35,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 <div class="container-fluid desktop_view">
 	<div class="slider_overlay"></div>
 	<div class="row">
-		<div id="desktop_carousel" class="carousel slide carousel-fade home_slider" data-ride="carousel">
+		<div id="desktop_carousel" class="carousel slide carousel-fadex home_slider" data-ride="carousel">
 			<ul class="carousel-indicators">
 				<li data-target="#desktop_carousel" data-slide-to="0" class="active"></li>
 				<li data-target="#desktop_carousel" data-slide-to="1"></li>
@@ -57,6 +57,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	</div>
 </div>
 <!--start mobile slider-->
+
 <div class="container-fluid mobile_view">
 	<div class="slider_overlay"></div>
 	<div class="row">
@@ -124,7 +125,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 						$pdf = $_mm['path_name'];
 					}
 			}
-			$_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.$_all_box['description'].'~'.$_3d.'~'.$pdf;
+			$_pop_str = $_all_box['internal_id'] . '~' .$_all_box['name'].'~'.$_all_box['price'].'~'.strip_tags($_all_box['description']).'~'.$_3d.'~'.$pdf;
 			$_pop_str = str_replace("'", "", $_pop_str);
 			$_pop_str = preg_replace( "/\r|\n/", "", $_pop_str);
 		?>
@@ -138,8 +139,8 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				</div>
 				<div class="card-body selection_card_body text-center">
 					<h4 class="box_title"> <a href="javascript(0);"><?=$_all_box['name']?></a> </h4>
-					<p><a class="stock_div"><?=$_stock_div?></a></p>
-					<p><?=$_all_box['description']?></p>
+					<div><p class="stock_div"><?=$_stock_div?></p></div>
+					<div><?=$_all_box['description']?></div>
 				</div>
 			</div>
 			<div class="cart_bar text-white">
@@ -219,7 +220,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				<div class="step_box step_color4">4</div>
 				<div class="iwant_card_div">
 					<p class="iwant_card_p"> Make payment using<br class="">
-						A credit card or Mpesa</p>
+						a credit card or Mpesa</p>
 				</div>
 				<p class="iwant_card_bar iwant_card_bar step_color4"> </p>
 			</div>
@@ -382,7 +383,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 						<a href="" data-dismiss="modal"><img class="modal_close" src="<?=$util->ClientHome()?>/shared/img/icons/icn-close-window-blue.svg"></a>
 						<div class="modal_parent">
 							<div class="modal_child text-center">
-								<h6 id="box_name_" class="box_name_"></h6><br>
+								<h6 id="box_name_" class="box_name_"></h6>
 								<div class="desktop_view">
 									<a href="" class="bold_txt pink_bg btn text-white box_price_" id="box_price_"></a>
 									<p id="box_desc_" class="box_desc_"></p>

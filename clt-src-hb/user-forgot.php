@@ -67,19 +67,32 @@ $util->ShowErrors(1);
            <div class="col-md-5 user_login_l ">
               <div class="card user_login_card">
                   <div class="card-header bg_card_blue text-center text-white"><b>Why register your voucher early?</b></div>
-                   <div class="card-body">
-                      <div class="row user_login_card_col"> <div class="col-2"><img src="shared/img/icons/check_orange.svg" class="list_icon"> </div>
-                          <div class="col-10">Consult the validity status of your box</div></div>
-               
-                   <div class="row user_login_card_col"> <div class="col-2"><img src="shared/img/icons/check_orange.svg" class="list_icon"> </div>
-                          <div class="col-10">Receive an email reminder to book your experience before your voucher expires</div></div>
-                            <div class="row user_login_card_col"> <div class="col-2"><img src="shared/img/icons/check_orange.svg" class="list_icon"> </div>
-                          <div class="col-10">Activate the loss and theft warranty</div></div>
-                           
-                    
-                      
-                      
-                  </div>
+                 <div class="card-body">
+					<div class="row user_login_card_col">
+						<div class="col-2">
+							<img src="shared/img/icons/check_orange.svg" class="list_icon">
+						</div>
+						<div class="col-10">
+							Consult the validity status of your box
+						</div>
+					</div>
+					<div class="row user_login_card_col user_login_card_col2">
+						<div class="col-2">
+							<img src="shared/img/icons/check_orange.svg" class="list_icon">
+						</div>
+						<div class="col-10">
+							Receive an email reminder to book your experience before your voucher expires
+						</div>
+					</div>
+					<div class="row user_login_card_col">
+						<div class="col-2">
+							<img src="shared/img/icons/check_orange.svg" class="list_icon">
+						</div>
+						<div class="col-10">
+							Activate the loss and theft warranty
+						</div>
+					</div>
+				</div>
                   
   
 </div>

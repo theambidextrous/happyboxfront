@@ -255,7 +255,7 @@ $prices = json_decode($prices, true)['data'];
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label for="BoxType" class="col-form-label">Description</label>
-                                    <textarea name="description" placeholder="box description" class="form-control rounded_form_control" id="select_box_type"><?=$_SESSION['frm']['description']?></textarea>
+                                    <textarea name="description" placeholder="box description" class="form-control tinymce rounded_form_control" id="select_box_type"><?=$_SESSION['frm']['description']?></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

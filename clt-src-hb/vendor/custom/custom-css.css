@@ -837,16 +837,18 @@ th, td {
 	vertical-align: middle;
 }
 .modal_child h6 {
-	color: #C20A2B;
-	text-transform: uppercase;
-	font-weight: bold;
+    color: #C20A2B;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3rem;
 }
+
 .modal_child p {
-	margin-top: 1rem;
+	    margin-top: 0.5rem;
 }
 .modal_child img {
 	height: 34px;
-	margin-top: 17px;
+    margin-top: 0.5rem;
 	cursor: pointer;
 }
 .booklet_dialogue .blue_border_left {
@@ -1519,6 +1521,9 @@ th, td {
 .purchase_hist th, .purchase_hist td {
 	border: 1px solid #cccccc;
 	vertical-align: middle;
+}
+ .purch_img {
+       background: #f4f4f4;
 }
 .voucher_list_table td {
 	padding: 4px 2px !important;
@@ -3681,4 +3686,7 @@ nav a:hover, nav a:focus {
 .password_ok_img:hover{
     cursor: pointer !important;
 }
-
+.alert {
+    margin-bottom: 1rem !important;
+    
+}

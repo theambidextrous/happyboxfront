@@ -725,7 +725,7 @@
         <form name="frm_'.$item.'" id="frm_'.$item.'">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" value="pbox__'.$item.'" onclick="change_ship_type('.$p_box_id.')" class="form-check-input" id="pbx__'.$item.'" name="'.$item.'" '.$p_box.'><b>Physical Delivery </b>
+                    <input type="radio" value="pbox__'.$item.'" onclick="change_ship_type('.$p_box_id.')" class="form-check-input" id="pbx__'.$item.'" name="'.$item.'" '.$p_box.'><b>Physical Delivery *</b>
                     <br><small>Delivered via courier to your door</small>
                 </label>
             </div>
