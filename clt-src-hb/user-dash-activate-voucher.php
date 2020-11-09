@@ -80,8 +80,9 @@ $token = json_decode($_SESSION['usr'])->access_token;
                       <h3 class="user_blue_title ">REGISTER YOUR VOUCHER</h3>
                         <p class="txt-orange">Enter your voucher code and click activate</p>
                     <div class="card border_blue_radius text-center user_activate_card">
+                       
                         <form name="activate_vcher" class="activate_v_class">
-                            <?=$util->msg_box()?>
+                             <?=$util->msg_box()?>
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="hidden" name="customer_user_id" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>">

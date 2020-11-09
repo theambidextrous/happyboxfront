@@ -77,10 +77,10 @@ $util->ShowErrors(1);
 				</div>
 				<div class="col-md-6 contact_p_txt desktop_view">
 					<p> <span class="contact_p">  
-					<b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br>
+                                                <b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br><br>
 					<b>Opening Hours </b></span><br>
 						<b>Monday – Friday:</b> 9:00am - 5:00pm<br>
-						<b>Saturday:</b> 9:00am – 12:00pm<br>
+						<b>Saturday:</b> 9:00am - 12:00pm<br>
 						<b>Sunday &amp; National Holidays:</b> Closed </p>
 				</div>
 			</div>

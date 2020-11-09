@@ -155,10 +155,10 @@ if (isset($_POST['makecart'])) {
                                                         if ($_cart_item[2] == 2) { /** ebox */
                                                             ?>
                                                             <tr>
-                                                                <td class=""><img  class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
+                                                                <td class="purch_img"><img  class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->id ?></b></td>
-                                                                <td class="purch_blue_td"><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
+                                                                <td class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
                                                                 <td>E-box</td>
                                                                 <td><?= $_cart_item[1] ?></td>
                                                                 <td>KES <?= number_format($_b_cost, 2) ?></td>
@@ -170,7 +170,7 @@ if (isset($_POST['makecart'])) {
                                                                 <td class="purch_img"><img style="" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->id ?></b></td>
-                                                                <td class="purch_blue_td"><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
+                                                                <td class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
                                                                 <td>Physical Box</td>
                                                                 <td><?= $_cart_item[1] ?></td>
                                                                 <td>KES <?= number_format($_b_cost, 2) ?></td>
