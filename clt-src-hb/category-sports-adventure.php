@@ -220,9 +220,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                           </tbody>
                         </table>
                       </td>
-                      <td>
-                        <h4>Partner / Experience Description</h4>
-                        <p class="cat_p"><?=$_all_ptn['short_description']?></p>
+                      <td>                       
+                        <div class="cat_p"><?=$_all_ptn['short_description']?></div>
                         <p class="text-right rating_bar">
                           <img src="shared/img/icons/icn-star-orange.svg" class="">      
                           <img src="shared/img/icons/icn-star-orange.svg" class="">  
@@ -291,11 +290,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                     </div>  
                  </div>
              </div> <div class="col-12">
-                 <div class="card_partner_mobcard">
-                     <h4>Spa & Beauty Treatments</h4>
-                     <p>
-               <?=$_all_ptn['short_description']?>   </p>
-                     
+                 <div class="card_partner_mobcard">                     
+                     <div><?=$_all_ptn['short_description']?></div>
                  </div>
                  
              </div>
