@@ -259,7 +259,7 @@ function reloadcurrent(){
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label for="BoxType" class="col-form-label">Partner business description</label>
-                                    <textarea name="short_description" placeholder="short description" class="form-control rounded_form_control" id="select_box_type"><?=$_SESSION['frm_b']['short_description']?></textarea>
+                                    <textarea name="short_description" placeholder="short description" class="form-control tinymce rounded_form_control" id="select_box_type"><?=$_SESSION['frm_b']['short_description']?></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
