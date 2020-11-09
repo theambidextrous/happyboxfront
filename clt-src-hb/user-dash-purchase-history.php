@@ -103,9 +103,13 @@ if (isset($_POST['makecart'])) {
                     </div>
                 </div>
                 <?php
+          
                 if (count($my_list_)) {
                     foreach ($my_list_ as $_list):
                         $current_order_id = $_list['order_id'];
+                    /*echo '<pre>';
+                    print_r($_list);
+                       echo '</pre>';*/
                         ?>
                         <form action="" method="post">
                             <div class="row purch_row">
@@ -124,6 +128,7 @@ if (isset($_POST['makecart'])) {
                                                     <th class="b col_1">IMAGE</th>
                                                     <th>BOX NAME</th>
                                                     <th>BOX NUMBER</th>
+                                                    <th>VOUCHER CODE</th>                                                    
                                                     <th>PURCHASE DATE</th>
                                                     <th>BOX TYPE</th>
                                                     <th>QUANTITY</th>
@@ -158,6 +163,7 @@ if (isset($_POST['makecart'])) {
                                                                 <td class="purch_img"><img  class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
                                                                  <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
+                                                                 <td class="purch_blue_td"><b>QWERTY</b></td>
                                                                <!-- <td class="purch_blue_td"><b><?= $_box_data->id ?></b></td>-->
                                                                 <td class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
 
@@ -176,6 +182,7 @@ if (isset($_POST['makecart'])) {
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
 
                                                                 <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
+                                                                <td class="purch_blue_td"><b>QWERTY</b></td>
                                                                 <td class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
 
                                                                 <!--<td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>-->
@@ -190,7 +197,7 @@ if (isset($_POST['makecart'])) {
                                                 endforeach;
                                                 ?>
                                                 <tr class="">
-                                                    <td colspan="4" class="td_noborder">
+                                                    <td colspan="5" class="td_noborder">
                                                         <input type="hidden" name="internal_id" value='<?= $bx_internal_id ?>'/></td>
                                                             <?php
                                                             // unset($draft_cart);
