@@ -301,11 +301,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
               print '<h4><center>No partners found</center></h4>';
             }
           ?>
-  
-           
-          
-                     
-                      </div>
+  </div>
     
 </section>
        <?php include 'shared/partials/partners.php';?>
