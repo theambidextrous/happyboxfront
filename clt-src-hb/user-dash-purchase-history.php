@@ -128,7 +128,7 @@ if (isset($_POST['makecart'])) {
                                                     <th class="b col_1">IMAGE</th>
                                                     <th>BOX NAME</th>
                                                     <th>BOX NUMBER</th>
-                                                    <th>VOUCHER CODE</th>                                                    
+                                                   <!-- <th>VOUCHER CODE</th> -->                                                
                                                     <th>PURCHASE DATE</th>
                                                     <th>BOX TYPE</th>
                                                     <th>QUANTITY</th>
@@ -163,7 +163,7 @@ if (isset($_POST['makecart'])) {
                                                                 <td class="purch_img"><img  class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
                                                                  <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
-                                                                 <td class="purch_blue_td"><b>QWERTY</b></td>
+                                                             
                                                                <!-- <td class="purch_blue_td"><b><?= $_box_data->id ?></b></td>-->
                                                                 <td class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
 
@@ -182,7 +182,7 @@ if (isset($_POST['makecart'])) {
                                                                 <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
 
                                                                 <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
-                                                                <td class="purch_blue_td"><b>QWERTY</b></td>
+                                                           
                                                                 <td class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></td>
 
                                                                 <!--<td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>-->
@@ -311,10 +311,10 @@ if (isset($_POST['makecart'])) {
                                 <tr class="purch_hist_img_mob" style="background: #f0f0f0;">
                                     <td class="" colspan="2"><img class="" src="<?= $util->tb64($_3d) ?>"></td>
                                 </tr>
-                                <tr class="voucher_list_user_table_mob_tr">
+                                <!--<tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Voucher Code</td>
                                     <td>N/A</td>
-                                </tr>
+                                </tr>-->
                                 <tr class="voucher_list_user_table_mob_tr">
                                     <td class="v_td_a">Box Name</td>
                                     <td><?=$_box_data->name?></td>
