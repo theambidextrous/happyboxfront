@@ -86,7 +86,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
         </section>
   <!--mobile-->
   <section  class="green_strip text-center mobile_view">
-			<h4 class="partner_blue2 mob_bold">Becoming a HAPPYBOX partner means you are always a winner!</h4>
+      <h4 class="partner_blue2 mob_bold">Becoming a HAPPYBOX partner means<br> you are always a winner!</h4>
 			</section>
   
 <section class=" text-center mobile_view">
@@ -96,28 +96,28 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                     <div class="row justify-content-center become_boxes">
                     <div class="col-12 no_padd">
                         <div class="become_card become_card1">
-                           <div class="become_card_txt">Free advertising year round on our website and in our boxes</div>
+                           <div class="become_card_txt">Free advertising year round on our website<br>  and in our boxes</div>
                           
                             
                         </div>		
                         </div>
                          <div class="col-12 no_padd">
                         <div class="become_card become_card2">
-                       <span class="become_card_txt">Zero upfront cost, Zero cash out, Zero investment</span>
+                       <span class="become_card_txt">Zero upfront cost, Zero cash out, Zero <br> investment</span>
                     
                             
                         </div>		
                         </div>
                           <div class="col-12 no_padd">
                         <div class="become_card become_card3">
-                           <span class="become_card_txt">Increase your turnaround by attracting a new typology of clientele</span>
+                           <span class="become_card_txt">Increase your turnaround by attracting a new <br> typology of clientele</span>
                            
                             
                         </div>		
                         </div>
                           <div class="col-12 no_padd">
                         <div class="become_card become_card4">
-                        <span class="become_card_txt">Easy going partnership with Zero constraint, 100% independence on your bookings, all made under your T&C’s</span>
+                        <span class="become_card_txt">Easy going partnership with Zero constraint,<br>  100% independence on your bookings, all<br>  made under your T&C’s</span>
                          
                             
                         </div>		

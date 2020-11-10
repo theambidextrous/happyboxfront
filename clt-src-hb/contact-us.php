@@ -60,9 +60,9 @@ $util->ShowErrors(1);
 				<div class="col-md-6 contact_p_txt">
 					<p> <span class="contact_p"> <b>Contact Details</b></span><br>
 						<b>Email:</b> <a href="mailto:customerservices@happybox.ke">customerservices@happybox.ke</a></p>
-					<div class="col-md-6 contact_p_txt mobile_view">
+					<div class="col-md-6 contact_p_txt mobile_view ">
 						<p> <span class="contact_p">  
-						<b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br>
+						<b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br><br>
 						<b>Opening Hours </b></span><br>
 							<b>Monday – Friday:</b> 9:00am - 5:00pm<br>
 							<b>Saturday:</b> 9:00am – 12:00pm<br>

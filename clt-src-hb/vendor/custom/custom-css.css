@@ -2658,6 +2658,48 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .become_badge {
+    border-bottom-right-radius: 16px;
+    
+}
+    .contact_p_txt_mob{
+        margin-top: 10px;
+    }
+    .terms_li h5 {
+ 
+    margin-top: 20px;
+    margin-bottom: 19px;
+}
+    .terms_content a {
+    color: #0a0a0a;
+    font-weight: bold;
+    
+    }
+    .cat_well_table  h6{
+        font-size: 13px !important;
+    }
+    .cart_bar_strip  .col-6,.cart_bar_strip_mob .col-6{
+      padding-right: 7px !important;
+    padding-left: 7px !important;
+}
+  
+.partner_logo {
+   
+    display: table !important;
+    height: 100% !important;
+}.partner_logo_in {
+       display: table-cell;
+    vertical-align: middle;
+}
+    
+    .upper_footer_col1 ul {
+   margin-top: 20px !important;
+    margin-bottom: 23px;
+}
+    .upper_footer_col1 ul li img {
+    height: 38px;
+    margin-right: 4px;
+}
     .why_happy_card_body p {
        display: block !important;
     
@@ -3137,7 +3179,7 @@ padding-right: 0px !important;
 	padding: 25px;
 }
 .terms_sub_banner h4 {
-	line-height: 22px;
+    line-height: 28px;
 }
 .terms_sub_banner {
 	padding: 13px 11px;
@@ -3204,8 +3246,8 @@ font-size: 16px;
 	outline-offset: -7px;
 }
 .cart_bar_strip_mob {
-    margin-right: 15px;
-    margin-left: 18px;
+    margin-right: 18px;
+    margin-left: 24px;
 }
 .cat_boxes_section .col-md-4 {
 	padding-right: 0px;
@@ -3225,7 +3267,8 @@ font-size: 16px;
 	padding: 47px 23px 45px !important;
 }
 .added_tocart_dialogue img {
-	height: 48px;
+height: 39px;
+    margin-top: 5px;
 }
 .added_tocart_dialogue h3 {
 	font-size: 20px;
@@ -3242,10 +3285,10 @@ font-size: 16px;
 	padding-left: 18px;
 }
 .pop_slider .modal_close {
-	top: -230px !important;
-	height: 46px;
-	right: 6px;
-	z-index: 66666;
+    top: -360px !important;
+    height: 42px;
+    right: 7px;
+    z-index: 66666;
 }
 .modal_child img {
 	height: 28px;
@@ -3301,13 +3344,14 @@ font-size: 16px;
 	padding: 8px 0px 4px;
 }
 .btn-mob-cart {
-	background: #c20a2b;
-	padding: 3px 3px;
-	color: white;
-	font-size: 14px;
-	border-radius: 7px;
-	line-height: 20px;
+    background: #c20a2b;
+    padding: 3px 3px;
+    color: white;
+  height: 31px !important;
+    border-radius: 7px;
+    line-height: 24px;
 }
+
 .congratulate .p1 {
     font: Bold 32px/59px Segoe Script;
 }
@@ -3618,7 +3662,8 @@ nav a:hover, nav a:focus {
 	margin-top: 16px !important;
 }
 .upper_footer_col3 ul {
-	padding-left: 0px !important;
+	    margin-top: 32px;
+    padding-left: 0px !important;
 }
 .upper_footer_col3 ul li {
 	text-align: center;

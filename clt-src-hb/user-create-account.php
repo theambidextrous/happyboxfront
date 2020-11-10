@@ -136,7 +136,7 @@ $util->ShowErrors(1);
 					<h3 class="partner_blueh">YOU HAVE SUCCESSFULLY CREATED YOUR ACCOUNT!</h3>
 					<p class="forgot_des text-center txt-orange">A confirmation email has been sent to you. Please click on the link to activate your account.</p>
 					<div>
-						<img src="shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
+						<img src="shared/img/btn-okay-blue.svg"  class="password_ok_img" data-dismiss="modal"/>
 					</div>
 				</div>
 			</div>
@@ -168,6 +168,7 @@ $util->ShowErrors(1);
                         /* setTimeout(function(){
                     location.reload();
                 }, 3000);*/
+            $(location).attr('href', 'user-login.php')
                 waitingDialog.hide();
                 return;
             }
