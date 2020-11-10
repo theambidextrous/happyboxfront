@@ -2658,6 +2658,22 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .why_happy_card_body p {
+       display: block !important;
+    
+    }
+    .why_happy_card_body {
+    padding: .25rem .25rem 0.0rem !important;
+}
+    .why_happy_card_body img {
+    height: 31px;
+    margin-bottom: 10px;
+}
+  
+.iwant_card_bar {
+    height: 18px !important;
+    
+}
     .voucher_list_table_mob td {
   empty-cells: hide !important;
 }
@@ -3127,7 +3143,8 @@ padding-right: 0px !important;
 	padding: 13px 11px;
 }
 .congratulate .p2 {
-	font-size: 16px;
+font-size: 16px;
+    line-height: 18px;
 }
 .desktop_contact_btn {
 	text-align: center !important;
@@ -3268,8 +3285,8 @@ padding-right: 0px !important;
 	border: 0px !important;
 }
 .iwant_section {
-	margin-top: 63px;
-        padding-bottom: 64px;
+    margin-top: 9px;
+    padding-bottom: 64px;
 }
 .iwant_img {
 	margin-left: -24px;
@@ -3400,6 +3417,8 @@ nav ul {
 	z-index: 22;
 	top: 0px;
 	width: 78%;
+        background: white;
+    height: 100%;
 }
 nav ul.opening {
 	display: block;
@@ -3411,9 +3430,9 @@ nav ul.opening {
 }
 .site-nav li {
 	border-bottom: 1px solid #e8dede;
-	height: 55px;
-	background: white;
-	padding: 20px 11px;
+    height: 55px;
+    background: white;
+    padding: 20px 17px;
 }
 .site-nav-seacrh {
 	border-bottom: 1px solid #e8dede;
@@ -3524,7 +3543,7 @@ nav a:hover, nav a:focus {
 	max-width: 95% !important;
 }
 .why_happy_card {
-	height: 184px !important;
+    height: 122px !important;
 }
 .why_img {
 	margin-right: -20px;
@@ -3536,16 +3555,19 @@ nav a:hover, nav a:focus {
 	margin-bottom: 29px !important;
 }
 .iwant_card {
-	max-width: 84% !important;
+	    max-width: 74% !important;
+
 	margin: 47px auto 21px;
 	border-radius: 13px 13px 0px 0px !important;
 }
 .iwant_card_p {
-	font: Bold 16px/19px Calibri;
+    font: Bold 16px/21px Calibri;
+        height: 113px;
 }
+
 .congratulate {
 	border-radius: 13px !important;
-	width: 85%;
+    width: 74%;
 	margin: 26px auto;
 	padding-top: 22px;
 	padding-bottom: 18px;

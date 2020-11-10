@@ -169,7 +169,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
 		<li> <a class="" href="<?=$util->PartnerHome()?>/become-a-partner.php">Become A Partner</a> </li>
 		<li> <a  href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a> </li>
 		<li> <a href="#">Logout</a> </li>
-		<li> <a href="#"></a> </li>
+		<!--<li> <a href="#"></a> </li>-->
 		<!--<li class="site-nav-seacrh"> <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
 		<input type="text" name="" class=" form_search_nav_mob" placeholder="Search">
 		</li>-->

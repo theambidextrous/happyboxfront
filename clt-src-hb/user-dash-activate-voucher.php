@@ -191,8 +191,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             </div>
                         </form>
                     </div>
-                </div
-            ></div>
+                </div></div>
         </section>
         <!--end add to cart cards-->
         <!--our partners -->

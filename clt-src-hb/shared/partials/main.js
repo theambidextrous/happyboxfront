@@ -14,6 +14,7 @@ dots:false,
 autoWidth:false,
 margin:42,
 responsiveClass:true,
+
     responsive:{
         0:{
             items:3,
@@ -79,15 +80,17 @@ var whySlider = $('.why_slider');
 
 whySlider.owlCarousel(
 {
+   
 loop:true,
-autoplay:true,
+autoplay:false,
 autoplayTimeout:3000,
 nav:false,
 dots:false,
 autoWidth:false,
-   centerMode: true,
+centerMode: true,
 margin:42,
 responsiveClass:true,
+  stagePadding: 70,
     responsive:{
         0:{
             items:1,

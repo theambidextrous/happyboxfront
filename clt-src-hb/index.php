@@ -80,6 +80,45 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 		</div>
 	</div>
 </div>
+<div class="container-fluid mobile_view">
+      <div class="slider_overlay"></div>
+    <div class="row">
+     <div id="demo" class="carousel slide carousel-fade home_slider" data-ride="carousel">
+ 
+  <div class="carousel-inner">
+    <div class="carousel-item active slider_1">
+        <div class="mob_cta text-center">  
+            <a href="user-dash-activate-voucher.php" >
+   <img src="shared/img/slider_reg.svg" class="">
+   </a>
+  </div>
+        <img src="shared/img/mob_slider1.jpg" class="w-100">    
+           <div class="mob_sli_des text-center"> 
+               
+                  <img src="shared/img/mob_sli_des.svg" class="mob_sli_des_1">
+                  <p>
+                      HAPPYBOX offers you the unique opportunity to find a gift which fits all tastes. 
+                      The recipient has the option of choosing a tailored experience from a multitude of exclusive activities.</p><p> From relaxing spas, energising yoga classes and gastronomic delights to exhilarating sports and adventure experiences, HAPPYBOX has it all!
+                  </p>
+                  <img src="shared/img/mob_sli_discover.svg" class="">
+ 
+  </div>
+     
+
+   
+  </div>
+      <!-- 2-->
+     <!--<div class="carousel-item slider_2">
+         <img src="shared/img/slider-b.png" alt="slider 2" class="w-100">     
+</div>
+     <div class="carousel-item slider_1">
+         <img src="shared/img/slider-c.png" alt="slider 3" class="w-100"> 
+</div>-->
+
+</div>
+    </div>
+  </div>
+  </div>
 <!--end mob slider--> 
 <!--section below slider-->
 
