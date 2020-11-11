@@ -66,10 +66,10 @@ $list = json_decode($list, true)['data'];
           <section  class="blue_band text-center mobile_view">
 			<h2 class="">HAPPYBOX PARTNER PORTAL</h2>
 			</section>
-   <section  class="mob_maroon_section text-center mobile_view">
+   <section  class="mob_maroon_section text-center mobile_view ">
 			<h4 class="">MY VOUCHER LIST</h4>
 			</section>
-             <p class="forgot_des mobile_view mob_canc text-center">Your list of Redeemed and Cancelled vouchers</p>
+          <p class="forgot_des mobile_view mob_canc text-center voucher_list_table_mob">Your list of Redeemed and Cancelled<br> vouchers</p>
           <div class="col-md-12 desktop_view">
           <div class="table-responsive">
             <div class="table_radius">
@@ -214,7 +214,7 @@ $list = json_decode($list, true)['data'];
               $admin_func = '';
               if($box_voucher_status == 3){
                 $m_partner = "'".json_decode($_SESSION['usr_info'])->data->internal_id."'";
-                $b_v_status = '<td class="hap_success">REDEEMED</td>';
+                $b_v_status = '<td class="hap_success_mob">REDEEMED</td>';
               $admin_func = ' <td class="v_td_canc">
                 <a href="#" class="text-white " onclick="cancell_voucher_pop('.$m_voucher.')" title="Hooray!">CANCEL VOUCHER </a>  
                 </td>
@@ -247,16 +247,16 @@ $list = json_decode($list, true)['data'];
               $box_data = json_decode($box->get_byidf($token, $box_idf))->data;
               $c_user_data = json_decode($user->get_details_byidf($_list['customer_user_id']))->data;
             ?>
-             <table class="table  voucher_list_table_mob table-borderless">
+             <table class="table   table-borderless">
                 <thead>
                   <tr class="blue_cell_th_mob text-white">
-                    <th >BOX NAME</th>
-                    <th>STATUS</th>
+                      <th  style="width:65%;">BOX NAME</th>
+                    <th style="text-align:right;">STATUS</th>
                   </tr>
                 </thead>
                 <tbody>
                     <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a"><?=$box_data->name?></td>  <?=$b_v_status?>
+                        <td class="v_td_a" style="width:65%;"><?=$box_data->name?></td>  <?=$b_v_status?>
                     </tr>
                      <tr class="voucher_list_table_mob_tr">
                         <td class="v_td_a">Voucher Code</td>  <td><?=$box_voucher_code?></td>

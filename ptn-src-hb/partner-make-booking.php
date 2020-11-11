@@ -47,7 +47,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
           <div class="card how_it_work_card">
               <div class="">
                 <p class="step_p"> <span class="step_span">STEP 1 </span>  Customer calls for a booking </p>                                
-                <p class="step_p"> <span class="step_span">STEP 2 </span> <b>YOU</b> request customer voucher code </p>
+                <p class="step_p"> <span class="step_span">STEP 2 </span> <b>YOU</b> request customer's voucher code </p>
                 <p class="step_p"> <span class="step_span">STEP 3 </span>  <b>YOU</b> check the voucher code validity online </p>
                 <p class="step_p"> <span class="step_span">STEP 4 </span>  <b>YOU</b> indicate the booking date </p> 
                 <p class="step_p step_span_last"> <span class="step_span">STEP 5 </span>  <b>YOU</b> redeem & confirm booking to customer </p>
@@ -159,31 +159,31 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   <div class="col-3 no_padd">
                     <span class="step_span">STEP 1 </span>  
                   </div>
-                      <div class="col-9 howmob_top no_pad_left">
-                       Customer calls for a booking
+                      <div class="col-9 howmob_top no_pad_left how_mob_right single_how">
+                       Customer calls for a booking 
                   </div>
                        </div>
                   <div class="row step_p">
                   <div class="col-3 no_padd">
                     <span class="step_span">STEP 2 </span>
                   </div>
-                      <div class="col-9 howmob_top no_pad_left">
-                      <b>YOU</b> request customer voucher code
+                      <div class="col-9 howmob_top no_pad_left how_mob_right">
+                          <b>YOU</b> request customer's<br> voucher code
                   </div>
                        </div>
                   <div class="row step_p">
                   <div class="col-3 no_padd">
                     <span class="step_span">STEP 3 </span>  
                   </div>
-                      <div class="col-9 no_pad_left howmob_top">
-                       <b>YOU</b> check the voucher code validity online
+                      <div class="col-9 no_pad_left howmob_top how_mob_right">
+                       <b>YOU</b> check the voucher code<br> validity online
                   </div>
                        </div>
                   <div class="row step_p">
                   <div class="col-3 no_padd">
                     <span class="step_span">STEP 4 </span>  
                   </div>
-                      <div class="col-9 no_pad_left howmob_top">
+                      <div class="col-9 no_pad_left howmob_top how_mob_right single_how">
                      <b>YOU</b> indicate the booking date
                   </div>
                        </div>
@@ -191,8 +191,8 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   <div class="col-3 no_padd">
                     <span class="step_span">STEP 5 </span>  
                   </div>
-                      <div class="col-9 no_pad_left howmob_top">
-                      <b>YOU</b> redeem & confirm booking to customer
+                      <div class="col-9 no_pad_left howmob_top how_mob_right">
+                      <b>YOU</b> redeem & confirm the <br>booking to customer
                   </div>
                        </div>
              

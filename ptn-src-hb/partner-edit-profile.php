@@ -39,8 +39,11 @@ $topics = json_decode($topics, true)['data'];
                     <div class="col-md-10 desktop_view edit_pro_h">
                       <h3 class="partner_blueh text-center">EDIT YOUR PARTNER PROFILE</h3>
                     </div>
+                          <section  class="blue_band text-center mobile_view">
+			<h2 class="">HAPPYBOX PARTNER PORTAL</h2>
+			</section>
                       <div  class="col-12 mob_maroon_section text-center">
-			<h4 class="">EDIT PROFILE</h4>
+			<h4 class="">HAPPYBOX PARTNER PORTAL</h4>
 			</div>
                       <div class="col-md-10">
                           <div class="row justify-content-center blue_label">

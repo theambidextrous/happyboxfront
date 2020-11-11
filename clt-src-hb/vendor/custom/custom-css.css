@@ -2658,6 +2658,14 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .voucher_list_mob  {
+    margin-top: -27px !important;
+}
+    .how_mob_right{
+  
+    font-size: 17px;
+}  
+    
     .become_badge {
     border-bottom-right-radius: 16px;
     
@@ -2942,7 +2950,7 @@ padding-right: 0px !important;
 	height: 25px;
 }
 .voucher_list_table_mob {
-	font-size: 13px;
+margin-top: 4px;
 }
 .voucher_list_table_mob_tr {
 	background: #0185B614;
@@ -3081,6 +3089,10 @@ padding-right: 0px !important;
 .howmob_top {
 	margin-top: -9px;
 }
+.single_how{
+    margin-top: -2px; 
+}
+
 .mob_bold {
 	font-weight: bold;
 }
@@ -3230,6 +3242,10 @@ font-size: 16px;
 	margin-top: 15px;
 	padding: 5px 10px;
 	border: solid 1px #999999;
+}
+.select_ctrl {
+ padding: 2px 10px !important;
+    height: 45px;
 }
 .table_radius {
 	margin-top: 0px !important;
@@ -3746,6 +3762,11 @@ nav a:hover, nav a:focus {
 }
 .pdt_img img {
     height: auto !important;
+}
+
+.hap_success_mob{
+    color: #10D271 !important;
+    font-weight: bold;
 }
 }
 /*end mobile */
