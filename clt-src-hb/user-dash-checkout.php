@@ -111,7 +111,8 @@ transform: rotate(360deg);
 						'amount5' => 0,
 						'payee' => json_decode($_SESSION['usr'])->user->email,
 						'shipping' => 'Sendy',
-						'item' => 'Happy Box Voucher(s)',	
+						'item' => 'Happy Box Voucher(s)',
+						'channels' => '0,2,6,10',
 						'rurl' => $util->ClientHome().$util->JpReturn(),
 						'curl' => $util->ClientHome().$util->JpCancel(),
 						'furl' => $util->ClientHome().$util->JpFail()
