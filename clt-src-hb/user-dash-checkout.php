@@ -118,7 +118,7 @@ transform: rotate(360deg);
 				];
 				// $util->Show($order_data);
 				?>
-				<b>UNPAID ORDER: <?=$_SESSION['unpaid_order']?></b> <b> AMOUNT: KES <?=$bill_amount?></b> <br>
+				<b> ORDER NO: <?=$_SESSION['unpaid_order']?></b> <b> AMOUNT: KES <?=$bill_amount?></b> <br>
 				Choose your preferred payment method to continue
 			</div>
 		</div>

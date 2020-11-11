@@ -977,8 +977,10 @@ th, td {
 	border-radius: 8px;
 	height: 52px;
 	line-height: 52px;
-	font-size: 18px;
-	outline-offset: -7px;
+	font-size: 18px;	
+        outline: 0.5px solid #e8e8e8de;
+    outline-offset: -7px;
+
 }
 .row_partner {
 	margin-top: 30px;
