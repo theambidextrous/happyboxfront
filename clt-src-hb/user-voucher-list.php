@@ -116,7 +116,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
         
         </a>-->
                             <a href="#" class="nav-link tooltips3 txt-blue">
-                            PARTNER RATING <span>Please rate this partner <br>based on your experience </span></a>
+                            PARTNER RATING <!--<span>Please rate this partner <br>based on your experience </span>--></a>
                               </th>
                               <th colspan="2" class="th_actions voucher_list_table_th">ADMIN REQUESTS</th>
                             </tr>
@@ -182,6 +182,39 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                 endforeach;
                               }
                             ?>
+                             <tr>
+          <td class="light_blue_cell">
+           
+              <a data-toggle="modal" href="#bookletPop" class="text-black"><strong> SPA EXPERIENCE</strong> </a>
+          </td>
+          <td>456</td>
+        <td>qwerty</td>
+         <td class="hap_danger">CANCELLED</td> 
+     
+           <td class="empty_cell"></td>
+                       <td>06/07/2020</td>
+              
+                  <td>06/04/2020</td>
+                  <td class="empty_cell"></td>
+                    <td>Super Spa</td>
+                  <td class="gray_star  rating">
+                     
+	<input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas fa-star"></i></label>
+	<input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
+	<input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas fa-star"></i></label>
+	<input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
+	<input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas fa-star"></i></label>
+
+                     <!-- <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>--> </td>
+                <td class="empty_cell">
+                    
+                    
+           
+                
+            </td>
+            
+      </tr>
                           </tbody>
                         </table>
                 </div>

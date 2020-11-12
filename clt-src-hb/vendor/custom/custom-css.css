@@ -2655,6 +2655,20 @@ padding-right: 0px !important;
       width: 100% !important;
 }
     
+.rating {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+	color:#ddd ; /* Personal choice */
+}
+.rating input {
+	display: none;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked + label,
+.rating input:checked + label ~ label {
+	color: gray; /* Personal color choice. Lifted from Bootstrap 4 */
+}
     /*equal height */
     
 /*end equal height */
