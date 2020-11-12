@@ -101,7 +101,11 @@ $util->ShowErrors(1);
 						<td><i onclick="remove_from_cart('<?=$_cart_item[0]?>')" class="fas fa-trash-alt del_icon"></i></td>
 					</tr>
                                         <tr class="cart_border_bottom">
-						<td colspan="6"><small><i>* Physical delivery only available in Nairobi at present.</i></small></td>
+						<td colspan="6">
+                                                    <small><i>* Physical delivery only available in Nairobi at present.</i></small>
+                                                    <br>
+                                                     <small><i>*  E-boxes are limited to one per order.</i></small>
+                                                </td>
 					</tr>
                                         
 					<?php 

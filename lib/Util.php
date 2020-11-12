@@ -731,7 +731,7 @@
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" value="ebox__'.$item.'" onclick="change_ship_type('.$e_box_id.')" class="form-check-input" id="ebx__'.$item.'" name="'.$item.'" '.$e_box.'><b>E-Box</b>
+                    <input type="radio" value="ebox__'.$item.'" onclick="change_ship_type('.$e_box_id.')" class="form-check-input" id="ebx__'.$item.'" name="'.$item.'" '.$e_box.'><b>E-Box **</b>
                     <br><small>Delivered via email</small>
                 </label>
             </div>

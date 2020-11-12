@@ -277,7 +277,7 @@ function reloadcurrent(){
                                 </div>
                             </div>
                             <hr>
-                            <h4 class="filter_title text-center"> experiences offered </h4>  
+                            <h4 class="filter_title text-center"> Experiences Offered </h4>  
                             <div id="exprs">
                                 <?php 
                                 if(count($services)){ 
@@ -332,7 +332,7 @@ function reloadcurrent(){
                                 <?php } ?>
                             </div>
                             <hr>
-                            <h4 class="filter_title text-center"> contact Details </h4>   
+                            <h4 class="filter_title text-center"> Contact Details </h4>   
                             <div class="form-group row">
                                 <label for="DateRange" class="col-md-3 col-form-label">Contact Name</label>
                                 <div class="col-md-4">
