@@ -104,7 +104,7 @@ $util->ShowErrors(1);
 						<td colspan="6">
                                                     <small><i>* Physical delivery only available in Nairobi at present.</i></small>
                                                     <br>
-                                                     <small><i>*  E-boxes are limited to one per order.</i></small>
+                                                     <small><i>**  E-boxes are limited to one per order.</i></small>
                                                 </td>
 					</tr>
                                         

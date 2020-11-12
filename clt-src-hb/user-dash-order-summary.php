@@ -211,11 +211,11 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                           <table class="cart_order_summ table-bordered">
                               <tr>
                                 <td>SUB TOTAL (Incl. VAT)</td>
-                                <td>KES <?=number_format(array_sum($_total_cart), 2)?></td>
+                                <td class="w_11" style="width:118px;">KES <?=number_format(array_sum($_total_cart), 2)?></td>
                               </tr>
                               <tr>
                                 <td>SHIPPING</td>
-                                <td>KES <?=number_format($_total_shipping,2)?></td>
+                                <td >KES <?=number_format($_total_shipping,2)?></td>
                               </tr>
                               <tr class="bold_txt">
                                 <td>TOTAL PRICE (Incl. VAT)</td>
