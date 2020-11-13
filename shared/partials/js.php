@@ -131,6 +131,19 @@ $('.menu-close').click(function() {
  
 
 });   
+//Load TinyMCE	
+        tinymce.init({		
+          selector: 'textarea.tinymce',
+          height: 150,
+          theme: 'modern',
+          menubar: false,	
+          plugins: [
+            'advlist autolink lists link image charmap print preview anchor textcolor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code help wordcount'
+          ],
+          toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link unlink | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat | help'
+        });
 
 
 });

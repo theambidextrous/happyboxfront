@@ -529,11 +529,11 @@ th, td {
 	color: black;
 }
 .box_title, .box_title a {
-	color: #C20A2B;
-	font-size: 18px;
-	font-weight: bold;
-	background-color: white;
-	text-transform: capitalize;
+color: #C20A2B;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+    text-transform: uppercase;
 }
 .cart_bar {
 	margin-top: 4px;
@@ -2344,6 +2344,9 @@ th, td {
 .partner_logo_in img {
 	height: 180px !important;
 	border-radius: 5px;
+}
+ .contact_p_txt {
+    line-height: 19px;
 }
 }
 /*Tooltips */
