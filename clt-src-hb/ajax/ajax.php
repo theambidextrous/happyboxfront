@@ -247,8 +247,9 @@ switch($_REQUEST['activity']){
             if( json_decode($u_resp)->status == '0' && json_decode($u_resp)->data->id > 0){
                 $created_user_id = json_decode($u_resp)->data->id;
                 $token = json_decode($u_resp)->data->token;
-                $reset_resp = $u->verify_email_link($token);
-                if(json_decode($reset_resp)->status == '0'){
+                $reset_resp = 0;//$u->verify_email_link($token);
+                // if(json_decode($reset_resp)->status == '0'){
+                if( $reset_resp == 0 ){
                     $body = [
                         'fname' => $_POST['fname'],
                         'sname' => $_POST['sname'],

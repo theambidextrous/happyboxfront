@@ -182,7 +182,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="hidden" name="customer_user_id" value="<?=json_decode($_SESSION['usr_info'])->data->internal_id?>">
-                                    <input type="text" name="vcode" class="form-control rounded_form_control" placeholder="Required Field">
+                                    <input type="text" id="vcode_reset" name="vcode" class="form-control rounded_form_control" placeholder="Required Field">
                                 </div>
                                 <div class="col-md-4">
                                     <br class="mobile_view">
@@ -237,6 +237,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   $("#reset_div").load(window.location.href + " #reset_div" );
                   $("#vvv").text(rtn.Valid);
                   $('#err').hide();
+                  $('#vcode_reset').val("");
                   $('#popupid').trigger('click');
                   waitingDialog.hide();
                   return;

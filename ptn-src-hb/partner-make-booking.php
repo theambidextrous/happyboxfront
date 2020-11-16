@@ -66,7 +66,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   $res = $obj = $inventory->get_by_voucher($token, $voucher_code);
                   // print $util->Show($res);
                   $res = json_decode($res, true)['data'];
-                  if( $res['box_voucher_status'] == 1 )
+                  if( $res['box_voucher_status'] != 6 )
                   {
                     $data_0 = $data_1 = [
                       'Invalid',

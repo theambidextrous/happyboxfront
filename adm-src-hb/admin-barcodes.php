@@ -38,12 +38,12 @@ if(isset($_POST['downloadit'])){
         'marginLeft' => -1,
         'wrappingStyle' => 'behind'
     ];
-    $section->addText('HappyBox Inventory Barcodes', $header);
+    // $section->addText('HappyBox Inventory Barcodes', $header);
     $table = $section->addTable($tableStyle);
     /** head */
-    $table->addRow($trow);
-    $table->addCell(7500)->addText("Barcode", $thead);
-    $table->addCell(4500)->addText("Voucher Code", $thead);
+    // $table->addRow($trow);
+    // $table->addCell(7500)->addText("Barcode", $thead);
+    // $table->addCell(4500)->addText("Voucher Code", $thead);
     /** end thead */
     if( count($_SESSION['barcode_rows'][0]) )
     {
