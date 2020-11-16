@@ -27,7 +27,7 @@ switch($_REQUEST['activity']){
             if(json_decode($resp_)->status == '0'){
                 $_data = json_decode($resp_, true)['data'];
                 if($_data['payment_status'] && $_data['paid']){
-                    $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="alert alert-success"><b>Success!</b> Payment of KES '.$_data['paid_amount'].' has been received. Check your email for your order details</div></div>';
+                    $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="alert alert-success"><b>Success!</b> Payment of KES '.$_data['paid_amount'].' has been received. Check your email for your order details.</div></div>';
                 }else{
                     $event_data = '<div title="'.$resp_.'" class="d-flex justify-content-center"><div class="spinner-border spinner-border-lg spinner-grow-lg" role="status"><span class="sr-only">Loading...</span></div></div>';
                 }
@@ -78,7 +78,7 @@ switch($_REQUEST['activity']){
             // $reg_url_response = $c2b->RegisterUrl();
             // $c2b_response = $c2b->Simulate();
             $_SESSION['status_chk_order'] = $order_number;
-            $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone. Enter your pin to complete order.</div>';
+            $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone.<br> Enter your pin to complete order.</div>';
             $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge Notification could not be sent<br> Make sure your phone is switched on and try again.</div>';
             if( json_decode($express_response)->ResponseCode != '0' ){
                 exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
