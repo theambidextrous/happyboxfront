@@ -97,7 +97,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                   <h3 class="user_blue_title" >ORDER SUMMARY</h3>
                   <!--progress strip-->
                      <div class="row">
-                <div class="col-md-12 ">
+                <div class="col-md-12 no_pad_lr_desk">
                   <div class=" cart_progress_strip row">
                     <div class="col-3 cart_strip"></div>
                     <div class="col-3 shipping_strip"></div>

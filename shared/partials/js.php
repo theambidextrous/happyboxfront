@@ -4,6 +4,9 @@
          <script src="<?=$util->ClientHome()?>/vendor/bootstrap/js/popper.min.js"></script>
     <script src="<?=$util->ClientHome()?>/vendor/owl/owl.carousel.js"></script>
     <script src="<?=$util->ClientHome()?>/vendor/bootstrap/js/wt.js"></script>
+      <!-- jQuery Tinymce -->
+  <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/tinymce/jquery.tinymce.min.js"></script>
+  <script src="<?=$util->AppHome()?>/adm-src-hb/vendor/tinymce/tinymce.min.js"></script>
     <script>
       $(document).ready(function(){
 

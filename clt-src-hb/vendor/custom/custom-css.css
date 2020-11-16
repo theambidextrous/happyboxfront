@@ -1622,8 +1622,9 @@ color: #C20A2B;
 	margin: 40px auto
 }
 .cart_des h6 {
-	color: #C20A2B;
-	font-weight: bold;
+color: #C20A2B;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 .cart_des {
 	width: 34%;
@@ -2323,6 +2324,10 @@ color: #C20A2B;
 	padding: 17px 10px !important;
 }
 @media (min-width: 768px) {
+    .no_pad_lr_desk{
+        padding-left: 0px !important;
+              padding-right: 0px !important;
+    }
     .hap_desk{
     width: 221px !important;
 }
@@ -3796,4 +3801,10 @@ nav a:hover, nav a:focus {
 .alert {
     margin-bottom: 1rem !important;
     
+}
+.user_log{
+  margin-bottom: 3px;
+    display: block;
+    color: #00acb3 !important;
+    font-weight: bold;
 }

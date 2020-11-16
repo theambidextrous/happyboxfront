@@ -334,7 +334,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                         </div>
                                         <div class="form-group">
                                             <label class="text-left">Business Short Description</label>
-                                            <input type="text" name="short_description" class="form-control rounded_form_control" placeholder="Required Field">
+<!--<input type="text" name="short_description" class="form-control rounded_form_control" placeholder="Required Field">-->
+<textarea name="short_description" placeholder="short description" class="form-control tinymce rounded_form_control"></textarea> 
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Person's Surname</label>
@@ -397,7 +398,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
             Our Partner Care Team will review your submission and contact you.
             </p>
             <div>
-            <img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal"/>
+            <img src="../shared/img/btn-okay-blue.svg" class="password_ok_img" data-dismiss="modal" onclick="javascript:window.location='login.php'"/>
             </div>
             </div>
       </div>
@@ -425,10 +426,11 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                 //   $("#reset_div").load(" #reset_div > *");
                     // $("#reset_div").load(location.href + " #reset_div" );
                     $('#popupid').trigger('click');
-                    setTimeout(function(){
+                   /* setTimeout(function(){
                         location.reload();
                     }, 30000);
-                  $('#popupid').trigger('click');
+                  $('#popupid').trigger('click');*/
+            
                   waitingDialog.hide();
                   return;
               }

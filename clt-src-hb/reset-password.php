@@ -52,26 +52,30 @@ $util->ShowErrors(1);
 				<div class="card-body text-center">
 					<h3 class="text-center">HAPPYBOX</h3> <h4 class="text-center">An experience for everyone</h4>
 					<?php 
+                                      
+                                      
 					if(!isset($_REQUEST['token'])){
 							print $util->error_flash('Invalid token!');
 					}else{
 							if(isset($_POST['resetpwd'])){
 									try{
-											$util->ValidatePasswordStrength($_POST['password']);
-											if($_POST['password'] != $_POST['password_confirmation']){
-													print $util->error_flash('Passwords must match!');
-											}elseif(!$user->is_valid_mail($_POST['email'])){
-													print $util->error_flash('Invalid email!');
-											}else{
-													$body = [
-															'email' => $_POST['email'],
-															'password' => $_POST['password'],
-															'password_confirmation' => $_POST['password_confirmation'],
-															'token' => $_REQUEST['token']
-													];
-													$resp = $user->pwd_reset($body);
-													if( json_decode($resp)->status == '0' ){
-													print $util->success_flash('Account password reset.');
+                    $util->ValidatePasswordStrength($_POST['password']);
+                    if($_POST['password'] != $_POST['password_confirmation']){
+                                    print $util->error_flash('Passwords must match!');
+                    }elseif(!$user->is_valid_mail($_POST['email'])){
+                                    print $util->error_flash('Invalid email!');
+                    }else{
+                                    $body = [
+                                                    'email' => $_POST['email'],
+                                                    'password' => $_POST['password'],
+                                                    'password_confirmation' => $_POST['password_confirmation'],
+                                                    'token' => $_REQUEST['token']
+                                    ];
+                                    $resp = $user->pwd_reset($body);
+                                    if( json_decode($resp)->status == '0' ){
+					//print $util->success_flash('Account password reset.');
+                                        $login_url="<a href='user-login.php' class='user_log'><i class='fas fa-user'></i> User Login</a>";
+                                        print $util->success_flash('Account password reset.').' '.$login_url.'<br>';
 													}else{
 												print $util->error_flash(json_decode($resp)->message);
 													}

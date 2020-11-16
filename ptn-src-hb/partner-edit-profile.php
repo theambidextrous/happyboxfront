@@ -75,7 +75,10 @@ $topics = json_decode($topics, true)['data'];
                                   <div class="col-md-5">
                                     <div class="form-group">
                                       <label>Business Description</label>
-                                      <input type="text" name="short_description" class="form-control rounded_form_control" value="<?=$user_info->data->short_description?>">
+  <!--<input type="text" name="short_description" class="form-control rounded_form_control" value="<?=$user_info->data->short_description?>">-->
+   <textarea name="short_description" placeholder="short description" class="form-control tinymce rounded_form_control">
+              <?=$user_info->data->short_description?>
+    </textarea>
                                     </div>
                                     <div class="form-group">
                                       <label>Business Category</label>
