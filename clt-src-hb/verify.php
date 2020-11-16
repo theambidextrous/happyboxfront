@@ -33,7 +33,7 @@ $util->ShowErrors(1);
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="text-white">EMAIL VERIFICATION</h3>         
+                        <h3 class="text-white">ACCOUNT ACTIVATED</h3>         
                     </div>
 
                 </div> </div>
@@ -44,8 +44,11 @@ $util->ShowErrors(1);
                     <div class="col-md-9 text-center">
                         <h4 class=""><?php
                         if(!empty($_REQUEST['success'])){
-                            print ucwords(strtolower($_REQUEST['success'].'!'));
-                        }
+                           // print ucwords(strtolower($_REQUEST['success'].'!'));?>
+                             
+                            <h5 class=""> Email Successfully Verified! <br>You can login. </h5>
+                            
+                       <?php }
                         ?></h4>
 
                     </div>
