@@ -626,6 +626,7 @@ switch($_REQUEST['activity']){
                 'reason' => $_POST['vreason']
             ];
             $resp_ = $i->partner_cancel_voucher($body, $_POST['voucher']);
+            // exit(json_encode( ['ERR' => $resp_] ));
             if( json_decode( $resp_)->status == '0'){
                 exit(json_encode([
                     'MSG' => 'Voucher has been successfully cancelled. The customer has been emailed a new voucher', 

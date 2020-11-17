@@ -498,7 +498,7 @@ $list = json_decode($list, true)['data'];
           url: '<?=$util->AjaxHome()?>?activity=cancel-ptn-voucher',
           data: dataString,
           success: function(res){
-              // console.log(res);
+              console.log(res);
               var rtn = JSON.parse(res);
               if(rtn.hasOwnProperty("MSG")){
                   $('#err').hide();

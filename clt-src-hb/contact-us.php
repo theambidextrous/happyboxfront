@@ -53,6 +53,7 @@ $util->ShowErrors(1);
 
 <!--end discover our selection-->
 <section class="container section_padding_top contact_content">
+	<form name="contactus" id="contactus">
 	<div class="row justify-content-center">
 		<div class="col-md-5 contact_details">
 			<h4 class="contact_title">Contact HAPPYBOX</h4>
@@ -150,7 +151,7 @@ $(document).ready(function(){
 				url: '<?=$util->AjaxHome()?>?activity=contact-us',
 				data: dataString,
 				success: function(res){
-						// console.log(res);
+						console.log(res);
 						var rtn = JSON.parse(res);
 						if(rtn.hasOwnProperty("MSG")){
 									$('#contactPop').modal('show');
