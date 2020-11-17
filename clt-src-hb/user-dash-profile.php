@@ -110,6 +110,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 						<input type="hidden" name="act" value="<?=$act_?>">
 						<input type="hidden" name="customer_id" value="<?=$profile_data_->internal_id?>">
 						<input type="text" name="address" class="form-control rounded_form_control" value="<?=$shipping_->address?>">
+						<?=$util->place_autocomplete('address')?>
 					</div>
 					<div class="form-group">
 						<label>City</label>
