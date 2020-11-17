@@ -43,7 +43,7 @@ $util->ShowErrors(1);
                 <div class="row justify-content-center">
                     <div class="col-md-9 text-center">
                         <h4 class=""><?php
-                        if(empty($_REQUEST['success'])){
+                        if(!empty($_REQUEST['success'])){
                            // print ucwords(strtolower($_REQUEST['success'].'!'));?>
                              
                             <h5 class=""> Email Successfully Verified! <br>You can login. </h5>
