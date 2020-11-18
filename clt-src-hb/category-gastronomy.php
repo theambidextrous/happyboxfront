@@ -66,7 +66,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
       </div>
       </section>
   <section class="mobile_view">
-      <div class="container">
+      <div class="container no_pad_lr_mob">
       <div class="row justify-content-center">
         
             <div class="">

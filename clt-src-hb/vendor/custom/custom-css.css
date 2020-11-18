@@ -1789,7 +1789,7 @@ color: #C20A2B;
 }
 /*login */
 .partner_login .rounded_form_control, .partner_forgot .rounded_form_control {
-	text-align: left !important;
+	text-align: left;
 }
 /*end login*/
 .partner_login .gray_text, partner_login .gray_text a, .partner_forgot .gray_text, partner_forgot .gray_text a {
@@ -2684,6 +2684,40 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    cart_des_mob{
+   width: 60%;
+}   
+.cart_des_mob h6 {
+    color: #C20A2B;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.pdt_img_cart{
+     vertical-align: top;   
+}
+
+    
+    .become_badge {
+       width: 29px !important;
+    height: 29px !important;
+    
+    }
+    .become_part_card_txt h4 {
+    font-size: 14px;
+}
+    .pad_top20_small {
+    padding-top: 10px !important;
+}
+    .mob_center{
+        text-align: center !important;
+    }
+    .partner_login {
+    padding-top: 50px !important;
+  }
+    .no_pad_lr_mob{
+        padding-left: 0px !important;
+         padding-right: 0px !important;
+    }
     .voucher_list_mob  {
     margin-top: -27px !important;
 }
@@ -2693,7 +2727,8 @@ padding-right: 0px !important;
 }  
     
     .become_badge {
-    border-bottom-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+    border-top-left-radius: 11px;
     
 }
     .contact_p_txt_mob{
@@ -3079,16 +3114,19 @@ margin-top: 4px;
 	font-weight: bold;
 }
 .card_step_blue_txt {
-	background: #0985B6;
-	display: block;
-	width: 100% !important;
-	float: right;
-	height: 73px !important;
-	border-radius: 0px !important;
-	line-height: 31px !important;
+    background: #0985B6;
+    display: block;
+    width: 100% !important;
+    float: right;
+    height: 66px !important;
+    border-radius: 0px !important;
+    margin-top: 16px;
+    line-height: 16px !important;
+    padding-top: 15px;
 }
 .become_part_card {
-	min-height: 132px;
+min-height: 108px;
+    border-radius: 13px;
 }
 .become_boxes {
 	margin-top: 0px !important;
@@ -3729,9 +3767,9 @@ nav a:hover, nav a:focus {
 	font-size: 14px;
 }
 .become_part_card_txt {
-	padding: 0px 26px 11px;
-	font-size: 15px;
-	margin-top: 6px;
+    padding: 0px 26px 11px;
+    font-size: 15px;
+    margin-top: -5px;
 }
 .become_logos_item {
 	height: 59px;

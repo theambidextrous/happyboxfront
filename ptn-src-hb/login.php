@@ -57,11 +57,11 @@
           <h3 class="partner_blueh">PARTNER LOGIN</h3>
             <form class="p_login" method="post">
                 <?=$err?>
-              <div class="form-group">
-                <input type="text" class="form-control rounded_form_control" name="email" placeholder="Email address">
+              <div class="form-group ">
+                <input type="text" class="form-control mob_center rounded_form_control" name="email" placeholder="Email address">
               </div>
-              <div class="form-group">
-                <input type="password" name="password" class="form-control rounded_form_control" placeholder="Password">
+              <div class="form-group ">
+                <input type="password" name="password" class="form-control mob_center rounded_form_control" placeholder="Password">
               </div>
               <button type="submit" name="login" class="btn btn_rounded">LOGIN</button>
               <p class="text-center gray_text small_p_margin_top">

@@ -142,7 +142,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                         </div> </div></div>
                 
     </section>
-    <section class="pad_top20 mobile_view">
+    <section class="pad_top20 mobile_view pad_top20_small">
                      <div class="container-fluid">
                     <div class="row ">
                         <div class="col-md-12">
@@ -267,7 +267,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
                                         $_ptn_lg_path = $_ptn_pic->path_name;
                                     }
                          ?>
-                            <div class="col-3 ">
+                            <div class="col-md-3 col-4">
+                              
                                 <div class="become_logos_item">
                                     <div class="">
                                         <img style="width:113px;height:auto;" src="<?=$_ptn_lg_path?>" alt="<?=$_partners_slide['business_name']?>">

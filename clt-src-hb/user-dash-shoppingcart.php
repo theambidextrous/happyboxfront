@@ -126,7 +126,7 @@ $util->ShowErrors(1);
                                                 
 					</tr> -->
 					<tr align="rightx" class="cart_totals tr_border_top cart_totals_large">
-						<td colspan="4" align="right"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
+						<td colspan="4" align="right "><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
 						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
@@ -178,8 +178,8 @@ $util->ShowErrors(1);
 								}
 					?>
 					<tr id="reset_div_<?=$_cart_item[0]?>">
-						<td class="pdt_img" style=""><img src="<?=$_3d?>" /></td>
-						<td class="cart_desx"><h6><?=$_box_data->name?></h6> <span><?=$_box_data->description?></span><br><b>KES <?=number_format($_box_data->price, 2)?></b><br><span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span></td>
+						<td class="pdt_img pdt_img_cart" style=""><img src="<?=$_3d?>" /></td>
+						<td class="cart_des_mob"><h6><?=$_box_data->name?></h6> <span><?=$_box_data->description?></span><br><b>KES <?=number_format($_box_data->price, 2)?></b><br><span style="display:none;" class="alert alert-warning" id="vvv_<?=$_cart_item[0]?>">No enough boxes to service your order</span></td>
 					</tr>
 					<tr style="background:#00ACB31A;">
 						<td><b>KES <?=number_format($_b_cost,2)?></b></td>
@@ -201,7 +201,7 @@ $util->ShowErrors(1);
 						</tr>
 					
 					<tr >
-						<td colspan="6"><small><i>* Physical delivery only available in Nairobi at present.</i></small></td>
+						<td colspan="2"><small><i>* Physical delivery only available in Nairobi at present.</i></small></td>
 					</tr>
 					<?php 
 											}
@@ -209,7 +209,7 @@ $util->ShowErrors(1);
 					}else{
 							print '
 							<tr>
-									<td colspan="6">
+									<td colspan="2">
 											<small>*No items in cart.</small>
 									</td>
 							</tr>';
@@ -220,11 +220,12 @@ $util->ShowErrors(1);
 						<td colspan="2">KES <=number_format($_total_shipping,2)?></td>
 					</tr> -->
 					<tr align="right" class="cart_totals tr_border_top">
-						<td colspan="4"><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
-						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
+                                            <td ><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
+						<td colspan="">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
-						<td colspan="6 "><a href="<?=$util->ClientHome()?>"><img src="shared/img/btn-continue-shopping.svg"></a> <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-shipping-method-blue.svg"></a></td>
+						<td colspan="2 ">
+                                                    <a href="<?=$util->ClientHome()?>"><img src="shared/img/btn-continue-shopping.svg"></a> <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="shared/img/btn-shipping-method-blue.svg"></a></td>
 					</tr>
 				</table>
 			</div>
