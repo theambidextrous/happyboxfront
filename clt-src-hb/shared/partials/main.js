@@ -163,7 +163,7 @@ $('.menu-close').click(function() {
 
 });
 //Load TinyMCE	
-        tinymce.init({		
+       /* tinymce.init({		
           selector: 'textarea.tinymce',
           height: 150,
           theme: 'modern',
@@ -174,7 +174,15 @@ $('.menu-close').click(function() {
             'insertdatetime media table contextmenu paste code help wordcount'
           ],
           toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link unlink | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat | help'
+        });*/
+       tinymce.init({
+  selector: "textarea",
+    setup: function (editor) {
+        editor.on('change', function () {
+            tinymce.triggerSave();
         });
+    }
+});
 
 }
 );
