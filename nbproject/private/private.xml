@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/customer-welcome.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/customer-forgot-password.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/customer-welcome-re.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/onboarding-re.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/partner-welcome.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/partner-forgot-password.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/partner-forgot-password-re.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/customer-forgot-password-re.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/box-activation.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/partner-welcome-re.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/onboarding.html</file>
+            <file>file:/C:/xampp/htdocs/happyboxfront/emails/boxactivation-re.html</file>
+        </group>
     </open-files>
 </project-private>
