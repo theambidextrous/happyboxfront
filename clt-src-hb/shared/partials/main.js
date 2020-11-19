@@ -176,7 +176,7 @@ $('.menu-close').click(function() {
           toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link unlink | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat | help'
         });*/
        tinymce.init({
-  selector: "textarea",
+    selector: 'textarea.tinymce',
     setup: function (editor) {
         editor.on('change', function () {
             tinymce.triggerSave();
