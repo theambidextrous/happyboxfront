@@ -30,7 +30,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 
 </head>
 
-<body class="partner_wrap">
+<body class="partner_wrap partner_become">
   <!-- Navigation -->
  <?php include '../shared/partials/nav.php'; ?>
  <section  class="blue_band text-center">

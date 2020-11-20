@@ -152,13 +152,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                       
                                            <div class="row">
                                               <div class="col-3">  <span class="inline_div">2</span></div>
-                                                <div class="col-9 neg_top"> <b>SELECT</b> one experience in the booklet   </div>
+                                              <div class="col-9 neg_top mob_tb"> <div class="mob_td"><b>SELECT</b> one experience in the booklet </div>  </div>
                                           </div>
                                      </div>
                                       <div class="user_activate_steps_i user_activate_steps_i_mid">
                                           <div class="row">
                                               <div class="col-3">  <span class="inline_div ">3</span></div>
-                                                <div class="col-9 neg_top"><b>BOOK</b> your experience with the partner and share your voucher code with them</div>
+                                              <div class="col-9 neg_top mob_tb"><div class="mob_td"><b>BOOK</b> your experience with the partner and share your voucher code with them</div></div>
                                           </div>
                                           
                                      </div>
@@ -166,7 +166,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                  
                                            <div class="row">
                                               <div class="col-3">  <span class="inline_div_last inline_div ">4</span></div>
-                                                <div class="col-9 neg_top"><b> ENJOY</b> your experience   </div>
+                                              <div class="col-9 neg_top mob_tb"><div class="mob_td"><b> ENJOY</b> your experience </div>  </div>
                                           </div>
                                      </div>
                                          </div>
