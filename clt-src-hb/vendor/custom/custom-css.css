@@ -2684,6 +2684,13 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .sound_good {
+       border: 0px !important
+        
+    }
+    .mob_light_blue_bg{
+      background: #e6f3f8;  
+    }
     cart_des_mob{
    width: 60%;
 }   
@@ -2909,7 +2916,8 @@ padding-right: 0px !important;
 	padding: 23px 15px;
 }
 .client_logos {
-	margin-top: 38px;
+	    margin-top: -2px;
+    background: #e6f3f8;
 }
 .declare_tr {
 	background: #FA683D;
@@ -3293,11 +3301,13 @@ font-size: 16px;
 .sport_mob_section .partner_logo {
 	border: solid 1px #F50258;
 }
+
 .partners_img {
-	height: 34px;
-	margin-top: -30px;
-	margin-left: -2px;
+    height: 34px;
+    margin-top: -30px;
+    margin-left: -17px;
 }
+
 .card_partner_mobcard h4 {
 	font-weight: bold;
 }
@@ -3781,7 +3791,7 @@ nav a:hover, nav a:focus {
 	padding: 2px 10px;
 }
 .how_it_work_card {
-	margin-bottom: 40px;
+    margin-bottom: -24px;	
 }
 .voucher_result_bar {
 	display : block;
@@ -3845,8 +3855,9 @@ nav a:hover, nav a:focus {
 .user_log{
   margin-bottom: 3px;
     display: block;
-    color: #00acb3 !important;
+    color: #0185b6 !important;
     font-weight: bold;
+        font-size: 15px !important;
 }
 #toggle_pwd_guide{
   

@@ -287,7 +287,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
               </div>
         </section>
     <section class=" text-center" id="reset_div">
-        <div id="sound_good" class="container sound_good_wrap">
+        <div id="sound_good" class="container sound_good_wrap mob_light_blue_bg">
 			<div class="col-md-12 sound_good">
                 <div class="row justify-content-center ">
                     <div class="col-md-10">
