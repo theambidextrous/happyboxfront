@@ -238,10 +238,10 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 					<p class="forgot_des text-center sound_p">Complete the form below to become a HAPPYBOX Partner.</p>
 					<?=$util->msg_box()?>
 				</div>
-				<div class="col-md-10">
-					<div class="row justify-content-center become_partner_form">
-						<form class="" id="create_ptn_acc" name="create_ptn_acc">
-							<div class="col-md-5 become_partner_form">
+				<div class="col-md-10">					
+					<form class="" id="create_ptn_acc" name="create_ptn_acc">
+						<div class="row justify-content-center become_partner_form">
+							<div class="col-md-5">
 								<div class="form-group">
 									<label class="text-left">Company Name</label>
 									<input type="text" name="business_name" class="form-control rounded_form_control" placeholder="Required Field">
@@ -303,8 +303,8 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 									<button type="button" onclick="create_account('create_ptn_acc')" name="becomeptn" class="btn btn_rounded become_dark_blue_btn btn-dark-blue">BECOME A PARTNER</button>
 								</p>
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>					
 				</div>
 			</div>
 		</div>
