@@ -214,18 +214,6 @@ $(document).ready(function(){
 			$('#iframe_loader').hide();
 		});
 		
-		s_event = function(){
-			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
-			source.onmessage = function(event){
-				$('#data').html(event.data);										
-				$('#back_btn').show();
-				$('#msg').hide();
-				$('#mpesa_loader').hide();
-			}
-		}
-		setTimeout(() => {
-				s_event()
-		}, 30000);
 		mpesaPay = function(FormId){
 		waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
 		var dataString = $("form[name=" + FormId + "]").serialize();
@@ -255,8 +243,30 @@ $(document).ready(function(){
 			}
 		});
 		}
-
 });
   </script>
+  
+  <?php 
+  if(strlen($_SESSION['status_chk_order']))
+  { ?>
+<script>
+	$(document).ready(function(){
+		s_event = function(){
+			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
+			source.onmessage = function(event){
+			$('#data').html(event.data);										
+			$('#back_btn').show();
+			$('#msg').hide();
+			$('#mpesa_loader').hide();
+			}
+		}
+		setTimeout(() => {
+			s_event()
+		}, 15000);
+	});
+</script>
+	<?php 
+	}
+	?>
 </body>
 </html>
