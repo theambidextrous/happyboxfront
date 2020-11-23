@@ -79,7 +79,7 @@ switch($_REQUEST['activity']){
             // $c2b_response = $c2b->Simulate();
             $_SESSION['status_chk_order'] = $order_number;
             $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone.<br> Enter your pin to complete order.</div>';
-            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge Notification could not be sent<br> Make sure your phone is switched on and <a href="'.$_SERVER['REQUEST_URI'].'"><strong>click here to try again</strong></a>.</div>';
+            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge Notification could not be sent<br> Make sure your phone is switched on and <a href="'.$util->ClientHome().'/clt-src-hb/user-dash-checkout.php"><strong>click here to try again</strong></a>.</div>';
             if( json_decode($express_response)->ResponseCode != '0' ){
                 exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
             }
