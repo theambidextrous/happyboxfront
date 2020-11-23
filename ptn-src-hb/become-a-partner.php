@@ -255,9 +255,9 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 									<input type="text" name="fname" class="form-control rounded_form_control" placeholder="Required Field">
 								</div>
 								<div class="form-group">
-									<label>Email Address</label>
-									<input type="email" name="email" class="form-control rounded_form_control" placeholder="Required Field">
-								</div>
+									<label>Contact Person's Surname</label>
+									<input type="text" name="sname" class="form-control rounded_form_control" placeholder="Required Field">
+								</div>								
 								<div class="form-group">
 									<label>Contact Mobile Number</label>
 									<input type="text" name="phone" class="form-control rounded_form_control" placeholder="Required Field">
@@ -276,14 +276,14 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 									</select>
 								</div>
 								<div class="form-group">
+									<label>Email Address</label>
+									<input type="email" name="email" class="form-control rounded_form_control" placeholder="Required Field">
+								</div>
+								<div class="form-group">
 									<label class="text-left">Business Short Description</label> 
 									<!--<input type="text" name="short_description" class="form-control rounded_form_control" placeholder="Required Field">-->
 									<textarea name="short_description" placeholder="short description" class="form-control rounded_form_control"></textarea>
-								</div>
-								<div class="form-group">
-									<label>Contact Person's Surname</label>
-									<input type="text" name="sname" class="form-control rounded_form_control" placeholder="Required Field">
-								</div>
+								</div>								
 								<div class="form-group">
 									<label>Business Location</label>
 									<select name="location" id="location" class="form-control rounded_form_control select_ctrl">
