@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-if($('.brands_slider').length)
-{
+if($('.brands_slider').length){
 var brandsSlider = $('.brands_slider');
 
 brandsSlider.owlCarousel(
@@ -68,14 +67,13 @@ $('#goTop').on('click', function(e){
 });
    //hight current menu
  
-  $('li.active').removeClass('active');
+  //$('li.active').removeClass('active');
   $('a[href="' + location.pathname + '"]').closest('li').addClass('active'); 
 
   //WHY MOBILE SLIDER
     //mobile why slider
 
-if($('.why_slider').length)
-{
+if($('.why_slider').length){
 var whySlider = $('.why_slider');
 
 whySlider.owlCarousel(
@@ -184,8 +182,7 @@ $('.menu-close').click(function() {
     }
 });
 
-}
-);
+});
 
 //Format number to 2 decimal points with comma on thousand
 function CurrencyFormatted(amount) {
