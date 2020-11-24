@@ -126,7 +126,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               if(count($my_list_)){
                                 foreach( $my_list_ as $my_l):
                                   $admin_func_ = '<td class="empty_cell"></td>';
-                                  if($my_l['box_voucher_status'] == 6){
+                                  if($my_l['box_voucher_status'] == 6 && substr($my_l['box_voucher'],0,1) != 'R'){
                                     $_voucher = "'".$my_l['box_voucher']."'";
                                     $admin_func_ = '
                                     <td class="td_orange" onclick="declare_lost('.$_voucher.')">DECLARE LOSS OR THEFT OF VOUCHER</td>

@@ -103,7 +103,7 @@ transform: rotate(360deg);
 				$order_data = json_decode($order->get_one_byorder_limited($_SESSION['unpaid_order']), true)['data'];
 				$bill_amount = number_format(($order_data['shipping_cost']+$order_data['subtotal']),0);
 				$query_string = [
-						'business' => 'director@happybox.ke',
+						'business' => 'demo@webtribe.co.ke',
 						'order_id' => $_SESSION['unpaid_order'],
 						'type' => 'cart',
 						'amount1' => $bill_amount,

@@ -299,6 +299,7 @@ switch($_REQUEST['activity']){
             if(json_decode($prof_resp)->status == '0'){
                 exit(json_encode(['MSG' => 'Request received. We will review the information and contact you']));
             }else{
+                // exit(json_encode(['ERR' => 'Empty or invalid fields. Make sure all fields are correct!']));
                 exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
             }
         }catch(Exception $e){
@@ -460,7 +461,7 @@ switch($_REQUEST['activity']){
                 // $_img_resp = $u->edit_profile_pic($editing_user_id, 'img');
                 exit(json_encode(['MSG' => 'Partner information updated!']));
             }else{
-                exit(json_encode(['ERR' => $prof_resp.json_decode($prof_resp)->message]));
+                exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
             }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));
@@ -486,7 +487,8 @@ switch($_REQUEST['activity']){
             if( json_decode( $resp_)->status == '0'){
                 exit(json_encode(['MSG' => json_decode( $resp_)->message, 'V' => json_decode( $resp_)->voucher]));
             }else{
-                exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+                //exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+                exit(json_encode(['ERR' => $resp_]));
             }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));

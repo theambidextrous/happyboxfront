@@ -84,7 +84,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                       // exit;
                       $_bx_services = json_decode(json_decode($_b_data, true)['data']['partners'], true);
                       $_bx_price = json_decode(json_decode($_b_data, true)['data']['price'], true);
-                      // $util->Show($util->format_box_services($_bx_services));
+                      //$util->Show($util->format_box_services($_bx_services));
                       if(!$box_data){
                         $data_0 = $data_1 = [
                           'Invalid',

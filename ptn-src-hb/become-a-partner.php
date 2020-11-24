@@ -351,7 +351,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
         });
    
       create_account = function(FormId){
-      waitingDialog.show('sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
+      waitingDialog.show('Sending... Please wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
       var dataString = $("form[name=" + FormId + "]").serialize();
       $.ajax({
           type: 'post',
