@@ -118,7 +118,7 @@ if (isset($_POST['makecart'])) {
                                     <div class="purchase_hist html-content">
                                         <?= $_err ?>
                                         <input type="hidden" name="orderid" value="<?= $current_order_id ?>" />
-                                        <table class="table purchase_hist   table-bordered">
+                                        <table class="table purchase_hist table-bordered" id="<?= $current_order_id ?>">
                                             <tr class="purch_hist_tr_td">
                                                 <td class="b">ORDER NUMBER</td>
                                                 <td><?= $current_order_id ?></td>
@@ -159,7 +159,7 @@ if (isset($_POST['makecart'])) {
                                                         /** ebox */
                                             ?>
                                                         <tr>
-                                                            <td class="purch_img"><img class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
+                                                            <td class="purch_img"><img style="width:100px;height:auto;" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                             <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
                                                             <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
 
@@ -177,7 +177,7 @@ if (isset($_POST['makecart'])) {
                                                     } else {
                                                     ?>
                                                         <tr>
-                                                            <td class="purch_img"><img style="" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
+                                                            <td class="purch_img"><img style="width:100px;height:auto;" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                             <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
 
                                                             <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
@@ -228,7 +228,7 @@ if (isset($_POST['makecart'])) {
                                     <div class="down_inv">
 
                                         <!--<button type="submit" name="makecart"> <img class="img-btn btn-add-to-cart" src="shared/img/btn-add-to-cart-orange.svg"> </button>-->
-                                        <img class="img-btn btn-invoice-download" onclick="fdownload('invoicetodown<?= $_list['id'] ?>')" src="shared/img/btn-download-orange.svg">
+                                        <img class="img-btn btn-invoice-download" onclick="fdownload('<?= $current_order_id ?>')" src="shared/img/btn-download-orange.svg">
 
                                     </div>
 
@@ -344,7 +344,7 @@ if (isset($_POST['makecart'])) {
                                     </tr>
                                     <tr class="v_td_p_r">
                                         <td class="v_td_p1">ADD TO CART <img class="" src="../shared/img/cartp_mob.svg"></td>
-                                        <td class="v_td_p2">DOWNLOAD INVOICE <img onclick="fdownload('minvoicetodown<?= $_list['id'] ?>')" class="" src="../shared/img/downp.svg"></td>
+                                        <td class="v_td_p2">DOWNLOAD INVOICE <img onclick="fdownload('<?= $current_order_id ?>')" class="" src="../shared/img/downp.svg"></td>
                                     </tr>
                                     <tr class="declare_tr text-center">
                                         <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>
@@ -381,6 +381,64 @@ if (isset($_POST['makecart'])) {
     <!--end add to cart cards-->
     <!--our partners -->
 
+    <!-- Invoice Modal -->
+    <div class="modal fade" id="printableInvoice">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="printable" style="max-width:800px;width:100%;margin:60px auto;padding:0;overflow-x:hidden;background:#fff;">
+                        <div style="width:90%;margin:auto;padding-top:12px;padding-bottom:12px;" class="mob_100">
+                            <table style="width:100%;border:none;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="width:50%;vertical-align:middle;"><span style="color:#c20a2b;font-size:49px;font-weight:bold;">INVOICE</span></td>
+                                    <td style="vertical-align:middle;" align="right"><a href="https://happybox.ke/" target="_blank"><img src="img/happy_logo.png" alt="" style=" width:auto;float:right;height:70px;" /></a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="width:90%;margin:auto;padding-top:12px;padding-bottom:12px;" class="mob_100">
+                            <table style="width:100%;border:none;margin-bottom:50px;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="width:35%;margin-bottom:8px;height: 26px;background:#00acb3;color:white;font-weight:bold;padding:7px 30px;border-radius:7px;"> BILL FROM </td>
+                                    <td style="width:30%;"></td>
+                                    <td style="width:35%;margin-bottom:8px;background:#00acb3;height:26px;color:white;font-weight:bold;padding:7px 30px;border-radius:7px;" align="right"><span style="">BILL TO </span></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:35%;vertical-align:top;"><span style="font-size:20px;font-weight:bold;">HAPPYBOX</span><br>
+                                        <span>P.O. BOX 30275 – Nairobi 00100</span><br>
+                                        <span><strong>PIN No.</strong> P051767160R</span></td>
+                                    <td style="width:30%;"></td>
+                                    <td style="width:35%;vertical-align:top;" align="right"><span style="font-size:20px;font-weight:bold;"><?= json_decode($_SESSION['usr_info'])->data->fname ?></span><br>
+                                        <span><?= json_decode($_SESSION['usr_info'])->data->location ?></span></td>
+                                </tr>
+                            </table>
+                            <div style="width:100%;" id="invoiceData">
+
+                            </div>
+                            <table style="width:100%;border:none;margin-top:50px;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="" align="right"><span style=" text-align:left;font:normal normal bold 20px/45px Segoe Script;letter-spacing:0px;color:#FFFFFF;text-shadow:0px 3px 6px #00000029;background:#00acb3;border-radius:6px;padding:2px 8px;">Thank you for your business! </span></td>
+                                </tr>
+                            </table>
+                            <div style="width:100%;margin:auto;color:#999999;padding-top:70px;text-align:center;" class="mob_100">
+                                <p> If you have any questions about this invoice, please contact us <br>
+                                    by email <a href="mailto:customerservices@happybox.ke" style="color:#999999;">customerservices@happybox.ke</a> or by phone <a style="color:#999999;" href="tel:254112454540">+254 112 454 540 </a> </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Preview</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Invoice Modal -->
+
     <?php include 'shared/partials/partners.php'; ?>
     <?php include 'shared/partials/footer.php'; ?>
 
@@ -388,40 +446,32 @@ if (isset($_POST['makecart'])) {
 
     <?php include 'shared/partials/js.php'; ?>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.js"></script>
     <script>
         function fdownload(id) {
+            $("#invoiceData").html("");
+            $("#" + id).clone().appendTo("#invoiceData");
             CreatePDFfromHTML(id);
         }
 
-        function CreatePDFfromHTML(content_id) {
-            var HTML_Width = $("#" + content_id).width();
-            var HTML_Height = $("#" + content_id).height();
-            var top_left_margin = 15;
-            var PDF_Width = HTML_Width + (top_left_margin * 2);
-            var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-            var canvas_image_width = HTML_Width;
-            var canvas_image_height = HTML_Height;
+        function CreatePDFfromHTML(this_order) {
+            $('#printableInvoice').modal('show');
+            setTimeout(function() {
+                html2canvas(document.getElementById("printable")).then(canvas => {
+                    var imgData = canvas.toDataURL("image/jpeg", 1);
+                    var pdf = new jsPDF("p", "pt", "a4");
+                    var pageWidth = pdf.internal.pageSize.getWidth();
+                    var pageHeight = pdf.internal.pageSize.getHeight();
+                    var imageWidth = canvas.width;
+                    var imageHeight = canvas.height;
 
-            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-            html2canvas(document.getElementById(content_id), {
-                logging: true,
-                letterRendering: 1,
-                allowTaint: false,
-                profile: true,
-                useCORS: true
-            }).then(function(canvas) {
-                var imgData = canvas.toDataURL("image/jpeg", 1.0);
-                var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-                pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-                for (var i = 1; i <= totalPDFPages; i++) {
-                    pdf.addPage(PDF_Width, PDF_Height);
-                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
-                }
-                pdf.save("INV-<?= json_decode($_SESSION['usr_info'])->data->internal_id ?>.pdf");
-                // $("#" + content_id).hide();
-            });
+                    var ratio = imageWidth / imageHeight >= pageWidth / pageHeight ? pageWidth / imageWidth : pageHeight / imageHeight;
+                    pdf.addImage(imgData, 'JPEG', 20, 15, imageWidth * ratio, imageHeight * ratio);
+                    pdf.save("INV-" + this_order + ".pdf");
+                    //$('#printableInvoice').modal('hide');
+                });
+            }, 500);
         }
     </script>
 </body>

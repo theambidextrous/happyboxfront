@@ -1,6 +1,7 @@
 <?php 
 //check current page to assign active nav
-$ACTIVE_NAV='';
+$ACTIVE_NAV=$ACTIVE_NAV1=$ACTIVE_NAV2=$ACTIVE_NAV3=$ACTIVE_NAV4='';
+
 $CURR_PAGE=basename($_SERVER["SCRIPT_FILENAME"], '.php');
  $CURR_PAGE=$CURR_PAGE.'.php';
 if($CURR_PAGE=='category-well-being.php'){
@@ -23,7 +24,7 @@ else{
     
 }
 $login_ = '<a class="nav-link" href="'.$util->ClientHome().'/user-login.php">  <img class="top-bar-nav-icon" src="'.$util->ClientHome().'/shared/img/icons/icn-user-teal.svg"> User Login</a>';
-if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
+	if(isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
   $name_ = json_decode($_SESSION['usr_info'])->data->fname . ' ' .json_decode($_SESSION['usr_info'])->data->sname;
   $login_ = '<a class="nav-link" href="#">  <img class="top-bar-nav-icon" src="'.$util->ClientHome().'/shared/img/icons/icn-user-teal.svg"> '.$name_.'</a>';
 }

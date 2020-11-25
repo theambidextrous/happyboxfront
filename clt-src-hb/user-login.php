@@ -13,7 +13,7 @@ if(isset($_POST['login'])){
 	try{
 			$user = new User(null, $_POST['email'], $_POST['password']);
 			$news = '';
-			if( $_POST['news'] == '1'){
+			if( isset($_POST['news']) && $_POST['news'] == '1'){
 				$news = '00';
 			}
 			$login = $user->login($news);
