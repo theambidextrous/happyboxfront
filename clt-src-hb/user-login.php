@@ -74,7 +74,7 @@ if(isset($_POST['login'])){
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-9 text-center">
-				<h5 class="">Please login or create one.</h5>
+				<h5 class="">Please login or create an account.</h5>
 			</div>
 		</div>
 	</div>

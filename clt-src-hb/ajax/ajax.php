@@ -79,7 +79,7 @@ switch($_REQUEST['activity']){
             // $c2b_response = $c2b->Simulate();
             $_SESSION['status_chk_order'] = $order_number;
             $both_msg = '<div class="alert alert-success">Mpesa Automatic Charge Notification has been sent to your phone.<br> Enter your pin to complete order.</div>';
-            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge Notification could not be sent<br> Make sure your phone is switched on and try again.</div>';
+            $manual_msg = '<div class="alert alert-warning">Mpesa Automatic Charge Notification could not be sent<br> Make sure your phone is switched on and <a href="'.$util->ClientHome().'/user-dash-checkout.php"><strong>click here to try again</strong></a>.</div>';
             if( json_decode($express_response)->ResponseCode != '0' ){
                 exit(json_encode(['MSG' => $manual_msg, 'reg' =>$reg_url_response, 'c2b' => $c2b_response, 'exp' => $express_response, 'inst' => $mpesa_instructions]));
             }
@@ -299,6 +299,7 @@ switch($_REQUEST['activity']){
             if(json_decode($prof_resp)->status == '0'){
                 exit(json_encode(['MSG' => 'Request received. We will review the information and contact you']));
             }else{
+                // exit(json_encode(['ERR' => 'Empty or invalid fields. Make sure all fields are correct!']));
                 exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
             }
         }catch(Exception $e){
@@ -460,7 +461,7 @@ switch($_REQUEST['activity']){
                 // $_img_resp = $u->edit_profile_pic($editing_user_id, 'img');
                 exit(json_encode(['MSG' => 'Partner information updated!']));
             }else{
-                exit(json_encode(['ERR' => $prof_resp.json_decode($prof_resp)->message]));
+                exit(json_encode(['ERR' => json_decode($prof_resp)->message]));
             }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));
@@ -486,7 +487,8 @@ switch($_REQUEST['activity']){
             if( json_decode( $resp_)->status == '0'){
                 exit(json_encode(['MSG' => json_decode( $resp_)->message, 'V' => json_decode( $resp_)->voucher]));
             }else{
-                exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+                //exit(json_encode(['ERR' => json_decode( $resp_)->message]));
+                exit(json_encode(['ERR' => $resp_]));
             }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));

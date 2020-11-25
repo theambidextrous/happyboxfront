@@ -661,9 +661,13 @@
         ';
     }
     function format_box_services($input, $current_ptn=null){
+        //return $input;
+        $rtn = array();
         foreach( $input as $_data ):
             $l = explode('~~~', $_data);
-            $rtn[] = $l[2];
+            if( $l[0] == json_decode($_SESSION['usr_info'])->data->internal_id){
+                $rtn[] = $l[2];
+            }
         endforeach;
         return $rtn;
     }

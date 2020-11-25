@@ -1,43 +1,45 @@
 <?php
-    session_start();
-    require_once('lib/Util.php');
-    require_once('lib/User.php');
-    $util = new Util();
+session_start();
+require_once('lib/Util.php');
+require_once('lib/User.php');
+$util = new Util();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <title>Happy Box:: Staging</title>
-        <!-- Bootstrap core CSS -->
-        <?php include 'adm-src-hb/admin-partials/css.php'; ?>
-        <style>
-        .admin-login{
-            background: rgb(194, 31, 43); 
+    <title>Happy Box:: Staging</title>
+    <!-- Bootstrap core CSS -->
+    <?php include 'adm-src-hb/admin-partials/css.php'; ?>
+    <style>
+        .admin-login {
+            background: rgb(194, 31, 43);
         }
-           .login-logo img{
-  height: 40px;
-    margin-top: 50px;
-    margin-bottom: 30px
-}
-.login-btn{
-    background: #00ACB3 0% 0% no-repeat padding-box;
-    border-radius: 13px;
-    color: white !important;
-    padding: 5px 16px;
-    font-size: 15px;
-}
-        </style>
 
-    </head>
+        .login-logo img {
+            height: 40px;
+            margin-top: 50px;
+            margin-bottom: 30px
+        }
 
-    <body class="admin-login" style="background: rgb(235, 238, 241);">
-        <section>
+        .login-btn {
+            background: #00ACB3 0% 0% no-repeat padding-box;
+            border-radius: 13px;
+            color: white !important;
+            padding: 5px 16px;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+
+<body class="admin-login" style="background: rgb(235, 238, 241);">
+    <section>
         <div class="mt-5 pb-5 container">
             <div class="justify-content-center row">
                 <div class="col-md-8 col-lg-5">
@@ -51,21 +53,21 @@
                     </div>
                     <div class="mt-3 row">
                         <div class="col-md-3">
-                            <a class="text-light btn btn-primary" target="_blank" href="<?=$util-> AdminHome()?>"> Admin</a>
+                            <a class="text-light btn btn-primary" target="_blank" href="<?= $util->AdminHome() ?>">Admin</a>
                         </div>
                         <div class="col-md-3">
-                            <a class="text-light btn btn-primary" target="_blank" href="<?=$util->PartnerHome()?>/">Partner</a>
+                            <a class="text-light btn btn-primary" target="_blank" href="<?= $util->PartnerHome() ?>/">Partner</a>
                         </div>
                         <div class="col-md-3">
-                            <a class="text-light btn btn-primary" target="_blank" href="<?=$util->ClientHome()?>/">Website</a>
-                        </div>
-                    </div>
+                            <a class="text-light btn btn-primary" target="_blank" href="<?= $util->ClientHome() ?>/">Website</a>
                         </div>
                     </div>
                 </div>
-            </section>
-        <!-- Bootstrap core JavaScript -->
-        <?php include 'adm-src-hb/admin-partials/js.php'; ?>
-    </body>
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap core JavaScript -->
+    <?php include 'adm-src-hb/admin-partials/js.php'; ?>
+</body>
 
 </html>

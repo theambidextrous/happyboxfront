@@ -42,7 +42,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				<li data-target="#desktop_carousel" data-slide-to="2"></li>
 			</ul>
 			<div class="carousel-inner">
-				<div class="carousel-item active slider_1">
+				<div class="carousel-item slider_1 active">
 					<img src="<?=$util->ClientHome()?>/shared/img/slider-a.png" class="w-100">
 				</div>
 				<!-- 2-->
@@ -57,7 +57,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	</div>
 </div>
 <!--start mobile slider-->
-
+<!--
 <div class="container-fluid mobile_view">
 	<div class="slider_overlay"></div>
 	<div class="row">
@@ -80,6 +80,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 		</div>
 	</div>
 </div>
+-->
 <div class="container-fluid mobile_view">
       <div class="slider_overlay"></div>
     <div class="row">
@@ -107,13 +108,6 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 
    
   </div>
-      <!-- 2-->
-     <!--<div class="carousel-item slider_2">
-         <img src="shared/img/slider-b.png" alt="slider 2" class="w-100">     
-</div>
-     <div class="carousel-item slider_1">
-         <img src="shared/img/slider-c.png" alt="slider 3" class="w-100"> 
-</div>-->
 
 </div>
     </div>

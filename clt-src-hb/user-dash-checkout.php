@@ -112,7 +112,7 @@ transform: rotate(360deg);
 						'payee' => json_decode($_SESSION['usr'])->user->email,
 						'shipping' => 'Sendy',
 						'item' => 'Happy Box Voucher(s)',
-						'channels' => '0,2,6,10',
+						'channels' => '02610',
 						'rurl' => $util->ClientHome().$util->JpReturn(),
 						'curl' => $util->ClientHome().$util->JpCancel(),
 						'furl' => $util->ClientHome().$util->JpFail()
@@ -213,7 +213,7 @@ $(document).ready(function(){
 		$("#jambopay_iframe").on('load',function(){
 			$('#iframe_loader').hide();
 		});
-		
+
 		s_event = function(){
 			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
 			source.onmessage = function(event){
@@ -224,8 +224,9 @@ $(document).ready(function(){
 			}
 		}
 		setTimeout(() => {
-				s_event()
-		}, 60000);
+			s_event()
+		}, 15000);
+		
 		mpesaPay = function(FormId){
 		waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
 		var dataString = $("form[name=" + FormId + "]").serialize();
@@ -255,8 +256,31 @@ $(document).ready(function(){
 			}
 		});
 		}
-
 });
-  </script>
+</script>
+<!--
+<?php
+if(strlen($_SESSION['status_chk_order'])){
+?>
+<script>
+	$(document).ready(function(){
+		s_event = function(){
+			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
+			source.onmessage = function(event){
+			$('#data').html(event.data);										
+			$('#back_btn').show();
+			$('#msg').hide();
+			$('#mpesa_loader').hide();
+			}
+		}
+		setTimeout(() => {
+			s_event()
+		}, 15000);
+	});
+</script>
+<?php
+}
+?>
+-->
 </body>
 </html>
