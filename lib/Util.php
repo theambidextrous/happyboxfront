@@ -235,20 +235,24 @@
     }
     function remove_from_cart($item){
         $l=0;
-        foreach( $_SESSION['curr_usr_cart'] as $cart ){
-            if($item = $cart[0]){
-                unset($_SESSION['curr_usr_cart'][$l]);
-                return;
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $cart ){
+                if($item = $cart[0]){
+                    unset($_SESSION['curr_usr_cart'][$l]);
+                    return;
+                }
+                $l++;
             }
-            $l++;
         }
         return false;
     }
     function is_in_cart($item){
-        foreach( $_SESSION['curr_usr_cart'] as $cartt ){
-            if($item == $cartt[0]){
-                return true;
-                exit;
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $cartt ){
+                if($item == $cartt[0]){
+                    return true;
+                    exit;
+                }
             }
         }
         return false;
@@ -257,20 +261,22 @@
         $l = 0;
         //$cart_item = [$item, $qty, $ship_type, $stock];
         $this->unique_cart();
-        foreach( $_SESSION['curr_usr_cart'] as $cart ){
-            if($item == $cart[0]){
-                $current_qty = $cart[1];
-                if($current_qty > $stock && $ship_type == '1'){
-                    $new_cart = [ $item, $current_qty, 2, $stock ];
-                    $_SESSION['curr_usr_cart'][$l] = $new_cart;
-                    exit(json_encode(['ERR' => 'No enough boxes to service your order']));
-                }else{
-                    $new_cart = [ $item, $current_qty, $ship_type, $stock ];
-                    $_SESSION['curr_usr_cart'][$l] = $new_cart;
-                    return true;
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $cart ){
+                if($item == $cart[0]){
+                    $current_qty = $cart[1];
+                    if($current_qty > $stock && $ship_type == '1'){
+                        $new_cart = [ $item, $current_qty, 2, $stock ];
+                        $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                        exit(json_encode(['ERR' => 'No enough boxes to service your order']));
+                    }else{
+                        $new_cart = [ $item, $current_qty, $ship_type, $stock ];
+                        $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                        return true;
+                    }
                 }
+                $l++;
             }
-            $l++;
         }
         return false;
     }
@@ -278,30 +284,32 @@
         $l = $is_found = 0;
         $this->unique_cart();
         //$cart_item = [$item, $qty, $ship_type, $stock];
-        foreach( $_SESSION['curr_usr_cart'] as $cart ){
-            if($item == $cart[0]){
-                $is_found++;
-                // unset($_SESSION['curr_usr_cart'][$l]);
-                // $_SESSION['curr_usr_cart'] = array_values($_SESSION['curr_usr_cart']);
-                $ship_type = 1;
-                $new_qty = $cart[1]+$qty;
-                if($new_qty > $stock){
-                    $ship_type = 2;
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $cart ){
+                if($item == $cart[0]){
+                    $is_found++;
+                    // unset($_SESSION['curr_usr_cart'][$l]);
+                    // $_SESSION['curr_usr_cart'] = array_values($_SESSION['curr_usr_cart']);
+                    $ship_type = 1;
+                    $new_qty = $cart[1]+$qty;
+                    if($new_qty > $stock){
+                        $ship_type = 2;
+                    }
+                    if($new_qty > 10){
+                        $new_qty = 10;
+                    }
+                    $new_cart = [
+                        $item, $new_qty, $ship_type, $stock
+                    ];
+                    $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                    // array_push($_SESSION['curr_usr_cart'], $new_cart);
+                    return true;
                 }
-                if($new_qty > 10){
-                    $new_qty = 10;
+                if($item == $cart[0] && $is_found > 1 ){
+                    unset($_SESSION['curr_usr_cart'][$l]);
                 }
-                $new_cart = [
-                    $item, $new_qty, $ship_type, $stock
-                ];
-                $_SESSION['curr_usr_cart'][$l] = $new_cart;
-                // array_push($_SESSION['curr_usr_cart'], $new_cart);
-                return true;
+                $l++;
             }
-            if($item == $cart[0] && $is_found > 1 ){
-                unset($_SESSION['curr_usr_cart'][$l]);
-            }
-            $l++;
         }
         return false;
     }
@@ -309,36 +317,41 @@
     function change_cart_item_qty($item, $qty, $stock){
         $l = $is_found = 0;
         //$cart_item = [$item, $qty, $ship_type, $stock];
-        foreach( $_SESSION['curr_usr_cart'] as $cart ){
-            if($item == $cart[0]){
-                // $ship_type = 1;
-                $ship_type = $cart[2];
-                $new_qty = $qty;
-                if($new_qty > $stock){
-                    // $ship_type = 2;
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $cart ){
+                if($item == $cart[0]){
+                    // $ship_type = 1;
                     $ship_type = $cart[2];
+                    $new_qty = $qty;
+                    if($new_qty > $stock){
+                        // $ship_type = 2;
+                        $ship_type = $cart[2];
+                    }
+                    if($new_qty > 10){
+                        $new_qty = 10;
+                    }
+                    $new_cart = [
+                        $item, $new_qty, $ship_type, $stock
+                    ];
+                    $_SESSION['curr_usr_cart'][$l] = $new_cart;
+                    // return true;
+                    $is_found++;
                 }
-                if($new_qty > 10){
-                    $new_qty = 10;
+                if($item == $cart[0] && $is_found > 1 ){
+                    unset($_SESSION['curr_usr_cart'][$l]);
                 }
-                $new_cart = [
-                    $item, $new_qty, $ship_type, $stock
-                ];
-                $_SESSION['curr_usr_cart'][$l] = $new_cart;
-                // return true;
-                $is_found++;
+                $l++;
             }
-            if($item == $cart[0] && $is_found > 1 ){
-                unset($_SESSION['curr_usr_cart'][$l]);
-            }
-            $l++;
         }
         $this->unique_cart();
         return false;
     }
     function unique_cart(){
-        foreach( $_SESSION['curr_usr_cart'] as $cart ){
-            $_items[] = $cart[0];
+        $_items = [];
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $cart ){
+                $_items[] = $cart[0];
+            }            
         }
         $items_unq = array_unique($_items);
         
@@ -401,12 +414,14 @@
     }
     function cartCount(){
         $cnt = [];
-        foreach($_SESSION['curr_usr_cart'] as $_cart_item ):
-            if(isset($_cart_item['order_id'])){}elseif(isset($_cart_item['physical_address'])){}
-            else{
-                $cnt[] = 1;
-            }
-        endforeach;
+        if(isset($_SESSION['curr_usr_cart'])){
+            foreach( $_SESSION['curr_usr_cart'] as $_cart_item ):
+                if(isset($_cart_item['order_id'])){}elseif(isset($_cart_item['physical_address'])){}
+                else{
+                    $cnt[] = 1;
+                }
+            endforeach;
+        }
         return array_sum($cnt);
     }
     function ValidatePasswordStrength($password){
