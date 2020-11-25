@@ -388,7 +388,7 @@ if (isset($_POST['makecart'])) {
             <div class="modal-content">
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div id="printable" style="max-width:800px;width:100%;margin:60px auto;padding:0;overflow-x:hidden;background:#fff;">
+                    <div id="printable" style="width:100%;margin:0 auto;padding:0;overflow-x:hidden;background:#fff;">
                         <div style="width:90%;margin:auto;padding-top:12px;padding-bottom:12px;" class="mob_100">
                             <table style="width:100%;border:none;" cellspacing="0" cellpadding="0">
                                 <tr>
@@ -468,7 +468,7 @@ if (isset($_POST['makecart'])) {
                     var imageHeight = canvas.height;
 
                     var ratio = imageWidth / imageHeight >= pageWidth / pageHeight ? pageWidth / imageWidth : pageHeight / imageHeight;
-                    pdf.addImage(imgData, 'JPEG', 20, 20, imageWidth * ratio, imageHeight * ratio);
+                    pdf.addImage(imgData, 'JPEG', 15, 20, imageWidth * ratio, imageHeight * ratio);
                     pdf.save("INV-" + this_order + ".pdf");
                     //$('#printableInvoice').modal('hide');
                 });
