@@ -106,10 +106,10 @@ if(isset($_POST['login'])){
 				</p>
 				<p class="text-center gray_text small_p_margin_top"> <a href="user-forgot.php">Forgot password?</a> </p>
 				<p class="text-orange text-center"> Don't have an account yet? </p>
-				<p class="text-center"> <a href="user-create-account.php" class="btn btn_rounded">CREATE YOUR ACCOUNT </a> </p>
+				<p class="text-center mob_bottom_marg"> <a href="user-create-account.php" class="btn btn_rounded">CREATE YOUR ACCOUNT </a> </p>
 			</form>
 		</div>
-		<div class="col-md-5  user_login_r">
+		<div class="col-md-5  user_login_r mob_bottom_marg">
 			<div class="card user_login_card">
 				<div class="card-header bg_card_blue text-center text-white">
 					<b>Why register your voucher early?</b>

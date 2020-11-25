@@ -2684,6 +2684,12 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .section_padding_top {
+       padding-bottom: 20px !important;
+}
+    .mob_bottom_marg{
+        margin-bottom: 35px;    
+    }
     .mob_tb{
     display: table;
 }
@@ -2934,9 +2940,13 @@ padding-right: 0px !important;
 	padding: 23px 15px;
 }
 .client_logos {
-margin-top: 51px;
+
+margin-top: 60px;
     background: #e6f3f8;
+    padding-top: 25px;
 }
+
+
 .partner_become .client_logos {
     margin-top: 0px !important;
     
@@ -2978,7 +2988,7 @@ margin-top: 51px;
 	margin-top: 20px;
 }
 .neg_img {
-	margin-left: -22px;
+    margin-left: -27px;
 }
 
 .neg_top {
@@ -3295,6 +3305,7 @@ min-height: 108px;
 .congratulate .p2 {
 font-size: 16px;
     line-height: 18px;
+    margin-top: 28px;
 }
 .desktop_contact_btn {
 	text-align: center !important;
@@ -3327,9 +3338,8 @@ font-size: 16px;
 }
 
 .partners_img {
-  height: 40px;
-    margin-top: -30px;
-    margin-left: -17px;
+    margin-top: -50px;
+    margin-left: -26px !important;
 }
 partner_become .partners_img{
     
@@ -3469,7 +3479,7 @@ height: 39px;
 }
 
 .congratulate .p1 {
-    font: Bold 32px/59px Segoe Script;
+    font: Bold 32px/36px Segoe Script;
 }
 .selection_card img {
 	height: 173px;
@@ -3495,12 +3505,13 @@ height: 39px;
 	font-size: 1rem;
 	margin: 0;
 	padding-top: 24px;
-	padding-left: 20px;
+	
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 3px;
 	height: 65px;
 	background-color: white;
+            text-align: center;
 }
 .logo span {
 	font-weight: 400;
@@ -3526,7 +3537,7 @@ height: 39px;
 .logo_img {
 	height: 45px;
 	margin-top: -16px;
-	margin-left: 71px;
+	
 }
 .mob_cart {
 	position: absolute;
@@ -3648,7 +3659,9 @@ nav a {
 	color: #FA683D;
 }
 nav a:hover, nav a:focus {
-	background: #E4B363;
+background: transparent;
+    color: black;
+    text-decoration: none;
 }
 .site-nav--icon {
 	font-size: 1.4em;

@@ -163,7 +163,7 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
             <?php
             if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
             ?>
-      <li> <a class="userlogin-nav-a" href="#"> <img class="top-bar-nav-icon" src="<?= $link; ?>shared/img/mob_nav_user.svg"> <?=$name_;?></a></li>
+      <li> <a class="userlogin-nav-a" href="<?=$util->ClientHome()?>/user-dash-activate-voucher.php"> <img class="top-bar-nav-icon" src="<?= $link; ?>shared/img/mob_nav_user.svg"> <?=$name_;?></a></li>
              
             <?php }else {?>
 		<li> <a class="userlogin-nav-a" href="<?= $link; ?>user-login.php"> <img class="top-bar-nav-icon" src="<?= $link; ?>shared/img/mob_nav_user.svg"> User Login</a></li>
@@ -185,7 +185,12 @@ if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
       	<li> <a class="" href="<?=$util->PartnerHome()?>/become-a-partner.php">Become A Partner</a> </li>
 		 <?php } ?>
 		<li> <a  href="<?=$util->ClientHome()?>/contact-us.php">Contact HAPPYBOX</a> </li>
-		<li> <a href="#">Logout</a> </li>
+                 <?php
+            if(!empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()){
+            ?>
+		<li> <a href="exit.php">Logout</a> </li>
+                
+            <?php }?>
 		<!--<li> <a href="#"></a> </li>-->
 		<!--<li class="site-nav-seacrh"> <span>  <img src="<?=$util->ClientHome()?>/shared/img/icn-search.svg"></span>
 		<input type="text" name="" class=" form_search_nav_mob" placeholder="Search">

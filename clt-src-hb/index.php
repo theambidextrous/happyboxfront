@@ -90,7 +90,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
     <div class="carousel-item active slider_1">
         <div class="mob_cta text-center">  
             <a href="user-dash-activate-voucher.php" >
-   <img src="shared/img/slider_reg.svg" class="">
+                <img src="shared/img/slider_reg.png" class="">
    </a>
   </div>
         <img src="shared/img/mob_slider1.jpg" class="w-100">    
@@ -217,7 +217,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<img src="<?=$util->ClientHome()?>/shared/img/iwant_layer.svg" class="iwant_img desktop_view"> <img src="<?=$util->ClientHome()?>/shared/img/iwantmoxmob.svg" class="iwant_img mobile_view">
+				<img src="<?=$util->ClientHome()?>/shared/img/iwant_layer.svg" class="iwant_img desktop_view"> <img src="<?=$util->ClientHome()?>/shared/img/iwantmoxmob.png" class="iwant_img mobile_view">
 			</div>
 		</div>
 	</div>
@@ -274,7 +274,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 <section class="container section_padding_top why_happy">
 	<div class="row">
 		<div class="col-md-12">
-			<img src="<?=$util->ClientHome()?>/shared/img/whyhappy.svg" class="why_img desktop_view"> <img src="<?=$util->ClientHome()?>/shared/img/whyhappymob.svg" class="why_img mobile_view">
+			<img src="<?=$util->ClientHome()?>/shared/img/whyhappy.svg" class="why_img desktop_view"> <img src="<?=$util->ClientHome()?>/shared/img/whyhappymob.png" class="why_img mobile_view">
 		</div>
 	</div>
 	<div class="row why_happy_card_row desktop_view">
