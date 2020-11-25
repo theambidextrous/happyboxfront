@@ -392,33 +392,33 @@ if (isset($_POST['makecart'])) {
                         <div style="width:90%;margin:auto;padding-top:12px;padding-bottom:12px;" class="mob_100">
                             <table style="width:100%;border:none;" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td style="width:50%;vertical-align:middle;"><span style="color:#c20a2b;font-size:49px;font-weight:bold;">INVOICE</span></td>
-                                    <td style="vertical-align:middle;" align="right"><a href="<?=$util->ClientHome()?>/" target="_blank"><img src="shared/img/happy_logo.png" alt="" style=" width:auto;float:right;height:70px;" /></a></td>
+                                    <td style="width:50%;vertical-align:middle;border:none;"><span style="color:#c20a2b;font-size:49px;font-weight:bold;">INVOICE</span></td>
+                                    <td style="vertical-align:middle;border:none;" align="right"><a href="<?=$util->ClientHome()?>/" target="_blank"><img src="shared/img/happy_logo.png" alt="" style=" width:auto;float:right;height:70px;" /></a></td>
                                 </tr>
                             </table>
                         </div>
                         <div style="width:90%;margin:auto;padding-top:12px;padding-bottom:12px;" class="mob_100">
                             <table style="width:100%;border:none;margin-bottom:50px;" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td style="width:35%;margin-bottom:8px;height: 26px;background:#00acb3;color:white;font-weight:bold;padding:7px 30px;border-radius:7px;"> BILL FROM </td>
-                                    <td style="width:30%;"></td>
-                                    <td style="width:35%;margin-bottom:8px;background:#00acb3;height:26px;color:white;font-weight:bold;padding:7px 30px;border-radius:7px;" align="right"><span style="">BILL TO </span></td>
+                                    <td style="width:35%;margin-bottom:8px;height: 26px;background:#00acb3;color:white;font-weight:bold;padding:7px 30px;border-radius:7px;border:none;"> BILL FROM </td>
+                                    <td style="width:30%;border:none;"></td>
+                                    <td style="width:35%;margin-bottom:8px;background:#00acb3;height:26px;color:white;font-weight:bold;padding:7px 30px;border-radius:7px;border:none;" align="right"><span style="">BILL TO </span></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:35%;vertical-align:top;"><span style="font-size:20px;font-weight:bold;">HAPPYBOX</span><br>
+                                    <td style="width:35%;vertical-align:top;border:none;"><span style="font-size:20px;font-weight:bold;">HAPPYBOX</span><br>
                                         <span>P.O. BOX 30275 – Nairobi 00100</span><br>
                                         <span><strong>PIN No.</strong> P051767160R</span></td>
-                                    <td style="width:30%;"></td>
-                                    <td style="width:35%;vertical-align:top;" align="right"><span style="font-size:20px;font-weight:bold;"><?= $user_info->data->fname." ".$user_info->data->lname ?></span><br>
+                                    <td style="width:30%;border:none;"></td>
+                                    <td style="width:35%;vertical-align:top;border:none;" align="right"><span style="font-size:20px;font-weight:bold;"><?= $user_info->data->fname." ".$user_info->data->lname ?></span><br>
                                         <span><?= $user_info->data->location ?></span></td>
                                 </tr>
                             </table>
                             <div style="width:100%;" id="invoiceData">
 
                             </div>
-                            <table style="width:100%;border:none;margin-top:50px;" cellspacing="0" cellpadding="0">
+                            <table style="width:100%;border:none;margin-top:50px;border:none;" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td style="" align="right"><span style=" text-align:left;font:normal normal bold 20px/45px Segoe Script;letter-spacing:0px;color:#FFFFFF;text-shadow:0px 3px 6px #00000029;background:#00acb3;border-radius:6px;padding:2px 8px;">Thank you for your business! </span></td>
+                                    <td style="border:none;" align="right"><span style=" text-align:left;font:normal normal bold 20px/45px Segoe Script;letter-spacing:0px;color:#FFFFFF;text-shadow:0px 3px 6px #00000029;background:#00acb3;border-radius:6px;padding:2px 8px;">Thank you for your business! </span></td>
                                 </tr>
                             </table>
                             <div style="width:100%;margin:auto;color:#999999;padding-top:70px;text-align:center;" class="mob_100">
