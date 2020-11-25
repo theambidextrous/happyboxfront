@@ -123,7 +123,7 @@ if (isset($_POST['makecart'])) {
                                             <tr class="purch_hist_tr_td">
                                                 <td class="b">ORDER NUMBER</td>
                                                 <td><?= $current_order_id ?></td>
-                                                <td colspan="4" class="invisible_table"></td>
+                                                <td colspan="4" class="invisible_table" style="background-color:#FFF;"></td>
                                             </tr>
                                             <tr class="purch_hist_tr_td">
                                                 <th class="b col_1">IMAGE</th>
