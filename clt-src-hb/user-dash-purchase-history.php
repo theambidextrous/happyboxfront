@@ -160,7 +160,7 @@ if (isset($_POST['makecart'])) {
                                                         /** ebox */
                                             ?>
                                                         <tr>
-                                                            <td class="purch_img"><img style="width:100px;height:auto;" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
+                                                            <td class="purch_img"><img style="max-width:100px;" class="img-fluid d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                             <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
                                                             <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
 
@@ -178,7 +178,7 @@ if (isset($_POST['makecart'])) {
                                                     } else {
                                                     ?>
                                                         <tr>
-                                                            <td class="purch_img"><img style="width:100px;height:auto;" class="d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
+                                                            <td class="purch_img"><img style="max-width:100px;" class="img-fluid d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
                                                             <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
 
                                                             <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
@@ -393,7 +393,7 @@ if (isset($_POST['makecart'])) {
                             <table style="width:100%;border:none;" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td style="width:50%;vertical-align:middle;border:none;"><span style="color:#c20a2b;font-size:49px;font-weight:bold;">INVOICE</span></td>
-                                    <td style="vertical-align:middle;border:none;" align="right"><a href="<?=$util->ClientHome()?>/" target="_blank"><img src="shared/img/happy_logo.png" alt="" style=" width:auto;float:right;height:70px;" /></a></td>
+                                    <td style="vertical-align:middle;border:none;" align="right"><a href="<?= $util->ClientHome() ?>/" target="_blank"><img src="shared/img/happy_logo.png" alt="" style=" width:auto;float:right;height:70px;" /></a></td>
                                 </tr>
                             </table>
                         </div>
@@ -409,7 +409,7 @@ if (isset($_POST['makecart'])) {
                                         <span>P.O. BOX 30275 – Nairobi 00100</span><br>
                                         <span><strong>PIN No.</strong> P051767160R</span></td>
                                     <td style="width:30%;border:none;"></td>
-                                    <td style="width:35%;vertical-align:top;border:none;" align="right"><span style="font-size:20px;font-weight:bold;"><?= $user_info->data->fname." ".$user_info->data->lname ?></span><br>
+                                    <td style="width:35%;vertical-align:top;border:none;" align="right"><span style="font-size:20px;font-weight:bold;"><?= $user_info->data->fname . " " . $user_info->data->lname ?></span><br>
                                         <span><?= $user_info->data->location ?></span></td>
                                 </tr>
                             </table>
