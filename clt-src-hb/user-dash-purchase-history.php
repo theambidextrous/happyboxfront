@@ -468,7 +468,7 @@ if (isset($_POST['makecart'])) {
                     var imageHeight = canvas.height;
 
                     var ratio = imageWidth / imageHeight >= pageWidth / pageHeight ? pageWidth / imageWidth : pageHeight / imageHeight;
-                    pdf.addImage(imgData, 'JPEG', 15, 20, imageWidth * ratio, imageHeight * ratio);
+                    pdf.addImage(imgData, 'JPEG', 0, 40, imageWidth * ratio, imageHeight * ratio);
                     pdf.save("INV-" + this_order + ".pdf");
                     //$('#printableInvoice').modal('hide');
                 });
