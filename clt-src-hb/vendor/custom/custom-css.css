@@ -1756,7 +1756,7 @@ color: #C20A2B;
 	font-size: 14px;
 }
 .client_body .btn_rounded {
-	background: #00ACB3 0% 0% no-repeat padding-box;
+	background: #00ACB3 0% 0% no-repeat padding-box !important;
 }
 .pad_top_bottom {
 	padding-top: 50px;
@@ -2684,6 +2684,24 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+    .mob_tb{
+    display: table;
+}
+    .mob_td{
+   display: table-cell;
+}
+    .inline_div {
+    background: #00ACB3 0% 0% no-repeat padding-box;
+    color: white;
+    padding: 7px 13px;
+    height: 43px;
+    display: block !important;
+}
+    
+
+.client_body .btn_rounded {
+      margin-top: 7px;
+}
     .sound_good {
        border: 0px !important
         
@@ -2916,8 +2934,12 @@ padding-right: 0px !important;
 	padding: 23px 15px;
 }
 .client_logos {
-	    margin-top: -2px;
+margin-top: 51px;
     background: #e6f3f8;
+}
+.partner_become .client_logos {
+    margin-top: 0px !important;
+    
 }
 .declare_tr {
 	background: #FA683D;
@@ -2958,11 +2980,13 @@ padding-right: 0px !important;
 .neg_img {
 	margin-left: -22px;
 }
+
 .neg_top {
-	margin-top: -5px;
+    margin-top: 11px;
 }
+
 .card_v_steps {
-	padding: 11px 0px 7px !important;
+    padding: 0px 0px 22px !important;
 }
 .inline_div {
 	background: #00ACB3 0% 0% no-repeat padding-box !important;
@@ -2972,7 +2996,7 @@ padding-right: 0px !important;
 	height: 21px !important;
 }
 .user_activate_steps_i {
-	height: 65px;
+    height: 59px;
 }
 .no_border_mob {
 	border: 0px !important;
@@ -3303,11 +3327,13 @@ font-size: 16px;
 }
 
 .partners_img {
-    height: 34px;
+  height: 40px;
     margin-top: -30px;
     margin-left: -17px;
 }
-
+partner_become .partners_img{
+    
+}
 .card_partner_mobcard h4 {
 	font-weight: bold;
 }
