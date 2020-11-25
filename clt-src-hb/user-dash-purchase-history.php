@@ -409,7 +409,7 @@ if (isset($_POST['makecart'])) {
                                         <span>P.O. BOX 30275 – Nairobi 00100</span><br>
                                         <span><strong>PIN No.</strong> P051767160R</span></td>
                                     <td style="width:30%;border:none;"></td>
-                                    <td style="width:35%;vertical-align:top;border:none;" align="right"><span style="font-size:20px;font-weight:bold;"><?= $user_info->data->fname . " " . $user_info->data->lname ?></span><br>
+                                    <td style="width:35%;vertical-align:top;border:none;" align="right"><span style="font-size:20px;font-weight:bold;"><?= $user_info->data->fname . " " . $user_info->data->sname ?></span><br>
                                         <span><?= $user_info->data->location ?></span></td>
                                 </tr>
                             </table>
