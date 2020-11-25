@@ -117,7 +117,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 	<div class="container-fluid">
 		<div class="row ">
 			<div class="col-md-12">
-				<img src="../shared/img/becomeHappyMob.svg" class="happy_become_mobile"/>
+				<img src="../shared/img/becomeHappyMob.png" class="happy_become_mobile"/>
 			</div>
 		</div>
 	</div>

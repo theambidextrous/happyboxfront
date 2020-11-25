@@ -69,7 +69,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
       <div class="container no_pad_lr_mob">
       <div class="row justify-content-center">
         
-            <div class="">
+            <div class="col-12">
                 <img class="w-100" src="shared/img/gastronomy_mob_banner.png">
             
               </div>
