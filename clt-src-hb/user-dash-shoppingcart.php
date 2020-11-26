@@ -168,8 +168,10 @@ $util->ShowErrors(1);
 								$raw_data = json_decode($box->get_byidf('00', $_cart_item[0]));
 								$_box_data = $raw_data->data;
 								$_b_cost = floor($_cart_item[1]*$_box_data->price);
-								$_total_cart[] = $_b_cost;
-								$_total_shipping = 0;
+								//$_total_cart[] = $_b_cost;
+								//$_total_shipping = 0;
+                                                                $_total_cart2[] = $_b_cost;
+								$_total_shipping2 = 0;
 								$_media = $picture->get_byitem('00', $_cart_item[0]);
 								$_media = json_decode($_media, true)['data'];
 								$_3d = 'shared/img/cart_img.png';
@@ -221,7 +223,7 @@ $util->ShowErrors(1);
 					</tr> -->
 					<tr align="right" class="cart_totals tr_border_top">
                                             <td ><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
-						<td colspan="">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
+						<td colspan="">KES <?=number_format((array_sum($_total_cart2)+$_total_shipping2), 2)?></td>
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
 						<td colspan="2 ">
