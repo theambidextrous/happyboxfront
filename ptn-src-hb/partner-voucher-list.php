@@ -100,11 +100,11 @@ $list = json_decode($list, true)['data'];
                     }
                     /** */
                     $box_idf = $_list['box_internal_id'];
-                    $box_voucher_code = $_list['box_voucher'];
-                    $m_voucher = "'" . $box_voucher_code . "'";
+                    $box_voucher_code = $_list['box_voucher'];                    
                     $box_voucher_status = $_list['box_voucher_status'];
                     $admin_func = '';
                     if ($box_voucher_status == 3) {
+                      $m_voucher = "'" . $box_voucher_code . "'";
                       $m_partner = "'" . json_decode($_SESSION['usr_info'])->data->internal_id . "'";
                       $b_v_status = '<td class="hap_success">REDEEMED</td>';
                       $admin_func = ' <td class="hap_danger hap_desk">
@@ -113,7 +113,7 @@ $list = json_decode($list, true)['data'];
                       <td id="datepilckerx" class="hap_primary">
                        <!--<button type="button" class="modify_img_btn" data-toggle="modal" data-target="#modif_booking_modal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>-->
                        <button type="button" class="modify_img_btn" title="Click the field below to pick the new date">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
-                      <input type="text" id="pickDate" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>';
+                      <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>';
                     } elseif ($box_voucher_status == 4) {
                       $admin_func = '
                       <td class="empty_cell"></td>
@@ -179,11 +179,11 @@ $list = json_decode($list, true)['data'];
               }
               /** */
               $box_idf = $_list['box_internal_id'];
-              $box_voucher_code = $_list['box_voucher'];
-              $m_voucher = "'" . $box_voucher_code . "'";
+              $box_voucher_code = $_list['box_voucher'];              
               $box_voucher_status = $_list['box_voucher_status'];
               $admin_func = '';
               if ($box_voucher_status == 3) {
+                $m_voucher = "'" . $box_voucher_code . "'";
                 $m_partner = "'" . json_decode($_SESSION['usr_info'])->data->internal_id . "'";
                 $b_v_status = '<td class="hap_success_mob">REDEEMED</td>';
                 $admin_func = ' <td class="v_td_canc">
@@ -192,7 +192,7 @@ $list = json_decode($list, true)['data'];
                 <td id="datepilckerx" class="v_td_modi">
                   <!--<button type="button" class="modify_img_btn" data-toggle="modal" data-target="#modif_booking_modal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>-->
                   <button type="button" class="modify_img_btn" title="Click the field below to pick the new date">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
-                <input type="text" id="pickDate" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>
+                <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>
                 ';
               } elseif ($box_voucher_status == 4) {
                 $admin_func = ' <td class="empty_cell a2"></td>';
