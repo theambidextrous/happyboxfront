@@ -144,16 +144,10 @@ $list = json_decode($list, true)['data'];
                 </tbody>
               </table>
               <!-- Button to Open the Modal -->
-
-
-
             </div>
           </div>
           <br>
           <br>
-
-
-
         </div>
       </div>
       <div class="voucher_list_mob mobile_view">
@@ -255,10 +249,6 @@ $list = json_decode($list, true)['data'];
                   </tr>
                   <tr class="voucher_list_table_mob_tr text-center">
                     <?= $admin_func ?>
-                    <!-- <td class="v_td_canc">CANCEL VOUCHER</td>
-                        <td class="v_td_modi"> MODIFY DATE<a >
-                          <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img td_edit_img_mob"/></a>
-                        </td> -->
                   </tr>
                 </tbody>
               </table>
@@ -332,16 +322,9 @@ $list = json_decode($list, true)['data'];
               <input type="text" id="pickDate" class="datepicker form-control rounded_form_control" placeholder="Pick date">
             </div>
             <button class="btn btn_rounded btn-dark-blue">Save</button>
-
-
           </div>
-
         </div>
-
-
       </div>
-
-
 
     </div>
   </div>
@@ -444,10 +427,7 @@ $list = json_decode($list, true)['data'];
     </div>
     <!--end cancel modal-->
 
-
     </body>
-
-
     <script>
       $(document).ready(function() {
         cancell_voucher_pop = function(vcode) {
