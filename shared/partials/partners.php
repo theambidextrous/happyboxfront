@@ -3,19 +3,21 @@
     // $util->Show($_partners_slide_data);
 ?>
 <section class=" client_logos">
+    <img src="<?=$util->AppHome()?>/shared/img/partner_mob.svg" class="partners_img mobile_view" style="margin-left: -6px;">
     <div class="container">
-        
-               <div class="row">
+         <div class="row">
       
              <div class="col-md-12">
-                 <img src="../shared/img/partners.png" class="partners_img">
+                 <img src="<?=$util->AppHome()?>/shared/img/partners.svg" class="partners_img desktop_view">
+             
+               
+
           </div>   
           
       </div>
-        
     </div>
-       
-    <div class="container">
+              
+      <div class="container">
        <div class="brands row">
                 <div class="col">
                  <div class="brands_slider_container">
