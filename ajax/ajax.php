@@ -45,7 +45,7 @@ switch($_REQUEST['activity']){
             $token = json_decode($_SESSION['usr'])->access_token;
             $mpesa_phone = '254' . intval($_POST['mpesaphone']);
             $order_number = $_POST['ordernumber'];
-            $order_amount = 10;//$_POST['orderamount'];
+            $order_amount = $_POST['orderamount'];
             if(empty($order_number) || empty($mpesa_phone) || $order_amount < 10 ){
                 throw new Exception('Error occured. Make sure the order amount is not zero and phone starts with 07..');
             }
