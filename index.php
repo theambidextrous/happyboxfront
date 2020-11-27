@@ -265,7 +265,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 			<div class="row">
 				<!--congratulate yourself-->
 				<div class="col-md-12 congratulate text-center section_margin_top">
-					<p class="p1">Congratulate yourself …</p>
+					<p class="p1">Congratulate yourself … </p>
 					<p class="p2"><b>On selecting a tailored gift experience packed with a multitude of unique options and exclusive deals to choose from!</b></p>
 				</div>
 			</div>
@@ -352,6 +352,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 								<div class="card-body why_happy_card_body text-center">
 									<img src="<?=$util->AppHome()?>/shared/img/icons/icn-large-choice.svg" />
 									<p> A large choice of activities in each box </p>
+                                                                        
 								</div>
 							</div>
 						</div>
@@ -467,7 +468,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 					<div class="col-md-12 text-center">
 						<h3 id="vvv"></h3>
 						<div class="action_btns desktop_view">
-							<a href="" data-dismiss="modal"> <img class="" src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.svg"></a> <a href="user-dash-shoppingcart.php"> <img class="" src="<?=$util->AppHome()?>/shared/img/btn-checkout.svg"></a>
+							<a href="" data-dismiss="modal"> <img class="" src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.svg"></a> <a href="<?=$util->ClientHome()?>user-dash-shoppingcart.php"> <img class="" src="<?=$util->AppHome()?>/shared/img/btn-checkout.svg"></a>
 						</div>
 						<div class="okay_btn mobile_view text-center">
 							<img data-dismiss="modal" class="" src="<?=$util->AppHome()?>/shared/img/okay_mob.svg"></a>

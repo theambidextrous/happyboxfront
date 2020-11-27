@@ -85,13 +85,13 @@ transform: rotate(360deg);
 	</div>
 	<!--progress strip-->
 	<div class=" cart_progress_strip row">
-		<div class="col-md-3 cart_strip">
+		<div class="col-3 cart_strip">
 		</div>
-		<div class="col-md-3 shipping_strip">
+		<div class="col-3 shipping_strip">
 		</div>
-		<div class="col-md-3 summary_strip">
+		<div class="col-3 summary_strip">
 		</div>
-		<div class="col-md-3 payment_strip">
+		<div class="col-3 payment_strip">
 		</div>
 	</div>
 	<br>

@@ -234,7 +234,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                         <table class="order_summ_actions">
                         <tr align="right" class="cart_totals  cart_totals_actions ">
                           <td colspan="6 ">
-                            <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-back-to-shipping-orange.svg"></a>
+                            <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-back-to-shipping-orange.png"></a>
                             <?php 
                             if(!isset(json_decode($_SESSION['usr'])->access_token)){
                             ?>
@@ -372,10 +372,10 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                               ?>
                                 <a href="<?=$util->ClientHome()?>/user-login.php">Login To Complete Order</a>
                               <?php }else{ ?>
-                                <button type="submit" class="invisible_btn" name="checkout"><img src="<?=$util->AppHome()?>/shared/img/checkout_mob.svg"></button> 
+                                <button type="submit" class="invisible_btn" name="checkout"><img src="<?=$util->AppHome()?>/shared/img/checkout_mob.png"></button> 
                             
                               <?php } ?>
-                              <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-back-to-shipping-orange.svg"></a>
+                              <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-back-to-shipping-orange.png"></a>
                           
                             </td>
                           </tr>

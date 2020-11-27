@@ -23,7 +23,8 @@
         return $this->LoadEnv()->APP_ADMIN_HOME;
     }
     function AjaxHome(){
-        return $this->LoadEnv()->APP_CLIENT_HOME . '/ajax/ajax.php';
+        //return $this->LoadEnv()->APP_CLIENT_HOME . '/ajax.php';
+         return $this->LoadEnv()->APP_HOME . '/ajax/ajax.php';
     }
     function AppErrors(){
         return $this->LoadEnv()->APP_ERRORS;

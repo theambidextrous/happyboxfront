@@ -272,11 +272,12 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 							if($_cart_item[2] == 2){ /** ebox */
 					?>
 					<tr class="table-item-row">
-						<td class="pdt_img"><img src="<?=$_3d?>" /></td>
-						<td class="cart_des"><h6><?=$_box_data->name?></h6> 
+                                        <table>
+                                            <tr><td class="pdt_img"><img src="<?=$_3d?>" /></td></tr>
+                                           <tr> <td class="cart_des"><h6><?=$_box_data->name?></h6> 
 							<span><?=$_box_data->description?></span><br>
-							<b>KES <?=number_format($_box_data->price, 2)?></b></td>
-						<td><h6><span class="text-orange"><b>E-Box |</b></span> Delivered via email</h6>
+                                                        <b>KES <?=number_format($_box_data->price, 2)?></b></td></tr>
+                                          	  <tr><td><h6><span class="text-orange"><b>E-Box |</b></span> Delivered via email</h6>
 							<div class="form-group">
 								<label for="usr">Recipient Email Address</label>
 								<input required type="email" class="form-control rounded_form_control" name="<?=$_cart_item[0]?>__email" id="email" value="<?=$_cart_item[4][0]?>">
@@ -284,28 +285,38 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 							<div class="form-group">
 								<label for="pwd">Recipient Name</label>
 								<input required type="text" class="form-control rounded_form_control" name="<?=$_cart_item[0]?>__name" id="name" value="<?=$_cart_item[4][1]?>">
-							</div></td>
-						<td class="shipping_comment"><div class="form-group">
+                                                        </div></td></tr>  <tr>
+                                                        	<td class="shipping_comment"><div class="form-group">
 								<label for="comment">Personalised message to recipient <span class="form-italic">(max characters 230)</span></label>
 								<textarea class="form-control rounded_form_control" rows="5" name="<?=$_cart_item[0]?>__comment" id="comment" placeholder=""><?=$_cart_item[4][2]?>
 </textarea>
 							</div></td>
-					</tr>
+                                                  </tr>
+                                            
+                                        </table>
+                                </tr>
 					<tr><td colspan="4"><hr class="table-item-row-divider" /></td></tr>
 					<?php
 								}else{
 									array_push($has_physical_box, 1);
 					?>
 					<!--3-->
-					<tr class="table-item-row">
+						<tr class="table-item-row">
+                                                <table>
+                                            <tr>
 						<td class="pdt_img"><img src="<?=$_3d?>" /></td>
+                                            </tr><tr>
 						<td class="cart_des"><h6><?=$_box_data->name?></h6>
 							<span><?=$_box_data->description?></span><br>
 							<b>KES <?=number_format($_box_data->price, 2)?></b></td>
+                                            </tr><tr>
 						<td><h6> <span class="text-orange"><b>Physical Delivery |</b></span> Delivered via sendy </h6></td>
+                                            </tr><tr>
 						<td class="shipping_comment physical_td"></td>
 					</tr>
-					<tr><td colspan="4"><hr class="table-item-row-divider" /></td></tr>
+                                                </table>
+                                </tr>
+					
 					<?php 
 						}
 					}

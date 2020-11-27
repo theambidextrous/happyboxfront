@@ -2684,6 +2684,10 @@ padding-right: 0px !important;
 /*end equal height */
 /*mobile view */
 @media (max-width: 767px) {
+   .partner_wrap .mob_cart {
+       display: none !important;
+}
+   
     .section_padding_top {
        padding-bottom: 20px !important;
 }
