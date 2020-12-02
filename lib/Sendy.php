@@ -90,6 +90,7 @@
         $post_fields['data']['delivery_details']['express'] = false;
         $post_fields['data']['delivery_details']['skew'] = 1;
         // return $post_fields;
+        file_put_contents("../client/sendypostfields.log", $post_fields, FILE_APPEND | LOCK_EX);
         return $this->request_shipping($post_fields);
     }
     function request_shipping($post_fields){
