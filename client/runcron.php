@@ -14,6 +14,7 @@ if (date('N') == 6) {
 }
 $orders_list = json_decode($order->run_cron(), true);
 $payload = $orders_list['data'];
+file_put_contents("sendyorderpayload.log", $payload, FILE_APPEND | LOCK_EX);
 if (count($payload)) {
     try {
         foreach ($payload as $_item) :
@@ -25,6 +26,7 @@ if (count($payload)) {
             $_item['pick_up_date'] = date('Y-m-d H:i:s', strtotime($kesho));
             $sendy_rsp = $sendy->post_fields($_item, $_item['order_id'], $_item['box_voucher']);
             $sendy_rsp = json_decode($sendy_rsp, true);
+            file_put_contents("sendyresponsepayload.log", $sendy_rsp, FILE_APPEND | LOCK_EX);
             if ($sendy_rsp['status']) {
                 $_body = ['id' => $_item['id'], 'is_send' => true, 'sendy_log' => json_encode($sendy_rsp)];
                 $update_resp = $order->update_ship_request($_body);
