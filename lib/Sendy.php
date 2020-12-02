@@ -16,7 +16,7 @@
         $util = new Util();
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, $util->MapsUrl() . 'address='.urlencode($location).'&key='.$this->key);
+        curl_setopt($ch, CURLOPT_URL, $util->MapsUrl() . 'address='.urlencode($location).'&components=country:KE&key='.$this->key);
         $content = curl_exec($ch);
         $resp = json_decode($content, true);
         // print_r($resp);

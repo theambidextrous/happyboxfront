@@ -213,8 +213,12 @@
             }
         });
         function initialize() {
+            var options = {
+                componentRestrictions: {country: "KE"}
+            };
+
             var input = document.getElementById(\''.$id.'\');
-            var autocomplete = new google.maps.places.Autocomplete(input);
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
         }
         </script>';
     }
