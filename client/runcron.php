@@ -19,7 +19,7 @@ $payload = $orders_list['data'];
 if (count($payload)) {
     try {
         foreach ($payload as $_item) :
-            $kesho = date('Y-m-d', strtotime('tomorrow')) . ' 08:00';
+            $kesho = date('Y-m-d', strtotime('tomorrow')) . ' 06:30';
             $order_user = find_delivery_user($_item['order_meta']);
             $_item['name'] = $order_user[0];
             $_item['phone'] = $order_user[1];
