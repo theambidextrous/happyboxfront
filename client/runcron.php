@@ -13,7 +13,7 @@ if (date('N') == 6) {
     ]));
 }
 $orders_list = $order->run_cron();
-file_put_contents("sendyorderpayload.log", $orders_list, FILE_APPEND | LOCK_EX);
+//file_put_contents("sendyorderpayload.log", $orders_list.PHP_EOL, FILE_APPEND | LOCK_EX);
 $orders_list = json_decode($order->run_cron(), true);
 $payload = $orders_list['data'];
 if (count($payload)) {
@@ -26,7 +26,7 @@ if (count($payload)) {
             $_item['qty'] = process_meta($_item['order_meta']);
             $_item['pick_up_date'] = date('Y-m-d H:i:s', strtotime($kesho));
             $sendy_rsp = $sendy->post_fields($_item, $_item['order_id'], $_item['box_voucher']);
-            file_put_contents("sendyresponsepayload.log", $sendy_rsp, FILE_APPEND | LOCK_EX);
+            //file_put_contents("sendyresponsepayload.log", $sendy_rsp.PHP_EOL, FILE_APPEND | LOCK_EX);
             $sendy_rsp = json_decode($sendy_rsp, true);            
             if ($sendy_rsp['status']) {
                 $_body = ['id' => $_item['id'], 'is_send' => true, 'sendy_log' => json_encode($sendy_rsp)];
