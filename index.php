@@ -27,7 +27,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	<?php include 'shared/partials/css.php'; ?>
 </head>
 
-<body class="client_body">
+<body class="client_body home_page">
 
 	<!-- Navigation -->
 	<?php include 'shared/partials/nav.php'; ?>
@@ -276,7 +276,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 	<section class="container section_padding_top why_happy">
 		<div class="row">
 			<div class="col-md-12">
-				<img src="<?=$util->AppHome()?>/shared/img/whyhappy.svg" class="why_img desktop_view"> <img src="<?=$util->AppHome()?>/shared/img/whyhappymob.png" class="why_img mobile_view">
+				<img src="<?=$util->AppHome()?>/shared/img/whyhappy.png" class="why_img desktop_view"> <img src="<?=$util->AppHome()?>/shared/img/whyhappymob.png" class="why_img mobile_view">
 			</div>
 		</div>
 		<div class="row why_happy_card_row desktop_view">

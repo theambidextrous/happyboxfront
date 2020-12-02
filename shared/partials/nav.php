@@ -126,7 +126,7 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
 				<!-- Links -->
 				<ul class="navbar-nav  ml-auto right_menu">
 					<li class="nav-item"> <a class="nav-link contact_nav <?= $ACTIVE_NAV4; ?>" href="<?= $util->AppHome() ?>/contact-us.php">Contact HAPPYBOX</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="<?= $util->ClientHome() ?>/user-dash-activate-voucher.php"> <img src="<?= $util->AppHome() ?>/shared/img/icons/btn-register-your-voucher.svg"> </a> </li>
+					<li class="nav-item"> <a class="nav-link" href="<?= $util->ClientHome() ?>/user-dash-activate-voucher.php"> <img src="<?= $util->AppHome() ?>/shared/img/icons/btn-register-your-voucher.png"> </a> </li>
 				</ul>
 			</nav>
 		</div>

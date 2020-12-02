@@ -2682,6 +2682,115 @@ padding-right: 0px !important;
     /*equal height */
     
 /*end equal height */
+
+/*Ipad Landscape */
+
+/* Landscape */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+      .why_happy_card {
+  height: 192px !important;
+}
+.sports_banner_title h3 {
+      padding: 2px 24px !important;
+}
+.cat_well .sports_card .selection_card_body {
+    height: 338px !important;
+}
+
+}
+
+/* end IPAD lanscape */
+/*Ipad Landscape */
+
+
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+{
+    .user_activate_steps_i .col-11{
+      padding-left: 60px !important;
+    margin-top: -16px;
+    }
+    .activate_v_class{
+        padding-right: 20px !important;
+    }
+    .col-md-5 {
+    -ms-flex: 0 0 49.666667% !important;
+    flex: 0 0 49.666667% !important;
+    max-width: 49.666667% !important;
+}
+    .top-bar-nav{
+    text-align: right !important;
+}
+    .partner_logo_in img {
+    height: auto !important;
+   }
+      .well_banner,.gastronomy_banner,.sports_banner {
+    min-height:  282px !important;
+        height: auto !important;
+  
+}
+      .well_banner_title h3 ,.gastronomy_banner_title h3,.sports_banner_title h3{
+       font: Bold 22px/37px Segoe Script !important;
+    
+      }
+      .cat_cols{
+        flex: 0 0 50% !important;
+    max-width: 50% !important;
+}  
+      
+      .right_menu li a {
+       font-size: 16px !important;
+    
+      }
+      .right_menu img {
+    height: 27px;
+    margin-left: 4px;
+}
+            .why_happy_card {
+  height: 192px !important;
+}
+.sports_banner_title h3 {
+      padding: 2px 24px !important;
+}
+.cat_well .sports_card .selection_card_body {
+    height: 338px !important;
+}
+.navbar-light .navbar-toggler{
+   /* display: none !important;*/
+}
+.home_page .sports_card .selection_card_body {
+    height: 275px !important;
+    
+}
+.iwant_card_p {
+     height: 144px !important;    
+}.cat_well .pricing {
+        padding-top: 0px !important; 
+    font-size: 13px !important;
+}
+.why_happy_card_body img {
+    height: 42px;
+    margin-bottom: 14px;
+}
+.navbar-expand-sm .navbar-nav .nav-link {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.main-menu-left li a {
+    font-size: 16px !important;
+    
+}
+
+}
+
+/* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
    .partner_wrap .mob_cart {
@@ -3887,6 +3996,7 @@ background: transparent;
 }
 }
 /*end mobile */
+
 
 .password_ok_img:hover{
     cursor: pointer !important;

@@ -119,7 +119,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
         $_pop_str = str_replace("'", "", $_pop_str);
         $_pop_str = preg_replace("/\r|\n/", "", $_pop_str);
       ?>
-        <div class="col-md-4 no_pad_lr">
+        <div class="col-md-4 no_pad_lr cat_cols">
           <div class="card selection_card sports_card">
             <div class="sport_card_hover" onclick="booklet_show('<?= $_pop_str ?>')">
               <img src="<?= $util->AppHome() ?>/shared/img/icons/magnifyglass.svg" />

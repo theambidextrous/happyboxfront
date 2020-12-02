@@ -94,7 +94,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 		<div class="col-md-5 desktop_view">
 			<div class="user_activate_r">
 				<div class="user_activate_steps">
-					<img src="<?=$util->AppHome()?>/shared/img/user_iwant.svg" class="w-100"/>
+					<img src="<?=$util->AppHome()?>/shared/img/user_iwant.png" class="w-100"/>
 					<div class="border_blue_radius card_v_steps">
 						<div class="user_activate_steps_i">
 							<div class="row">
@@ -145,7 +145,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 		<div class="col-md-5 mobile_view">
 			<div class="user_activate_r">
 				<div class="user_activate_steps">
-					<img src="<?=$util->AppHome()?>/shared/img/user_iwant.svg" class="w-100 desktop_view"/> <img src="<?=$util->AppHome()?>/shared/img/iwant_mob.png" class="w-100 neg_img mobile_view"/>
+					<img src="<?=$util->AppHome()?>/shared/img/user_iwant.png" class="w-100 desktop_view"/> <img src="<?=$util->AppHome()?>/shared/img/iwant_mob.png" class="w-100 neg_img mobile_view"/>
 					<div class="border_blue_radius card_v_steps">
 						<div class="user_activate_steps_i">
 							<div class="row">
