@@ -43,7 +43,7 @@
         $post_fields['data']['api_key'] = $util->SendyKey();
         $post_fields['data']['api_username'] = $util->SendyUser();
         $post_fields['data']['vendor_type'] = 1;
-        $post_fields['data']['rider_phone'] = 0;
+        //$post_fields['data']['rider_phone'] = 0;
         /** from */
         $lat_long = $this->get_lat_long($util->warehouse());
         $post_fields['data']['from']['from_name'] = $util->warehouse();
@@ -69,12 +69,12 @@
         $post_fields['data']['sender']['sender_name'] = $sender_info[0];
         $post_fields['data']['sender']['sender_phone'] = $sender_info[1];
         $post_fields['data']['sender']['sender_email'] = $sender_info[2];
-        $post_fields['data']['sender']['sender_notes'] = 'call us for any queries';
+        $post_fields['data']['sender']['sender_notes'] = 'Call us for any queries';
          /** recipient */
          $post_fields['data']['recepient']['recepient_name'] = $order_data['name'];
          $post_fields['data']['recepient']['recepient_phone'] = $order_data['phone'];
-         $post_fields['data']['recepient']['recepient_email'] = 'delivery@happybox.ke';
-         $post_fields['data']['recepient']['recepient_notes'] = 'receipient of items';
+         $post_fields['data']['recepient']['recepient_email'] = 'director@happybox.ke';
+         $post_fields['data']['recepient']['recepient_notes'] = 'Receipient of items';
         /** delivery details */
         $post_fields['data']['delivery_details']['pick_up_date'] = $order_data['pick_up_date'];
         //collect payment
