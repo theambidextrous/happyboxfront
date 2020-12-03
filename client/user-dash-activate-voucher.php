@@ -35,7 +35,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 </style>
 </head>
 
-<body class="client_body">
+<body class="client_body client_login">
 <!-- Navigation -->
 <?php include '../shared/partials/nav.php'; ?>
 <!--user dash nav-->

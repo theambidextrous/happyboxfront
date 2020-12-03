@@ -39,7 +39,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 </style>
 </head>
 
-<body class="client_body">
+<body class="client_body ">
 <!-- Navigation -->
 <?php include '../shared/partials/nav.php'; ?>
 <!-- Page Content -->
@@ -73,7 +73,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 			<?=$util->msg_box()?>
 		</div>
 	</div>
-	<div class="row justify-content-center user_profile_edit">
+	<div class="row justify-content-center user_profile_edit modified_col">
 		<div class="col-md-4  ">
 			<div class=" ">
 				<h5 class="blue_text">PROFILE DETAILS</h5>

@@ -41,7 +41,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 <section class="section_60 desktop_view" id="reset_div">
       <div class="container">
       <div class="row  ">
-        <div class="col-md-5">
+        <div class="col-md-6 col-lg-5">
           <div class=" how_it_work">
             <img src="../shared/img/howitworks.svg" class=""/>  </div>
           <div class="card how_it_work_card">
@@ -54,7 +54,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
               </div>
           </div>
       </div>
-        <div class="col-md-7 text-center ">
+        <div class="col-md-6 col-lg-7 text-center ">
             <div class="how_it_work_border">
                 
            

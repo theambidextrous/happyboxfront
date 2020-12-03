@@ -36,7 +36,7 @@ $topics = json_decode($topics, true)['data'];
 <section class="partner_edit_pro section_60" id="reset_div">
          <div class="container ">
                 <div class="row justify-content-center">
-                    <div class="col-md-10 desktop_view edit_pro_h">
+                    <div class=" col-md-10 desktop_view edit_pro_h">
                       <h3 class="partner_blueh text-center">EDIT YOUR PARTNER PROFILE</h3>
                     </div>
                           <section  class="blue_band text-center mobile_view">
@@ -45,7 +45,7 @@ $topics = json_decode($topics, true)['data'];
                       <div  class="col-12 mob_maroon_section text-center">
 			<h4 class="">EDIT YOUR PARTNER PROFILE</h4>
 			</div>
-                      <div class="col-md-10">
+                      <div class=" col-md-12 col-lg-10">
                           <div class="row justify-content-center blue_label">
                                 <div class="col-md-5">
                                 <form class="become_partner mob_top_20" id="edit_ac" name="edit_ac" method="post">

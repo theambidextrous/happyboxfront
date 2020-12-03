@@ -232,7 +232,7 @@ $list = json_decode($list, true)['data'];
                   </tr>
                   <tr class="voucher_list_table_mob_tr">
                     <td class="v_td_a">Date Cancelled</td>
-                    <td><?= $date_cancelled ?></td>
+                  <?= $date_cancelled ?>
                   </tr>
                   <tr class="voucher_list_table_mob_tr">
                     <td class="v_td_a">Booking Date</td> <?= $date_booked ?>

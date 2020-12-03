@@ -14,6 +14,9 @@ body {
 html {
 	scroll-behavior: smooth;
 }
+.mob_nav_shadow{
+    display: none;
+}
 .gray_star .far{
      
     font-size: 13px;
@@ -2507,7 +2510,7 @@ visibility: visible;
 	border: none !important;
 }
 .cat_well .sports_card .selection_card_body {
-     height: 253px !important;
+      min-height: 287px !important;
 }
 
 .top_menu {
@@ -2690,6 +2693,11 @@ padding-right: 0px !important;
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) {
+
+.cat_well .pricing {
+       padding-top: 2px !important;
+    
+}
       .why_happy_card {
   height: 192px !important;
 }
@@ -2698,6 +2706,12 @@ and (orientation : landscape) {
 }
 .cat_well .sports_card .selection_card_body {
     height: 338px !important;
+}
+
+element.style {
+}
+.sports_card .selection_card_body {
+    height: 250px !important;
 }
 
 }
@@ -2711,8 +2725,31 @@ and (orientation : landscape) {
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
-  and (orientation: portrait) 
-{
+  and (orientation: portrait) {
+      .contact_details,.contact_formm{
+               -ms-flex: 0 0 99.9% !important;
+    flex: 0 0 99.9% !important;
+    max-width: 99.9% !important;
+          
+      }
+      .partner_nav{
+    text-align: right;
+}
+.partner_nav .fas{
+    color: white !important;
+}
+      .client_drop .dropdown-menu {
+       float: right !important;
+}
+      .modified_col .col-md-4{
+           -ms-flex: 0 0 49.666667% !important;
+    flex: 0 0 49.666667% !important;
+    max-width: 49.666667% !important;
+      }
+.home_page .pricing{
+        padding-top: 4px !important;
+        
+}
     .user_activate_steps_i .col-11{
       padding-left: 60px !important;
     margin-top: -16px;
@@ -2720,7 +2757,7 @@ and (orientation : landscape) {
     .activate_v_class{
         padding-right: 20px !important;
     }
-    .col-md-5 {
+    .client_login .col-md-5 {
     -ms-flex: 0 0 49.666667% !important;
     flex: 0 0 49.666667% !important;
     max-width: 49.666667% !important;
@@ -2754,13 +2791,13 @@ and (orientation : landscape) {
     margin-left: 4px;
 }
             .why_happy_card {
-  height: 192px !important;
+    height: 184px !important;
 }
 .sports_banner_title h3 {
       padding: 2px 24px !important;
 }
 .cat_well .sports_card .selection_card_body {
-    height: 338px !important;
+      height: 274px !important;
 }
 .navbar-light .navbar-toggler{
    /* display: none !important;*/
@@ -2787,12 +2824,27 @@ and (orientation : landscape) {
     font-size: 16px !important;
     
 }
-
+  .main-menu-right{
+    padding-right: 0px !important;
+        margin-right: -26px;
+}
+.navbar-rightmenu{
+    padding-right: 0px !important;
+}
 }
 
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+    .mob_nav_shadow {
+    background: #0c0c0ce6;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height: 100%;
+    z-index: 2;
+}
+  
    .partner_wrap .mob_cart {
        display: none !important;
 }

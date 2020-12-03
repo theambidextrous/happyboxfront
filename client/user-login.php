@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
 <?php include '../shared/partials/css.php'; ?>
 </head>
 
-<body class="client_body">
+<body class="client_body client_login">
 <!-- Navigation -->
 <?php include '../shared/partials/nav.php'; ?>
 <!-- Page Content -->

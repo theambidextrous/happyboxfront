@@ -139,13 +139,15 @@ $(document).ready(function() {
         //$(".opened_menu").fadeIn();
         $(".opened_menu").fadeIn("slow");
         $(".menu-close").show();
+     $(".mob_nav_shadow").fadeIn("slow");
 
     });
 
     //close
     $('.menu-close').click(function() {
         $(".opened_menu").fadeOut("slow");
-        $(".hamburger").show();
+        $(".hamburger").show();     
+        $(".mob_nav_shadow").fadeOut("slow");
 
 
 

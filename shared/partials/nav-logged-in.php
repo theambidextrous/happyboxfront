@@ -20,7 +20,8 @@
         <span class="navbar-toggler-icon"><i class="fas fa-tasks"></i></span>
       </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="nav navbar-nav ml-auto">
+    <ul class="nav navbar-nav ml-auto partner_nav
+        ">
            <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
           
@@ -126,3 +127,8 @@
 
             </div></div>
         </section>
+
+      
+      <div class="mob_nav_shadow mobile_view">
+    
+</div>

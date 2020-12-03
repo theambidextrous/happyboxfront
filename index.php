@@ -90,7 +90,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 				<div class="carousel-inner">
 					<div class="carousel-item active slider_1">
 						<div class="mob_cta text-center">
-							<a href="user-dash-activate-voucher.php">
+							<a href="<?=$util->AppHome()?>/client/user-dash-activate-voucher.php">
 								<img src="shared/img/slider_reg.png" class="">
 							</a>
 						</div>

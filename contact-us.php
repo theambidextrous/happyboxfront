@@ -22,7 +22,7 @@ $util->ShowErrors(1);
 	<?php include 'shared/partials/css.php'; ?>
 </head>
 
-<body class="client_body">
+<body class="client_body contact_body">
 	<!-- Navigation -->
 	<?php include 'shared/partials/nav.php'; ?>
 	<!-- Page Content -->
@@ -57,10 +57,10 @@ $util->ShowErrors(1);
 	<section class="container section_padding_top contact_content">
 		<form name="contactus" id="contactus">
 			<div class="row justify-content-center">
-				<div class="col-md-5 contact_details">
+				<div class="col-md-7 col-lg-5 contact_details">
 					<h4 class="contact_title">Contact HAPPYBOX</h4>
 					<div class="row">
-						<div class="col-md-6 contact_p_txt">
+						<div class="col-md-6  contact_p_txt">
 							<p> <span class="contact_p"> <b>Contact Details</b></span><br>
 								<b>Email:</b> <a href="mailto:customerservices@happybox.ke">customerservices@happybox.ke</a></p>
 							<div class="col-md-6 contact_p_txt mobile_view ">
@@ -89,7 +89,7 @@ $util->ShowErrors(1);
 					</div>
 				</div>
 				<?= $util->msg_box() ?>
-				<div class="col-md-4 contact_form">
+				<div class="col-md-4 contact_formm">
 					<div class="form-group">
 						<label for="name">Name</label>
 						<input required type="text" class="form-control contact_control" name="name" placeholder="Required Field">

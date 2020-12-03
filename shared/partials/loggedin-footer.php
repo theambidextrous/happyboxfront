@@ -1,6 +1,6 @@
 
 <footer >
-     <div class="row partner_footer_upper">
+    <!-- <div class="row partner_footer_upper">
         <div class="col-md-12 text-center">
             <span class=""> <a href=""> Terms & Conditions |</a></span> 
              <span class=""> <a href=""> Privacy Policy |</a></span> 
@@ -9,7 +9,7 @@
             
         </div>    
         
-    </div>
+    </div>-->
 
     <section class="partner_footer">
     <div class="row">
