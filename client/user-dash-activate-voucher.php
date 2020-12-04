@@ -260,8 +260,8 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   return;
               }
               else if(rtn.hasOwnProperty("ERR")){
-                  $('#err').text(rtn.ERR);
-                  $('#err').show();
+                  $('.alert-danger').text(rtn.ERR);
+                  $('.alert-danger').show();
                   waitingDialog.hide();
                   return;
               }

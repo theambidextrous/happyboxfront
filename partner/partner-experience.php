@@ -127,37 +127,47 @@ $token = json_decode($_SESSION['usr'])->access_token;
                    
                   </tr>
                 </thead>
-                <tbody>
-                    <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a" colspan="2">Hot-Stone Massage , Body-Scrub & Pedicure</td>  
-                    </tr>
+                <?php
+                if(count($experience_list)){
+                    foreach( $experience_list as $ex_list ):
+                      $ex_list_arr = explode('~', $ex_list);
+                      $ekey = $ex_list_arr[0];
+                      $evalue = $ex_list_arr[1];
+                      $idf = $partnerdata['data']['internal_id'];
+                      $partner_item_current = $idf.'~~~'.$ekey.'~~~'.$evalue;
+                ?>
+                <tbody>      
                      <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">Hot-Stone Massage , Body-Scrub & Pedicure</td>  <td>AZERTY001</td>
+                         <td class="v_td_a"  colspan="2"><?=$evalue?></td>  
                     </tr>
-                    <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
-                    </tr>
-                     <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
-                    </tr>
-                     <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
-                    </tr>
-                       <tr class="voucher_list_table_mob_tr">
-                        <td class="v_td_a">BOX NAME</td>  <td><img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/></td>
-                    </tr>
-                       <tr class="voucher_list_table_mob_tr table_border_top">
-                           <td class="v_td_a" colspan="2">Aromatherapy Massage, Body-Scrub & Manicure</td>  
-                    </tr>
-                       
-                      <tr class="voucher_list_table_mob_tr table_border_top">
-                           <td class="v_td_a" colspan="2">Moroccan Bath , Swedish Massage & Manicure, Pedicure</td>  
-                    </tr>
-                     <tr class="voucher_list_table_mob_tr table_border_top">
-                           <td class="v_td_a" colspan="2">Deep Tissue Massage & Deep Cleansing Facial</td>  
-                    </tr>
-                      
+                    <?php 
+                        if(count($boxes)){
+                            foreach( $boxes as $headers ):
+                                $box_exps = json_decode($headers['partners'], true);
+                                if(in_array($partner_item_current, $box_exps)){
+                    ?>
+                                <tr class="voucher_list_table_mob_tr">
+                                    <td class="v_td_a"><?=strtoupper($headers['name'])?></td>  <td>
+                                        <img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/>
+                                    </td>
+                                </tr>
+                               <?php 
+                                }else{ ?>
+                                    <tr class="voucher_list_table_mob_tr">
+                                    <td class="v_td_a"><?=strtoupper($headers['name'])?></td>  <td>
+                                        
+                                    </td>
+                                </tr>
+                                <?php }?>
+                    <?php 
+                    endforeach;
+                     } 
+                     ?>
                 </tbody>
+                <?php 
+                    endforeach;
+                }
+                ?>
              </table>
   
        

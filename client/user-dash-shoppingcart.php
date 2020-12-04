@@ -204,7 +204,10 @@ $util->ShowErrors(1);
 						</tr>
 					
 					<tr >
-						<td colspan="2"><small><i>* Physical delivery only available in Nairobi at present.</i></small></td>
+						<td colspan="2"><small><i>* Physical delivery only available in Nairobi at present.</i></small>
+                                                    <br>
+                                                      <small><i>**  E-boxes are limited to one per order.</i></small>
+                                                </td>
 					</tr>
 					<?php 
 											}

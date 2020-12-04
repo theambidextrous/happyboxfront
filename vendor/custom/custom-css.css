@@ -21,6 +21,10 @@ html {
      
     font-size: 13px;
 }
+.booklet_dialogue .bx_booklet_  {
+    color: black !important;
+    text-decoration: none !important;
+}
 
 img {
 	max-width: 100%;
@@ -2836,6 +2840,23 @@ element.style {
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+     .contact_p_txt{
+    line-height: 23px;
+    font-size: 16px;
+
+}
+    .sport_banner{
+        z-index: 10 !important;
+    }
+    .why_happy_card_body img {
+    height: 42px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+    
+.brands_slider_container{
+    margin-top: 20px;
+}
     .mob_nav_shadow {
     background: #0c0c0ce6;
     position: absolute;
@@ -3480,11 +3501,11 @@ font-size: 16px;
 	text-align: center;
 }
 .contact_sub_banner h4 {
-	color: #FA683D;
-	font-weight: normal;
-	font-size: 16px;
-	padding-top: 14px;
-	line-height: 35px;
+    color: #FA683D;
+    font-weight: normal;
+    font-size: 16px;
+    padding-top: 14px;
+    line-height: 29px;
 }
 .contact_details {
 	font-size: 19px;
@@ -3644,7 +3665,7 @@ height: 39px;
 }
 
 .congratulate .p1 {
-    font: Bold 32px/36px Segoe Script;
+       font: Bold 32px/42px Segoe Script;
 }
 .selection_card img {
 	height: 173px;
@@ -3765,10 +3786,10 @@ nav ul.opening {
 	width: 78%;
 }
 .site-nav li {
-	border-bottom: 1px solid #e8dede;
-    height: 55px;
+border-bottom: 1px solid #e8dede;
+    height: 59px;
     background: white;
-    padding: 20px 17px;
+    padding: 22px 17px;
 }
 .site-nav-seacrh {
 	border-bottom: 1px solid #e8dede;

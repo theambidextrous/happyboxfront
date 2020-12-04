@@ -226,7 +226,11 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <button type="submit" name="VALIDITY" class="btn btn_rounded">CHECK VALIDITY</button>
                       </form>
       </div>
-        
+        <form id="redeem_v" action="" name="redeem_v" method="post">
+                  <hr><br>
+                  <?=$util->msg_box()?>
+                  <?=$_redeem_v_table?>
+                </form>
               </div>
                 
               </div>
@@ -235,6 +239,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
           </div>
         </section>
     <!--end mobile-->
+       <?php //include '../shared/partials/partners.php'; ?>
 <?php  include '../shared/partials/loggedin-footer.php';?>
   <!-- Page Content -->
   <!-- Bootstrap core JavaScript -->
@@ -284,8 +289,11 @@ $token = json_decode($_SESSION['usr'])->access_token;
                   return;
               }
               else if(rtn.hasOwnProperty("ERR")){
-                  $('#err').text(rtn.ERR);
-                  $('#err').show(rtn.ERR);
+                  $('.alert-danger').text(rtn.ERR);
+                  $('.alert-danger').show(rtn.ERR);
+                  
+                  //$('#err').text(rtn.ERR);
+                  //$('#err').show(rtn.ERR);
                   waitingDialog.hide();
                   return;
               }

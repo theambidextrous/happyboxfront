@@ -69,7 +69,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
       <div class="row justify-content-center">
 
         <div class="col-12">
-          <img class="w-100" src="<?= $util->AppHome() ?>/shared/img/sports_banner_mob.png">
+          <img class="w-100 sport_banner" src="<?= $util->AppHome() ?>/shared/img/sports_banner_mob.png">
 
         </div>
 

@@ -76,6 +76,7 @@
               </div>
         </section>
 
+
 <?php include '../shared/partials/footer.php';?>
   <!-- Page Content -->
 
