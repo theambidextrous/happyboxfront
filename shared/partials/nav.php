@@ -183,7 +183,7 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
 		<?php
 		if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_token) && $util->is_client()) {
 		?>
-			<li> <a href="<?= $util->PartnerHome() ?>/exit.php">Logout</a> </li>
+			<li> <a href="<?= $util->ClientHome() ?>/exit.php">Logout</a> </li>
 
 		<?php } ?>
 		<!--<li> <a href="#"></a> </li>-->

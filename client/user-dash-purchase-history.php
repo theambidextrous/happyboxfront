@@ -277,7 +277,7 @@ if (isset($_POST['makecart'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1">
+                                    <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1" data-toggle="collapse" data-target="#demo_<?= $current_order_id ?>">
                                         <td class="v_td_a"><?= $current_order_id ?></td>
                                         <td class="green_txt_valid"><span class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></span></td>
                                     </tr>
@@ -344,16 +344,16 @@ if (isset($_POST['makecart'])) {
                                         <td class="text-center" colspan="2">Order Options</td>
                                     </tr>
                                     <tr class="v_td_p_r">
-                                        <td class="v_td_p1">ADD TO CART <img class="" src="../shared/img/cartp_mob.svg"></td>
-                                        <td class="v_td_p2">DOWNLOAD INVOICE <img onclick="fdownload('<?= $current_order_id ?>')" class="" src="../shared/img/downp.svg"></td>
+                                      <!--  <td class="v_td_p1">ADD TO CART <img class="" src="../shared/img/cartp_mob.svg"></td>-->
+                                        <td colspan="2" class="v_td_p2">DOWNLOAD INVOICE <img onclick="fdownload('<?= $current_order_id ?>')" class="" src="../shared/img/downp.svg"></td>
                                     </tr>
-                                    <tr class="declare_tr text-center">
+                                    <!--<tr class="declare_tr text-center">
                                         <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>
-                                    </tr>
+                                    </tr>-->
                                 </tbody>
                             </table>
                             <!--table 2-->
-                            <table class="table  voucher_list_table_mob2 table-borderless">
+                           <!-- <table class="table  voucher_list_table_mob2 table-borderless">
                                 <tbody>
                                     <tr>
                                         <td class="">032598428</td>
@@ -368,7 +368,7 @@ if (isset($_POST['makecart'])) {
                                         <td class="reed_mob_text">13/01/2020</td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table>-->
                             <!-- end row -->
                     <?php
                         endforeach;

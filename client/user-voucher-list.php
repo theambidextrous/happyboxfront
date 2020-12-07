@@ -218,7 +218,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
               <?php
                 if(count($my_list_)){
                   foreach( $my_list_ as $my_l):
-                    $admin_func_ = '<td class="empty_cell"></td>';
+                    $admin_func_ = '<td class="empty_cell" colspan="2"></td>';
                     if($my_l['box_voucher_status'] == 6){
                       $_voucher = "'".$my_l['box_voucher']."'";
                       $admin_func_ = '
@@ -300,12 +300,12 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     
                     <tr class="declare_tr text-center">
                       <?=$admin_func_?>
-                      <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>  
+                     <!-- <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>-->  
                     </tr>
                 </tbody>
              </table>
             <!--table 2-->
-             <table class="table  voucher_list_table_mob2 table-borderless">
+             <!--<table class="table  voucher_list_table_mob2 table-borderless">
                 
                 <tbody>
                     <tr>
@@ -318,7 +318,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                         <td class="">GASTRONOMY</td>  <td class="reed_mob_text">REDEEMED</td>
                     </tr>
                 </tbody>
-             </table>
+             </table>-->
              <?php 
                   endforeach;
                 }
