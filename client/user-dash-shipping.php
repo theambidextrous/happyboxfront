@@ -225,8 +225,8 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 					?>
 					<tr class="cart_totals_actions shipping_action_strip">						
 						<td colspan="4" align="right">
-							<a href="<?=$util->ClientHome()?>/"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.svg"></a>
-							<button type="submit" class="invisible_btn" name="load"><img src="<?=$util->AppHome()?>/shared/img/btn-order-summary-blue.svg"></button>
+							<a href="<?=$util->ClientHome()?>/"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a>
+							<button type="submit" class="invisible_btn" name="load"><img src="<?=$util->AppHome()?>/shared/img/btn-order-summary-blue.png"></button>
 							
 							<!-- <a href="<=$util->ClientHome()?>/user-dash-order-summary.php"><img src="<?=$util->AppHome()?>/shared/img/btn-order-summary-blue.svg"></a>  --></td>
 					</tr>
@@ -373,8 +373,8 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 						}					
 					?>
 					<tr class="cart_totals_actions shipping_action_strip">
-						<td colspan="4" align="right"><a href="<?=$util->ClientHome()?>/"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.svg"></a>
-							<button type="submit" class="invisible_btn" name="load"><img src="<?=$util->AppHome()?>/shared/img/btn-order-summary-blue.svg"></button>
+						<td colspan="4" align="right"><a href="<?=$util->ClientHome()?>/"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a>
+							<button type="submit" class="invisible_btn" name="load"><img src="<?=$util->AppHome()?>/shared/img/btn-order-summary-blue.png"></button>
 							
 							<!-- <a href="<=$util->ClientHome()?>/user-dash-order-summary.php"><img src="<?=$util->AppHome()?>/shared/img/btn-order-summary-blue.svg"></a>  --></td>
 					</tr>

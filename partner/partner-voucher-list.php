@@ -257,7 +257,7 @@ $list = json_decode($list, true)['data'];
             endforeach;
             ?>
             <!--table 2-->
-            <br>
+           <!-- <br>
             <table class="table  voucher_list_table_mob2 table-borderless">
 
               <tbody>
@@ -278,7 +278,7 @@ $list = json_decode($list, true)['data'];
                 </tr>
 
               </tbody>
-            </table>
+            </table>-->
 
 
           </div>

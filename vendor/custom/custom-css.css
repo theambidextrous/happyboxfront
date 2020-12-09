@@ -2842,6 +2842,29 @@ element.style {
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+    
+.cat_well_table {
+     height: 120px !important;
+}
+.inner_part_table {
+    margin-bottom: 10px;
+}
+    .empty_cell_mob1{
+        background: transparent !important;
+    }
+    .mob_inner_collapse_td{
+   padding-right: 0px !important; 
+   padding-left: 0px !important;  
+    }
+    .samsung_container{
+        max-width: 100% !important;
+    }
+   .well_banner_title_mob {
+    text-align: center;
+}
+.well_banner_title_mob img {
+    display: inline !important;
+}
      .contact_p_txt{
     line-height: 23px;
     font-size: 16px;

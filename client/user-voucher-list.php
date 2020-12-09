@@ -227,17 +227,17 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     }
                     $_box_data = json_decode($box->get_byidf('00', $my_l['box_internal_id']))->data;
                     $redeemed_date = $my_l['redeemed_date'];
-                    $redeem_div = '<td class="empty_cell"></td>';
+                    $redeem_div = '<td class="empty_cell empty_cell_mob1">-</td>';
                     if(!empty($redeemed_date)){
                       $redeem_div = '<td>'.date('d/m/Y',strtotime($redeemed_date)).'</td>';
                     }
                     $cancellation_date = $my_l['cancellation_date'];
-                    $cancellation_div = '<td class="empty_cell"></td>';
+                    $cancellation_div = '<td class="empty_cell empty_cell_mob1">-</td>';
                     if($my_l['box_voucher_status'] == 4){
                       $cancellation_div = '<td>'.date('d/m/Y',strtotime($cancellation_date)).'</td>';
                     }
                     $booking_date = $my_l['booking_date'];
-                    $booking_div = '<td class="empty_cell"></td>';
+                    $booking_div = '<td class="empty_cell empty_cell_mob1">-</td>';
                     if($my_l['box_voucher_status'] == 3){
                       $booking_div = '<td>'.date('d/m/Y',strtotime($booking_date)).'</td>';
                     }
@@ -260,7 +260,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                 <thead>
                   <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
                     <th >BOX NAME</th>
-                    <th>STATUS</th>
+                    <th style="text-align: right; width:35%;">STATUS</th>
                   </tr>
                 </thead>
                 <tbody>

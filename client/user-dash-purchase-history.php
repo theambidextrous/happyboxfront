@@ -266,17 +266,24 @@ if (isset($_POST['makecart'])) {
                     <p class="txt-orange text-center mob_pad">A list of your purchased vouchers </p>
                     <?php
                     if (count($my_list_)) {
+                        $y=0;
                         foreach ($my_list_ as $_list) :
+                            $y++;
                             $current_order_id = $_list['order_id'];
                     ?>
                             <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless" id="minvoicetodown<?= $_list['id'] ?>">
-                                <thead>
+                              
+                                <?php if($y==1){ ?>
+                                
+                                <thead >
                                     <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
                                         <th style="width:50%;">ORDER NUMBER</th>
-                                        <th>PURCHASE DATE</th>
+                                        <th>PURCHASE DATE </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                
+                                <?php } ?>
+                                <tbody >
                                     <tr class="voucher_list_user_table_mob_tr voucher_list_user_table_mob_tr1" data-toggle="collapse" data-target="#demo_<?= $current_order_id ?>">
                                         <td class="v_td_a"><?= $current_order_id ?></td>
                                         <td class="green_txt_valid"><span class=""><b><?= date('d/m/Y', strtotime($_list['updated_at'])) ?></b></span></td>
@@ -309,6 +316,9 @@ if (isset($_POST['makecart'])) {
                                                 $box_type = 'Physical Box';
                                             }
                                     ?>
+                                    <tr>
+                                        <td colspan="2" class="mob_inner_collapse_td">
+                                            <table id="demo_<?= $current_order_id ?>" class="collapse">
                                             <tr class="purch_hist_img_mob" style="background: #f0f0f0;">
                                                 <td class="" colspan="2"><img class="" src="<?= $util->tb64($_3d) ?>"></td>
                                             </tr>
@@ -336,6 +346,11 @@ if (isset($_POST['makecart'])) {
                                                 <td class="v_td_a">Quantity</td>
                                                 <td><?= $_cart_item[1] ?></td>
                                             </tr>
+                                </table>
+                                            
+                                        </td>
+                                    </tr>
+                                
                                     <?php
                                         }
                                     endforeach;

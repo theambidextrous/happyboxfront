@@ -231,7 +231,7 @@ $util->ShowErrors(1);
 					</tr>
 					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
 						<td colspan="2 ">
-                                                    <a href="<?=$util->ClientHome()?>"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a> 
+                                                    <a href="<?=$util->AppHome()?>"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a> 
                                                     <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-shipping-method-blue.png"></a>
                                                 </td>
 					</tr>

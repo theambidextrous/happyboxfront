@@ -129,23 +129,28 @@ $token = json_decode($_SESSION['usr'])->access_token;
                 </thead>
                 <?php
                 if(count($experience_list)){
+                    $exp_count=0;
                     foreach( $experience_list as $ex_list ):
+                        $exp_count++;
                       $ex_list_arr = explode('~', $ex_list);
                       $ekey = $ex_list_arr[0];
                       $evalue = $ex_list_arr[1];
                       $idf = $partnerdata['data']['internal_id'];
                       $partner_item_current = $idf.'~~~'.$ekey.'~~~'.$evalue;
                 ?>
-                <tbody>      
-                     <tr class="voucher_list_table_mob_tr">
+                <tbody class="part_list_td">  
+                <table class="table-borderless inner_part_table">
+                    <tr class="voucher_list_table_mob_tr" data-toggle="collapse" data-target="#demo_<?=$exp_count?>">
                          <td class="v_td_a"  colspan="2"><?=$evalue?></td>  
                     </tr>
+               
                     <?php 
                         if(count($boxes)){
                             foreach( $boxes as $headers ):
                                 $box_exps = json_decode($headers['partners'], true);
                                 if(in_array($partner_item_current, $box_exps)){
                     ?>
+                    
                                 <tr class="voucher_list_table_mob_tr">
                                     <td class="v_td_a"><?=strtoupper($headers['name'])?></td>  <td>
                                         <img src="../shared/img/icn-tick-teal.svg" class="exper_tick"/>
@@ -159,11 +164,14 @@ $token = json_decode($_SESSION['usr'])->access_token;
                                     </td>
                                 </tr>
                                 <?php }?>
+                                
                     <?php 
                     endforeach;
                      } 
                      ?>
+                                </table>
                 </tbody>
+                
                 <?php 
                     endforeach;
                 }
