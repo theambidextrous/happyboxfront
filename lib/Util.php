@@ -67,6 +67,12 @@
         return $this->LoadEnv()->APP_MPESA_CALL_BACK;
     }
     /** jp */
+    function JpBusiness(){
+        return $this->LoadEnv()->JP_BUSINESS;
+    }
+    function JpSharedKey(){
+        return $this->LoadEnv()->JP_SHARED_KEY;
+    }
     function JpReturn(){
         return $this->LoadEnv()->JP_RETURN_URL;
     }

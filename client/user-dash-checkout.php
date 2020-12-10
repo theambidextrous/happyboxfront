@@ -29,35 +29,6 @@ $order = new Order($token);
 
 <!-- Bootstrap core CSS -->
 <?php include '../shared/partials/css.php'; ?>
-<style>
-.loader {
-	border: 16px solid #f3f3f3;
-	border-radius: 50%;
-	border-top: 16px solid #3498db;
-	width: 100px;
-	height: 100px;
-	-webkit-animation: spin 2s linear infinite; /* Safari */
-	animation: spin 2s linear infinite;
-}
-				
-/* Safari */
-@-webkit-keyframes spin {
- 0% {
--webkit-transform: rotate(0deg);
-}
- 100% {
--webkit-transform: rotate(360deg);
-}
-}
- @keyframes spin {
- 0% {
-transform: rotate(0deg);
-}
- 100% {
-transform: rotate(360deg);
-}
-}
-</style>
 </head>
 
 <body class="client_body">
@@ -103,7 +74,7 @@ transform: rotate(360deg);
 				$order_data = json_decode($order->get_one_byorder_limited($_SESSION['unpaid_order']), true)['data'];
 				$bill_amount = number_format(($order_data['shipping_cost']+$order_data['subtotal']),0);
 				$query_string = [
-						'business' => 'director@happybox.ke',
+						'business' => $util->JpBusiness(),
 						'order_id' => $_SESSION['unpaid_order'],
 						'type' => 'cart',
 						'amount1' => $bill_amount,
@@ -137,8 +108,6 @@ transform: rotate(360deg);
 						<p>Pay with your Mpesa</p>
 						<div class="row">
 							<div class="col-md-6">
-								<div id="mpesa_loader" class="loader" style="display:none;">
-								</div>
 								<div id="data">
 								</div>
 								<br>
@@ -153,7 +122,7 @@ transform: rotate(360deg);
 									</p>
 								</form>
 								<div id="back_btn" class="payment_back" style="display:none;">
-									<a href="<?=$util->ClientHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
+									<a href="<?=$util->AppHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -168,8 +137,6 @@ transform: rotate(360deg);
 						<h3>Credit/debit Card</h3>
 						<p>Pay securely with your credit/debit card.</p>
 						<!-- jamboPay -->
-						<div id="iframe_loader" class="loader">
-						</div>
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe id="jambopay_iframe" class="embed-responsive-item" frameBorder="0" src="https://www.jambopay.com/PreviewCart.aspx?<?=http_build_query($query_string)?>&target=_parent" scrolling="no"></iframe>
 						</div>
@@ -210,17 +177,12 @@ transform: rotate(360deg);
 <?php include '../shared/partials/js.php'; ?>
 <script>
 $(document).ready(function(){
-		$("#jambopay_iframe").on('load',function(){
-			$('#iframe_loader').hide();
-		});
-
 		s_event = function(){
 			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
 			source.onmessage = function(event){
 			$('#data').html(event.data);										
 			$('#back_btn').show();
 			$('#msg').hide();
-			$('#mpesa_loader').hide();
 			}
 		}
 		setTimeout(() => {
@@ -238,12 +200,13 @@ $(document).ready(function(){
 				console.log(res);
 				var rtn = JSON.parse(res);
 				if(rtn.hasOwnProperty("MSG")){
-					// $('#c2b').text(rtn.c2b);
-					// $('#express').text(rtn.exp);
-					// $('#reg').text(rtn.reg);
-					// $('#inst').html(rtn.inst);
+					//Start Debug. To Comment out on prod
+     //$('#c2b').text(rtn.c2b);
+					//$('#express').text(rtn.exp);
+					//$('#reg').text(rtn.reg);
+					//$('#inst').html(rtn.inst);
+     //End Debug
 					$('#mpesa_pay_frm').hide();
-					$('#mpesa_loader').show();
 					$('#msg').html(rtn.MSG);
 					waitingDialog.hide();
 					return;
@@ -270,7 +233,6 @@ if(strlen($_SESSION['status_chk_order'])){
 			$('#data').html(event.data);										
 			$('#back_btn').show();
 			$('#msg').hide();
-			$('#mpesa_loader').hide();
 			}
 		}
 		setTimeout(() => {

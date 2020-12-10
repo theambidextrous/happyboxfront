@@ -312,7 +312,7 @@ require_once dirname(__DIR__).'/lib/Picture.php';
                 $JP_TIMESTAMP = $jpdata['JP_TIMESTAMP'];
                 $JP_PASSWORD = $jpdata['JP_PASSWORD'];
                 $JP_CHANNEL = $jpdata['JP_CHANNEL'];
-                $sharedkey = 'A4A3781A-A4B3-4C13-9BDD-50AFA74BAD81';
+                $sharedkey = $util->JpSharedKey();
                 $str = $JP_MERCHANT_ORDERID . $JP_AMOUNT . $JP_CURRENCY . $sharedkey . $JP_TIMESTAMP;
                 if (md5(utf8_encode($str)) == $JP_PASSWORD) {
                 // if (md5(utf8_encode($str))) {
