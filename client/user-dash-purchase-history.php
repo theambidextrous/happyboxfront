@@ -229,7 +229,7 @@ if (isset($_POST['makecart'])) {
                                     <div class="down_inv">
 
                                         <!--<button type="submit" name="makecart"> <img class="img-btn btn-add-to-cart" src="<?=$util->AppHome()?>/shared/img/btn-add-to-cart-orange.svg"> </button>-->
-                                        <img class="img-btn btn-invoice-download" onclick="fdownload('<?= $current_order_id ?>')" src="<?=$util->AppHome()?>/shared/img/btn-download-orange.svg">
+                                        <img class="img-btn btn-invoice-download" onclick="fdownload('<?= $current_order_id ?>')" src="<?=$util->AppHome()?>/shared/img/btn-download-orange.png">
 
                                     </div>
 

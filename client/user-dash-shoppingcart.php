@@ -125,14 +125,14 @@ $util->ShowErrors(1);
 						<td colspan="4" >KES ?=number_format($_total_shipping,2)?></td>
                                                 
 					</tr> -->
-					<tr align="rightx" class="cart_totals tr_border_top cart_totals_large">
-						<td colspan="4" align="right "><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
-						<td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
-					</tr>
-					<tr align="right" class="cart_totals tr_border_top cart_totals_actions">
-						<td colspan="6"><a href="<?=$util->ClientHome()?>"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a> 
-                                                    <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-shipping-method-blue.png"></a></td>
-					</tr>
+            <tr align="rightx" class="cart_totals tr_border_top cart_totals_large">
+                    <td colspan="4" align="right "><span class="cart_totals_lbl">ORDER TOTAL (Incl. VAT)</span></td>
+                    <td colspan="2">KES <?=number_format((array_sum($_total_cart)+$_total_shipping), 2)?></td>
+            </tr>
+            <tr align="right" class="cart_totals tr_border_top cart_totals_actions">
+                    <td colspan="6"><a href="<?=$util->AppHome()?>"><img src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a> 
+                        <a href="<?=$util->ClientHome()?>/user-dash-shipping.php"><img src="<?=$util->AppHome()?>/shared/img/btn-shipping-method-blue.png"></a></td>
+            </tr>
 				</table>
 			</div>
 		</div>
