@@ -1513,7 +1513,7 @@ color: #C20A2B;
     display: table-cell;
 }
 .purchase_hist_right img {
-    height: 39px;
+   
     margin-bottom: 34px;
 }
 .td_no_pad {
@@ -2699,6 +2699,9 @@ padding-right: 0px !important;
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) {
+       .how_it_work_card {
+    padding: 10px 4px 4px !important;
+  }
 
 .cat_well .pricing {
        padding-top: 2px !important;
@@ -2714,8 +2717,7 @@ and (orientation : landscape) {
     height: 338px !important;
 }
 
-element.style {
-}
+
 .sports_card .selection_card_body {
     height: 250px !important;
 }
@@ -2732,6 +2734,14 @@ element.style {
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (orientation: portrait) {
+   
+      .card_step_blue .card_step_blue_txt {
+  
+    width: 99% !important;
+    
+    font-size: 15px  !important;
+    
+      }
       .contact_details,.contact_formm{
                -ms-flex: 0 0 99.9% !important;
     flex: 0 0 99.9% !important;
@@ -4113,4 +4123,12 @@ background: transparent;
 #toggle_pwd_guide{
   
     padding-top: 10px !important;
+}
+#creditcard .embed-responsive {
+ height: 700px;
+}
+@media (max-width: 768px) {
+    #creditcard .embed-responsive {
+        height: 1215px;
+    }
 }

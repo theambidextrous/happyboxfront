@@ -15,8 +15,8 @@ $util = new Util();
                     <div class="col-md-12 text-center">
                         <h3>THIS BOX HAS BEEN ADDED TO YOUR CART</h3>   
                         <div >
-                            <a href="" > <img class="" src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.svg"></a> 
-                            <a href=""> <img class="" src="<?=$util->AppHome()?>/shared/img/btn-checkout.svg"></a> 
+                            <a href="" > <img class="" src="<?=$util->AppHome()?>/shared/img/btn-continue-shopping.png"></a> 
+                            <a href=""> <img class="" src="<?=$util->AppHome()?>/shared/img/btn-checkout.png"></a> 
                         </div>
                        
                         </div>

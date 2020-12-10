@@ -405,8 +405,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
           <div class="col-md-12 text-center">
             <h3 id="vvv"></h3>
             <div class="action_btns desktop_view">
-              <a href="" data-dismiss="modal"> <img class="" src="<?= $util->AppHome() ?>/shared/img/btn-continue-shopping.svg"></a>
-              <a href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php"> <img class="" src="<?= $util->AppHome() ?>/shared/img/btn-checkout.svg"></a>
+              <a href="" data-dismiss="modal"> <img class="" src="<?= $util->AppHome() ?>/shared/img/btn-continue-shopping.png"></a>
+              <a href="<?=$util->ClientHome()?>/user-dash-shoppingcart.php"> <img class="" src="<?= $util->AppHome() ?>/shared/img/btn-checkout.png"></a>
             </div>
             <div class="okay_btn mobile_view text-center">
               <img data-dismiss="modal" class="" src="<?= $util->AppHome() ?>/shared/img/okay_mob.svg"></a>

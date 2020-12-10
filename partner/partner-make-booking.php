@@ -43,7 +43,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
       <div class="row  ">
         <div class="col-md-6 col-lg-5">
           <div class=" how_it_work">
-            <img src="../shared/img/howitworks.svg" class=""/>  </div>
+              <img src="../shared/img/howitworks.png" class=""/>  </div>
           <div class="card how_it_work_card">
               <div class="">
                 <p class="step_p"> <span class="step_span">STEP 1 </span>  Customer calls for a booking </p>                                

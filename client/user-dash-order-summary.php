@@ -240,7 +240,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
                             ?>
                               <a href="<?=$util->ClientHome()?>/user-login.php">Login To Complete Order</a>
                             <?php }else{ ?>
-                              <button type="submit" class="invisible_btn" name="checkout"><img src="<?=$util->AppHome()?>/shared/img/btn-checkout-blue.svg"></button> 
+                              <button type="submit" class="invisible_btn" name="checkout"><img src="<?=$util->AppHome()?>/shared/img/btn-checkout-blue.png"></button> 
                               <!-- <a href="<=$util->ClientHome()?>/user-dash-checkout.php"><img src="<?=$util->AppHome()?>/shared/img/btn-checkout-blue.svg"></a> -->
                             <?php } ?>
                           </td>

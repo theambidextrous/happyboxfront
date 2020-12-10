@@ -36,7 +36,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 	<div class="container">
 		<div class="become_boxes_wrap">
 			<div class="row justify-content-center become_boxes">
-				<div class="col-md-6">
+				<div class="col-md-10 col-lg-6">
 					<div class="become_card become_card1">
 						<div class="become_card_txt">
 							Free advertising year round on our website and in our boxes
@@ -44,22 +44,22 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 						<img src="../shared/img/becomecard1a.svg" class=""/>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-10 col-lg-6">
 					<div class="become_card become_card2">
 						<span class="become_card_txt">Zero upfront cost, Zero cash out, Zero investment</span> <img src="../shared/img/become-card2.svg" class=""/>
 					</div>
 				</div>
-				<div class="col-md-6">
+			<div class="col-md-10 col-lg-6">
 					<div class="become_card become_card3">
 						<span class="become_card_txt">Increase your turnaround by attracting a new typology <br class="desktop_view">of clientele</span> <img src="../shared/img/become-card3.svg" class=""/>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-10 col-lg-6">
 					<div class="become_card become_card4">
 						<span class="become_card_txt">Easy going partnership with Zero constraint,<br class="desktop_view"> 100% independence on your bookings, all made under your T&C’s</span> <img src="../shared/img/become-card4.svg" class=""/>
 					</div>
 				</div>
-				<div class="col-md-12 text-center">
+				<div class="col-md-10 col-lg-6">
 					<a href="#sound_good" class="btn btn-block btn-zero">0% RISK AND 100% WIN <img src="../shared/img/icons/icn-arrow-blue.svg" class="become_arrow"/></a>
 				</div>
 			</div>
@@ -108,7 +108,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 	<div class="container-fluid">
 		<div class="row ">
 			<div class="col-md-12">
-				<img src="../shared/img/become_part_img.svg" class="become_part_floating_img desktop_view"/>
+				<img src="../shared/img/become_part_img.png" class="become_part_floating_img desktop_view"/>
 			</div>
 		</div>
 	</div>
@@ -116,7 +116,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 <section class="pad_top20 mobile_view pad_top20_small">
 	<div class="container-fluid">
 		<div class="row ">
-			<div class="col-md-12">
+			<div class="col-md-12 text-center">
 				<img src="../shared/img/becomeHappyMob.png" class="happy_become_mobile"/>
 			</div>
 		</div>
@@ -126,7 +126,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 <section class=" text-center become_partner_steps pad_top20">
 	<div class="container">
 		<div class="row ">
-			<div class="col-md-6">
+			<div class="col-md-12 col-lg-6">
 				<div class="card become_part_card">
 					<div>
 						<span class="become_badge">1</span>
@@ -136,7 +136,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-12 col-lg-6">
 				<div class="card become_part_card">
 					<div>
 						<span class="become_badge">2</span>
@@ -147,7 +147,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 				</div>
 			</div>
 			<!--row 2-->
-			<div class="col-md-6">
+			<div class="col-md-12 col-lg-6">
 				<div class="card become_part_card">
 					<div>
 						<span class="become_badge">3</span>
@@ -157,7 +157,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-12 col-lg-6">
 				<div class="card become_part_card">
 					<div>
 						<span class="become_badge">4</span>
@@ -168,7 +168,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 				</div>
 			</div>
 			<!--3-->
-			<div class="col-md-6">
+			<div class="col-md-12 col-lg-6">
 				<div class="card become_part_card">
 					<div>
 						<span class="become_badge">5</span>
@@ -178,7 +178,7 @@ $_partners_slide_data = json_decode($user->get_ptn_inf_all(), true)['data'];
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-12 col-lg-6">
 				<div class="card become_part_card">
 					<div>
 						<span class="become_badge">6</span>
