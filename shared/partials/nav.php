@@ -69,7 +69,7 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
 							<?= $name_ ?>
 						</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item client_drop_1" href="<?= $util->ClientHome() ?>/user-dash-profile.php">PROFILE</a> <a class="dropdown-item" href="exit.php">LOGOUT</a>
+							<a class="dropdown-item client_drop_1" href="<?= $util->ClientHome() ?>/user-dash-profile.php">PROFILE</a> <a class="dropdown-item" href="<?= $util->ClientHome() ?>/exit.php">LOGOUT</a>
 						</div>
 					</li>
 				<?php } else { ?>

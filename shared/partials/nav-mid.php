@@ -4,6 +4,6 @@
     <li><a class="user-vhistory" href="user-dash-purchase-history.php">My Purchase History</a></li>
     <li><a class="user-profile" href="user-dash-profile.php">My Profile</a></li>
     <?php if (isset($_SESSION['usr']) && json_decode($_SESSION['usr'])->user->id) { ?>
-        <li><a class="user-profmile" href="exit.php">Logout</a></li>
+        <li><a class="user-profmile" href="<?= $util->ClientHome() ?>/exit.php">Logout</a></li>
     <?php } ?>
 </ul>

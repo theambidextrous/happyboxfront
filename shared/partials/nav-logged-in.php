@@ -44,9 +44,8 @@
                   <div class="col-6 drop_down_profile drop_down_footer_col">
                       <a href="partner-edit-profile.php">EDIT PROFILE</a>
                   </div>
-                      <div class="col-6 drop_down_logout drop_down_footer_col">
-                                           <a href="exit.php">LOGOUT</a>
-
+                  <div class="col-6 drop_down_logout drop_down_footer_col">
+                      <a href="<?=$util->PartnerHome()?>/exit.php">LOGOUT</a>
                   </div>
                    
                     </div>
@@ -102,7 +101,7 @@
                 <a class="" href="">Contact Partner Care Team</a>
             </li>
             <li>
-                <a class="" href="exit.php">Logout</a>
+                <a class="" href="<?=$util->PartnerHome()?>/exit.php">Logout</a>
             </li>
             
              <div class="menu-close">
