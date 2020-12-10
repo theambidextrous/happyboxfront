@@ -105,7 +105,7 @@ $order = new Order($token);
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="mpesa" role="tabpanel" aria-labelledby="mpesa-tab">
 						<h3>MPesa</h3>
-						<p>Pay with your Mpesa</p>
+						<p>Enter your Mpesa number below and click "Pay Now". The request will appear on your phone to enter your Mpesa PIN and complete the payment. NB: Enter the number <strong>without country code e.g 07XX</strong></p>
 						<div class="row">
 							<div class="col-md-6">
 								<div id="data">
@@ -115,14 +115,15 @@ $order = new Order($token);
 									<div class="form-group col-md-12">
 										<input type="hidden" value="<?=$_SESSION['unpaid_order']?>" name="ordernumber">
 										<input type="hidden" value="<?=floor($order_data['shipping_cost']+$order_data['subtotal'])?>" name="orderamount">
-										<input type="text" name="mpesaphone" class="form-control rounded_form_control" placeholder="enter your mpesa phone e.g 07XX">
+										<input type="text" name="mpesaphone" class="form-control rounded_form_control" placeholder="Enter your mpesa phone e.g 07XX">
 									</div>
 									<p class="text-right col-md-12">
 										<button type="button" onclick="mpesaPay('mpesa_pay_frm')" class="btn btn_rounded">Pay Now</button>
 									</p>
-								</form>
+        </form>
+        <p id="retry_btn" class="payment_retry text-info" style="display:none;"><strong>Did not received PIN request?</strong> <a href="<?=$util->ClientHome()?>/user-dash-checkout.php">Click here to request again</a></p>
 								<div id="back_btn" class="payment_back" style="display:none;">
-									<a href="<?=$util->AppHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
+									<a href="<?=$util->AppHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>         
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -180,7 +181,8 @@ $(document).ready(function(){
 		s_event = function(){
 			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
 			source.onmessage = function(event){
-			$('#data').html(event.data);										
+			$('#data').html(event.data);
+   $('#retry_btn').show();
 			$('#back_btn').show();
 			$('#msg').hide();
 			}
@@ -230,7 +232,8 @@ if(strlen($_SESSION['status_chk_order'])){
 		s_event = function(){
 			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
 			source.onmessage = function(event){
-			$('#data').html(event.data);										
+   $('#data').html(event.data);
+   $('#retry_btn').show();
 			$('#back_btn').show();
 			$('#msg').hide();
 			}
