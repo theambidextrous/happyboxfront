@@ -105,7 +105,7 @@ $order = new Order($token);
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="mpesa" role="tabpanel" aria-labelledby="mpesa-tab">
 						<h3>MPesa</h3>
-						<p>Enter your Mpesa number below and click "Pay Now". The request will appear on your phone to enter your Mpesa PIN and complete the payment. NB: Enter the number <strong>without country code e.g 07XX</strong></p>
+						<p>Enter your Mpesa number below and click "Pay Now". The request will appear on your phone to enter your Mpesa PIN and complete the payment.<br> NB: Enter the number <strong>without country code e.g 07XX</strong></p>
 						<div class="row">
 							<div class="col-md-6">
 								<div id="data">
@@ -123,7 +123,7 @@ $order = new Order($token);
         </form>
         <p id="retry_btn" class="payment_retry text-info" style="display:none;"><strong>Did not received PIN request?</strong> <a href="<?=$util->ClientHome()?>/user-dash-checkout.php">Click here to request again</a></p>
 								<div id="back_btn" class="payment_back" style="display:none;">
-									<a href="<?=$util->AppHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>         
+									<a onclick="return confirm_click();" href="<?=$util->AppHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>         
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -177,19 +177,24 @@ $order = new Order($token);
 <!-- Bootstrap core JavaScript -->
 <?php include '../shared/partials/js.php'; ?>
 <script>
-$(document).ready(function(){
-		s_event = function(){
+function confirm_click(){
+ return confirm("You will not be able to complete your order if you navigate away from this page before you complete payment. Are you sure you want to navigate away? Click 'Cancel' to stay on this page.");
+}
+$(document).ready(function(){		
+  s_event = function(){
 			var source = new EventSource("<?=$util->AjaxHome()?>?activity=mpesa-express-status-check");
 			source.onmessage = function(event){
 			$('#data').html(event.data);
-   $('#retry_btn').show();
-			$('#back_btn').show();
+   $('#retry_btn').show();			
 			$('#msg').hide();
 			}
 		}
 		setTimeout(() => {
 			s_event()
 		}, 15000);
+
+  //The back to homepage button should come later (after 30secs)
+  setTimeout(function(){ $('#back_btn').show(); }, 30000);
 		
 		mpesaPay = function(FormId){
 		waitingDialog.show('Sending... Please Wait',{headerText:'',headerSize: 6,dialogSize:'sm'});
