@@ -723,7 +723,7 @@
           <div class="voucher_status_value">
           '.$this->get_v_status_name($data[1]).'
           </div>
-          <div class="box_name_select col-4">
+          <div class="box_name_select col-md-4">
             <select name="rservice" id="rservice" class="nav-link dropdown-toggle redeem-select" data-toggle="dropdown">
                 <option value="nn">'.$box_data[0].'</option> 
                 '.$options_.'

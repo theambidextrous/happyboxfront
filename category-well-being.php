@@ -71,7 +71,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 
         <div class="col-11">
           <div class="well_banner_title_mob">
-            <img class="w-" src="<?= $util->AppHome() ?>/shared/img/need_to_disconnect.svg">
+            <img class="w-" src="<?= $util->AppHome() ?>/shared/img/need_to_disconnect.png">
 
           </div>
         </div>

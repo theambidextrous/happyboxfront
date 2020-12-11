@@ -2852,6 +2852,9 @@ and (orientation : landscape) {
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+    .booking_date {
+    padding-left: 0px !important;
+}
     
 .cat_well_table {
      height: 120px !important;
@@ -4052,14 +4055,46 @@ background: transparent;
 }
 .how_it_work_card {
     margin-bottom: -24px;	
-}
-.voucher_result_bar {
+}.voucher_result_bar {
 	display : block;
 	height: auto;
 }
 .voucher_status, .voucher_no_value, .voucher_no, .voucher_status_value, .box_name_select, .voucher_partner2, .booking_date {
-	width: 100% !important;
-	height: auto;
+
+    width: 50% !important;
+    height: auto;
+    float: left;
+    height: 43px;
+    background: #0185B614 !important;
+    color: #0185B6 !important;
+    border-radius: 0px;
+    margin-bottom: 7px;
+    font-size: 15px;
+    line-height: 43px;
+
+    
+}
+.booking_date {
+    width: 50% !important;
+ 
+}
+.voucher_partner2{
+    width: 100% !important;
+       border-radius: 8px !important;
+}
+.voucher_result_bar {  
+    border-radius: 13px !important;
+    width: 86% !important;
+    margin: 10px auto !important;
+}
+.voucher_partner2 {
+    color: white !important;
+    background: #0985b6 !important;
+}
+/*
+ .voucher_no {
+    width: 49% !important;
+    height: auto;
 }
 .voucher_no {
 	border-bottom-left-radius: 0px;
@@ -4072,7 +4107,7 @@ background: transparent;
 .voucher_result_bar > div {
 	padding-top: 9px;
 	padding-bottom: 9px;
-}
+}*/
 .navbar-toggler {
 	background: transparent;
 	color: white;
