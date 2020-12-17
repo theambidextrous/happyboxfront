@@ -723,18 +723,24 @@
           <div class="voucher_status_value">
           '.$this->get_v_status_name($data[1]).'
           </div>
+           <div class="voucher_status_value mobile_view mob_bold">
+        BOX NAME | DESCRIPTION
+          </div>
           <div class="box_name_select col-md-4">
             <select name="rservice" id="rservice" class="nav-link dropdown-toggle redeem-select" data-toggle="dropdown">
                 <option value="nn">'.$box_data[0].'</option> 
                 '.$options_.'
             </select>
           </div>
+          <div class="voucher_status_value mobile_view mob_bold">
+        ENTER A BOOKING DATE
+          </div>
           <div class="booking_date col-md-2 border_right nomargin_lr">
               <span class=""> <img src="../shared/img/icons/icn-calendar-blue.svg" class="booking_date_input"/></span>
               <input type="hidden" name="voucher" value="'.$data[0].'">
               <input type="hidden" name="partner_pay_amount" value="'.$box_data[4].'">
               <input type="hidden" name="partner" value="'.$box_data[2].'">
-              <input type="text" id="booking_date" name="booking_date" class="form-control" placeholder="Enter booking date">
+              <input type="text" id="booking_date" name="booking_date" class="form-control " placeholder="Enter booking date">
           </div>
           <button type="button" onclick="redeem_voucher('.$formid.')" class="voucher_partner2 col-md-2 hap_success">REDEEM VOUCHER</button>
         <div> 

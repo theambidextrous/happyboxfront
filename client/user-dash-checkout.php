@@ -123,7 +123,7 @@ $order = new Order($token);
         </form>
         <p id="retry_btn" class="payment_retry text-info" style="display:none;"><strong>Did not received PIN request?</strong> <a href="<?=$util->ClientHome()?>/user-dash-checkout.php">Click here to request again</a></p>
 								<div id="back_btn" class="payment_back" style="display:none;">
-									<a onclick="return confirm_click();" href="<?=$util->AppHome()?>" class="btn btn_rounded"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>         
+					<a onclick="return confirm_click();" href="<?=$util->AppHome()?>" class="btn btn_rounded btn_checkout_back"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>         
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -139,7 +139,8 @@ $order = new Order($token);
 						<p>Pay securely with your credit/debit card.</p>
 						<!-- jamboPay -->
 						<div class="embed-responsive embed-responsive-16by9">
-							<iframe id="jambopay_iframe" class="embed-responsive-item" frameBorder="0" src="https://www.jambopay.com/PreviewCart.aspx?<?=http_build_query($query_string)?>&target=_parent" scrolling="no"></iframe>
+				<iframe id="jambopay_iframe" class="embed-responsive-item" frameBorder="0" src="https://www.jambopay.com/PreviewCart.aspx?<?=http_build_query($query_string)?>&target=_parent" scrolling="no">
+                                </iframe>
 						</div>
 						<!-- end jamboPay -->
 					</div>

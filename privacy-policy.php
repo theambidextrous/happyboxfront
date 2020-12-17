@@ -109,15 +109,15 @@ $util->ShowErrors(1);
 				<div class="terms_li">
 					<h5>6. Use of Data</h5>
 					<p>HappyBox uses the collected data for various purposes:</p>
-					<ul>
-						<li>To provide and maintain our Service;</li>
-						<li>To notify you about changes to our Service;</li>
-						<li>To provide customer support;</li>
-						<li>To gather analysis or valuable information so that we can improve our Service;</li>
-						<li>To monitor the usage of our Service;</li>
-						<li>To detect, prevent and address technical issues;</li>
-						<li>To provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information;</li>
-						<li>For any other purpose with your consent.</li>
+                                        <ul class="no_bullets">
+						<li>a. To provide and maintain our Service;</li>
+						<li>b. notify you about changes to our Service;</li>
+						<li>c. provide customer support;</li>
+						<li>d. gather analysis or valuable information so that we can improve our Service;</li>
+						<li>e. To monitor the usage of our Service;</li>
+						<li>f. To detect, prevent and address technical issues;</li>
+						<li>g. To provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information;</li>
+						<li>h.For any other purpose with your consent.</li>
 					</ul>
 				</div>
 				<div class="terms_li">
@@ -145,14 +145,14 @@ $util->ShowErrors(1);
 						<li>a. Business Transaction<br>
 							If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.</li>
 						<li> b. Other cases. We may disclose your information also:<br>
-							<ul>
-								<li>To our subsidiaries and affiliates;</li>
-								<li>To contractors, service providers, software developers, survey agencies and other third parties we use to support our business;</li>
-								<li>To comply with a legal obligation;</li>
-								<li>To protect against legal liability;</li>
-								<li>To prevent or investigate possible wrongdoing in connection with the Service;</li>
-								<li>If we believe disclosure is necessary or appropriate to protect and defend the rights, property, or safety of the Company, users of the Services, or others;</li>
-								<li>With your consent in any other cases.</li>
+                                                    <ul class="no_bullets">
+								<li>i. To our subsidiaries and affiliates;</li>
+								<li>ii.  To contractors, service providers, software developers, survey agencies and other third parties we use to support our business;</li>
+								<li>iii. To comply with a legal obligation;</li>
+								<li>iv.  To protect against legal liability;</li>
+								<li>v. To prevent or investigate possible wrongdoing in connection with the Service;</li>
+								<li>vi. If we believe disclosure is necessary or appropriate to protect and defend the rights, property, or safety of the Company, users of the Services, or others;</li>
+								<li>vii. With your consent in any other cases.</li>
 							</ul>
 						</li>
 					</ol>

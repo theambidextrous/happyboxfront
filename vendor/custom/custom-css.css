@@ -2852,6 +2852,42 @@ and (orientation : landscape) {
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+    .mob_bold{
+        font-weight: bold;
+    }
+    .voucher_status_value,.voucher_status_value{
+        text-align: left;
+    }
+    
+   .booking_date ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: transparent !important;
+  opacity: 1; /* Firefox */
+}
+
+.booking_date :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: transparent !important;
+}
+
+.booking_date ::-ms-input-placeholder { /* Microsoft Edge */
+  color: transparent !important;
+}
+    .voucher_no,.voucher_status{
+        text-align: left !important;
+        padding-left: 3px;
+        font-weight: bold;
+    }
+    .box_name_select {
+        border: 0px  !important;
+}
+    .redeem-select,.booking_date .form-control {
+      background: transparent !important;
+     
+          border: 0px !important;
+}
+.voucher_no_value {
+       border: 0px !important;
+}
+
     .booking_date {
     padding-left: 0px !important;
 }
@@ -3424,7 +3460,8 @@ min-height: 108px;
 }
 
 .mob_bold {
-	font-weight: bold;
+    font-weight: bold;
+    padding-left: 3px;
 }
 .how_steps_mob_wrap {
 	padding-left: 22px !important;
@@ -4064,7 +4101,7 @@ background: transparent;
     width: 50% !important;
     height: auto;
     float: left;
-    height: 43px;
+    height: 50px;
     background: #0185B614 !important;
     color: #0185B6 !important;
     border-radius: 0px;
@@ -4161,6 +4198,13 @@ background: transparent;
 }
 #creditcard .embed-responsive {
  height: 700px;
+}
+.no_bullets li{
+   list-style-type: none !important; 
+}
+.btn_checkout_back {
+    font-size: 16px;
+    padding: 8px 27px 8px 0px !important;
 }
 @media (max-width: 768px) {
     #creditcard .embed-responsive {

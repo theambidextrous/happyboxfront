@@ -32,7 +32,7 @@ if( !is_null($_POST) ){
 </head>
 <body>
 <div class="container">
-	<div class="row justify-content-around section_padding_top">
+	<div class="row justify-content-aroundx section_padding_top">
 		<div class="col-md-12">
 			
 			<div class="alert alert-danger"><strong>Failed!</strong> The transaction failed, please try again.</div>

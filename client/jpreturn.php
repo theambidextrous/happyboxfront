@@ -28,7 +28,7 @@ parse_str($allData, $_POST);
 </head>
 <body>
 <div class="container">
-	<div class="row justify-content-around section_padding_top">
+	<div class="row  section_padding_top">
 		<div class="col-md-12">
 			
 			<?php
@@ -42,8 +42,7 @@ parse_str($allData, $_POST);
 			}
 			// exit(json_encode(['action' => 'the end']));
 			?>
-			<div class="payment_back">
-				<a href="<?=$util->ClientHome()?>" class="btn btn_rounded" target="_parent"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
+			<div class="payment_back"><a href="<?=$util->ClientHome()?>" class="btn btn_rounded btn_checkout_back" target="_parent"><img src="<?=$util->AppHome()?>/shared/img/icn-arrow-teal.svg"> BACK TO HOMEPAGE</a>
 			</div>
 		</div>
 	</div>

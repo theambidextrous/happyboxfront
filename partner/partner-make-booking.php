@@ -30,7 +30,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
  </style>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
 
 </head>
 <body class="partner_wrap">
@@ -306,7 +306,14 @@ $token = json_decode($_SESSION['usr'])->access_token;
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#booking_date" ).datepicker({ dateFormat: 'dd-mm-yy'});
+      if ($(window).width() > 767) {
+       $( "#booking_date" ).datepicker({ dateFormat: 'dd-mm-yy'});
+}
+else {
+      $( "#booking_date" ).datepicker({ dateFormat: 'dd-mm-yy'});
+      //$('#booking_date').datepicker('show')
+}
+
   } );
   </script>
 
