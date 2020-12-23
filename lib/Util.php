@@ -727,7 +727,7 @@
         BOX NAME | DESCRIPTION
           </div>
           <div class="box_name_select col-md-4">
-            <select name="rservice" id="rservice" class="nav-link dropdown-toggle redeem-select" data-toggle="dropdown">
+            <select name="rservice" id="rservice" class="redeem-select">
                 <option value="nn">'.$box_data[0].'</option> 
                 '.$options_.'
             </select>

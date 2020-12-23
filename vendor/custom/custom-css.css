@@ -2333,6 +2333,10 @@ color: #C20A2B;
 	padding: 17px 10px !important;
 }
 @media (min-width: 768px) {
+    .box_name_select {
+       padding-left: 0px !important;
+    padding-right: 0px !important;
+}
     .no_pad_lr_desk{
         padding-left: 0px !important;
               padding-right: 0px !important;
@@ -2361,6 +2365,16 @@ color: #C20A2B;
 }
  .contact_p_txt {
     line-height: 19px;
+}
+.booking_date {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+
+}
+.booking_date .form-control {
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
 }
 }
 /*Tooltips */
