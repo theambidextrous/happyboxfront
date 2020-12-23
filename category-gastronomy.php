@@ -462,9 +462,12 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
             if (rtn.hasOwnProperty("MSG")) {
               $("#reset_div").load(window.location.href + " #reset_div");
               $('#vvv').text('THIS BOX HAS BEEN ADDED TO YOUR CART.');
-              setTimeout(function() {
-                location.reload();
-              }, 10000);
+              // setTimeout(function() {
+              //   location.reload();
+              // }, 10000);
+              $("#addedToCart").on('hidden.bs.modal', function(){
+               location.reload();
+              });
               $('#popupid').trigger('click');
               waitingDialog.hide();
               return;
