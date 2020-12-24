@@ -710,13 +710,13 @@ class Util {
           <div class="voucher_no">
               VOUCHER NUMBER
           </div> 
-          <div class="voucher_no_value ">
+          <div class="voucher_no_value mobb_right">
               ' . $data[0] . '
           </div>
           <div class="voucher_status">
               STATUS
           </div>
-          <div class="voucher_status_value">
+          <div class="voucher_status_value mobb_right">
           ' . $this->get_v_status_name($data[1]) . '
           </div>
            <div class="voucher_status_value mobile_view mob_bold">
@@ -724,9 +724,7 @@ class Util {
           </div>
           <div class="box_name_select col-md-4">
             <select name="rservice" id="rservice" class="redeem-select">
-                <option value="nn">'.$box_data[0].'</option> 
-                '.$options_.'
-                <option value="nn">' . $box_data[0] . '</option> 
+                               <option value="nn">' . $box_data[0] . '</option> 
                 ' . $options_ . '
 
             </select>

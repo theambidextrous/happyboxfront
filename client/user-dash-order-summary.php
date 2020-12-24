@@ -73,7 +73,7 @@ $order_physical_address = $_SESSION['curr_usr_cart'][2000]['physical_address'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>HappyBox :: User Order SummarSy</title>
+        <title>HappyBox :: User Order Summary</title>
         <!-- Bootstrap core CSS -->
         <?php include '../shared/partials/css.php'; ?>
     </head>

@@ -37,7 +37,7 @@ $order = new Order($token);
 
 <!-- Page Content -->
 
-<section class=" user_account_sub_banner">
+<section class=" user_account_sub_banner desktop_view">
 	<div class="container">
 		<div class="row user_logged_in_nav">
 			<div class="col-md-12">

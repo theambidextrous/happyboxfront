@@ -98,7 +98,7 @@
                 <a class="" href="<?=$util->PartnerHome()?>/partner-edit-profile.php">Edit Profile</a>
             </li>
              <li>
-                <a class="" href="">Contact Partner Care Team</a>
+                <a class="" href="tel:+254112454540">Contact Partner Care Team</a>
             </li>
             <li>
                 <a class="" href="<?=$util->PartnerHome()?>/exit.php">Logout</a>

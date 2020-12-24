@@ -2866,6 +2866,9 @@ and (orientation : landscape) {
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+    .mobb_right{
+        text-align: right !important;
+    }
     .mob_bold{
         font-weight: bold;
     }
@@ -2894,9 +2897,10 @@ and (orientation : landscape) {
         border: 0px  !important;
 }
     .redeem-select,.booking_date .form-control {
-      background: transparent !important;
-     
-          border: 0px !important;
+    background: transparent !important;
+    border: 0px !important;
+    color: #0193cd;
+        text-align-last: right;
 }
 .voucher_no_value {
        border: 0px !important;
@@ -4120,8 +4124,9 @@ background: transparent;
     color: #0185B6 !important;
     border-radius: 0px;
     margin-bottom: 7px;
-    font-size: 15px;
+  font-size: 14px;
     line-height: 43px;
+   padding-right: 3px;
 
     
 }
@@ -4190,6 +4195,28 @@ background: transparent;
 }
 }
 /*end mobile */
+/*start small moobile */
+@media (max-width: 350px){
+    .logo_img {
+    height: 36px;
+    margin-top: -16px;
+}
+body, html {
+       line-height: 16px !important;
+      font-size: 15px !important;
+}
+.site-nav li a {
+
+    font-size: 16px !important;
+}
+.step_span {
+       padding: 3px 6px !important;
+    
+}
+    
+}
+
+/*end small mobile*/
 
 
 .password_ok_img:hover{
