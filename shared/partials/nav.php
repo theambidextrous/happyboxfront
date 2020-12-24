@@ -20,6 +20,8 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
 	$name_ = json_decode($_SESSION['usr_info'])->data->fname . ' ' . json_decode($_SESSION['usr_info'])->data->sname;
 	$login_ = '<a class="nav-link" href="#">  <img class="top-bar-nav-icon" src="' . $util->AppHome() . '/shared/img/icons/icn-user-teal.svg"> ' . $name_ . '</a>';
 }
+
+$CartCount = $util->cartCount();
 ?>
 <!--<nav class="navbar navbar-expand-lg navbar-light static-top client-partner-nav">
     <div class="container top-bar">
@@ -40,7 +42,7 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
           </li>
             <li class="nav-item ">
                 <div class="nav-item-with-cart" id="reset_div">
-                 <a class="nav-link" href="<?= $util->ClientHome() ?>/user-dash-shoppingcart.php"> <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-cart.svg"><span class="count"><?= count($_SESSION['curr_usr_cart']) ?></span></a>   
+                 <a class="nav-link" href="<?= $util->ClientHome() ?>/user-dash-shoppingcart.php"> <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-cart.svg"><span class="count"><?= $CartCount ?></span></a>   
                 </div>
           </li>
         </ul>
@@ -89,8 +91,7 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
 				<li class="nav-item"> <a class="nav-link" href="<?= $util->PartnerHome() ?>/login.php"> <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-partner-blue.svg"> Partner Portal</a> </li>
 				<li class="nav-item ">
 					<div class="nav-item-with-cart" id="reset_div">
-						<?php
-						$CartCount = $util->cartCount();
+						<?php						
 						if ($CartCount > 0) {
 						?>
 							<a class="nav-link" href="<?= $util->ClientHome() ?>/user-dash-shoppingcart.php"> <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-cart-red.svg"><span class="count text-danger"><?= $CartCount ?>
@@ -135,16 +136,15 @@ if (isset($_SESSION['usr']) && !empty(json_decode($_SESSION['usr'])->access_toke
 <!-- mobile view -->
 <nav class="site-nav mobile_view">
 	<h1 class="logo"> <a href="<?= $util->AppHome() ?>/"><img class="logo_img" src="<?= $util->AppHome() ?>/shared/img/logo.svg"></a>
-		<?php
-		$CartCount = !empty($_SESSION['curr_usr_cart']) ? count($_SESSION['curr_usr_cart']) : 0;
+		<?php		
 		if ($CartCount > 0) {
 		?>
-			<a class="mob_cart" href="<?= $util->ClientHome() ?>/user-dash-shoppingcart.php"><img src="<?= $util->AppHome() ?>/shared/img/icons/icn-cart-red.svg"> <span class="count text-danger"><?= count($_SESSION['curr_usr_cart']) ?>
+			<a class="mob_cart" href="<?= $util->ClientHome() ?>/user-dash-shoppingcart.php"><img src="<?= $util->AppHome() ?>/shared/img/icons/icn-cart-red.svg"> <span class="count text-danger"><?= $CartCount ?>
 				</span></a>
 		<?php
 		} else {
 		?>
-			<a class="mob_cart"><img src="<?= $util->AppHome() ?>/shared/img/icn-cart.svg"> <span class="count"><?= count($_SESSION['curr_usr_cart']) ?>
+			<a class="mob_cart"><img src="<?= $util->AppHome() ?>/shared/img/icn-cart.svg"> <span class="count"><?= $CartCount ?>
 				</span></a>
 		<?php
 		}

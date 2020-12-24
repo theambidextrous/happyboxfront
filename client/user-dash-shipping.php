@@ -75,6 +75,8 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 
 <!-- Bootstrap core CSS -->
 <?php include '../shared/partials/css.php'; ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?=$util->MapsKey()?>&libraries=places&sensor=false&callback=initialize" async defer></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 </head>
 
 <body class="client_body">
@@ -334,24 +336,24 @@ if(isset($_POST['load']) && isset($_SESSION['curr_usr_cart'])){
 					<tr>
 						<td colspan="2"><div class="form-group">
 								<label for="pwd">Recipient Name</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_name" id="name" value="<?=$cart_physical_del[0]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_name" id="name" value="<?=!empty($cart_physical_del[0])?$cart_physical_del[0]:$_ship_name_?>">
 							</div>
 							<div class="form-group">
 								<label for="pwd">Address</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_address" id="physc_address" value="<?=$cart_physical_del[1]?>">
-								<?=$util->place_autocomplete('physc_address')?>
+								<input required type="text" class="form-control rounded_form_control" name="physc_address" id="physc_address_mob" value="<?=!empty($cart_physical_del[1])?$cart_physical_del[1]:$shipping_->address?>">
+								<?=$util->place_autocomplete('physc_address_mob')?>
 							</div>
 							<div class="form-group">
 								<label for="pwd">City</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_city" id="city" value="<?=$cart_physical_del[2]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_city" id="city" value="<?=!empty($cart_physical_del[2])?$cart_physical_del[2]:$shipping_->city?>">
 							</div></td>
 						<td><div class="form-group">
 								<label for="pwd">Province</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_province" id="province" value="<?=$cart_physical_del[3]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_province" id="province" value="<?=!empty($cart_physical_del[3])?$cart_physical_del[3]:$shipping_->province?>">
 							</div>
 							<div class="form-group">
 								<label for="pwd">Postal Code</label>
-								<input required type="text" class="form-control rounded_form_control" name="physc_postal_code" id="postal_code" value="<?=$cart_physical_del[4]?>">
+								<input required type="text" class="form-control rounded_form_control" name="physc_postal_code" id="postal_code" value="<?=!empty($cart_physical_del[4])?$cart_physical_del[4]:$shipping_->postal_code?>">
 							</div>
 							<div class="form-group">
 								<label for="pwd">Delivery Contact Name</label>
