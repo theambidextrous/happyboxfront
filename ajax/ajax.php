@@ -273,22 +273,35 @@ switch($_REQUEST['activity']){
         }
     break;
     case 'new-account-ptn':
-        try{
+        try{            
+            if(!$_POST['business_name']){
+             throw new Exception('Business name field is required');
+            }
+            if(!$_POST['fname']){
+             throw new Exception('Contact name field is required');
+            }
+            if(!$_POST['sname']){
+             throw new Exception('Contact surname field is required');
+            } 
             if($_POST['business_category'] == 'nn'){
-                throw new Exception('business category field is required');
+             throw new Exception('Business category field is required');
+            }   
+            if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+             throw new Exception('Email field is required');
+            }
+            if(!$_POST['short_description']){
+             throw new Exception('Short description field is required');
             }
             if($_POST['location'] == 'nn'){
-                throw new Exception('Location field is required');
+             throw new Exception('Location field is required');
             }
-            if(!$_POST['sub_location']){
-                throw new Exception('Sub location field is required');
-            }
+            $sub_location = !empty(trim($_POST['sub_location'])) ? ' | ' . $_POST['sub_location'] : NULL;            
             $body = [
                 'email' => $_POST['email'],
                 'fname' => $_POST['fname'],
                 'sname' => $_POST['sname'],
                 'short_description' => $_POST['short_description'],
-                'location' => $_POST['location'] .' | '.$_POST['sub_location'],
+                'location' => $_POST['location'] . $sub_location,
                 'phone' => $_POST['phone'],
                 'business_name' => $_POST['business_name'],
                 'business_category' => $_POST['business_category'],
@@ -309,15 +322,28 @@ switch($_REQUEST['activity']){
         /** ================================================================ */
         /** ================================================================ */
         try{
+            if(!$_POST['business_name']){
+             throw new Exception('Business name field is required');
+            }
+            if(!$_POST['fname']){
+             throw new Exception('Contact name field is required');
+            }
+            if(!$_POST['sname']){
+             throw new Exception('Contact surname field is required');
+            } 
             if($_POST['business_category'] == 'nn'){
-                throw new Exception('business category field is required');
+             throw new Exception('Business category field is required');
+            }   
+            if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+             throw new Exception('Email field is required');
+            }
+            if(!$_POST['short_description']){
+             throw new Exception('Short description field is required');
             }
             if($_POST['location'] == 'nn'){
-                throw new Exception('Location field is required');
+             throw new Exception('Location field is required');
             }
-            if(!$_POST['sub_location']){
-                throw new Exception('Sub location field is required');
-            }
+            $sub_location = !empty(trim($_POST['sub_location'])) ? ' | ' . $_POST['sub_location'] : NULL;
             /**================================================== */
             $username = strtolower($util->createCode(6));
             $password = $util->createCode(10);
@@ -337,7 +363,7 @@ switch($_REQUEST['activity']){
                         'fname' => $_POST['fname'],
                         'sname' => $_POST['sname'],
                         'short_description' => $_POST['short_description'],
-                        'location' => $_POST['location'] .' | '.$_POST['sub_location'],
+                        'location' => $_POST['location'] . $sub_location,
                         'phone' => $_POST['phone'],
                         'business_name' => $_POST['business_name'],
                         'business_category' => $_POST['business_category'],
