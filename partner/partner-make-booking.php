@@ -61,7 +61,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 
 
       <?php
-      $_redeem_v_table = null;
+      $showform = false;
       $obj = null;
       if (isset($_POST['VALIDITY']) && !empty(trim($_POST['vcode']))) {
        $voucher_code = strtoupper(trim($_POST['vcode']));
@@ -113,7 +113,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
          'Invalid'
         ];
        }
-       $_redeem_v_table = $util->ptn_v_validity($data_0, $data_1, json_decode($obj));
+       $showform = true;
       }
       ?>
       <div class="row justify-content-center">
@@ -135,7 +135,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
    <form id="redeem_v" action="" name="redeem_v" method="post">
     <hr><br>
     <?= $util->msg_box() ?>
-    <?= $_redeem_v_table ?>
+    <?= ($showform === true) ? $util->ptn_v_validity($data_0, $data_1, json_decode($obj), 'redeem_v') : ""; ?>
    </form>
   </div>
   </div><!-- result-->
@@ -227,10 +227,10 @@ $token = json_decode($_SESSION['usr'])->access_token;
       <button type="submit" name="VALIDITY" class="btn btn_rounded">CHECK VALIDITY</button>
      </form>
     </div>
-    <form id="redeem_v" action="" name="redeem_v" method="post">
+    <form id="redeem_v_mobile" action="" name="redeem_v_mobile" method="post">
      <hr><br>
      <?= $util->msg_box() ?>
-     <?= $_redeem_v_table ?>
+     <?= ($showform === true) ? $util->ptn_v_validity($data_0, $data_1, json_decode($obj), 'redeem_v_mobile') : ""; ?>
     </form>
    </div>
 
@@ -270,7 +270,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
 <script>
  $(document).ready(function() {
   redeem_voucher = function(FormId) {
-   waitingDialog.show('redeeming... Please wait', {
+   waitingDialog.show('Redeeming... Please wait', {
     headerText: '',
     headerSize: 6,
     dialogSize: 'sm'

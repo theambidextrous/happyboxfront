@@ -693,7 +693,7 @@ class Util {
   endforeach;
   return $rtn;
  }
- function ptn_v_validity($data, $box_data, $obj = null) {
+ function ptn_v_validity($data, $box_data, $obj = null, $formid) {
   if ($box_data[0] == 'Invalid' && !is_null($obj)) {
    if ($box_data[2] == 1) {
     return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. Do not redeem it.</div>';
@@ -704,7 +704,7 @@ class Util {
   foreach ($this->format_box_services($box_data[3]) as $_option) :
    $options_ .= '<option value="' . ucwords(strtolower($_option)) . '">' . ucwords(strtolower($_option)) . '</option>';
   endforeach;
-  $formid = "'" . "redeem_v" . "'";
+  $formid = "'" . $formid . "'";
   $_table = '<div class="row text-center">
         <div class="voucher_result_bar validity_bar">
           <div class="voucher_no">
