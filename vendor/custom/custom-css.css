@@ -2748,6 +2748,22 @@ and (orientation : landscape) {
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (orientation: portrait) {
+      .forgot_des {
+     margin-bottom: 18px;
+    
+      }
+      .order_summary_tr_td_img {
+    height: auto !important;
+}
+      .nav-item-with-cart .count {
+    position: absolute;
+    top: -2px;
+    font-size: 9px !important;
+    right: 4px !important;
+}
+      .pdt_img img {
+    height: auto !important;
+}
    
       .card_step_blue .card_step_blue_txt {
   
@@ -2799,8 +2815,8 @@ and (orientation : landscape) {
     height: auto !important;
    }
       .well_banner,.gastronomy_banner,.sports_banner {
-    min-height:  282px !important;
-        height: auto !important;
+min-height: 303px !important;
+    height: auto !important;
   
 }
       .well_banner_title h3 ,.gastronomy_banner_title h3,.sports_banner_title h3{
@@ -2866,6 +2882,10 @@ and (orientation : landscape) {
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+   
+    .owl-theme .owl-nav {
+      display: none !important;
+}
     .mobb_right{
         text-align: right !important;
     }

@@ -92,9 +92,9 @@ $util->ShowErrors(1);
 					<h5>Arbitration</h5>
 					<p>Should parties not resolve their dispute amicably as provided in this clause 8, within fourteen (14) days such a dispute, difference or question touching upon the construction of this Agreement shall be referred to the decision of a single arbitrator to be agreed between the parties within fourteen (14) days. In the event that parties are unable to agree on an arbitrator one shall be appointed at the request of either of the parties by the chairman for the time being of the institute of Chartered Arbitrators – Kenya Branch in accordance with and subject to the provisions of the Arbitration Act (Cap 49 Laws of Kenya) or any statutory modification or re-enactment thereof for the time being in force:
 						<ol style="list-style-type: none;">
-							<li>a) To the extent permissible by Law, the determination of the Arbitrator shall be final, conclusive and binding upon the Parties hereto</li>
-							<li>b) Pending final settlement or determination of a dispute, the Parties shall continue to perform their subsisting obligations hereunder.</li>
-							<li>c) Nothing in this Agreement shall prevent or delay a Party seeking urgent injunctive or interlocutory relief in a court having jurisdiction</li>
+							<li>a. To the extent permissible by Law, the determination of the Arbitrator shall be final, conclusive and binding upon the Parties hereto</li>
+							<li>b. Pending final settlement or determination of a dispute, the Parties shall continue to perform their subsisting obligations hereunder.</li>
+							<li>c. Nothing in this Agreement shall prevent or delay a Party seeking urgent injunctive or interlocutory relief in a court having jurisdiction</li>
 						</ol>
 					</p>
 				</div>
