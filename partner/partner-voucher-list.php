@@ -196,10 +196,11 @@ $list = json_decode($list, true)['data'];
                 <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>
                 ';
               } elseif ($box_voucher_status == 4) {
-                $admin_func = ' <td class="empty_cell a2"></td>';
-                $b_v_status = '<td class="v_td_valid">CANCELLED</td>';
+                $admin_func = ' <td class="empty_cell a2 empty_mob"></td><td class="mob_view"></td>';
+                $b_v_status = '<td class="v_td_valid ">CANCELLED</td>';
+               
               } else {
-                $b_v_status = '<td class="empty_cell a1"></td>';
+                $b_v_status = '<td class="empty_cell a1 empty_mob"></td>';
               }
               $box_data = json_decode($box->get_byidf($token, $box_idf))->data;
               $c_user_data = json_decode($user->get_details_byidf($_list['customer_user_id']))->data;
@@ -250,6 +251,7 @@ $list = json_decode($list, true)['data'];
                   </tr>
                   <tr class="voucher_list_table_mob_tr text-center">
                     <?= $admin_func ?>
+                  
                   </tr>
                 </tbody>
               </table>

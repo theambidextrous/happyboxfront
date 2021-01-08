@@ -2882,6 +2882,9 @@ min-height: 303px !important;
 /* end IPAD portrait */
 /*mobile view */
 @media (max-width: 767px) {
+     .empty_mob{
+        background:transparent !important;
+    }
    
     .owl-theme .owl-nav {
       display: none !important;
