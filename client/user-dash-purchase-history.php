@@ -95,7 +95,6 @@ if (isset($_POST['makecart'])) {
  <!--end discover our selection-->
  <!--desktop-->
  <section class="partner_voucher_list section_60 desktop_view">
-  <!-- <a href="#" onclick="fdownload()">try download <=$util->tb64('http://127.0.0.1:8000/media/2ko01ggxirz059yqlvgtkreuws1lxrz5.png')?></a> -->
   <div class="container">
    <div class="row ">
     <div class="col-md-12">
@@ -230,7 +229,7 @@ if (isset($_POST['makecart'])) {
          <div class="down_inv">
 
           <!--<button type="submit" name="makecart"> <img class="img-btn btn-add-to-cart" src="<?= $util->AppHome() ?>/shared/img/btn-add-to-cart-orange.svg"> </button>-->
-          <img class="img-btn btn-invoice-download" onclick="fdownload('<?= $current_order_id ?>')" src="<?= $util->AppHome() ?>/shared/img/btn-download-orange.png">
+          <a href="user-dash-invoice-generator.php?order=<?= $current_order_id ?>" target="_blank"><img class="img-btn btn-invoice-download" src="<?= $util->AppHome() ?>/shared/img/btn-download-orange.png"></a>
 
          </div>
 
@@ -361,7 +360,7 @@ if (isset($_POST['makecart'])) {
          </tr>
          <tr class="v_td_p_r">
           <!--  <td class="v_td_p1">ADD TO CART <img class="" src="../shared/img/cartp_mob.svg"></td>-->
-          <td colspan="2" class="v_td_p2">DOWNLOAD INVOICE <img onclick="fdownload('<?= $current_order_id ?>')" class="" src="../shared/img/downp.svg"></td>
+          <td colspan="2" class="v_td_p2">DOWNLOAD INVOICE <a href="user-dash-invoice-generator.php?order=<?= $current_order_id ?>" target="_blank"><img class="" src="../shared/img/downp.svg"></a></td>
          </tr>
          <!--<tr class="declare_tr text-center">
           <td colspan="2" class="v_td_canc">DECLARE LOSS OR THEFT OF VOUCHER</td>
@@ -446,35 +445,6 @@ if (isset($_POST['makecart'])) {
  <!-- Bootstrap core JavaScript -->
 
  <?php include '../shared/partials/js.php'; ?>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.js"></script>
- <script>
-  function fdownload(id) {
-   $("#invoiceData").html("");
-   $("#" + id).clone().appendTo("#invoiceData");
-   CreatePDFfromHTML(id);
-  }
-
-  function CreatePDFfromHTML(this_order) {
-   $('#printableInvoice').modal('show');
-   setTimeout(function() {
-    html2canvas(document.getElementById("printable")).then(canvas => {
-     var imgData = canvas.toDataURL("image/png", 1);
-     var pdf = new jsPDF("p", "pt", "a4");
-     var pageWidth = pdf.internal.pageSize.getWidth();
-     var pageHeight = pdf.internal.pageSize.getHeight();
-     var imageWidth = canvas.width;
-     var imageHeight = canvas.height;
-
-     var ratio = imageWidth / imageHeight >= pageWidth / pageHeight ? pageWidth / imageWidth : pageHeight / imageHeight;
-     pdf.addImage(imgData, 'PNG', 0, 40, imageWidth * ratio, imageHeight * ratio);
-     pdf.save("INV-" + this_order + ".pdf");
-     //$('#printableInvoice').modal('hide');
-    });
-   }, 500);
-  }
- </script>
 </body>
 
 </html>
