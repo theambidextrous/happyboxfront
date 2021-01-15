@@ -196,7 +196,7 @@ $list = json_decode($list, true)['data'];
                 <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>
                 ';
               } elseif ($box_voucher_status == 4) {
-                $admin_func = ' <td class="empty_cell a2 empty_mob"></td><td class="mob_view"></td>';
+                $admin_func = ' <td class="empty_cell a2 empty_mob empty_mob"></td><td class="mob_view"></td>';
                 $b_v_status = '<td class="v_td_valid ">CANCELLED</td>';
                
               } else {
@@ -249,10 +249,14 @@ $list = json_decode($list, true)['data'];
                   <tr class="v_td_100">
                     <td class="" colspan="2">Voucher Administration</td>
                   </tr>
+                  <?php  if ($box_voucher_status == 4){?>
+                  
+                  <?php }else{ ?>
                   <tr class="voucher_list_table_mob_tr text-center">
                     <?= $admin_func ?>
                   
                   </tr>
+                  <?php } ?>
                 </tbody>
               </table>
               <br>
