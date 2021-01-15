@@ -278,7 +278,7 @@ if (isset($_POST['makecart'])) {
          <thead>
           <tr class="blue_cell_th_mob blue_cell_user_th_mob text-white">
            <th style="width:50%;">ORDER NUMBER</th>
-           <th>PURCHASE DATE </th>
+           <th style="text-align:right;">PURCHASE DATE </th>
           </tr>
          </thead>
 
@@ -338,10 +338,10 @@ if (isset($_POST['makecart'])) {
                <td class="v_td_a"> Box Type</td>
                <td><?= $box_type ?></td>
               </tr>
-              <tr class="voucher_list_user_table_mob_tr">
+              <!-- <tr class="voucher_list_user_table_mob_tr">
                <td class="v_td_a">Expiry Date</td>
                <td>N/A</td>
-              </tr>
+              </tr> -->
               <tr class="voucher_list_user_table_mob_tr">
                <td class="v_td_a">Quantity</td>
                <td><?= $_cart_item[1] ?></td>
