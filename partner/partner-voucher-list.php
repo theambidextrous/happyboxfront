@@ -193,7 +193,7 @@ $list = json_decode($list, true)['data'];
                 <td id="datepilckerx" class="v_td_modi">
                   <!--<button type="button" class="modify_img_btn" data-toggle="modal" data-target="#modif_booking_modal">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>-->
                   <button type="button" class="modify_img_btn" title="Click the field below to pick the new date">MODIFY DATE  <img src="../shared/img/icons/icn-edit-teal.svg" class="td_edit_img"/></button>
-                <input type="text" class="datepicker" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>
+                <input type="text" class="datepicker form-control-sm" name="newdate" placeholder="" onchange="modify_date(this.value,' . $m_voucher . ',' . $m_partner . ')"></td>
                 ';
               } elseif ($box_voucher_status == 4) {
                 $admin_func = ' <td class="empty_cell a2 empty_mob empty_mob"></td><td class="mob_view"></td>';
