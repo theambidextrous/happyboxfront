@@ -170,7 +170,7 @@ $list = json_decode($list, true)['data'];
                 $date_cancelled = '<td class="canc_td">' . date('d/m/Y', strtotime($_list['cancellation_date'])) . '</td>';
               } else {
                 //$date_cancelled = '<td class="empty_cell"></td>';
-                $date_cancelled = '';
+                $date_cancelled = '<td></td>';
               }
               /** partner paid */
               if ($_list['box_voucher_status'] != 4) {
