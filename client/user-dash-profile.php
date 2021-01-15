@@ -30,6 +30,7 @@ $profile_data_ = json_decode($_SESSION['usr_info'])->data;
 
 <!-- Bootstrap core CSS -->
 <?php include '../shared/partials/css.php'; ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?=$util->MapsKey()?>&libraries=places&sensor=false&callback=initialize" async defer></script>
 <style>
 .user-profile {
 	color: #c20a2b!important;
