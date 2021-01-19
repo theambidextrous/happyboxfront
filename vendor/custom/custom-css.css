@@ -2376,6 +2376,13 @@ color: #C20A2B;
     border-bottom-left-radius: 0px !important;
     border-top-left-radius: 0px !important;
 }
+.dropdown {
+    
+    text-align: right !important;
+}
+.nav-item-with-cart {
+       text-align: right !important;
+}
 }
 /*Tooltips */
 a.tooltips {

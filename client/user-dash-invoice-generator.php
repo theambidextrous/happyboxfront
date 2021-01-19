@@ -79,12 +79,11 @@ if (count($my_list_)) {
       <table class="table purchase_hist table-bordered" id="<?= $current_order_id ?>">
        <tr class="purch_hist_tr_td">
         <td class="b">ORDER NUMBER</td>
-        
-        <td colspan="4" class="invisible_table" style="background-color:#FFF;"></td>
         <td><?= $current_order_id ?></td>
+        <td colspan="4" class="invisible_table" style="background-color:#FFF;"></td>
        </tr>
        <tr class="purch_hist_tr_td">
-         <!-- <th class="b col_1">IMAGE</th>-->
+        <th class="b col_1">IMAGE</th>
         <th>BOX NAME</th>
         <th>BOX NUMBER</th>
         <!-- <th>VOUCHER CODE</th> -->
@@ -118,7 +117,7 @@ if (count($my_list_)) {
           /** ebox */
           ?>
           <tr>
-           <!--<td class="purch_img"><img style="max-width:100px;" class="img-fluid d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>-->
+           <td class="purch_img"><img style="max-width:100px;" class="img-fluid d-block mx-auto purch_his_img" src="<?= $util->tb64($_3d) ?>"></td>
            <td class="purch_blue_td"><b><?= $_box_data->name ?></b></td>
            <td class="purch_blue_td"><b><?= $_box_data->internal_id ?></b></td>
 
