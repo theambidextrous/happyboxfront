@@ -393,7 +393,8 @@ $list = json_decode($list, true)['data'];
                   <label>Change booking to</label>
                   <input type="hidden" name="partner" value="<?= json_decode($_SESSION['usr_info'])->data->internal_id ?>">
                   <input type="hidden" name="modi_voucher" id="modi_voucher" />
-                  <input type="text" readonly id="new_booking_date" name="new_booking_date" class="form-control rounded_form_control">
+                  <input type="hidden" name="new_booking_date" id="new_booking_date" />
+                  <input type="text" readonly id="new_booking_formatted_date" name="new_booking_formatted_date" class="form-control rounded_form_control">
                 </div>
               </div>
             </div>
@@ -484,8 +485,10 @@ $list = json_decode($list, true)['data'];
 
         modify_date = function(date, voucher, partner) {
           if (date !== undefined && voucher !== undefined) {
+            var formattedDate = moment(date).format("DD/MM/YYYY");
             $('#modi_voucher').val(voucher);
             $('#new_booking_date').val(date);
+            $('#new_booking_formatted_date').val(formattedDate);
             $('#modif_booking_modal').modal('show');
             // alert(date);
           }
