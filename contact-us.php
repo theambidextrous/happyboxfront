@@ -61,26 +61,27 @@ $util->ShowErrors(1);
 					<h4 class="contact_title">Contact HAPPYBOX</h4>
 					<div class="row">
 						<div class="col-md-6  contact_p_txt">
-							<p> <span class="contact_p"> <b>Contact Details</b></span><br>
-								<b>Email:</b> <a href="mailto:customerservices@happybox.ke">customerservices@happybox.ke</a></p>
-							<div class="col-md-6 contact_p_txt mobile_view ">
-								<p> <span class="contact_p">
-										<b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br><br>
-										<b>Opening Hours </b></span><br>
-									<b>Monday – Friday:</b> 9:00am - 5:00pm<br>
-									<b>Saturday:</b> 9:00am – 12:00pm<br>
-									<b>Sunday &amp; National Holidays:</b> Closed </p>
-							</div>
-							<p> <span class="contact_p"><b> Postal Address</b></span><br>
-								P.O. Box 30275<br>
-								00100<br>
-								Nairobi<br>
-								Kenya </p>
+                    <p> <span class="contact_p"> <b>Contact Details</b></span><br>
+                            <b>Email:</b> <a href="mailto:customerservices@happybox.ke">customerservices@happybox.ke</a><br>
+                                       <b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a></p>
+                    <div class="col-md-6 contact_p_txt mobile_view ">
+                            <p> <span class="contact_p">
+                                        <!--   <b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br><br>-->
+                                            <b>Opening Hours </b></span><br>
+                                    <b>Monday – Friday:</b> 9:00am - 5:00pm<br>
+                                    <b>Saturday:</b> 9:00am – 12:00pm<br>
+                                    <b>Sunday &amp; National Holidays:</b> Closed </p>
+                    </div>
+                    <p> <span class="contact_p"><b> Postal Address</b></span><br>
+                            P.O. Box 30275<br>
+                            00100<br>
+                            Nairobi<br>
+                            Kenya </p>
 							<h3 class="send_us text-center mobile_view">SEND US YOUR ENQUIRY</h3>
 						</div>
 						<div class="col-md-6 contact_p_txt desktop_view">
 							<p> <span class="contact_p">
-									<b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br><br>
+								<!--	<b>Phone Number:</b> <a href="tel:+254112454540">+254 112 454 540</a><br><br>-->
 									<b>Opening Hours </b></span><br>
 								<b>Monday – Friday:</b> 9:00am - 5:00pm<br>
 								<b>Saturday:</b> 9:00am - 12:00pm<br>
