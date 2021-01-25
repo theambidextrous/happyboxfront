@@ -14,6 +14,9 @@ mpesaexpress.log
 order_logs.log
 jpLogs.log
 allData.log
+cronerrors.log
+sendypostfields.log
+sendyresponsepayload.log
 mailt_text.html
 .gitignore
 /admin/vendor/
