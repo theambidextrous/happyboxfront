@@ -693,7 +693,7 @@ class Util {
   endforeach;
   return $rtn;
  }
- function ptn_v_validity($data, $box_data, $obj = null, $formid) {
+ function ptn_v_validity($data, $box_data, $obj = null, $view) {
   if ($box_data[0] == 'Invalid' && !is_null($obj)) {
    if ($box_data[2] == 1) {
     return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. Do not redeem it.</div>';
@@ -704,7 +704,7 @@ class Util {
   foreach ($this->format_box_services($box_data[3]) as $_option) :
    $options_ .= '<option value="' . ucwords(strtolower($_option)) . '">' . ucwords(strtolower($_option)) . '</option>';
   endforeach;
-  $formid = "'" . $formid . "'";
+  $formid = "'redeem_v_" . $view . "'";
   $_table = '<div class="row text-center">
         <div class="voucher_result_bar validity_bar">
           <div class="voucher_no">
@@ -724,20 +724,19 @@ class Util {
           </div>
           <div class="box_name_select col-md-4">
             <select name="rservice" id="rservice" class="redeem-select">
-                               <option value="nn">' . $box_data[0] . '</option> 
-                ' . $options_ . '
-
+            <option value="nn">' . $box_data[0] . '</option> 
+            ' . $options_ . '
             </select>
           </div>
           <div class="voucher_status_value mobile_view mob_bold">
         ENTER A BOOKING DATE
           </div>
           <div class="booking_date col-md-2 border_right nomargin_lr">
-              <span class=""> <img src="../shared/img/icons/icn-calendar-blue.svg" class="booking_date_input"/></span>
+              <span id="booking_date_input_' . $view . '"> <img src="../shared/img/icons/icn-calendar-blue.svg" class="booking_date_input ' . $view . '"/></span>
               <input type="hidden" name="voucher" value="' . $data[0] . '">
               <input type="hidden" name="partner_pay_amount" value="' . $box_data[4] . '">
               <input type="hidden" name="partner" value="' . $box_data[2] . '">
-              <input type="text" id="booking_date" name="booking_date" class="form-control " placeholder="Enter booking date">
+              <input autocomplete="off" type="text" id="booking_date_' . $view . '" name="booking_date" class="form-control " placeholder="Enter booking date">
           </div>
           <button type="button" onclick="redeem_voucher(' . $formid . ')" class="voucher_partner2 col-md-2 hap_success">REDEEM VOUCHER</button>
         <div> 

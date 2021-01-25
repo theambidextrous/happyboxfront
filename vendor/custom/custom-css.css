@@ -2069,11 +2069,6 @@ color: #C20A2B;
 	padding-right: 0px !important;
 	padding-left: 15px !important;
 }
-.booking_date .form-control {
-/* border: solid 1px #707070;
- border-radius: 0px*/
-
-}
 .voucher_partner2 {
 	background: #00ACB3 !important;
 	border: 0;
@@ -3583,6 +3578,9 @@ min-height: 108px;
 }
 .form-control {
 	padding: 21px 10px !important;
+}
+#booking_date_mobile.form-control {
+ padding-right: 36px !important;
 }
 .partner_blueh {
 	margin-bottom: 30px;

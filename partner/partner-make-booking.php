@@ -45,7 +45,8 @@ $token = json_decode($_SESSION['usr'])->access_token;
    <div class="row  ">
     <div class="col-md-6 col-lg-5">
      <div class=" how_it_work">
-      <img src="../shared/img/howitworks.png" class="" /> </div>
+      <img src="../shared/img/howitworks.png" class="" />
+     </div>
      <div class="card how_it_work_card">
       <div class="">
        <p class="step_p"> <span class="step_span">STEP 1 </span> Customer calls for a booking </p>
@@ -131,11 +132,10 @@ $token = json_decode($_SESSION['usr'])->access_token;
      </div>
     </div>
    </div>
-   <!-- <form method="post" id="redeem_v" name="redeem_v"> -->
-   <form id="redeem_v" action="" name="redeem_v" method="post">
+   <form id="redeem_v_desktop" action="" name="redeem_v_desktop" method="post">
     <hr><br>
     <?= $util->msg_box() ?>
-    <?= ($showform === true) ? $util->ptn_v_validity($data_0, $data_1, json_decode($obj), 'redeem_v') : ""; ?>
+    <?= ($showform === true) ? $util->ptn_v_validity($data_0, $data_1, json_decode($obj), 'desktop') : ""; ?>
    </form>
   </div>
   </div><!-- result-->
@@ -230,7 +230,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
     <form id="redeem_v_mobile" action="" name="redeem_v_mobile" method="post">
      <hr><br>
      <?= $util->msg_box() ?>
-     <?= ($showform === true) ? $util->ptn_v_validity($data_0, $data_1, json_decode($obj), 'redeem_v_mobile') : ""; ?>
+     <?= ($showform === true) ? $util->ptn_v_validity($data_0, $data_1, json_decode($obj), 'mobile') : ""; ?>
     </form>
    </div>
 
@@ -312,16 +312,17 @@ $token = json_decode($_SESSION['usr'])->access_token;
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
  $(function() {
-  if ($(window).width() > 767) {
-   $("#booking_date").datepicker({
-    dateFormat: 'dd-mm-yy'
-   });
-  } else {
-   $("#booking_date").datepicker({
-    dateFormat: 'dd-mm-yy'
-   });
-   //$('#booking_date').datepicker('show')
-  }
+  $("#booking_date_desktop, #booking_date_mobile").datepicker({
+   dateFormat: 'dd-mm-yy'
+  });
+
+  $("#booking_date_input_mobile").click(function() {
+   $("#booking_date_mobile").focus();
+  });
+
+  $("#booking_date_input_desktop").click(function() {
+   $("#booking_date_desktop").focus();
+  });
 
  });
 </script>
