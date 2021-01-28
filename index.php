@@ -19,8 +19,21 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-	<meta name="description" content="">
-	<meta name="author" content="">
+        <!--meta words-->
+<meta name="keywords" content="vouchers,birthday gift,valentine gift,gift a gift,christmas gift,easter gift,wedding gift,anniversary gift">
+<meta name="description" content="Welcome to HappyBox. HappyBox issues vouchers to its customers via its website. Each voucher is an opportunity to suggest an appropriate set of experiences for the recipient of the voucher.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://happybox.ke/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HappyBox">
+<meta property="og:description" content="Welcome to HappyBox. HappyBox issues vouchers to its customers via its website. Each voucher is an opportunity to suggest an appropriate set of experiences for the recipient of the voucher.">
+<meta property="og:url" content="https://happybox.ke/">
+<meta property="og:site_name" content="HappyBox">
+<meta property="og:image" content="https://happybox.ke/shared/img/logo.svg">
+<meta property="og:image:width" content="320">
+<meta property="og:image:height" content="88">        
+        <!--end meta words -->
 	<title>HappyBox :: Home</title>
 
 	<!-- Bootstrap core CSS -->

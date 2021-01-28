@@ -25,8 +25,21 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-  <meta name="description" content="">
-  <meta name="author" content="">
+<!--meta words-->
+<meta name="keywords" content="vouchers,birthday gift,valentine gift,gift a gift,christmas gift,easter gift,wedding gift,anniversary gift">
+<meta name="description" content="For the thrill seeker.Are you ready to get your adrenaline pumping? Choose from our exhilarating selection of sports and adventure experiences, guaranteed to satisfy anyone looking for an exciting energy boost.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://happybox.ke/category-sports-adventure.php">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HappyBox">
+<meta property="og:description" content="For the thrill seeker.Are you ready to get your adrenaline pumping? Choose from our exhilarating selection of sports and adventure experiences, guaranteed to satisfy anyone looking for an exciting energy boost.">
+<meta property="og:url" content="https://happybox.ke/category-sports-adventure.php">
+<meta property="og:site_name" content="HappyBox">
+<meta property="og:image" content="https://happybox.ke/shared/img/logo.svg">
+<meta property="og:image:width" content="320">
+<meta property="og:image:height" content="88">        
+        <!--end meta words -->
 
   <title>HappyBox :: Category Sports Adventure</title>
 
