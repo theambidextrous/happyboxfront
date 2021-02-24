@@ -124,8 +124,9 @@
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
         $res = curl_exec($curl);
-        // $util->Show(curl_getinfo($curl));
+        $util->Show(curl_error($curl));
         return $res;
     }
     function get_details($userid, $endpoint = 'users/info/'){
@@ -352,6 +353,7 @@
     }
     function headers($token = ''){
         $headers[] = 'Content-Type: application/json';
+        $headers[] = 'Accept: application/json';
         $headers[] = 'Authorization: Bearer ' . $token;
         return $headers;
     }
