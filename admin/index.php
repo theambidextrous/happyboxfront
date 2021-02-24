@@ -1,6 +1,6 @@
 <?php
     session_start();
-    // require_once('../lib/Util.php');
+    require_once('../lib/Util.php');
     require_once('../lib/User.php');
     $util = new Util();
     // $util->ShowErrors();
