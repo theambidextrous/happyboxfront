@@ -107,7 +107,7 @@ $box = new Box();
                             }
                             // $util->Show($all_pos_sales);
                         ?>
-                        <table class="table table_data1 table-bordered reportable">
+                        <table class="table display reportable">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
