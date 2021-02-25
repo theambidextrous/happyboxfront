@@ -125,7 +125,7 @@ $box = new Box();
                             <tbody>
                             <?php 
                                 foreach( $all_pos_sales as $pos ):
-                                    $c_buyer = $user->get_details_byidf($pos['customer_buyer_id']);
+                                    $c_buyer = json_decode($user->get_details_byidf($pos['customer_buyer_id']));
                                     $customer_buyer = $c_buyer->data;
                                     $cb = json_decode($user->get_one($customer_buyer->userid, $token))->data;
                             ?>
