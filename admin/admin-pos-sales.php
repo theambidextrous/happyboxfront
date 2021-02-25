@@ -131,10 +131,10 @@ $box = new Box();
                             ?>
                                 <tr>
                                     <td><?=$pos['order_number']?></td>
-                                    <td><?=$customer_buyer->fname . json_encode($c_buyer)?></td>
-                                    <td><?=$customer_buyer->lname. json_encode($cb)?></td>
+                                    <td><?=$customer_buyer->fname?></td>
+                                    <td><?=$customer_buyer->sname?></td>
                                     <td><?=$cb->email?></td>
-                                    <td><?=$cb->phone?></td>
+                                    <td><?=$customer_buyer->phone?></td>
                                     <td><?=$pos['customer_payment_method']?></td>
                                     <td><?=$util->globalDate($pos['box_purchase_date'])?></td>
                                     <td><?=$util->globalDate($pos['box_validity_date'])?></td>
