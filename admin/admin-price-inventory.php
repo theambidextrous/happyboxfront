@@ -47,6 +47,9 @@ $prices = json_decode($prices, true)['data'];
             .table_absimg {
                 position: relative!important;
             }
+            .animatable{
+                width: 26px!important;
+            }
         </style>
     </head>
 
@@ -107,7 +110,7 @@ $prices = json_decode($prices, true)['data'];
                                 <tr>
                                     <td><?=$tpc['internal_id']?></td>
                                     <td><?=$tpc['name']?></td>
-                                    <td><a onclick="loadInvForm(<?=$edit_string?>)"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
+                                    <td><a onclick="loadInvForm(<?=$edit_string?>)"><img class="animatable" src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                                 <?php 
                                      endforeach;
@@ -154,7 +157,7 @@ $prices = json_decode($prices, true)['data'];
                     <div>
                         <form class="filter_form" method="post">
                             <div class="form-group row">
-                                <label for="BoxType" class="col-form-label">Pick date</label>
+                                <label for="BoxType" class="col-form-label">Edit Price</label>
                                 <input type="hidden" name="id" id="range_id"/>
                                 <input type="text" class="form-control rounded_form_control" name="name" id="name"/>
                             </div>

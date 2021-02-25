@@ -47,6 +47,9 @@ $box = new Box();
             .table_absimg {
                 position: relative!important;
             }
+            .animatable{
+                width: 26px!important;
+            }
         </style>
     </head>
 
@@ -155,7 +158,7 @@ $box = new Box();
                                     <td><?=$util->globalDate($pos['box_purchase_date'])?></td>
                                     <td><?=$util->globalDate($pos['box_validity_date'])?></td>
                                     <td>POS</td>
-                                    <td><a onclick="loadInvForm('<?=$pos['id']?>')"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
+                                    <td><a onclick="loadInvForm('<?=$pos['id']?>')"><img class="animatable" src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                             <?php 
                                 endforeach;
