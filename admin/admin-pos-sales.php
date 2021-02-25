@@ -49,6 +49,7 @@ $box = new Box();
             }
             .animatable{
                 width: 26px!important;
+                cursor: pointer;
             }
         </style>
     </head>

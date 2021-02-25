@@ -49,6 +49,7 @@ $prices = json_decode($prices, true)['data'];
             }
             .animatable{
                 width: 26px!important;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -92,7 +93,38 @@ $prices = json_decode($prices, true)['data'];
                 <div class="row ">
                     <div class="col-md-12 ">
                         <div class="table-responsive">
+                        <br> 
+                        <?php 
+                            if(isset($_POST['modify-range']))
+                            {
+                                $name = $_POST['name'];
+                                $p = new Price($token, $name);
+                                $modif_response = $p->update($_POST['id']);
+                                if(json_decode($modif_response)->status == '0')
+                                {
+                                    print '<div class="alert alert-success">'.json_decode($modif_response)->message.'</div>';
+                                }
+                                else
+                                {
+                                    print '<div class="alert alert-danger">'.json_decode($modif_response)->message.'</div>';
+                                }
 
+                            }
+                            if(isset($_POST['delete-range']))
+                            {
+                                $p = new Price($token);
+                                $del_response = $p->delete($_POST['id']);
+                                if(json_decode($del_response)->status == '0')
+                                {
+                                    print '<div class="alert alert-success">'.json_decode($del_response)->message.'</div>';
+                                }
+                                else
+                                {
+                                    print '<div class="alert alert-danger">'.json_decode($del_response)->message.'</div>';
+                                }
+
+                            }
+                        ?>
                         <table class="table table_data1 table-bordered">
                             <thead>
                                 <tr>
@@ -166,6 +198,7 @@ $prices = json_decode($prices, true)['data'];
                                 <div class="col-md-12 text-right text-white">
                                     <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
                                     <button type="submit" name="modify-range" class="btn btn_view_report">Save Changes</button>
+                                    <button type="submit" name="delete-range" class="btn btn-warning btn_view_report">Delete Price</button>
                                 </div>
                             </div>
                         </form>
