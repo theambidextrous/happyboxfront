@@ -97,7 +97,23 @@ $box = new Box();
                         <div class="table-responsive">
                         <br>
                         <h3>POS Sales Report</h3>
+                        <br> 
                         <?php 
+                            if(isset($_POST['modify-box']))
+                            {
+                                $ord = new Order($token);
+                                $modif_response = $ord->pos_edit_sale($_POST, $_POST['id']);
+                                if(json_decode($modif_response)->status == '0')
+                                {
+                                    print '<div class="alert alert-success">'.json_decode($modif_response)->message.'</div>';
+                                }
+                                else
+                                {
+                                    print '<div class="alert alert-danger">'.json_decode($modif_response)->message.'</div>';
+                                }
+
+                            }
+                        /** Fetch data */
                             $order = new Order($token);
                             $all_pos_sales = [];
                             $inv = $order->pos_find_sales();
@@ -139,7 +155,7 @@ $box = new Box();
                                     <td><?=$util->globalDate($pos['box_purchase_date'])?></td>
                                     <td><?=$util->globalDate($pos['box_validity_date'])?></td>
                                     <td>POS</td>
-                                    <td><a href="#"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
+                                    <td><a onclick="loadInvForm('<?=$pos['id']?>')"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                             <?php 
                                 endforeach;
@@ -156,6 +172,42 @@ $box = new Box();
  <?php include 'admin-partials/footer.php'; ?>
 <!-- Bootstrap core JavaScript -->
 <?php include 'admin-partials/js.php'; ?>
+<script>
+ loadInvForm = function ($id)
+ {
+     $('#inv_id').val($id);
+     $('#modify_date').modal('show');
+     return;
+ }
+</script>
+<!-- popup -->
+<div class="modal fade" id="modify_date">
+    <div class="modal-dialog general_pop_dialogue">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <div class="col-md-12 text-center forgot-dialogue-borderz">
+            <h4 class="">Modify Box Purchase Date</h4>
+            <div>
+                <form class="filter_form" method="post">
+                    <div class="form-group row">
+                        <label for="BoxType" class="col-form-label">Pick date</label>
+                        <input type="hidden" name="id" id="inv_id"/>
+                        <input type="date" class="form-control rounded_form_control" name="box_purchase_date" id="box_purchase_date"/>
+                    </div>
+                    <hr>
+                    <div class=" row">
+                        <div class="col-md-12 text-right text-white">
+                            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                            <button type="submit" name="modify-box" class="btn btn_view_report">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
   <!-- end popup -->
  </body>
 </html>
