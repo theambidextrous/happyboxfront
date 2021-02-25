@@ -57,29 +57,30 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <section class=" top_blue_bar ">
             <div class="container">
                 <div class="row rpt_drop">
-                    <div class="col-md-6 section_title">
-                       <!-- <h3><strong>REPORTS</strong>  <select class=" select_reports" id="select_reports">
-                                <option></option>
-                                <option>Sales by Box Type</option>
-                                <option>Sales by Customer</option>
-                                <option>Sales by Partner</option>
-                                <option>List of Customers</option>
-                                <option>List of Partners</option>
-                                <option>List of Voucher Codes</option>
-                                <option>List of Box Codes</option>
-                            </select> </h3>-->
-                       <ul class="nav nav-pills list-inline">
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-toggle" href="<?=$util->AdminHome()?>/admin-profile.php">
-                                    <b>Profile info</b>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-toggle" href="<?=$util->AdminHome()?>/admin-profile-pic.php">
-                                    <b>Profile photo</b>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-6 section_title">
+                        <h3>ADMIN PROFILE</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class=" status_bar ">
+            <br>
+            <div class="container justify-content-around">
+                <div class="row ">
+                    <div class="col-md-2">
+                        <a href="<?=$util->AdminHome()?>/admin-profile.php" class="btn generate_rpt btn-block is_active">Edit Profile</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="<?=$util->AdminHome()?>/admin-profile-pic.php" class="btn generate_rpt btn-block">Change Profile Photo</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="<?=$util->AdminHome()?>/admin-profile-pic.php" class="btn generate_rpt btn-block">Change Password</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="<?=$util->AdminHome()?>/admin-profile-pic.php" class="btn generate_rpt btn-block">Create Admin</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="<?=$util->AdminHome()?>/admin-profile-pic.php" class="btn generate_rpt btn-block">Admins</a>
                     </div>
                 </div>
             </div>

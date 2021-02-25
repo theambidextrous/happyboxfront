@@ -103,6 +103,7 @@ $prices = json_decode($prices, true)['data'];
                                 if(json_decode($modif_response)->status == '0')
                                 {
                                     print '<div class="alert alert-success">'.json_decode($modif_response)->message.'</div>';
+                                    $util->timed_redirect('admin-price-inventory.php');
                                 }
                                 else
                                 {
@@ -117,6 +118,7 @@ $prices = json_decode($prices, true)['data'];
                                 if(json_decode($del_response)->status == '0')
                                 {
                                     print '<div class="alert alert-success">'.json_decode($del_response)->message.'</div>';
+                                    $util->timed_redirect('admin-price-inventory.php');
                                 }
                                 else
                                 {
