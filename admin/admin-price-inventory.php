@@ -93,7 +93,7 @@ $prices = json_decode($prices, true)['data'];
                     <div class="col-md-12 ">
                         <div class="table-responsive">
 
-                        <table class="table table-bordered">
+                        <table class="table table_data1 table-bordered">
                             <thead>
                                 <tr>
                                     <th>Code</th>
