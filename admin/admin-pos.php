@@ -4,6 +4,7 @@ require_once('../lib/Util.php');
 require_once('../lib/User.php');
 require_once('../lib/Box.php');
 require_once('../lib/Inventory.php');
+require_once('../lib/Order.php');
 $util = new Util();
 $user = new User();
 $inventory = new Inventory();
@@ -11,6 +12,15 @@ $util->ShowErrors(1);
 $user->is_loggedin();
 $token = json_decode($_SESSION['usr'])->access_token;
 $box = new Box();
+$_SESSION['pos-form'] = [
+    'fname' => null,
+    'lname' => null,
+    'email' => null,
+    'phone' => null,
+    'quantity' => null,
+    'boxname' => null,
+    'box_purchase_date' => null,
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +91,7 @@ $box = new Box();
                         <a href="admin-pos.php" class="btn generate_rpt btn-block is_active">Make Sale</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-admin-pos-sales.php" class="btn generate_rpt btn-block ">Sales Reports</a>
+                        <a href="admin-pos-sales.php" class="btn generate_rpt btn-block ">Sales Reports</a>
                     </div>
                 </div>
             </div>
@@ -90,43 +100,59 @@ $box = new Box();
             <div class="container">
                 <div class="row ">
                     <div class="col-md-12 ">    
-                        
-                        <form class="filter_form" method="post">
+                        <?php 
+                            if(isset($_POST['generate']))
+                            {
+                                $_SESSION['pos-form'] = $_POST;
+                                $order = new Order($token);
+                                $order_response = $order->pos_make_sale($_POST);
+                                if(json_decode($order_response)->status == '0')
+                                {
+                                    print '<div class="alert alert-success">'.json_decode($order_response)->message.'</div>';
+                                }
+                                else
+                                {
+                                    print '<div class="alert alert-danger">'.json_decode($order_response)->message.'</div>';
+                                }
+
+                            }
+                        ?>
+                        <form class="filter_form" action="" method="post">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nm" class="col-form-label">Buyer Name</label>
-                                        <input type="text" name="fname" class="form-control rounded_form_control" id="fname"/>
+                                        <input required value="<?=$_SESSION['pos-form']['fname']?>" type="text" name="fname" class="form-control rounded_form_control" id="fname"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nm" class="col-form-label">Buyer Surname</label>
-                                        <input type="text" name="lname" class="form-control rounded_form_control" id="lname"/>
+                                        <input required value="<?=$_SESSION['pos-form']['lname']?>" type="text" name="lname" class="form-control rounded_form_control" id="lname"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nm" class="col-form-label">Buyer Email</label>
-                                        <input type="email" name="email" class="form-control rounded_form_control" id="email"/>
+                                        <input required value="<?=$_SESSION['pos-form']['email']?>" type="email" name="email" class="form-control rounded_form_control" id="email"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nm" class="col-form-label">Buyer Phone</label>
-                                        <input type="text" name="phone" class="form-control rounded_form_control" id="phone"/>
+                                        <input required value="<?=$_SESSION['pos-form']['phone']?>" type="text" name="phone" class="form-control rounded_form_control" id="phone"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nm" class="col-form-label">Voucher Quantity</label>
-                                        <input type="number" min="1" name="quantity" class="form-control rounded_form_control" id="quantity"/>
+                                        <input required value="<?=$_SESSION['pos-form']['quantity']?>" type="number" min="1" name="quantity" class="form-control rounded_form_control" id="quantity"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="BoxType" class="col-form-label">Happy Box</label><br>
-                                        <select class="form-control" name="boxname" id="">
+                                        <select required class="form-control" name="boxname" id="">
                                             <option value="nn">Select box</option>
                                             <?php 
                                                 $boxes = json_decode($box->get($token), true)['data'];
@@ -139,12 +165,8 @@ $box = new Box();
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="BoxType" class="col-form-label">Voucher Type</label><br>
-                                        <select class="form-control" name="boxname" id="">
-                                            <option value="nn">Select type</option>
-                                            <option value="1">Physical</option>
-                                            <option value="2">E-box</option>
-                                        </select>
+                                        <label for="date" class="col-form-label">Purchase date</label><br>
+                                        <input required value="<?=$_SESSION['pos-form']['box_purchase_date']?>" type="date" name="box_purchase_date" class="form-control rounded_form_control" id="box_purchase_date"/>
                                     </div>
                                 </div>
                             </div>

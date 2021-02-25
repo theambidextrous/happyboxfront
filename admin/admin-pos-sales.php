@@ -78,10 +78,10 @@ $box = new Box();
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="admin-pos.php" class="btn generate_rpt btn-block is_active">Make Sale</a>
+                        <a href="admin-pos.php" class="btn generate_rpt btn-block">Make Sale</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="admin-admin-pos-sales.php" class="btn generate_rpt btn-block ">Sales Report</a>
+                        <a href="admin-pos-sales.php" class="btn generate_rpt btn-block is_active">Sales Report</a>
                     </div>
                 </div>
             </div>
