@@ -111,13 +111,13 @@ $box = new Box();
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
-                                    <th>Customer Buyer Name</th>
-                                    <th>Customer Buyer Surname</th>
-                                    <th>Customer Buyer Email</th>
-                                    <th>Customer Buyer Phone</th>
-                                    <th>Customer Buyer Payment Method</th>
-                                    <th>Box Puchase Date</th>
-                                    <th>Box Valid Until</th>
+                                    <th>Buyer Name</th>
+                                    <th>Buyer Surname</th>
+                                    <th>Buyer Email</th>
+                                    <th>Buyer Phone</th>
+                                    <th>Payment Method</th>
+                                    <th>Puchase Date</th>
+                                    <th>Valid Until</th>
                                     <th>Sale Type</th>
                                     <th>Action</th>
                                 </tr>
@@ -139,25 +139,12 @@ $box = new Box();
                                     <td><?=$util->globalDate($pos['box_purchase_date'])?></td>
                                     <td><?=$util->globalDate($pos['box_validity_date'])?></td>
                                     <td>POS</td>
-                                    <td><a href="#"><img src="img/icn-edit-teal.svg" class="table_absimg"></a></td>
+                                    <td><a href="#"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                             <?php 
                                 endforeach;
                             ?>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Order Number</th>
-                                    <th>Customer Buyer Name</th>
-                                    <th>Customer Buyer Surname</th>
-                                    <th>Customer Buyer Email</th>
-                                    <th>Customer Buyer Phone</th>
-                                    <th>Customer Buyer Payment Method</th>
-                                    <th>Box Puchase Date</th>
-                                    <th>Sale Type</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
                         </table>
                         </div>
                     </div>
