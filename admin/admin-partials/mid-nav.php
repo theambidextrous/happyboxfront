@@ -7,7 +7,7 @@
     <li><a class="admin-box" href="admin-box-all.php">Box Designs</a></li>
     <li><a class="admin-barcode" href="admin-barcodes.php">Generate Barcodes</a></li>
     <li><a  class ="admin-pos" href="admin-pos.php">POS</a></li>
-    <li><a class ="admin-prices" href="admin-topic-inventory.php">Prices</a></li>
+    <li><a class ="admin-prices" href="admin-price-inventory.php">Prices</a></li>
     <!-- 
     <li><a href="admin-experience-inventory.php">Experiences</a></li> -->
     <!-- <li><a href="admin-customer-listing.php">Client Listing</a></li> -->

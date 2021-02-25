@@ -38,6 +38,16 @@ $prices = json_decode($prices, true)['data'];
         <title>Happy Box:: Admin Portal</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <style>
+            .admin-prices{
+                color: #c20a2b!important;
+                text-decoration: none!important;
+                border-bottom: solid 2px #c20a2b!important;
+            }
+            .table_absimg {
+                position: relative!important;
+            }
+        </style>
     </head>
 
     <body>
@@ -51,7 +61,6 @@ $prices = json_decode($prices, true)['data'];
                 <div class="col-md-12">
                 <?php include 'admin-partials/mid-nav.php'; ?>
                 </div>
-
             </div>
         </section>
         <!--end discover our selection-->
@@ -59,7 +68,7 @@ $prices = json_decode($prices, true)['data'];
             <div class="container">
                 <div class="row">
                     <div class="col-6 section_title">
-                        <h3>PRICE RANGE INVENTORY</h3>
+                        <h3>PRICE RANGES</h3>
                     </div>
                     <div class="col-6 text-right">
                         <a class="btn generate_rpt" href="admin-price-new.php">CREATE PRICE RANGE</a>
@@ -81,26 +90,29 @@ $prices = json_decode($prices, true)['data'];
                     <div class="col-md-12 ">
                         <div class="table-responsive">
 
-                        <table class="table table_data1 table-bordered">
+                        <table class="table table-bordered reportable">
                             <thead>
                                 <tr>
-                                    <th>CODE</th>
-                                    <th>RANGE</th>
+                                    <th>Code</th>
+                                    <th>Range</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if(!empty($prices)){
                                     foreach( $prices as $tpc ):
+                                        $edit_string = "'" . $tpc['id'] . "','" . $tpc['name'] . "'";
                                 ?>
                                 <tr>
                                     <td><?=$tpc['internal_id']?></td>
                                     <td><?=$tpc['name']?></td>
+                                    <td><a onclick="loadInvForm('<?=$edit_string?>')"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                                 <?php 
                                      endforeach;
                                     }else{
-                                        print '<tr><td colspan="5">No price ranges found</td></tr>';
+                                        print '<tr><td colspan="3">No price ranges found</td></tr>';
                                     }
                                 ?>
                             </tbody>
@@ -123,8 +135,44 @@ $prices = json_decode($prices, true)['data'];
         <!-- Bootstrap core JavaScript -->
 
         <?php include 'admin-partials/js.php'; ?>
-
-
+        <script>
+        loadInvForm = function (id, name)
+        {
+            $('#range_id').val(id);
+            $('#name').val(name);
+            $('#modify_range').modal('show');
+            return;
+        }
+        </script>
+        <!-- popup -->
+        <div class="modal fade" id="modify_range">
+            <div class="modal-dialog general_pop_dialogue">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                <div class="col-md-12 text-center forgot-dialogue-borderz">
+                    <h4 class="">Modify Box Purchase Date</h4>
+                    <div>
+                        <form class="filter_form" method="post">
+                            <div class="form-group row">
+                                <label for="BoxType" class="col-form-label">Pick date</label>
+                                <input type="hidden" name="id" id="range_id"/>
+                                <input type="text" class="form-control rounded_form_control" name="name" id="name"/>
+                            </div>
+                            <hr>
+                            <div class=" row">
+                                <div class="col-md-12 text-right text-white">
+                                    <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                    <button type="submit" name="modify-range" class="btn btn_view_report">Save Changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <!-- end popup -->
 
 
 

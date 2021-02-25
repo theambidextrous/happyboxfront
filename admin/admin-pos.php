@@ -75,7 +75,7 @@ $_SESSION['pos-form'] = [
             <div class="container">
                 <div class="row">
                     <div class="col-6 section_title">
-                        <h3>Point of Sale</h3>
+                        <h3>POINT OF SALE</h3>
                     </div>
                     <div class="col-6 text-right">
                         <!-- <a class="btn generate_rpt" href="#" data-toggle="modal" data-target="#generate_box" >GENERATE BOXES</a> -->
