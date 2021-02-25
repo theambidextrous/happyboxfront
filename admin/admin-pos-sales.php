@@ -44,6 +44,9 @@ $box = new Box();
                 text-decoration: none!important;
                 border-bottom: solid 2px #c20a2b!important;
             }
+            .table_absimg {
+                position: relative!important;
+            }
         </style>
     </head>
 
@@ -127,9 +130,9 @@ $box = new Box();
                                     $cb = json_decode($user->get_one($customer_buyer->userid, $token))->data;
                             ?>
                                 <tr>
-                                    <td><?=$customer_buyer->fname?></td>
-                                    <td><?=$customer_buyer->lname?></td>
-                                    <td><?=$pos['customer_buyer_id']?></td>
+                                    <td><?=$pos['order_number']?></td>
+                                    <td><?=$customer_buyer->fname . json_encode($c_buyer)?></td>
+                                    <td><?=$customer_buyer->lname. json_encode($cb)?></td>
                                     <td><?=$cb->email?></td>
                                     <td><?=$cb->phone?></td>
                                     <td><?=$pos['customer_payment_method']?></td>
@@ -152,6 +155,7 @@ $box = new Box();
                                     <th>Customer Buyer Payment Method</th>
                                     <th>Box Puchase Date</th>
                                     <th>Sale Type</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>
