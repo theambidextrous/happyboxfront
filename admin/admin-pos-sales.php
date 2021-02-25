@@ -102,7 +102,7 @@ $box = new Box();
                             {
                                 $all_pos_sales = json_decode($inv, true)['data'];
                             }
-                            $util->Show($all_pos_sales);
+                            // $util->Show($all_pos_sales);
                         ?>
                         <table class="table table_data1 table-bordered reportable">
                             <thead>
@@ -114,22 +114,29 @@ $box = new Box();
                                     <th>Customer Buyer Phone</th>
                                     <th>Customer Buyer Payment Method</th>
                                     <th>Box Puchase Date</th>
+                                    <th>Box Valid Until</th>
                                     <th>Sale Type</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php 
                                 foreach( $all_pos_sales as $pos ):
+                                    $c_buyer = $user->get_details_byidf($pos['customer_buyer_id']);
+                                    $customer_buyer = $c_buyer->data;
+                                    $cb = json_decode($user->get_one($customer_buyer->userid, $token))->data;
                             ?>
                                 <tr>
-                                    <td><?=$pos['order_number']?></td>
+                                    <td><?=$customer_buyer->fname?></td>
+                                    <td><?=$customer_buyer->lname?></td>
                                     <td><?=$pos['customer_buyer_id']?></td>
-                                    <td><?=$pos['customer_buyer_id']?></td>
-                                    <td><?=$pos['customer_buyer_id']?></td>
-                                    <td><?=$pos['customer_buyer_id']?></td>
+                                    <td><?=$cb->email?></td>
+                                    <td><?=$cb->phone?></td>
                                     <td><?=$pos['customer_payment_method']?></td>
-                                    <td><?=$pos['box_purchase_date']?></td>
-                                    <td><?=$pos['is_pos']?></td>
+                                    <td><?=$util->globalDate($pos['box_purchase_date'])?></td>
+                                    <td><?=$util->globalDate($pos['box_validity_date'])?></td>
+                                    <td>POS</td>
+                                    <td><a href="#"><img src="img/icn-edit-teal.svg" class="table_absimg"></a></td>
                                 </tr>
                             <?php 
                                 endforeach;
