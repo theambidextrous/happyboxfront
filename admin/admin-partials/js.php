@@ -21,7 +21,7 @@
         $('.reportable').DataTable( {
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
+                'copy', 'csv', 'excel', 'pdf',
             ]
         } );
         $('#goTop').on('click', function(e){
