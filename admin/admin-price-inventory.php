@@ -90,7 +90,7 @@ $prices = json_decode($prices, true)['data'];
                     <div class="col-md-12 ">
                         <div class="table-responsive">
 
-                        <table class="table table-bordered reportable">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Code</th>
@@ -107,7 +107,7 @@ $prices = json_decode($prices, true)['data'];
                                 <tr>
                                     <td><?=$tpc['internal_id']?></td>
                                     <td><?=$tpc['name']?></td>
-                                    <td><a onclick="loadInvForm('<?=$edit_string?>')"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
+                                    <td><a onclick="loadInvForm(<?=$edit_string?>)"><img src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                                 <?php 
                                      endforeach;
