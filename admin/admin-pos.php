@@ -99,7 +99,8 @@ $_SESSION['pos-form'] = [
         <section class=" data+table_section ">
             <div class="container">
                 <div class="row ">
-                    <div class="col-md-12 ">    
+                    <div class="col-md-12 ">   
+                        <br> 
                         <?php 
                             if(isset($_POST['generate']))
                             {
@@ -109,6 +110,15 @@ $_SESSION['pos-form'] = [
                                 if(json_decode($order_response)->status == '0')
                                 {
                                     print '<div class="alert alert-success">'.json_decode($order_response)->message.'</div>';
+                                    $_SESSION['pos-form'] = [
+                                        'fname' => null,
+                                        'lname' => null,
+                                        'email' => null,
+                                        'phone' => null,
+                                        'quantity' => null,
+                                        'boxname' => null,
+                                        'box_purchase_date' => null,
+                                    ];
                                 }
                                 else
                                 {

@@ -17,7 +17,13 @@
   <script>
     $(document).ready(function() {
         $('.select2').select2();
-        
+        //Dt
+        $('.reportable').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
         $('#goTop').on('click', function(e){
             $("html, body").animate({scrollTop: $("#top").offset().top}, 500);
         });

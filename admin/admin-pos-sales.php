@@ -4,6 +4,7 @@ require_once('../lib/Util.php');
 require_once('../lib/User.php');
 require_once('../lib/Box.php');
 require_once('../lib/Inventory.php');
+require_once('../lib/Order.php');
 $util = new Util();
 $user = new User();
 $inventory = new Inventory();
@@ -91,11 +92,19 @@ $box = new Box();
                 <div class="row ">
                     <div class="col-md-12 ">
                         <div class="table-responsive">
+                        <br>
                         <h3>POS Sales Report</h3>
                         <?php 
-                            $all_recent_pos_sales = [];
+                            $order = new Order($token);
+                            $all_pos_sales = [];
+                            $inv = $order->pos_find_sales();
+                            if(json_decode($inv)->status == '0')
+                            {
+                                $all_pos_sales = json_decode($inv)->data;
+                            }
+                            $util->Show($all_pos_sales);
                         ?>
-                        <table class="table table_data1 table-bordered">
+                        <table class="table table_data1 table-bordered reportable">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -104,12 +113,40 @@ $box = new Box();
                                     <th>Customer Buyer Email</th>
                                     <th>Customer Buyer Phone</th>
                                     <th>Customer Buyer Payment Method</th>
-                                    <th>Box Delivery Address</th>
                                     <th>Box Puchase Date</th>
+                                    <th>Sale Type</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php 
+                                foreach( $all_pos_sales as $pos ):
+                            ?>
+                                <tr>
+                                    <td><?=$pos['order_number']?></td>
+                                    <td><?=$pos['customer_buyer_id']?></td>
+                                    <td><?=$pos['customer_buyer_id']?></td>
+                                    <td><?=$pos['customer_buyer_id']?></td>
+                                    <td><?=$pos['customer_buyer_id']?></td>
+                                    <td><?=$pos['customer_payment_method']?></td>
+                                    <td><?=$pos['box_purchase_date']?></td>
+                                    <td><?=$pos['is_pos']?></td>
+                                </tr>
+                            <?php 
+                                endforeach;
+                            ?>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Customer Buyer Name</th>
+                                    <th>Customer Buyer Surname</th>
+                                    <th>Customer Buyer Email</th>
+                                    <th>Customer Buyer Phone</th>
+                                    <th>Customer Buyer Payment Method</th>
+                                    <th>Box Puchase Date</th>
+                                    <th>Sale Type</th>
+                                </tr>
+                            </tfoot>
                         </table>
                         </div>
                     </div>
