@@ -100,7 +100,7 @@ $box = new Box();
                             $inv = $order->pos_find_sales();
                             if(json_decode($inv)->status == '0')
                             {
-                                $all_pos_sales = json_decode($inv)->data;
+                                $all_pos_sales = json_decode($inv, true)['data'];
                             }
                             $util->Show($all_pos_sales);
                         ?>
