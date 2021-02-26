@@ -117,13 +117,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
                             <div class="form-group row">
                                 <label for="BoxType" class="col-md-4 col-form-label">New Password</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control rounded_form_control" id="password" name="password" required/>
+                                    <input type="password" class="form-control rounded_form_control" id="password" name="password" required/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="BoxType" class="col-md-4 col-form-label">Re-enter Password</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control rounded_form_control" id="c_password" name="c_password" required/>
+                                    <input type="password" class="form-control rounded_form_control" id="c_password" name="c_password" required/>
                                 </div>
                             </div>
                             <hr>

@@ -187,6 +187,7 @@ $_SESSION['user-form'] = [
                 $('#sname').val(arr[2]);
                 $('#email').val(arr[3]);
                 $('#phone').val(arr[4]);
+                $('#password').val("");
                 $('#modify_adm').modal('show');
                 return;
             }
