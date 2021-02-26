@@ -94,11 +94,6 @@ $_SESSION['user-form'] = [
         </section>
         <section class=" filter_bar ">
         <div class="container ">
-                <div class="row ">
-                    <div class="col-md-12 ">
-                        <h4 class="filter_title text-center"> Create Admin</h4>                  
-                    </div>
-                </div>
                 <div class="row justify-content-center">
                 <div class="table-responsive">
                         <br>
@@ -113,7 +108,7 @@ $_SESSION['user-form'] = [
                             {
                                 $adminUsers = json_decode($u, true)['data'];
                             }
-                            // $util->Show($all_pos_sales);
+                            $util->Show($u);
                         ?>
                         <table class="table display reportable">
                             <thead>
