@@ -369,6 +369,36 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function update_admin_usr($body, $id)
+    {
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $endpoint = 'users/admins/edit/user/' . $id;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function delete_admin_usr($id)
+    {
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $endpoint = 'users/admins/del/user/' . $id;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode([]));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function adm_password_change($body){
         $token = json_decode($_SESSION['usr'])->access_token;
         $endpoint = 'users/admins/change/pwd';

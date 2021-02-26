@@ -104,6 +104,7 @@ $_SESSION['user-form'] = [
                         <?php 
                             if( isset($_POST['update'])){
                                 try{
+                                    $_SESSION['user-form'] = $_POST;
                                     $util->ValidatePasswordStrength($_POST['password']);
                                     $adm_response = $user->create_admin_usr($_POST);
                                     if(json_decode($adm_response)->status == '0')

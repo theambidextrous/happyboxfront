@@ -99,16 +99,45 @@ $_SESSION['user-form'] = [
                         <br>
                         <h3>Admin Users</h3>
                         <br> 
-                        <?php 
+                        <?php
+                        if( isset($_POST['delete-adm'])){
+                            $del_response = $user->delete_admin_usr($_POST['id']);
+                            if(json_decode($del_response)->status == '0')
+                            {
+                                print '<div class="alert alert-success">'.json_decode($del_response)->message.'</div>';
+                            }
+                            else
+                            {
+                                print '<div class="alert alert-danger">'.json_decode($del_response)->message.'</div>';
+                            }
+                        }
+                        if( isset($_POST['modify-adm'])){
+                            try{
+                                if(strlen($_POST['password']))
+                                {
+                                    $util->ValidatePasswordStrength($_POST['password']);
+                                }
+                                $adm_response = $user->update_admin_usr($_POST, $_POST['id']);
+                                if(json_decode($adm_response)->status == '0')
+                                {
+                                    print '<div class="alert alert-success">'.json_decode($adm_response)->message.'</div>';
+                                }
+                                else
+                                {
+                                    print '<div class="alert alert-danger">'.json_decode($adm_response)->message.'</div>';
+                                }
+                            }catch(Exception $e){
+                                print $util->error_flash($e->getMessage());
+                            }
+                        }
                         /** Fetch data */
-                           
                             $adminUsers = [];
                             $u = $user->findall_adm_users();
                             if(json_decode($u)->status == '0')
                             {
                                 $adminUsers = json_decode($u, true)['data'];
                             }
-                            $util->Show($u);
+                            // $util->Show($u);
                         ?>
                         <table class="table display reportable">
                             <thead>
@@ -125,6 +154,7 @@ $_SESSION['user-form'] = [
                             <tbody>
                             <?php 
                                 foreach( $adminUsers as $pos ):
+                                    $str = $pos['id'].'~~'.$pos['fname'].'~~'.$pos['sname'].'~~'.$pos['email'].'~~'.$pos['phone'];
                             ?>
                                 <tr>
                                     <td><?=$pos['internal_id']?></td>
@@ -133,7 +163,7 @@ $_SESSION['user-form'] = [
                                     <td><?=$pos['email']?></td>
                                     <td><?=$pos['phone']?></td>
                                     <td><?=$util->globalDate($pos['created_at'])?></td>
-                                    <td><a onclick="loadInvForm('<?=$pos['id']?>')"><img class="animatable" src="img/icn-edit-teal.svg" class="kkk"></a></td>
+                                    <td><a onclick="loadInvForm('<?=$str?>')"><img class="animatable" src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
                             <?php 
                                 endforeach;
