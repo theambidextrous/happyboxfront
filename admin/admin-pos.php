@@ -107,6 +107,7 @@ $_SESSION['pos-form'] = [
                                 $_SESSION['pos-form'] = $_POST;
                                 $order = new Order($token);
                                 $order_response = $order->pos_make_sale($_POST);
+                                $util->Show($order_response);
                                 if(json_decode($order_response)->status == '0')
                                 {
                                     print '<div class="alert alert-success">'.json_decode($order_response)->message.'</div>';

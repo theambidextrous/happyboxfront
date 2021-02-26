@@ -42,7 +42,15 @@ $_SESSION['user-form'] = [
         <title>Happy Box:: Admin Profile</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
-
+        <style>
+            .table_absimg {
+                position: relative!important;
+            }
+            .animatable{
+                width: 26px!important;
+                cursor: pointer;
+            }
+        </style>
     </head>
 
     <body>
