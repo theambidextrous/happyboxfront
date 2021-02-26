@@ -341,6 +341,48 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function findall_adm_users()
+    {
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $endpoint = 'users/admins/find/all';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function create_admin_usr($body){
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $endpoint = 'users/admins/new/user';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
+    function adm_password_change($body){
+        $token = json_decode($_SESSION['usr'])->access_token;
+        $endpoint = 'users/admins/change/pwd';
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function format_box_partners($arr){
         $arr = json_decode($arr, true);
         foreach( $arr as $_idf ){

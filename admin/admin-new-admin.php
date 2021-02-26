@@ -9,6 +9,13 @@ $user->is_loggedin();
 // $util->Show($_SESSION['usr_info']);
 $profile_form = json_decode($_SESSION['usr_info']);
 $token = json_decode($_SESSION['usr'])->access_token;
+$_SESSION['user-form'] = [
+    'fname' => null,
+    'sname' => null,
+    'email' => null,
+    'phone' => null,
+    'password' => null,
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +75,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
             <div class="container justify-content-around">
                 <div class="row ">
                     <div class="col-md-2">
-                        <a href="<?=$util->AdminHome()?>/admin-profile.php" class="btn generate_rpt btn-block is_active">Edit Profile</a>
+                        <a href="<?=$util->AdminHome()?>/admin-profile.php" class="btn generate_rpt btn-block">Edit Profile</a>
                     </div>
                     <!-- <div class="col-md-3">
                         <a href="<=$util->AdminHome()?>/admin-profile-pic.php" class="btn generate_rpt btn-block">Change Profile Photo</a>
@@ -77,7 +84,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <a href="<?=$util->AdminHome()?>/admin-change-pwd.php" class="btn generate_rpt btn-block">Change Password</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?=$util->AdminHome()?>/admin-new-admin.php" class="btn generate_rpt btn-block">Create Admin</a>
+                        <a href="<?=$util->AdminHome()?>/admin-new-admin.php" class="btn generate_rpt btn-block is_active">Create Admin</a>
                     </div>
                     <div class="col-md-2">
                         <a href="<?=$util->AdminHome()?>/admin-list-admins.php" class="btn generate_rpt btn-block">Admins</a>
@@ -89,7 +96,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         <div class="container ">
                 <div class="row ">
                     <div class="col-md-12 ">
-                        <h4 class="filter_title text-center"> Profile info</h4>                  
+                        <h4 class="filter_title text-center"> Create Admin</h4>                  
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -97,23 +104,22 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         <?php 
                             if( isset($_POST['update'])){
                                 try{
-                                    $user_id = $_POST['id'];
-                                    $data = [
-                                        'fname' => $_POST['fname'],
-                                        'sname' => $_POST['sname'],
-                                        'location' => $_POST['location'],
-                                        'phone' => $_POST['phone']
-                                    ];
-                                    if($_POST['uid'] > 0){
-                                        $resp = $user->edit_details_admin($data, $token, $user_id);
-                                    }else{
-                                        $resp = $user->add_details_admin($data, $token, $user_id);
+                                    $util->ValidatePasswordStrength($_POST['password']);
+                                    $adm_response = $user->create_admin_usr($_POST);
+                                    if(json_decode($adm_response)->status == '0')
+                                    {
+                                        print '<div class="alert alert-success">'.json_decode($adm_response)->message.'</div>';
+                                        $_SESSION['user-form'] = [
+                                            'fname' => null,
+                                            'sname' => null,
+                                            'email' => null,
+                                            'phone' => null,
+                                            'password' => null,
+                                        ];
                                     }
-                                    if(json_decode($resp)->status == '0'){
-                                        $_SESSION['usr_info'] = $user->get_details($user_id);
-                                        print $util->success_flash('Updated successfully');
-                                    }else{
-                                        print $util->error_flash(json_decode($resp)->message);
+                                    else
+                                    {
+                                        print '<div class="alert alert-danger">'.json_decode($adm_response)->message.'</div>';
                                     }
                                 }catch(Exception $e){
                                     print $util->error_flash($e->getMessage());
@@ -122,65 +128,42 @@ $token = json_decode($_SESSION['usr'])->access_token;
                         ?>
                         <form class="filter_form" method="post">
                             <div class="form-group row">
-                                <label for="BoxType" class="col-md-4 col-form-label">Username</label>
+                                <label for="BoxType" class="col-md-4 col-form-label">First Name</label>
                                 <div class="col-md-8">
-                                    <input type="hidden" name="id" value="<?=json_decode($_SESSION['usr'])->user->id?>"/>
-                                    <input type="hidden" name="uid" value="<?=$profile_form->data->userid?>"/>
-                                    <input type="text" readonly class="form-control rounded_form_control" id="select_box_type" value="<?=json_decode($_SESSION['usr'])->user->username?>"/>
+                                    <input required value="<?=$_SESSION['user-form']['fname']?>" type="text" class="form-control rounded_form_control" id="fname" placeholder="First name" name="fname"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="BoxType" class="col-md-4 col-form-label">Sir Name</label>
+                                <div class="col-md-8">
+                                    <input required value="<?=$_SESSION['user-form']['sname']?>" type="text" class="form-control rounded_form_control" id="sname" placeholder="First name" name="sname"/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="BoxType" class="col-md-4 col-form-label">Email address</label>
                                 <div class="col-md-8">
-                                    <input type="text" readonly class="form-control rounded_form_control" id="select_box_type" value="<?=json_decode($_SESSION['usr'])->user->email?>"/>
+                                    <input required value="<?=$_SESSION['user-form']['email']?>" type="email" class="form-control rounded_form_control" id="email" name="email"/>
                                 </div>
                             </div>
-                            <!-- <div class="form-group row">
-                                <label for="toCategory" class="col-md-4 col-form-label">To Category</label>
+                            <div class="form-group row">
+                                <label for="BoxType" class="col-md-4 col-form-label">Phone</label>
                                 <div class="col-md-8">
-                                    <select class=" form-control" id="select_box_type">
-                                        <option value="">Select a category</option>
-                                        <option>Category 1</option>
-                                        <option>Category 2</option>
-                                        <option>Category 3</option>
-                                    </select>
+                                    <input required value="<?=$_SESSION['user-form']['phone']?>" type="text" class="form-control rounded_form_control" id="phone" name="phone"/>
                                 </div>
-                            </div> -->
-                            <hr>
-                            <h4 class="filter_title text-center"> User Details </h4>   
+                            </div>
                             <div class="form-group row">
-                                <label for="DateRange" class="col-md-3 col-form-label">Full Name</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="First name" name="fname" value="<?=$profile_form->data->fname?>"/>
-                                </div>
-                                <!-- <div class="col-md-3">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Middle name" name="mname" value="<=$profile_form->data->mname?>" />
-                                </div> -->
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Sir name" name="sname" value="<?=$profile_form->data->sname?>" />
+                                <label for="BoxType" class="col-md-4 col-form-label">Set Password</label>
+                                <div class="col-md-8">
+                                    <input required value="<?=$_SESSION['user-form']['password']?>" type="password" class="form-control rounded_form_control" id="password" name="password"/>
                                 </div>
                             </div>
                             <hr>
-                            <h4 class="filter_title text-center"> Contact Details </h4> 
-                            <div class="form-group row">
-                                <label for="DateRange" class="col-md-4 col-form-label">Contact Information</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Phone number" name="phone" value="<?=$profile_form->data->phone?>"/>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control rounded_form_control" id="select_box_type" placeholder="Physical Address" name="location" value="<?=$profile_form->data->location?>"/>
-                                </div>
-                            </div>
                             <div class=" row">
 
                                 <div class="col-md-12 text-right text-white">
-                                    <button type="submit" name="update" class="btn btn_view_report">Update</button>
+                                    <button type="submit" name="update" class="btn btn_view_report">Add user</button>
                                 </div>
-
                             </div>
-
-
-
                         </form>
                     </div> 
                 </div> 
@@ -188,10 +171,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         </section>
 
         <?php include 'admin-partials/footer.php'; ?>
-
-
         <!-- Bootstrap core JavaScript -->
-
         <?php include 'admin-partials/js.php'; ?>
 
 
