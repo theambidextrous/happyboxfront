@@ -22,6 +22,11 @@
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf',
+                {
+                  extend: 'pdfHtml5',
+                  orientation: 'landscape',
+                  pageSize: 'A4'
+                }
             ]
         } );
         $('#goTop').on('click', function(e){

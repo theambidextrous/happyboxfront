@@ -130,7 +130,10 @@ $box = new Box();
                         <table class="table display reportable">
                             <thead>
                                 <tr>
-                                    <th>Order Number</th>
+                                    <!-- <th>Order Number</th> -->
+                                    <th>Box</th>
+                                    <th>Bar Code</th>
+                                    <th>Voucher</th>
                                     <th>Buyer Name</th>
                                     <th>Buyer Surname</th>
                                     <th>Buyer Email</th>
@@ -148,9 +151,14 @@ $box = new Box();
                                     $c_buyer = json_decode($user->get_details_byidf($pos['customer_buyer_id']));
                                     $customer_buyer = $c_buyer->data;
                                     $cb = json_decode($user->get_one($customer_buyer->userid, $token))->data;
+                                    $box_data = json_decode($box->get_byidf($token, $pos['box_internal_id']))->data;
+                                    $box_name = '';
                             ?>
                                 <tr>
-                                    <td><?=$pos['order_number']?></td>
+                                    <!-- <td><=$pos['order_number']?></td> -->
+                                    <td><?=$box_data->name?></td>
+                                    <td><?=$pos['box_barcode']?></td>
+                                    <td><?=$pos['box_voucher']?></td>
                                     <td><?=$customer_buyer->fname?></td>
                                     <td><?=$customer_buyer->sname?></td>
                                     <td><?=$cb->email?></td>
