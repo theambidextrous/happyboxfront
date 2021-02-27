@@ -121,11 +121,11 @@ $box = new Box();
                             {
                                 $ord = new Order($token);
                                 $stock_response = $ord->pos_unsell_sale($_POST['id']);
-                                $util->Show($stock_response);
+                                // $util->Show($stock_response);
                                 if(json_decode($stock_response)->status == '0')
                                 {
                                     print '<div class="alert alert-success">'.json_decode($stock_response)->message.'</div>';
-                                    $util->timed_redirect('admin-pos-sales.php');
+                                    // $util->timed_redirect('admin-pos-sales.php');
                                 }
                                 else
                                 {
