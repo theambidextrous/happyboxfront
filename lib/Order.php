@@ -1003,6 +1003,19 @@ require_once dirname(__DIR__).'/lib/Picture.php';
         $res = curl_exec($curl);
         return $res;
     }
+    function pos_unsell_sale($id){
+        $endpoint = 'services/pos/unsell/sale/' . $id;
+        $util = new Util();
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($this->token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode([]));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function assign_c_buyer_pbox($token, $body){
         $endpoint = 'services/orders/order/assign/order/pvouchers';
         $util = new Util();

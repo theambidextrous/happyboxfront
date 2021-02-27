@@ -117,6 +117,20 @@ $box = new Box();
                                 }
 
                             }
+                            if(isset($_POST['sendto-stock']))
+                            {
+                                $ord = new Order($token);
+                                $stock_response = $ord->pos_unsell_sale($_POST['id']);
+                                if(json_decode($stock_response)->status == '0')
+                                {
+                                    print '<div class="alert alert-success">'.json_decode($stock_response)->message.'</div>';
+                                    $util->timed_redirect('admin-pos-sales.php');
+                                }
+                                else
+                                {
+                                    print '<div class="alert alert-danger">'.json_decode($stock_response)->message.'</div>';
+                                }
+                            }
                         /** Fetch data */
                             $order = new Order($token);
                             $all_pos_sales = [];
@@ -198,7 +212,7 @@ $box = new Box();
       <div class="modal-content">
         <div class="modal-body text-center">
           <div class="col-md-12 text-center forgot-dialogue-borderz">
-            <h4 class="">Modify Box Purchase Date</h4>
+            <h4 class="">Modify Box Voucher</h4>
             <div>
                 <form class="filter_form" method="post">
                     <div class="form-group row">
@@ -210,7 +224,8 @@ $box = new Box();
                     <div class=" row">
                         <div class="col-md-12 text-right text-white">
                             <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
-                            <button type="submit" name="modify-box" class="btn btn_view_report">Save Changes</button>
+                            <button type="submit" name="modify-box" class="btn btn_view_report">Modify Date</button>
+                            <button type="submit" name="sendto-stock" class="btn btn_danger_report">Return to Stock</button>
                         </div>
                     </div>
                 </form>

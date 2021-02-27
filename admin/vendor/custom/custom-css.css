@@ -12,6 +12,11 @@ body{
     font-family: Calibri;
     font-size: 15px !important;
 }
+.btn_danger_report {
+    background: #d80d27 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    color: white !important;
+}
 .col_no_r{
     padding-right: 1px !important;  
 }

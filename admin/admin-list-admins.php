@@ -245,7 +245,7 @@ $_SESSION['user-form'] = [
                                 <div class="col-md-12 text-right text-white">
                                     <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
                                     <button type="submit" name="modify-adm" class="btn btn_view_report">Save Changes</button>
-                                    <button type="submit" name="delete-adm" class="btn btn-warning btn_view_report">Delete User</button>
+                                    <button type="submit" name="delete-adm" class="btn btn-warning btn_danger_report">Delete User</button>
                                 </div>
                             </div>
                         </form>

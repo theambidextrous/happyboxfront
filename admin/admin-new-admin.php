@@ -137,7 +137,7 @@ $_SESSION['user-form'] = [
                             <div class="form-group row">
                                 <label for="BoxType" class="col-md-4 col-form-label">Sir Name</label>
                                 <div class="col-md-8">
-                                    <input required value="<?=$_SESSION['user-form']['sname']?>" type="text" class="form-control rounded_form_control" id="sname" placeholder="First name" name="sname"/>
+                                    <input required value="<?=$_SESSION['user-form']['sname']?>" type="text" class="form-control rounded_form_control" id="sname" placeholder="Second name" name="sname"/>
                                 </div>
                             </div>
                             <div class="form-group row">
