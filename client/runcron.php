@@ -6,6 +6,9 @@ require_once('../lib/Order.php');
 $util = new Util();
 $sendy = new Sendy($util->MapsKey());
 $order = new Order('faketoken');
+
+exit();//Terminate script
+
 if (date('N') == 6) {
     /** do not send */
     exit(json_encode([
