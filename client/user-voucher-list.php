@@ -291,7 +291,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                         <td class="v_td_a">Date Redeemed</td>  <?=$redeem_div?>
                     </tr>
                       <tr class="voucher_list_user_table_mob_tr">
-                        <td class="v_td_a">Expiry Date</td>  <td>06/03/2020</td>
+                        <td class="v_td_a">Expiry Date</td>  <td><?=$validity_date?></td>
                     </tr>
                      <tr class="voucher_list_user_table_mob_tr">
                         <td class="v_td_a">Date Cancelled</td>  <?=$cancellation_div?>
