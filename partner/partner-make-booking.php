@@ -81,7 +81,7 @@ $token = json_decode($_SESSION['usr'])->access_token;
         $showform = true;
        $voucher_code = strtoupper(trim($_POST['vcode']));
        $res = $obj = $inventory->get_by_voucher($token, $voucher_code);
-       print $util->Show($res);
+      //  print $util->Show($res);
        $res = json_decode($res, true)['data'];
        if ($res['box_voucher_status'] != 6) {
         $showform = false;
