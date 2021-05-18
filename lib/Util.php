@@ -693,13 +693,21 @@ class Util {
   endforeach;
   return $rtn;
  }
- function ptn_v_validity($data, $box_data, $obj = null, $view) {
-  if ($box_data[0] == 'Invalid' && !is_null($obj)) {
-   if ($box_data[2] == 1) {
+ function ptn_v_validity($data, $box_data, $obj, $view) {
+  if ($box_data[0] == 'Invalid') {
     return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. Do not redeem it.</div>';
-   }
-   return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">' . $obj->message . '</div>';
   }
+  if ($box_data[2] == 1) {
+    return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid.</div>';
+  }
+  if ($box_data[2] == 3) {
+    return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code Cannot be redeemed.</div>';
+  }
+  if (is_null($obj)) {
+    return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. No voucher information was found.</div>';
+  }
+
+
   $options_ = '';
   foreach ($this->format_box_services($box_data[3]) as $_option) :
    $options_ .= '<option value="' . ucwords(strtolower($_option)) . '">' . ucwords(strtolower($_option)) . '</option>';

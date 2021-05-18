@@ -78,11 +78,13 @@ $token = json_decode($_SESSION['usr'])->access_token;
       $showform = false;
       $obj = null;
       if (isset($_POST['VALIDITY']) && !empty(trim($_POST['vcode']))) {
+        $showform = true;
        $voucher_code = strtoupper(trim($_POST['vcode']));
        $res = $obj = $inventory->get_by_voucher($token, $voucher_code);
        // print $util->Show($res);
        $res = json_decode($res, true)['data'];
        if ($res['box_voucher_status'] != 6) {
+        $showform = false;
         $data_0 = $data_1 = [
          'Invalid',
          'Invalid',
@@ -101,9 +103,11 @@ $token = json_decode($_SESSION['usr'])->access_token;
         $_bx_price = json_decode(json_decode($_b_data, true)['data']['price'], true);
         //$util->Show($util->format_box_services($_bx_services));
         if (!$box_data) {
+         $showform = false;
          $data_0 = $data_1 = [
           'Invalid',
-          'Invalid'
+          'Invalid',
+          3
          ];
         } else {
          if ($res['box_voucher_new']) {
@@ -122,9 +126,11 @@ $token = json_decode($_SESSION['usr'])->access_token;
          ];
         }
        } else {
+        $showform = false;
         $data_0 = $data_1 = [
          'Invalid',
-         'Invalid'
+         'Invalid',
+         3
         ];
        }
        $showform = true;
