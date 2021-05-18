@@ -694,9 +694,6 @@ class Util {
   return $rtn;
  }
  function ptn_v_validity($data, $box_data, $obj, $view) {
-  if ($box_data[0] == 'Invalid') {
-    return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. Do not redeem it.</div>';
-  }
   if ($box_data[2] == 1) {
     return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid.</div>';
   }
@@ -705,6 +702,9 @@ class Util {
   }
   if (is_null($obj)) {
     return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. No voucher information was found.</div>';
+  }
+  if ($box_data[0] == 'Invalid') {
+    return '<div style="margin: 0px auto;text-align: center;width: 44%;" class="alert alert-danger">Voucher code is invalid. Do not redeem it.</div>';
   }
 
 
