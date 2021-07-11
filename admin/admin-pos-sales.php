@@ -206,6 +206,7 @@ $box = new Box();
      $('#modify_date').modal('show');
      return;
  }
+ $('.c-date').datepicker();
 </script>
 <!-- popup -->
 <div class="modal fade" id="modify_date">
@@ -219,7 +220,7 @@ $box = new Box();
                     <div class="form-group row">
                         <label for="BoxType" class="col-form-label">Pick date</label>
                         <input type="hidden" name="id" id="inv_id"/>
-                        <input type="date" class="form-control rounded_form_control" name="box_purchase_date" id="box_purchase_date"/>
+                        <input type="text" class="form-control rounded_form_control c-date" name="box_purchase_date" id="box_purchase_date"/>
                     </div>
                     <hr>
                     <div class=" row">
