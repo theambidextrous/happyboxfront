@@ -7,7 +7,7 @@
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/dataTables.buttons.min.js"></script>
 
   <!-- moment extnesion of DT -->
-  <script src="<?=$util->AppHome()?>/vendor/mom/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
   <script src="<?=$util->AppHome()?>/vendor/mom/datetime-moment.js"></script>
 <!-- datepicker -->
   <!-- <script src="<=$util->AppHome()?>/vendor/mom/moment-with-locales.js"></script>
