@@ -5,6 +5,12 @@
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/select2.min.js"></script>
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/jquery.dataTables.min.js"></script>
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/dataTables.buttons.min.js"></script>
+
+  <!-- moment extnesion of DT -->
+  <script src="<?=$util->AdminHome()?>/vendor/mom/moment.min.js"></script>
+  <script src="<?=$util->AdminHome()?>/vendor/mom/datetime-moment.js"></script>
+
+
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/jszip.min.js"></script>
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/pdfmake.min.js"></script>
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/vfs_fonts.js"></script>
@@ -29,6 +35,12 @@
                 }
             ]
         } );
+        $.fn.dataTable.moment( 'DD/MM/YYYY' );
+        $('.reportable-purchases').DataTable( {
+          "order": [[ 7, "desc" ]],
+          dom: 'Bfrtip',
+        } );
+        
         $('#goTop').on('click', function(e){
             $("html, body").animate({scrollTop: $("#top").offset().top}, 500);
         });

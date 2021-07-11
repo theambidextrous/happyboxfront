@@ -134,7 +134,7 @@ $box = new Box();
                                 print $util->error_flash($e->getMessage());
                             }
                         ?>
-                        <table class="table table_data1 table-bordered">
+                        <table class="table table_data1 display reportable-purchases">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
