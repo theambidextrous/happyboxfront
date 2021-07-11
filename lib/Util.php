@@ -554,6 +554,7 @@ class Util {
   }
  }
  function report_body($results, $cols, $user_ob, $box_ob, $token) {
+  $token = json_decode($_SESSION['usr'])->access_token;
   $b = '<tbody>';
   $n_a = 'N/A';
   foreach ($results as $result) :
@@ -578,8 +579,13 @@ class Util {
        $cname = !empty($cust_data->sname) ? $cust_data->sname : 'N/A';
        $b .= '<td>' . $cname . '</td>';
       } elseif ($k == 'customer_buyer_id_2') {
-       $email = !empty($cust_data->email) ? $cust_data->email : 'N/A';
-       $b .= '<td>' . $email . '</td>';
+        $userid = isset($cust_data->userid) ? $cust_data->userid:'1o1';
+        $emailInfo = json_decode($user_ob->get_one($userid, $token), true);
+        $email = 'N/A';
+        if(array_key_exists('data', $emailInfo)){
+            $email = $emailInfo['data']['email'];
+        }
+        $b .= '<td>' . $email . '</td>';
       } elseif ($k == 'customer_buyer_id_3') {
        $phone = !empty($cust_data->phone) ? $cust_data->phone : 'N/A';
        $b .= '<td>' . $phone . '</td>';
@@ -595,8 +601,13 @@ class Util {
        $cname = !empty($cust_data->sname) ? $cust_data->sname : 'N/A';
        $b .= '<td>' . $cname . '</td>';
       } elseif ($k == 'customer_user_id_2') {
-       $email = !empty($cust_data->email) ? $cust_data->email : 'N/A';
-       $b .= '<td>' . $email . '</td>';
+        $userid = isset($cust_data->userid) ? $cust_data->userid:'1o1';
+        $emailInfo = json_decode($user_ob->get_one($userid, $token), true);
+        $email = 'N/A';
+        if(array_key_exists('data', $emailInfo)){
+            $email = $emailInfo['data']['email'];
+        }
+        $b .= '<td>' . $email . '</td>';
       } elseif ($k == 'customer_user_id_3') {
        $phone = !empty($cust_data->phone) ? $cust_data->phone : 'N/A';
        $b .= '<td>' . $phone . '</td>';
