@@ -7,8 +7,8 @@
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/dataTables.buttons.min.js"></script>
 
   <!-- moment extnesion of DT -->
-  <script src="<?=$util->AdminHome()?>/vendor/mom/moment.min.js"></script>
-  <script src="<?=$util->AdminHome()?>/vendor/mom/datetime-moment.js"></script>
+  <script src="<?=$util->AppHome()?>/vendor/mom/moment.min.js"></script>
+  <script src="<?=$util->AppHome()?>/vendor/mom/datetime-moment.js"></script>
 
 
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/jszip.min.js"></script>
@@ -40,7 +40,7 @@
           "order": [[ 7, "desc" ]],
           dom: 'Bfrtip',
         } );
-        
+
         $('#goTop').on('click', function(e){
             $("html, body").animate({scrollTop: $("#top").offset().top}, 500);
         });
