@@ -9,6 +9,7 @@ require_once '../lib/Shipping.php';
 require_once '../lib/Box.php';
 require_once '../lib/MPesa.php';
 require_once '../lib/Order.php';
+require_once '../lib/Rating.php';
 
 switch($_REQUEST['activity']){
     default:
@@ -201,6 +202,36 @@ switch($_REQUEST['activity']){
             }
         }else{
             exit(json_encode(['ERR' => 'Email is empty']));
+        }
+    break;
+    case 'rate-ptn':
+        try{
+            $token = json_decode($_SESSION['usr'])->access_token;
+            if(strlen($token))
+            {
+                exit(json_encode(['ERR' => "You must login to rate partners"]));
+            }
+            $rating_user = $_POST['rating_user'];
+            $rating_value = $_POST['rating_value'];
+            $comment = !empty($_POST['comment']) ? $_POST['comment']:"none";
+            $partner = $_POST['partner'];
+            if( 
+                empty($rating_user) || 
+                empty($rating_value) ||
+                empty($partner)
+            )
+            {
+                exit(json_encode(['ERR' => "Rating star field is required."]));
+            }
+            $rating = new Rating($rating_user, $rating_value, $comment, $partner);
+            $u_resp = $rating->create($token);
+            if( json_decode($u_resp)->status == '0' ){
+                exit(json_encode(['MSG' => "success"]));
+            }else{
+                exit(json_encode(['ERR' => json_decode($u_resp)->message]));
+            }
+        }catch(Exception $e){
+            exit(json_encode(['ERR' => $e->getMessage()]));
         }
     break;
     case 'contact-us':
