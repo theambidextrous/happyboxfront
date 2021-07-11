@@ -170,6 +170,12 @@ $box = new Box();
                             <tbody>
                                 <?php
                                 foreach($all_happyboxes_inventory as $hbox ):
+                                    $partnerName = '';
+                                    if(strlen($hbox['partner_internal_id'])){
+                                        $partnerMeta = $user->get_details_byidf($hbox['partner_internal_id']);
+                                        $partnerMeta = json_decode($partnerMeta);
+                                        $partnerName = $partnerMeta->data->business_name;
+                                    }
                                     if( $hbox['box_purchase_date']) {
                                         $hbox['box_purchase_date'] = $util->globalDate($hbox['box_purchase_date']);
                                     }
@@ -314,7 +320,7 @@ $box = new Box();
                                         <?=!is_null($hbox['partner_pay_amount'])?$hbox['partner_pay_amount']:'null'?>
                                     </td>
                                     <td>
-                                        <?=!is_null($hbox['partner_internal_id'])?$hbox['partner_internal_id']:'null'?>
+                                        <?=$partnerName?>
                                     </td>
                                     <td>
                                         <?=!is_null($hbox['partner_invoice'])?$hbox['partner_invoice']:'null'?>
