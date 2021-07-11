@@ -269,12 +269,12 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                           </div>
                           <div class="col-md-4">
                             <p class="text-right rating_bar">
-                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-blank-star-orange.svg" class="">
-                              <!-- <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-half-star-orange.svg" class=""> -->
+                              <?=$util->formatStars(json_decode($ratingsObject)->data)?>
+                              <!-- <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-blank-star-orange.svg" class=""> -->
                             </p>
                           </div>
                         </div>
