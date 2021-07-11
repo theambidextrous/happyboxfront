@@ -518,7 +518,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
         $('#ratingPop').modal('show');
       }
 
-      ratenow = function (form){
+      ratenow = function (FormId){
         waitingDialog.show('Sending... Please wait', {
           headerText: '',
           headerSize: 6,
