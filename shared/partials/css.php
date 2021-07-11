@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?=$util->AppHome()?>/vendor/fa5/css/all.min.css">
 <link rel="stylesheet" href="<?=$util->AppHome()?>/vendor/owl/owl.carousel.min.css">
 <link rel="stylesheet" href="<?=$util->AppHome()?>/vendor/owl/owl.theme.default.css">
-<link href="//db.onlinewebfonts.com/c/a78cfad3beb089a6ce86d4e280fa270b?family=Calibri" rel="stylesheet" type="text/css"/>
+<link href="https://db.onlinewebfonts.com/c/a78cfad3beb089a6ce86d4e280fa270b?family=Calibri" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="<?=$util->AppHome()?>/vendor/custom/custom-css.css?version=2.0" >
 <style>
 .stars
