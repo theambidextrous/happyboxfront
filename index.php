@@ -61,6 +61,9 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 					</div>
 					<!-- 2-->
 					<div class="carousel-item slider_2">
+						<img src="<?=$util->AppHome()?>/shared/img/slider-a2.jpg" alt="slider 2" class="w-100">
+					</div>
+					<div class="carousel-item slider_2">
 						<img src="<?=$util->AppHome()?>/shared/img/slider-b.png" alt="slider 2" class="w-100">
 					</div>
 					<div class="carousel-item slider_1">
