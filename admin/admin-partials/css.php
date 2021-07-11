@@ -4,3 +4,6 @@
  <link href="<?=$util->AdminHome()?>/vendor/custom/custom-css.css?version=1.0" rel="stylesheet">
  <link href="<?=$util->AdminHome()?>/vendor/bootstrap/css/buttons.dataTables.min.css" rel="stylesheet">
  <link href="<?=$util->AdminHome()?>/vendor/bootstrap/css/jquery.dataTables.min.css" rel="stylesheet">
+<!-- date picker -->
+ <link href="<?=$util->AppHome()?>/vendor/mom/bootstrap-datetimepicker.css" rel="stylesheet">
+ 

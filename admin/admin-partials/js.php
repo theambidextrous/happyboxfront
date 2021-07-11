@@ -9,6 +9,9 @@
   <!-- moment extnesion of DT -->
   <script src="<?=$util->AppHome()?>/vendor/mom/moment.min.js"></script>
   <script src="<?=$util->AppHome()?>/vendor/mom/datetime-moment.js"></script>
+<!-- datepicker -->
+  <script src="<?=$util->AppHome()?>/vendor/mom/moment-with-locales.js"></script>
+  <script src="<?=$util->AppHome()?>/vendor/mom/bootstrap-datetimepicker.min.js"></script>
 
 
   <script src="<?=$util->AdminHome()?>/vendor/bootstrap/js/jszip.min.js"></script>
