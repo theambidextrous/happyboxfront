@@ -37,9 +37,8 @@
         } );
         $.fn.dataTable.moment( 'DD/MM/YYYY' );
         $('.reportable-purchases').DataTable( {
-          "order": [[ 7, "desc" ]],
-          dom: 'Bfrtip',
-        } );
+          "order": [[ 7, "desc" ]]
+        });
 
         $('#goTop').on('click', function(e){
             $("html, body").animate({scrollTop: $("#top").offset().top}, 500);
