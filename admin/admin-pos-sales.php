@@ -234,10 +234,9 @@ $box = new Box();
                     <div class="form-group row">
                         <label for="BoxType" class="col-form-label">Pick date</label>
                         <input type="hidden" name="id" id="inv_id"/>
-                        <input type="text" class="form-control rounded_form_control c-date" name="box_purchase_date" id="box_purchase_date"/>
-                        
+                        <!-- <input type="text" class="form-control rounded_form_control" name="box_purchase_date" id="box_purchase_date"/> -->
                         <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+                            <input type="text" class="form-control rounded_form_control datetimepicker-input" data-target="#datetimepicker4" name="box_purchase_date" id="box_purchase_date"/>
                             <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
