@@ -480,6 +480,8 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
               <br>
               <div>
                 <button type="button" onclick="ratenow('rate_form')" class="btn btn_rounded btn-orange">Rate partner</button>
+                
+                <button type="button" data-dismiss="modal" class="btn btn_rounded">Cancel</button>
               </div>
             </form>
 					</div>

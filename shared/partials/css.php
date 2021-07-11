@@ -50,7 +50,10 @@
         color: dodgerblue;
         
     }
-
+    .ptn-label{
+      color: #0babb3!important;
+      font-weight: 100!important;
+    }
     .rating label:hover, .rating label:hover ~ label, .rating input:checked + label, .rating input:checked + label ~ label 
     {
       color: #1c90ff!important;
