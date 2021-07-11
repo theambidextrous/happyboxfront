@@ -209,11 +209,18 @@ $box = new Box();
      return;
  }
 
- $(document).ready(function() {
-    $('.c-date').datepicker({
-        format: 'DD/MM/YYYY'
+//  $(document).ready(function() {
+//     $('.c-date').datepicker({
+//         format: 'DD/MM/YYYY'
+//     });
+// });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker4').datetimepicker({
+            format: 'L'
+        });
     });
-});
 </script>
 <!-- popup -->
 <div class="modal fade" id="modify_date">
@@ -228,6 +235,13 @@ $box = new Box();
                         <label for="BoxType" class="col-form-label">Pick date</label>
                         <input type="hidden" name="id" id="inv_id"/>
                         <input type="text" class="form-control rounded_form_control c-date" name="box_purchase_date" id="box_purchase_date"/>
+                        
+                        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+                            <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class=" row">
