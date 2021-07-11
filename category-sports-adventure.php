@@ -6,11 +6,18 @@ require_once('lib/Box.php');
 require_once('lib/Topic.php');
 require_once('lib/Picture.php');
 require_once('lib/Inventory.php');
+require_once('lib/Rating.php');
 $util = new Util();
 $user = new User();
 $box = new Box();
 $picture = new Picture();
 $inventory = new Inventory();
+/** rating stuff */
+$rater = new Rating();
+$token = json_decode($_SESSION['usr'])->access_token;
+$user_data = json_decode($_SESSION['usr_info']);
+$user_internal_id = $user_data->data->internal_id;
+/** end */
 $_t = new Topic();
 $topic_selected_ = $util->AppSports();
 $util->ShowErrors(1);
@@ -246,14 +253,21 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                       </td>
                       <td>
                         <div class="cat_p"><?= $_all_ptn['short_description'] ?></div>
-                        <p class="text-right rating_bar">
-                          <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                          <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                          <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                          <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                          <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-blank-star-orange.svg" class="">
-                          <!-- <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-half-star-orange.svg" class=""> -->
-                        </p>
+                        <div class="row">
+                          <div class="col-md-8">
+                            <button type="button" onclick="ratingModal('<?=$_all_ptn['internal_id']?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                          </div>
+                          <div class="col-md-4">
+                            <p class="text-right rating_bar">
+                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
+                              <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-blank-star-orange.svg" class="">
+                              <!-- <img src="<?= $util->AppHome() ?>/shared/img/icons/icn-half-star-orange.svg" class=""> -->
+                            </p>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   </table>
@@ -433,6 +447,41 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
   </div>
 
   <!--added to cart  end pop up -->
+  <!-- pop up -->
+	<div class="modal fade" id="ratingPop">
+		<div class="modal-dialog general_pop_dialogue">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<div class="col-md-12 text-center forgot-dialogue-borderz">
+						<h3 class="partner_blueh pink_title">Partner Rating.</h3>
+						<form id="rate_form">
+              <input type="hidden" name="rating_user" value="<?=$user_internal_id?>" id="rating_user"/>
+              <input type="hidden" name="partner" id="partner_id"/>
+              <input id="ratings-hidden" name="rating_value" type="hidden">
+              <div class="stars starrr" data-rating="0"></div>
+              <div>
+                <button type="button" onclick="ratenow('rate_form')" class="btn btn_rounded btn-orange">Rate partner</button>
+              </div>
+            </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end pop up -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var ratingsField = $('#ratings-hidden');
+      $('.starrr').on('starrr:change', function(e, value){
+        ratingsField.val(value);
+      });
+      ratingModal = function(ptn){
+        $('#partner_id').val(ptn);
+        $('#ratingPop').modal('show');
+      }
+    });
+  </script>
+
   <script type="text/javascript">
     $(document).bind('keyup', function(e) {
       if (e.which == 39) {

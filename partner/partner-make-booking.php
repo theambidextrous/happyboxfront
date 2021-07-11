@@ -91,7 +91,6 @@ $token = json_decode($_SESSION['usr'])->access_token;
          1
         ];
        }
-       // print $util->Show($res);
        elseif (isset($res['box_internal_id'])) {
         $idf = $res['partner_internal_id'];
         $box_idf = $res['box_internal_id'];
