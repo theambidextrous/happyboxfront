@@ -474,8 +474,9 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 
                   <input type="radio" id="star2" name="rating_value" value="1" />
                   <label for="star2" title="Meh">1 star</label>
-                  </div>
                 </div>
+              </div>
+              <textarea name="comment" id="comment" placeholder="leave a comment..."></textarea>
               <div>
                 <button type="button" onclick="ratenow('rate_form')" class="btn btn_rounded btn-orange">Rate partner</button>
               </div>

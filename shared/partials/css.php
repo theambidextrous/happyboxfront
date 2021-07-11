@@ -32,7 +32,7 @@
         white-space:nowrap;
         cursor:pointer;
         font-size:300%;
-        /* line-height:1.2; */
+        line-height:1.2;
         color:#ddd;
     }
 
@@ -49,6 +49,11 @@
     .rating:not(:checked) > label:hover ~ label {
         color: dodgerblue;
         
+    }
+
+    .rating label:hover, .rating label:hover ~ label, .rating input:checked + label, .rating input:checked + label ~ label 
+    {
+      color: #1c90ff!important;
     }
 
     .rating > input:checked + label:hover,
