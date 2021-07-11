@@ -218,7 +218,7 @@ $box = new Box();
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker4').datetimepicker({
-            format: 'dd/MM/YYYY'
+            format: 'DD/MM/YYYY'
         });
     });
 </script>
