@@ -259,9 +259,6 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                       <td>
                         <div class="cat_p">
                           <?= $_all_ptn['short_description'] ?>
-                          <pre><?=print_r($canRateObject)?></pre>
-                          <pre><?=print_r($hasRatedObject)?></pre>
-                          <pre><?=print_r($ratingsObject)?></pre>
                         </div>
                         <div class="row">
                           <div class="col-md-8">
