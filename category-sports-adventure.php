@@ -255,7 +255,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                         <div class="cat_p"><?= $_all_ptn['short_description'] ?></div>
                         <div class="row">
                           <div class="col-md-8">
-                            <button type="button" onclick="ratingModal('<?=$_all_ptn['internal_id']?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                            <button type="button" onclick="ratingModal('<?=$_all_ptn['internal_id']?>', '<?=ucwords(strtolower($_all_ptn['business_name']))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
                           </div>
                           <div class="col-md-4">
                             <p class="text-right rating_bar">
@@ -453,7 +453,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 			<div class="modal-content">
 				<div class="modal-body text-center">
 					<div class="col-md-12 text-center forgot-dialogue-borderz">
-						<h3 class="partner_blueh pink_title">Partner Rating.</h3>
+						<h3 class="partner_blueh pink_title">Rating <b class="ptn-label" id="ptn-label"></b></h3>
 						<form id="rate_form">
               <input type="hidden" name="rating_user" value="<?=$user_internal_id?>" id="rating_user"/>
               <input type="hidden" name="partner" id="partner_id"/>
@@ -490,12 +490,10 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 	<!-- end pop up -->
   <script type="text/javascript">
     $(document).ready(function() {
-      var ratingsField = $('#ratings-hidden');
-      $('.starrr').on('starrr:change', function(e, value){
-        ratingsField.val(value);
-      });
-      ratingModal = function(ptn){
+      
+      ratingModal = function(ptn, label){
         $('#partner_id').val(ptn);
+        $('#ptn-label').text(label);
         $('#ratingPop').modal('show');
       }
     });
