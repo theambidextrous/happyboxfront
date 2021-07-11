@@ -457,14 +457,23 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
 						<form id="rate_form">
               <input type="hidden" name="rating_user" value="<?=$user_internal_id?>" id="rating_user"/>
               <input type="hidden" name="partner" id="partner_id"/>
-              <input id="ratings-hidden" name="rating_value" type="hidden">
-              <div class="row">
+              <!-- <input id="ratings-hidden" name="rating_value" type="hidden"> -->
+              <div class="row justify-content-center">
                 <div class="rating">
-                  <input type="radio" id="star10" name="rating" value="5" /><label for="star10" title="Rocks!">5 stars</label>
-                  <input type="radio" id="star9" name="rating" value="4" /><label for="star9" title="Rocks!">4 stars</label>
-                  <input type="radio" id="star8" name="rating" value="3" /><label for="star8" title="Pretty good">3 stars</label>
-                  <input type="radio" id="star7" name="rating" value="2" /><label for="star7" title="Pretty good">2 stars</label>
-                  <input type="radio" id="star6" name="rating" value="1" /><label for="star6" title="Meh">1 star</label>
+                  <input type="radio" id="star5" name="rating_value" value="5" />
+                  <label for="star5" title="Rocks!">5 stars</label>
+                  
+                  <input type="radio" id="star4" name="rating_value" value="4" />
+                  <label for="star4" title="Rocks!">4 stars</label>
+
+                  <input type="radio" id="star3" name="rating_value" value="3" />
+                  <label for="star3" title="Pretty good">3 stars</label>
+
+                  <input type="radio" id="star2" name="rating_value" value="2" />
+                  <label for="star2" title="Pretty good">2 stars</label>
+
+                  <input type="radio" id="star2" name="rating_value" value="1" />
+                  <label for="star2" title="Meh">1 star</label>
                   </div>
                 </div>
               <div>
