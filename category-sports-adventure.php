@@ -223,11 +223,11 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
           if ($_ptn_picture->path_name) {
             $_ptn_logo_path = $_ptn_picture->path_name;
           }
-          $canRateObject = $rater->can_rate($token, $user_internal_id, $_all_ptn['internal_id']);
+          $canRateObject = json_decode($rater->can_rate($token, $user_internal_id, $_all_ptn['internal_id']));
 
-          $hasRatedObject = $rater->has_rated($token, $user_internal_id, $_all_ptn['internal_id']);
+          $hasRatedObject = json_decode($rater->has_rated($token, $user_internal_id, $_all_ptn['internal_id']));
 
-          $ratingsObject = $rater->get_ptn_value($_all_ptn['internal_id'], $token);
+          $ratingsObject = json_decode($rater->get_ptn_value($_all_ptn['internal_id'], $token));
       ?>
           <div class="row row_partner">
             <div class="col-md-3">
@@ -270,11 +270,6 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                           <div class="col-md-4">
                             <p class="text-right rating_bar">
                               <?=$util->formatStars(json_decode($ratingsObject)->data)?>
-                              <!-- <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-star-orange.svg" class="">
-                              <img src="<= $util->AppHome() ?>/shared/img/icons/icn-blank-star-orange.svg" class=""> -->
                             </p>
                           </div>
                         </div>
