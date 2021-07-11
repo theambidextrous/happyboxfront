@@ -38,6 +38,7 @@ $box = new Box();
         <title>Happy Box:: POS Sales</title>
         <!-- Bootstrap core CSS -->
         <?php include 'admin-partials/css.php'; ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
         <style>
             .admin-pos{
                 color: #c20a2b!important;
@@ -199,6 +200,7 @@ $box = new Box();
  <?php include 'admin-partials/footer.php'; ?>
 <!-- Bootstrap core JavaScript -->
 <?php include 'admin-partials/js.php'; ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
 <script>
  loadInvForm = function (id)
  {
