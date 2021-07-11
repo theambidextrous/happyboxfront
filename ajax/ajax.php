@@ -207,7 +207,7 @@ switch($_REQUEST['activity']){
     case 'rate-ptn':
         try{
             $token = json_decode($_SESSION['usr'])->access_token;
-            if(strlen($token))
+            if(strlen(!$token))
             {
                 exit(json_encode(['ERR' => "You must login to rate partners"]));
             }
