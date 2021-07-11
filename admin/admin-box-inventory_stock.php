@@ -163,7 +163,7 @@ $box = new Box();
                                     <th>Partner Reimbursment Due Date</th>
                                     <th>Partner Reimbursment Effective Date</th>
                                     <th>Partner Reimbursment</th>
-                                    <th>Partner Identity</th>
+                                    <th>Partner Name</th>
                                     <th>Partner Invoice number</th>
                                 </tr>
                             </thead>
