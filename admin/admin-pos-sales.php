@@ -206,7 +206,12 @@ $box = new Box();
      $('#modify_date').modal('show');
      return;
  }
- $('.c-date').datepicker();
+
+ $(document).ready(function() {
+    $('.c-date').datetimepicker({
+        format: 'dd/mm/yyyy'
+    });
+});
 </script>
 <!-- popup -->
 <div class="modal fade" id="modify_date">
