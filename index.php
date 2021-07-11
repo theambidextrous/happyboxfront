@@ -12,11 +12,9 @@ $picture = new Picture();
 $inventory = new Inventory();
 $util->ShowErrors(1);
 $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
-$util->Show();
-
 ?>
 <pre>
-	<?= $box->get_all_active('0') ?>
+	<?=  print_r($box->get_all_active('0')) ?>
 </pre>
 <!DOCTYPE html>
 <html lang="en">
