@@ -223,6 +223,11 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
           if ($_ptn_picture->path_name) {
             $_ptn_logo_path = $_ptn_picture->path_name;
           }
+          $canRateObject = $rater->can_rate($token, $user_internal_id, $_all_ptn['internal_id']);
+
+          $hasRatedObject = $rater->has_rated($token, $user_internal_id, $_all_ptn['internal_id']);
+
+          $ratingsObject = $rater->get_ptn_value($_all_ptn['internal_id'], $token);
       ?>
           <div class="row row_partner">
             <div class="col-md-3">
@@ -252,7 +257,12 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                         </table>
                       </td>
                       <td>
-                        <div class="cat_p"><?= $_all_ptn['short_description'] ?></div>
+                        <div class="cat_p">
+                          <?= $_all_ptn['short_description'] ?>
+                          <pre><?=$canRateObject?></pre>
+                          <pre><?=$hasRatedObject?></pre>
+                          <pre><?=$ratingsObject?></pre>
+                        </div>
                         <div class="row">
                           <div class="col-md-8">
                             <button type="button" onclick="ratingModal('<?=$_all_ptn['internal_id']?>', '<?=ucwords(strtolower($_all_ptn['business_name']))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
@@ -536,7 +546,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
               $('#ratingPop').modal('hide');
               $('#feedbackPop').modal('show');
               setTimeout(function() {
-                location.reload();
+                // location.reload();
               }, 3000);
               waitingDialog.hide();
               return;
