@@ -102,7 +102,7 @@ $box = new Box();
             <div class="container">
                 <div class="row ">
                     <div class="col-md-12 ">
-                         <div class="table_radius table_radius_admin">
+                         <div class="table_radius table_radius_admin" style="padding:10px;">
                         <div class="table-responsive">
                        
                         <?php 
