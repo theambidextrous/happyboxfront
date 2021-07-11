@@ -208,8 +208,8 @@ $box = new Box();
  }
 
  $(document).ready(function() {
-    $('.c-date').datetimepicker({
-        format: 'dd/mm/yyyy'
+    $('.c-date').datepicker({
+        format: 'DD/MM/YYYY'
     });
 });
 </script>
