@@ -265,11 +265,17 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                         </div>
                         <div class="row">
                           <div class="col-md-8">
-                            <button type="button" onclick="ratingModal('<?=$_all_ptn['internal_id']?>', '<?=ucwords(strtolower($_all_ptn['business_name']))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
-                          </div>
+                            <?php
+                             if( strlen($token) ){
+                               if( $canRateObject->can == 1 && $hasRatedObject->has != 1){ ?>
+                                 <button type="button" onclick="ratingModal('<?=$_all_ptn['internal_id']?>', '<?=ucwords(strtolower($_all_ptn['business_name']))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                           <?php } }else{ ?>
+                              <button type="button" disabled class="btn btn_rounded btn-orange">login to rate</button>
+                            <?php } ?>
+                          </div> 
                           <div class="col-md-4">
                             <p class="text-right rating_bar">
-                              <?=$util->formatStars(json_decode($ratingsObject)->data)?>
+                              <?=$util->formatStars($ratingsObject->data)?>
                             </p>
                           </div>
                         </div>
