@@ -171,13 +171,15 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                     $validity_date = date('d/m/Y',strtotime($my_l['box_validity_date']));
                                   }
                                   $partner_name = $my_l['partner_internal_id'];
+                                  $ptn_rated = 'none';
                                   if(!empty($partner_name)){
                                     $ptn = $user->get_details_byidf($my_l['partner_internal_id']);
                                     $partner_name = json_decode($ptn)->data->business_name;
+                                    $ptn_rated = $my_l['partner_internal_id'];
                                   }
-                                  $canRateObject = json_decode($rater->can_rate($token, $user_internal_id, $my_l['partner_internal_id']));
-                                  $hasRatedObject = json_decode($rater->has_rated($token, $user_internal_id, $my_l['partner_internal_id'], $my_l['box_voucher']));
-                                  $ratingsObject = json_decode($rater->get_ptn_value_byvoucher($my_l['partner_internal_id'], $my_l['box_voucher'], $token));
+                                  $canRateObject = json_decode($rater->can_rate($token, $user_internal_id, $ptn_rated));
+                                  $hasRatedObject = json_decode($rater->has_rated($token, $user_internal_id, $ptn_rated, $my_l['box_voucher']));
+                                  $ratingsObject = json_decode($rater->get_ptn_value_byvoucher($ptn_rated, $my_l['box_voucher'], $token));
                             ?>
                             <tr>
                               <td class="light_blue_cell bold_txt"><?=strtoupper($_box_data->name)?></td>
@@ -192,8 +194,8 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <td class="gray_star rating">
                                 <?php 
                                 print_r($hasRatedObject);
-                                print_r($canRateObject);
-                                print_r($ratingsObject);
+                                // print_r($canRateObject);
+                                // print_r($ratingsObject);
                                 ?>
                                 <?=$util->formatStars($ratingsObject->data)?>
                               </td>
