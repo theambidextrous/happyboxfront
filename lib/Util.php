@@ -617,7 +617,7 @@ class Util {
        $cname = !empty($cust_data->sname) ? $cust_data->sname : 'N/A';
        $b .= '<td>' . $cname . '</td>';
       } elseif ($k == 'customer_user_id_2') {
-        $userid = isset($cust_data->userid) ? $cust_data->userid:'1o1';
+        $userid = isset($cust_data->userid) ? $cust_data->userid:'0000';
         $emailInfo = json_decode($user_ob->get_one($userid, $token), true);
         $email = 'N/A';
         if(array_key_exists('data', $emailInfo)){
