@@ -155,7 +155,7 @@ $box = new Box();
                                     <th>Buyer Email</th>
                                     <th>Buyer Phone</th>
                                     <th>Payment Method</th>
-                                    <th>Puchase Date</th>
+                                    <th>Purchase Date</th>
                                     <th>Valid Until</th>
                                     <th>Sale Type</th>
                                     <th>Action</th>

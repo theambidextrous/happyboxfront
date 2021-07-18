@@ -144,7 +144,7 @@ $box = new Box();
                                     <th>Customer Buyer Phone</th>
                                     <th>Customer Buyer Payment Method</th>
                                     <th>Box Delivery Address</th>
-                                    <th>Box Puchase Date</th>
+                                    <th>Box Purchase Date</th>
                                     <th>Box Validity Date</th>
                                     <th>Customer Buyer Invoice Number</th>
                                     <th>Box Barcode</th>
