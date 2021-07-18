@@ -221,7 +221,7 @@ $box = new Box();
                                     $cu_email = json_decode($user->get_one($customer_user->userid, $token))->data->email;
                                     $cu_phone = $customer_user->phone;
                                     /** box status */
-                                    $box_v_status_name = null;
+                                    $box_v_status_name = 'Activated';
                                     if($hbox['box_voucher_status'] == '1'){
                                         $box_v_status_name = 'In stock';
                                     }elseif($hbox['box_voucher_status'] == '2'){
