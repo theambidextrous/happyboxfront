@@ -258,7 +258,7 @@ $_all_ptns = json_decode($user->get_ptn_bytopic($topic_selected_), true)['data']
                         </div>
                         <div class="row">
                           <div class="col-md-8">
-                            <button type="button" disabled class="btn btn_rounded btn-orange"></button>
+                            <!-- <button type="button" disabled class="btn btn_rounded btn-orange"></button> -->
                           </div> 
                           <div class="col-md-4">
                             <p class="text-right rating_bar">

@@ -143,6 +143,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                             <?php
                               if(count($my_list_)){
                                 foreach( $my_list_ as $my_l):
+                                  $canRateObject = 0;
                                   $admin_func_ = '<td class="empty_cell"></td>';
                                   if($my_l['box_voucher_status'] == 6 && substr($my_l['box_voucher'],0,1) != 'R'){
                                     $_voucher = "'".$my_l['box_voucher']."'";
@@ -164,6 +165,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                   $booking_date = $my_l['booking_date'];
                                   $booking_div = '<td class="empty_cell"></td>';
                                   if($my_l['box_voucher_status'] == 3){
+                                    $canRateObject = 1;
                                     $booking_div = '<td>'.date('d/m/Y',strtotime($booking_date)).'</td>';
                                   }
                                   $validity_date = '';
@@ -177,7 +179,6 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                     $partner_name = json_decode($ptn)->data->business_name;
                                     $ptn_rated = $my_l['partner_internal_id'];
                                   }
-                                  $canRateObject = json_decode($rater->can_rate($token, $user_internal_id, $ptn_rated));
                                   $hasRatedObject = json_decode($rater->has_rated($token, $user_internal_id, $ptn_rated, $my_l['box_voucher']));
                                   $ratingsObject = json_decode($rater->get_ptn_value_byvoucher($ptn_rated, $my_l['box_voucher'], $token));
                             ?>
@@ -192,12 +193,14 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <?=$booking_div?>
                               <td class=""><?=$partner_name?></td>
                               <td class="gray_star rating">
-                                <?php 
-                                print_r($hasRatedObject);
-                                // print_r($canRateObject);
-                                // print_r($ratingsObject);
-                                ?>
-                                <?=$util->formatStars($ratingsObject->data)?>
+                              <?php
+                                  if( $canRateObject == 1 && $hasRatedObject->has != 1){ ?>
+                                    <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                              <?php }
+                                else{
+                                  $util->formatStarsSmall($ratingsObject->data);
+                                }
+                               ?>
                               </td>
                               <?=$admin_func_?>
                             </tr>

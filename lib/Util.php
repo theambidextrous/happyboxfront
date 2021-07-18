@@ -148,6 +148,22 @@ class Util {
     }
     return $stars;
  }
+ function formatStarsSmall($starNumber, $label = 'orange')
+ {
+    $stars = '';
+    for( $x = 1; $x <= $starNumber; $x++ ) {
+        $stars .= '<img src="' . $this->AppHome(). '/shared/img/icons/icn-star-'.$label.'.svg">';
+    }
+    if ( strpos($starNumber, '.' ) && substr($starNumber, -1) != '0') {
+        $stars .= '<img src="' . $this->AppHome(). '/shared/img/icons/icn-half-star-'.$label.'.svg">';
+        $x++;
+    }
+    while ($x<=5) {
+        $stars .= '<img src="' . $this->AppHome(). '/shared/img/icons/icn-blank-star-'.$label.'.svg">';
+        $x++;
+    }
+    return $stars;
+ }
  function error_flash($e) {
   return '<p class="alert alert-danger">' . $e . '</p>';
  }
