@@ -54,7 +54,7 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 					<li data-target="#desktop_carousel" data-slide-to="0" class="active"></li>
 					<li data-target="#desktop_carousel" data-slide-to="1"></li>
 					<li data-target="#desktop_carousel" data-slide-to="2"></li>
-					<li data-target="#desktop_carousel" data-slide-to="3"></li>
+					<!-- <li data-target="#desktop_carousel" data-slide-to="3"></li> -->
 				</ul>
 				<div class="carousel-inner">
 					<div class="carousel-item slider_1 active">
@@ -64,10 +64,10 @@ $_all_boxes = json_decode($box->get_all_active('0'), true)['data'];
 					<div class="carousel-item slider_2">
 						<img src="<?=$util->AppHome()?>/shared/img/slider-a2.jpg" alt="slider 2" class="w-100">
 					</div>
-					<div class="carousel-item slider_2">
-						<img src="<?=$util->AppHome()?>/shared/img/slider-b.png" alt="slider 2" class="w-100">
-					</div>
-					<div class="carousel-item slider_1">
+					<!-- <div class="carousel-item slider_2">
+						<img src="<=$util->AppHome()?>/shared/img/slider-b.png" alt="slider 2" class="w-100">
+					</div> -->
+					<div class="carousel-item slider_3">
 						<img src="<?=$util->AppHome()?>/shared/img/slider-c.png" alt="slider 3" class="w-100">
 					</div>
 				</div>
