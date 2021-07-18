@@ -12,11 +12,13 @@
     private $rating_value;
     private $comment;
     private $partner;
-    function __construct($rating_user=null,$rating_value=null,$comment=null,$partner=null){
+    private $voucher;
+    function __construct($rating_user=null,$rating_value=null,$comment=null,$partner=null,$voucher=null){
         $this->rating_user = $rating_user;
         $this->rating_value = $rating_value;
         $this->comment = $comment;
         $this->partner = $partner;
+        $this->voucher = $voucher;
     }
     function get($token='none'){
         $endpoint = 'services/ratings/ratings';
@@ -120,7 +122,8 @@
             'rating_user' => $this->rating_user,
             'rating_value' => $this->rating_value,
             'comment' => $this->comment,
-            'partner' => $this->partner
+            'partner' => $this->partner,
+            'voucher' => $this->voucher
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);

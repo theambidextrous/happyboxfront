@@ -215,15 +215,17 @@ switch($_REQUEST['activity']){
             $rating_value = $_POST['rating_value'];
             $comment = !empty($_POST['comment']) ? $_POST['comment']:"none";
             $partner = $_POST['partner'];
+            $voucher = $_POST['voucher'];
             if( 
                 empty($rating_user) || 
                 empty($rating_value) ||
+                empty($voucher) ||
                 empty($partner)
             )
             {
                 exit(json_encode(['ERR' => "Rating star field is required."]));
             }
-            $rating = new Rating($rating_user, $rating_value, $comment, $partner);
+            $rating = new Rating($rating_user, $rating_value, $comment, $partner, $voucher);
             $u_resp = $rating->create($token);
             if( json_decode($u_resp)->status == '0' ){
                 exit(json_encode(['MSG' => "success"]));
