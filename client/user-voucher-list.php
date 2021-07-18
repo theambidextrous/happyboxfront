@@ -192,7 +192,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <?=$cancellation_div?>
                               <?=$booking_div?>
                               <td class=""><?=$partner_name?></td>
-                              <td class="gray_star rating" style="padding: 5px!important;margin: 0px;width: 100%;border: none;border-top: solid 1px #ccc;">
+                              <td class="gray_star rating" style="padding: 5px!important;margin: 0px;width: 100%;border: none;border-top: solid 1px #ccc;direction:ltr!important;">
                               <?php
                                   if( $canRateObject == 1 && $hasRatedObject->has != 1){ ?>
                                     <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
