@@ -621,7 +621,7 @@ class Util {
         $emailInfo = json_decode($user_ob->get_one($userid, $token), true);
         $email = 'N/A';
         if(array_key_exists('data', $emailInfo)){
-            $email = $emailInfo['data']['email'];
+            $email = isset($emailInfo['data']['email']) ? $emailInfo['data']['email']:'N/A';
         }
         $b .= '<td>' . $email . '</td>';
       } elseif ($k == 'customer_user_id_3') {
