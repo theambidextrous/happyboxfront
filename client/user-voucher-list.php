@@ -418,7 +418,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
 <!-- end pop up -->
 <!-- rasting pop up and scripts -->
 <!-- pop up -->
-<div class="modal fade" id="ratingPop">
+<div class="modal modal-md fade" id="ratingPop">
 		<div class="modal-dialog general_pop_dialogue">
 			<div class="modal-content">
 				<div class="modal-body text-center">
@@ -428,6 +428,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
               <input type="hidden" name="rating_user" value="<?=$user_internal_id?>" id="rating_user"/>
               <input type="hidden" name="partner" id="partner_id"/>
               <input type="hidden" name="voucher" id="voucher_id"/>
+              <input type="hidden" name="comment" value="fabulous" id="comment"/>
               <!-- <input id="ratings-hidden" name="rating_value" type="hidden"> -->
               <div class="row justify-content-center">
                 <div id="err" class="alert alert-danger" style="display:none;"></div>
@@ -449,7 +450,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                   <label for="star2" title="Meh">1 star</label>
                 </div>
               </div>
-              <textarea class="form-control" name="comment" id="comment" placeholder="leave a comment..."></textarea>
+              <!-- <textarea class="form-control" name="comment" id="comment" placeholder="leave a comment..."></textarea> -->
               <br>
               <div>
                 <button type="button" onclick="ratenow('rate_form')" class="btn btn_rounded btn-orange">Submit</button>
