@@ -513,7 +513,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
               $('#ratingPop').modal('hide');
               $('#feedbackPop').modal('show');
               setTimeout(function() {
-                location.reload();
+                // location.reload();
               }, 3000);
               waitingDialog.hide();
               return;
