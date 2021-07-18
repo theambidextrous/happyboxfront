@@ -195,7 +195,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <td class="gray_star rating" style="padding: 5px!important;margin: 0px;width: 100%;border: none;border-top: solid 1px #ccc;">
                               <?php
                                   if( $canRateObject == 1 && $hasRatedObject->has != 1){ ?>
-                                    <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                                    <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
                               <?php }
                                 else{
                                   echo $util->formatStarsSmall($ratingsObject->data);
@@ -239,6 +239,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
               <?php
                 if(count($my_list_)){
                   foreach( $my_list_ as $my_l):
+                    $canRateObject = 0;
                     $admin_func_ = '<td class="empty_cell" colspan="2"></td>';
                     if($my_l['box_voucher_status'] == 6){
                       $_voucher = "'".$my_l['box_voucher']."'";
@@ -260,6 +261,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     $booking_date = $my_l['booking_date'];
                     $booking_div = '<td class="empty_cell empty_cell_mob1">-</td>';
                     if($my_l['box_voucher_status'] == 3){
+                      $canRateObject = 1;
                       $booking_div = '<td>'.date('d/m/Y',strtotime($booking_date)).'</td>';
                     }
                     $validity_date = '';
@@ -267,15 +269,14 @@ $my_list_ = json_decode($my_list_, true)['data'];
                       $validity_date = date('d/m/Y',strtotime($my_l['box_validity_date']));
                     }
                     $partner_name = $my_l['partner_internal_id'];
-                    $rating_value = 0;
+                    $ptn_rated = 'none';
                     if(!empty($partner_name)){
                       $ptn = $user->get_details_byidf($my_l['partner_internal_id']);
                       $partner_name = json_decode($ptn)->data->business_name;
-                      $rating_value = json_decode($rating->get_ptn_value($my_l['partner_internal_id']))->data;
-                      if(!$rating_value){
-                        $rating_value = 0;
-                      }
+                      $ptn_rated = $my_l['partner_internal_id'];
                     }
+                    $hasRatedObject = json_decode($rater->has_rated($token, $user_internal_id, $ptn_rated, $my_l['box_voucher']));
+                    $ratingsObject = json_decode($rater->get_ptn_value_byvoucher($ptn_rated, $my_l['box_voucher'], $token));
               ?>
              <table class="table  voucher_list_table_mob voucher_list_user_table_mob table-borderless">
                 <thead>
@@ -312,7 +313,16 @@ $my_list_ = json_decode($my_list_, true)['data'];
                     </tr>
                     <tr class="voucher_list_user_table_mob_tr">
                         <td class="v_td_a">Partner Rating</td> 
-                        <td class="txt_gray"><?=$util->patner_rating($rating_value)?></td>
+                        <td class="txt_gray">
+                        <?php
+                            if( $canRateObject == 1 && $hasRatedObject->has != 1){ ?>
+                              <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                        <?php }
+                          else{
+                            echo $util->formatStarsSmall($ratingsObject->data);
+                          }
+                          ?>
+                        </td>
                     </tr>
                      
                      <tr class="v_td_100">
@@ -417,6 +427,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
 						<form name="rate_form">
               <input type="hidden" name="rating_user" value="<?=$user_internal_id?>" id="rating_user"/>
               <input type="hidden" name="partner" id="partner_id"/>
+              <input type="hidden" name="voucher" id="voucher_id"/>
               <!-- <input id="ratings-hidden" name="rating_value" type="hidden"> -->
               <div class="row justify-content-center">
                 <div id="err" class="alert alert-danger" style="display:none;"></div>
@@ -472,8 +483,9 @@ $my_list_ = json_decode($my_list_, true)['data'];
 <script type="text/javascript">
     $(document).ready(function() {
       
-      ratingModal = function(ptn, label){
+      ratingModal = function(ptn, voucher, label){
         $('#partner_id').val(ptn);
+        $('#voucher_id').val(voucher);
         $('#ptn-label').text(label);
         $('#ratingPop').modal('show');
       }
