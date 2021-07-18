@@ -431,7 +431,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
               <input type="hidden" name="comment" value="fabulous" id="comment"/>
               <!-- <input id="ratings-hidden" name="rating_value" type="hidden"> -->
               <div class="row justify-content-center">
-                <div id="err" class="alert alert-danger" style="display:none;"></div>
+                <div id="errors_div" class="alert alert-danger" style="display:none;"></div>
                 <br>
                 <div class="rating">
                   <input type="radio" id="star5" name="rating_value" value="5" />
@@ -514,8 +514,8 @@ $my_list_ = json_decode($my_list_, true)['data'];
               waitingDialog.hide();
               return;
             } else if (rtn.hasOwnProperty("ERR")) {
-              $('#err').text(rtn.ERR);
-              $('#err').show(rtn.ERR);
+              $('#errors_div').text(rtn.ERR);
+              $('#errors_div').show(rtn.ERR);
               waitingDialog.hide();
               return;
             }

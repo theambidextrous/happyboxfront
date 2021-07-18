@@ -228,7 +228,7 @@ switch($_REQUEST['activity']){
             if( json_decode($u_resp)->status == '0' ){
                 exit(json_encode(['MSG' => "success"]));
             }else{
-                exit(json_encode(['ERR' => json_decode($u_resp)->message]));
+                exit(json_encode(['ERR' => $u_resp]));
             }
         }catch(Exception $e){
             exit(json_encode(['ERR' => $e->getMessage()]));
