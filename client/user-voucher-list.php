@@ -9,6 +9,11 @@ require_once('../lib/Rating.php');
 $util = new Util();
 $user = new User();
 $rating = new Rating();
+/** rating stuff */
+$rater = new Rating();
+$user_data = json_decode($_SESSION['usr_info']);
+$user_internal_id = $user_data->data->internal_id;
+/** end */
 if(!$util->is_client()){
     header('Location: user-login.php');
 }
@@ -166,15 +171,13 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                     $validity_date = date('d/m/Y',strtotime($my_l['box_validity_date']));
                                   }
                                   $partner_name = $my_l['partner_internal_id'];
-                                  $rating_value = 0;
                                   if(!empty($partner_name)){
                                     $ptn = $user->get_details_byidf($my_l['partner_internal_id']);
                                     $partner_name = json_decode($ptn)->data->business_name;
-                                    $rating_value = json_decode($rating->get_ptn_value($my_l['partner_internal_id']))->data;
-                                    if(!$rating_value){
-                                      $rating_value = 0;
-                                    }
                                   }
+                                  $canRateObject = json_decode($rater->can_rate($token, $user_internal_id, $my_l['partner_internal_id']));
+                                  $hasRatedObject = json_decode($rater->has_rated($token, $user_internal_id, $my_l['partner_internal_id'], $my_l['box_voucher']));
+                                  $ratingsObject = json_decode($rater->get_ptn_value_byvoucher($my_l['partner_internal_id'], $my_l['box_voucher'], $token));
                             ?>
                             <tr>
                               <td class="light_blue_cell bold_txt"><?=strtoupper($_box_data->name)?></td>
@@ -187,12 +190,12 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <?=$booking_div?>
                               <td class=""><?=$partner_name?></td>
                               <td class="gray_star rating">
-                                <?=$util->patner_rating($rating_value)?>
-                                <!--  <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas fa-star"></i></label>
-	<input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
-	<input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas fa-star"></i></label>
-	<input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
-	<input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas fa-star"></i></label>-->
+                                <?php 
+                                print_r($hasRatedObject);
+                                print_r($canRateObject);
+                                print_r($ratingsObject);
+                                ?>
+                                <?=$util->formatStars($ratingsObject->data)?>
                               </td>
                               <?=$admin_func_?>
                             </tr>
@@ -398,7 +401,111 @@ $my_list_ = json_decode($my_list_, true)['data'];
   });  
 </script>
 <!-- end pop up -->
+<!-- rasting pop up and scripts -->
+<!-- pop up -->
+<div class="modal fade" id="ratingPop">
+		<div class="modal-dialog general_pop_dialogue">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<div class="col-md-12 text-center forgot-dialogue-borderz">
+						<h3 class="partner_blueh pink_title">Rating <b class="ptn-label" id="ptn-label"></b></h3>
+						<form name="rate_form">
+              <input type="hidden" name="rating_user" value="<?=$user_internal_id?>" id="rating_user"/>
+              <input type="hidden" name="partner" id="partner_id"/>
+              <!-- <input id="ratings-hidden" name="rating_value" type="hidden"> -->
+              <div class="row justify-content-center">
+                <div id="err" class="alert alert-danger" style="display:none;"></div>
+                <br>
+                <div class="rating">
+                  <input type="radio" id="star5" name="rating_value" value="5" />
+                  <label for="star5" title="Rocks!">5 stars</label>
+                  
+                  <input type="radio" id="star4" name="rating_value" value="4" />
+                  <label for="star4" title="Rocks!">4 stars</label>
+
+                  <input type="radio" id="star3" name="rating_value" value="3" />
+                  <label for="star3" title="Pretty good">3 stars</label>
+
+                  <input type="radio" id="star2" name="rating_value" value="2" />
+                  <label for="star2" title="Pretty good">2 stars</label>
+
+                  <input type="radio" id="star2" name="rating_value" value="1" />
+                  <label for="star2" title="Meh">1 star</label>
+                </div>
+              </div>
+              <textarea class="form-control" name="comment" id="comment" placeholder="leave a comment..."></textarea>
+              <br>
+              <div>
+                <button type="button" onclick="ratenow('rate_form')" class="btn btn_rounded btn-orange">Submit</button>
+                
+                <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+              </div>
+            </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end pop up -->
+  <!-- sent popup -->
+	<div class="modal fade" id="feedbackPop">
+		<div class="modal-dialog general_pop_dialogue">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<div class="col-md-12 text-center forgot-dialogue-borderz">
+						<h3 class="partner_blueh pink_title">THANK YOU FOR YOUR FEEDBACK!</h3>
+						<!-- <p class="forgot_des text-center"> Partner . </p> -->
+						<div>
+							<img src="<?= $util->AppHome() ?>/shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end pop up -->
+<script type="text/javascript">
+    $(document).ready(function() {
       
+      ratingModal = function(ptn, label){
+        $('#partner_id').val(ptn);
+        $('#ptn-label').text(label);
+        $('#ratingPop').modal('show');
+      }
+
+      ratenow = function (FormId){
+        waitingDialog.show('Sending... Please wait', {
+          headerText: '',
+          headerSize: 6,
+          dialogSize: 'sm'
+        });
+        var dataString = $("form[name=" + FormId + "]").serialize();
+        $.ajax({
+          type: 'post',
+          url: '<?= $util->AjaxHome() ?>?activity=rate-ptn',
+          data: dataString,
+          success: function(res) {
+            console.log(res);
+            var rtn = JSON.parse(res);
+            if (rtn.hasOwnProperty("MSG")) {
+              $('#ratingPop').modal('hide');
+              $('#feedbackPop').modal('show');
+              setTimeout(function() {
+                // location.reload();
+              }, 3000);
+              waitingDialog.hide();
+              return;
+            } else if (rtn.hasOwnProperty("ERR")) {
+              $('#err').text(rtn.ERR);
+              $('#err').show(rtn.ERR);
+              waitingDialog.hide();
+              return;
+            }
+          }
+        });
+      }
+    });
+  </script>
         
 
 

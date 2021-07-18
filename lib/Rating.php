@@ -46,6 +46,20 @@
         $res = curl_exec($curl);
         return $res;
     }
+    function get_ptn_value_byvoucher($ptn, $voucher, $token='none'){
+        $endpoint = 'services/ratings/ratings/partner/' . $ptn . '/voucher/' . $voucher;
+        $util = new Util();
+        $body = [];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers($token));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        $res = curl_exec($curl);
+        return $res;
+    }
     function get_ptn($ptn, $token='none'){
         $endpoint = 'services/ratings/ratings/ptn/' . $ptn;
         $util = new Util();
@@ -86,8 +100,8 @@
         $res = curl_exec($curl);
         return $res;
     }
-    function has_rated($token, $user, $ptn){
-        $endpoint = 'services/ratings/has/'. $user. '/ptn/' . $ptn;
+    function has_rated($token, $user, $ptn, $voucher = 0){
+        $endpoint = 'services/ratings/has/'. $user. '/ptn/' . $ptn .'/voucher/' . $voucher;
         $util = new Util();
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $util->AppAPI() . $endpoint);
