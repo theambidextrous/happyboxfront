@@ -446,8 +446,8 @@ $my_list_ = json_decode($my_list_, true)['data'];
                   <input type="radio" id="star2" name="rating_value" value="2" />
                   <label for="star2" title="Pretty good">2 stars</label>
 
-                  <input type="radio" id="star2" name="rating_value" value="1" />
-                  <label for="star2" title="Meh">1 star</label>
+                  <input type="radio" id="star1" name="rating_value" value="1" />
+                  <label for="star1" title="Meh">1 star</label>
                 </div>
               </div>
               <!-- <textarea class="form-control" name="comment" id="comment" placeholder="leave a comment..."></textarea> -->
