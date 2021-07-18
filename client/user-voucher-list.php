@@ -198,7 +198,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                                     <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
                               <?php }
                                 else{
-                                  $util->formatStarsSmall($ratingsObject->data);
+                                  echo $util->formatStarsSmall($ratingsObject->data);
                                 }
                                ?>
                               </td>
