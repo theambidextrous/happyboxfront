@@ -195,7 +195,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                               <td class="gray_star rating" style="padding: 5px!important;margin: 0px;width: 100%;border: none;border-top: solid 1px #ccc;direction:ltr!important;">
                               <?php
                                   if( $canRateObject == 1 && $hasRatedObject->has != 1){ ?>
-                                    <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                                    <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange rater-btn">Rate partner</button>
                               <?php }
                                 else{
                                   echo $util->formatStarsSmall($ratingsObject->data);
@@ -316,7 +316,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
                         <td class="txt_gray">
                         <?php
                             if( $canRateObject == 1 && $hasRatedObject->has != 1){ ?>
-                              <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange">Rate partner</button>
+                              <button type="button" onclick="ratingModal('<?=$my_l['partner_internal_id']?>', '<?=$my_l['box_voucher']?>', '<?=ucwords(strtolower($partner_name))?>')" class="btn btn_rounded btn-orange rater-btn">Rate partner</button>
                         <?php }
                           else{
                             echo $util->formatStarsSmall($ratingsObject->data);
@@ -473,7 +473,7 @@ $my_list_ = json_decode($my_list_, true)['data'];
 						<h3 class="partner_blueh pink_title">THANK YOU FOR YOUR FEEDBACK!</h3>
 						<!-- <p class="forgot_des text-center"> Partner . </p> -->
 						<div>
-							<img src="<?= $util->AppHome() ?>/shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal" />
+							<img onclick="closeAndRelod()" src="<?= $util->AppHome() ?>/shared/img/btn-okay-orange.svg" class="password_ok_img" data-dismiss="modal" />
 						</div>
 					</div>
 				</div>
@@ -483,7 +483,10 @@ $my_list_ = json_decode($my_list_, true)['data'];
 	<!-- end pop up -->
 <script type="text/javascript">
     $(document).ready(function() {
-      
+      closeAndRelod = function (){
+        $('#feedbackPop').modal('hide');
+        location.reload();
+      }
       ratingModal = function(ptn, voucher, label){
         $('#partner_id').val(ptn);
         $('#voucher_id').val(voucher);
@@ -506,10 +509,11 @@ $my_list_ = json_decode($my_list_, true)['data'];
             console.log(res);
             var rtn = JSON.parse(res);
             if (rtn.hasOwnProperty("MSG")) {
+              $('.rater-btn').prop('disabled', true);
               $('#ratingPop').modal('hide');
               $('#feedbackPop').modal('show');
               setTimeout(function() {
-                // location.reload();
+                location.reload();
               }, 3000);
               waitingDialog.hide();
               return;
