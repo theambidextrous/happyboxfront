@@ -153,6 +153,9 @@ class Util {
  }
  function formatStarsSmall($starNumber, $label = 'orange')
  {
+    if ( $starNumber < 1){
+        return null;
+    }
     $stars = '';
     for( $x = 1; $x <= $starNumber; $x++ ) {
         $stars .= '<img style="width: 20px!important;" src="' . $this->AppHome(). '/shared/img/icons/icn-star-'.$label.'.svg">';
