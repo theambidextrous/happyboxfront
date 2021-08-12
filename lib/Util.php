@@ -134,6 +134,9 @@ class Util {
   return $this->LoadEnv()->APP_CONTACT_ADDRESS;
  }
  function formatStars($starNumber, $label = 'orange'){
+     if ( $starNumber < 1){
+         return null;
+     }
     $stars = '';
     for( $x = 1; $x <= $starNumber; $x++ ) {
         $stars .= '<img src="' . $this->AppHome(). '/shared/img/icons/icn-star-'.$label.'.svg">';
