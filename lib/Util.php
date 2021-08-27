@@ -200,7 +200,7 @@ class Util {
          return $new_string = $splited[2].'-'.$splited[1].'-'.$splited[0];
          return date('d/m/Y', strtotime($new_string));
      }
-     return date('d/m/Y', strtotime($new_string));
+     return date('d/m/Y', strtotime($date));
  }
  function voucher_div($status) {
   if ($status == 3) {
