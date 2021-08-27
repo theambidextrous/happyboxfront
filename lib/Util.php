@@ -194,8 +194,13 @@ class Util {
   return true;
  }
  function globalDate($date) {
-  return $lineDate = date('Y-m-d', strtotime($date));
-  return date('d/m/Y', strtotime($date));
+     $splited = explode('/', $date);
+     if( count($splited) == 3 )
+     {
+         $new_string = $splited[2].'-'.$splited[1].'-'.$splited[0];
+         return date('d/m/Y', strtotime($new_string));
+     }
+     return date('d/m/Y', strtotime($new_string));
  }
  function voucher_div($status) {
   if ($status == 3) {
