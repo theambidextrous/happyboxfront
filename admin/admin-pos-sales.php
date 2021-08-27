@@ -180,8 +180,8 @@ $box = new Box();
                                     <td><?=$cb->email?></td>
                                     <td><?=$customer_buyer->phone?></td>
                                     <td><?=$pos['customer_payment_method']?></td>
-                                    <td><?=$util->globalDate($pos['box_purchase_date'])?></td>
-                                    <td><?=$util->globalDate($pos['box_validity_date'])?></td>
+                                    <td><?=$util->globalDate($pos['box_purchase_date']) . '<=>' . $pos['box_purchase_date']?></td>
+                                    <td><?=$util->globalDate($pos['box_validity_date']) . '<=>' . $pos['box_validity_date']?></td>
                                     <td>POS</td>
                                     <td><a onclick="loadInvForm('<?=$pos['id']?>')"><img class="animatable" src="img/icn-edit-teal.svg" class="kkk"></a></td>
                                 </tr>
