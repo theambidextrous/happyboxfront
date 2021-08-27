@@ -197,7 +197,7 @@ class Util {
      $splited = explode('/', $date);
      if( count($splited) == 3 )
      {
-         return $new_string = $splited[2].'-'.$splited[1].'-'.$splited[0];
+         $new_string = $splited[2].'-'.$splited[1].'-'.$splited[0];
          return date('d/m/Y', strtotime($new_string));
      }
      return date('d/m/Y', strtotime($date));
