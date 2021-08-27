@@ -194,6 +194,7 @@ class Util {
   return true;
  }
  function globalDate($date) {
+  return $lineDate = date('Y-m-d', strtotime($date));
   return date('d/m/Y', strtotime($date));
  }
  function voucher_div($status) {
